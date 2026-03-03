@@ -1,4 +1,4 @@
-import express, { type Request, Response, NextFunction } from "express";
+import express, { type Request, type Response, type NextFunction } from "express";
 import { registerRoutes } from "../server/routes";
 import { createServer } from "http";
 
@@ -11,8 +11,9 @@ app.use((req: Request, res: Response, next: NextFunction) => {
     const start = Date.now();
     res.on("finish", () => {
         const duration = Date.now() - start;
-        if (req.path.startsWith("/api")) {
-            console.log(`${req.method} ${req.path} ${res.statusCode} in ${duration}ms`);
+        const path = (req as any).path || (req as any).url;
+        if (path.startsWith("/api")) {
+            console.log(`${req.method} ${path} ${res.statusCode} in ${duration}ms`);
         }
     });
     next();

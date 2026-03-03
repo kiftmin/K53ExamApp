@@ -4,7 +4,7 @@ import { storage } from "./storage";
 import { api } from "@shared/routes";
 
 export async function registerRoutes(
-  httpServer: Server,
+  _httpServer: Server,
   app: Express
 ): Promise<Server> {
 
@@ -18,5 +18,5 @@ export async function registerRoutes(
     }
   });
 
-  return httpServer;
+  return _httpServer;
 }
