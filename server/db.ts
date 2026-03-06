@@ -13,8 +13,8 @@ if (!process.env.DATABASE_URL) {
     throw new Error('DATABASE_URL environment variable is required');
 }
 
-const sql = neon(process.env.DATABASE_URL);
-export const db = drizzle(sql);
+export const client = neon(process.env.DATABASE_URL);
+export const db = drizzle(client);
 
 // Define Drizzle Postgres Schema matching the Zod schema
 export const questions = pgTable('questions', {

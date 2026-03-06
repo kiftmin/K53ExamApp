@@ -4,7 +4,7 @@ import { createServer } from "http";
 import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
-import { db, questions } from "../server/db.js";
+import { db, questions, client } from "../server/db.js";
 import { z } from "zod";
 import { questionSchema } from "../shared/schema.js";
 
@@ -36,6 +36,22 @@ await registerRoutes(httpServer as any, app as any);
 // TEMPORARY SEED ROUTE
 app.get("/api/seed", async (req: any, res: any) => {
     try {
+        console.log("Initialzing Neon table creation...");
+        // Ensure the table exists since drizzle-kit push failed in CI
+        await client`
+          CREATE TABLE IF NOT EXISTS questions (
+            id SERIAL PRIMARY KEY,
+            question_number INTEGER NOT NULL,
+            question_text TEXT NOT NULL,
+            category INTEGER NOT NULL,
+            license_code TEXT NOT NULL,
+            contains_image BOOLEAN NOT NULL,
+            image_link TEXT,
+            options JSONB NOT NULL
+          );
+        `;
+        console.log("Table 'questions' is confirmed ready over Neon HTTP.");
+
         const dataPath = path.join(__dirname, "../server/data/questiondata.json");
         const rawData = await fs.readFile(dataPath, "utf-8");
         const data = rawData.replace(/^\uFEFF/, ""); // Strip BOM
@@ -47,6 +63,7 @@ app.get("/api/seed", async (req: any, res: any) => {
         }
 
         const validQuestions = result.data;
+        console.log(`Uploading ${validQuestions.length} questions to Neon...`);
         await db.insert(questions).values(validQuestions);
 
         res.json({ success: true, message: `Successfully seeded ${validQuestions.length} questions to Neon database.` });
