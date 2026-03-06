@@ -4,7 +4,7 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "db:push": "drizzle-kit push",
+    "db:push": "npx drizzle-kit push",
     "dev": "tsx server/index.ts",
     "build": "npm run db:push && tsx script/build.ts",
     "start": "NODE_ENV=production node dist/index.cjs",
