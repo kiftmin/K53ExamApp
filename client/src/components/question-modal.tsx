@@ -101,7 +101,7 @@ export default function QuestionModal({ isOpen, onClose, question }: QuestionMod
                                     <FormItem>
                                         <FormLabel>Question Number</FormLabel>
                                         <FormControl>
-                                            <Input type="number" {...field} onChange={e => field.onChange(parseInt(e.target.value))} />
+                                            <Input type="number" {...field} onChange={(e: React.ChangeEvent<HTMLInputElement>) => field.onChange(parseInt(e.target.value))} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -114,7 +114,7 @@ export default function QuestionModal({ isOpen, onClose, question }: QuestionMod
                                     <FormItem>
                                         <FormLabel>Category</FormLabel>
                                         <FormControl>
-                                            <Input type="number" {...field} onChange={e => field.onChange(parseInt(e.target.value))} />
+                                            <Input type="number" {...field} onChange={(e: React.ChangeEvent<HTMLInputElement>) => field.onChange(parseInt(e.target.value))} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
