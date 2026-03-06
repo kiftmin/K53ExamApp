@@ -7,6 +7,7 @@ export const optionSchema = z.object({
 });
 
 export const questionSchema = z.object({
+  id: z.number().optional(),
   question_number: z.number(),
   question_text: z.string(),
   category: z.number(),
@@ -17,4 +18,5 @@ export const questionSchema = z.object({
 });
 
 export type Option = z.infer<typeof optionSchema>;
-export type Question = z.infer<typeof questionSchema>;
+export type Question = z.infer<typeof questionSchema> & { id: number };
+export type InsertQuestion = Omit<z.infer<typeof questionSchema>, "id">;

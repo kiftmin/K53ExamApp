@@ -11,10 +11,13 @@ import Quiz from "@/pages/quiz";
 import Results from "@/pages/results";
 import Review from "@/pages/review";
 
+import Admin from "@/pages/admin";
+
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/admin" component={Admin} />
       <Route path="/quiz" component={Quiz} />
       <Route path="/results" component={Results} />
       <Route path="/review" component={Review} />
