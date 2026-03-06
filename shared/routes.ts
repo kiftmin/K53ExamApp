@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { questionSchema } from './schema';
+import { questionSchema } from './schema.js';
 
 export const errorSchemas = {
   internal: z.object({

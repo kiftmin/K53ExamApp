@@ -1,5 +1,5 @@
-import { storage } from "./storage";
-import { api } from "@shared/routes";
+import { storage } from "./storage.js";
+import { api } from "../shared/routes.js";
 
 export async function registerRoutes(
   _httpServer: any,
