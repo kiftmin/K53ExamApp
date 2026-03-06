@@ -4,7 +4,7 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "db:push": "npx drizzle-kit push",
+    "db:push": "drizzle-kit push",
     "dev": "tsx server/index.ts",
     "build": "npm run db:push && tsx script/build.ts",
     "start": "NODE_ENV=production node dist/index.cjs",
@@ -47,6 +47,7 @@
     "cmdk": "^1.1.1",
     "date-fns": "^3.6.0",
     "dotenv": "^17.3.1",
+    "drizzle-kit": "^0.27.2",
     "drizzle-orm": "^0.45.1",
     "drizzle-zod": "^0.8.3",
     "embla-carousel-react": "^8.6.0",
