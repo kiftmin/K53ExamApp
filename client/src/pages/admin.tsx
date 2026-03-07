@@ -9,9 +9,8 @@ import { useToast } from "@/hooks/use-toast";
 import { queryClient } from "@/lib/queryClient";
 import { apiRequest } from "@/lib/queryClient";
 import { Link } from "wouter";
-import { ArrowLeft, Upload, Plus, Pencil, Trash2 } from "lucide-react";
+import { ArrowLeft, Upload, Plus, Pencil, Trash2, ArrowUpDown, ArrowUp, ArrowDown } from "lucide-react";
 import QuestionModal from "@/components/question-modal";
-
 export default function Admin() {
     const { toast } = useToast();
     const [search, setSearch] = useState("");
@@ -19,6 +18,7 @@ export default function Admin() {
     const [licenseFilter, setLicenseFilter] = useState<string>("all");
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedQuestion, setSelectedQuestion] = useState<Question | null>(null);
+    const [sortConfig, setSortConfig] = useState<{ key: keyof Question; direction: 'asc' | 'desc' } | null>(null);
 
     const { data: questions, isLoading } = useQuery<Question[]>({
         queryKey: ["/api/questions"],
@@ -65,6 +65,36 @@ export default function Admin() {
         const matchesLicense = licenseFilter === "all" || q.license_code === licenseFilter;
         return matchesSearch && matchesCategory && matchesLicense;
     }) || [];
+
+    const sortedQuestions = [...filteredQuestions].sort((a, b) => {
+        if (!sortConfig) return 0;
+        const { key, direction } = sortConfig;
+        let valA: any = a[key];
+        let valB: any = b[key];
+
+        if (valA === valB) return 0;
+
+        if (typeof valA === 'string' && typeof valB === 'string') {
+            return direction === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
+        }
+
+        if (valA < valB) return direction === 'asc' ? -1 : 1;
+        if (valA > valB) return direction === 'asc' ? 1 : -1;
+        return 0;
+    });
+
+    const handleSort = (key: keyof Question) => {
+        let direction: 'asc' | 'desc' = 'asc';
+        if (sortConfig && sortConfig.key === key && sortConfig.direction === 'asc') {
+            direction = 'desc';
+        }
+        setSortConfig({ key, direction });
+    };
+
+    const SortIcon = ({ columnKey }: { columnKey: keyof Question }) => {
+        if (sortConfig?.key !== columnKey) return <ArrowUpDown className="ml-2 h-4 w-4 inline-block" />;
+        return sortConfig.direction === 'asc' ? <ArrowUp className="ml-2 h-4 w-4 inline-block" /> : <ArrowDown className="ml-2 h-4 w-4 inline-block" />;
+    };
 
     const handleEdit = (question: Question) => {
         setSelectedQuestion(question);
@@ -143,11 +173,21 @@ export default function Admin() {
                     <Table>
                         <TableHeader>
                             <TableRow>
-                                <TableHead className="w-[80px]">ID</TableHead>
-                                <TableHead>Question Text</TableHead>
-                                <TableHead className="w-[100px]">Category</TableHead>
-                                <TableHead className="w-[100px]">License</TableHead>
-                                <TableHead className="w-[100px]">Image</TableHead>
+                                <TableHead className="w-[80px] cursor-pointer hover:bg-neutral-100" onClick={() => handleSort('question_number')}>
+                                    Q. No. <SortIcon columnKey="question_number" />
+                                </TableHead>
+                                <TableHead className="cursor-pointer hover:bg-neutral-100" onClick={() => handleSort('question_text')}>
+                                    Question Text <SortIcon columnKey="question_text" />
+                                </TableHead>
+                                <TableHead className="w-[140px] cursor-pointer hover:bg-neutral-100" onClick={() => handleSort('category')}>
+                                    Category <SortIcon columnKey="category" />
+                                </TableHead>
+                                <TableHead className="w-[140px] cursor-pointer hover:bg-neutral-100" onClick={() => handleSort('license_code')}>
+                                    License <SortIcon columnKey="license_code" />
+                                </TableHead>
+                                <TableHead className="w-[120px] cursor-pointer hover:bg-neutral-100" onClick={() => handleSort('contains_image')}>
+                                    Image <SortIcon columnKey="contains_image" />
+                                </TableHead>
                                 <TableHead className="text-right w-[120px]">Actions</TableHead>
                             </TableRow>
                         </TableHeader>
@@ -156,14 +196,14 @@ export default function Admin() {
                                 <TableRow>
                                     <TableCell colSpan={6} className="text-center py-8 text-neutral-500">Loading questions...</TableCell>
                                 </TableRow>
-                            ) : filteredQuestions.length === 0 ? (
+                            ) : sortedQuestions.length === 0 ? (
                                 <TableRow>
                                     <TableCell colSpan={6} className="text-center py-8 text-neutral-500">No questions found matching your filters.</TableCell>
                                 </TableRow>
                             ) : (
-                                filteredQuestions.map((question) => (
+                                sortedQuestions.map((question) => (
                                     <TableRow key={question.id}>
-                                        <TableCell className="font-medium">{question.id}</TableCell>
+                                        <TableCell className="font-medium">{question.question_number}</TableCell>
                                         <TableCell className="max-w-md truncate">{question.question_text}</TableCell>
                                         <TableCell>{question.category}</TableCell>
                                         <TableCell>{question.license_code}</TableCell>

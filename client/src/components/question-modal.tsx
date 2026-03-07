@@ -177,6 +177,18 @@ export default function QuestionModal({ isOpen, onClose, question }: QuestionMod
                                         <FormControl>
                                             <Input {...field} value={field.value || ""} />
                                         </FormControl>
+                                        {field.value && (
+                                            <div className="mt-4 border rounded-md p-4 flex justify-center bg-neutral-50 overflow-hidden">
+                                                <img
+                                                    src={field.value.startsWith('http') ? field.value : `/assets/images/${field.value}`}
+                                                    alt="Question preview"
+                                                    className="max-h-48 object-contain"
+                                                    onError={(e) => {
+                                                        (e.target as HTMLImageElement).src = "https://placehold.co/400x300?text=Image+Not+Found";
+                                                    }}
+                                                />
+                                            </div>
+                                        )}
                                         <FormMessage />
                                     </FormItem>
                                 )}
