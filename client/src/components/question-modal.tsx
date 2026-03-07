@@ -18,6 +18,13 @@ import {
     FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest, queryClient } from "@/lib/queryClient";
@@ -33,7 +40,7 @@ const defaultValues: InsertQuestion = {
     question_number: 1,
     question_text: "",
     category: 1,
-    license_code: "B",
+    license_code: "02",
     contains_image: false,
     image_link: "",
     options: [
@@ -126,9 +133,19 @@ export default function QuestionModal({ isOpen, onClose, question }: QuestionMod
                                 render={({ field }) => (
                                     <FormItem>
                                         <FormLabel>License Code</FormLabel>
-                                        <FormControl>
-                                            <Input {...field} />
-                                        </FormControl>
+                                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                            <FormControl>
+                                                <SelectTrigger>
+                                                    <SelectValue placeholder="Select code" />
+                                                </SelectTrigger>
+                                            </FormControl>
+                                            <SelectContent>
+                                                <SelectItem value="00">Code 00</SelectItem>
+                                                <SelectItem value="01">Code 01</SelectItem>
+                                                <SelectItem value="02">Code 02</SelectItem>
+                                                <SelectItem value="03">Code 03</SelectItem>
+                                            </SelectContent>
+                                        </Select>
                                         <FormMessage />
                                     </FormItem>
                                 )}

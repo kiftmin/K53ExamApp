@@ -162,9 +162,10 @@ export default function Admin() {
                         </SelectTrigger>
                         <SelectContent>
                             <SelectItem value="all">All Licenses</SelectItem>
-                            <SelectItem value="A">Code A</SelectItem>
-                            <SelectItem value="B">Code B</SelectItem>
-                            <SelectItem value="C">Code C</SelectItem>
+                            <SelectItem value="00">Code 00</SelectItem>
+                            <SelectItem value="01">Code 01</SelectItem>
+                            <SelectItem value="02">Code 02</SelectItem>
+                            <SelectItem value="03">Code 03</SelectItem>
                         </SelectContent>
                     </Select>
                 </div>
