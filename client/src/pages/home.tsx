@@ -41,6 +41,7 @@ export default function Home() {
     licenseCode: "",
     category: "",
     accessCode: "",
+    isSimulation: false,
   });
 
   const [accessCodeValidated, setAccessCodeValidated] = useState(false);
@@ -53,18 +54,35 @@ export default function Home() {
       setFormData((prev) => ({ ...prev, accessCode: savedCode }));
       setAccessCodeValidated(true);
     }
+
+    const savedName = localStorage.getItem("k53_name");
+    const savedSurname = localStorage.getItem("k53_surname");
+    const savedLicenseCode = localStorage.getItem("k53_license_code");
+
+    if (savedName || savedSurname || savedLicenseCode) {
+      setFormData(prev => ({
+        ...prev,
+        name: savedName || "",
+        surname: savedSurname || "",
+        licenseCode: savedLicenseCode || ""
+      }));
+    }
   }, []);
 
   const isFormValid =
     formData.name &&
     formData.surname &&
     formData.licenseCode &&
-    formData.category &&
+    (formData.category || formData.isSimulation) &&
     accessCodeValidated;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!isFormValid || !questions) return;
+
+    localStorage.setItem("k53_name", formData.name);
+    localStorage.setItem("k53_surname", formData.surname);
+    localStorage.setItem("k53_license_code", formData.licenseCode);
 
     startQuiz(
       {
@@ -72,6 +90,7 @@ export default function Home() {
         surname: formData.surname,
         licenseCode: formData.licenseCode,
         category: parseInt(formData.category, 10),
+        testType: formData.isSimulation ? 'simulation' : 'category',
       },
       questions
     );
@@ -237,6 +256,29 @@ export default function Home() {
                   )}
                 </div>
 
+                {/* Test Type Selection */}
+                <div className="space-y-3 p-4 rounded-2xl bg-muted/50 border border-border/50">
+                  <Label className="text-sm font-semibold mb-2 block">What would you like to do?</Label>
+                  <div className="grid grid-cols-2 gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setFormData(p => ({ ...p, isSimulation: false }))}
+                      className={`flex flex-col items-center justify-center p-3 rounded-xl border-2 transition-all ${!formData.isSimulation ? 'border-primary bg-primary/5 ring-4 ring-primary/10' : 'border-border bg-background hover:border-primary/50'}`}
+                    >
+                      <span className={`text-sm font-bold ${!formData.isSimulation ? 'text-primary' : 'text-muted-foreground'}`}>Category Test</span>
+                      <span className="text-[10px] text-muted-foreground mt-0.5">Focus on one area</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setFormData(p => ({ ...p, isSimulation: true }))}
+                      className={`flex flex-col items-center justify-center p-3 rounded-xl border-2 transition-all ${formData.isSimulation ? 'border-primary bg-primary/5 ring-4 ring-primary/10' : 'border-border bg-background hover:border-primary/50'}`}
+                    >
+                      <span className={`text-sm font-bold ${formData.isSimulation ? 'text-primary' : 'text-muted-foreground'}`}>Exam Simulation</span>
+                      <span className="text-[10px] text-muted-foreground mt-0.5">Full 64-question test</span>
+                    </button>
+                  </div>
+                </div>
+
                 {/* Name + Surname */}
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1.5">
@@ -300,28 +342,30 @@ export default function Home() {
                     </Select>
                   </div>
 
-                  <div className="space-y-1.5">
-                    <Label htmlFor="category" className="text-sm font-semibold">
-                      Vehicle Category
-                    </Label>
-                    <Select
-                      value={formData.category}
-                      onValueChange={(val) =>
-                        setFormData((prev) => ({ ...prev, category: val }))
-                      }
-                    >
-                      <SelectTrigger id="category" className="h-11 bg-background/60">
-                        <SelectValue placeholder="Select..." />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {CATEGORIES.map((cat) => (
-                          <SelectItem key={cat.value} value={cat.value}>
-                            {cat.label}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
+                  {!formData.isSimulation && (
+                    <div className="space-y-1.5 animate-in fade-in slide-in-from-top-2 duration-300">
+                      <Label htmlFor="category" className="text-sm font-semibold">
+                        Vehicle Category
+                      </Label>
+                      <Select
+                        value={formData.category}
+                        onValueChange={(val) =>
+                          setFormData((prev) => ({ ...prev, category: val }))
+                        }
+                      >
+                        <SelectTrigger id="category" className="h-11 bg-background/60">
+                          <SelectValue placeholder="Select..." />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {CATEGORIES.map((cat) => (
+                            <SelectItem key={cat.value} value={cat.value}>
+                              {cat.label}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  )}
                 </div>
 
                 {/* Submit */}
@@ -338,7 +382,7 @@ export default function Home() {
                     height: "52px",
                   }}
                 >
-                  Start Practice Test
+                  {formData.isSimulation ? "Start Exam Simulation" : "Start Category Test"}
                 </Button>
               </form>
             )}

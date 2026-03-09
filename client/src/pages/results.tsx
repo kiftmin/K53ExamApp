@@ -1,17 +1,42 @@
-import { useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useLocation, Link } from "wouter";
 import { motion } from "framer-motion";
 import { useQuiz } from "@/lib/quiz-context";
 import { Layout } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Share2, RefreshCw, ListChecks, Award, Trophy, AlertTriangle, Clock } from "lucide-react";
+import {
+  Share2,
+  RefreshCw,
+  ListChecks,
+  Award,
+  Trophy,
+  AlertTriangle,
+  Clock,
+  CheckCircle2,
+  XCircle,
+  RotateCcw,
+  FileDown,
+  Image as ImageIcon,
+  Download
+} from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useQuery } from "@tanstack/react-query";
+import { Question } from "@shared/schema";
+import html2canvas from 'html2canvas';
+
+const LOGO_URL = "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773061809/logo_edited_vlgoqy.jpg";
 
 export default function Results() {
   const [_, setLocation] = useLocation();
-  const { user, getScore, resetQuiz, isComplete, getPassThreshold, getElapsedSeconds } = useQuiz();
+  const { user, getResults, resetQuiz, isComplete, getElapsedSeconds, startQuiz } = useQuiz();
   const { toast } = useToast();
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [isExporting, setIsExporting] = useState(false);
+
+  const { data: questions } = useQuery<Question[]>({
+    queryKey: ["/api/questions"],
+  });
 
   useEffect(() => {
     if (!user || !isComplete) {
@@ -21,8 +46,8 @@ export default function Results() {
 
   if (!user || !isComplete) return null;
 
-  const score = getScore();
-  const isPassing = score.percentage >= getPassThreshold();
+  const { score, categories, overallPass } = getResults();
+  const isPassing = overallPass;
 
   const formatTime = (secs: number) => {
     const m = Math.floor(secs / 60).toString().padStart(2, "0");
@@ -31,31 +56,99 @@ export default function Results() {
   };
   const elapsedTime = formatTime(getElapsedSeconds());
 
-  const handleShare = async () => {
-    const text = `I just scored ${score.percentage}% (${score.correct}/${score.total}) on my License Code ${user.licenseCode} practice test!`;
+  const generateImage = async () => {
+    if (!cardRef.current) return null;
+    try {
+      const canvas = await html2canvas(cardRef.current, {
+        useCORS: true,
+        backgroundColor: '#f8fafc',
+        scale: 2,
+        logging: false,
+        onclone: (document) => {
+          // You can perform any DOM manipulations on the cloned document here if needed
+        }
+      });
+      return canvas.toDataURL('image/png', 1.0);
+    } catch (err) {
+      console.error('Error generating image:', err);
+      toast({
+        title: "Generation failed",
+        description: "Could not capture the report card. Please try again.",
+        variant: "destructive",
+      });
+      return null;
+    }
+  };
 
-    if (navigator.share) {
+  const handleShare = async () => {
+    setIsExporting(true);
+    const dataUrl = await generateImage();
+
+    if (!dataUrl) {
+      toast({
+        title: "Error",
+        description: "Could not generate report card image.",
+        variant: "destructive",
+      });
+      setIsExporting(false);
+      return;
+    }
+
+    const blob = await (await fetch(dataUrl)).blob();
+    const file = new File([blob], `K53_Report_Card_${user.name}.png`, { type: 'image/png' });
+
+    let text = "";
+    if (user.testType === 'simulation') {
+      text = `I just ${isPassing ? 'PASSED' : 'completed'} my K53 Exam Simulation with a total score of ${score.correct}/${score.total}!`;
+    } else {
+      text = `I just scored ${score.percentage}% (${score.correct}/${score.total}) on my K53 Category Test!`;
+    }
+
+    if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
       try {
         await navigator.share({
-          title: "My DrivePrep Result",
+          files: [file],
+          title: "Jean's Driving School - K53 Results",
           text: text,
-          url: window.location.origin,
         });
       } catch (err) {
-        console.log("Error sharing:", err);
+        if ((err as Error).name !== 'AbortError') {
+          console.error("Error sharing:", err);
+        }
       }
     } else {
-      navigator.clipboard.writeText(text);
+      // Fallback: Download the image
+      const link = document.createElement('a');
+      link.download = `K53_Report_Card_${user.name}.png`;
+      link.href = dataUrl;
+      link.click();
       toast({
-        title: "Copied to clipboard!",
-        description: "Share your results with your friends.",
+        title: "Success",
+        description: "Report card downloaded as image. You can now share it manually!",
       });
     }
+    setIsExporting(false);
+  };
+
+
+  const handleNextBatch = () => {
+    if (!questions) return;
+    startQuiz(user, questions);
+    setLocation("/quiz");
   };
 
   const handleRetake = () => {
     resetQuiz();
     setLocation("/");
+  };
+
+  const getCategoryName = (id: number) => {
+    switch (id) {
+      case 1: return "Rules of the Road";
+      case 2: return "Road Signs";
+      case 3: return "Vehicle Controls";
+      default: return "Unknown";
+    }
   };
 
   return (
@@ -66,65 +159,108 @@ export default function Results() {
         transition={{ duration: 0.5, ease: "easeOut" }}
         className="w-full space-y-6"
       >
-        <Card className="glass-card overflow-hidden relative border-none shadow-2xl">
-          <div className={`absolute top-0 left-0 w-full h-32 ${isPassing ? 'bg-gradient-to-br from-success to-emerald-400' : 'bg-gradient-to-br from-destructive to-red-400'}`} />
+        <div ref={cardRef}>
+          <Card className="glass-card overflow-hidden relative border-none shadow-2xl">
+            <div className={`absolute top-0 left-0 w-full h-32 ${isPassing ? 'bg-gradient-to-br from-success to-emerald-400' : 'bg-gradient-to-br from-destructive to-red-400'}`} />
 
-          <CardContent className="pt-24 pb-12 px-6 sm:px-12 flex flex-col items-center text-center relative z-10">
-            <div className={`w-24 h-24 rounded-full flex items-center justify-center bg-card shadow-xl mb-6 border-4 ${isPassing ? 'border-success text-success' : 'border-destructive text-destructive'}`}>
-              {isPassing ? <Trophy className="w-12 h-12" /> : <AlertTriangle className="w-12 h-12" />}
-            </div>
-
-            <h2 className="text-3xl sm:text-4xl font-display font-black text-foreground mb-2">
-              {isPassing ? "Congratulations!" : "Keep Practicing!"}
-            </h2>
-            <p className="text-xl text-muted-foreground font-medium mb-8">
-              {user.name} {user.surname}
-            </p>
-
-            <div className="w-full max-w-sm bg-muted/50 rounded-3xl p-6 mb-8 border border-border shadow-inner">
-              <div className="flex justify-between items-center mb-4">
-                <span className="text-muted-foreground font-semibold">Final Score</span>
-                <span className={`text-4xl font-black ${isPassing ? 'text-success' : 'text-destructive'}`}>
-                  {score.percentage}%
-                </span>
-              </div>
-              <div className="h-4 bg-background rounded-full overflow-hidden mb-2">
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={{ width: `${score.percentage}%` }}
-                  transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-                  className={`h-full ${isPassing ? 'bg-success' : 'bg-destructive'}`}
+            <CardContent className="pt-4 pb-12 px-6 sm:px-12 flex flex-col items-center relative z-10">
+              <div className="mb-14 flex justify-center">
+                <img
+                  src={LOGO_URL}
+                  alt="Driving School Logo"
+                  crossOrigin="anonymous"
+                  className="h-20 w-auto object-contain rounded-lg shadow-sm bg-white p-1"
                 />
               </div>
-              <p className="text-sm font-medium text-muted-foreground">
-                {score.correct} correct out of {score.total} questions
-              </p>
-              <p className="flex items-center justify-center gap-1.5 text-sm font-medium text-muted-foreground mt-2">
-                <Clock className="w-4 h-4" />
-                Time taken: {elapsedTime}
-              </p>
-            </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-md">
-              <Link href="/review" className="w-full">
-                <Button className="w-full h-14 rounded-xl text-base font-semibold shadow-md" variant="secondary">
-                  <ListChecks className="w-5 h-5 mr-2" />
-                  Review Answers
-                </Button>
-              </Link>
+              <div className="mb-10 text-center">
+                <p className="text-sm text-muted-foreground uppercase tracking-[0.3em] font-black">
+                  Report Card
+                </p>
+              </div>
 
-              <Button onClick={handleShare} className="w-full h-14 rounded-xl text-base font-semibold shadow-md" variant="default">
-                <Share2 className="w-5 h-5 mr-2" />
-                Share Result
-              </Button>
+              <div className={`w-24 h-24 rounded-full flex items-center justify-center bg-card shadow-xl mb-6 border-4 ${isPassing ? 'border-success text-success' : 'border-destructive text-destructive'}`}>
+                {isPassing ? <Trophy className="w-12 h-12" /> : <AlertTriangle className="w-12 h-12" />}
+              </div>
 
-              <Button onClick={handleRetake} className="w-full h-14 rounded-xl text-base font-semibold shadow-md sm:col-span-2 mt-2" variant="outline">
-                <RefreshCw className="w-5 h-5 mr-2" />
-                Retake Test
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
+              <h2 className="text-3xl sm:text-4xl font-display font-black text-foreground mb-6">
+                {isPassing ? "PASSED!" : "DID NOT PASS"}
+              </h2>
+
+              <div className="w-full max-w-sm mb-10 text-center">
+                <p className="text-xl font-bold text-foreground">
+                  {user.name} {user.surname}
+                </p>
+                <p className="text-muted-foreground">
+                  License Code {user.licenseCode} • {user.testType === 'simulation' ? 'Exam Simulation' : getCategoryName(user.category)}
+                </p>
+              </div>
+
+              <div className="w-full max-w-sm space-y-4 mb-8">
+                {categories.map((cat) => (
+                  <div key={cat.categoryId} className="bg-muted/30 rounded-2xl p-4 border border-border/50 flex items-center justify-between">
+                    <div className="text-left">
+                      <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-0.5">
+                        {getCategoryName(cat.categoryId)}
+                      </p>
+                      <p className="text-sm font-semibold">
+                        {cat.correct} / {cat.total}
+                      </p>
+                    </div>
+                    <div className={`flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase transition-transform hover:scale-105 ${cat.pass ? 'bg-success/20 text-success' : 'bg-destructive/20 text-destructive'}`}>
+                      {cat.pass ? <CheckCircle2 className="w-4 h-4" /> : <XCircle className="w-4 h-4" />}
+                      {cat.pass ? 'PASS' : 'FAIL'}
+                    </div>
+                  </div>
+                ))}
+
+                <div className="pt-6 mt-6 border-t flex items-center justify-between">
+                  <div className="text-left">
+                    <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-0.5">Overall Performance</p>
+                    <p className="text-2xl font-black text-foreground">{score.percentage}%</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-0.5">Time Taken</p>
+                    <p className="text-lg font-bold text-foreground">{elapsedTime}</p>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-md mx-auto">
+          <Link href="/review" className="w-full">
+            <Button className="w-full h-14 rounded-xl text-base font-semibold shadow-md" variant="secondary">
+              <ListChecks className="w-5 h-5 mr-2" />
+              Review All
+            </Button>
+          </Link>
+
+          <Button
+            onClick={handleShare}
+            disabled={isExporting}
+            className="w-full h-14 rounded-xl text-base font-semibold shadow-md overflow-hidden relative"
+            variant="default"
+            style={{ background: "linear-gradient(135deg, #E53E1A 0%, #F5A623 100%)", border: "none" }}
+          >
+            {isExporting ? <RotateCcw className="w-5 h-5 mr-2 animate-spin" /> : <Share2 className="w-5 h-5 mr-2" />}
+            {isExporting ? "Generating..." : "Share Image"}
+          </Button>
+
+
+          {user.testType === 'category' && (
+            <Button onClick={handleNextBatch} className="w-full h-14 rounded-xl text-base font-semibold shadow-md group" variant="default">
+              <RotateCcw className="w-5 h-5 mr-2 transition-transform group-hover:-rotate-90" />
+              Try Next Batch
+            </Button>
+          )}
+
+          <Button onClick={handleRetake} className={`w-full h-14 rounded-xl text-base font-semibold shadow-md ${user.testType === 'simulation' ? 'sm:col-span-2' : ''}`} variant="outline">
+            <RefreshCw className="w-5 h-5 mr-2" />
+            Start New Test
+          </Button>
+        </div>
       </motion.div>
     </Layout>
   );
