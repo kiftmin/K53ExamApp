@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { Question } from "@shared/schema";
 import { Button } from "@/components/ui/button";
@@ -9,7 +9,7 @@ import { useToast } from "@/hooks/use-toast";
 import { queryClient } from "@/lib/queryClient";
 import { apiRequest } from "@/lib/queryClient";
 import { Link } from "wouter";
-import { ArrowLeft, Upload, Plus, Pencil, Trash2, ArrowUpDown, ArrowUp, ArrowDown } from "lucide-react";
+import { ArrowLeft, Upload, Plus, Pencil, Trash2, ArrowUpDown, ArrowUp, ArrowDown, Clock, Copy, Search } from "lucide-react";
 import QuestionModal from "@/components/question-modal";
 export default function Admin() {
     const { toast } = useToast();
@@ -19,6 +19,66 @@ export default function Admin() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedQuestion, setSelectedQuestion] = useState<Question | null>(null);
     const [sortConfig, setSortConfig] = useState<{ key: keyof Question; direction: 'asc' | 'desc' } | null>(null);
+
+    // Access code state
+    const [todayCode, setTodayCode] = useState<string>("");
+    const [todayDate, setTodayDate] = useState<string>("");
+    const [countdown, setCountdown] = useState<string>("");
+    const [lookupDate, setLookupDate] = useState<string>("");
+    const [lookupCode, setLookupCode] = useState<string>("");
+    const [codeCopied, setCodeCopied] = useState(false);
+
+    // Fetch today's access code
+    useEffect(() => {
+        const fetchCode = async () => {
+            try {
+                const res = await fetch('/api/access-code/today');
+                const data = await res.json();
+                setTodayCode(data.code);
+                setTodayDate(data.date);
+            } catch (err) {
+                console.error('Failed to fetch access code:', err);
+            }
+        };
+        fetchCode();
+    }, []);
+
+    // Live countdown timer
+    useEffect(() => {
+        const updateCountdown = () => {
+            const now = new Date();
+            const sast = new Date(now.getTime() + 2 * 60 * 60 * 1000);
+            const endOfDay = new Date(sast);
+            endOfDay.setHours(23, 59, 59, 999);
+            const diff = endOfDay.getTime() - sast.getTime();
+            const h = Math.floor(diff / 3600000);
+            const m = Math.floor((diff % 3600000) / 60000);
+            const s = Math.floor((diff % 60000) / 1000);
+            setCountdown(`${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`);
+        };
+        updateCountdown();
+        const interval = setInterval(updateCountdown, 1000);
+        return () => clearInterval(interval);
+    }, []);
+
+    const handleCopyCode = async (code: string) => {
+        await navigator.clipboard.writeText(code);
+        setCodeCopied(true);
+        toast({ title: "Code copied to clipboard!" });
+        setTimeout(() => setCodeCopied(false), 2000);
+    };
+
+    const handleLookupCode = async () => {
+        if (!lookupDate) return;
+        try {
+            const res = await fetch(`/api/access-code/lookup?date=${lookupDate}`);
+            const data = await res.json();
+            setLookupCode(data.code);
+        } catch (err) {
+            console.error('Failed to lookup code:', err);
+            toast({ title: "Failed to look up code", variant: "destructive" });
+        }
+    };
 
     const { data: questions, isLoading } = useQuery<Question[]>({
         queryKey: ["/api/questions"],
@@ -134,6 +194,60 @@ export default function Admin() {
                                 <Upload className="h-4 w-4" />
                                 Bulk Import JSON
                             </Button>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Access Code Card */}
+                <div className="bg-white rounded-lg shadow-sm border border-neutral-200 p-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {/* Today's Code */}
+                        <div className="space-y-3">
+                            <div className="flex items-center gap-2 text-sm font-medium text-neutral-500">
+                                <Clock className="h-4 w-4" />
+                                Today's Access Code ({todayDate})
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <div className="text-4xl font-mono font-bold tracking-[0.3em] text-neutral-900 bg-neutral-100 px-6 py-3 rounded-lg">
+                                    {todayCode || "------"}
+                                </div>
+                                <Button variant="outline" size="icon" onClick={() => handleCopyCode(todayCode)} title="Copy code">
+                                    <Copy className="h-4 w-4" />
+                                </Button>
+                            </div>
+                            <div className="flex items-center gap-2 text-sm text-neutral-500">
+                                <span>Expires in</span>
+                                <span className="font-mono font-semibold text-orange-600 bg-orange-50 px-2 py-0.5 rounded">{countdown}</span>
+                            </div>
+                        </div>
+
+                        {/* Date Lookup */}
+                        <div className="space-y-3">
+                            <div className="flex items-center gap-2 text-sm font-medium text-neutral-500">
+                                <Search className="h-4 w-4" />
+                                Look Up Code by Date
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <Input
+                                    type="date"
+                                    value={lookupDate}
+                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setLookupDate(e.target.value)}
+                                    className="flex-1"
+                                />
+                                <Button onClick={handleLookupCode} disabled={!lookupDate}>
+                                    Get Code
+                                </Button>
+                            </div>
+                            {lookupCode && (
+                                <div className="flex items-center gap-3">
+                                    <div className="text-2xl font-mono font-bold tracking-[0.3em] text-neutral-700 bg-neutral-100 px-4 py-2 rounded-lg">
+                                        {lookupCode}
+                                    </div>
+                                    <Button variant="outline" size="icon" onClick={() => handleCopyCode(lookupCode)} title="Copy code">
+                                        <Copy className="h-4 w-4" />
+                                    </Button>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

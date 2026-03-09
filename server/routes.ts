@@ -1,6 +1,7 @@
 import { storage } from "./storage.js";
 import { api } from "../shared/routes.js";
 import { questionSchema } from "../shared/schema.js";
+import { generateAccessCode, validateAccessCode, getTodaySAST, getTimeUntilNextCode } from "./access-code.js";
 import { z } from "zod";
 
 export async function registerRoutes(
@@ -66,6 +67,48 @@ export async function registerRoutes(
     } catch (err) {
       console.error("Error in bulk upload:", err);
       res.status(400).json({ message: "Invalid format for bulk upload payload", error: err });
+    }
+  });
+
+  // === Access Code Endpoints ===
+
+  app.get('/api/access-code/today', async (_req: any, res: any) => {
+    try {
+      const todayDate = getTodaySAST();
+      const code = generateAccessCode(todayDate);
+      const timeLeft = getTimeUntilNextCode();
+      res.json({ code, date: todayDate, expiresIn: timeLeft });
+    } catch (err) {
+      console.error("Error generating access code:", err);
+      res.status(500).json({ message: "Failed to generate access code" });
+    }
+  });
+
+  app.get('/api/access-code/lookup', async (req: any, res: any) => {
+    try {
+      const date = req.query.date as string;
+      if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+        return res.status(400).json({ message: "Invalid date format. Use YYYY-MM-DD." });
+      }
+      const code = generateAccessCode(date);
+      res.json({ code, date });
+    } catch (err) {
+      console.error("Error looking up access code:", err);
+      res.status(500).json({ message: "Failed to look up access code" });
+    }
+  });
+
+  app.post('/api/access-code/validate', async (req: any, res: any) => {
+    try {
+      const { code } = req.body;
+      if (!code || typeof code !== 'string') {
+        return res.status(400).json({ valid: false, message: "Code is required." });
+      }
+      const valid = validateAccessCode(code.trim());
+      res.json({ valid });
+    } catch (err) {
+      console.error("Error validating access code:", err);
+      res.status(500).json({ valid: false, message: "Failed to validate access code" });
     }
   });
 

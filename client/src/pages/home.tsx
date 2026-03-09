@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import { useQuestions } from "@/hooks/use-questions";
 import { useQuiz } from "@/lib/quiz-context";
@@ -13,8 +13,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { BookOpen, FileCheck2, Timer } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { ShieldCheck } from "lucide-react";
+
+const LOGO_URL = "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773061809/logo_edited_vlgoqy.jpg";
 
 const CATEGORIES = [
   { value: "1", label: "Category 1 - Rules of the Road" },
@@ -27,10 +29,9 @@ export default function Home() {
   const { data: questions, isLoading, isError } = useQuestions();
   const { startQuiz } = useQuiz();
 
-  // Extract available license codes from data, excluding "00"
   const availableLicenseCodes = questions
-    ? Array.from(new Set(questions.map(q => q.license_code)))
-      .filter(code => code !== "00")
+    ? Array.from(new Set(questions.map((q) => q.license_code)))
+      .filter((code) => code !== "00")
       .sort()
     : [];
 
@@ -39,9 +40,27 @@ export default function Home() {
     surname: "",
     licenseCode: "",
     category: "",
+    accessCode: "",
   });
 
-  const isFormValid = formData.name && formData.surname && formData.licenseCode && formData.category;
+  const [accessCodeValidated, setAccessCodeValidated] = useState(false);
+  const [accessCodeError, setAccessCodeError] = useState("");
+  const [validatingCode, setValidatingCode] = useState(false);
+
+  useEffect(() => {
+    const savedCode = sessionStorage.getItem("k53_access_code");
+    if (savedCode) {
+      setFormData((prev) => ({ ...prev, accessCode: savedCode }));
+      setAccessCodeValidated(true);
+    }
+  }, []);
+
+  const isFormValid =
+    formData.name &&
+    formData.surname &&
+    formData.licenseCode &&
+    formData.category &&
+    accessCodeValidated;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -60,101 +79,217 @@ export default function Home() {
     setLocation("/quiz");
   };
 
+  const handleValidateCode = async () => {
+    if (!formData.accessCode || formData.accessCode.length !== 6) {
+      setAccessCodeError("Please enter a 6-character alphanumeric code.");
+      return;
+    }
+    setValidatingCode(true);
+    setAccessCodeError("");
+    try {
+      const res = await fetch("/api/access-code/validate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ code: formData.accessCode }),
+      });
+      const data = await res.json();
+      if (data.valid) {
+        setAccessCodeValidated(true);
+        sessionStorage.setItem("k53_access_code", formData.accessCode);
+      } else {
+        setAccessCodeError("Invalid access code. Please try again.");
+      }
+    } catch {
+      setAccessCodeError("Failed to validate code. Please try again.");
+    } finally {
+      setValidatingCode(false);
+    }
+  };
+
   return (
     <Layout>
-      <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+      <div className="min-h-[calc(100vh-80px)] flex flex-col items-center justify-center py-8 px-4">
+        {/* Hero Section */}
+        <div className="flex flex-col items-center text-center space-y-4 mb-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+          {/* Logo */}
+          <div className="mb-2">
+            <img
+              src={LOGO_URL}
+              alt="Jean's Driving School"
+              className="h-24 md:h-32 w-auto object-contain border-0"
+            />
+          </div>
 
-        <div className="text-center space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-2">
+          {/* Updated Syllabus Badge */}
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-semibold">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
             </span>
             {new Date().getFullYear()} Updated Syllabus
           </div>
-          <h2 className="text-4xl md:text-5xl font-display font-extrabold text-foreground tracking-tight">
-            Pass your driving test <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">with confidence</span>
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-lg mx-auto">
-            Take our professional practice test tailored to your specific license code and vehicle category.
+
+          {/* Headline */}
+          <h1 className="text-3xl md:text-4xl font-display font-extrabold text-foreground tracking-tight leading-tight max-w-sm md:max-w-md">
+            Pass your K53 test{" "}
+            <span
+              className="text-transparent bg-clip-text"
+              style={{ backgroundImage: "linear-gradient(90deg, #E53E1A, #F5A623)" }}
+            >
+              with confidence
+            </span>
+          </h1>
+
+          <p className="text-sm md:text-base text-muted-foreground max-w-xs md:max-w-sm">
+            Professional practice tests tailored to your license code and vehicle category.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-          {[
-            { icon: BookOpen, title: "Official Questions", desc: "Based on latest manual" },
-            { icon: Timer, title: "Self-Paced", desc: "Take your time to learn" },
-            { icon: FileCheck2, title: "Detailed Review", desc: "Learn from your mistakes" }
-          ].map((feature, i) => (
-            <div key={i} className="flex flex-col items-center text-center p-4 rounded-2xl bg-card border border-border shadow-sm">
-              <div className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-3">
-                <feature.icon className="w-5 h-5" />
-              </div>
-              <h3 className="font-semibold text-sm">{feature.title}</h3>
-              <p className="text-xs text-muted-foreground mt-1">{feature.desc}</p>
-            </div>
-          ))}
-        </div>
+        {/* Form Card */}
+        <Card
+          className="w-full max-w-md glass-card border-none shadow-2xl rounded-3xl animate-in fade-in slide-in-from-bottom-4 duration-700"
+          style={{ animationDelay: "100ms" }}
+        >
+          {/* Card header stripe */}
+          <div
+            className="h-1.5 rounded-t-3xl"
+            style={{ background: "linear-gradient(90deg, #E53E1A, #F5A623)" }}
+          />
 
-        <Card className="glass-card border-none shadow-2xl">
-          <CardHeader>
-            <CardTitle className="text-2xl">Candidate Details</CardTitle>
-            <CardDescription>
-              Please enter your details to generate your customized test.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
+          <CardContent className="pt-6 pb-8 px-6">
+            <h2 className="text-xl font-display font-bold text-foreground mb-1">
+              Candidate Details
+            </h2>
+            <p className="text-sm text-muted-foreground mb-6">
+              Enter your details to start your practice test.
+            </p>
+
             {isLoading ? (
               <div className="flex flex-col items-center justify-center py-12 space-y-4">
-                <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
-                <p className="text-muted-foreground font-medium">Loading question bank...</p>
+                <div
+                  className="w-8 h-8 border-4 border-t-transparent rounded-full animate-spin"
+                  style={{ borderColor: "#E53E1A", borderTopColor: "transparent" }}
+                />
+                <p className="text-muted-foreground font-medium text-sm">
+                  Loading question bank...
+                </p>
               </div>
             ) : isError ? (
-              <div className="p-4 rounded-xl bg-destructive/10 text-destructive text-center">
+              <div className="p-4 rounded-xl bg-destructive/10 text-destructive text-center text-sm">
                 Failed to load questions. Please check your connection and try again.
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">First Name</Label>
+              <form onSubmit={handleSubmit} className="space-y-5">
+                {/* Access Code */}
+                <div className="space-y-1.5">
+                  <Label htmlFor="accessCode" className="flex items-center gap-2 text-sm font-semibold">
+                    <ShieldCheck className="h-4 w-4 text-primary" />
+                    Access Code
+                  </Label>
+                  <div className="flex gap-2">
+                    <Input
+                      id="accessCode"
+                      placeholder="Enter 6-character code"
+                      value={formData.accessCode}
+                      onChange={(e) => {
+                        const val = e.target.value
+                          .replace(/[^a-zA-Z0-9]/g, "")
+                          .toUpperCase()
+                          .slice(0, 6);
+                        setFormData((prev) => ({ ...prev, accessCode: val }));
+                        if (accessCodeValidated) {
+                          setAccessCodeValidated(false);
+                          sessionStorage.removeItem("k53_access_code");
+                        }
+                        setAccessCodeError("");
+                      }}
+                      maxLength={6}
+                      className={`h-11 bg-background/60 focus:bg-background transition-colors font-mono text-base tracking-[0.25em] ${accessCodeValidated
+                        ? "border-green-500 bg-green-50/50"
+                        : accessCodeError
+                          ? "border-red-500"
+                          : ""
+                        }`}
+                      disabled={accessCodeValidated}
+                    />
+                    {!accessCodeValidated ? (
+                      <Button
+                        type="button"
+                        onClick={handleValidateCode}
+                        disabled={validatingCode || formData.accessCode.length !== 6}
+                        className="h-11 px-5 text-sm font-bold"
+                        style={{
+                          background: "linear-gradient(135deg, #E53E1A, #F5A623)",
+                          border: "none",
+                        }}
+                      >
+                        {validatingCode ? "Verifying..." : "Verify"}
+                      </Button>
+                    ) : (
+                      <div className="h-11 flex items-center px-3 text-green-600 font-semibold text-sm gap-1 whitespace-nowrap">
+                        <ShieldCheck className="h-4 w-4" />
+                        Verified
+                      </div>
+                    )}
+                  </div>
+                  {accessCodeError && (
+                    <p className="text-xs text-red-500 mt-1">{accessCodeError}</p>
+                  )}
+                </div>
+
+                {/* Name + Surname */}
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-1.5">
+                    <Label htmlFor="name" className="text-sm font-semibold">
+                      First Name
+                    </Label>
                     <Input
                       id="name"
                       placeholder="John"
                       value={formData.name}
-                      onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                      className="h-12 bg-background/50 focus:bg-background transition-colors"
+                      onChange={(e) =>
+                        setFormData((prev) => ({ ...prev, name: e.target.value }))
+                      }
+                      className="h-11 bg-background/60 focus:bg-background transition-colors"
                     />
                   </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="surname">Surname</Label>
+                  <div className="space-y-1.5">
+                    <Label htmlFor="surname" className="text-sm font-semibold">
+                      Surname
+                    </Label>
                     <Input
                       id="surname"
                       placeholder="Doe"
                       value={formData.surname}
-                      onChange={(e) => setFormData(prev => ({ ...prev, surname: e.target.value }))}
-                      className="h-12 bg-background/50 focus:bg-background transition-colors"
+                      onChange={(e) =>
+                        setFormData((prev) => ({ ...prev, surname: e.target.value }))
+                      }
+                      className="h-11 bg-background/60 focus:bg-background transition-colors"
                     />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="licenseCode">License Code</Label>
+                {/* License Code + Category */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="space-y-1.5">
+                    <Label htmlFor="licenseCode" className="text-sm font-semibold">
+                      License Code
+                    </Label>
                     <Select
                       value={formData.licenseCode}
-                      onValueChange={(val) => setFormData(prev => ({ ...prev, licenseCode: val }))}
+                      onValueChange={(val) =>
+                        setFormData((prev) => ({ ...prev, licenseCode: val }))
+                      }
                     >
-                      <SelectTrigger className="h-12 bg-background/50">
-                        <SelectValue placeholder="Select code..." />
+                      <SelectTrigger id="licenseCode" className="h-11 bg-background/60">
+                        <SelectValue placeholder="Select..." />
                       </SelectTrigger>
                       <SelectContent>
-                        {availableLicenseCodes.map(code => {
+                        {availableLicenseCodes.map((code) => {
                           let label = `Code ${code}`;
                           if (code === "01") label += " (Motorcycles)";
-                          else if (code === "02") label += " (Light Motor Vehicles)";
-                          else if (code === "03") label += " (Heavy Motor Vehicles)";
-
+                          else if (code === "02") label += " (Light Motor)";
+                          else if (code === "03") label += " (Heavy Motor)";
                           return (
                             <SelectItem key={code} value={code}>
                               {label}
@@ -165,17 +300,21 @@ export default function Home() {
                     </Select>
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="category">Vehicle Category</Label>
+                  <div className="space-y-1.5">
+                    <Label htmlFor="category" className="text-sm font-semibold">
+                      Vehicle Category
+                    </Label>
                     <Select
                       value={formData.category}
-                      onValueChange={(val) => setFormData(prev => ({ ...prev, category: val }))}
+                      onValueChange={(val) =>
+                        setFormData((prev) => ({ ...prev, category: val }))
+                      }
                     >
-                      <SelectTrigger className="h-12 bg-background/50">
-                        <SelectValue placeholder="Select category..." />
+                      <SelectTrigger id="category" className="h-11 bg-background/60">
+                        <SelectValue placeholder="Select..." />
                       </SelectTrigger>
                       <SelectContent>
-                        {CATEGORIES.map(cat => (
+                        {CATEGORIES.map((cat) => (
                           <SelectItem key={cat.value} value={cat.value}>
                             {cat.label}
                           </SelectItem>
@@ -185,10 +324,19 @@ export default function Home() {
                   </div>
                 </div>
 
+                {/* Submit */}
                 <Button
                   type="submit"
+                  id="start-test-btn"
                   disabled={!isFormValid}
-                  className="w-full h-14 text-lg font-bold shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all hover:-translate-y-0.5 rounded-xl"
+                  className="w-full h-13 text-base font-bold rounded-xl shadow-lg transition-all hover:-translate-y-0.5 hover:shadow-xl mt-2"
+                  style={{
+                    background: isFormValid
+                      ? "linear-gradient(135deg, #E53E1A 0%, #F5A623 100%)"
+                      : undefined,
+                    border: "none",
+                    height: "52px",
+                  }}
                 >
                   Start Practice Test
                 </Button>
@@ -196,6 +344,8 @@ export default function Home() {
             )}
           </CardContent>
         </Card>
+
+
       </div>
     </Layout>
   );
