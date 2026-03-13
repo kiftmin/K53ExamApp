@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
+import { useQuery } from "@tanstack/react-query";
+import { Source } from "@shared/schema";
 import { useQuestions } from "@/hooks/use-questions";
 import { useQuiz } from "@/lib/quiz-context";
 import { Layout } from "@/components/layout";
@@ -14,6 +16,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Card, CardContent } from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
 import { ShieldCheck } from "lucide-react";
 
 const LOGO_URL = "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773061809/logo_edited_vlgoqy.jpg";
@@ -35,6 +38,10 @@ export default function Home() {
       .sort()
     : [];
 
+  const { data: sources, isLoading: isSourcesLoading } = useQuery<Source[]>({
+    queryKey: ["/api/sources"],
+  });
+
   const [formData, setFormData] = useState({
     name: "",
     surname: "",
@@ -42,6 +49,8 @@ export default function Home() {
     category: "",
     accessCode: "",
     isSimulation: false,
+    source: "all",
+    onlyOfficial: false,
   });
 
   const [accessCodeValidated, setAccessCodeValidated] = useState(false);
@@ -91,6 +100,8 @@ export default function Home() {
         licenseCode: formData.licenseCode,
         category: parseInt(formData.category, 10),
         testType: formData.isSimulation ? 'simulation' : 'category',
+        source: formData.source,
+        onlyOfficial: formData.onlyOfficial,
       },
       questions
     );
@@ -366,6 +377,50 @@ export default function Home() {
                       </Select>
                     </div>
                   )}
+                </div>
+
+                {/* Additional Settings */}
+                <div className="space-y-4 pt-2">
+                  <div className="space-y-1.5 animate-in fade-in slide-in-from-top-2 duration-300">
+                    <Label htmlFor="source" className="text-sm font-semibold">
+                      Question Source
+                    </Label>
+                    <Select
+                      value={formData.source}
+                      onValueChange={(val) =>
+                        setFormData((prev) => ({ ...prev, source: val }))
+                      }
+                      disabled={formData.onlyOfficial}
+                    >
+                      <SelectTrigger id="source" className="h-11 bg-background/60">
+                        <SelectValue placeholder="Select source..." />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="all">All Sources (Hide Duplicates)</SelectItem>
+                        {sources?.map((src) => (
+                          <SelectItem key={src.id} value={src.id.toString()}>{src.name}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div className="flex flex-row items-center space-x-3 space-y-0 rounded-xl border p-4 shadow-sm bg-blue-50/50">
+                    <Checkbox
+                      id="onlyOfficial"
+                      checked={formData.onlyOfficial}
+                      onCheckedChange={(checked) =>
+                        setFormData((prev) => ({ ...prev, onlyOfficial: checked as boolean }))
+                      }
+                    />
+                    <div className="space-y-1 leading-none">
+                      <Label htmlFor="onlyOfficial" className="cursor-pointer font-semibold text-blue-900">
+                        Only use Brain Dump questions
+                      </Label>
+                      <p className="text-xs text-blue-700/80 mt-1">
+                        Use questions officially identified from exams.
+                      </p>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Submit */}

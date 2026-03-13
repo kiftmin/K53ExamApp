@@ -1,24 +1,28 @@
 import { useState, useEffect } from "react";
-import { useQuery, useMutation } from "@tanstack/react-query";
-import { Question } from "@shared/schema";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { Question, Source } from "@shared/schema";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useToast } from "@/hooks/use-toast";
-import { queryClient } from "@/lib/queryClient";
 import { apiRequest } from "@/lib/queryClient";
 import { Link } from "wouter";
-import { ArrowLeft, Upload, Plus, Pencil, Trash2, ArrowUpDown, ArrowUp, ArrowDown, Clock, Copy, Search } from "lucide-react";
+import { ArrowLeft, Upload, Plus, Pencil, Trash2, ArrowUpDown, ArrowUp, ArrowDown, Clock, Copy, Search, Database } from "lucide-react";
 import QuestionModal from "@/components/question-modal";
+import SourceMaintenance from "@/components/source-maintenance";
 export default function Admin() {
+    const queryClient = useQueryClient();
     const { toast } = useToast();
     const [search, setSearch] = useState("");
     const [categoryFilter, setCategoryFilter] = useState<string>("all");
     const [licenseFilter, setLicenseFilter] = useState<string>("all");
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isSourceModalOpen, setIsSourceModalOpen] = useState(false);
     const [selectedQuestion, setSelectedQuestion] = useState<Question | null>(null);
     const [sortConfig, setSortConfig] = useState<{ key: keyof Question; direction: 'asc' | 'desc' } | null>(null);
+    const [sourceFilter, setSourceFilter] = useState<string>("all");
+    const [showDuplicates, setShowDuplicates] = useState(false);
 
     // Access code state
     const [todayCode, setTodayCode] = useState<string>("");
@@ -84,6 +88,10 @@ export default function Admin() {
         queryKey: ["/api/questions"],
     });
 
+    const { data: sources, isLoading: isSourcesLoading } = useQuery<Source[]>({
+        queryKey: ["/api/sources"],
+    });
+
     const deleteMutation = useMutation({
         mutationFn: async (id: number) => {
             await apiRequest("DELETE", `/api/questions/${id}`);
@@ -119,11 +127,20 @@ export default function Admin() {
         event.target.value = '';
     };
 
+    const duplicateTexts = new Set(
+        questions?.filter((q, index, self) =>
+            self.findIndex(t => t.question_text.trim().toLowerCase() === q.question_text.trim().toLowerCase()) !== index
+        ).map(q => q.question_text.trim().toLowerCase()) || []
+    );
+
     const filteredQuestions = questions?.filter(q => {
         const matchesSearch = q.question_text.toLowerCase().includes(search.toLowerCase());
         const matchesCategory = categoryFilter === "all" || q.category.toString() === categoryFilter;
         const matchesLicense = licenseFilter === "all" || q.license_code === licenseFilter;
-        return matchesSearch && matchesCategory && matchesLicense;
+        const matchesSource = sourceFilter === "all" || q.source_id?.toString() === sourceFilter;
+        const matchesDuplicates = showDuplicates ? duplicateTexts.has(q.question_text.trim().toLowerCase()) : true;
+        
+        return matchesSearch && matchesCategory && matchesLicense && matchesSource && matchesDuplicates;
     }) || [];
 
     const sortedQuestions = [...filteredQuestions].sort((a, b) => {
@@ -179,6 +196,10 @@ export default function Admin() {
                         <h1 className="text-3xl font-bold tracking-tight text-neutral-900">Question Management</h1>
                     </div>
                     <div className="flex gap-4">
+                        <Button onClick={() => setIsSourceModalOpen(true)} variant="secondary" className="gap-2">
+                            <Database className="h-4 w-4" />
+                            Manage Sources
+                        </Button>
                         <Button onClick={handleCreate} className="gap-2">
                             <Plus className="h-4 w-4" />
                             Add Question
@@ -282,6 +303,24 @@ export default function Admin() {
                             <SelectItem value="03">Code 03</SelectItem>
                         </SelectContent>
                     </Select>
+                    <Select value={sourceFilter} onValueChange={setSourceFilter}>
+                        <SelectTrigger className="w-[180px]">
+                            <SelectValue placeholder="Source" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="all">All Sources</SelectItem>
+                            {sources?.map(src => (
+                                <SelectItem key={src.id} value={src.id.toString()}>{src.name}</SelectItem>
+                            ))}
+                        </SelectContent>
+                    </Select>
+                    <Button 
+                        variant={showDuplicates ? "destructive" : "outline"}
+                        onClick={() => setShowDuplicates(!showDuplicates)}
+                        className="whitespace-nowrap"
+                    >
+                        {showDuplicates ? "Showing Duplicates" : "Find Duplicates"}
+                    </Button>
                 </div>
 
                 <div className="bg-white rounded-lg shadow-sm border border-neutral-200 overflow-hidden">
@@ -300,7 +339,10 @@ export default function Admin() {
                                 <TableHead className="w-[140px] cursor-pointer hover:bg-neutral-100" onClick={() => handleSort('license_code')}>
                                     License <SortIcon columnKey="license_code" />
                                 </TableHead>
-                                <TableHead className="w-[120px] cursor-pointer hover:bg-neutral-100" onClick={() => handleSort('contains_image')}>
+                                <TableHead className="w-[120px] cursor-pointer hover:bg-neutral-100" onClick={() => handleSort('source_id')}>
+                                    Source <SortIcon columnKey="source_id" />
+                                </TableHead>
+                                <TableHead className="w-[100px] cursor-pointer hover:bg-neutral-100" onClick={() => handleSort('contains_image')}>
                                     Image <SortIcon columnKey="contains_image" />
                                 </TableHead>
                                 <TableHead className="text-right w-[120px]">Actions</TableHead>
@@ -309,31 +351,42 @@ export default function Admin() {
                         <TableBody>
                             {isLoading ? (
                                 <TableRow>
-                                    <TableCell colSpan={6} className="text-center py-8 text-neutral-500">Loading questions...</TableCell>
+                                    <TableCell colSpan={7} className="text-center py-8 text-neutral-500">Loading questions...</TableCell>
                                 </TableRow>
                             ) : sortedQuestions.length === 0 ? (
                                 <TableRow>
-                                    <TableCell colSpan={6} className="text-center py-8 text-neutral-500">No questions found matching your filters.</TableCell>
+                                    <TableCell colSpan={7} className="text-center py-8 text-neutral-500">No questions found matching your filters.</TableCell>
                                 </TableRow>
                             ) : (
                                 sortedQuestions.map((question) => (
-                                    <TableRow key={question.id}>
-                                        <TableCell className="font-medium">{question.question_number}</TableCell>
+                                    <TableRow key={question.id} className={question.is_duplicate ? "bg-red-50/50" : ""}>
+                                        <TableCell className="font-medium">
+                                            {question.question_number}
+                                            {question.is_duplicate && <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-800">Dup</span>}
+                                            {question.is_official && <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800" title="Official Exam Question">Brain Dump</span>}
+                                        </TableCell>
                                         <TableCell className="max-w-md truncate">{question.question_text}</TableCell>
                                         <TableCell>{question.category}</TableCell>
                                         <TableCell>{question.license_code}</TableCell>
+                                        <TableCell>
+                                            <span className="truncate max-w-[100px] block">
+                                                {sources?.find(s => s.id === question.source_id)?.name || "-"}
+                                            </span>
+                                        </TableCell>
                                         <TableCell>{question.contains_image ? "Yes" : "No"}</TableCell>
                                         <TableCell className="text-right whitespace-nowrap">
-                                            <Button variant="ghost" size="icon" onClick={() => handleEdit(question)}>
-                                                <Pencil className="h-4 w-4 text-blue-500" />
-                                            </Button>
-                                            <Button variant="ghost" size="icon" onClick={() => {
-                                                if (confirm('Are you sure you want to delete this question?')) {
-                                                    deleteMutation.mutate(question.id);
-                                                }
-                                            }}>
-                                                <Trash2 className="h-4 w-4 text-red-500" />
-                                            </Button>
+                                            <div className="flex justify-end gap-1">
+                                                <Button variant="ghost" size="icon" onClick={() => handleEdit(question)}>
+                                                    <Pencil className="h-4 w-4 text-blue-500" />
+                                                </Button>
+                                                <Button variant="ghost" size="icon" onClick={() => {
+                                                    if (confirm('Are you sure you want to delete this question?')) {
+                                                        deleteMutation.mutate(question.id);
+                                                    }
+                                                }}>
+                                                    <Trash2 className="h-4 w-4 text-red-500" />
+                                                </Button>
+                                            </div>
                                         </TableCell>
                                     </TableRow>
                                 ))
@@ -347,6 +400,11 @@ export default function Admin() {
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
                 question={selectedQuestion}
+            />
+            
+            <SourceMaintenance 
+                isOpen={isSourceModalOpen} 
+                onClose={() => setIsSourceModalOpen(false)} 
             />
         </div>
     );

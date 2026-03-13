@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useForm, useFieldArray } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Question, InsertQuestion, questionSchema } from "@shared/schema";
+import { Question, InsertQuestion, questionSchema, Source } from "@shared/schema";
 import {
     Dialog,
     DialogContent,
@@ -26,8 +26,8 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
-import { useMutation } from "@tanstack/react-query";
-import { apiRequest, queryClient } from "@/lib/queryClient";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 
 interface QuestionModalProps {
@@ -43,6 +43,9 @@ const defaultValues: InsertQuestion = {
     license_code: "02",
     contains_image: false,
     image_link: "",
+    source_id: null,
+    is_duplicate: false,
+    is_official: false,
     options: [
         { answer_number: "A", answer_text: "", correct_answer: false },
         { answer_number: "B", answer_text: "", correct_answer: false },
@@ -51,10 +54,18 @@ const defaultValues: InsertQuestion = {
 };
 
 export default function QuestionModal({ isOpen, onClose, question }: QuestionModalProps) {
+    const queryClient = useQueryClient();
     const { toast } = useToast();
     const form = useForm<InsertQuestion>({
         resolver: zodResolver(questionSchema.omit({ id: true })),
-        defaultValues: question || defaultValues,
+        defaultValues: {
+            ...defaultValues,
+            ...(question || {})
+        },
+    });
+
+    const { data: sources } = useQuery<Source[]>({
+        queryKey: ["/api/sources"],
     });
 
     const { fields } = useFieldArray({
@@ -65,7 +76,13 @@ export default function QuestionModal({ isOpen, onClose, question }: QuestionMod
     // Reset form when question prop changes (opening modal for edit or add)
     useEffect(() => {
         if (isOpen) {
-            form.reset(question || defaultValues);
+            const initialValues = {
+                ...defaultValues,
+                ...(question || {})
+            };
+            // Clean up the object to match InsertQuestion (remove id if present)
+            const { id, ...cleanValues } = initialValues as any;
+            form.reset(cleanValues);
         }
     }, [question, isOpen, form]);
 
@@ -108,7 +125,7 @@ export default function QuestionModal({ isOpen, onClose, question }: QuestionMod
                                     <FormItem>
                                         <FormLabel>Question Number</FormLabel>
                                         <FormControl>
-                                            <Input type="number" {...field} onChange={(e: React.ChangeEvent<HTMLInputElement>) => field.onChange(parseInt(e.target.value))} />
+                                            <Input type="number" {...field} onChange={(e) => field.onChange(parseInt(e.target.value))} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -121,7 +138,7 @@ export default function QuestionModal({ isOpen, onClose, question }: QuestionMod
                                     <FormItem>
                                         <FormLabel>Category</FormLabel>
                                         <FormControl>
-                                            <Input type="number" {...field} onChange={(e: React.ChangeEvent<HTMLInputElement>) => field.onChange(parseInt(e.target.value))} />
+                                            <Input type="number" {...field} onChange={(e) => field.onChange(parseInt(e.target.value))} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -165,6 +182,74 @@ export default function QuestionModal({ isOpen, onClose, question }: QuestionMod
                                 </FormItem>
                             )}
                         />
+
+                        <div className="grid grid-cols-2 gap-4">
+                            <FormField
+                                control={form.control}
+                                name="source_id"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Question Source</FormLabel>
+                                        <Select 
+                                            onValueChange={(val) => field.onChange(val === "none" ? null : parseInt(val))} 
+                                            value={field.value ? field.value.toString() : "none"}
+                                        >
+                                            <FormControl>
+                                                <SelectTrigger>
+                                                    <SelectValue placeholder="Select Source" />
+                                                </SelectTrigger>
+                                            </FormControl>
+                                            <SelectContent>
+                                                <SelectItem value="none">No Source</SelectItem>
+                                                {sources?.map(src => (
+                                                    <SelectItem key={src.id} value={src.id.toString()}>
+                                                        {src.name}
+                                                    </SelectItem>
+                                                ))}
+                                            </SelectContent>
+                                        </Select>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+
+                            <div className="flex flex-col gap-3 justify-end">
+                                <FormField
+                                    control={form.control}
+                                    name="is_official"
+                                    render={({ field }) => (
+                                        <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-3 shadow-sm bg-neutral-50/50">
+                                            <FormControl>
+                                                <Checkbox
+                                                    checked={field.value}
+                                                    onCheckedChange={field.onChange}
+                                                />
+                                            </FormControl>
+                                            <div className="space-y-1 leading-none">
+                                                <FormLabel className="cursor-pointer">Official Exam (Brain Dump)</FormLabel>
+                                            </div>
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="is_duplicate"
+                                    render={({ field }) => (
+                                        <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-3 shadow-sm bg-red-50/30">
+                                            <FormControl>
+                                                <Checkbox
+                                                    checked={field.value}
+                                                    onCheckedChange={field.onChange}
+                                                />
+                                            </FormControl>
+                                            <div className="space-y-1 leading-none">
+                                                <FormLabel className="cursor-pointer text-red-700">Mark as Duplicate</FormLabel>
+                                            </div>
+                                        </FormItem>
+                                    )}
+                                />
+                            </div>
+                        </div>
 
                         <FormField
                             control={form.control}

@@ -1,6 +1,6 @@
 import { storage } from "./storage.js";
 import { api } from "../shared/routes.js";
-import { questionSchema } from "../shared/schema.js";
+import { questionSchema, sourceSchema } from "../shared/schema.js";
 import { generateAccessCode, validateAccessCode, getTodaySAST, getTimeUntilNextCode } from "./access-code.js";
 import { z } from "zod";
 
@@ -67,6 +67,58 @@ export async function registerRoutes(
     } catch (err) {
       console.error("Error in bulk upload:", err);
       res.status(400).json({ message: "Invalid format for bulk upload payload", error: err });
+    }
+  });
+
+  // === Sources Endpoints ===
+  
+  app.get('/api/sources', async (req: any, res: any) => {
+    try {
+      const sources = await storage.getSources();
+      res.json(sources);
+    } catch (err) {
+      console.error("Error reading sources:", err);
+      res.status(500).json({ message: "Failed to load sources" });
+    }
+  });
+
+  app.post('/api/sources', async (req: any, res: any) => {
+    try {
+      const parsed = sourceSchema.parse(req.body);
+      const created = await storage.createSource(parsed);
+      res.status(201).json(created);
+    } catch (err) {
+      console.error("Error creating source:", err);
+      res.status(400).json({ message: "Invalid source data", error: err });
+    }
+  });
+
+  app.put('/api/sources/:id', async (req: any, res: any) => {
+    try {
+      const id = parseInt(req.params.id);
+      const parsed = sourceSchema.parse(req.body);
+      const updated = await storage.updateSource(id, parsed);
+      if (!updated) {
+        return res.status(404).json({ message: "Source not found" });
+      }
+      res.json(updated);
+    } catch (err) {
+      console.error("Error updating source:", err);
+      res.status(400).json({ message: "Invalid source data", error: err });
+    }
+  });
+
+  app.delete('/api/sources/:id', async (req: any, res: any) => {
+    try {
+      const id = parseInt(req.params.id);
+      const success = await storage.deleteSource(id);
+      if (!success) {
+        return res.status(404).json({ message: "Source not found" });
+      }
+      res.status(204).send();
+    } catch (err) {
+      console.error("Error deleting source:", err);
+      res.status(500).json({ message: "Failed to delete source", error: err });
     }
   });
 

@@ -2,12 +2,8 @@ import { neon } from '@neondatabase/serverless';
 import { drizzle } from 'drizzle-orm/neon-http';
 import { pgTable, serial, text, integer, boolean, jsonb } from 'drizzle-orm/pg-core';
 import * as dotenv from 'dotenv';
-import path from 'path';
-import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-dotenv.config({ path: path.resolve(__dirname, '../.env') });
+dotenv.config();
 
 if (!process.env.DATABASE_URL) {
     throw new Error('DATABASE_URL environment variable is required');
@@ -15,6 +11,11 @@ if (!process.env.DATABASE_URL) {
 
 export const client = neon(process.env.DATABASE_URL);
 export const db = drizzle(client);
+
+export const sources = pgTable('sources', {
+    id: serial('id').primaryKey(),
+    name: text('name').notNull().unique()
+});
 
 // Define Drizzle Postgres Schema matching the Zod schema
 export const questions = pgTable('questions', {
@@ -25,5 +26,8 @@ export const questions = pgTable('questions', {
     license_code: text('license_code').notNull(),
     contains_image: boolean('contains_image').notNull(),
     image_link: text('image_link'),
-    options: jsonb('options').notNull() // Stores array of option objects
+    options: jsonb('options').notNull(), // Stores array of option objects
+    source_id: integer('source_id').references(() => sources.id),
+    is_duplicate: boolean('is_duplicate').default(false).notNull(),
+    is_official: boolean('is_official').default(false).notNull()
 });

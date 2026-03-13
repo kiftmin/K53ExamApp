@@ -7,6 +7,8 @@ export interface UserDetails {
   licenseCode: string;
   category: number;
   testType: 'category' | 'simulation';
+  source?: string;
+  onlyOfficial?: boolean;
 }
 
 // K53 pass thresholds (Absolute number of correct answers required)
@@ -79,18 +81,52 @@ export function QuizProvider({ children }: { children: ReactNode }) {
     const shuffle = (array: Question[]) => [...array].sort(() => Math.random() - 0.5);
     const sample = (array: Question[], n: number) => shuffle(array).slice(0, n);
 
-    const getQuestionsForCategory = (catId: number, total: number, licenseSpecificCount: number) => {
-      const catQuestions = allQuestions.filter(q => q.category === catId);
-      const general = catQuestions.filter(q => q.license_code === "00");
-      const specific = catQuestions.filter(q => q.license_code === user.licenseCode);
+    const getQuestionsForCategory = (catId: number, total: number, licenseSpecificMin: number) => {
+      let filteredDb = allQuestions;
 
-      // Handle cases where we might not have enough questions of one type
-      // by falling back to the other type, but aiming for the split
-      const sampledSpecific = sample(specific, licenseSpecificCount);
-      const remainingNeeded = total - sampledSpecific.length;
-      const sampledGeneral = sample(general, remainingNeeded);
+      // Filter by category first
+      filteredDb = filteredDb.filter(q => q.category === catId);
 
-      return shuffle([...sampledGeneral, ...sampledSpecific]);
+      // Filter by Official if selected
+      if (user.onlyOfficial) {
+        filteredDb = filteredDb.filter(q => q.is_official);
+      }
+
+      // Filter by Source if selected (and not all)
+      if (user.source && user.source !== 'all') {
+        filteredDb = filteredDb.filter(q => q.source_id?.toString() === user.source);
+      } else if (!user.onlyOfficial) {
+        // If 'all' sources and NOT official-only, hide known duplicates
+        filteredDb = filteredDb.filter(q => !q.is_duplicate);
+      }
+
+      // Pool matching questions: both '00' (General) and the user's specific license
+      const general = filteredDb.filter(q => q.license_code === "00");
+      const specific = filteredDb.filter(q => q.license_code === user.licenseCode);
+
+      // Shuffle pools
+      const shuffledSpecific = shuffle(specific);
+      const shuffledGeneral = shuffle(general);
+
+      // Take at least licenseSpecificMin from the specific pool if available
+      const takenSpecific = shuffledSpecific.slice(0, licenseSpecificMin);
+      
+      // Calculate how many more we need to reach the 'total'
+      const remainingCount = total - takenSpecific.length;
+
+      // Take the rest from the general pool, then if still not enough, take more from whichever is left
+      const takenGeneral = shuffledGeneral.slice(0, remainingCount);
+      
+      let finalSelection = [...takenSpecific, ...takenGeneral];
+
+      // fallback: if we still don't have enough, grab anything else that matches the filters
+      if (finalSelection.length < total) {
+        const alreadyTakenIds = new Set(finalSelection.map(q => q.id));
+        const extraPool = shuffle(filteredDb.filter(q => !alreadyTakenIds.has(q.id)));
+        finalSelection = [...finalSelection, ...extraPool.slice(0, total - finalSelection.length)];
+      }
+
+      return shuffle(finalSelection);
     };
 
     if (user.testType === 'simulation') {
