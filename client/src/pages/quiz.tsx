@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Card, CardContent } from "@/components/ui/card";
 import { ChevronRight, ShieldAlert, RotateCcw, ChevronLeft, Clock } from "lucide-react";
+import { cn } from "@/lib/utils";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -21,7 +22,7 @@ import {
 
 export default function Quiz() {
   const [_, setLocation] = useLocation();
-  const { filteredQuestions, currentIndex, answerQuestion, goToPrevious, isComplete, user, resetQuiz, getElapsedSeconds } = useQuiz();
+  const { filteredQuestions, currentIndex, answerQuestion, goToPrevious, isComplete, user, resetQuiz, getElapsedSeconds, answers } = useQuiz();
   const [direction, setDirection] = useState(1); // 1 for forward
   const [elapsedDisplay, setElapsedDisplay] = useState(0);
   const [failedImages, setFailedImages] = useState<Set<number>>(() => new Set());
@@ -177,7 +178,7 @@ export default function Quiz() {
               <Card className="glass-card overflow-hidden shadow-xl border-t-4 border-t-primary">
                 <CardContent className="p-6 sm:p-8 space-y-8">
 
-                  <h3 className="text-xl sm:text-2xl font-display font-bold text-foreground leading-snug">
+                  <h3 className="text-xl sm:text-2xl font-display font-medium text-foreground leading-snug">
                     {currentQ.question_text}
                   </h3>
 
@@ -204,21 +205,40 @@ export default function Quiz() {
                   )}
 
                   <div className="space-y-3">
-                    {currentQ.options.map((opt) => (
-                      <button
-                        key={opt.answer_number}
-                        onClick={() => handleAnswer(opt.answer_number)}
-                        className="w-full text-left flex items-center p-4 rounded-xl border-2 border-border bg-card hover:border-primary hover:bg-primary/5 transition-all duration-200 group relative"
-                      >
-                        <span className="flex items-center justify-center w-8 h-8 rounded-full bg-secondary text-secondary-foreground font-bold mr-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors shrink-0">
-                          {opt.answer_number}
-                        </span>
-                        <span className="font-medium text-foreground pr-8 flex-1">
-                          {opt.answer_text}
-                        </span>
-                        <ChevronRight className="w-5 h-5 text-muted-foreground absolute right-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-primary" />
-                      </button>
-                    ))}
+                    {currentQ.options.map((opt: any) => {
+                      const isSelected = answers[currentQ.question_number] === opt.answer_number;
+                      return (
+                        <button
+                          key={opt.answer_number}
+                          onClick={() => handleAnswer(opt.answer_number)}
+                          className={cn(
+                            "w-full text-left flex items-center p-4 rounded-xl border-2 transition-all duration-200 group relative",
+                            isSelected 
+                              ? "border-primary bg-primary/10" 
+                              : "border-border bg-card hover:border-primary hover:bg-primary/5"
+                          )}
+                        >
+                          <span className={cn(
+                            "flex items-center justify-center w-8 h-8 rounded-full font-bold mr-4 transition-colors shrink-0",
+                            isSelected
+                              ? "bg-primary text-primary-foreground"
+                              : "bg-secondary text-secondary-foreground group-hover:bg-primary group-hover:text-primary-foreground"
+                          )}>
+                            {opt.answer_number}
+                          </span>
+                          <span className={cn(
+                            "font-medium text-foreground pr-8 flex-1",
+                            isSelected && "font-bold"
+                          )}>
+                            {opt.answer_text}
+                          </span>
+                          <ChevronRight className={cn(
+                            "w-5 h-5 absolute right-4 transition-all text-primary",
+                            isSelected ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0"
+                          )} />
+                        </button>
+                      );
+                    })}
                   </div>
 
                 </CardContent>
