@@ -12,6 +12,24 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, CheckCircle2, XCircle, AlertTriangle } from "lucide-react";
 
+const getCategoryLabel = (cat: number) => {
+  switch (cat) {
+    case 1: return "Rules of the Road";
+    case 2: return "Road Signs";
+    case 3: return "Vehicle Controls";
+    default: return `Category ${cat}`;
+  }
+};
+
+const getLicenseLabel = (code: string) => {
+  switch (code) {
+    case "01": return "Code 01";
+    case "02": return "Code 02";
+    case "03": return "Code 03";
+    default: return null;
+  }
+};
+
 export default function Review() {
   const [_, setLocation] = useLocation();
   const { user, filteredQuestions, answers, isComplete } = useQuiz();
@@ -64,6 +82,21 @@ export default function Review() {
                         )}
                       </div>
                       <div>
+                        <div className="flex flex-wrap gap-2 mb-2 justify-end">
+                          <Badge variant="secondary" className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-neutral-100 text-neutral-600 border-none">
+                            {getCategoryLabel(q.category)}
+                          </Badge>
+                          {q.is_official && (
+                            <Badge className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-blue-500 text-white hover:bg-blue-600 border-none shadow-sm">
+                              Braindump
+                            </Badge>
+                          )}
+                          {getLicenseLabel(q.license_code) && (
+                            <Badge variant="outline" className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider border-2 border-primary/20 text-primary">
+                              {getLicenseLabel(q.license_code)}
+                            </Badge>
+                          )}
+                        </div>
                         <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground block mb-1">
                           Question {index + 1}
                         </span>

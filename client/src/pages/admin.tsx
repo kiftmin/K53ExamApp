@@ -22,6 +22,7 @@ export default function Admin() {
     const [selectedQuestion, setSelectedQuestion] = useState<Question | null>(null);
     const [sortConfig, setSortConfig] = useState<{ key: keyof Question; direction: 'asc' | 'desc' } | null>(null);
     const [sourceFilter, setSourceFilter] = useState<string>("all");
+    const [officialFilter, setOfficialFilter] = useState<string>("all");
     const [showDuplicates, setShowDuplicates] = useState(false);
 
     // Access code state
@@ -127,23 +128,108 @@ export default function Admin() {
         event.target.value = '';
     };
 
-    const duplicateTexts = new Set(
-        questions?.filter((q, index, self) =>
-            self.findIndex(t => t.question_text.trim().toLowerCase() === q.question_text.trim().toLowerCase()) !== index
-        ).map(q => q.question_text.trim().toLowerCase()) || []
-    );
+    // Fuzzy string similarity function (Sorensen-Dice coefficient)
+    const calculateSimilarity = (s1: string, s2: string) => {
+        const normalize = (str: string) => str.toLowerCase().replace(/[^a-z0-9]/g, '');
+        const n1 = normalize(s1);
+        const n2 = normalize(s2);
+
+        if (n1 === n2) return 1.0;
+        if (n1.length < 2 || n2.length < 2) return 0.0;
+
+        const getBigrams = (str: string) => {
+            const bigrams = new Set<string>();
+            for (let i = 0; i < str.length - 1; i++) {
+                bigrams.add(str.substring(i, i + 2));
+            }
+            return bigrams;
+        };
+
+        const b1 = getBigrams(n1);
+        const b2 = getBigrams(n2);
+        let intersection = 0;
+        b1.forEach(bigram => {
+            if (b2.has(bigram)) intersection++;
+        });
+
+        return (2 * intersection) / (b1.size + b2.size);
+    };
+
+    // Advanced duplicate detection
+    const duplicateGroups: Map<number, number> = new Map(); // questionId -> groupId
+    const groupColors: string[] = [
+        "bg-red-100/50", "bg-orange-100/50", "bg-yellow-100/50", 
+        "bg-green-100/50", "bg-emerald-100/50", "bg-blue-100/50", 
+        "bg-indigo-100/50", "bg-purple-100/50", "bg-pink-100/50", "bg-rose-100/50"
+    ];
+
+    if (questions) {
+        let nextGroupId = 0;
+        const processed = new Set<number>();
+
+        for (let i = 0; i < questions.length; i++) {
+            const q1 = questions[i];
+            if (processed.has(q1.id)) continue;
+
+            const currentCluster = [q1];
+            processed.add(q1.id);
+
+            for (let j = i + 1; j < questions.length; j++) {
+                const q2 = questions[j];
+                if (processed.has(q2.id)) continue;
+
+                // Only check within the same category AND same license code
+                if (q1.category !== q2.category || q1.license_code !== q2.license_code) continue;
+
+                // Compare Questions
+                const qSim = calculateSimilarity(q1.question_text, q2.question_text);
+                
+                // Compare Answers (all 3 options)
+                let totalAnswerSim = 0;
+                const opts1 = [...q1.options].sort((a, b) => a.answer_number.localeCompare(b.answer_number));
+                const opts2 = [...q2.options].sort((a, b) => a.answer_number.localeCompare(b.answer_number));
+                
+                for (let k = 0; k < Math.min(opts1.length, opts2.length); k++) {
+                    totalAnswerSim += calculateSimilarity(opts1[k].answer_text, opts2[k].answer_text);
+                }
+                const avgAnswerSim = opts1.length > 0 ? totalAnswerSim / opts1.length : 1;
+
+                // Weighted similarity (60% question, 40% answers)
+                const overallSim = (qSim * 0.6) + (avgAnswerSim * 0.4);
+
+                if (overallSim > 0.85) {
+                    currentCluster.push(q2);
+                    processed.add(q2.id);
+                }
+            }
+
+            if (currentCluster.length > 1) {
+                const groupId = nextGroupId++;
+                currentCluster.forEach(q => duplicateGroups.set(q.id, groupId));
+            }
+        }
+    }
 
     const filteredQuestions = questions?.filter(q => {
         const matchesSearch = q.question_text.toLowerCase().includes(search.toLowerCase());
         const matchesCategory = categoryFilter === "all" || q.category.toString() === categoryFilter;
         const matchesLicense = licenseFilter === "all" || q.license_code === licenseFilter;
         const matchesSource = sourceFilter === "all" || q.source_id?.toString() === sourceFilter;
-        const matchesDuplicates = showDuplicates ? duplicateTexts.has(q.question_text.trim().toLowerCase()) : true;
+        const matchesOfficial = officialFilter === "all" || (officialFilter === "official" ? q.is_official : !q.is_official);
+        const matchesDuplicates = showDuplicates ? duplicateGroups.has(q.id) : true;
         
-        return matchesSearch && matchesCategory && matchesLicense && matchesSource && matchesDuplicates;
+        return matchesSearch && matchesCategory && matchesLicense && matchesSource && matchesOfficial && matchesDuplicates;
     }) || [];
 
     const sortedQuestions = [...filteredQuestions].sort((a, b) => {
+        if (showDuplicates) {
+            const groupA = duplicateGroups.get(a.id) ?? -1;
+            const groupB = duplicateGroups.get(b.id) ?? -1;
+            if (groupA !== groupB) {
+                return groupA - groupB;
+            }
+        }
+
         if (!sortConfig) return 0;
         const { key, direction } = sortConfig;
         let valA: any = a[key];
@@ -181,6 +267,15 @@ export default function Admin() {
     const handleCreate = () => {
         setSelectedQuestion(null);
         setIsModalOpen(true);
+    };
+
+    const handleNavigate = (delta: number) => {
+        if (!selectedQuestion || !sortedQuestions) return;
+        const currentIndex = sortedQuestions.findIndex(q => q.id === selectedQuestion.id);
+        const nextIndex = currentIndex + delta;
+        if (nextIndex >= 0 && nextIndex < sortedQuestions.length) {
+            setSelectedQuestion(sortedQuestions[nextIndex]);
+        }
     };
 
     return (
@@ -314,6 +409,16 @@ export default function Admin() {
                             ))}
                         </SelectContent>
                     </Select>
+                    <Select value={officialFilter} onValueChange={setOfficialFilter}>
+                        <SelectTrigger className="w-[180px]">
+                            <SelectValue placeholder="Braindump" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="all">All Questions</SelectItem>
+                            <SelectItem value="official">Braindump Only</SelectItem>
+                            <SelectItem value="unofficial">Unofficial Only</SelectItem>
+                        </SelectContent>
+                    </Select>
                     <Button 
                         variant={showDuplicates ? "destructive" : "outline"}
                         onClick={() => setShowDuplicates(!showDuplicates)}
@@ -327,6 +432,9 @@ export default function Admin() {
                     <Table>
                         <TableHeader>
                             <TableRow>
+                                <TableHead className="w-[120px] cursor-pointer hover:bg-neutral-100" onClick={() => handleSort('is_official')}>
+                                    Braindump <SortIcon columnKey="is_official" />
+                                </TableHead>
                                 <TableHead className="w-[80px] cursor-pointer hover:bg-neutral-100" onClick={() => handleSort('question_number')}>
                                     Q. No. <SortIcon columnKey="question_number" />
                                 </TableHead>
@@ -358,13 +466,23 @@ export default function Admin() {
                                     <TableCell colSpan={7} className="text-center py-8 text-neutral-500">No questions found matching your filters.</TableCell>
                                 </TableRow>
                             ) : (
-                                sortedQuestions.map((question) => (
-                                    <TableRow key={question.id} className={question.is_duplicate ? "bg-red-50/50" : ""}>
-                                        <TableCell className="font-medium">
-                                            {question.question_number}
-                                            {question.is_duplicate && <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-800">Dup</span>}
-                                            {question.is_official && <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800" title="Official Exam Question">Brain Dump</span>}
-                                        </TableCell>
+                                sortedQuestions.map((question) => {
+                                    const groupId = duplicateGroups.get(question.id);
+                                    const rowColor = groupId !== undefined ? groupColors[groupId % groupColors.length] : "";
+                                    
+                                    return (
+                                        <TableRow key={question.id} className={`${rowColor} transition-colors`}>
+                                            <TableCell>
+                                                {question.is_official ? (
+                                                    <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800" title="Official Exam Question">Braindump</span>
+                                                ) : (
+                                                    <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-neutral-100 text-neutral-600">Unofficial</span>
+                                                )}
+                                            </TableCell>
+                                            <TableCell className="font-medium">
+                                                {question.question_number}
+                                                {groupId !== undefined && <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-800" title={`Group ${groupId}`}>Group {groupId + 1}</span>}
+                                            </TableCell>
                                         <TableCell className="max-w-md truncate">{question.question_text}</TableCell>
                                         <TableCell>{question.category}</TableCell>
                                         <TableCell>{question.license_code}</TableCell>
@@ -389,7 +507,7 @@ export default function Admin() {
                                             </div>
                                         </TableCell>
                                     </TableRow>
-                                ))
+                                )})
                             )}
                         </TableBody>
                     </Table>
@@ -400,6 +518,9 @@ export default function Admin() {
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
                 question={selectedQuestion}
+                currentIndex={selectedQuestion ? sortedQuestions.findIndex(q => q.id === selectedQuestion.id) : -1}
+                totalQuestions={sortedQuestions.length}
+                onNavigate={handleNavigate}
             />
             
             <SourceMaintenance 

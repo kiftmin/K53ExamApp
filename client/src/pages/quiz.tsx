@@ -8,6 +8,7 @@ import { Progress } from "@/components/ui/progress";
 import { Card, CardContent } from "@/components/ui/card";
 import { ChevronRight, ShieldAlert, RotateCcw, ChevronLeft, Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Badge } from "@/components/ui/badge";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -19,6 +20,24 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+
+const getCategoryLabel = (cat: number) => {
+  switch (cat) {
+    case 1: return "Rules of the Road";
+    case 2: return "Road Signs";
+    case 3: return "Vehicle Controls";
+    default: return `Category ${cat}`;
+  }
+};
+
+const getLicenseLabel = (code: string) => {
+  switch (code) {
+    case "01": return "Code 01";
+    case "02": return "Code 02";
+    case "03": return "Code 03";
+    default: return null;
+  }
+};
 
 export default function Quiz() {
   const [_, setLocation] = useLocation();
@@ -177,6 +196,21 @@ export default function Quiz() {
             >
               <Card className="glass-card overflow-hidden shadow-xl border-t-4 border-t-primary">
                 <CardContent className="p-6 sm:p-8 space-y-8">
+                  <div className="flex flex-wrap gap-2 justify-end">
+                    <Badge variant="secondary" className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-neutral-100 text-neutral-600 border-none">
+                      {getCategoryLabel(currentQ.category)}
+                    </Badge>
+                    {currentQ.is_official && (
+                      <Badge className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-blue-500 text-white hover:bg-blue-600 border-none shadow-sm">
+                        Braindump
+                      </Badge>
+                    )}
+                    {getLicenseLabel(currentQ.license_code) && (
+                      <Badge variant="outline" className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider border-2 border-primary/20 text-primary">
+                        {getLicenseLabel(currentQ.license_code)}
+                      </Badge>
+                    )}
+                  </div>
 
                   <h3 className="text-xl sm:text-2xl font-display font-medium text-foreground leading-snug">
                     {currentQ.question_text}

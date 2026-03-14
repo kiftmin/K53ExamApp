@@ -29,11 +29,15 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface QuestionModalProps {
     isOpen: boolean;
     onClose: () => void;
     question?: Question | null;
+    currentIndex?: number;
+    totalQuestions?: number;
+    onNavigate?: (delta: number) => void;
 }
 
 const defaultValues: InsertQuestion = {
@@ -53,7 +57,14 @@ const defaultValues: InsertQuestion = {
     ],
 };
 
-export default function QuestionModal({ isOpen, onClose, question }: QuestionModalProps) {
+export default function QuestionModal({ 
+    isOpen, 
+    onClose, 
+    question,
+    currentIndex = -1,
+    totalQuestions = 0,
+    onNavigate
+}: QuestionModalProps) {
     const queryClient = useQueryClient();
     const { toast } = useToast();
     const form = useForm<InsertQuestion>({
@@ -111,8 +122,33 @@ export default function QuestionModal({ isOpen, onClose, question }: QuestionMod
     return (
         <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
             <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
-                <DialogHeader>
+                <DialogHeader className="flex flex-row items-center justify-between pr-8">
                     <DialogTitle>{question?.id ? "Edit Question" : "Add New Question"}</DialogTitle>
+                    {question?.id && onNavigate && totalQuestions > 0 && (
+                        <div className="flex items-center gap-2">
+                            <Button 
+                                variant="outline" 
+                                size="sm" 
+                                onClick={() => onNavigate(-1)}
+                                disabled={currentIndex <= 0}
+                                className="h-8 w-8 p-0"
+                            >
+                                <ChevronLeft className="h-4 w-4" />
+                            </Button>
+                            <span className="text-sm font-medium tabular-nums">
+                                {currentIndex + 1} / {totalQuestions}
+                            </span>
+                            <Button 
+                                variant="outline" 
+                                size="sm" 
+                                onClick={() => onNavigate(1)}
+                                disabled={currentIndex >= totalQuestions - 1}
+                                className="h-8 w-8 p-0"
+                            >
+                                <ChevronRight className="h-4 w-4" />
+                            </Button>
+                        </div>
+                    )}
                 </DialogHeader>
 
                 <Form {...form}>
