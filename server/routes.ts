@@ -19,6 +19,65 @@ export async function registerRoutes(
     }
   });
 
+  // === Bulk Question Endpoints ===
+
+  app.post('/api/questions/bulk', async (req: any, res: any) => {
+    try {
+      const parsed = z.array(questionSchema).parse(req.body);
+      await storage.bulkUploadQuestions(parsed);
+      res.status(201).json({ message: `Successfully uploaded ${parsed.length} questions.` });
+    } catch (err) {
+      console.error("Error in bulk upload:", err);
+      res.status(400).json({ message: "Invalid format for bulk upload payload", error: err });
+    }
+  });
+
+  app.post('/api/questions/bulk-source', async (req: any, res: any) => {
+    try {
+      const { ids, sourceId } = z.object({
+        ids: z.array(z.number()),
+        sourceId: z.number().nullable()
+      }).parse(req.body);
+
+      await storage.bulkUpdateSource(ids, sourceId);
+      res.json({ message: `Successfully updated ${ids.length} questions.` });
+    } catch (err) {
+      console.error("Error in bulk source update:", err);
+      res.status(400).json({ message: "Invalid bulk source update payload", error: err });
+    }
+  });
+
+  app.delete('/api/questions/bulk', async (req: any, res: any) => {
+    try {
+      const { ids } = z.object({
+        ids: z.array(z.number())
+      }).parse(req.body);
+
+      await storage.bulkDeleteQuestions(ids);
+      res.status(204).send();
+    } catch (err) {
+      console.error("Error in bulk delete:", err);
+      res.status(400).json({ message: "Invalid bulk delete payload", error: err });
+    }
+  });
+
+  app.post('/api/questions/bulk-official', async (req: any, res: any) => {
+    try {
+      const { ids, isOfficial } = z.object({
+        ids: z.array(z.number()),
+        isOfficial: z.boolean()
+      }).parse(req.body);
+
+      await storage.bulkUpdateOfficial(ids, isOfficial);
+      res.json({ message: `Successfully updated ${ids.length} questions.` });
+    } catch (err) {
+      console.error("Error in bulk official update:", err);
+      res.status(400).json({ message: "Invalid bulk official update payload", error: err });
+    }
+  });
+
+  // === Individual Question Endpoints ===
+
   app.post('/api/questions', async (req: any, res: any) => {
     try {
       const parsed = questionSchema.parse(req.body);
@@ -59,31 +118,6 @@ export async function registerRoutes(
     }
   });
 
-  app.post('/api/questions/bulk', async (req: any, res: any) => {
-    try {
-      const parsed = z.array(questionSchema).parse(req.body);
-      await storage.bulkUploadQuestions(parsed);
-      res.status(201).json({ message: `Successfully uploaded ${parsed.length} questions.` });
-    } catch (err) {
-      console.error("Error in bulk upload:", err);
-      res.status(400).json({ message: "Invalid format for bulk upload payload", error: err });
-    }
-  });
-
-  app.post('/api/questions/bulk-source', async (req: any, res: any) => {
-    try {
-      const { ids, sourceId } = z.object({
-        ids: z.array(z.number()),
-        sourceId: z.number().nullable()
-      }).parse(req.body);
-
-      await storage.bulkUpdateSource(ids, sourceId);
-      res.json({ message: `Successfully updated ${ids.length} questions.` });
-    } catch (err) {
-      console.error("Error in bulk source update:", err);
-      res.status(400).json({ message: "Invalid bulk source update payload", error: err });
-    }
-  });
 
   // === Sources Endpoints ===
   

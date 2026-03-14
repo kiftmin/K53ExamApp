@@ -14,11 +14,30 @@ import {
     ArrowLeft, Upload, Plus, Pencil, Trash2, 
     ArrowUpDown, ArrowUp, ArrowDown, Clock, 
     Copy, Search, Database, LayoutGrid, ListChecks,
-    Filter, X, CheckSquare, Layers
+    Filter, X, CheckSquare, Layers, Trash,
+    ShieldCheck, ShieldAlert, AlertTriangle, MoreHorizontal
 } from "lucide-react";
 import { 
     Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter 
 } from "@/components/ui/dialog";
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import QuestionModal from "@/components/question-modal";
 import SourceMaintenance from "@/components/source-maintenance";
 
@@ -43,6 +62,7 @@ export default function Admin() {
     // Multi-select state
     const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set());
     const [bulkSourceId, setBulkSourceId] = useState<string>("none");
+    const [isBulkDeleteAlertOpen, setIsBulkDeleteAlertOpen] = useState(false);
 
     // Import state
     const [isImportDialogOpen, setIsImportDialogOpen] = useState(false);
@@ -129,6 +149,45 @@ export default function Admin() {
         if (selectedIds.size === 0) return;
         const sourceId = bulkSourceId === "none" ? null : parseInt(bulkSourceId);
         bulkSourceMutation.mutate({ ids: Array.from(selectedIds), sourceId });
+    };
+
+    const bulkDeleteMutation = useMutation({
+        mutationFn: async (ids: number[]) => {
+            await apiRequest("DELETE", "/api/questions/bulk", { ids });
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ["/api/questions"] });
+            toast({ title: `Successfully deleted ${selectedIds.size} questions` });
+            setSelectedIds(new Set());
+            setIsBulkDeleteAlertOpen(false);
+        },
+        onError: (error: Error) => {
+            toast({ title: "Bulk delete failed", description: error.message, variant: "destructive" });
+        }
+    });
+
+    const bulkOfficialMutation = useMutation({
+        mutationFn: async ({ ids, isOfficial }: { ids: number[], isOfficial: boolean }) => {
+            await apiRequest("POST", "/api/questions/bulk-official", { ids, isOfficial });
+        },
+        onSuccess: (_, { isOfficial }) => {
+            queryClient.invalidateQueries({ queryKey: ["/api/questions"] });
+            toast({ title: `Marked ${selectedIds.size} questions as ${isOfficial ? 'Official' : 'Draft'}` });
+            setSelectedIds(new Set());
+        },
+        onError: (error: Error) => {
+            toast({ title: "Bulk update failed", description: error.message, variant: "destructive" });
+        }
+    });
+
+    const handleBulkDelete = () => {
+        if (selectedIds.size === 0) return;
+        bulkDeleteMutation.mutate(Array.from(selectedIds));
+    };
+
+    const handleBulkOfficialToggle = (isOfficial: boolean) => {
+        if (selectedIds.size === 0) return;
+        bulkOfficialMutation.mutate({ ids: Array.from(selectedIds), isOfficial });
     };
 
     const handleFileUpload = async (event: ChangeEvent<HTMLInputElement>) => {
@@ -643,7 +702,7 @@ export default function Admin() {
                         
                         <div className="flex-1 flex gap-2">
                             <Select value={bulkSourceId} onValueChange={setBulkSourceId}>
-                                <SelectTrigger className="h-10 bg-neutral-800 border-neutral-700 text-white text-[10px] font-bold min-w-[160px] focus:ring-blue-500 rounded-xl">
+                                <SelectTrigger className="h-10 bg-neutral-800 border-neutral-700 text-white text-[10px] font-bold min-w-[140px] focus:ring-blue-500 rounded-xl">
                                     <SelectValue placeholder="Target Source" />
                                 </SelectTrigger>
                                 <SelectContent className="bg-neutral-900 border-neutral-800 text-white">
@@ -656,18 +715,92 @@ export default function Admin() {
                             <Button 
                                 onClick={handleBulkSourceAssign}
                                 disabled={bulkSourceMutation.isPending}
-                                className="h-10 px-5 bg-blue-600 text-white hover:bg-blue-700 rounded-xl text-[10px] font-black uppercase transition-all shadow-lg shadow-blue-900/40"
+                                className="h-10 px-4 bg-blue-600 text-white hover:bg-blue-700 rounded-xl text-[10px] font-black uppercase transition-all shadow-lg shadow-blue-900/40"
                             >
-                                {bulkSourceMutation.isPending ? "Assigning..." : "Assign Source"}
+                                {bulkSourceMutation.isPending ? "Applying..." : "Assign Source"}
                             </Button>
                         </div>
-                        
-                        <Button variant="ghost" size="icon" onClick={() => setSelectedIds(new Set())} className="h-10 w-10 text-neutral-500 hover:text-white rounded-xl">
-                            <X className="h-4 w-4" />
-                        </Button>
+
+                        <div className="h-4 w-px bg-neutral-800 mx-1" />
+
+                        <div className="flex items-center gap-1.5 px-1">
+                            <DropdownMenu>
+                                <DropdownMenuTrigger asChild>
+                                    <Button variant="ghost" size="icon" className="h-10 w-10 text-neutral-400 hover:text-white hover:bg-neutral-800 rounded-xl transition-colors">
+                                        <MoreHorizontal className="h-4 w-4" />
+                                    </Button>
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent align="end" className="bg-neutral-900 border-neutral-800 text-white min-w-[180px]">
+                                    <DropdownMenuLabel className="text-[9px] font-black uppercase text-neutral-500 px-3 py-2">Advanced Actions</DropdownMenuLabel>
+                                    <DropdownMenuSeparator className="bg-neutral-800" />
+                                    <DropdownMenuItem 
+                                        onClick={() => handleBulkOfficialToggle(true)}
+                                        className="flex items-center gap-2 p-3 focus:bg-neutral-800 focus:text-blue-400 transition-colors cursor-pointer"
+                                    >
+                                        <ShieldCheck className="h-4 w-4" />
+                                        <span className="text-[10px] font-black uppercase">Mark as Official</span>
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem 
+                                        onClick={() => handleBulkOfficialToggle(false)}
+                                        className="flex items-center gap-2 p-3 focus:bg-neutral-800 focus:text-neutral-400 transition-colors cursor-pointer"
+                                    >
+                                        <ShieldAlert className="h-4 w-4" />
+                                        <span className="text-[10px] font-black uppercase">Revert to Draft</span>
+                                    </DropdownMenuItem>
+                                    <DropdownMenuSeparator className="bg-neutral-800" />
+                                    <DropdownMenuItem 
+                                        onClick={() => setIsBulkDeleteAlertOpen(true)}
+                                        className="flex items-center gap-2 p-3 text-rose-500 focus:bg-rose-500/10 focus:text-rose-400 transition-colors cursor-pointer"
+                                    >
+                                        <Trash className="h-4 w-4" />
+                                        <span className="text-[10px] font-black uppercase">Delete Selected</span>
+                                    </DropdownMenuItem>
+                                </DropdownMenuContent>
+                            </DropdownMenu>
+
+                            <Button 
+                                variant="ghost" 
+                                size="icon" 
+                                onClick={() => setSelectedIds(new Set())} 
+                                className="h-10 w-10 text-neutral-500 hover:text-white hover:bg-neutral-800 rounded-xl transition-colors"
+                            >
+                                <X className="h-4 w-4" />
+                            </Button>
+                        </div>
                     </div>
                 </div>
             )}
+
+            <AlertDialog open={isBulkDeleteAlertOpen} onOpenChange={setIsBulkDeleteAlertOpen}>
+                <AlertDialogContent className="bg-white border-none shadow-2xl rounded-2xl p-0 overflow-hidden">
+                    <AlertDialogHeader className="p-8 pb-4 text-center sm:text-left">
+                        <div className="flex items-center gap-3 mb-4">
+                            <div className="p-3 bg-rose-50 text-rose-600 rounded-2xl">
+                                <AlertTriangle className="h-6 w-6" />
+                            </div>
+                            <div>
+                                <AlertDialogTitle className="text-xl font-black text-neutral-900 tracking-tight leading-none">Confirm Destruction</AlertDialogTitle>
+                                <p className="text-[10px] text-neutral-400 font-bold uppercase tracking-widest mt-1">Irreversible Bulk Operation</p>
+                            </div>
+                        </div>
+                        <AlertDialogDescription className="text-sm font-medium text-neutral-500">
+                            You are about to permanently delete <span className="font-black text-rose-600">{selectedIds.size}</span> question records. This action cannot be undone and will remove all associated data including options and metadata.
+                        </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter className="p-6 bg-neutral-50 border-t border-neutral-100 flex sm:flex-row flex-col gap-3">
+                        <AlertDialogCancel className="w-full sm:flex-1 h-12 rounded-xl text-[10px] font-black uppercase tracking-wider border-neutral-200 hover:bg-neutral-100 transition-all font-sans">
+                            Cancel
+                        </AlertDialogCancel>
+                        <AlertDialogAction 
+                            onClick={handleBulkDelete}
+                            disabled={bulkDeleteMutation.isPending}
+                            className="w-full sm:flex-1 h-12 rounded-xl bg-rose-600 text-white hover:bg-rose-700 text-[10px] font-black uppercase tracking-wider transition-all shadow-lg shadow-rose-100 border-none"
+                        >
+                            {bulkDeleteMutation.isPending ? "Purging..." : "Confirm Purge"}
+                        </AlertDialogAction>
+                    </AlertDialogFooter>
+                </AlertDialogContent>
+            </AlertDialog>
 
             <QuestionModal
                 isOpen={isModalOpen}

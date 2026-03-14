@@ -9,6 +9,8 @@ export interface IStorage {
   deleteQuestion(id: number): Promise<boolean>;
   bulkUploadQuestions(newQuestions: InsertQuestion[]): Promise<void>;
   bulkUpdateSource(ids: number[], sourceId: number | null): Promise<void>;
+  bulkDeleteQuestions(ids: number[]): Promise<void>;
+  bulkUpdateOfficial(ids: number[], isOfficial: boolean): Promise<void>;
 
   getSources(): Promise<Source[]>;
   createSource(source: InsertSource): Promise<Source>;
@@ -60,6 +62,21 @@ export class NeonDatabaseStorage implements IStorage {
     await db
       .update(questions)
       .set({ source_id: sourceId })
+      .where(inArray(questions.id, ids));
+  }
+
+  async bulkDeleteQuestions(ids: number[]): Promise<void> {
+    if (ids.length === 0) return;
+    await db
+      .delete(questions)
+      .where(inArray(questions.id, ids));
+  }
+
+  async bulkUpdateOfficial(ids: number[], isOfficial: boolean): Promise<void> {
+    if (ids.length === 0) return;
+    await db
+      .update(questions)
+      .set({ is_official: isOfficial })
       .where(inArray(questions.id, ids));
   }
 
