@@ -108,7 +108,13 @@ export default function QuestionModal({
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ["/api/questions"] });
             toast({ title: question?.id ? "Question updated" : "Question created" });
-            onClose();
+            
+            // If we're editing (have an id) and have a next question, auto-advance
+            if (question?.id && onNavigate && currentIndex < totalQuestions - 1) {
+                onNavigate(1);
+            } else {
+                onClose();
+            }
         },
         onError: (error) => {
             toast({ title: "Failed to save question", description: error.message, variant: "destructive" });
