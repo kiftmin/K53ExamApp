@@ -1,29 +1,53 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Question, Source } from "@shared/schema";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Switch } from "@/components/ui/switch";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { Link } from "wouter";
-import { ArrowLeft, Upload, Plus, Pencil, Trash2, ArrowUpDown, ArrowUp, ArrowDown, Clock, Copy, Search, Database } from "lucide-react";
+import { 
+    ArrowLeft, Upload, Plus, Pencil, Trash2, 
+    ArrowUpDown, ArrowUp, ArrowDown, Clock, 
+    Copy, Search, Database, LayoutGrid, ListChecks,
+    Filter, X, CheckSquare, Layers
+} from "lucide-react";
+import { 
+    Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter 
+} from "@/components/ui/dialog";
 import QuestionModal from "@/components/question-modal";
 import SourceMaintenance from "@/components/source-maintenance";
+
 export default function Admin() {
     const queryClient = useQueryClient();
     const { toast } = useToast();
+    
+    // Filters & Search
     const [search, setSearch] = useState("");
     const [categoryFilter, setCategoryFilter] = useState<string>("all");
     const [licenseFilter, setLicenseFilter] = useState<string>("all");
+    const [sourceFilter, setSourceFilter] = useState<string>("all");
+    const [officialFilter, setOfficialFilter] = useState<string>("all");
+    const [showDuplicates, setShowDuplicates] = useState(false);
+    
+    // UI State
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isSourceModalOpen, setIsSourceModalOpen] = useState(false);
     const [selectedQuestion, setSelectedQuestion] = useState<Question | null>(null);
     const [sortConfig, setSortConfig] = useState<{ key: keyof Question; direction: 'asc' | 'desc' } | null>(null);
-    const [sourceFilter, setSourceFilter] = useState<string>("all");
-    const [officialFilter, setOfficialFilter] = useState<string>("all");
-    const [showDuplicates, setShowDuplicates] = useState(false);
+    
+    // Multi-select state
+    const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set());
+    const [bulkSourceId, setBulkSourceId] = useState<string>("none");
+
+    // Import state
+    const [isImportDialogOpen, setIsImportDialogOpen] = useState(false);
+    const [pendingImportData, setPendingImportData] = useState<any[]>([]);
+    const [importSourceId, setImportSourceId] = useState<string>("none");
 
     // Access code state
     const [todayCode, setTodayCode] = useState<string>("");
@@ -66,30 +90,11 @@ export default function Admin() {
         return () => clearInterval(interval);
     }, []);
 
-    const handleCopyCode = async (code: string) => {
-        await navigator.clipboard.writeText(code);
-        setCodeCopied(true);
-        toast({ title: "Code copied to clipboard!" });
-        setTimeout(() => setCodeCopied(false), 2000);
-    };
-
-    const handleLookupCode = async () => {
-        if (!lookupDate) return;
-        try {
-            const res = await fetch(`/api/access-code/lookup?date=${lookupDate}`);
-            const data = await res.json();
-            setLookupCode(data.code);
-        } catch (err) {
-            console.error('Failed to lookup code:', err);
-            toast({ title: "Failed to look up code", variant: "destructive" });
-        }
-    };
-
     const { data: questions, isLoading } = useQuery<Question[]>({
         queryKey: ["/api/questions"],
     });
 
-    const { data: sources, isLoading: isSourcesLoading } = useQuery<Source[]>({
+    const { data: sources } = useQuery<Source[]>({
         queryKey: ["/api/sources"],
     });
 
@@ -106,7 +111,27 @@ export default function Admin() {
         }
     });
 
-    const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const bulkSourceMutation = useMutation({
+        mutationFn: async ({ ids, sourceId }: { ids: number[], sourceId: number | null }) => {
+            await apiRequest("POST", "/api/questions/bulk-source", { ids, sourceId });
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ["/api/questions"] });
+            toast({ title: `Bulk assigned source to ${selectedIds.size} questions` });
+            setSelectedIds(new Set());
+        },
+        onError: (error: Error) => {
+            toast({ title: "Bulk assignment failed", description: error.message, variant: "destructive" });
+        }
+    });
+
+    const handleBulkSourceAssign = () => {
+        if (selectedIds.size === 0) return;
+        const sourceId = bulkSourceId === "none" ? null : parseInt(bulkSourceId);
+        bulkSourceMutation.mutate({ ids: Array.from(selectedIds), sourceId });
+    };
+
+    const handleFileUpload = async (event: ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         if (!file) return;
 
@@ -114,29 +139,51 @@ export default function Admin() {
             const text = await file.text();
             const rawData = text.replace(/^\uFEFF/, "");
             const parsed = JSON.parse(rawData);
-
-            await apiRequest("POST", "/api/questions/bulk", parsed);
-
-            queryClient.invalidateQueries({ queryKey: ["/api/questions"] });
-            toast({ title: "Successfully imported questions!" });
+            
+            if (Array.isArray(parsed)) {
+                setPendingImportData(parsed);
+                setIsImportDialogOpen(true);
+            } else {
+                toast({ title: "Invalid format", description: "JSON must be an array of questions", variant: "destructive" });
+            }
         } catch (error) {
             console.error(error);
-            toast({ title: "Import failed. Please check the JSON format.", variant: "destructive" });
+            toast({ title: "Parse failed", description: "Could not read the JSON file.", variant: "destructive" });
         }
-
-        // Reset file input
         event.target.value = '';
     };
 
-    // Fuzzy string similarity function (Sorensen-Dice coefficient)
+    const confirmImportMutation = useMutation({
+        mutationFn: async (data: any[]) => {
+            await apiRequest("POST", "/api/questions/bulk", data);
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ["/api/questions"] });
+            toast({ title: "Successfully imported questions!" });
+            setIsImportDialogOpen(false);
+            setPendingImportData([]);
+        },
+        onError: (error: Error) => {
+            toast({ title: "Import failed", description: error.message, variant: "destructive" });
+        }
+    });
+
+    const handleConfirmImport = () => {
+        const sourceId = importSourceId === "none" ? null : parseInt(importSourceId);
+        const dataWithSource = pendingImportData.map((q: any) => ({
+            ...q,
+            source_id: sourceId
+        }));
+        confirmImportMutation.mutate(dataWithSource);
+    };
+
+    // Fuzzy string similarity function
     const calculateSimilarity = (s1: string, s2: string) => {
         const normalize = (str: string) => str.toLowerCase().replace(/[^a-z0-9]/g, '');
         const n1 = normalize(s1);
         const n2 = normalize(s2);
-
         if (n1 === n2) return 1.0;
         if (n1.length < 2 || n2.length < 2) return 0.0;
-
         const getBigrams = (str: string) => {
             const bigrams = new Set<string>();
             for (let i = 0; i < str.length - 1; i++) {
@@ -144,65 +191,48 @@ export default function Admin() {
             }
             return bigrams;
         };
-
         const b1 = getBigrams(n1);
         const b2 = getBigrams(n2);
         let intersection = 0;
         b1.forEach(bigram => {
             if (b2.has(bigram)) intersection++;
         });
-
         return (2 * intersection) / (b1.size + b2.size);
     };
 
-    // Advanced duplicate detection
-    const duplicateGroups: Map<number, number> = new Map(); // questionId -> groupId
+    const duplicateGroups: Map<number, number> = new Map();
     const groupColors: string[] = [
-        "bg-red-100/50", "bg-orange-100/50", "bg-yellow-100/50", 
-        "bg-green-100/50", "bg-emerald-100/50", "bg-blue-100/50", 
-        "bg-indigo-100/50", "bg-purple-100/50", "bg-pink-100/50", "bg-rose-100/50"
+        "bg-red-50/50", "bg-orange-50/50", "bg-yellow-50/50", 
+        "bg-green-50/50", "bg-emerald-50/50", "bg-blue-50/50", 
+        "bg-indigo-50/50", "bg-purple-50/50", "bg-pink-50/50", "bg-rose-50/50"
     ];
 
     if (questions) {
         let nextGroupId = 0;
         const processed = new Set<number>();
-
         for (let i = 0; i < questions.length; i++) {
             const q1 = questions[i];
             if (processed.has(q1.id)) continue;
-
             const currentCluster = [q1];
             processed.add(q1.id);
-
             for (let j = i + 1; j < questions.length; j++) {
                 const q2 = questions[j];
                 if (processed.has(q2.id)) continue;
-
-                // Only check within the same category AND same license code
                 if (q1.category !== q2.category || q1.license_code !== q2.license_code) continue;
-
-                // Compare Questions
                 const qSim = calculateSimilarity(q1.question_text, q2.question_text);
-                
-                // Compare Answers (all 3 options)
                 let totalAnswerSim = 0;
                 const opts1 = [...q1.options].sort((a, b) => a.answer_number.localeCompare(b.answer_number));
                 const opts2 = [...q2.options].sort((a, b) => a.answer_number.localeCompare(b.answer_number));
-                
                 for (let k = 0; k < Math.min(opts1.length, opts2.length); k++) {
                     totalAnswerSim += calculateSimilarity(opts1[k].answer_text, opts2[k].answer_text);
                 }
                 const avgAnswerSim = opts1.length > 0 ? totalAnswerSim / opts1.length : 1;
-
-                // Weighted similarity (60% question, 40% answers)
                 const overallSim = (qSim * 0.6) + (avgAnswerSim * 0.4);
-
                 if (overallSim > 0.85) {
                     currentCluster.push(q2);
                     processed.add(q2.id);
                 }
             }
-
             if (currentCluster.length > 1) {
                 const groupId = nextGroupId++;
                 currentCluster.forEach(q => duplicateGroups.set(q.id, groupId));
@@ -217,7 +247,6 @@ export default function Admin() {
         const matchesSource = sourceFilter === "all" || q.source_id?.toString() === sourceFilter;
         const matchesOfficial = officialFilter === "all" || (officialFilter === "official" ? q.is_official : !q.is_official);
         const matchesDuplicates = showDuplicates ? duplicateGroups.has(q.id) : true;
-        
         return matchesSearch && matchesCategory && matchesLicense && matchesSource && matchesOfficial && matchesDuplicates;
     }) || [];
 
@@ -225,22 +254,16 @@ export default function Admin() {
         if (showDuplicates) {
             const groupA = duplicateGroups.get(a.id) ?? -1;
             const groupB = duplicateGroups.get(b.id) ?? -1;
-            if (groupA !== groupB) {
-                return groupA - groupB;
-            }
+            if (groupA !== groupB) return groupA - groupB;
         }
-
         if (!sortConfig) return 0;
         const { key, direction } = sortConfig;
         let valA: any = a[key];
         let valB: any = b[key];
-
         if (valA === valB) return 0;
-
         if (typeof valA === 'string' && typeof valB === 'string') {
             return direction === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
         }
-
         if (valA < valB) return direction === 'asc' ? -1 : 1;
         if (valA > valB) return direction === 'asc' ? 1 : -1;
         return 0;
@@ -255,8 +278,26 @@ export default function Admin() {
     };
 
     const SortIcon = ({ columnKey }: { columnKey: keyof Question }) => {
-        if (sortConfig?.key !== columnKey) return <ArrowUpDown className="ml-2 h-4 w-4 inline-block" />;
-        return sortConfig.direction === 'asc' ? <ArrowUp className="ml-2 h-4 w-4 inline-block" /> : <ArrowDown className="ml-2 h-4 w-4 inline-block" />;
+        if (sortConfig?.key !== columnKey) return <ArrowUpDown className="ml-1.5 h-3 w-3 text-neutral-400" />;
+        return sortConfig.direction === 'asc' ? <ArrowUp className="ml-1.5 h-3 w-3 text-blue-500" /> : <ArrowDown className="ml-1.5 h-3 w-3 text-blue-500" />;
+    };
+
+    const toggleSelection = (id: number) => {
+        const newSelected = new Set(selectedIds);
+        if (newSelected.has(id)) {
+            newSelected.delete(id);
+        } else {
+            newSelected.add(id);
+        }
+        setSelectedIds(newSelected);
+    };
+
+    const toggleAllSelection = () => {
+        if (selectedIds.size === sortedQuestions.length) {
+            setSelectedIds(new Set());
+        } else {
+            setSelectedIds(new Set(sortedQuestions.map(q => q.id)));
+        }
     };
 
     const handleEdit = (question: Question) => {
@@ -279,240 +320,354 @@ export default function Admin() {
     };
 
     return (
-        <div className="min-h-screen bg-neutral-50 p-8">
-            <div className="max-w-7xl mx-auto space-y-6">
-                <div className="flex items-center justify-between">
+        <div className="min-h-screen bg-neutral-50/50">
+            <header className="sticky top-0 z-30 bg-white/80 backdrop-blur-md border-b border-neutral-200 px-8 py-4">
+                <div className="max-w-7xl mx-auto flex items-center justify-between">
                     <div className="flex items-center gap-4">
                         <Link href="/">
-                            <Button variant="outline" size="icon">
+                            <Button variant="ghost" size="icon" className="h-9 w-9 rounded-full hover:bg-neutral-100">
                                 <ArrowLeft className="h-4 w-4" />
                             </Button>
                         </Link>
-                        <h1 className="text-3xl font-bold tracking-tight text-neutral-900">Question Management</h1>
+                        <div>
+                            <h1 className="text-xl font-black tracking-tight text-neutral-900 leading-none">Admin Terminal</h1>
+                            <p className="text-[10px] text-neutral-500 font-bold uppercase tracking-widest mt-1">Database Control & Maintenance</p>
+                        </div>
                     </div>
-                    <div className="flex gap-4">
-                        <Button onClick={() => setIsSourceModalOpen(true)} variant="secondary" className="gap-2">
-                            <Database className="h-4 w-4" />
-                            Manage Sources
+                    
+                    <div className="flex items-center gap-3">
+                        <Button onClick={() => setIsSourceModalOpen(true)} variant="outline" className="h-9 gap-2 text-[11px] font-bold border-neutral-200">
+                            <Database className="h-3.5 w-3.5" />
+                            Sources
                         </Button>
-                        <Button onClick={handleCreate} className="gap-2">
-                            <Plus className="h-4 w-4" />
-                            Add Question
+                        <div className="h-4 w-px bg-neutral-200 mx-1" />
+                        <Button 
+                            onClick={() => setIsImportDialogOpen(true)} 
+                            variant="outline" 
+                            className="h-9 gap-2 text-[11px] font-bold border-neutral-200"
+                        >
+                            <Upload className="h-3.5 w-3.5" />
+                            Import
                         </Button>
-                        <div className="relative">
-                            <input
-                                type="file"
-                                accept=".json"
-                                onChange={handleFileUpload}
-                                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                            />
-                            <Button variant="outline" className="gap-2">
-                                <Upload className="h-4 w-4" />
-                                Bulk Import JSON
+                        <Button onClick={handleCreate} className="h-9 gap-2 text-[11px] font-bold bg-neutral-900 text-white hover:bg-black shadow-lg shadow-neutral-200 px-5">
+                            <Plus className="h-3.5 w-3.5" />
+                            Create Question
+                        </Button>
+                    </div>
+                </div>
+            </header>
+
+            <main className="max-w-7xl mx-auto p-8 space-y-8 pb-32">
+                {/* Systems Overview Section */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {/* Today's Access Code */}
+                    <div className="bg-white rounded-2xl border border-neutral-200 p-5 shadow-sm space-y-4">
+                        <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-2">
+                                <div className="p-1.5 bg-blue-50 text-blue-600 rounded-lg">
+                                    <Clock className="h-3.5 w-3.5" />
+                                </div>
+                                <span className="text-[10px] font-black text-neutral-400 uppercase tracking-wider">Session Access</span>
+                            </div>
+                            <span className="text-[10px] font-mono font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full">{countdown}</span>
+                        </div>
+                        <div className="flex items-center gap-3">
+                            <div className="flex-1 text-2xl font-black font-mono tracking-[0.2em] text-neutral-900 bg-neutral-50 px-4 py-3 rounded-xl border border-neutral-100 text-center uppercase">
+                                {todayCode || "------"}
+                            </div>
+                            <Button variant="outline" size="icon" onClick={() => {
+                                navigator.clipboard.writeText(todayCode);
+                                toast({ title: "Copied to clipboard" });
+                            }} className="h-12 w-12 rounded-xl group">
+                                <Copy className="h-4 w-4 text-neutral-400 group-hover:text-neutral-900 transition-colors" />
                             </Button>
                         </div>
+                        <p className="text-[10px] text-neutral-400 font-medium">Valid for today: <span className="text-neutral-600">{todayDate}</span></p>
+                    </div>
+
+                    {/* Date Lookup */}
+                    <div className="bg-white rounded-2xl border border-neutral-200 p-5 shadow-sm space-y-4">
+                        <div className="flex items-center gap-2">
+                            <div className="p-1.5 bg-neutral-100 text-neutral-600 rounded-lg">
+                                <Search className="h-3.5 w-3.5" />
+                            </div>
+                            <span className="text-[10px] font-black text-neutral-400 uppercase tracking-wider">Archive Search</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <Input
+                                type="date"
+                                value={lookupDate}
+                                onChange={(e) => setLookupDate(e.target.value)}
+                                className="h-10 text-[11px] font-bold border-neutral-200 bg-neutral-50/50"
+                            />
+                            <Button onClick={async () => {
+                                if (!lookupDate) return;
+                                const res = await fetch(`/api/access-code/lookup?date=${lookupDate}`);
+                                const data = await res.json();
+                                setLookupCode(data.code);
+                            }} disabled={!lookupDate} className="h-10 px-4 text-[11px] font-bold">
+                                Look Up
+                            </Button>
+                        </div>
+                        {lookupCode && (
+                            <div className="flex items-center gap-2 animate-in fade-in slide-in-from-top-2">
+                                <div className="flex-1 text-sm font-black font-mono tracking-widest text-neutral-600 bg-neutral-100 px-3 py-1.5 rounded-lg border border-neutral-200 text-center">
+                                    {lookupCode}
+                                </div>
+                                <Button variant="ghost" size="icon" onClick={() => {
+                                    navigator.clipboard.writeText(lookupCode);
+                                    toast({ title: "Copied lookup code" });
+                                }} className="h-8 w-8">
+                                    <Copy className="h-3.5 w-3.5" />
+                                </Button>
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Quick Stats */}
+                    <div className="bg-neutral-900 rounded-2xl p-5 shadow-lg shadow-neutral-200 relative overflow-hidden">
+                        <div className="flex items-center gap-2 mb-6">
+                            <div className="p-1.5 bg-neutral-800 text-neutral-400 rounded-lg">
+                                <LayoutGrid className="h-3.5 w-3.5" />
+                            </div>
+                            <span className="text-[10px] font-black text-neutral-400 uppercase tracking-wider">Repository Stats</span>
+                        </div>
+                        <div className="grid grid-cols-2 gap-4">
+                            <div>
+                                <h3 className="text-2xl font-black text-white leading-none">{questions?.length || 0}</h3>
+                                <p className="text-[10px] text-neutral-500 font-bold uppercase mt-1 tracking-tighter">Total Items</p>
+                            </div>
+                            <div>
+                                <h3 className="text-2xl font-black text-blue-400 leading-none">{questions?.filter(q => q.is_official).length || 0}</h3>
+                                <p className="text-[10px] text-neutral-500 font-bold uppercase mt-1 tracking-tighter">Official B.D.</p>
+                            </div>
+                        </div>
+                        <div className="absolute top-0 right-0 p-4 opacity-5">
+                            <Database className="h-16 w-16 text-white" />
+                        </div>
                     </div>
                 </div>
 
-                {/* Access Code Card */}
-                <div className="bg-white rounded-lg shadow-sm border border-neutral-200 p-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {/* Today's Code */}
-                        <div className="space-y-3">
-                            <div className="flex items-center gap-2 text-sm font-medium text-neutral-500">
-                                <Clock className="h-4 w-4" />
-                                Today's Access Code ({todayDate})
-                            </div>
-                            <div className="flex items-center gap-3">
-                                <div className="text-4xl font-mono font-bold tracking-[0.3em] text-neutral-900 bg-neutral-100 px-6 py-3 rounded-lg">
-                                    {todayCode || "------"}
-                                </div>
-                                <Button variant="outline" size="icon" onClick={() => handleCopyCode(todayCode)} title="Copy code">
-                                    <Copy className="h-4 w-4" />
-                                </Button>
-                            </div>
-                            <div className="flex items-center gap-2 text-sm text-neutral-500">
-                                <span>Expires in</span>
-                                <span className="font-mono font-semibold text-orange-600 bg-orange-50 px-2 py-0.5 rounded">{countdown}</span>
-                            </div>
+                {/* Filter & Table Section */}
+                <div className="space-y-4">
+                    <div className="flex flex-col md:flex-row gap-3 bg-white p-3 rounded-2xl border border-neutral-200 shadow-sm items-center">
+                        <div className="relative flex-1 w-full group">
+                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-neutral-400 group-focus-within:text-blue-500 transition-colors" />
+                            <Input
+                                placeholder="Scan text corpus..."
+                                value={search}
+                                onChange={(e) => setSearch(e.target.value)}
+                                className="pl-9 h-10 text-[11px] font-bold border-neutral-200 bg-neutral-50/30 w-full focus-visible:ring-blue-500"
+                            />
                         </div>
+                        
+                        <div className="flex flex-wrap gap-2 w-full md:w-auto">
+                            <Select value={categoryFilter} onValueChange={setCategoryFilter}>
+                                <SelectTrigger className="h-10 min-w-[130px] text-[10px] font-bold uppercase border-neutral-200">
+                                    <SelectValue placeholder="Category" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="all">All Cats</SelectItem>
+                                    {[1, 2, 3].map(v => <SelectItem key={v} value={v.toString()}>Cat {v}</SelectItem>)}
+                                </SelectContent>
+                            </Select>
 
-                        {/* Date Lookup */}
-                        <div className="space-y-3">
-                            <div className="flex items-center gap-2 text-sm font-medium text-neutral-500">
-                                <Search className="h-4 w-4" />
-                                Look Up Code by Date
+                            <Select value={licenseFilter} onValueChange={setLicenseFilter}>
+                                <SelectTrigger className="h-10 min-w-[130px] text-[10px] font-bold uppercase border-neutral-200">
+                                    <SelectValue placeholder="License" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="all">All Codes</SelectItem>
+                                    {["00", "01", "02", "03"].map(v => <SelectItem key={v} value={v}>Code {v}</SelectItem>)}
+                                </SelectContent>
+                            </Select>
+
+                            <Select value={sourceFilter} onValueChange={setSourceFilter}>
+                                <SelectTrigger className="h-10 min-w-[130px] text-[10px] font-bold uppercase border-neutral-200">
+                                    <SelectValue placeholder="Source" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="all">All Sources</SelectItem>
+                                    {sources?.map(src => (
+                                        <SelectItem key={src.id} value={src.id.toString()}>{src.name}</SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
+
+                            <div className="flex items-center bg-neutral-100 rounded-lg px-3 h-10 gap-3 border border-neutral-200">
+                                <span className="text-[10px] font-black text-neutral-400 uppercase tracking-tighter">Dupes</span>
+                                <Switch checked={showDuplicates} onCheckedChange={setShowDuplicates} className="scale-75" />
                             </div>
-                            <div className="flex items-center gap-2">
-                                <Input
-                                    type="date"
-                                    value={lookupDate}
-                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setLookupDate(e.target.value)}
-                                    className="flex-1"
-                                />
-                                <Button onClick={handleLookupCode} disabled={!lookupDate}>
-                                    Get Code
-                                </Button>
-                            </div>
-                            {lookupCode && (
-                                <div className="flex items-center gap-3">
-                                    <div className="text-2xl font-mono font-bold tracking-[0.3em] text-neutral-700 bg-neutral-100 px-4 py-2 rounded-lg">
-                                        {lookupCode}
-                                    </div>
-                                    <Button variant="outline" size="icon" onClick={() => handleCopyCode(lookupCode)} title="Copy code">
-                                        <Copy className="h-4 w-4" />
-                                    </Button>
-                                </div>
-                            )}
                         </div>
                     </div>
-                </div>
 
-                <div className="flex flex-col sm:flex-row gap-4 bg-white p-4 rounded-lg shadow-sm border border-neutral-200">
-                    <Input
-                        placeholder="Search questions..."
-                        value={search}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)}
-                        className="flex-1"
-                    />
-                    <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-                        <SelectTrigger className="w-[180px]">
-                            <SelectValue placeholder="Category" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="all">All Categories</SelectItem>
-                            <SelectItem value="1">Category 1</SelectItem>
-                            <SelectItem value="2">Category 2</SelectItem>
-                            <SelectItem value="3">Category 3</SelectItem>
-                        </SelectContent>
-                    </Select>
-                    <Select value={licenseFilter} onValueChange={setLicenseFilter}>
-                        <SelectTrigger className="w-[180px]">
-                            <SelectValue placeholder="License Code" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="all">All Licenses</SelectItem>
-                            <SelectItem value="00">Code 00</SelectItem>
-                            <SelectItem value="01">Code 01</SelectItem>
-                            <SelectItem value="02">Code 02</SelectItem>
-                            <SelectItem value="03">Code 03</SelectItem>
-                        </SelectContent>
-                    </Select>
-                    <Select value={sourceFilter} onValueChange={setSourceFilter}>
-                        <SelectTrigger className="w-[180px]">
-                            <SelectValue placeholder="Source" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="all">All Sources</SelectItem>
-                            {sources?.map(src => (
-                                <SelectItem key={src.id} value={src.id.toString()}>{src.name}</SelectItem>
-                            ))}
-                        </SelectContent>
-                    </Select>
-                    <Select value={officialFilter} onValueChange={setOfficialFilter}>
-                        <SelectTrigger className="w-[180px]">
-                            <SelectValue placeholder="Braindump" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="all">All Questions</SelectItem>
-                            <SelectItem value="official">Braindump Only</SelectItem>
-                            <SelectItem value="unofficial">Unofficial Only</SelectItem>
-                        </SelectContent>
-                    </Select>
-                    <Button 
-                        variant={showDuplicates ? "destructive" : "outline"}
-                        onClick={() => setShowDuplicates(!showDuplicates)}
-                        className="whitespace-nowrap"
-                    >
-                        {showDuplicates ? "Showing Duplicates" : "Find Duplicates"}
-                    </Button>
-                </div>
-
-                <div className="bg-white rounded-lg shadow-sm border border-neutral-200 overflow-hidden">
-                    <Table>
-                        <TableHeader>
-                            <TableRow>
-                                <TableHead className="w-[120px] cursor-pointer hover:bg-neutral-100" onClick={() => handleSort('is_official')}>
-                                    Braindump <SortIcon columnKey="is_official" />
-                                </TableHead>
-                                <TableHead className="w-[80px] cursor-pointer hover:bg-neutral-100" onClick={() => handleSort('question_number')}>
-                                    Q. No. <SortIcon columnKey="question_number" />
-                                </TableHead>
-                                <TableHead className="cursor-pointer hover:bg-neutral-100" onClick={() => handleSort('question_text')}>
-                                    Question Text <SortIcon columnKey="question_text" />
-                                </TableHead>
-                                <TableHead className="w-[140px] cursor-pointer hover:bg-neutral-100" onClick={() => handleSort('category')}>
-                                    Category <SortIcon columnKey="category" />
-                                </TableHead>
-                                <TableHead className="w-[140px] cursor-pointer hover:bg-neutral-100" onClick={() => handleSort('license_code')}>
-                                    License <SortIcon columnKey="license_code" />
-                                </TableHead>
-                                <TableHead className="w-[120px] cursor-pointer hover:bg-neutral-100" onClick={() => handleSort('source_id')}>
-                                    Source <SortIcon columnKey="source_id" />
-                                </TableHead>
-                                <TableHead className="w-[100px] cursor-pointer hover:bg-neutral-100" onClick={() => handleSort('contains_image')}>
-                                    Image <SortIcon columnKey="contains_image" />
-                                </TableHead>
-                                <TableHead className="text-right w-[120px]">Actions</TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                            {isLoading ? (
-                                <TableRow>
-                                    <TableCell colSpan={7} className="text-center py-8 text-neutral-500">Loading questions...</TableCell>
+                    <div className="bg-white rounded-2xl border border-neutral-200 shadow-sm overflow-hidden">
+                        <Table>
+                            <TableHeader className="bg-neutral-50/80 border-b border-neutral-200">
+                                <TableRow className="hover:bg-transparent">
+                                    <TableHead className="w-12 px-4">
+                                        <Checkbox 
+                                            checked={selectedIds.size === sortedQuestions.length && sortedQuestions.length > 0} 
+                                            onCheckedChange={toggleAllSelection}
+                                            className="h-4 w-4 border-neutral-300 rounded"
+                                        />
+                                    </TableHead>
+                                    <TableHead className="w-24 cursor-pointer group" onClick={() => handleSort('is_official')}>
+                                        <div className="flex items-center text-[10px] font-black text-neutral-400 uppercase tracking-wider">
+                                            Status <SortIcon columnKey="is_official" />
+                                        </div>
+                                    </TableHead>
+                                    <TableHead className="w-20 cursor-pointer" onClick={() => handleSort('question_number')}>
+                                        <div className="flex items-center text-[10px] font-black text-neutral-400 uppercase tracking-wider">
+                                            Q.No <SortIcon columnKey="question_number" />
+                                        </div>
+                                    </TableHead>
+                                    <TableHead className="cursor-pointer" onClick={() => handleSort('question_text')}>
+                                        <div className="flex items-center text-[10px] font-black text-neutral-400 uppercase tracking-wider">
+                                            Payload <SortIcon columnKey="question_text" />
+                                        </div>
+                                    </TableHead>
+                                    <TableHead className="w-24 cursor-pointer" onClick={() => handleSort('category')}>
+                                        <div className="flex items-center text-[10px] font-black text-neutral-400 uppercase tracking-wider">
+                                            Cat <SortIcon columnKey="category" />
+                                        </div>
+                                    </TableHead>
+                                    <TableHead className="w-24 cursor-pointer" onClick={() => handleSort('license_code')}>
+                                        <div className="flex items-center text-[10px] font-black text-neutral-400 uppercase tracking-wider">
+                                            Code <SortIcon columnKey="license_code" />
+                                        </div>
+                                    </TableHead>
+                                    <TableHead className="w-28 cursor-pointer" onClick={() => handleSort('source_id')}>
+                                        <div className="flex items-center text-[10px] font-black text-neutral-400 uppercase tracking-wider">
+                                            Source <SortIcon columnKey="source_id" />
+                                        </div>
+                                    </TableHead>
+                                    <TableHead className="text-right px-6 text-[10px] font-black text-neutral-400 uppercase tracking-wider">Mod</TableHead>
                                 </TableRow>
-                            ) : sortedQuestions.length === 0 ? (
-                                <TableRow>
-                                    <TableCell colSpan={7} className="text-center py-8 text-neutral-500">No questions found matching your filters.</TableCell>
-                                </TableRow>
-                            ) : (
-                                sortedQuestions.map((question) => {
-                                    const groupId = duplicateGroups.get(question.id);
-                                    const rowColor = groupId !== undefined ? groupColors[groupId % groupColors.length] : "";
-                                    
-                                    return (
-                                        <TableRow key={question.id} className={`${rowColor} transition-colors`}>
+                            </TableHeader>
+                            <TableBody>
+                                {isLoading ? (
+                                    <TableRow><TableCell colSpan={8} className="py-20 text-center text-neutral-400 italic font-medium">Synchronizing corpus...</TableCell></TableRow>
+                                ) : sortedQuestions.length === 0 ? (
+                                    <TableRow><TableCell colSpan={8} className="py-20 text-center text-neutral-400 italic font-medium">No results found for current filters</TableCell></TableRow>
+                                ) : (
+                                    sortedQuestions.map((question) => {
+                                        const groupId = duplicateGroups.get(question.id);
+                                        const isSelected = selectedIds.has(question.id);
+                                        const rowColor = groupId !== undefined ? groupColors[groupId % groupColors.length] : "";
+                                        
+                                        return (
+                                            <TableRow key={question.id} className={`${rowColor} ${isSelected ? 'bg-blue-50/50' : 'hover:bg-neutral-50/50'} border-neutral-100 transition-all group`}>
+                                                <TableCell className="px-4">
+                                                    <Checkbox 
+                                                        checked={isSelected}
+                                                        onCheckedChange={() => toggleSelection(question.id)}
+                                                        className="h-4 w-4 border-neutral-300 rounded"
+                                                    />
+                                                </TableCell>
+                                                <TableCell>
+                                                    {question.is_official ? (
+                                                        <div className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-blue-50 text-blue-700 text-[9px] font-black uppercase tracking-tighter border border-blue-100">
+                                                            Official
+                                                        </div>
+                                                    ) : (
+                                                        <div className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-neutral-100 text-neutral-500 text-[9px] font-black uppercase tracking-tighter">
+                                                            Draft
+                                                        </div>
+                                                    )}
+                                                </TableCell>
+                                                <TableCell className="font-mono text-xs font-black text-neutral-400">
+                                                    {question.question_number.toString().padStart(3, '0')}
+                                                </TableCell>
+                                            <TableCell className="max-w-md">
+                                                <div className="flex flex-col gap-1">
+                                                    <span className="text-[11px] font-bold text-neutral-700 truncate">{question.question_text}</span>
+                                                    {groupId !== undefined && (
+                                                        <span className="text-[8px] font-black bg-rose-50 text-rose-600 px-1.5 py-0 rounded border border-rose-100 uppercase self-start">Cluster Grp {groupId + 1}</span>
+                                                    )}
+                                                </div>
+                                            </TableCell>
                                             <TableCell>
-                                                {question.is_official ? (
-                                                    <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800" title="Official Exam Question">Braindump</span>
-                                                ) : (
-                                                    <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-neutral-100 text-neutral-600">Unofficial</span>
-                                                )}
+                                                <div className="text-[10px] font-black text-neutral-400 h-6 w-6 rounded-full bg-neutral-100 flex items-center justify-center border border-neutral-200">
+                                                    {question.category}
+                                                </div>
                                             </TableCell>
-                                            <TableCell className="font-medium">
-                                                {question.question_number}
-                                                {groupId !== undefined && <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-800" title={`Group ${groupId}`}>Group {groupId + 1}</span>}
+                                            <TableCell>
+                                                <span className="text-[10px] font-bold text-neutral-500 bg-white border border-neutral-200 px-2 py-0.5 rounded-md shadow-xs">
+                                                    {question.license_code}
+                                                </span>
                                             </TableCell>
-                                        <TableCell className="max-w-md truncate">{question.question_text}</TableCell>
-                                        <TableCell>{question.category}</TableCell>
-                                        <TableCell>{question.license_code}</TableCell>
-                                        <TableCell>
-                                            <span className="truncate max-w-[100px] block">
-                                                {sources?.find(s => s.id === question.source_id)?.name || "-"}
-                                            </span>
-                                        </TableCell>
-                                        <TableCell>{question.contains_image ? "Yes" : "No"}</TableCell>
-                                        <TableCell className="text-right whitespace-nowrap">
-                                            <div className="flex justify-end gap-1">
-                                                <Button variant="ghost" size="icon" onClick={() => handleEdit(question)}>
-                                                    <Pencil className="h-4 w-4 text-blue-500" />
-                                                </Button>
-                                                <Button variant="ghost" size="icon" onClick={() => {
-                                                    if (confirm('Are you sure you want to delete this question?')) {
-                                                        deleteMutation.mutate(question.id);
-                                                    }
-                                                }}>
-                                                    <Trash2 className="h-4 w-4 text-red-500" />
-                                                </Button>
-                                            </div>
-                                        </TableCell>
-                                    </TableRow>
-                                )})
-                            )}
-                        </TableBody>
-                    </Table>
+                                            <TableCell className="max-w-[120px]">
+                                                <span className="text-[10px] font-bold text-neutral-500 truncate block">
+                                                    {sources?.find(s => s.id === question.source_id)?.name || "Unassigned"}
+                                                </span>
+                                            </TableCell>
+                                            <TableCell className="text-right px-4">
+                                                <div className="flex justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                                                    <Button variant="ghost" size="icon" onClick={() => handleEdit(question)} className="h-8 w-8 rounded-lg hover:bg-white hover:shadow-sm">
+                                                        <Pencil className="h-3.5 w-3.5 text-blue-500" />
+                                                    </Button>
+                                                    <Button variant="ghost" size="icon" onClick={() => {
+                                                        if (confirm('Irreversible deletion - proceed?')) {
+                                                            deleteMutation.mutate(question.id);
+                                                        }
+                                                    }} className="h-8 w-8 rounded-lg hover:bg-white hover:shadow-sm">
+                                                        <Trash2 className="h-3.5 w-3.5 text-rose-500" />
+                                                    </Button>
+                                                </div>
+                                            </TableCell>
+                                        </TableRow>
+                                    )})
+                                )}
+                            </TableBody>
+                        </Table>
+                    </div>
                 </div>
-            </div>
+            </main>
+
+            {/* Bulk Action Bar */}
+            {selectedIds.size > 0 && (
+                <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 animate-in slide-in-from-bottom-8 duration-300">
+                    <div className="bg-neutral-900 border border-neutral-800 rounded-2xl p-2.5 shadow-2xl flex items-center gap-4 min-w-[400px]">
+                        <div className="flex items-center gap-3 pl-3">
+                            <div className="h-8 w-8 rounded-xl bg-blue-600 flex items-center justify-center text-white font-black text-xs">
+                                {selectedIds.size}
+                            </div>
+                            <div className="flex flex-col">
+                                <span className="text-white text-[10px] font-black uppercase tracking-wider leading-none">Items Selected</span>
+                                <button onClick={() => setSelectedIds(new Set())} className="text-neutral-500 hover:text-white text-[9px] font-bold text-left mt-0.5 uppercase tracking-tighter">Clear All</button>
+                            </div>
+                        </div>
+                        
+                        <div className="h-8 w-px bg-neutral-800 mx-2" />
+                        
+                        <div className="flex-1 flex gap-2">
+                            <Select value={bulkSourceId} onValueChange={setBulkSourceId}>
+                                <SelectTrigger className="h-10 bg-neutral-800 border-neutral-700 text-white text-[10px] font-bold min-w-[160px] focus:ring-blue-500 rounded-xl">
+                                    <SelectValue placeholder="Target Source" />
+                                </SelectTrigger>
+                                <SelectContent className="bg-neutral-900 border-neutral-800 text-white">
+                                    <SelectItem value="none">Set to None</SelectItem>
+                                    {sources?.map(src => (
+                                        <SelectItem key={src.id} value={src.id.toString()}>{src.name}</SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
+                            <Button 
+                                onClick={handleBulkSourceAssign}
+                                disabled={bulkSourceMutation.isPending}
+                                className="h-10 px-5 bg-blue-600 text-white hover:bg-blue-700 rounded-xl text-[10px] font-black uppercase transition-all shadow-lg shadow-blue-900/40"
+                            >
+                                {bulkSourceMutation.isPending ? "Assigning..." : "Assign Source"}
+                            </Button>
+                        </div>
+                        
+                        <Button variant="ghost" size="icon" onClick={() => setSelectedIds(new Set())} className="h-10 w-10 text-neutral-500 hover:text-white rounded-xl">
+                            <X className="h-4 w-4" />
+                        </Button>
+                    </div>
+                </div>
+            )}
 
             <QuestionModal
                 isOpen={isModalOpen}
@@ -527,6 +682,109 @@ export default function Admin() {
                 isOpen={isSourceModalOpen} 
                 onClose={() => setIsSourceModalOpen(false)} 
             />
+
+            {/* Bulk Import Source Selection Dialog */}
+            <Dialog open={isImportDialogOpen} onOpenChange={setIsImportDialogOpen}>
+                <DialogContent className="max-w-md bg-white border-none shadow-2xl rounded-2xl p-0 overflow-hidden">
+                    <DialogHeader className="p-6 bg-neutral-900 text-white">
+                        <div className="flex items-center gap-3">
+                            <div className="p-2 bg-blue-600 rounded-lg">
+                                <Upload className="h-5 w-5 text-white" />
+                            </div>
+                            <div>
+                                <DialogTitle className="text-lg font-black tracking-tight">Finalize Import</DialogTitle>
+                                <p className="text-[10px] text-neutral-400 font-bold uppercase tracking-widest mt-0.5">Record Verification Step</p>
+                            </div>
+                        </div>
+                    </DialogHeader>
+
+                    <div className="p-6 space-y-6">
+                        {/* Record Buffer Info */}
+                        {pendingImportData.length > 0 ? (
+                            <div className="flex items-center justify-between p-4 bg-emerald-50 rounded-xl border border-emerald-100">
+                                <div className="flex flex-col">
+                                    <span className="text-[10px] font-black text-emerald-600 uppercase tracking-wider">Validated Questions</span>
+                                    <span className="text-2xl font-black text-emerald-900 tracking-tight">{pendingImportData.length}</span>
+                                </div>
+                                <Button 
+                                    variant="ghost" 
+                                    onClick={() => setPendingImportData([])}
+                                    className="h-8 text-[10px] font-bold text-emerald-700 hover:bg-emerald-100 uppercase"
+                                >
+                                    Change File
+                                </Button>
+                            </div>
+                        ) : (
+                            <div className="relative group">
+                                <input
+                                    type="file"
+                                    id="dialog-json-upload"
+                                    accept=".json"
+                                    onChange={handleFileUpload}
+                                    className="hidden"
+                                />
+                                <label 
+                                    htmlFor="dialog-json-upload"
+                                    className="flex flex-col items-center justify-center p-8 border-2 border-dashed border-neutral-200 rounded-2xl cursor-pointer hover:border-blue-400 hover:bg-blue-50/30 transition-all group-active:scale-[0.98]"
+                                >
+                                    <div className="p-3 bg-neutral-50 text-neutral-400 rounded-full group-hover:bg-blue-100 group-hover:text-blue-600 transition-colors mb-4">
+                                        <Upload className="h-6 w-6" />
+                                    </div>
+                                    <span className="text-sm font-black text-neutral-900">Upload JSON Dataset</span>
+                                    <span className="text-[10px] text-neutral-400 font-bold uppercase tracking-widest mt-1">UTF-8 Transcoded only</span>
+                                </label>
+                            </div>
+                        )}
+
+                        <div className="space-y-4 pt-2">
+                            <div className="space-y-3">
+                                <div className="flex items-center gap-2">
+                                    <Layers className="h-4 w-4 text-neutral-400" />
+                                    <span className="text-[11px] font-black text-neutral-900 uppercase tracking-wider">Set Target Source</span>
+                                </div>
+                                <Select value={importSourceId} onValueChange={setImportSourceId}>
+                                    <SelectTrigger className="h-12 bg-white border-neutral-200 text-sm font-bold rounded-xl focus:ring-blue-500 shadow-sm transition-all">
+                                        <SelectValue placeholder="Select target source" />
+                                    </SelectTrigger>
+                                    <SelectContent className="bg-white border-neutral-200">
+                                        <SelectItem value="none" className="font-bold text-neutral-400">None (Leave Unassigned)</SelectItem>
+                                        {sources?.map(src => (
+                                            <SelectItem key={src.id} value={src.id.toString()} className="font-bold">
+                                                {src.name}
+                                            </SelectItem>
+                                        ))}
+                                    </SelectContent>
+                                </Select>
+                                {pendingImportData.length > 0 && (
+                                    <p className="text-[10px] text-neutral-400 font-medium pl-1 italic">
+                                        This will apply to all {pendingImportData.length} records in current buffer.
+                                    </p>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="p-4 bg-neutral-50 border-t border-neutral-100 flex gap-3">
+                        <Button 
+                            variant="ghost" 
+                            onClick={() => {
+                                setIsImportDialogOpen(false);
+                                setPendingImportData([]);
+                            }}
+                            className="flex-1 h-11 text-[11px] font-black uppercase text-neutral-500 hover:bg-neutral-200 transition-all rounded-xl"
+                        >
+                            Cancel
+                        </Button>
+                        <Button 
+                            onClick={handleConfirmImport}
+                            disabled={confirmImportMutation.isPending || pendingImportData.length === 0}
+                            className="flex-1 h-11 bg-neutral-900 text-white hover:bg-black text-[11px] font-black uppercase tracking-wider transition-all rounded-xl shadow-lg shadow-neutral-200 disabled:opacity-50 disabled:grayscale"
+                        >
+                            {confirmImportMutation.isPending ? "Importing..." : "Run Import Process"}
+                        </Button>
+                    </div>
+                </DialogContent>
+            </Dialog>
         </div>
     );
 }

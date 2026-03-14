@@ -70,6 +70,21 @@ export async function registerRoutes(
     }
   });
 
+  app.post('/api/questions/bulk-source', async (req: any, res: any) => {
+    try {
+      const { ids, sourceId } = z.object({
+        ids: z.array(z.number()),
+        sourceId: z.number().nullable()
+      }).parse(req.body);
+
+      await storage.bulkUpdateSource(ids, sourceId);
+      res.json({ message: `Successfully updated ${ids.length} questions.` });
+    } catch (err) {
+      console.error("Error in bulk source update:", err);
+      res.status(400).json({ message: "Invalid bulk source update payload", error: err });
+    }
+  });
+
   // === Sources Endpoints ===
   
   app.get('/api/sources', async (req: any, res: any) => {

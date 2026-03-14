@@ -1,6 +1,6 @@
 import { db, questions, sources } from './db.js';
 import { Question, InsertQuestion, Source, InsertSource } from '../shared/schema.js';
-import { eq } from 'drizzle-orm';
+import { eq, inArray } from 'drizzle-orm';
 
 export interface IStorage {
   getQuestions(): Promise<Question[]>;
@@ -8,6 +8,7 @@ export interface IStorage {
   updateQuestion(id: number, question: Partial<InsertQuestion>): Promise<Question | undefined>;
   deleteQuestion(id: number): Promise<boolean>;
   bulkUploadQuestions(newQuestions: InsertQuestion[]): Promise<void>;
+  bulkUpdateSource(ids: number[], sourceId: number | null): Promise<void>;
 
   getSources(): Promise<Source[]>;
   createSource(source: InsertSource): Promise<Source>;
@@ -52,6 +53,14 @@ export class NeonDatabaseStorage implements IStorage {
     if (newQuestions.length > 0) {
       await db.insert(questions).values(newQuestions);
     }
+  }
+
+  async bulkUpdateSource(ids: number[], sourceId: number | null): Promise<void> {
+    if (ids.length === 0) return;
+    await db
+      .update(questions)
+      .set({ source_id: sourceId })
+      .where(inArray(questions.id, ids));
   }
 
   async getSources(): Promise<Source[]> {
