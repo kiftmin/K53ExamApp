@@ -4,7 +4,7 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "db:push": "drizzle-kit push --force",
+    "db:push": "printf \"n\\n\" | drizzle-kit push --force",
     "dev": "tsx server/index.ts",
     "build": "npm run db:push && tsx script/build.ts",
     "start": "NODE_ENV=production node dist/index.cjs",
