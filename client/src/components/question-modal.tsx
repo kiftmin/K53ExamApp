@@ -403,14 +403,13 @@ export default function QuestionModal({
                                                 control={form.control}
                                                 name={`options.${index}.correct_answer`}
                                                 render={({ field }) => (
-                                                    <button 
-                                                        type="button"
-                                                        className={`h-10 px-3 flex items-center gap-2 rounded-lg border transition-all ${field.value ? 'bg-emerald-50 border-emerald-500 text-emerald-700 shadow-xs' : 'bg-white border-neutral-200 text-neutral-400 hover:border-neutral-300'}`}
+                                                    <div 
+                                                        className={`h-10 px-3 flex items-center gap-2 rounded-lg border cursor-pointer transition-all ${field.value ? 'bg-emerald-50 border-emerald-500 text-emerald-700 shadow-xs' : 'bg-white border-neutral-200 text-neutral-400 hover:border-neutral-300'}`}
                                                         onClick={() => field.onChange(!field.value)}
                                                     >
                                                         <span className={`text-[10px] font-black uppercase tracking-tighter ${field.value ? 'opacity-100' : 'opacity-30'}`}>Correct</span>
-                                                        <Switch checked={field.value} onCheckedChange={field.onChange} className="scale-50 origin-center data-[state=checked]:bg-emerald-500" />
-                                                    </button>
+                                                        <Switch checked={field.value} onCheckedChange={(checked) => field.onChange(checked)} onClick={(e) => e.stopPropagation()} className="scale-50 origin-center data-[state=checked]:bg-emerald-500" />
+                                                    </div>
                                                 )}
                                             />
                                         </div>
