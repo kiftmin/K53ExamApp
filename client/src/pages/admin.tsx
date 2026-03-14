@@ -317,8 +317,8 @@ export default function Admin() {
         }
         if (!sortConfig) return 0;
         const { key, direction } = sortConfig;
-        let valA: any = a[key];
-        let valB: any = b[key];
+        let valA: any = (a as any)[key];
+        let valB: any = (b as any)[key];
         if (valA === valB) return 0;
         if (typeof valA === 'string' && typeof valB === 'string') {
             return direction === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
