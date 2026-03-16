@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import { useQuery } from "@tanstack/react-query";
-import { Source } from "@shared/schema";
+import { Source, CATEGORY_NAMES } from "@shared/schema";
 import { useQuestions } from "@/hooks/use-questions";
 import { useQuiz } from "@/lib/quiz-context";
 import { Layout } from "@/components/layout";
@@ -21,11 +21,10 @@ import { ShieldCheck } from "lucide-react";
 
 const LOGO_URL = "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773061809/logo_edited_vlgoqy.jpg";
 
-const CATEGORIES = [
-  { value: "1", label: "Category 1 - Rules of the Road" },
-  { value: "2", label: "Category 2 - Road signs" },
-  { value: "3", label: "Category 3 - Vehicle controls" },
-];
+const CATEGORIES = Object.entries(CATEGORY_NAMES).map(([value, label]) => ({
+  value,
+  label: `${value} - ${label}`
+}));
 
 export default function Home() {
   const [_, setLocation] = useLocation();

@@ -11,14 +11,10 @@ import {
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, CheckCircle2, XCircle, AlertTriangle } from "lucide-react";
+import { CATEGORY_NAMES } from "@shared/schema";
 
 const getCategoryLabel = (cat: number) => {
-  switch (cat) {
-    case 1: return "Rules of the Road";
-    case 2: return "Road Signs";
-    case 3: return "Vehicle Controls";
-    default: return `Category ${cat}`;
-  }
+  return CATEGORY_NAMES[cat] || `Category ${cat}`;
 };
 
 const getLicenseLabel = (code: string) => {

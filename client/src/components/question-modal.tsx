@@ -2,7 +2,7 @@ import * as React from "react";
 import { useEffect } from "react";
 import { useForm, useFieldArray } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Question, InsertQuestion, questionSchema, Source } from "@shared/schema";
+import { Question, InsertQuestion, questionSchema, Source, CATEGORY_NAMES } from "@shared/schema";
 import {
     Dialog,
     DialogContent,
@@ -202,9 +202,18 @@ export default function QuestionModal({
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormLabel className="text-[10px] font-black text-neutral-400 uppercase tracking-wider">Category</FormLabel>
-                                            <FormControl>
-                                                <Input type="number" {...field} onChange={(e) => field.onChange(parseInt(e.target.value))} className="h-9 bg-white shadow-xs border-neutral-200 focus-visible:ring-blue-500" />
-                                            </FormControl>
+                                            <Select onValueChange={(val) => field.onChange(parseInt(val))} value={field.value.toString()}>
+                                                <FormControl>
+                                                    <SelectTrigger className="h-9 bg-white shadow-xs border-neutral-200 focus:ring-blue-500">
+                                                        <SelectValue placeholder="Category" />
+                                                    </SelectTrigger>
+                                                </FormControl>
+                                                <SelectContent>
+                                                    {Object.entries(CATEGORY_NAMES).map(([val, name]) => (
+                                                        <SelectItem key={val} value={val}>{name}</SelectItem>
+                                                    ))}
+                                                </SelectContent>
+                                            </Select>
                                             <FormMessage className="text-[10px]" />
                                         </FormItem>
                                     )}

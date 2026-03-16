@@ -11,6 +11,9 @@ export interface IStorage {
   bulkUpdateSource(ids: number[], sourceId: number | null): Promise<void>;
   bulkDeleteQuestions(ids: number[]): Promise<void>;
   bulkUpdateOfficial(ids: number[], isOfficial: boolean): Promise<void>;
+  bulkUpdateCategory(ids: number[], category: number): Promise<void>;
+  bulkUpdateDuplicate(ids: number[], isDuplicate: boolean): Promise<void>;
+
 
   getSources(): Promise<Source[]>;
   createSource(source: InsertSource): Promise<Source>;
@@ -77,6 +80,22 @@ export class NeonDatabaseStorage implements IStorage {
     await db
       .update(questions)
       .set({ is_official: isOfficial })
+      .where(inArray(questions.id, ids));
+  }
+
+  async bulkUpdateCategory(ids: number[], category: number): Promise<void> {
+    if (ids.length === 0) return;
+    await db
+      .update(questions)
+      .set({ category })
+      .where(inArray(questions.id, ids));
+  }
+
+  async bulkUpdateDuplicate(ids: number[], isDuplicate: boolean): Promise<void> {
+    if (ids.length === 0) return;
+    await db
+      .update(questions)
+      .set({ is_duplicate: isDuplicate })
       .where(inArray(questions.id, ids));
   }
 

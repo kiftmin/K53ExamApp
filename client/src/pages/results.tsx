@@ -22,7 +22,7 @@ import {
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useQuery } from "@tanstack/react-query";
-import { Question } from "@shared/schema";
+import { Question, CATEGORY_NAMES } from "@shared/schema";
 import html2canvas from 'html2canvas';
 
 const LOGO_URL = "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773061809/logo_edited_vlgoqy.jpg";
@@ -143,12 +143,7 @@ export default function Results() {
   };
 
   const getCategoryName = (id: number) => {
-    switch (id) {
-      case 1: return "Rules of the Road";
-      case 2: return "Road Signs";
-      case 3: return "Vehicle Controls";
-      default: return "Unknown";
-    }
+    return CATEGORY_NAMES[id] || "Unknown";
   };
 
   return (

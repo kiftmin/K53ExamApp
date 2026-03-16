@@ -9,6 +9,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ChevronRight, ShieldAlert, RotateCcw, ChevronLeft, Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
+import { CATEGORY_NAMES } from "@shared/schema";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -22,12 +23,7 @@ import {
 } from "@/components/ui/alert-dialog";
 
 const getCategoryLabel = (cat: number) => {
-  switch (cat) {
-    case 1: return "Rules of the Road";
-    case 2: return "Road Signs";
-    case 3: return "Vehicle Controls";
-    default: return `Category ${cat}`;
-  }
+  return CATEGORY_NAMES[cat] || `Category ${cat}`;
 };
 
 const getLicenseLabel = (code: string) => {

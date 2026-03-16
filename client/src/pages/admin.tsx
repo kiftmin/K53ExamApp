@@ -1,6 +1,6 @@
-import { useState, useEffect, ChangeEvent } from "react";
+import React, { useState, useEffect, ChangeEvent } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { Question, Source } from "@shared/schema";
+import { Question, Source, CATEGORY_NAMES } from "@shared/schema";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -15,7 +15,8 @@ import {
     ArrowUpDown, ArrowUp, ArrowDown, Clock, 
     Copy, Search, Database, LayoutGrid, ListChecks,
     Filter, X, CheckSquare, Layers, Trash,
-    ShieldCheck, ShieldAlert, AlertTriangle, MoreHorizontal
+    ShieldCheck, ShieldAlert, AlertTriangle, MoreHorizontal,
+    ChevronDown, ChevronUp, CheckCircle2
 } from "lucide-react";
 import { 
     Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter 
@@ -37,6 +38,9 @@ import {
     DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
+    DropdownMenuSub,
+    DropdownMenuSubContent,
+    DropdownMenuSubTrigger,
 } from "@/components/ui/dropdown-menu";
 import QuestionModal from "@/components/question-modal";
 import SourceMaintenance from "@/components/source-maintenance";
@@ -58,10 +62,12 @@ export default function Admin() {
     const [isSourceModalOpen, setIsSourceModalOpen] = useState(false);
     const [selectedQuestion, setSelectedQuestion] = useState<Question | null>(null);
     const [sortConfig, setSortConfig] = useState<{ key: keyof Question; direction: 'asc' | 'desc' } | null>(null);
+    const [expandedId, setExpandedId] = useState<number | null>(null);
     
     // Multi-select state
     const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set());
     const [bulkSourceId, setBulkSourceId] = useState<string>("none");
+    const [bulkCategoryId, setBulkCategoryId] = useState<string>("1");
     const [isBulkDeleteAlertOpen, setIsBulkDeleteAlertOpen] = useState(false);
 
     // Import state
@@ -180,6 +186,34 @@ export default function Admin() {
         }
     });
 
+    const bulkCategoryMutation = useMutation({
+        mutationFn: async ({ ids, category }: { ids: number[], category: number }) => {
+            await apiRequest("POST", "/api/questions/bulk-category", { ids, category });
+        },
+        onSuccess: (_, { category }) => {
+            queryClient.invalidateQueries({ queryKey: ["/api/questions"] });
+            toast({ title: `Assigned category ${category} to ${selectedIds.size} questions` });
+            setSelectedIds(new Set());
+        },
+        onError: (error: Error) => {
+            toast({ title: "Bulk category update failed", description: error.message, variant: "destructive" });
+        }
+    });
+
+    const bulkDuplicateMutation = useMutation({
+        mutationFn: async ({ ids, isDuplicate }: { ids: number[], isDuplicate: boolean }) => {
+            await apiRequest("POST", "/api/questions/bulk-duplicate", { ids, isDuplicate });
+        },
+        onSuccess: (_, { isDuplicate }) => {
+            queryClient.invalidateQueries({ queryKey: ["/api/questions"] });
+            toast({ title: `${isDuplicate ? 'Marked' : 'Unmarked'} ${selectedIds.size} questions as duplicates` });
+            setSelectedIds(new Set());
+        },
+        onError: (error: Error) => {
+            toast({ title: "Bulk duplicate update failed", description: error.message, variant: "destructive" });
+        }
+    });
+
     const handleBulkDelete = () => {
         if (selectedIds.size === 0) return;
         bulkDeleteMutation.mutate(Array.from(selectedIds));
@@ -188,6 +222,16 @@ export default function Admin() {
     const handleBulkOfficialToggle = (isOfficial: boolean) => {
         if (selectedIds.size === 0) return;
         bulkOfficialMutation.mutate({ ids: Array.from(selectedIds), isOfficial });
+    };
+
+    const handleBulkCategoryAssign = () => {
+        if (selectedIds.size === 0) return;
+        bulkCategoryMutation.mutate({ ids: Array.from(selectedIds), category: parseInt(bulkCategoryId) });
+    };
+
+    const handleBulkDuplicateToggle = (isDuplicate: boolean) => {
+        if (selectedIds.size === 0) return;
+        bulkDuplicateMutation.mutate({ ids: Array.from(selectedIds), isDuplicate });
     };
 
     const handleFileUpload = async (event: ChangeEvent<HTMLInputElement>) => {
@@ -261,9 +305,9 @@ export default function Admin() {
 
     const duplicateGroups: Map<number, number> = new Map();
     const groupColors: string[] = [
-        "bg-red-50/50", "bg-orange-50/50", "bg-yellow-50/50", 
-        "bg-green-50/50", "bg-emerald-50/50", "bg-blue-50/50", 
-        "bg-indigo-50/50", "bg-purple-50/50", "bg-pink-50/50", "bg-rose-50/50"
+        "bg-red-200/50", "bg-orange-200/50", "bg-yellow-200/50", 
+        "bg-green-200/50", "bg-emerald-200/50", "bg-blue-200/50", 
+        "bg-indigo-200/50", "bg-purple-200/50", "bg-pink-200/50", "bg-rose-200/50"
     ];
 
     if (questions) {
@@ -527,7 +571,9 @@ export default function Admin() {
                                 </SelectTrigger>
                                 <SelectContent>
                                     <SelectItem value="all">All Cats</SelectItem>
-                                    {[1, 2, 3].map(v => <SelectItem key={v} value={v.toString()}>Cat {v}</SelectItem>)}
+                                    {Object.entries(CATEGORY_NAMES).map(([val, name]) => (
+                                        <SelectItem key={val} value={val}>{name}</SelectItem>
+                                    ))}
                                 </SelectContent>
                             </Select>
 
@@ -613,70 +659,139 @@ export default function Admin() {
                                     sortedQuestions.map((question) => {
                                         const groupId = duplicateGroups.get(question.id);
                                         const isSelected = selectedIds.has(question.id);
-                                        const rowColor = groupId !== undefined ? groupColors[groupId % groupColors.length] : "";
+                                        const isExpanded = expandedId === question.id;
+                                        const rowColor = (showDuplicates && groupId !== undefined) ? groupColors[groupId % groupColors.length] : "";
                                         
                                         return (
-                                            <TableRow key={question.id} className={`${rowColor} ${isSelected ? 'bg-blue-50/50' : 'hover:bg-neutral-50/50'} border-neutral-100 transition-all group`}>
-                                                <TableCell className="px-4">
-                                                    <Checkbox 
-                                                        checked={isSelected}
-                                                        onCheckedChange={() => toggleSelection(question.id)}
-                                                        className="h-4 w-4 border-neutral-300 rounded"
-                                                    />
+                                            <React.Fragment key={question.id}>
+                                                <TableRow 
+                                                    className={`transition-all group cursor-pointer border-b border-neutral-100 ${rowColor || 'hover:bg-neutral-50/50'} ${
+                                                        isSelected 
+                                                        ? 'border-l-4 border-l-blue-600 bg-blue-50/20' 
+                                                        : 'border-l-4 border-l-transparent'
+                                                    }`}
+                                                    onClick={() => setExpandedId(isExpanded ? null : question.id)}
+                                                >
+                                                    <TableCell className="px-4" onClick={(e) => e.stopPropagation()}>
+                                                        <Checkbox 
+                                                            checked={isSelected}
+                                                            onCheckedChange={() => toggleSelection(question.id)}
+                                                            className="h-4 w-4 border-neutral-300 rounded"
+                                                        />
+                                                    </TableCell>
+                                                    <TableCell>
+                                                        {question.is_official ? (
+                                                            <div className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-blue-50 text-blue-700 text-[9px] font-black uppercase tracking-tighter border border-blue-100">
+                                                                Official
+                                                            </div>
+                                                        ) : (
+                                                            <div className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-neutral-100 text-neutral-500 text-[9px] font-black uppercase tracking-tighter">
+                                                                Draft
+                                                            </div>
+                                                        )}
+                                                    </TableCell>
+                                                    <TableCell className="font-mono text-xs font-black text-neutral-400">
+                                                        {question.question_number.toString().padStart(3, '0')}
+                                                    </TableCell>
+                                                <TableCell className="max-w-md">
+                                                    <div className="flex items-start gap-2">
+                                                        <div className="pt-0.5">
+                                                            {isExpanded ? <ChevronUp className="h-3.5 w-3.5 text-blue-500" /> : <ChevronDown className="h-3.5 w-3.5 text-neutral-400 group-hover:text-blue-500 transition-colors" />}
+                                                        </div>
+                                                        <div className="flex flex-col gap-1 min-w-0">
+                                                            <span className={`text-[11px] font-bold truncate ${isExpanded ? 'text-blue-600' : 'text-neutral-700 group-hover:text-neutral-900'}`}>{question.question_text}</span>
+                                                            {showDuplicates && groupId !== undefined && (
+                                                                <span className="text-[8px] font-black bg-rose-50 text-rose-600 px-1.5 py-0 rounded border border-rose-100 uppercase self-start">Cluster Grp {groupId + 1}</span>
+                                                            )}
+                                                        </div>
+                                                    </div>
                                                 </TableCell>
                                                 <TableCell>
-                                                    {question.is_official ? (
-                                                        <div className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-blue-50 text-blue-700 text-[9px] font-black uppercase tracking-tighter border border-blue-100">
-                                                            Official
-                                                        </div>
-                                                    ) : (
-                                                        <div className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-neutral-100 text-neutral-500 text-[9px] font-black uppercase tracking-tighter">
-                                                            Draft
-                                                        </div>
-                                                    )}
+                                                    <div className="text-[10px] font-black text-neutral-400 px-3 py-1 rounded-full bg-neutral-100 flex items-center justify-center border border-neutral-200 whitespace-nowrap">
+                                                        {CATEGORY_NAMES[question.category] || question.category}
+                                                    </div>
                                                 </TableCell>
-                                                <TableCell className="font-mono text-xs font-black text-neutral-400">
-                                                    {question.question_number.toString().padStart(3, '0')}
+                                                <TableCell>
+                                                    <span className="text-[10px] font-bold text-neutral-500 bg-white border border-neutral-200 px-2 py-0.5 rounded-md shadow-xs">
+                                                        {question.license_code}
+                                                    </span>
                                                 </TableCell>
-                                            <TableCell className="max-w-md">
-                                                <div className="flex flex-col gap-1">
-                                                    <span className="text-[11px] font-bold text-neutral-700 truncate">{question.question_text}</span>
-                                                    {groupId !== undefined && (
-                                                        <span className="text-[8px] font-black bg-rose-50 text-rose-600 px-1.5 py-0 rounded border border-rose-100 uppercase self-start">Cluster Grp {groupId + 1}</span>
-                                                    )}
-                                                </div>
-                                            </TableCell>
-                                            <TableCell>
-                                                <div className="text-[10px] font-black text-neutral-400 h-6 w-6 rounded-full bg-neutral-100 flex items-center justify-center border border-neutral-200">
-                                                    {question.category}
-                                                </div>
-                                            </TableCell>
-                                            <TableCell>
-                                                <span className="text-[10px] font-bold text-neutral-500 bg-white border border-neutral-200 px-2 py-0.5 rounded-md shadow-xs">
-                                                    {question.license_code}
-                                                </span>
-                                            </TableCell>
-                                            <TableCell className="max-w-[120px]">
-                                                <span className="text-[10px] font-bold text-neutral-500 truncate block">
-                                                    {sources?.find(s => s.id === question.source_id)?.name || "Unassigned"}
-                                                </span>
-                                            </TableCell>
-                                            <TableCell className="text-right px-4">
-                                                <div className="flex justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                                                    <Button variant="ghost" size="icon" onClick={() => handleEdit(question)} className="h-8 w-8 rounded-lg hover:bg-white hover:shadow-sm">
-                                                        <Pencil className="h-3.5 w-3.5 text-blue-500" />
-                                                    </Button>
-                                                    <Button variant="ghost" size="icon" onClick={() => {
-                                                        if (confirm('Irreversible deletion - proceed?')) {
-                                                            deleteMutation.mutate(question.id);
-                                                        }
-                                                    }} className="h-8 w-8 rounded-lg hover:bg-white hover:shadow-sm">
-                                                        <Trash2 className="h-3.5 w-3.5 text-rose-500" />
-                                                    </Button>
-                                                </div>
-                                            </TableCell>
-                                        </TableRow>
-                                    )})
+                                                <TableCell className="max-w-[120px]">
+                                                    <span className="text-[10px] font-bold text-neutral-500 truncate block">
+                                                        {sources?.find(s => s.id === question.source_id)?.name || "Unassigned"}
+                                                    </span>
+                                                </TableCell>
+                                                <TableCell className="text-right px-4" onClick={(e) => e.stopPropagation()}>
+                                                    <div className="flex justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                                                        <Button variant="ghost" size="icon" onClick={() => handleEdit(question)} className="h-8 w-8 rounded-lg hover:bg-white hover:shadow-sm">
+                                                            <Pencil className="h-3.5 w-3.5 text-blue-500" />
+                                                        </Button>
+                                                        <Button variant="ghost" size="icon" onClick={() => {
+                                                            if (confirm('Irreversible deletion - proceed?')) {
+                                                                deleteMutation.mutate(question.id);
+                                                            }
+                                                        }} className="h-8 w-8 rounded-lg hover:bg-white hover:shadow-sm">
+                                                            <Trash2 className="h-3.5 w-3.5 text-rose-500" />
+                                                        </Button>
+                                                    </div>
+                                                </TableCell>
+                                            </TableRow>
+                                            
+                                            {isExpanded && (
+                                                <TableRow className="bg-neutral-50 hover:bg-neutral-50">
+                                                    <TableCell colSpan={8} className="p-0 border-t-0">
+                                                        <div className="p-8 bg-white border-x-2 border-b-2 border-blue-100/50 rounded-b-2xl mx-12 mb-4 shadow-xl shadow-blue-900/5 animate-in slide-in-from-top-4 duration-300">
+                                                            <div className="flex flex-col md:flex-row gap-8">
+                                                                {question.contains_image && question.image_link && (
+                                                                    <div className="flex-shrink-0 w-full md:w-64 h-48 bg-neutral-50 rounded-2xl border border-neutral-100 flex items-center justify-center overflow-hidden">
+                                                                        <img 
+                                                                            src={question.image_link} 
+                                                                            alt="Question" 
+                                                                            className="max-w-full max-h-full object-contain"
+                                                                        />
+                                                                    </div>
+                                                                )}
+                                                                
+                                                                <div className="flex-1 space-y-6">
+                                                                    <div>
+                                                                        <h4 className="text-[10px] font-black text-neutral-400 uppercase tracking-widest mb-3">Question Payload</h4>
+                                                                        <p className="text-sm font-bold text-neutral-800 leading-relaxed">{question.question_text}</p>
+                                                                    </div>
+
+                                                                    <div className="space-y-3">
+                                                                        <h4 className="text-[10px] font-black text-neutral-400 uppercase tracking-widest mb-3">Response Options</h4>
+                                                                        <div className="grid grid-cols-1 gap-2">
+                                                                            {question.options.map((opt) => (
+                                                                                <div 
+                                                                                    key={opt.answer_number}
+                                                                                    className={`flex items-start gap-3 p-3 rounded-xl border-2 transition-all ${
+                                                                                        opt.correct_answer 
+                                                                                        ? 'bg-emerald-50 border-emerald-500/30 text-emerald-900 shadow-sm shadow-emerald-100' 
+                                                                                        : 'bg-neutral-50 border-neutral-100 text-neutral-600'
+                                                                                    }`}
+                                                                                >
+                                                                                    <div className={`h-6 w-6 rounded-lg flex items-center justify-center text-[10px] font-black shrink-0 ${
+                                                                                        opt.correct_answer ? 'bg-emerald-500 text-white' : 'bg-neutral-200 text-neutral-500'
+                                                                                    }`}>
+                                                                                        {opt.answer_number}
+                                                                                    </div>
+                                                                                    <span className="text-xs font-bold pt-0.5 leading-snug">{opt.answer_text}</span>
+                                                                                    {opt.correct_answer && (
+                                                                                        <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500 ml-auto self-center" />
+                                                                                    )}
+                                                                                </div>
+                                                                            ))}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </TableCell>
+                                                </TableRow>
+                                            )}
+                                            </React.Fragment>
+                                        )
+                                    })
                                 )}
                             </TableBody>
                         </Table>
@@ -717,7 +832,29 @@ export default function Admin() {
                                 disabled={bulkSourceMutation.isPending}
                                 className="h-10 px-4 bg-blue-600 text-white hover:bg-blue-700 rounded-xl text-[10px] font-black uppercase transition-all shadow-lg shadow-blue-900/40"
                             >
-                                {bulkSourceMutation.isPending ? "Applying..." : "Assign Source"}
+                                {bulkSourceMutation.isPending ? "Assigning..." : "Source"}
+                            </Button>
+                        </div>
+
+                        <div className="h-4 w-px bg-neutral-800 mx-1" />
+
+                        <div className="flex items-center gap-2">
+                            <Select value={bulkCategoryId} onValueChange={setBulkCategoryId}>
+                                <SelectTrigger className="h-10 bg-neutral-800 border-neutral-700 text-white text-[10px] font-bold min-w-[90px] focus:ring-blue-500 rounded-xl">
+                                    <SelectValue placeholder="Cat" />
+                                </SelectTrigger>
+                                <SelectContent className="bg-neutral-900 border-neutral-800 text-white">
+                                    {Object.entries(CATEGORY_NAMES).map(([val, name]) => (
+                                        <SelectItem key={val} value={val}>{name}</SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
+                            <Button 
+                                onClick={handleBulkCategoryAssign}
+                                disabled={bulkCategoryMutation.isPending}
+                                className="h-10 px-4 bg-emerald-600 text-white hover:bg-emerald-700 rounded-xl text-[10px] font-black uppercase transition-all shadow-lg shadow-emerald-900/40"
+                            >
+                                {bulkCategoryMutation.isPending ? "Assigning..." : "Assign Category"}
                             </Button>
                         </div>
 
@@ -730,23 +867,56 @@ export default function Admin() {
                                         <MoreHorizontal className="h-4 w-4" />
                                     </Button>
                                 </DropdownMenuTrigger>
-                                <DropdownMenuContent align="end" className="bg-neutral-900 border-neutral-800 text-white min-w-[180px]">
+                                <DropdownMenuContent align="end" className="bg-neutral-900 border-neutral-800 text-white min-w-[200px]">
                                     <DropdownMenuLabel className="text-[9px] font-black uppercase text-neutral-500 px-3 py-2">Advanced Actions</DropdownMenuLabel>
                                     <DropdownMenuSeparator className="bg-neutral-800" />
-                                    <DropdownMenuItem 
-                                        onClick={() => handleBulkOfficialToggle(true)}
-                                        className="flex items-center gap-2 p-3 focus:bg-neutral-800 focus:text-blue-400 transition-colors cursor-pointer"
-                                    >
-                                        <ShieldCheck className="h-4 w-4" />
-                                        <span className="text-[10px] font-black uppercase">Mark as Official</span>
-                                    </DropdownMenuItem>
-                                    <DropdownMenuItem 
-                                        onClick={() => handleBulkOfficialToggle(false)}
-                                        className="flex items-center gap-2 p-3 focus:bg-neutral-800 focus:text-neutral-400 transition-colors cursor-pointer"
-                                    >
-                                        <ShieldAlert className="h-4 w-4" />
-                                        <span className="text-[10px] font-black uppercase">Revert to Draft</span>
-                                    </DropdownMenuItem>
+                                    
+                                    <DropdownMenuSub>
+                                        <DropdownMenuSubTrigger className="flex items-center gap-2 p-3 text-[10px] font-black uppercase focus:bg-neutral-800 transition-colors">
+                                            <ShieldCheck className="h-4 w-4" />
+                                            <span>Question Status</span>
+                                        </DropdownMenuSubTrigger>
+                                        <DropdownMenuSubContent className="bg-neutral-900 border-neutral-800 text-white">
+                                            <DropdownMenuItem 
+                                                onClick={() => handleBulkOfficialToggle(true)}
+                                                className="flex items-center gap-2 p-3 focus:bg-neutral-800 focus:text-blue-400 transition-colors cursor-pointer"
+                                            >
+                                                <ShieldCheck className="h-4 w-4" />
+                                                <span className="text-[10px] font-black uppercase">Mark as Official</span>
+                                            </DropdownMenuItem>
+                                            <DropdownMenuItem 
+                                                onClick={() => handleBulkOfficialToggle(false)}
+                                                className="flex items-center gap-2 p-3 focus:bg-neutral-800 focus:text-neutral-400 transition-colors cursor-pointer"
+                                            >
+                                                <ShieldAlert className="h-4 w-4" />
+                                                <span className="text-[10px] font-black uppercase">Revert to Draft</span>
+                                            </DropdownMenuItem>
+                                        </DropdownMenuSubContent>
+                                    </DropdownMenuSub>
+
+                                    <DropdownMenuSub>
+                                        <DropdownMenuSubTrigger className="flex items-center gap-2 p-3 text-[10px] font-black uppercase focus:bg-neutral-800 transition-colors">
+                                            <Layers className="h-4 w-4" />
+                                            <span>Duplicates</span>
+                                        </DropdownMenuSubTrigger>
+                                        <DropdownMenuSubContent className="bg-neutral-900 border-neutral-800 text-white">
+                                            <DropdownMenuItem 
+                                                onClick={() => handleBulkDuplicateToggle(true)}
+                                                className="flex items-center gap-2 p-3 focus:bg-neutral-800 focus:text-orange-400 transition-colors cursor-pointer"
+                                            >
+                                                <Layers className="h-4 w-4" />
+                                                <span className="text-[10px] font-black uppercase">Mark as Duplicates</span>
+                                            </DropdownMenuItem>
+                                            <DropdownMenuItem 
+                                                onClick={() => handleBulkDuplicateToggle(false)}
+                                                className="flex items-center gap-2 p-3 focus:bg-neutral-800 focus:text-neutral-400 transition-colors cursor-pointer"
+                                            >
+                                                <CheckSquare className="h-4 w-4" />
+                                                <span className="text-[10px] font-black uppercase">Unmark Duplicates</span>
+                                            </DropdownMenuItem>
+                                        </DropdownMenuSubContent>
+                                    </DropdownMenuSub>
+
                                     <DropdownMenuSeparator className="bg-neutral-800" />
                                     <DropdownMenuItem 
                                         onClick={() => setIsBulkDeleteAlertOpen(true)}

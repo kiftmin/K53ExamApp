@@ -76,6 +76,36 @@ export async function registerRoutes(
     }
   });
 
+  app.post('/api/questions/bulk-category', async (req: any, res: any) => {
+    try {
+      const { ids, category } = z.object({
+        ids: z.array(z.number()),
+        category: z.number()
+      }).parse(req.body);
+
+      await storage.bulkUpdateCategory(ids, category);
+      res.json({ message: `Successfully updated ${ids.length} questions.` });
+    } catch (err) {
+      console.error("Error in bulk category update:", err);
+      res.status(400).json({ message: "Invalid bulk category update payload", error: err });
+    }
+  });
+
+  app.post('/api/questions/bulk-duplicate', async (req: any, res: any) => {
+    try {
+      const { ids, isDuplicate } = z.object({
+        ids: z.array(z.number()),
+        isDuplicate: z.boolean()
+      }).parse(req.body);
+
+      await storage.bulkUpdateDuplicate(ids, isDuplicate);
+      res.json({ message: `Successfully updated ${ids.length} questions.` });
+    } catch (err) {
+      console.error("Error in bulk duplicate update:", err);
+      res.status(400).json({ message: "Invalid bulk duplicate update payload", error: err });
+    }
+  });
+
   // === Individual Question Endpoints ===
 
   app.post('/api/questions', async (req: any, res: any) => {

@@ -31,3 +31,9 @@ export type InsertSource = Omit<z.infer<typeof sourceSchema>, "id">;
 
 export type Question = z.infer<typeof questionSchema> & { id: number };
 export type InsertQuestion = Omit<z.infer<typeof questionSchema>, "id">;
+
+export const CATEGORY_NAMES: Record<number, string> = {
+  1: "Rules",
+  2: "Signs",
+  3: "Controls"
+};
