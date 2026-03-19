@@ -38,7 +38,12 @@ export default function Home() {
     : [];
 
   const { data: sources, isLoading: isSourcesLoading } = useQuery<Source[]>({
-    queryKey: ["/api/sources"],
+    queryKey: ["/api/sources/active"],
+  });
+
+  // Get active source IDs for filtering questions in quiz
+  const { data: activeSourceIds } = useQuery<number[]>({
+    queryKey: ["/api/sources/active-ids"],
   });
 
   const [formData, setFormData] = useState({
@@ -101,6 +106,7 @@ export default function Home() {
         testType: formData.isSimulation ? 'simulation' : 'category',
         source: formData.source,
         onlyOfficial: formData.onlyOfficial,
+        activeSourceIds: activeSourceIds || [],
       },
       questions
     );

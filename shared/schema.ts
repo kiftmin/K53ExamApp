@@ -8,7 +8,8 @@ export const optionSchema = z.object({
 
 export const sourceSchema = z.object({
   id: z.number().optional(),
-  name: z.string()
+  name: z.string(),
+  is_active: z.boolean().default(true)
 });
 
 export const questionSchema = z.object({

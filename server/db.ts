@@ -14,7 +14,8 @@ export const db = drizzle(client);
 
 export const sources = pgTable('sources', {
     id: serial('id').primaryKey(),
-    name: text('name').notNull().unique()
+    name: text('name').notNull().unique(),
+    is_active: boolean('is_active').default(true).notNull()
 });
 
 // Define Drizzle Postgres Schema matching the Zod schema

@@ -9,6 +9,7 @@ export interface UserDetails {
   testType: 'category' | 'simulation';
   source?: string;
   onlyOfficial?: boolean;
+  activeSourceIds?: number[];
 }
 
 // K53 pass thresholds (Absolute number of correct answers required)
@@ -95,9 +96,19 @@ export function QuizProvider({ children }: { children: ReactNode }) {
       // Filter by Source if selected (and not all)
       if (user.source && user.source !== 'all') {
         filteredDb = filteredDb.filter(q => q.source_id?.toString() === user.source);
-      } else if (!user.onlyOfficial) {
-        // If 'all' sources and NOT official-only, hide known duplicates
-        filteredDb = filteredDb.filter(q => !q.is_duplicate);
+      } else {
+        // If 'all' sources selected, filter by active sources only
+        const activeIds = user.activeSourceIds || [];
+        if (activeIds.length > 0) {
+          filteredDb = filteredDb.filter(q =>
+            // Keep questions that have no source, or have a source that is active
+            !q.source_id || activeIds.includes(q.source_id)
+          );
+        }
+        if (!user.onlyOfficial) {
+          // Also hide known duplicates
+          filteredDb = filteredDb.filter(q => !q.is_duplicate);
+        }
       }
 
       // Pool matching questions: both '00' (General) and the user's specific license
@@ -110,13 +121,13 @@ export function QuizProvider({ children }: { children: ReactNode }) {
 
       // Take at least licenseSpecificMin from the specific pool if available
       const takenSpecific = shuffledSpecific.slice(0, licenseSpecificMin);
-      
+
       // Calculate how many more we need to reach the 'total'
       const remainingCount = total - takenSpecific.length;
 
       // Take the rest from the general pool, then if still not enough, take more from whichever is left
       const takenGeneral = shuffledGeneral.slice(0, remainingCount);
-      
+
       let finalSelection = [...takenSpecific, ...takenGeneral];
 
       // fallback: if we still don't have enough, grab anything else that matches the filters

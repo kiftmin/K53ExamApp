@@ -150,7 +150,7 @@ export async function registerRoutes(
 
 
   // === Sources Endpoints ===
-  
+
   app.get('/api/sources', async (req: any, res: any) => {
     try {
       const sources = await storage.getSources();
@@ -158,6 +158,26 @@ export async function registerRoutes(
     } catch (err) {
       console.error("Error reading sources:", err);
       res.status(500).json({ message: "Failed to load sources" });
+    }
+  });
+
+  app.get('/api/sources/active', async (req: any, res: any) => {
+    try {
+      const sources = await storage.getActiveSources();
+      res.json(sources);
+    } catch (err) {
+      console.error("Error reading active sources:", err);
+      res.status(500).json({ message: "Failed to load active sources" });
+    }
+  });
+
+  app.get('/api/sources/active-ids', async (req: any, res: any) => {
+    try {
+      const sources = await storage.getActiveSources();
+      res.json(sources.map(s => s.id));
+    } catch (err) {
+      console.error("Error reading active source IDs:", err);
+      res.status(500).json({ message: "Failed to load active source IDs" });
     }
   });
 
@@ -184,6 +204,24 @@ export async function registerRoutes(
     } catch (err) {
       console.error("Error updating source:", err);
       res.status(400).json({ message: "Invalid source data", error: err });
+    }
+  });
+
+  app.patch('/api/sources/:id/active', async (req: any, res: any) => {
+    try {
+      const id = parseInt(req.params.id);
+      const { isActive } = z.object({
+        isActive: z.boolean()
+      }).parse(req.body);
+
+      const updated = await storage.toggleSourceActive(id, isActive);
+      if (!updated) {
+        return res.status(404).json({ message: "Source not found" });
+      }
+      res.json(updated);
+    } catch (err) {
+      console.error("Error toggling source active status:", err);
+      res.status(400).json({ message: "Invalid request", error: err });
     }
   });
 

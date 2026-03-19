@@ -16,8 +16,10 @@ export interface IStorage {
 
 
   getSources(): Promise<Source[]>;
+  getActiveSources(): Promise<Source[]>;
   createSource(source: InsertSource): Promise<Source>;
   updateSource(id: number, source: Partial<InsertSource>): Promise<Source | undefined>;
+  toggleSourceActive(id: number, isActive: boolean): Promise<Source | undefined>;
   deleteSource(id: number): Promise<boolean>;
 }
 
@@ -104,6 +106,11 @@ export class NeonDatabaseStorage implements IStorage {
     return data as Source[];
   }
 
+  async getActiveSources(): Promise<Source[]> {
+    const data = await db.select().from(sources).where(eq(sources.is_active, true));
+    return data as Source[];
+  }
+
   async createSource(source: InsertSource): Promise<Source> {
     const [newSource] = await db.insert(sources).values(source).returning();
     return newSource as Source;
@@ -113,6 +120,15 @@ export class NeonDatabaseStorage implements IStorage {
     const [updatedSource] = await db
       .update(sources)
       .set(source)
+      .where(eq(sources.id, id))
+      .returning();
+    return updatedSource as Source | undefined;
+  }
+
+  async toggleSourceActive(id: number, isActive: boolean): Promise<Source | undefined> {
+    const [updatedSource] = await db
+      .update(sources)
+      .set({ is_active: isActive })
       .where(eq(sources.id, id))
       .returning();
     return updatedSource as Source | undefined;
