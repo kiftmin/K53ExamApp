@@ -52,6 +52,7 @@ export default function Home() {
     licenseCode: "",
     category: "",
     accessCode: "",
+    mobileNumber: "",
     isSimulation: false,
     source: "all",
     onlyOfficial: false,
@@ -61,10 +62,14 @@ export default function Home() {
   const [accessCodeError, setAccessCodeError] = useState("");
   const [validatingCode, setValidatingCode] = useState(false);
 
+  const codePrefix = formData.accessCode?.charAt(0)?.toUpperCase() || "";
+  const requiresMobile = ["W", "M", "X"].includes(codePrefix);
+
   useEffect(() => {
     const savedCode = sessionStorage.getItem("k53_access_code");
+    const savedMobile = sessionStorage.getItem("k53_mobile_number");
     if (savedCode) {
-      setFormData((prev) => ({ ...prev, accessCode: savedCode }));
+      setFormData((prev) => ({ ...prev, accessCode: savedCode, mobileNumber: savedMobile || "" }));
       setAccessCodeValidated(true);
     }
 
@@ -115,8 +120,15 @@ export default function Home() {
   };
 
   const handleValidateCode = async () => {
-    if (!formData.accessCode || formData.accessCode.length !== 6) {
-      setAccessCodeError("Please enter a 6-character alphanumeric code.");
+    const code = formData.accessCode.trim().toUpperCase();
+    if (!code || code.length !== 7) {
+      setAccessCodeError("Please enter a 7-character code (e.g. DXXXXXX).");
+      return;
+    }
+    const prefix = code.charAt(0);
+    const needsMobile = ["W", "M", "X"].includes(prefix);
+    if (needsMobile && !/^\d{10}$/.test(formData.mobileNumber.trim())) {
+      setAccessCodeError("This code requires a linked 10-digit mobile number.");
       return;
     }
     setValidatingCode(true);
@@ -125,14 +137,22 @@ export default function Home() {
       const res = await fetch("/api/access-code/validate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ code: formData.accessCode }),
+        body: JSON.stringify({
+          code,
+          mobileNumber: needsMobile ? formData.mobileNumber.trim() : undefined,
+        }),
       });
       const data = await res.json();
       if (data.valid) {
         setAccessCodeValidated(true);
-        sessionStorage.setItem("k53_access_code", formData.accessCode);
+        sessionStorage.setItem("k53_access_code", code);
+        if (needsMobile) {
+          sessionStorage.setItem("k53_mobile_number", formData.mobileNumber.trim());
+        } else {
+          sessionStorage.removeItem("k53_mobile_number");
+        }
       } else {
-        setAccessCodeError("Invalid access code. Please try again.");
+        setAccessCodeError(data.message || "Invalid access code. Please try again.");
       }
     } catch {
       setAccessCodeError("Failed to validate code. Please try again.");
@@ -224,13 +244,13 @@ export default function Home() {
                   <div className="flex gap-2">
                     <Input
                       id="accessCode"
-                      placeholder="Enter 6-character code"
+                      placeholder="D / W / M / X + 6 chars"
                       value={formData.accessCode}
                       onChange={(e) => {
                         const val = e.target.value
                           .replace(/[^a-zA-Z0-9]/g, "")
                           .toUpperCase()
-                          .slice(0, 6);
+                          .slice(0, 7);
                         setFormData((prev) => ({ ...prev, accessCode: val }));
                         if (accessCodeValidated) {
                           setAccessCodeValidated(false);
@@ -238,7 +258,7 @@ export default function Home() {
                         }
                         setAccessCodeError("");
                       }}
-                      maxLength={6}
+                      maxLength={7}
                       className={`h-11 bg-background/60 focus:bg-background transition-colors font-mono text-base tracking-[0.25em] ${accessCodeValidated
                         ? "border-green-500 bg-green-50/50"
                         : accessCodeError
@@ -251,7 +271,7 @@ export default function Home() {
                       <Button
                         type="button"
                         onClick={handleValidateCode}
-                        disabled={validatingCode || formData.accessCode.length !== 6}
+                        disabled={validatingCode || formData.accessCode.length !== 7}
                         className="h-11 px-5 text-sm font-bold"
                         style={{
                           background: "linear-gradient(135deg, #E53E1A, #F5A623)",
@@ -269,6 +289,34 @@ export default function Home() {
                   </div>
                   {accessCodeError && (
                     <p className="text-xs text-red-500 mt-1">{accessCodeError}</p>
+                  )}
+                  {(requiresMobile || formData.mobileNumber) && (
+                    <div className="space-y-1.5">
+                      <Label htmlFor="mobileNumber" className="text-sm font-semibold">
+                        Mobile Number (linked to code)
+                      </Label>
+                      <Input
+                        id="mobileNumber"
+                        placeholder="10-digit mobile number"
+                        inputMode="numeric"
+                        value={formData.mobileNumber}
+                        onChange={(e) => {
+                          const val = e.target.value.replace(/\D/g, "").slice(0, 10);
+                          setFormData((prev) => ({ ...prev, mobileNumber: val }));
+                          if (accessCodeValidated) {
+                            setAccessCodeValidated(false);
+                            sessionStorage.removeItem("k53_access_code");
+                          }
+                          setAccessCodeError("");
+                        }}
+                        maxLength={10}
+                        className="h-11 bg-background/60 font-mono tracking-[0.2em]"
+                        disabled={accessCodeValidated}
+                      />
+                      <p className="text-[11px] text-muted-foreground">
+                        Required for Weekly (W), Monthly (M) and Master (X) codes. Daily (D) codes don't need it.
+                      </p>
+                    </div>
                   )}
                 </div>
 
@@ -402,6 +450,7 @@ export default function Home() {
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="all">All Sources (Hide Duplicates)</SelectItem>
+                        <SelectItem value="unassigned">Unassigned (no source)</SelectItem>
                         {sources?.map((src) => (
                           <SelectItem key={src.id} value={src.id.toString()}>{src.name}</SelectItem>
                         ))}

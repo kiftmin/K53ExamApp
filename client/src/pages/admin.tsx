@@ -44,6 +44,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import QuestionModal from "@/components/question-modal";
 import SourceMaintenance from "@/components/source-maintenance";
+import AdminGate from "@/components/admin-gate";
+import AccessCodeManager from "@/components/access-code-manager";
 
 export default function Admin() {
     const queryClient = useQueryClient();
@@ -347,7 +349,10 @@ export default function Admin() {
         const matchesSearch = q.question_text.toLowerCase().includes(search.toLowerCase());
         const matchesCategory = categoryFilter === "all" || q.category.toString() === categoryFilter;
         const matchesLicense = licenseFilter === "all" || q.license_code === licenseFilter;
-        const matchesSource = sourceFilter === "all" || q.source_id?.toString() === sourceFilter;
+        const matchesSource =
+            sourceFilter === "all" ? true
+                : sourceFilter === "unassigned" ? q.source_id == null
+                    : q.source_id?.toString() === sourceFilter;
         const matchesOfficial = officialFilter === "all" || (officialFilter === "official" ? q.is_official : !q.is_official);
         const matchesDuplicates = showDuplicates ? duplicateGroups.has(q.id) : true;
         return matchesSearch && matchesCategory && matchesLicense && matchesSource && matchesOfficial && matchesDuplicates;
@@ -423,6 +428,7 @@ export default function Admin() {
     };
 
     return (
+        <AdminGate>
         <div className="min-h-screen bg-neutral-50/50">
             <header className="sticky top-0 z-30 bg-white/80 backdrop-blur-md border-b border-neutral-200 px-8 py-4">
                 <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -551,6 +557,8 @@ export default function Admin() {
                     </div>
                 </div>
 
+                <AccessCodeManager />
+
                 {/* Filter & Table Section */}
                 <div className="space-y-4">
                     <div className="flex flex-col md:flex-row gap-3 bg-white p-3 rounded-2xl border border-neutral-200 shadow-sm items-center">
@@ -593,6 +601,7 @@ export default function Admin() {
                                 </SelectTrigger>
                                 <SelectContent>
                                     <SelectItem value="all">All Sources</SelectItem>
+                                    <SelectItem value="unassigned">Unassigned</SelectItem>
                                     {sources?.map(src => (
                                         <SelectItem key={src.id} value={src.id.toString()}>{src.name}</SelectItem>
                                     ))}
@@ -1089,5 +1098,6 @@ export default function Admin() {
                 </DialogContent>
             </Dialog>
         </div>
+        </AdminGate>
     );
 }

@@ -95,7 +95,11 @@ export function QuizProvider({ children }: { children: ReactNode }) {
 
       // Filter by Source if selected (and not all)
       if (user.source && user.source !== 'all') {
-        filteredDb = filteredDb.filter(q => q.source_id?.toString() === user.source);
+        if (user.source === 'unassigned') {
+          filteredDb = filteredDb.filter(q => q.source_id == null);
+        } else {
+          filteredDb = filteredDb.filter(q => q.source_id?.toString() === user.source);
+        }
       } else {
         // If 'all' sources selected, filter by active sources only
         const activeIds = user.activeSourceIds || [];

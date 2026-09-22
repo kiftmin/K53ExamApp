@@ -1,6 +1,6 @@
 import { neon } from '@neondatabase/serverless';
 import { drizzle } from 'drizzle-orm/neon-http';
-import { pgTable, serial, text, integer, boolean, jsonb } from 'drizzle-orm/pg-core';
+import { pgTable, serial, text, integer, boolean, jsonb, timestamp } from 'drizzle-orm/pg-core';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
@@ -16,6 +16,17 @@ export const sources = pgTable('sources', {
     id: serial('id').primaryKey(),
     name: text('name').notNull().unique(),
     is_active: boolean('is_active').default(true).notNull()
+});
+
+export const accessCodes = pgTable('access_codes', {
+    id: serial('id').primaryKey(),
+    code: text('code').notNull().unique(),
+    type: text('type').notNull(), // 'daily' | 'weekly' | 'monthly' | 'master'
+    mobile_number: text('mobile_number'),
+    has_admin_access: boolean('has_admin_access').default(false).notNull(),
+    expires_at: timestamp('expires_at'),
+    is_revoked: boolean('is_revoked').default(false).notNull(),
+    created_at: timestamp('created_at').defaultNow().notNull(),
 });
 
 // Define Drizzle Postgres Schema matching the Zod schema

@@ -1,6 +1,6 @@
-import { db, questions, sources } from './db.js';
-import { Question, InsertQuestion, Source, InsertSource } from '../shared/schema.js';
-import { eq, inArray } from 'drizzle-orm';
+import { db, questions, sources, accessCodes } from './db.js';
+import { Question, InsertQuestion, Source, InsertSource, AccessCode, InsertAccessCode } from '../shared/schema.js';
+import { eq, inArray, desc } from 'drizzle-orm';
 
 export interface IStorage {
   getQuestions(): Promise<Question[]>;
@@ -21,6 +21,12 @@ export interface IStorage {
   updateSource(id: number, source: Partial<InsertSource>): Promise<Source | undefined>;
   toggleSourceActive(id: number, isActive: boolean): Promise<Source | undefined>;
   deleteSource(id: number): Promise<boolean>;
+
+  getAccessCodes(): Promise<AccessCode[]>;
+  getAccessCodeByCode(code: string): Promise<AccessCode | undefined>;
+  createAccessCode(data: InsertAccessCode): Promise<AccessCode>;
+  revokeAccessCode(id: number): Promise<AccessCode | undefined>;
+  deleteAccessCode(id: number): Promise<boolean>;
 }
 
 export class NeonDatabaseStorage implements IStorage {
@@ -140,6 +146,43 @@ export class NeonDatabaseStorage implements IStorage {
       .where(eq(sources.id, id))
       .returning();
     return !!deletedSource;
+  }
+
+  async getAccessCodes(): Promise<AccessCode[]> {
+    const data = await db.select().from(accessCodes).orderBy(desc(accessCodes.created_at));
+    return data as unknown as AccessCode[];
+  }
+
+  async getAccessCodeByCode(code: string): Promise<AccessCode | undefined> {
+    const normalized = code.trim().toUpperCase();
+    const rows = await db.select().from(accessCodes).where(eq(accessCodes.code, normalized));
+    return (rows[0] as unknown as AccessCode) || undefined;
+  }
+
+  async createAccessCode(data: InsertAccessCode): Promise<AccessCode> {
+    const [row] = await db.insert(accessCodes).values({
+      code: data.code.trim().toUpperCase(),
+      type: data.type,
+      mobile_number: data.mobile_number?.trim() ?? null,
+      has_admin_access: data.has_admin_access ?? false,
+      expires_at: data.expires_at ?? null,
+      is_revoked: false,
+    }).returning();
+    return row as unknown as AccessCode;
+  }
+
+  async revokeAccessCode(id: number): Promise<AccessCode | undefined> {
+    const [row] = await db
+      .update(accessCodes)
+      .set({ is_revoked: true })
+      .where(eq(accessCodes.id, id))
+      .returning();
+    return row as unknown as AccessCode | undefined;
+  }
+
+  async deleteAccessCode(id: number): Promise<boolean> {
+    const [row] = await db.delete(accessCodes).where(eq(accessCodes.id, id)).returning();
+    return !!row;
   }
 }
 

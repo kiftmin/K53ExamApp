@@ -38,3 +38,29 @@ export const CATEGORY_NAMES: Record<number, string> = {
   2: "Signs",
   3: "Controls"
 };
+
+export const ACCESS_CODE_TYPES = ["daily", "weekly", "monthly", "master"] as const;
+export type AccessCodeType = (typeof ACCESS_CODE_TYPES)[number];
+
+export const ACCESS_CODE_PREFIX: Record<AccessCodeType, string> = {
+  daily: "D",
+  weekly: "W",
+  monthly: "M",
+  master: "X",
+};
+
+export const accessCodeSchema = z.object({
+  id: z.number().optional(),
+  code: z.string(),
+  type: z.enum(ACCESS_CODE_TYPES),
+  mobile_number: z.string().nullable().optional(),
+  has_admin_access: z.boolean().default(false),
+  expires_at: z.coerce.date().nullable().optional(),
+  is_revoked: z.boolean().default(false),
+  created_at: z.coerce.date().optional(),
+});
+
+export type AccessCode = z.infer<typeof accessCodeSchema> & { id: number };
+export type InsertAccessCode = Omit<z.infer<typeof accessCodeSchema>, "id" | "created_at">;
+
+export const MOBILE_NUMBER_REGEX = /^\d{10}$/;
