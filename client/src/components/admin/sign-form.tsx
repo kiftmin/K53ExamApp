@@ -13,7 +13,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
-import { ImagePlus, Link2, Unlink, X } from "lucide-react";
+import { ImagePlus, Link2, Unlink, X, Trash2 } from "lucide-react";
 
 interface PendingImage {
   code: string;
@@ -53,6 +53,8 @@ export default function SignForm({ open, onClose, sign }: SignFormProps) {
   const { toast } = useToast();
   const [codeInput, setCodeInput] = useState("");
   const [pendingImages, setPendingImages] = useState<PendingImage[]>([]);
+  // Saved image mappings flagged for removal (persisted via PATCH on save)
+  const [removedCodes, setRemovedCodes] = useState<string[]>([]);
   const [pendingQuestionIds, setPendingQuestionIds] = useState<number[]>([]);
   const [questionSearch, setQuestionSearch] = useState("");
 
@@ -73,6 +75,7 @@ export default function SignForm({ open, onClose, sign }: SignFormProps) {
       });
       setCodeInput("");
       setPendingImages([]);
+      setRemovedCodes([]);
       setPendingQuestionIds([]);
       setQuestionSearch("");
     }
@@ -112,11 +115,26 @@ export default function SignForm({ open, onClose, sign }: SignFormProps) {
     }
     form.setValue("codes", [...codes, c], { shouldValidate: true });
     setCodeInput("");
+    // Re-adding a code revives its (still saved) image mapping
+    setRemovedCodes((prev) => prev.filter((x) => x !== c));
   };
 
   const removeCode = (c: string) => {
     form.setValue("codes", codes.filter((x) => x !== c), { shouldValidate: true });
     setPendingImages((prev) => prev.filter((p) => p.code !== c));
+    // A removed code must not keep a stale image mapping on save
+    if ((sign?.images || []).some((i) => i.code === c)) {
+      setRemovedCodes((prev) => (prev.includes(c) ? prev : [...prev, c]));
+    }
+  };
+
+  // Detach the image from a code (file stays on disk). The code stays on
+  // the record with an empty slot, so it resurfaces in the reconcile list.
+  const removeImage = (code: string) => {
+    setPendingImages((prev) => prev.filter((p) => p.code !== code));
+    if ((sign?.images || []).some((i) => i.code === code)) {
+      setRemovedCodes((prev) => (prev.includes(code) ? prev : [...prev, code]));
+    }
   };
 
   const handleImageFile = async (code: string, e: ChangeEvent<HTMLInputElement>) => {
@@ -134,6 +152,7 @@ export default function SignForm({ open, onClose, sign }: SignFormProps) {
   const imageFor = (code: string): string | undefined => {
     const pending = pendingImages.find((p) => p.code === code);
     if (pending) return pending.dataUrl;
+    if (removedCodes.includes(code)) return undefined;
     return (sign?.images || []).find((i) => i.code === code)?.image_url;
   };
 
@@ -168,8 +187,10 @@ export default function SignForm({ open, onClose, sign }: SignFormProps) {
   const saveMutation = useMutation({
     mutationFn: async (data: InsertStudySign) => {
       let id = sign?.id;
+      // Strip image mappings the user removed (record saves without them)
+      const images = (data.images || []).filter((i) => !removedCodes.includes(i.code));
       if (id) {
-        await apiRequest("PATCH", `/api/signs/${id}`, data);
+        await apiRequest("PATCH", `/api/signs/${id}`, { ...data, images });
       } else {
         const res = await apiRequest("POST", "/api/signs", data);
         const created = (await res.json()) as StudySign;
@@ -189,6 +210,8 @@ export default function SignForm({ open, onClose, sign }: SignFormProps) {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/signs"] });
+      // Image add/remove changes code coverage → refresh the reconcile lists too
+      queryClient.invalidateQueries({ queryKey: ["/api/signs/unmatched-images"] });
       toast({ title: sign?.id ? "Sign updated" : "Sign created" });
       onClose();
     },
@@ -288,9 +311,20 @@ export default function SignForm({ open, onClose, sign }: SignFormProps) {
                     const src = imageFor(c);
                     return (
                       <div key={c} className="border border-border rounded-xl overflow-hidden">
-                        <div className="aspect-[4/3] bg-muted flex items-center justify-center overflow-hidden">
+                        <div className="aspect-[4/3] bg-muted flex items-center justify-center overflow-hidden relative">
                           {src ? (
-                            <img src={src} alt={c} className="h-full w-full object-contain bg-white" />
+                            <>
+                              <img src={src} alt={c} className="h-full w-full object-contain bg-white" />
+                              <button
+                                type="button"
+                                title={`Remove image from ${c} (file kept on disk)`}
+                                onClick={() => removeImage(c)}
+                                className="absolute top-1 right-1 p-1.5 rounded-lg bg-background/90 border border-border text-muted-foreground hover:text-destructive shadow-sm"
+                                aria-label={`Remove image from ${c}`}
+                              >
+                                <Trash2 className="h-3.5 w-3.5" />
+                              </button>
+                            </>
                           ) : (
                             <span className="text-[11px] text-muted-foreground font-mono">{c}</span>
                           )}
