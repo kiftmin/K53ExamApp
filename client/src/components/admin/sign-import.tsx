@@ -31,6 +31,7 @@ export default function SignImportPanel() {
   const [selStaged, setSelStaged] = useState<string | null>(null);
   const [selNeed, setSelNeed] = useState<{ signId: number; code: string } | null>(null);
   const [needSearch, setNeedSearch] = useState("");
+  const [stagedSearch, setStagedSearch] = useState("");
 
   const { data: unmatched, refetch: refetchUnmatched } = useQuery<UnmatchedData>({
     queryKey: ["/api/signs/unmatched-images"],
@@ -115,6 +116,10 @@ export default function SignImportPanel() {
   });
 
   const staged = unmatched?.staged || [];
+  const stagedQuery = stagedSearch.trim().toLowerCase();
+  const filteredStaged = stagedQuery
+    ? staged.filter((s) => s.filename.toLowerCase().includes(stagedQuery))
+    : staged;
   const needsImage = unmatched?.needsImage || [];
   const needCount = needsImage.reduce((n, s) => n + s.codes.length, 0);
 
@@ -176,8 +181,22 @@ export default function SignImportPanel() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               <div className="space-y-2">
                 <p className="text-[11px] font-black uppercase tracking-wider text-muted-foreground">Unmatched images — pick one</p>
+                <div className="relative">
+                  <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground" />
+                  <Input
+                    value={stagedSearch}
+                    onChange={(e) => setStagedSearch(e.target.value)}
+                    placeholder="Search by filename…"
+                    className="pl-8 h-9 text-xs font-mono"
+                  />
+                </div>
                 <div className="grid grid-cols-3 gap-2 max-h-72 overflow-y-auto">
-                  {staged.map((s) => (
+                  {filteredStaged.length === 0 ? (
+                    <p className="col-span-3 text-xs text-muted-foreground py-4 text-center">
+                      {stagedQuery ? `No images match “${stagedSearch.trim()}”.` : "No staged images."}
+                    </p>
+                  ) : (
+                    filteredStaged.map((s) => (
                     <div key={s.filename} className="space-y-1">
                       <button
                         type="button"
@@ -202,7 +221,8 @@ export default function SignImportPanel() {
                         </button>
                       </div>
                     </div>
-                  ))}
+                    ))
+                  )}
                 </div>
               </div>
               <div className="space-y-2">
