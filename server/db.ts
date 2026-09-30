@@ -29,6 +29,28 @@ export const accessCodes = pgTable('access_codes', {
     created_at: timestamp('created_at').defaultNow().notNull(),
 });
 
+// Road Signs study module
+export const studySigns = pgTable('study_signs', {
+    id: serial('id').primaryKey(),
+    heading: text('heading').notNull(),
+    subheading: text('subheading').notNull(),
+    name: text('name').notNull(),
+    codes: jsonb('codes').notNull(), // string[]
+    images: jsonb('images').notNull().default('[]'), // { code: string; image_url: string }[]
+    where_text: text('where_text'),
+    purpose_text: text('purpose_text'),
+    action_text: text('action_text'),
+    is_verified_exam_question: boolean('is_verified_exam_question').default(false).notNull(),
+    created_at: timestamp('created_at').defaultNow().notNull(),
+    updated_at: timestamp('updated_at').defaultNow().notNull(),
+});
+
+export const signQuestions = pgTable('sign_questions', {
+    id: serial('id').primaryKey(),
+    sign_id: integer('sign_id').references(() => studySigns.id, { onDelete: 'cascade' }).notNull(),
+    question_id: integer('question_id').references(() => questions.id, { onDelete: 'cascade' }).notNull(),
+});
+
 // Define Drizzle Postgres Schema matching the Zod schema
 export const questions = pgTable('questions', {
     id: serial('id').primaryKey(),

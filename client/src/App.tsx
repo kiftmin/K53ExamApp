@@ -10,6 +10,9 @@ import Home from "@/pages/home";
 import Quiz from "@/pages/quiz";
 import Results from "@/pages/results";
 import Review from "@/pages/review";
+import Study from "@/pages/study";
+import StudySignsBrowse from "@/pages/study-signs";
+import StudySignsFlashcards from "@/pages/study-flashcards";
 
 import Admin from "@/pages/admin";
 
@@ -21,6 +24,9 @@ function Router() {
       <Route path="/quiz" component={Quiz} />
       <Route path="/results" component={Results} />
       <Route path="/review" component={Review} />
+      <Route path="/study" component={Study} />
+      <Route path="/study/signs" component={StudySignsBrowse} />
+      <Route path="/study/signs/flashcards" component={StudySignsFlashcards} />
       <Route component={NotFound} />
     </Switch>
   );

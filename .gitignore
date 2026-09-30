@@ -7,3 +7,5 @@ vite.config.ts.*
 .env
 data/
 .vs/
+sign-assets/
+client/public/assets/

@@ -1,6 +1,7 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
+import { client } from "./db";
 import { createServer } from "http";
 
 const app = express();
@@ -61,6 +62,36 @@ app.use((req, res, next) => {
 });
 
 (async () => {
+  // Idempotent DDL for the Road Signs study module (safe on every boot,
+  // creates nothing if tables already exist).
+  try {
+    await client`
+      CREATE TABLE IF NOT EXISTS study_signs (
+        id SERIAL PRIMARY KEY,
+        heading TEXT NOT NULL,
+        subheading TEXT NOT NULL,
+        name TEXT NOT NULL,
+        codes JSONB NOT NULL,
+        images JSONB NOT NULL DEFAULT '[]',
+        where_text TEXT,
+        purpose_text TEXT,
+        action_text TEXT,
+        is_verified_exam_question BOOLEAN NOT NULL DEFAULT FALSE,
+        created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+        updated_at TIMESTAMP NOT NULL DEFAULT NOW()
+      );
+    `;
+    await client`
+      CREATE TABLE IF NOT EXISTS sign_questions (
+        id SERIAL PRIMARY KEY,
+        sign_id INTEGER NOT NULL REFERENCES study_signs(id) ON DELETE CASCADE,
+        question_id INTEGER NOT NULL REFERENCES questions(id) ON DELETE CASCADE
+      );
+    `;
+  } catch (err) {
+    console.error("Failed to ensure study tables:", err);
+  }
+
   await registerRoutes(httpServer, app);
 
   app.use((err: any, _req: Request, res: Response, next: NextFunction) => {

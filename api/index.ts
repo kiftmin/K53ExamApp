@@ -73,6 +73,40 @@ app.get("/api/seed", async (req: any, res: any) => {
     }
 });
 
+// TABLE-ONLY seed for the Road Signs study module.
+// Safe to re-run: creates tables if missing, inserts no data.
+app.get("/api/seed/signs", async (_req: any, res: any) => {
+    try {
+        await client`
+          CREATE TABLE IF NOT EXISTS study_signs (
+            id SERIAL PRIMARY KEY,
+            heading TEXT NOT NULL,
+            subheading TEXT NOT NULL,
+            name TEXT NOT NULL,
+            codes JSONB NOT NULL,
+            images JSONB NOT NULL DEFAULT '[]',
+            where_text TEXT,
+            purpose_text TEXT,
+            action_text TEXT,
+            is_verified_exam_question BOOLEAN NOT NULL DEFAULT FALSE,
+            created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+            updated_at TIMESTAMP NOT NULL DEFAULT NOW()
+          );
+        `;
+        await client`
+          CREATE TABLE IF NOT EXISTS sign_questions (
+            id SERIAL PRIMARY KEY,
+            sign_id INTEGER NOT NULL REFERENCES study_signs(id) ON DELETE CASCADE,
+            question_id INTEGER NOT NULL REFERENCES questions(id) ON DELETE CASCADE
+          );
+        `;
+        res.json({ success: true, message: "Tables 'study_signs' and 'sign_questions' are ready." });
+    } catch (error: any) {
+        console.error("Sign seed error:", error);
+        res.status(500).json({ error: "Sign table creation failed", details: error.message });
+    }
+});
+
 // Global Error Handler
 app.use((err: any, _req: any, res: any, _next: any) => {
     const status = err.status || err.statusCode || 500;

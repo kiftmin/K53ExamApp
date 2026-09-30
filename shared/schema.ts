@@ -64,3 +64,41 @@ export type AccessCode = z.infer<typeof accessCodeSchema> & { id: number };
 export type InsertAccessCode = Omit<z.infer<typeof accessCodeSchema>, "id" | "created_at">;
 
 export const MOBILE_NUMBER_REGEX = /^\d{10}$/;
+
+// === Road Signs study module ===
+
+export const signImageSchema = z.object({
+  code: z.string(),
+  image_url: z.string(),
+});
+
+export const studySignSchema = z.object({
+  id: z.number().optional(),
+  heading: z.string(),
+  subheading: z.string(),
+  name: z.string(),
+  codes: z.array(z.string()).min(1),
+  images: z.array(signImageSchema).default([]),
+  where_text: z.string().nullable().optional(),
+  purpose_text: z.string().nullable().optional(),
+  action_text: z.string().nullable().optional(),
+  is_verified_exam_question: z.boolean().default(false),
+});
+
+export type StudySign = z.infer<typeof studySignSchema> & { id: number };
+export type InsertStudySign = Omit<z.infer<typeof studySignSchema>, "id">;
+
+// Raw import format — matches Allsigns.json verbatim (pre image-matching)
+export const rawSignImportSchema = z.object({
+  Heading: z.string(),
+  Subheading: z.string(),
+  Name: z.string(),
+  Codes: z.array(z.string()),
+  Where: z.string().optional(),
+  Purpose: z.string().optional(),
+  Action: z.string().optional(),
+});
+
+export type RawSignImport = z.infer<typeof rawSignImportSchema>;
+
+export type SignQuestionLink = { id: number; sign_id: number; question_id: number };

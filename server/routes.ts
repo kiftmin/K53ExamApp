@@ -1,6 +1,6 @@
 import { storage } from "./storage.js";
 import { api } from "../shared/routes.js";
-import { questionSchema, sourceSchema, MOBILE_NUMBER_REGEX } from "../shared/schema.js";
+import { questionSchema, sourceSchema, MOBILE_NUMBER_REGEX, studySignSchema, rawSignImportSchema, type InsertStudySign } from "../shared/schema.js";
 import {
   generateAccessCode,
   generateDailyCode,
@@ -15,6 +15,7 @@ import {
   type AccessCodeType,
 } from "./access-code.js";
 import { getAdminEmail, isSmtpConfigured, sendAdminEmail } from "./mailer.js";
+import { slugifyCode, listStagedImages, stageImageUpload, attachStagedToCode, saveImageForCode, deleteStagedImage } from "./sign-images.js";
 import { z } from "zod";
 
 export async function registerRoutes(
@@ -504,6 +505,253 @@ export async function registerRoutes(
       console.error("Error sending admin request email:", err);
       const status = err?.message?.includes('SMTP') || err?.message?.includes('ADMIN_EMAIL') ? 500 : 400;
       res.status(status).json({ message: err?.message || "Failed to send request", error: err });
+    }
+  });
+
+
+  // === Road Signs study module ===
+  // NOTE: static sub-paths are registered BEFORE /:id so Express matches them first.
+
+  app.get('/api/signs', async (req: any, res: any) => {
+    try {
+      const verified = req.query.verified;
+      const signs = await storage.getSigns({
+        heading: typeof req.query.heading === 'string' && req.query.heading ? req.query.heading : undefined,
+        subheading: typeof req.query.subheading === 'string' && req.query.subheading ? req.query.subheading : undefined,
+        search: typeof req.query.search === 'string' ? req.query.search : undefined,
+        verified: verified === 'true' ? true : verified === 'false' ? false : undefined,
+        missingImage: req.query.missingImage === 'true' ? true : undefined,
+      });
+      res.json(signs);
+    } catch (err) {
+      console.error("Error listing signs:", err);
+      res.status(500).json({ message: "Failed to load signs" });
+    }
+  });
+
+  // Bulk insert from Allsigns.json (raw format)
+  app.post('/api/signs/import', async (req: any, res: any) => {
+    try {
+      const parsed = z.array(rawSignImportSchema).parse(req.body);
+      const rows: InsertStudySign[] = parsed.map((r) => ({
+        heading: r.Heading,
+        subheading: r.Subheading,
+        name: r.Name,
+        codes: r.Codes,
+        images: [],
+        where_text: r.Where ?? null,
+        purpose_text: r.Purpose ?? null,
+        action_text: r.Action ?? null,
+        is_verified_exam_question: false,
+      }));
+      const result = await storage.bulkInsertSigns(rows);
+      res.status(201).json({ message: `Imported ${result.inserted} signs (${result.skipped} duplicates skipped).`, ...result });
+    } catch (err) {
+      console.error("Error importing signs:", err);
+      res.status(400).json({ message: "Invalid signs import payload", error: err });
+    }
+  });
+
+  // Batch image upload + auto-match by slugified code
+  app.post('/api/signs/images/batch', async (req: any, res: any) => {
+    try {
+      const { files } = z.object({
+        files: z.array(z.object({ filename: z.string(), dataUrl: z.string() })).min(1).max(50),
+      }).parse(req.body);
+
+      // Build slug -> { signId, code } lookup across every sign
+      const signs = await storage.getSigns();
+      const slugMap = new Map<string, { signId: number; code: string }>();
+      for (const s of signs) {
+        for (const code of s.codes || []) {
+          const slug = slugifyCode(code);
+          if (!slugMap.has(slug)) slugMap.set(slug, { signId: s.id, code });
+        }
+      }
+
+      const matched: { filename: string; signId: number; code: string; image_url: string }[] = [];
+      const staged: { filename: string; url: string }[] = [];
+      for (const f of files) {
+        const base = f.filename.replace(/\.[^.]+$/, '');
+        const hit = slugMap.get(base) || slugMap.get(slugifyCode(base));
+        if (hit) {
+          try {
+            const image_url = saveImageForCode(hit.code, f.filename, f.dataUrl);
+            const sign = await storage.getSignById(hit.signId);
+            if (sign) {
+              const images = (sign.images || []).filter((i) => i.code !== hit.code);
+              images.push({ code: hit.code, image_url });
+              await storage.updateSign(hit.signId, { images });
+            }
+            matched.push({ filename: f.filename, signId: hit.signId, code: hit.code, image_url });
+          } catch (e: any) {
+            const s = stageImageUpload(f.filename, f.dataUrl);
+            staged.push({ filename: s.filename, url: s.url });
+          }
+        } else {
+          const s = stageImageUpload(f.filename, f.dataUrl);
+          staged.push({ filename: s.filename, url: s.url });
+        }
+      }
+      res.status(201).json({ matched, staged, unmatched: listStagedImages() });
+    } catch (err) {
+      console.error("Error batch-uploading sign images:", err);
+      res.status(400).json({ message: "Invalid image batch payload", error: err });
+    }
+  });
+
+  app.get('/api/signs/unmatched-images', async (_req: any, res: any) => {
+    try {
+      const signs = await storage.getSigns({ missingImage: true });
+      const needsImage = signs.map((s) => ({
+        signId: s.id,
+        name: s.name,
+        heading: s.heading,
+        subheading: s.subheading,
+        codes: (s.codes || []).filter((c) => !(s.images || []).some((i) => i.code === c)),
+        images: s.images || [],
+      }));
+      res.json({ staged: listStagedImages(), needsImage });
+    } catch (err) {
+      console.error("Error listing unmatched images:", err);
+      res.status(500).json({ message: "Failed to list unmatched images" });
+    }
+  });
+
+  app.delete('/api/signs/unmatched-images/:filename', async (req: any, res: any) => {
+    try {
+      const ok = deleteStagedImage(req.params.filename);
+      if (!ok) return res.status(404).json({ message: "Staged image not found" });
+      res.status(204).send();
+    } catch (err) {
+      console.error("Error deleting staged image:", err);
+      res.status(500).json({ message: "Failed to delete staged image" });
+    }
+  });
+
+  app.get('/api/signs/:id', async (req: any, res: any) => {
+    try {
+      const id = parseInt(req.params.id, 10);
+      if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
+      const sign = await storage.getSignById(id);
+      if (!sign) return res.status(404).json({ message: "Sign not found" });
+      res.json(sign);
+    } catch (err) {
+      console.error("Error reading sign:", err);
+      res.status(500).json({ message: "Failed to load sign" });
+    }
+  });
+
+  app.post('/api/signs', async (req: any, res: any) => {
+    try {
+      const parsed = studySignSchema.parse(req.body);
+      const created = await storage.createSign(parsed);
+      res.status(201).json(created);
+    } catch (err) {
+      console.error("Error creating sign:", err);
+      res.status(400).json({ message: "Invalid sign data", error: err });
+    }
+  });
+
+  app.patch('/api/signs/:id', async (req: any, res: any) => {
+    try {
+      const id = parseInt(req.params.id, 10);
+      if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
+      const parsed = studySignSchema.partial().parse(req.body);
+      const updated = await storage.updateSign(id, parsed);
+      if (!updated) return res.status(404).json({ message: "Sign not found" });
+      res.json(updated);
+    } catch (err) {
+      console.error("Error updating sign:", err);
+      res.status(400).json({ message: "Invalid sign data", error: err });
+    }
+  });
+
+  app.delete('/api/signs/:id', async (req: any, res: any) => {
+    try {
+      const id = parseInt(req.params.id, 10);
+      if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
+      const ok = await storage.deleteSign(id);
+      if (!ok) return res.status(404).json({ message: "Sign not found" });
+      res.status(204).send();
+    } catch (err) {
+      console.error("Error deleting sign:", err);
+      res.status(500).json({ message: "Failed to delete sign" });
+    }
+  });
+
+  // Attach/replace an image for a specific code: fresh upload or staged file
+  app.post('/api/signs/:id/images', async (req: any, res: any) => {
+    try {
+      const id = parseInt(req.params.id, 10);
+      if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
+      const { code, stagedFilename, filename, dataUrl } = z.object({
+        code: z.string().min(1),
+        stagedFilename: z.string().optional(),
+        filename: z.string().optional(),
+        dataUrl: z.string().optional(),
+      }).parse(req.body);
+
+      const sign = await storage.getSignById(id);
+      if (!sign) return res.status(404).json({ message: "Sign not found" });
+      if (!(sign.codes || []).includes(code)) {
+        return res.status(400).json({ message: `Code "${code}" does not belong to this sign.` });
+      }
+
+      let image_url: string;
+      if (stagedFilename) {
+        image_url = attachStagedToCode(stagedFilename, code);
+      } else if (filename && dataUrl) {
+        image_url = saveImageForCode(code, filename, dataUrl);
+      } else {
+        return res.status(400).json({ message: "Provide stagedFilename or filename + dataUrl." });
+      }
+
+      const images = (sign.images || []).filter((i) => i.code !== code);
+      images.push({ code, image_url });
+      const updated = await storage.updateSign(id, { images });
+      res.status(201).json(updated);
+    } catch (err: any) {
+      console.error("Error attaching sign image:", err);
+      res.status(400).json({ message: err?.message || "Failed to attach image" });
+    }
+  });
+
+  app.get('/api/signs/:id/questions', async (req: any, res: any) => {
+    try {
+      const id = parseInt(req.params.id, 10);
+      if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
+      res.json(await storage.getQuestionsForSign(id));
+    } catch (err) {
+      console.error("Error reading sign questions:", err);
+      res.status(500).json({ message: "Failed to load linked questions" });
+    }
+  });
+
+  app.post('/api/signs/:id/questions', async (req: any, res: any) => {
+    try {
+      const id = parseInt(req.params.id, 10);
+      if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
+      const { question_id } = z.object({ question_id: z.number() }).parse(req.body);
+      const link = await storage.linkSignQuestion(id, question_id);
+      res.status(201).json(link);
+    } catch (err: any) {
+      console.error("Error linking sign question:", err);
+      res.status(400).json({ message: err?.message || "Failed to link question" });
+    }
+  });
+
+  app.delete('/api/signs/:id/questions/:questionId', async (req: any, res: any) => {
+    try {
+      const id = parseInt(req.params.id, 10);
+      const questionId = parseInt(req.params.questionId, 10);
+      if (Number.isNaN(id) || Number.isNaN(questionId)) return res.status(400).json({ message: "Invalid id" });
+      const ok = await storage.unlinkSignQuestion(id, questionId);
+      if (!ok) return res.status(404).json({ message: "Link not found" });
+      res.status(204).send();
+    } catch (err) {
+      console.error("Error unlinking sign question:", err);
+      res.status(500).json({ message: "Failed to unlink question" });
     }
   });
 
