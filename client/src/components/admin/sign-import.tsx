@@ -1,9 +1,10 @@
 import { useState, type ChangeEvent } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
-import { FileJson, Images, Trash2, Link2, CheckCircle2 } from "lucide-react";
+import { FileJson, Images, Trash2, Link2, CheckCircle2, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface UnmatchedData {
@@ -29,6 +30,7 @@ export default function SignImportPanel() {
   const [lastBatch, setLastBatch] = useState<string | null>(null);
   const [selStaged, setSelStaged] = useState<string | null>(null);
   const [selNeed, setSelNeed] = useState<{ signId: number; code: string } | null>(null);
+  const [needSearch, setNeedSearch] = useState("");
 
   const { data: unmatched, refetch: refetchUnmatched } = useQuery<UnmatchedData>({
     queryKey: ["/api/signs/unmatched-images"],
@@ -116,6 +118,20 @@ export default function SignImportPanel() {
   const needsImage = unmatched?.needsImage || [];
   const needCount = needsImage.reduce((n, s) => n + s.codes.length, 0);
 
+  // Search narrows the needs list by code (falls back to sign name).
+  // While searching, each sign only shows its matching code chips.
+  const needQuery = needSearch.trim().toLowerCase();
+  const filteredNeeds = needQuery
+    ? needsImage
+        .map((s) => ({
+          ...s,
+          codes: s.codes.filter(
+            (c) => c.toLowerCase().includes(needQuery) || s.name.toLowerCase().includes(needQuery)
+          ),
+        }))
+        .filter((s) => s.codes.length > 0)
+    : needsImage;
+
   return (
     <div className="space-y-4 max-w-4xl">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -191,8 +207,22 @@ export default function SignImportPanel() {
               </div>
               <div className="space-y-2">
                 <p className="text-[11px] font-black uppercase tracking-wider text-muted-foreground">Codes needing an image — pick one</p>
+                <div className="relative">
+                  <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground" />
+                  <Input
+                    value={needSearch}
+                    onChange={(e) => setNeedSearch(e.target.value)}
+                    placeholder="Search by code…"
+                    className="pl-8 h-9 text-xs font-mono"
+                  />
+                </div>
                 <div className="space-y-2 max-h-72 overflow-y-auto">
-                  {needsImage.map((s) => (
+                  {filteredNeeds.length === 0 ? (
+                    <p className="text-xs text-muted-foreground py-4 text-center">
+                      {needQuery ? `No codes match “${needSearch.trim()}”.` : "Nothing here."}
+                    </p>
+                  ) : (
+                    filteredNeeds.map((s) => (
                     <div key={s.signId} className="border border-border rounded-xl p-2">
                       <p className="text-xs font-bold line-clamp-1">{s.name}</p>
                       <div className="flex flex-wrap gap-1 mt-1">
@@ -214,7 +244,8 @@ export default function SignImportPanel() {
                         })}
                       </div>
                     </div>
-                  ))}
+                    ))
+                  )}
                 </div>
               </div>
             </div>
