@@ -680,40 +680,66 @@ export async function registerRoutes(
     }
   });
 
-  // Attach/replace an image for a specific code: fresh upload or staged file
+  // Attach/replace an image for a specific code: fresh upload or staged file.
+  // With addCodeAsNew, a code not yet on the record is appended first —
+  // for staged images whose real code differs from the record's codes.
   app.post('/api/signs/:id/images', async (req: any, res: any) => {
     try {
       const id = parseInt(req.params.id, 10);
       if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
-      const { code, stagedFilename, filename, dataUrl } = z.object({
+      const { code, stagedFilename, filename, dataUrl, addCodeAsNew } = z.object({
         code: z.string().min(1),
         stagedFilename: z.string().optional(),
         filename: z.string().optional(),
         dataUrl: z.string().optional(),
+        addCodeAsNew: z.boolean().optional().default(false),
       }).parse(req.body);
 
       const sign = await storage.getSignById(id);
       if (!sign) return res.status(404).json({ message: "Sign not found" });
-      if (!(sign.codes || []).includes(code)) {
-        return res.status(400).json({ message: `Code "${code}" does not belong to this sign.` });
+
+      let finalCode = code.trim();
+      if (!finalCode || finalCode.length > 40) {
+        return res.status(400).json({ message: "Code must be 1–40 characters." });
+      }
+      let codes = sign.codes || [];
+      if (!codes.includes(finalCode)) {
+        if (!addCodeAsNew) {
+          return res.status(400).json({ message: `Code "${finalCode}" does not belong to this sign. Pass addCodeAsNew to add it.` });
+        }
+        codes = [...codes, finalCode];
       }
 
       let image_url: string;
       if (stagedFilename) {
-        image_url = attachStagedToCode(stagedFilename, code);
+        image_url = attachStagedToCode(stagedFilename, finalCode);
       } else if (filename && dataUrl) {
-        image_url = saveImageForCode(code, filename, dataUrl);
+        image_url = saveImageForCode(finalCode, filename, dataUrl);
       } else {
         return res.status(400).json({ message: "Provide stagedFilename or filename + dataUrl." });
       }
 
-      const images = (sign.images || []).filter((i) => i.code !== code);
-      images.push({ code, image_url });
-      const updated = await storage.updateSign(id, { images });
+      const images = (sign.images || []).filter((i) => i.code !== finalCode);
+      images.push({ code: finalCode, image_url });
+      const updated = await storage.updateSign(id, { codes, images });
       res.status(201).json(updated);
     } catch (err: any) {
       console.error("Error attaching sign image:", err);
       res.status(400).json({ message: err?.message || "Failed to attach image" });
+    }
+  });
+
+  // Remove a code from a sign record (image mapping dropped, file kept)
+  app.delete('/api/signs/:id/codes/:code', async (req: any, res: any) => {
+    try {
+      const id = parseInt(req.params.id, 10);
+      if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
+      const updated = await storage.removeSignCode(id, req.params.code);
+      if (!updated) return res.status(404).json({ message: "Sign not found" });
+      res.json(updated);
+    } catch (err) {
+      console.error("Error removing sign code:", err);
+      res.status(500).json({ message: "Failed to remove code" });
     }
   });
 

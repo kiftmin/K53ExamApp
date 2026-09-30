@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
-import { FileJson, Images, Trash2, Link2, CheckCircle2, Search } from "lucide-react";
+import { FileJson, Images, Trash2, Link2, CheckCircle2, Search, X, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface UnmatchedData {
@@ -30,6 +30,9 @@ export default function SignImportPanel() {
   const [lastBatch, setLastBatch] = useState<string | null>(null);
   const [selStaged, setSelStaged] = useState<string | null>(null);
   const [selNeed, setSelNeed] = useState<{ signId: number; code: string } | null>(null);
+  // "Add as new code" mode: image paired to a sign under a code not yet on its record
+  const [selSignForNew, setSelSignForNew] = useState<{ signId: number; name: string } | null>(null);
+  const [newCode, setNewCode] = useState("");
   const [needSearch, setNeedSearch] = useState("");
   const [stagedSearch, setStagedSearch] = useState("");
 
@@ -89,20 +92,53 @@ export default function SignImportPanel() {
 
   const pairMutation = useMutation({
     mutationFn: async () => {
-      if (!selStaged || !selNeed) throw new Error("Pick one image and one code.");
-      await apiRequest("POST", `/api/signs/${selNeed.signId}/images`, {
-        code: selNeed.code,
-        stagedFilename: selStaged,
-      });
+      if (!selStaged) throw new Error("Pick an image first.");
+      if (selNeed) {
+        await apiRequest("POST", `/api/signs/${selNeed.signId}/images`, {
+          code: selNeed.code,
+          stagedFilename: selStaged,
+        });
+      } else if (selSignForNew && newCode.trim()) {
+        await apiRequest("POST", `/api/signs/${selSignForNew.signId}/images`, {
+          code: newCode.trim(),
+          stagedFilename: selStaged,
+          addCodeAsNew: true,
+        });
+      } else {
+        throw new Error("Pick a code — or a sign plus a new code.");
+      }
     },
     onSuccess: () => {
-      toast({ title: "Image paired" });
+      toast({ title: selNeed ? "Image paired" : "Code added & image paired" });
       setSelStaged(null);
       setSelNeed(null);
+      setSelSignForNew(null);
+      setNewCode("");
       refreshAll();
     },
     onError: (e: Error) => toast({ title: "Pairing failed", description: e.message, variant: "destructive" }),
   });
+
+  const removeCodeMutation = useMutation({
+    mutationFn: async ({ signId, code }: { signId: number; code: string }) => {
+      await apiRequest("DELETE", `/api/signs/${signId}/codes/${encodeURIComponent(code)}`);
+    },
+    onSuccess: (_data, vars) => {
+      toast({ title: `Removed code ${vars.code}` });
+      if (selNeed?.signId === vars.signId && selNeed?.code === vars.code) setSelNeed(null);
+      refreshAll();
+    },
+    onError: (e: Error) => toast({ title: "Remove failed", description: e.message, variant: "destructive" }),
+  });
+
+  // Filename without extension — prefill for the "new code" input
+  const baseOf = (filename: string) => filename.replace(/\.[^.]+$/, "");
+
+  const pickStaged = (filename: string) => {
+    const next = selStaged === filename ? null : filename;
+    setSelStaged(next);
+    if (next && selSignForNew && !newCode) setNewCode(baseOf(next));
+  };
 
   const discardMutation = useMutation({
     mutationFn: async (filename: string) => {
@@ -200,7 +236,7 @@ export default function SignImportPanel() {
                     <div key={s.filename} className="space-y-1">
                       <button
                         type="button"
-                        onClick={() => setSelStaged(selStaged === s.filename ? null : s.filename)}
+                        onClick={() => pickStaged(s.filename)}
                         className={cn(
                           "block w-full aspect-square rounded-lg overflow-hidden border-2 bg-white",
                           selStaged === s.filename ? "border-primary ring-2 ring-primary/30" : "border-border"
@@ -227,6 +263,7 @@ export default function SignImportPanel() {
               </div>
               <div className="space-y-2">
                 <p className="text-[11px] font-black uppercase tracking-wider text-muted-foreground">Codes needing an image — pick one</p>
+                <p className="text-[11px] text-muted-foreground -mt-1">Code pairs the image · × removes a wrong code · + adds the image under a new code</p>
                 <div className="relative">
                   <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground" />
                   <Input
@@ -242,39 +279,137 @@ export default function SignImportPanel() {
                       {needQuery ? `No codes match “${needSearch.trim()}”.` : "Nothing here."}
                     </p>
                   ) : (
-                    filteredNeeds.map((s) => (
-                    <div key={s.signId} className="border border-border rounded-xl p-2">
-                      <p className="text-xs font-bold line-clamp-1">{s.name}</p>
+                    filteredNeeds.map((s) => {
+                      const signSelected = selSignForNew?.signId === s.signId;
+                      return (
+                    <div
+                      key={s.signId}
+                      className={cn(
+                        "border rounded-xl p-2",
+                        signSelected ? "border-primary ring-2 ring-primary/30" : "border-border"
+                      )}
+                    >
+                      <div className="flex items-center gap-1">
+                        <button
+                          type="button"
+                          title="Select sign to add the image under a NEW code"
+                          onClick={() => {
+                            if (signSelected) {
+                              setSelSignForNew(null);
+                            } else {
+                              setSelSignForNew({ signId: s.signId, name: s.name });
+                              setSelNeed(null);
+                              if (selStaged && !newCode) setNewCode(baseOf(selStaged));
+                            }
+                          }}
+                          className={cn(
+                            "text-xs font-bold line-clamp-1 flex-1 text-left hover:text-primary",
+                            signSelected && "text-primary"
+                          )}
+                        >
+                          {s.name}
+                        </button>
+                        <button
+                          type="button"
+                          title="Add image under a new code on this sign"
+                          onClick={() => {
+                            setSelSignForNew({ signId: s.signId, name: s.name });
+                            setSelNeed(null);
+                            if (selStaged && !newCode) setNewCode(baseOf(selStaged));
+                          }}
+                          className={cn(
+                            "p-1 rounded-md hover:bg-accent",
+                            signSelected ? "text-primary" : "text-muted-foreground"
+                          )}
+                          aria-label={`Add new code to ${s.name}`}
+                        >
+                          <Plus className="h-3.5 w-3.5" />
+                        </button>
+                      </div>
                       <div className="flex flex-wrap gap-1 mt-1">
                         {s.codes.map((c) => {
                           const active = selNeed?.signId === s.signId && selNeed?.code === c;
                           return (
-                            <button
+                            <span
                               key={c}
-                              type="button"
-                              onClick={() => setSelNeed(active ? null : { signId: s.signId, code: c })}
                               className={cn(
-                                "text-[11px] font-mono px-2 py-1 rounded-md border",
+                                "inline-flex items-center text-[11px] font-mono rounded-md border",
                                 active ? "bg-primary text-primary-foreground border-primary" : "border-dashed border-amber-500 text-amber-700"
                               )}
                             >
-                              {c}
-                            </button>
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  setSelNeed(active ? null : { signId: s.signId, code: c });
+                                  setSelSignForNew(null);
+                                }}
+                                className="px-2 py-1"
+                              >
+                                {c}
+                              </button>
+                              <button
+                                type="button"
+                                title={`Remove code ${c} from this sign`}
+                                onClick={() => removeCodeMutation.mutate({ signId: s.signId, code: c })}
+                                className={cn(
+                                  "pr-1.5 py-1 hover:text-destructive",
+                                  active && "hover:text-destructive-foreground"
+                                )}
+                                aria-label={`Remove code ${c}`}
+                              >
+                                <X className="h-3 w-3" />
+                              </button>
+                            </span>
                           );
                         })}
                       </div>
                     </div>
-                    ))
+                      );
+                    })
                   )}
                 </div>
               </div>
             </div>
+            {selSignForNew && (
+              <div className="rounded-xl border border-primary/40 bg-primary/5 p-3 space-y-2">
+                <div className="flex items-center justify-between gap-2">
+                  <p className="text-xs font-bold line-clamp-1">
+                    New code on “{selSignForNew.name}”
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => { setSelSignForNew(null); setNewCode(""); }}
+                    className="text-muted-foreground hover:text-foreground"
+                    aria-label="Cancel new code"
+                  >
+                    <X className="h-3.5 w-3.5" />
+                  </button>
+                </div>
+                <div className="flex gap-2">
+                  <Input
+                    value={newCode}
+                    onChange={(e) => setNewCode(e.target.value)}
+                    placeholder={selStaged ? baseOf(selStaged) : "e.g. R1B"}
+                    className="h-10 font-mono text-sm"
+                  />
+                </div>
+                <p className="text-[11px] text-muted-foreground">
+                  Prefilled from the image name — edit if the real code differs. The code is added to the sign record and the image attached to it.
+                </p>
+              </div>
+            )}
             <Button
               onClick={() => pairMutation.mutate()}
-              disabled={!selStaged || !selNeed || pairMutation.isPending}
+              disabled={!selStaged || pairMutation.isPending || (!selNeed && !(selSignForNew && newCode.trim()))}
               className="w-full h-11 brand-gradient border-none rounded-xl font-bold disabled:opacity-50"
             >
-              {pairMutation.isPending ? "Pairing…" : selStaged && selNeed ? `Pair image → ${selNeed.code}` : "Select one image and one code to pair"}
+              {pairMutation.isPending
+                ? "Pairing…"
+                : selNeed && selStaged
+                  ? `Pair image → ${selNeed.code}`
+                  : selSignForNew && selStaged && newCode.trim()
+                    ? `Add ${newCode.trim()} & pair image`
+                    : "Select an image, then a code — or a sign for a new code"}
             </Button>
           </>
         )}

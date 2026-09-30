@@ -37,6 +37,7 @@ export interface IStorage {
   getQuestionsForSign(signId: number): Promise<Question[]>;
   linkSignQuestion(signId: number, questionId: number): Promise<SignQuestionLink>;
   unlinkSignQuestion(signId: number, questionId: number): Promise<boolean>;
+  removeSignCode(signId: number, code: string): Promise<StudySign | undefined>;
 }
 
 export class NeonDatabaseStorage implements IStorage {
@@ -309,6 +310,18 @@ export class NeonDatabaseStorage implements IStorage {
       .where(and(eq(signQuestions.sign_id, signId), eq(signQuestions.question_id, questionId)))
       .returning();
     return !!row;
+  }
+
+  // Remove a code from a sign record (drops its image mapping too;
+  // image files stay on disk, same as sign delete).
+  async removeSignCode(signId: number, code: string): Promise<StudySign | undefined> {
+    const sign = await this.getSignById(signId);
+    if (!sign) return undefined;
+    if (!(sign.codes || []).includes(code)) return sign;
+    return this.updateSign(signId, {
+      codes: (sign.codes || []).filter((c) => c !== code),
+      images: (sign.images || []).filter((i) => i.code !== code),
+    });
   }
 }
 
