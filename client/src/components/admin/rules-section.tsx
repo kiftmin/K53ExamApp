@@ -25,6 +25,7 @@ import { BadgeCheck, Pencil, Plus, Search, Trash2, Link2Off } from "lucide-react
 import { cn } from "@/lib/utils";
 import RuleForm from "./rule-form";
 import RuleImportReview from "./rule-import-review";
+import RuleImportPanel from "./rule-import";
 
 const CODE_LABELS: Record<number, string> = { 0: "All", 1: "Moto", 2: "Light", 3: "Heavy" };
 
@@ -134,11 +135,16 @@ export default function RulesSection() {
         </Button>
       </div>
 
-      <Tabs value={tab} onValueChange={setTab}>
+      <Tabs value={tab} onValueChange={setTab} className="space-y-4">
         <TabsList>
           <TabsTrigger value="browse">Browse</TabsTrigger>
+          <TabsTrigger value="import">Import</TabsTrigger>
           <TabsTrigger value="review">Review queue{unreviewedCount > 0 ? ` (${unreviewedCount})` : ""}</TabsTrigger>
         </TabsList>
+
+        <TabsContent value="import" className="space-y-4">
+          <RuleImportPanel />
+        </TabsContent>
 
         <TabsContent value="browse" className="space-y-4">
           <div className="glass-card rounded-2xl p-4 space-y-3">
