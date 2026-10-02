@@ -743,6 +743,20 @@ export async function registerRoutes(
     }
   });
 
+  // Detach one image from a sign record (file kept on disk)
+  app.delete('/api/signs/:id/images/:code', async (req: any, res: any) => {
+    try {
+      const id = parseInt(req.params.id, 10);
+      if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
+      const updated = await storage.removeSignImage(id, req.params.code);
+      if (!updated) return res.status(404).json({ message: "Sign not found" });
+      res.json(updated);
+    } catch (err) {
+      console.error("Error removing sign image:", err);
+      res.status(500).json({ message: "Failed to remove image" });
+    }
+  });
+
   app.get('/api/signs/:id/questions', async (req: any, res: any) => {
     try {
       const id = parseInt(req.params.id, 10);

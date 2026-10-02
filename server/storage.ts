@@ -38,6 +38,7 @@ export interface IStorage {
   linkSignQuestion(signId: number, questionId: number): Promise<SignQuestionLink>;
   unlinkSignQuestion(signId: number, questionId: number): Promise<boolean>;
   removeSignCode(signId: number, code: string): Promise<StudySign | undefined>;
+  removeSignImage(signId: number, code: string): Promise<StudySign | undefined>;
 }
 
 export class NeonDatabaseStorage implements IStorage {
@@ -320,6 +321,17 @@ export class NeonDatabaseStorage implements IStorage {
     if (!(sign.codes || []).includes(code)) return sign;
     return this.updateSign(signId, {
       codes: (sign.codes || []).filter((c) => c !== code),
+      images: (sign.images || []).filter((i) => i.code !== code),
+    });
+  }
+
+  // Detach one image mapping (file stays on disk). The code keeps its
+  // empty slot, so the sign resurfaces in the reconcile needs list.
+  async removeSignImage(signId: number, code: string): Promise<StudySign | undefined> {
+    const sign = await this.getSignById(signId);
+    if (!sign) return undefined;
+    if (!(sign.images || []).some((i) => i.code === code)) return sign;
+    return this.updateSign(signId, {
       images: (sign.images || []).filter((i) => i.code !== code),
     });
   }

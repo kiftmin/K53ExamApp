@@ -128,12 +128,22 @@ export default function SignForm({ open, onClose, sign }: SignFormProps) {
     }
   };
 
-  // Detach the image from a code (file stays on disk). The code stays on
-  // the record with an empty slot, so it resurfaces in the reconcile list.
-  const removeImage = (code: string) => {
+  // Detach the image from a code immediately (file stays on disk).
+  // The code keeps its empty slot, so the sign resurfaces in the
+  // reconcile needs list even if the dialog is closed without saving.
+  // (The save-time strip below stays as a safety net for code removals.)
+  const removeImage = async (code: string) => {
     setPendingImages((prev) => prev.filter((p) => p.code !== code));
-    if ((sign?.images || []).some((i) => i.code === code)) {
-      setRemovedCodes((prev) => (prev.includes(code) ? prev : [...prev, code]));
+    if (!sign?.id || !(sign.images || []).some((i) => i.code === code)) return;
+    if (removedCodes.includes(code)) return;
+    try {
+      await apiRequest("DELETE", `/api/signs/${sign.id}/images/${encodeURIComponent(code)}`);
+      setRemovedCodes((prev) => [...prev, code]);
+      toast({ title: `Image removed from ${code}` });
+      queryClient.invalidateQueries({ queryKey: ["/api/signs"] });
+      queryClient.invalidateQueries({ queryKey: ["/api/signs/unmatched-images"] });
+    } catch (e: any) {
+      toast({ title: "Remove failed", description: e.message, variant: "destructive" });
     }
   };
 
