@@ -13,12 +13,23 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
+import { cn } from "@/lib/utils";
 import { ImagePlus, Link2, Unlink, X, Trash2 } from "lucide-react";
 
 interface PendingImage {
   code: string;
   filename: string;
-  dataUrl: string;
+  dataUrl?: string; // fresh upload (queued until save for new signs)
+  stagedFilename?: string; // staged import, paired at save for new signs
+}
+
+interface StagedList {
+  staged: { filename: string; slug: string; url: string; size: number }[];
+}
+
+// Filename without extension — becomes the sign code for added images
+function baseOf(filename: string): string {
+  return filename.replace(/\.[^.]+$/, "");
 }
 
 function readAsDataUrl(file: File): Promise<string> {
@@ -55,6 +66,14 @@ export default function SignForm({ open, onClose, sign }: SignFormProps) {
   const [pendingImages, setPendingImages] = useState<PendingImage[]>([]);
   // Saved image mappings flagged for removal (persisted via PATCH on save)
   const [removedCodes, setRemovedCodes] = useState<string[]>([]);
+  // Images attached during this session (immediate for existing signs)
+  const [addedImages, setAddedImages] = useState<{ code: string; image_url: string }[]>([]);
+  // "Add image" block: fresh upload or staged pick + derived code
+  const [addSource, setAddSource] = useState<
+    { kind: "upload"; filename: string; dataUrl: string } | { kind: "staged"; filename: string } | null
+  >(null);
+  const [addCodeInput, setAddCodeInput] = useState("");
+  const [addSearch, setAddSearch] = useState("");
   const [pendingQuestionIds, setPendingQuestionIds] = useState<number[]>([]);
   const [questionSearch, setQuestionSearch] = useState("");
 
@@ -76,6 +95,10 @@ export default function SignForm({ open, onClose, sign }: SignFormProps) {
       setCodeInput("");
       setPendingImages([]);
       setRemovedCodes([]);
+      setAddedImages([]);
+      setAddSource(null);
+      setAddCodeInput("");
+      setAddSearch("");
       setPendingQuestionIds([]);
       setQuestionSearch("");
     }
@@ -90,6 +113,17 @@ export default function SignForm({ open, onClose, sign }: SignFormProps) {
     queryKey: [`/api/signs/${sign?.id}/questions`],
     enabled: open && !!sign?.id,
   });
+
+  // Unmatched imports available for the "add image" picker
+  const { data: stagedData } = useQuery<StagedList>({
+    queryKey: ["/api/signs/unmatched-images"],
+    enabled: open,
+  });
+  const stagedOptions = useMemo(() => {
+    const q = addSearch.trim().toLowerCase();
+    const all = stagedData?.staged || [];
+    return (q ? all.filter((s) => s.filename.toLowerCase().includes(q)) : all).slice(0, 60);
+  }, [stagedData, addSearch]);
 
   const questionMatches = useMemo(() => {
     const q = questionSearch.trim().toLowerCase();
@@ -134,6 +168,7 @@ export default function SignForm({ open, onClose, sign }: SignFormProps) {
   // (The save-time strip below stays as a safety net for code removals.)
   const removeImage = async (code: string) => {
     setPendingImages((prev) => prev.filter((p) => p.code !== code));
+    setAddedImages((prev) => prev.filter((i) => i.code !== code));
     if (!sign?.id || !(sign.images || []).some((i) => i.code === code)) return;
     if (removedCodes.includes(code)) return;
     try {
@@ -161,9 +196,74 @@ export default function SignForm({ open, onClose, sign }: SignFormProps) {
 
   const imageFor = (code: string): string | undefined => {
     const pending = pendingImages.find((p) => p.code === code);
-    if (pending) return pending.dataUrl;
+    if (pending?.dataUrl) return pending.dataUrl;
+    const added = addedImages.find((i) => i.code === code);
+    if (added && !removedCodes.includes(code)) return added.image_url;
     if (removedCodes.includes(code)) return undefined;
     return (sign?.images || []).find((i) => i.code === code)?.image_url;
+  };
+
+  const pickAddUpload = async (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    e.target.value = "";
+    if (!file) return;
+    try {
+      const dataUrl = await readAsDataUrl(file);
+      setAddSource({ kind: "upload", filename: file.name, dataUrl });
+      setAddCodeInput(baseOf(file.name));
+    } catch {
+      toast({ title: "Could not read file", variant: "destructive" });
+    }
+  };
+
+  const pickAddStaged = (filename: string) => {
+    setAddSource((prev) =>
+      prev?.kind === "staged" && prev.filename === filename ? null : { kind: "staged", filename }
+    );
+    setAddCodeInput(baseOf(filename));
+  };
+
+  // Attach the new image under its (filename-derived) code.
+  // Existing signs: immediate, like unlink/remove. New signs: queued for save.
+  const attachNewImage = async () => {
+    const code = addCodeInput.trim();
+    if (!code || !addSource) return;
+    if (codes.includes(code)) {
+      toast({ title: `Code ${code} is already on this sign`, variant: "destructive" });
+      return;
+    }
+    if (!sign?.id) {
+      setPendingImages((prev) => [
+        ...prev,
+        addSource.kind === "upload"
+          ? { code, filename: addSource.filename, dataUrl: addSource.dataUrl }
+          : { code, filename: addSource.filename, stagedFilename: addSource.filename },
+      ]);
+      form.setValue("codes", [...codes, code], { shouldValidate: true });
+      setAddSource(null);
+      setAddCodeInput("");
+      return;
+    }
+    try {
+      const res = await apiRequest(
+        "POST",
+        `/api/signs/${sign.id}/images`,
+        addSource.kind === "upload"
+          ? { code, filename: addSource.filename, dataUrl: addSource.dataUrl, addCodeAsNew: true }
+          : { code, stagedFilename: addSource.filename, addCodeAsNew: true }
+      );
+      const updated = (await res.json()) as StudySign;
+      const mapping = (updated.images || []).find((i) => i.code === code);
+      if (mapping) setAddedImages((prev) => [...prev.filter((i) => i.code !== code), mapping]);
+      form.setValue("codes", [...codes, code], { shouldValidate: true });
+      toast({ title: `Added ${code} with image` });
+      queryClient.invalidateQueries({ queryKey: ["/api/signs"] });
+      queryClient.invalidateQueries({ queryKey: ["/api/signs/unmatched-images"] });
+      setAddSource(null);
+      setAddCodeInput("");
+    } catch (e: any) {
+      toast({ title: "Attach failed", description: e.message, variant: "destructive" });
+    }
   };
 
   const linkNow = async (questionId: number) => {
@@ -197,8 +297,13 @@ export default function SignForm({ open, onClose, sign }: SignFormProps) {
   const saveMutation = useMutation({
     mutationFn: async (data: InsertStudySign) => {
       let id = sign?.id;
-      // Strip image mappings the user removed (record saves without them)
-      const images = (data.images || []).filter((i) => !removedCodes.includes(i.code));
+      // Strip image mappings the user removed; keep ones attached this session
+      // (PATCH would otherwise wipe just-attached mappings with stale form data)
+      const kept = (data.images || []).filter((i) => !removedCodes.includes(i.code));
+      const sessionAdded = addedImages.filter(
+        (i) => !removedCodes.includes(i.code) && !kept.some((k) => k.code === i.code)
+      );
+      const images = [...kept, ...sessionAdded];
       if (id) {
         await apiRequest("PATCH", `/api/signs/${id}`, { ...data, images });
       } else {
@@ -207,11 +312,13 @@ export default function SignForm({ open, onClose, sign }: SignFormProps) {
         id = created.id;
       }
       for (const p of pendingImages) {
-        await apiRequest("POST", `/api/signs/${id}/images`, {
-          code: p.code,
-          filename: p.filename,
-          dataUrl: p.dataUrl,
-        });
+        await apiRequest(
+          "POST",
+          `/api/signs/${id}/images`,
+          p.stagedFilename
+            ? { code: p.code, stagedFilename: p.stagedFilename }
+            : { code: p.code, filename: p.filename, dataUrl: p.dataUrl }
+        );
       }
       for (const qid of pendingQuestionIds) {
         await apiRequest("POST", `/api/signs/${id}/questions`, { question_id: qid });
@@ -350,6 +457,65 @@ export default function SignForm({ open, onClose, sign }: SignFormProps) {
                 </div>
               </div>
             )}
+
+            <div className="space-y-2">
+              <FormLabel>Add image <span className="font-normal text-muted-foreground">— filename becomes the new sign code</span></FormLabel>
+                  <div className="flex gap-2">
+                    <label className="flex-1 flex items-center justify-center gap-1 text-xs font-bold h-10 px-3 rounded-xl border border-border cursor-pointer hover:bg-accent">
+                      <ImagePlus className="h-4 w-4" />
+                      Upload file
+                      <input type="file" accept="image/*" className="hidden" onChange={pickAddUpload} />
+                    </label>
+                    <Input
+                      value={addCodeInput}
+                      onChange={(e) => setAddCodeInput(e.target.value)}
+                      placeholder="Code from filename…"
+                      className="flex-1 h-10 font-mono text-sm"
+                    />
+                    <Button
+                      type="button"
+                      onClick={attachNewImage}
+                      disabled={!addSource || !addCodeInput.trim()}
+                      className="h-10 rounded-xl font-bold disabled:opacity-50"
+                    >
+                      Attach
+                    </Button>
+                  </div>
+                  {(stagedData?.staged?.length || 0) > 0 && (
+                    <div className="space-y-2 pt-1">
+                      <Input
+                        value={addSearch}
+                        onChange={(e) => setAddSearch(e.target.value)}
+                        placeholder="Search unmatched imports…"
+                        className="h-9 text-xs font-mono"
+                      />
+                      <div className="grid grid-cols-4 md:grid-cols-6 gap-1.5 max-h-40 overflow-y-auto">
+                        {stagedOptions.map((s) => {
+                          const active = addSource?.kind === "staged" && addSource.filename === s.filename;
+                          return (
+                            <button
+                              key={s.filename}
+                              type="button"
+                              title={s.filename}
+                              onClick={() => pickAddStaged(s.filename)}
+                              className={cn(
+                                "aspect-square rounded-lg overflow-hidden border-2 bg-white",
+                                active ? "border-primary ring-2 ring-primary/30" : "border-border"
+                              )}
+                            >
+                              <img src={s.url} alt={s.filename} className="h-full w-full object-contain" loading="lazy" />
+                            </button>
+                          );
+                        })}
+                      </div>
+                      <p className="text-[11px] text-muted-foreground">
+                        {(stagedData?.staged?.length || 0) > 60
+                          ? `Showing first 60 of ${stagedData?.staged?.length} — search to narrow.`
+                          : "Pick an unmatched import, or upload a fresh file above."}
+                      </p>
+                    </div>
+                  )}
+            </div>
 
             <div className="grid grid-cols-1 gap-3">
               {(["where_text", "purpose_text", "action_text"] as const).map((key) => (
