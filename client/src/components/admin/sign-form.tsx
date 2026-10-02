@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type ChangeEvent } from "react";
+import { useEffect, useMemo, useRef, useState, type ChangeEvent } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -68,10 +68,12 @@ export default function SignForm({ open, onClose, sign }: SignFormProps) {
   const [removedCodes, setRemovedCodes] = useState<string[]>([]);
   // Images attached during this session (immediate for existing signs)
   const [addedImages, setAddedImages] = useState<{ code: string; image_url: string }[]>([]);
-  // "Add image" block: fresh upload or staged pick + derived code
-  const [addSource, setAddSource] = useState<
-    { kind: "upload"; filename: string; dataUrl: string } | { kind: "staged"; filename: string } | null
-  >(null);
+  // "Add image" block: multi-select staged picks (click / Ctrl-click / Shift-range)
+  // plus multi-file uploads. Each file brings its own filename-derived code.
+  const [addUploads, setAddUploads] = useState<{ filename: string; dataUrl: string }[]>([]);
+  const [stagedSel, setStagedSel] = useState<string[]>([]);
+  const stagedAnchor = useRef<number | null>(null);
+  // Editable code override — only when exactly one image is selected
   const [addCodeInput, setAddCodeInput] = useState("");
   const [addSearch, setAddSearch] = useState("");
   const [pendingQuestionIds, setPendingQuestionIds] = useState<number[]>([]);
@@ -96,7 +98,9 @@ export default function SignForm({ open, onClose, sign }: SignFormProps) {
       setPendingImages([]);
       setRemovedCodes([]);
       setAddedImages([]);
-      setAddSource(null);
+      setAddUploads([]);
+      setStagedSel([]);
+      stagedAnchor.current = null;
       setAddCodeInput("");
       setAddSearch("");
       setPendingQuestionIds([]);
@@ -203,67 +207,118 @@ export default function SignForm({ open, onClose, sign }: SignFormProps) {
     return (sign?.images || []).find((i) => i.code === code)?.image_url;
   };
 
-  const pickAddUpload = async (e: ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
+  const pickAddUploads = async (e: ChangeEvent<HTMLInputElement>) => {
+    const files: File[] = Array.from(e.target.files ?? []);
     e.target.value = "";
-    if (!file) return;
+    if (files.length === 0) return;
     try {
-      const dataUrl = await readAsDataUrl(file);
-      setAddSource({ kind: "upload", filename: file.name, dataUrl });
-      setAddCodeInput(baseOf(file.name));
-    } catch {
-      toast({ title: "Could not read file", variant: "destructive" });
-    }
-  };
-
-  const pickAddStaged = (filename: string) => {
-    setAddSource((prev) =>
-      prev?.kind === "staged" && prev.filename === filename ? null : { kind: "staged", filename }
-    );
-    setAddCodeInput(baseOf(filename));
-  };
-
-  // Attach the new image under its (filename-derived) code.
-  // Existing signs: immediate, like unlink/remove. New signs: queued for save.
-  const attachNewImage = async () => {
-    const code = addCodeInput.trim();
-    if (!code || !addSource) return;
-    if (codes.includes(code)) {
-      toast({ title: `Code ${code} is already on this sign`, variant: "destructive" });
-      return;
-    }
-    if (!sign?.id) {
-      setPendingImages((prev) => [
-        ...prev,
-        addSource.kind === "upload"
-          ? { code, filename: addSource.filename, dataUrl: addSource.dataUrl }
-          : { code, filename: addSource.filename, stagedFilename: addSource.filename },
-      ]);
-      form.setValue("codes", [...codes, code], { shouldValidate: true });
-      setAddSource(null);
-      setAddCodeInput("");
-      return;
-    }
-    try {
-      const res = await apiRequest(
-        "POST",
-        `/api/signs/${sign.id}/images`,
-        addSource.kind === "upload"
-          ? { code, filename: addSource.filename, dataUrl: addSource.dataUrl, addCodeAsNew: true }
-          : { code, stagedFilename: addSource.filename, addCodeAsNew: true }
+      const fresh = await Promise.all(
+        files.map(async (f) => ({ filename: f.name, dataUrl: await readAsDataUrl(f) }))
       );
-      const updated = (await res.json()) as StudySign;
-      const mapping = (updated.images || []).find((i) => i.code === code);
-      if (mapping) setAddedImages((prev) => [...prev.filter((i) => i.code !== code), mapping]);
-      form.setValue("codes", [...codes, code], { shouldValidate: true });
-      toast({ title: `Added ${code} with image` });
+      setAddUploads((prev) => {
+        const names = new Set(fresh.map((f) => f.filename));
+        return [...prev.filter((p) => !names.has(p.filename)), ...fresh];
+      });
+    } catch {
+      toast({ title: "Could not read files", variant: "destructive" });
+    }
+  };
+
+  const removeAddUpload = (filename: string) => {
+    setAddUploads((prev) => prev.filter((u) => u.filename !== filename));
+  };
+
+  // Staged-grid selection: plain click = single, Ctrl/Cmd-click = toggle,
+  // Shift-click = range from anchor (same model as the question bank table)
+  const clickStaged = (modifiers: { shift: boolean; multi: boolean }, index: number, filename: string) => {
+    if (modifiers.shift && stagedAnchor.current !== null) {
+      const [a, b] = [stagedAnchor.current, index].sort((x, y) => x - y);
+      const range = stagedOptions.slice(a, b + 1).map((s) => s.filename);
+      setStagedSel((prev) => Array.from(new Set([...prev, ...range])));
+    } else if (modifiers.multi) {
+      stagedAnchor.current = index;
+      setStagedSel((prev) => (prev.includes(filename) ? prev.filter((f) => f !== filename) : [...prev, filename]));
+    } else {
+      stagedAnchor.current = index;
+      setStagedSel((prev) => (prev.length === 1 && prev[0] === filename ? [] : [filename]));
+    }
+  };
+
+  const addTotal = addUploads.length + stagedSel.length;
+  const singleAddFile = addTotal === 1 ? addUploads[0]?.filename ?? stagedSel[0] ?? null : null;
+
+  // Keep the editable code in sync while exactly one image is selected
+  const lastSingleKey = useRef<string | null>(null);
+  useEffect(() => {
+    if (singleAddFile && singleAddFile !== lastSingleKey.current) {
+      lastSingleKey.current = singleAddFile;
+      setAddCodeInput(baseOf(singleAddFile));
+    }
+    if (!singleAddFile) lastSingleKey.current = null;
+  }, [singleAddFile]);
+
+  // Attach all selected images, each under its own filename-derived code
+  // (or the edited code when exactly one is selected).
+  // Existing signs: immediate, like unlink/remove. New signs: queued for save.
+  const attachNewImages = async () => {
+    const items = [
+      ...addUploads.map((u) => ({ filename: u.filename, dataUrl: u.dataUrl as string | undefined, stagedFilename: undefined as string | undefined })),
+      ...stagedSel.map((f) => ({ filename: f, dataUrl: undefined as string | undefined, stagedFilename: f })),
+    ];
+    if (items.length === 0) return;
+    const overrideCode = items.length === 1 ? addCodeInput.trim() : "";
+    const seen = new Set(codes);
+    const doneCodes: string[] = [];
+    let failed = 0;
+    for (const item of items) {
+      const code = overrideCode || baseOf(item.filename);
+      if (!code || seen.has(code)) continue;
+      seen.add(code);
+      if (!sign?.id) {
+        setPendingImages((prev) => [
+          ...prev,
+          item.stagedFilename
+            ? { code, filename: item.filename, stagedFilename: item.stagedFilename }
+            : { code, filename: item.filename, dataUrl: item.dataUrl! },
+        ]);
+        doneCodes.push(code);
+        continue;
+      }
+      try {
+        const res = await apiRequest(
+          "POST",
+          `/api/signs/${sign.id}/images`,
+          item.stagedFilename
+            ? { code, stagedFilename: item.stagedFilename, addCodeAsNew: true }
+            : { code, filename: item.filename, dataUrl: item.dataUrl, addCodeAsNew: true }
+        );
+        const updated = (await res.json()) as StudySign;
+        const mapping = (updated.images || []).find((i) => i.code === code);
+        if (mapping) setAddedImages((prev) => [...prev.filter((i) => i.code !== code), mapping]);
+        doneCodes.push(code);
+      } catch {
+        failed++;
+      }
+    }
+    const skipped = items.length - doneCodes.length - failed;
+    if (doneCodes.length > 0) {
+      form.setValue("codes", [...codes, ...doneCodes], { shouldValidate: true });
       queryClient.invalidateQueries({ queryKey: ["/api/signs"] });
       queryClient.invalidateQueries({ queryKey: ["/api/signs/unmatched-images"] });
-      setAddSource(null);
-      setAddCodeInput("");
-    } catch (e: any) {
-      toast({ title: "Attach failed", description: e.message, variant: "destructive" });
     }
+    setAddUploads([]);
+    setStagedSel([]);
+    stagedAnchor.current = null;
+    setAddCodeInput("");
+    toast({
+      title: sign?.id
+        ? `Attached ${doneCodes.length} image${doneCodes.length === 1 ? "" : "s"}`
+        : `Queued ${doneCodes.length} image${doneCodes.length === 1 ? "" : "s"} for save`,
+      description: [
+        failed > 0 ? `${failed} failed` : "",
+        skipped > 0 ? `${skipped} already on record` : "",
+      ].filter(Boolean).join(" · ") || undefined,
+    });
   };
 
   const linkNow = async (questionId: number) => {
@@ -459,28 +514,48 @@ export default function SignForm({ open, onClose, sign }: SignFormProps) {
             )}
 
             <div className="space-y-2">
-              <FormLabel>Add image <span className="font-normal text-muted-foreground">— filename becomes the new sign code</span></FormLabel>
-                  <div className="flex gap-2">
-                    <label className="flex-1 flex items-center justify-center gap-1 text-xs font-bold h-10 px-3 rounded-xl border border-border cursor-pointer hover:bg-accent">
-                      <ImagePlus className="h-4 w-4" />
-                      Upload file
-                      <input type="file" accept="image/*" className="hidden" onChange={pickAddUpload} />
-                    </label>
-                    <Input
-                      value={addCodeInput}
-                      onChange={(e) => setAddCodeInput(e.target.value)}
-                      placeholder="Code from filename…"
-                      className="flex-1 h-10 font-mono text-sm"
-                    />
-                    <Button
-                      type="button"
-                      onClick={attachNewImage}
-                      disabled={!addSource || !addCodeInput.trim()}
-                      className="h-10 rounded-xl font-bold disabled:opacity-50"
-                    >
-                      Attach
-                    </Button>
+              <FormLabel>
+                Add images <span className="font-normal text-muted-foreground">— each filename becomes a new sign code{addTotal > 0 ? ` · ${addTotal} selected` : ""}</span>
+              </FormLabel>
+              <div className="flex gap-2">
+                <label className="flex-1 flex items-center justify-center gap-1 text-xs font-bold h-10 px-3 rounded-xl border border-border cursor-pointer hover:bg-accent">
+                  <ImagePlus className="h-4 w-4" />
+                  Upload files
+                  <input type="file" accept="image/*" multiple className="hidden" onChange={pickAddUploads} />
+                </label>
+                {singleAddFile ? (
+                  <Input
+                    value={addCodeInput}
+                    onChange={(e) => setAddCodeInput(e.target.value)}
+                    placeholder="Code from filename…"
+                    className="flex-1 h-10 font-mono text-sm"
+                  />
+                ) : (
+                  <div className="flex-1 flex items-center px-3 h-10 rounded-xl bg-muted/60 text-[11px] text-muted-foreground font-semibold">
+                    {addTotal > 1 ? "Each file keeps its own filename as code" : "Code comes from the filename"}
                   </div>
+                )}
+                <Button
+                  type="button"
+                  onClick={attachNewImages}
+                  disabled={addTotal === 0 || (singleAddFile !== null && !addCodeInput.trim())}
+                  className="h-10 rounded-xl font-bold disabled:opacity-50"
+                >
+                  Attach{addTotal > 0 ? ` (${addTotal})` : ""}
+                </Button>
+              </div>
+              {addUploads.length > 0 && (
+                <div className="flex flex-wrap gap-1.5">
+                  {addUploads.map((u) => (
+                    <span key={u.filename} className="inline-flex items-center gap-1 text-[11px] font-mono bg-muted rounded-md pl-2 pr-1 py-1">
+                      {u.filename}
+                      <button type="button" onClick={() => removeAddUpload(u.filename)} className="hover:text-destructive" aria-label={`Remove ${u.filename}`}>
+                        <X className="h-3 w-3" />
+                      </button>
+                    </span>
+                  ))}
+                </div>
+              )}
                   {(stagedData?.staged?.length || 0) > 0 && (
                     <div className="space-y-2 pt-1">
                       <Input
@@ -490,14 +565,14 @@ export default function SignForm({ open, onClose, sign }: SignFormProps) {
                         className="h-9 text-xs font-mono"
                       />
                       <div className="grid grid-cols-4 md:grid-cols-6 gap-1.5 max-h-40 overflow-y-auto">
-                        {stagedOptions.map((s) => {
-                          const active = addSource?.kind === "staged" && addSource.filename === s.filename;
+                        {stagedOptions.map((s, idx) => {
+                          const active = stagedSel.includes(s.filename);
                           return (
                             <button
                               key={s.filename}
                               type="button"
-                              title={s.filename}
-                              onClick={() => pickAddStaged(s.filename)}
+                              title={`${s.filename} — click, Ctrl-click to toggle, Shift-click for range`}
+                              onClick={(e) => clickStaged({ shift: e.shiftKey, multi: e.ctrlKey || e.metaKey }, idx, s.filename)}
                               className={cn(
                                 "aspect-square rounded-lg overflow-hidden border-2 bg-white",
                                 active ? "border-primary ring-2 ring-primary/30" : "border-border"
@@ -511,7 +586,7 @@ export default function SignForm({ open, onClose, sign }: SignFormProps) {
                       <p className="text-[11px] text-muted-foreground">
                         {(stagedData?.staged?.length || 0) > 60
                           ? `Showing first 60 of ${stagedData?.staged?.length} — search to narrow.`
-                          : "Pick an unmatched import, or upload a fresh file above."}
+                          : "Click to select · Ctrl-click to toggle · Shift-click for a range."}
                       </p>
                     </div>
                   )}
