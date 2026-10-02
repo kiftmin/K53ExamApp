@@ -88,6 +88,28 @@ app.use((req, res, next) => {
         question_id INTEGER NOT NULL REFERENCES questions(id) ON DELETE CASCADE
       );
     `;
+    await client`
+      CREATE TABLE IF NOT EXISTS study_rules (
+        id SERIAL PRIMARY KEY,
+        section_ref TEXT NOT NULL,
+        heading TEXT NOT NULL,
+        subheading TEXT NOT NULL,
+        title TEXT,
+        body TEXT NOT NULL,
+        applicable_codes JSONB NOT NULL,
+        is_verified_exam_question BOOLEAN NOT NULL DEFAULT FALSE,
+        is_reviewed BOOLEAN NOT NULL DEFAULT FALSE,
+        created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+        updated_at TIMESTAMP NOT NULL DEFAULT NOW()
+      );
+    `;
+    await client`
+      CREATE TABLE IF NOT EXISTS rule_questions (
+        id SERIAL PRIMARY KEY,
+        rule_id INTEGER NOT NULL REFERENCES study_rules(id) ON DELETE CASCADE,
+        question_id INTEGER NOT NULL REFERENCES questions(id) ON DELETE CASCADE
+      );
+    `;
   } catch (err) {
     console.error("Failed to ensure study tables:", err);
   }

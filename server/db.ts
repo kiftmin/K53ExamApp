@@ -51,6 +51,27 @@ export const signQuestions = pgTable('sign_questions', {
     question_id: integer('question_id').references(() => questions.id, { onDelete: 'cascade' }).notNull(),
 });
 
+// Rules of the Road study module
+export const studyRules = pgTable('study_rules', {
+    id: serial('id').primaryKey(),
+    section_ref: text('section_ref').notNull(), // "6.17.1"
+    heading: text('heading').notNull(), // "Road Traffic Rules"
+    subheading: text('subheading').notNull(), // "Seatbelts"
+    title: text('title'),
+    body: text('body').notNull(), // atomic rule statement
+    applicable_codes: jsonb('applicable_codes').notNull(), // number[] e.g. [0], [1], [2,3]
+    is_verified_exam_question: boolean('is_verified_exam_question').default(false).notNull(),
+    is_reviewed: boolean('is_reviewed').default(false).notNull(), // LLM-assisted cards: reviewed by a human
+    created_at: timestamp('created_at').defaultNow().notNull(),
+    updated_at: timestamp('updated_at').defaultNow().notNull(),
+});
+
+export const ruleQuestions = pgTable('rule_questions', {
+    id: serial('id').primaryKey(),
+    rule_id: integer('rule_id').references(() => studyRules.id, { onDelete: 'cascade' }).notNull(),
+    question_id: integer('question_id').references(() => questions.id, { onDelete: 'cascade' }).notNull(),
+});
+
 // Define Drizzle Postgres Schema matching the Zod schema
 export const questions = pgTable('questions', {
     id: serial('id').primaryKey(),

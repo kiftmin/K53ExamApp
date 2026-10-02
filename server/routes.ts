@@ -1,6 +1,6 @@
 import { storage } from "./storage.js";
 import { api } from "../shared/routes.js";
-import { questionSchema, sourceSchema, MOBILE_NUMBER_REGEX, studySignSchema, rawSignImportSchema, type InsertStudySign } from "../shared/schema.js";
+import { questionSchema, sourceSchema, MOBILE_NUMBER_REGEX, studySignSchema, rawSignImportSchema, type InsertStudySign, studyRuleSchema, rawRuleImportSchema, type InsertStudyRule } from "../shared/schema.js";
 import {
   generateAccessCode,
   generateDailyCode,
@@ -791,6 +791,141 @@ export async function registerRoutes(
       res.status(204).send();
     } catch (err) {
       console.error("Error unlinking sign question:", err);
+      res.status(500).json({ message: "Failed to unlink question" });
+    }
+  });
+
+  // === Rules of the Road study module ===
+  // Static sub-paths registered BEFORE /:id.
+
+  app.get('/api/rules', async (req: any, res: any) => {
+    try {
+      const verified = req.query.verified;
+      const codeParam = req.query.code;
+      const code = typeof codeParam === 'string' && /^[123]$/.test(codeParam) ? parseInt(codeParam, 10) : undefined;
+      const rules = await storage.getRules({
+        code,
+        heading: typeof req.query.heading === 'string' && req.query.heading ? req.query.heading : undefined,
+        subheading: typeof req.query.subheading === 'string' && req.query.subheading ? req.query.subheading : undefined,
+        search: typeof req.query.search === 'string' ? req.query.search : undefined,
+        verified: verified === 'true' ? true : verified === 'false' ? false : undefined,
+        missingQuestion: req.query.missingQuestion === 'true' ? true : undefined,
+        unreviewed: req.query.unreviewed === 'true' ? true : undefined,
+      });
+      res.json(rules);
+    } catch (err) {
+      console.error("Error listing rules:", err);
+      res.status(500).json({ message: "Failed to load rules" });
+    }
+  });
+
+  // Bulk insert from rules-of-the-road-cards.json
+  app.post('/api/rules/import', async (req: any, res: any) => {
+    try {
+      const parsed = z.array(rawRuleImportSchema).parse(req.body);
+      const rows: InsertStudyRule[] = parsed.map((r) => ({
+        section_ref: r.section_ref,
+        heading: r.heading,
+        subheading: r.subheading,
+        title: r.title ?? null,
+        body: r.body,
+        applicable_codes: r.applicable_codes,
+        is_verified_exam_question: false,
+        is_reviewed: false,
+      }));
+      const result = await storage.bulkInsertRules(rows);
+      res.status(201).json({ message: `Imported ${result.inserted} rules (${result.skipped} duplicates skipped).`, ...result });
+    } catch (err) {
+      console.error("Error importing rules:", err);
+      res.status(400).json({ message: "Invalid rules import payload", error: err });
+    }
+  });
+
+  app.get('/api/rules/:id', async (req: any, res: any) => {
+    try {
+      const id = parseInt(req.params.id, 10);
+      if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
+      const rule = await storage.getRuleById(id);
+      if (!rule) return res.status(404).json({ message: "Rule not found" });
+      res.json(rule);
+    } catch (err) {
+      console.error("Error reading rule:", err);
+      res.status(500).json({ message: "Failed to load rule" });
+    }
+  });
+
+  app.post('/api/rules', async (req: any, res: any) => {
+    try {
+      const parsed = studyRuleSchema.parse(req.body);
+      const created = await storage.createRule(parsed);
+      res.status(201).json(created);
+    } catch (err) {
+      console.error("Error creating rule:", err);
+      res.status(400).json({ message: "Invalid rule data", error: err });
+    }
+  });
+
+  app.patch('/api/rules/:id', async (req: any, res: any) => {
+    try {
+      const id = parseInt(req.params.id, 10);
+      if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
+      const parsed = studyRuleSchema.partial().parse(req.body);
+      const updated = await storage.updateRule(id, parsed);
+      if (!updated) return res.status(404).json({ message: "Rule not found" });
+      res.json(updated);
+    } catch (err) {
+      console.error("Error updating rule:", err);
+      res.status(400).json({ message: "Invalid rule data", error: err });
+    }
+  });
+
+  app.delete('/api/rules/:id', async (req: any, res: any) => {
+    try {
+      const id = parseInt(req.params.id, 10);
+      if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
+      const ok = await storage.deleteRule(id);
+      if (!ok) return res.status(404).json({ message: "Rule not found" });
+      res.status(204).send();
+    } catch (err) {
+      console.error("Error deleting rule:", err);
+      res.status(500).json({ message: "Failed to delete rule" });
+    }
+  });
+
+  app.get('/api/rules/:id/questions', async (req: any, res: any) => {
+    try {
+      const id = parseInt(req.params.id, 10);
+      if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
+      res.json(await storage.getQuestionsForRule(id));
+    } catch (err) {
+      console.error("Error reading rule questions:", err);
+      res.status(500).json({ message: "Failed to load linked questions" });
+    }
+  });
+
+  app.post('/api/rules/:id/questions', async (req: any, res: any) => {
+    try {
+      const id = parseInt(req.params.id, 10);
+      if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
+      const { question_id } = z.object({ question_id: z.number() }).parse(req.body);
+      const link = await storage.linkRuleQuestion(id, question_id);
+      res.status(201).json(link);
+    } catch (err: any) {
+      console.error("Error linking rule question:", err);
+      res.status(400).json({ message: err?.message || "Failed to link question" });
+    }
+  });
+
+  app.delete('/api/rules/:id/questions/:questionId', async (req: any, res: any) => {
+    try {
+      const id = parseInt(req.params.id, 10);
+      const questionId = parseInt(req.params.questionId, 10);
+      if (Number.isNaN(id) || Number.isNaN(questionId)) return res.status(400).json({ message: "Invalid id" });
+      const ok = await storage.unlinkRuleQuestion(id, questionId);
+      if (!ok) return res.status(404).json({ message: "Link not found" });
+      res.status(204).send();
+    } catch (err) {
+      console.error("Error unlinking rule question:", err);
       res.status(500).json({ message: "Failed to unlink question" });
     }
   });

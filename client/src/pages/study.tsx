@@ -67,8 +67,28 @@ export default function Study() {
             </CardContent>
           </Card>
 
+          <Card
+            className="glass-card border-none shadow-xl rounded-3xl cursor-pointer transition-transform hover:-translate-y-0.5"
+            onClick={() => setLocation("/study/rules")}
+          >
+            <CardContent className="p-5 flex items-center gap-4">
+              <div
+                className="h-12 w-12 rounded-2xl flex items-center justify-center text-white shrink-0"
+                style={{ background: "linear-gradient(135deg, #E53E1A, #F5A623)" }}
+              >
+                <TrafficCone className="h-6 w-6" />
+              </div>
+              <div className="flex-1">
+                <p className="font-display font-bold">Rules of the Road</p>
+                <p className="text-xs text-muted-foreground">Browse rules by code & flashcards</p>
+              </div>
+              <span className="text-[10px] font-black uppercase tracking-widest text-green-600 bg-green-500/10 px-2 py-1 rounded-full">
+                Active
+              </span>
+            </CardContent>
+          </Card>
+
           {[
-            { icon: TrafficCone, title: "Rules of the Road", desc: "Prose-based module" },
             { icon: Car, title: "Vehicle Controls", desc: "Prose-based module" },
           ].map((m) => (
             <Card key={m.title} className="rounded-3xl opacity-60">

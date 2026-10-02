@@ -13,6 +13,8 @@ import Review from "@/pages/review";
 import Study from "@/pages/study";
 import StudySignsBrowse from "@/pages/study-signs";
 import StudySignsFlashcards from "@/pages/study-flashcards";
+import StudyRulesBrowse from "@/pages/study-rules";
+import StudyRulesFlashcards from "@/pages/study-rules-flashcards";
 
 import Admin from "@/pages/admin";
 
@@ -27,6 +29,8 @@ function Router() {
       <Route path="/study" component={Study} />
       <Route path="/study/signs" component={StudySignsBrowse} />
       <Route path="/study/signs/flashcards" component={StudySignsFlashcards} />
+      <Route path="/study/rules" component={StudyRulesBrowse} />
+      <Route path="/study/rules/flashcards" component={StudyRulesFlashcards} />
       <Route component={NotFound} />
     </Switch>
   );

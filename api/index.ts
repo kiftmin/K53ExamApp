@@ -100,7 +100,29 @@ app.get("/api/seed/signs", async (_req: any, res: any) => {
             question_id INTEGER NOT NULL REFERENCES questions(id) ON DELETE CASCADE
           );
         `;
-        res.json({ success: true, message: "Tables 'study_signs' and 'sign_questions' are ready." });
+        await client`
+          CREATE TABLE IF NOT EXISTS study_rules (
+            id SERIAL PRIMARY KEY,
+            section_ref TEXT NOT NULL,
+            heading TEXT NOT NULL,
+            subheading TEXT NOT NULL,
+            title TEXT,
+            body TEXT NOT NULL,
+            applicable_codes JSONB NOT NULL,
+            is_verified_exam_question BOOLEAN NOT NULL DEFAULT FALSE,
+            is_reviewed BOOLEAN NOT NULL DEFAULT FALSE,
+            created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+            updated_at TIMESTAMP NOT NULL DEFAULT NOW()
+          );
+        `;
+        await client`
+          CREATE TABLE IF NOT EXISTS rule_questions (
+            id SERIAL PRIMARY KEY,
+            rule_id INTEGER NOT NULL REFERENCES study_rules(id) ON DELETE CASCADE,
+            question_id INTEGER NOT NULL REFERENCES questions(id) ON DELETE CASCADE
+          );
+        `;
+        res.json({ success: true, message: "Tables ready (signs + rules)." });
     } catch (error: any) {
         console.error("Sign seed error:", error);
         res.status(500).json({ error: "Sign table creation failed", details: error.message });

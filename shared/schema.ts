@@ -102,3 +102,37 @@ export const rawSignImportSchema = z.object({
 export type RawSignImport = z.infer<typeof rawSignImportSchema>;
 
 export type SignQuestionLink = { id: number; sign_id: number; question_id: number };
+
+// === Rules of the Road study module ===
+
+export const RULE_APPLICABLE_CODES = [0, 1, 2, 3] as const;
+
+// 0 = code-agnostic, 1 = motorcycle, 2 = light, 3 = heavy
+export const studyRuleSchema = z.object({
+  id: z.number().optional(),
+  section_ref: z.string().min(1),
+  heading: z.string().min(1),
+  subheading: z.string().min(1),
+  title: z.string().nullable().optional(),
+  body: z.string().min(1),
+  applicable_codes: z.array(z.number().int().min(0).max(3)).min(1),
+  is_verified_exam_question: z.boolean().default(false),
+  is_reviewed: z.boolean().default(false),
+});
+
+export type StudyRule = z.infer<typeof studyRuleSchema> & { id: number };
+export type InsertStudyRule = Omit<z.infer<typeof studyRuleSchema>, "id">;
+
+// Raw import format — matches rules-of-the-road-cards.json verbatim
+export const rawRuleImportSchema = z.object({
+  section_ref: z.string(),
+  heading: z.string(),
+  subheading: z.string(),
+  title: z.string().optional(),
+  body: z.string(),
+  applicable_codes: z.array(z.number().int().min(0).max(3)),
+});
+
+export type RawRuleImport = z.infer<typeof rawRuleImportSchema>;
+
+export type RuleQuestionLink = { id: number; rule_id: number; question_id: number };
