@@ -110,6 +110,8 @@ app.use((req, res, next) => {
         question_id INTEGER NOT NULL REFERENCES questions(id) ON DELETE CASCADE
       );
     `;
+    // Pure-additive column migrations (safe to run every boot)
+    await client`ALTER TABLE questions ADD COLUMN IF NOT EXISTS explanation TEXT;`;
   } catch (err) {
     console.error("Failed to ensure study tables:", err);
   }

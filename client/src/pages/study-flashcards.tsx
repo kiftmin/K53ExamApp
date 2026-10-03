@@ -8,7 +8,8 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Progress } from "@/components/ui/progress";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { getFavoriteSignIds, getSeenSignIds, markSignSeen } from "@/lib/sign-storage";
+import { getFavoriteSignIds, getSeenSignIds, markSignSeen, rateSign, getAllSignLearning, type RecallRating } from "@/lib/sign-storage";
+import { summarizeSigns } from "@/lib/mastery-summary";
 import { ArrowLeft, ChevronLeft, ChevronRight, RotateCcw, Shuffle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useStudyGate } from "./study";
@@ -48,6 +49,26 @@ export default function StudySignsFlashcards() {
   );
 
   const deck = useMemo(() => {
+    // Revision mode (?revision=1): items that are still shaky, weakest groups first
+    const revisionMode = typeof window !== "undefined" && new URLSearchParams(window.location.search).get("revision") === "1";
+    if (revisionMode) {
+      const learning = getAllSignLearning();
+      const groupPct = new Map<string, number>();
+      for (const s of summarizeSigns(signs)) {
+        groupPct.set(`${s.heading}|||${s.subheading}`, s.pct);
+      }
+      return signs
+        .filter((s) => {
+          const rec = learning[s.id];
+          const status = rec?.status ?? "new";
+          return status === "learning" || status === "new";
+        })
+        .sort((a, b) => {
+          const pa = groupPct.get(`${a.heading}|||${a.subheading}`) ?? 100;
+          const pb = groupPct.get(`${b.heading}|||${b.subheading}`) ?? 100;
+          return pa - pb;
+        });
+    }
     const favs = new Set(getFavoriteSignIds());
     const seen = new Set(getSeenSignIds());
     let pool = signs.filter((s) => {
@@ -225,6 +246,30 @@ export default function StudySignsFlashcards() {
               </div>
             </div>
           )
+        )}
+
+        {deck.length > 0 && flipped && current && (
+          <div className="grid grid-cols-4 gap-2">
+            {([
+              { r: "again" as RecallRating, label: "Again", cls: "bg-red-500/10 text-red-600 border-red-200" },
+              { r: "hard" as RecallRating, label: "Hard", cls: "bg-amber-500/10 text-amber-700 border-amber-200" },
+              { r: "good" as RecallRating, label: "Good", cls: "bg-blue-500/10 text-blue-700 border-blue-200" },
+              { r: "easy" as RecallRating, label: "Easy", cls: "bg-green-500/10 text-green-700 border-green-200" },
+            ]).map(({ r, label, cls }) => (
+              <button
+                key={r}
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  rateSign(current.id, r);
+                  advance(1);
+                }}
+                className={cn("h-11 rounded-xl border text-xs font-bold", cls)}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
         )}
 
         {deck.length > 0 && (

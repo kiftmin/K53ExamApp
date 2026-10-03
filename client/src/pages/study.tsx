@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
 import { useQuery } from "@tanstack/react-query";
-import type { StudySign } from "@shared/schema";
+import type { StudySign, StudyRule } from "@shared/schema";
+import { weakestGroups } from "@/lib/mastery-summary";
 import { Layout } from "@/components/layout";
 import { Card, CardContent } from "@/components/ui/card";
 import { BookOpen, Car, Signpost, TrafficCone, ArrowLeft } from "lucide-react";
@@ -22,6 +23,11 @@ export default function Study() {
     queryKey: ["/api/signs"],
     enabled: allowed,
   });
+  const { data: rules = [] } = useQuery<StudyRule[]>({
+    queryKey: ["/api/rules"],
+    enabled: allowed,
+  });
+  const weak = weakestGroups(signs, rules, 3);
 
   if (!allowed) return null;
 
@@ -107,6 +113,35 @@ export default function Study() {
             </Card>
           ))}
         </div>
+
+        {/* Continue Learning — weakest groups from localStorage learning records */}
+        {weak.length > 0 && (
+          <div className="glass-card rounded-3xl border-none shadow-xl p-5 space-y-3">
+            <div className="flex items-center gap-2">
+              <BookOpen className="h-4 w-4 text-primary" />
+              <h2 className="font-display font-bold">Continue Learning</h2>
+            </div>
+            <p className="text-xs text-muted-foreground">Your weakest areas by recall rating:</p>
+            <div className="space-y-2">
+              {weak.map((g) => (
+                <div key={`${g.heading}-${g.subheading}`} className="flex items-center justify-between rounded-xl bg-muted/50 px-3 py-2">
+                  <div>
+                    <p className="text-xs font-bold">{g.subheading}</p>
+                    <p className="text-[10px] text-muted-foreground">{g.heading}</p>
+                  </div>
+                  <span className="text-xs font-bold text-amber-700">{g.weak} shaky · {g.pct}% mastered</span>
+                </div>
+              ))}
+            </div>
+            <button
+              onClick={() => setLocation("/study/signs/flashcards?revision=1")}
+              className="w-full h-11 rounded-xl font-bold text-white"
+              style={{ background: "linear-gradient(135deg, #E53E1A, #F5A623)" }}
+            >
+              Start Revision
+            </button>
+          </div>
+        )}
       </div>
     </Layout>
   );

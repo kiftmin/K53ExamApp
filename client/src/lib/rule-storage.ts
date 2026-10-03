@@ -2,8 +2,103 @@
 // Mirrors sign-storage.ts — plain JSON in localStorage, no backend changes.
 
 const FAV_RULES_KEY = "k53_favorite_rules";
-const SEEN_RULES_KEY = "k53_seen_rules";
 const RULE_CODE_KEY = "k53_rules_licence_code";
+const LEARNING_RULES_KEY = "k53_rule_learning";
+
+// === Learning records (Phase 2 mastery model) ===
+
+export type LearningStatus = "new" | "learning" | "review" | "mastered";
+export type RecallRating = "again" | "hard" | "good" | "easy";
+
+export type LearningRecord = {
+  status: LearningStatus;
+  correct: number;
+  incorrect: number;
+  lastRating: RecallRating;
+  lastSeenAt: string;
+};
+
+function readLearningMap(key: string): Record<number, LearningRecord> {
+  try {
+    const raw = localStorage.getItem(key);
+    if (!raw) return {};
+    const parsed = JSON.parse(raw);
+    if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) return parsed;
+    return {};
+  } catch {
+    return {};
+  }
+}
+
+function writeLearningMap(key: string, map: Record<number, LearningRecord>): void {
+  try {
+    localStorage.setItem(key, JSON.stringify(map));
+  } catch {
+    // ignore
+  }
+}
+
+function nextStatus(record: LearningRecord | undefined, rating: RecallRating): LearningStatus {
+  const current = record?.status ?? "new";
+  if (current === "new") return "learning";
+  switch (rating) {
+    case "again":
+      return "learning";
+    case "hard":
+      return "learning";
+    case "good":
+      return current === "mastered" ? "mastered" : "review";
+    case "easy":
+      return current === "review" || current === "mastered" ? "mastered" : "review";
+  }
+}
+
+export function rateRule(id: number, rating: RecallRating): LearningRecord {
+  const map = readLearningMap(LEARNING_RULES_KEY);
+  const prev = map[id];
+  const record: LearningRecord = {
+    status: nextStatus(prev, rating),
+    correct: (prev?.correct ?? 0) + (rating === "good" || rating === "easy" ? 1 : 0),
+    incorrect: (prev?.incorrect ?? 0) + (rating === "again" || rating === "hard" ? 1 : 0),
+    lastRating: rating,
+    lastSeenAt: new Date().toISOString(),
+  };
+  map[id] = record;
+  writeLearningMap(LEARNING_RULES_KEY, map);
+  return record;
+}
+
+export function getRuleLearning(id: number): LearningRecord | undefined {
+  return readLearningMap(LEARNING_RULES_KEY)[id];
+}
+
+export function getAllRuleLearning(): Record<number, LearningRecord> {
+  return readLearningMap(LEARNING_RULES_KEY);
+}
+
+export function getSeenRuleIds(): number[] {
+  const map = readLearningMap(LEARNING_RULES_KEY);
+  return Object.keys(map).map(Number).filter((id) => map[id]?.status && map[id].status !== "new");
+}
+
+export function markRuleSeen(id: number): void {
+  const map = readLearningMap(LEARNING_RULES_KEY);
+  if (!map[id]) {
+    map[id] = { status: "learning", correct: 0, incorrect: 0, lastRating: "good", lastSeenAt: new Date().toISOString() };
+    writeLearningMap(LEARNING_RULES_KEY, map);
+  } else if (map[id].status === "new") {
+    map[id] = { ...map[id], status: "learning", lastSeenAt: new Date().toISOString() };
+    writeLearningMap(LEARNING_RULES_KEY, map);
+  }
+}
+
+export function clearSeenRules(): void {
+  try {
+    localStorage.removeItem(LEARNING_RULES_KEY);
+  } catch {
+    // ignore
+  }
+}
 
 function readIds(key: string): number[] {
   try {
@@ -38,15 +133,6 @@ export function toggleFavoriteRule(id: number): boolean {
   const next = ids.includes(id) ? ids.filter((x) => x !== id) : [...ids, id];
   writeIds(FAV_RULES_KEY, next);
   return next.includes(id);
-}
-
-export function getSeenRuleIds(): number[] {
-  return readIds(SEEN_RULES_KEY);
-}
-
-export function markRuleSeen(id: number): void {
-  const ids = readIds(SEEN_RULES_KEY);
-  if (!ids.includes(id)) writeIds(SEEN_RULES_KEY, [...ids, id]);
 }
 
 export function getRulesLicenceCode(): number | null {

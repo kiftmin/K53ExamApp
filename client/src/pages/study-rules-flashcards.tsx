@@ -7,7 +7,8 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Progress } from "@/components/ui/progress";
-import { getFavoriteRuleIds, getSeenRuleIds, markRuleSeen } from "@/lib/rule-storage";
+import { getFavoriteRuleIds, getSeenRuleIds, markRuleSeen, rateRule, getAllRuleLearning, type RecallRating } from "@/lib/rule-storage";
+import { summarizeRules } from "@/lib/mastery-summary";
 import { ArrowLeft, ChevronLeft, ChevronRight, RotateCcw, Shuffle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useStudyGate } from "./study";
@@ -81,6 +82,18 @@ function Deck({
   });
 
   const deck = useMemo(() => {
+    const revisionMode = typeof window !== "undefined" && new URLSearchParams(window.location.search).get("revision") === "1";
+    if (revisionMode) {
+      const learning = getAllRuleLearning();
+      const groupPct = new Map<string, number>();
+      for (const r of summarizeRules(rules)) groupPct.set(`${r.heading}|||${r.subheading}`, r.pct);
+      return rules
+        .filter((r: StudyRule) => {
+          const status = learning[r.id]?.status ?? "new";
+          return status === "learning" || status === "new";
+        })
+        .sort((a: any, b: any) => (groupPct.get(`${a.heading}|||${a.subheading}`) ?? 100) - (groupPct.get(`${b.heading}|||${b.subheading}`) ?? 100));
+    }
     const favs = new Set(getFavoriteRuleIds());
     const seen = new Set(getSeenRuleIds());
     let pool = rules.filter((r: StudyRule) => {
@@ -173,6 +186,26 @@ function Deck({
             </div>
           </div>
         )
+      )}
+
+      {deck.length > 0 && flipped && current && (
+        <div className="grid grid-cols-4 gap-2">
+          {([
+            { r: "again" as RecallRating, label: "Again", cls: "bg-red-500/10 text-red-600 border-red-200" },
+            { r: "hard" as RecallRating, label: "Hard", cls: "bg-amber-500/10 text-amber-700 border-amber-200" },
+            { r: "good" as RecallRating, label: "Good", cls: "bg-blue-500/10 text-blue-700 border-blue-200" },
+            { r: "easy" as RecallRating, label: "Easy", cls: "bg-green-500/10 text-green-700 border-green-200" },
+          ]).map(({ r, label, cls }) => (
+            <button
+              key={r}
+              type="button"
+              onClick={() => { rateRule(current.id, r); advance(1); }}
+              className={cn("h-11 rounded-xl border text-xs font-bold", cls)}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
       )}
 
       {deck.length > 0 && (

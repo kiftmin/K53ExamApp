@@ -12,9 +12,20 @@ export async function apiRequest(
   url: string,
   data?: unknown | undefined,
 ): Promise<Response> {
+  const headers: Record<string, string> = data ? { "Content-Type": "application/json" } : {};
+  // Attach cached admin credentials so server-side requireAdminAuth passes.
+  // sessionStorage holds them after a successful AdminGate login.
+  try {
+    const key = sessionStorage.getItem("k53_admin_key");
+    const mobile = sessionStorage.getItem("k53_admin_mobile");
+    if (key) headers["x-admin-key"] = key;
+    if (mobile) headers["x-admin-mobile"] = mobile;
+  } catch {
+    // sessionStorage unavailable — headers simply not attached
+  }
   const res = await fetch(url, {
     method,
-    headers: data ? { "Content-Type": "application/json" } : {},
+    headers,
     body: data ? JSON.stringify(data) : undefined,
     credentials: "include",
   });

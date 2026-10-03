@@ -156,6 +156,13 @@ export default function Review() {
                           You did not answer this question.
                         </div>
                       )}
+
+                      {q.explanation && (
+                        <div className="mt-4 rounded-xl border border-blue-100 bg-blue-50/60 p-4">
+                          <p className="text-[10px] font-black uppercase tracking-wider text-blue-600">Why?</p>
+                          <p className="text-sm text-neutral-700 mt-1 leading-relaxed">{q.explanation}</p>
+                        </div>
+                      )}
                     </div>
                   </AccordionContent>
                 </AccordionItem>

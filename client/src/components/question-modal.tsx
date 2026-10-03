@@ -52,6 +52,7 @@ const defaultValues: InsertQuestion = {
     source_id: null,
     is_duplicate: false,
     is_official: false,
+    explanation: "",
     options: [
         { answer_number: "A", answer_text: "", correct_answer: false },
         { answer_number: "B", answer_text: "", correct_answer: false },
@@ -281,6 +282,25 @@ export default function QuestionModal({
                                                     {...field} 
                                                     className="w-full min-h-[100px] p-4 text-sm border-neutral-200 rounded-lg focus-visible:ring-blue-500 focus-visible:ring-offset-0 transition-all bg-neutral-50/30 font-medium leading-relaxed"
                                                     placeholder="Enter the question text here..."
+                                                />
+                                            </FormControl>
+                                            <FormMessage className="text-[10px]" />
+                                        </FormItem>
+                                    )}
+                                        />
+
+                                <FormField
+                                    control={form.control}
+                                    name="explanation"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel className="text-[10px] font-black text-neutral-400 uppercase tracking-wider">Explanation (optional — shown in review as "Why?")</FormLabel>
+                                            <FormControl>
+                                                <Textarea
+                                                    {...field}
+                                                    value={field.value || ""}
+                                                    className="w-full min-h-[70px] p-4 text-sm border-neutral-200 rounded-lg focus-visible:ring-blue-500 focus-visible:ring-offset-0 transition-all bg-neutral-50/30 leading-relaxed"
+                                                    placeholder="Why is the correct answer correct?"
                                                 />
                                             </FormControl>
                                             <FormMessage className="text-[10px]" />

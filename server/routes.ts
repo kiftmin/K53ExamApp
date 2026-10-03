@@ -16,6 +16,7 @@ import {
 } from "./access-code.js";
 import { getAdminEmail, isSmtpConfigured, sendAdminEmail } from "./mailer.js";
 import { slugifyCode, listStagedImages, stageImageUpload, attachStagedToCode, saveImageForCode, deleteStagedImage } from "./sign-images.js";
+import { validateAdminAccess, requireAdminAuth } from "./admin-auth.js";
 import { z } from "zod";
 
 export async function registerRoutes(
@@ -35,7 +36,7 @@ export async function registerRoutes(
 
   // === Bulk Question Endpoints ===
 
-  app.post('/api/questions/bulk', async (req: any, res: any) => {
+  app.post('/api/questions/bulk', requireAdminAuth, async (req: any, res: any) => {
     try {
       const parsed = z.array(questionSchema).parse(req.body);
       await storage.bulkUploadQuestions(parsed);
@@ -46,7 +47,7 @@ export async function registerRoutes(
     }
   });
 
-  app.post('/api/questions/bulk-source', async (req: any, res: any) => {
+  app.post('/api/questions/bulk-source', requireAdminAuth, async (req: any, res: any) => {
     try {
       const { ids, sourceId } = z.object({
         ids: z.array(z.number()),
@@ -61,7 +62,7 @@ export async function registerRoutes(
     }
   });
 
-  app.delete('/api/questions/bulk', async (req: any, res: any) => {
+  app.delete('/api/questions/bulk', requireAdminAuth, async (req: any, res: any) => {
     try {
       const { ids } = z.object({
         ids: z.array(z.number())
@@ -75,7 +76,7 @@ export async function registerRoutes(
     }
   });
 
-  app.post('/api/questions/bulk-official', async (req: any, res: any) => {
+  app.post('/api/questions/bulk-official', requireAdminAuth, async (req: any, res: any) => {
     try {
       const { ids, isOfficial } = z.object({
         ids: z.array(z.number()),
@@ -90,7 +91,7 @@ export async function registerRoutes(
     }
   });
 
-  app.post('/api/questions/bulk-category', async (req: any, res: any) => {
+  app.post('/api/questions/bulk-category', requireAdminAuth, async (req: any, res: any) => {
     try {
       const { ids, category } = z.object({
         ids: z.array(z.number()),
@@ -105,7 +106,7 @@ export async function registerRoutes(
     }
   });
 
-  app.post('/api/questions/bulk-duplicate', async (req: any, res: any) => {
+  app.post('/api/questions/bulk-duplicate', requireAdminAuth, async (req: any, res: any) => {
     try {
       const { ids, isDuplicate } = z.object({
         ids: z.array(z.number()),
@@ -122,7 +123,7 @@ export async function registerRoutes(
 
   // === Individual Question Endpoints ===
 
-  app.post('/api/questions', async (req: any, res: any) => {
+  app.post('/api/questions', requireAdminAuth, async (req: any, res: any) => {
     try {
       const parsed = questionSchema.parse(req.body);
       const created = await storage.createQuestion(parsed);
@@ -133,7 +134,7 @@ export async function registerRoutes(
     }
   });
 
-  app.put('/api/questions/:id', async (req: any, res: any) => {
+  app.put('/api/questions/:id', requireAdminAuth, async (req: any, res: any) => {
     try {
       const id = parseInt(req.params.id);
       const parsed = questionSchema.parse(req.body);
@@ -148,7 +149,7 @@ export async function registerRoutes(
     }
   });
 
-  app.delete('/api/questions/:id', async (req: any, res: any) => {
+  app.delete('/api/questions/:id', requireAdminAuth, async (req: any, res: any) => {
     try {
       const id = parseInt(req.params.id);
       const success = await storage.deleteQuestion(id);
@@ -195,7 +196,7 @@ export async function registerRoutes(
     }
   });
 
-  app.post('/api/sources', async (req: any, res: any) => {
+  app.post('/api/sources', requireAdminAuth, async (req: any, res: any) => {
     try {
       const parsed = sourceSchema.parse(req.body);
       const created = await storage.createSource(parsed);
@@ -206,7 +207,7 @@ export async function registerRoutes(
     }
   });
 
-  app.put('/api/sources/:id', async (req: any, res: any) => {
+  app.put('/api/sources/:id', requireAdminAuth, async (req: any, res: any) => {
     try {
       const id = parseInt(req.params.id);
       const parsed = sourceSchema.parse(req.body);
@@ -221,7 +222,7 @@ export async function registerRoutes(
     }
   });
 
-  app.patch('/api/sources/:id/active', async (req: any, res: any) => {
+  app.patch('/api/sources/:id/active', requireAdminAuth, async (req: any, res: any) => {
     try {
       const id = parseInt(req.params.id);
       const { isActive } = z.object({
@@ -239,7 +240,7 @@ export async function registerRoutes(
     }
   });
 
-  app.delete('/api/sources/:id', async (req: any, res: any) => {
+  app.delete('/api/sources/:id', requireAdminAuth, async (req: any, res: any) => {
     try {
       const id = parseInt(req.params.id);
       const success = await storage.deleteSource(id);
@@ -349,7 +350,7 @@ export async function registerRoutes(
     }
   });
 
-  app.post('/api/access-codes/generate', async (req: any, res: any) => {
+  app.post('/api/access-codes/generate', requireAdminAuth, async (req: any, res: any) => {
     try {
       const { type, mobileNumber, hasAdminAccess } = z.object({
         type: z.enum(['daily', 'weekly', 'monthly', 'master']),
@@ -403,7 +404,7 @@ export async function registerRoutes(
     }
   });
 
-  app.post('/api/access-codes/:id/revoke', async (req: any, res: any) => {
+  app.post('/api/access-codes/:id/revoke', requireAdminAuth, async (req: any, res: any) => {
     try {
       const id = parseInt(req.params.id, 10);
       if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
@@ -416,7 +417,7 @@ export async function registerRoutes(
     }
   });
 
-  app.delete('/api/access-codes/:id', async (req: any, res: any) => {
+  app.delete('/api/access-codes/:id', requireAdminAuth, async (req: any, res: any) => {
     try {
       const id = parseInt(req.params.id, 10);
       if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
@@ -440,29 +441,9 @@ export async function registerRoutes(
 
       const normalized = code.trim().toUpperCase();
       const mobile = mobileNumber.trim();
-
-      if (!normalized.startsWith('X')) {
-        return res.json({ valid: false, message: "Admin access requires a master (X) key." });
-      }
-      if (!isValidMobile(mobile)) {
-        return res.json({ valid: false, message: "A 10-digit mobile number is required." });
-      }
-
-      const stored = await storage.getAccessCodeByCode(normalized);
-      if (!stored || stored.type !== 'master' || stored.is_revoked) {
-        const mobileExists = stored && (stored.mobile_number || '').trim() === mobile;
-        return res.json({
-          valid: false,
-          message: "Invalid master key.",
-          // Hint for the "email admin" flow when mobile is right but key is wrong
-          mobileMatch: !!mobileExists,
-        });
-      }
-      if ((stored.mobile_number || '').trim() !== mobile) {
-        return res.json({ valid: false, message: "Mobile number does not match this master key." });
-      }
-      if (!stored.has_admin_access) {
-        return res.json({ valid: false, message: "This master key does not have admin access." });
+      const result = await validateAdminAccess(normalized, mobile);
+      if (!result.valid) {
+        return res.json({ valid: false, message: result.message, mobileMatch: result.mobileMatch });
       }
       return res.json({ valid: true, isAdmin: true });
     } catch (err) {
@@ -530,7 +511,7 @@ export async function registerRoutes(
   });
 
   // Bulk insert from Allsigns.json (raw format)
-  app.post('/api/signs/import', async (req: any, res: any) => {
+  app.post('/api/signs/import', requireAdminAuth, async (req: any, res: any) => {
     try {
       const parsed = z.array(rawSignImportSchema).parse(req.body);
       const rows: InsertStudySign[] = parsed.map((r) => ({
@@ -553,7 +534,7 @@ export async function registerRoutes(
   });
 
   // Batch image upload + auto-match by slugified code
-  app.post('/api/signs/images/batch', async (req: any, res: any) => {
+  app.post('/api/signs/images/batch', requireAdminAuth, async (req: any, res: any) => {
     try {
       const { files } = z.object({
         files: z.array(z.object({ filename: z.string(), dataUrl: z.string() })).min(1).max(50),
@@ -618,7 +599,7 @@ export async function registerRoutes(
     }
   });
 
-  app.delete('/api/signs/unmatched-images/:filename', async (req: any, res: any) => {
+  app.delete('/api/signs/unmatched-images/:filename', requireAdminAuth, async (req: any, res: any) => {
     try {
       const ok = deleteStagedImage(req.params.filename);
       if (!ok) return res.status(404).json({ message: "Staged image not found" });
@@ -642,7 +623,7 @@ export async function registerRoutes(
     }
   });
 
-  app.post('/api/signs', async (req: any, res: any) => {
+  app.post('/api/signs', requireAdminAuth, async (req: any, res: any) => {
     try {
       const parsed = studySignSchema.parse(req.body);
       const created = await storage.createSign(parsed);
@@ -653,7 +634,7 @@ export async function registerRoutes(
     }
   });
 
-  app.patch('/api/signs/:id', async (req: any, res: any) => {
+  app.patch('/api/signs/:id', requireAdminAuth, async (req: any, res: any) => {
     try {
       const id = parseInt(req.params.id, 10);
       if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
@@ -667,7 +648,7 @@ export async function registerRoutes(
     }
   });
 
-  app.delete('/api/signs/:id', async (req: any, res: any) => {
+  app.delete('/api/signs/:id', requireAdminAuth, async (req: any, res: any) => {
     try {
       const id = parseInt(req.params.id, 10);
       if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
@@ -683,7 +664,7 @@ export async function registerRoutes(
   // Attach/replace an image for a specific code: fresh upload or staged file.
   // With addCodeAsNew, a code not yet on the record is appended first —
   // for staged images whose real code differs from the record's codes.
-  app.post('/api/signs/:id/images', async (req: any, res: any) => {
+  app.post('/api/signs/:id/images', requireAdminAuth, async (req: any, res: any) => {
     try {
       const id = parseInt(req.params.id, 10);
       if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
@@ -730,7 +711,7 @@ export async function registerRoutes(
   });
 
   // Remove a code from a sign record (image mapping dropped, file kept)
-  app.delete('/api/signs/:id/codes/:code', async (req: any, res: any) => {
+  app.delete('/api/signs/:id/codes/:code', requireAdminAuth, async (req: any, res: any) => {
     try {
       const id = parseInt(req.params.id, 10);
       if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
@@ -744,7 +725,7 @@ export async function registerRoutes(
   });
 
   // Detach one image from a sign record (file kept on disk)
-  app.delete('/api/signs/:id/images/:code', async (req: any, res: any) => {
+  app.delete('/api/signs/:id/images/:code', requireAdminAuth, async (req: any, res: any) => {
     try {
       const id = parseInt(req.params.id, 10);
       if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
@@ -768,7 +749,7 @@ export async function registerRoutes(
     }
   });
 
-  app.post('/api/signs/:id/questions', async (req: any, res: any) => {
+  app.post('/api/signs/:id/questions', requireAdminAuth, async (req: any, res: any) => {
     try {
       const id = parseInt(req.params.id, 10);
       if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
@@ -781,7 +762,7 @@ export async function registerRoutes(
     }
   });
 
-  app.delete('/api/signs/:id/questions/:questionId', async (req: any, res: any) => {
+  app.delete('/api/signs/:id/questions/:questionId', requireAdminAuth, async (req: any, res: any) => {
     try {
       const id = parseInt(req.params.id, 10);
       const questionId = parseInt(req.params.questionId, 10);
@@ -820,7 +801,7 @@ export async function registerRoutes(
   });
 
   // Bulk insert from rules-of-the-road-cards.json
-  app.post('/api/rules/import', async (req: any, res: any) => {
+  app.post('/api/rules/import', requireAdminAuth, async (req: any, res: any) => {
     try {
       const parsed = z.array(rawRuleImportSchema).parse(req.body);
       const rows: InsertStudyRule[] = parsed.map((r) => ({
@@ -854,7 +835,7 @@ export async function registerRoutes(
     }
   });
 
-  app.post('/api/rules', async (req: any, res: any) => {
+  app.post('/api/rules', requireAdminAuth, async (req: any, res: any) => {
     try {
       const parsed = studyRuleSchema.parse(req.body);
       const created = await storage.createRule(parsed);
@@ -865,7 +846,7 @@ export async function registerRoutes(
     }
   });
 
-  app.patch('/api/rules/:id', async (req: any, res: any) => {
+  app.patch('/api/rules/:id', requireAdminAuth, async (req: any, res: any) => {
     try {
       const id = parseInt(req.params.id, 10);
       if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
@@ -879,7 +860,7 @@ export async function registerRoutes(
     }
   });
 
-  app.delete('/api/rules/:id', async (req: any, res: any) => {
+  app.delete('/api/rules/:id', requireAdminAuth, async (req: any, res: any) => {
     try {
       const id = parseInt(req.params.id, 10);
       if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
@@ -903,7 +884,7 @@ export async function registerRoutes(
     }
   });
 
-  app.post('/api/rules/:id/questions', async (req: any, res: any) => {
+  app.post('/api/rules/:id/questions', requireAdminAuth, async (req: any, res: any) => {
     try {
       const id = parseInt(req.params.id, 10);
       if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
@@ -916,7 +897,7 @@ export async function registerRoutes(
     }
   });
 
-  app.delete('/api/rules/:id/questions/:questionId', async (req: any, res: any) => {
+  app.delete('/api/rules/:id/questions/:questionId', requireAdminAuth, async (req: any, res: any) => {
     try {
       const id = parseInt(req.params.id, 10);
       const questionId = parseInt(req.params.questionId, 10);
