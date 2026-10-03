@@ -15,6 +15,8 @@ import StudySignsBrowse from "@/pages/study-signs";
 import StudySignsFlashcards from "@/pages/study-flashcards";
 import StudyRulesBrowse from "@/pages/study-rules";
 import StudyRulesFlashcards from "@/pages/study-rules-flashcards";
+import StudyControlsBrowse from "@/pages/study-controls";
+import StudyControlsFlashcards from "@/pages/study-controls-flashcards";
 
 import Admin from "@/pages/admin";
 
@@ -31,6 +33,8 @@ function Router() {
       <Route path="/study/signs/flashcards" component={StudySignsFlashcards} />
       <Route path="/study/rules" component={StudyRulesBrowse} />
       <Route path="/study/rules/flashcards" component={StudyRulesFlashcards} />
+      <Route path="/study/controls" component={StudyControlsBrowse} />
+      <Route path="/study/controls/flashcards" component={StudyControlsFlashcards} />
       <Route component={NotFound} />
     </Switch>
   );

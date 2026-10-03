@@ -122,7 +122,40 @@ app.get("/api/seed/signs", async (_req: any, res: any) => {
             question_id INTEGER NOT NULL REFERENCES questions(id) ON DELETE CASCADE
           );
         `;
-        res.json({ success: true, message: "Tables ready (signs + rules)." });
+        await client`
+          CREATE TABLE IF NOT EXISTS control_diagrams (
+            id SERIAL PRIMARY KEY,
+            vehicle_type TEXT NOT NULL,
+            gearbox TEXT,
+            label TEXT NOT NULL,
+            image_url TEXT,
+            is_inferred BOOLEAN NOT NULL DEFAULT FALSE,
+            created_at TIMESTAMP NOT NULL DEFAULT NOW()
+          );
+        `;
+        await client`
+          CREATE TABLE IF NOT EXISTS study_controls (
+            id SERIAL PRIMARY KEY,
+            diagram_id INTEGER NOT NULL REFERENCES control_diagrams(id) ON DELETE CASCADE,
+            component_number INTEGER,
+            component_name TEXT NOT NULL,
+            function_notes TEXT,
+            applicable_codes JSONB NOT NULL,
+            is_verified_exam_question BOOLEAN NOT NULL DEFAULT FALSE,
+            is_reviewed BOOLEAN NOT NULL DEFAULT FALSE,
+            created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+            updated_at TIMESTAMP NOT NULL DEFAULT NOW()
+          );
+        `;
+        await client`
+          CREATE TABLE IF NOT EXISTS control_questions (
+            id SERIAL PRIMARY KEY,
+            control_id INTEGER NOT NULL REFERENCES study_controls(id) ON DELETE CASCADE,
+            question_id INTEGER NOT NULL REFERENCES questions(id) ON DELETE CASCADE
+          );
+        `;
+        await client`ALTER TABLE questions ADD COLUMN IF NOT EXISTS is_reviewed BOOLEAN NOT NULL DEFAULT TRUE;`;
+        res.json({ success: true, message: "Tables ready (signs + rules + controls)." });
     } catch (error: any) {
         console.error("Sign seed error:", error);
         res.status(500).json({ error: "Sign table creation failed", details: error.message });

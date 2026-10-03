@@ -1,5 +1,5 @@
-import { db, questions, sources, accessCodes, studySigns, signQuestions, studyRules, ruleQuestions } from './db.js';
-import { Question, InsertQuestion, Source, InsertSource, AccessCode, InsertAccessCode, StudySign, InsertStudySign, SignQuestionLink, StudyRule, InsertStudyRule, RuleQuestionLink } from '../shared/schema.js';
+import { db, questions, sources, accessCodes, studySigns, signQuestions, studyRules, ruleQuestions, controlDiagrams, studyControls, controlQuestions } from './db.js';
+import { Question, InsertQuestion, Source, InsertSource, AccessCode, InsertAccessCode, StudySign, InsertStudySign, SignQuestionLink, StudyRule, InsertStudyRule, RuleQuestionLink, ControlDiagram, InsertControlDiagram, StudyControl, InsertStudyControl, ControlQuestionLink, RawControlBundle } from '../shared/schema.js';
 import { eq, inArray, desc, and } from 'drizzle-orm';
 
 export interface IStorage {
@@ -52,6 +52,18 @@ export interface IStorage {
 
   getSignsForQuestion(questionId: number): Promise<StudySign[]>;
   getRulesForQuestion(questionId: number): Promise<StudyRule[]>;
+
+  getControlDiagrams(): Promise<ControlDiagram[]>;
+  getControls(filters?: { vehicle_type?: string; gearbox?: string; diagram_id?: number; search?: string; unreviewed?: boolean; missingImage?: boolean }): Promise<StudyControl[]>;
+  getControlById(id: number): Promise<(StudyControl & { question_ids: number[] }) | undefined>;
+  createControl(data: InsertStudyControl): Promise<StudyControl>;
+  updateControl(id: number, data: Partial<InsertStudyControl>): Promise<StudyControl | undefined>;
+  deleteControl(id: number): Promise<boolean>;
+  getQuestionsForControl(controlId: number): Promise<Question[]>;
+  linkControlQuestion(controlId: number, questionId: number): Promise<ControlQuestionLink>;
+  unlinkControlQuestion(controlId: number, questionId: number): Promise<boolean>;
+  getControlsForQuestion(questionId: number): Promise<StudyControl[]>;
+  bulkImportControls(bundle: RawControlBundle): Promise<{ diagrams: number; controls: number; questions: number; links: number; skippedQuestions: number }>;
 }
 
 export class NeonDatabaseStorage implements IStorage {
@@ -486,6 +498,240 @@ export class NeonDatabaseStorage implements IStorage {
     const ruleIds = links.map((l) => l.rule_id);
     const data = await db.select().from(studyRules).where(inArray(studyRules.id, ruleIds));
     return data as unknown as StudyRule[];
+  }
+
+  // === Vehicle Controls study module ===
+
+  private controlCodesForDiagram(d: ControlDiagram): number[] {
+    if (d.vehicle_type === 'motorcycle') return [1];
+    if (d.vehicle_type === 'lmv') return [2, 3];
+    return [3]; // hmv
+  }
+
+  async getControlDiagrams(): Promise<ControlDiagram[]> {
+    const rows = await db.select().from(controlDiagrams);
+    return (rows as unknown as ControlDiagram[]).sort((a, b) =>
+      a.vehicle_type.localeCompare(b.vehicle_type) || (a.gearbox || '').localeCompare(b.gearbox || ''));
+  }
+
+  async getControls(filters?: { vehicle_type?: string; gearbox?: string; diagram_id?: number; search?: string; unreviewed?: boolean }): Promise<StudyControl[]> {
+    const all = (await db.select().from(studyControls)) as unknown as StudyControl[];
+    const diagrams = await this.getControlDiagrams();
+    const byId = new Map(diagrams.map((d) => [d.id, d]));
+    let items = all;
+
+    if (filters?.vehicle_type) {
+      items = items.filter((c) => byId.get(c.diagram_id)?.vehicle_type === filters.vehicle_type);
+    }
+    // Gearbox ignored/optional for motorcycle, required for lmv/hmv
+    if (filters?.gearbox && filters.vehicle_type !== 'motorcycle') {
+      items = items.filter((c) => byId.get(c.diagram_id)?.gearbox === filters.gearbox);
+    }
+    if (filters?.diagram_id) items = items.filter((c) => c.diagram_id === filters.diagram_id);
+    if (filters?.unreviewed) items = items.filter((c) => !c.is_reviewed);
+    if (filters?.search) {
+      const q = filters.search.trim().toLowerCase();
+      if (q) {
+        items = items.filter((c) =>
+          c.component_name.toLowerCase().includes(q) ||
+          String(c.component_number ?? '').includes(q) ||
+          (c.function_notes || '').toLowerCase().includes(q));
+      }
+    }
+    return items.sort((a, b) => {
+      const da = byId.get(a.diagram_id);
+      const db2 = byId.get(b.diagram_id);
+      return ((da?.vehicle_type || '') + (da?.gearbox || '')).localeCompare((db2?.vehicle_type || '') + (db2?.gearbox || '')) ||
+        (a.component_number ?? 999) - (b.component_number ?? 999) ||
+        a.component_name.localeCompare(b.component_name);
+    });
+  }
+
+  async getControlById(id: number): Promise<(StudyControl & { question_ids: number[] }) | undefined> {
+    const rows = await db.select().from(studyControls).where(eq(studyControls.id, id));
+    if (!rows[0]) return undefined;
+    const links = await db.select().from(controlQuestions).where(eq(controlQuestions.control_id, id));
+    return { ...(rows[0] as unknown as StudyControl), question_ids: links.map((l) => l.question_id) };
+  }
+
+  async createControl(data: InsertStudyControl): Promise<StudyControl> {
+    const [diag] = await db.select().from(controlDiagrams).where(eq(controlDiagrams.id, data.diagram_id));
+    const codes = diag ? this.controlCodesForDiagram(diag as unknown as ControlDiagram) : [];
+    const [row] = await db.insert(studyControls).values({
+      diagram_id: data.diagram_id,
+      component_number: data.component_number ?? null,
+      component_name: data.component_name,
+      function_notes: data.function_notes ?? null,
+      applicable_codes: data.applicable_codes ?? codes,
+      is_verified_exam_question: data.is_verified_exam_question ?? false,
+      is_reviewed: data.is_reviewed ?? false,
+    }).returning();
+    return row as unknown as StudyControl;
+  }
+
+  async updateControl(id: number, data: Partial<InsertStudyControl>): Promise<StudyControl | undefined> {
+    let codes = data.applicable_codes;
+    if (data.diagram_id) {
+      const [diag] = await db.select().from(controlDiagrams).where(eq(controlDiagrams.id, data.diagram_id));
+      if (diag) codes = this.controlCodesForDiagram(diag as unknown as ControlDiagram);
+    }
+    const [row] = await db
+      .update(studyControls)
+      .set({ ...data, ...(codes ? { applicable_codes: codes } : {}), updated_at: new Date() })
+      .where(eq(studyControls.id, id))
+      .returning();
+    return (row as unknown as StudyControl) || undefined;
+  }
+
+  async deleteControl(id: number): Promise<boolean> {
+    const [row] = await db.delete(studyControls).where(eq(studyControls.id, id)).returning();
+    return !!row;
+  }
+
+  async getQuestionsForControl(controlId: number): Promise<Question[]> {
+    const links = await db.select().from(controlQuestions).where(eq(controlQuestions.control_id, controlId));
+    if (links.length === 0) return [];
+    const ids = links.map((l) => l.question_id);
+    const data = await db.select().from(questions).where(inArray(questions.id, ids));
+    return data as unknown as Question[];
+  }
+
+  async linkControlQuestion(controlId: number, questionId: number): Promise<ControlQuestionLink> {
+    const cRows = await db.select().from(studyControls).where(eq(studyControls.id, controlId));
+    if (!cRows[0]) throw new Error("Control not found");
+    const qRows = await db.select().from(questions).where(eq(questions.id, questionId));
+    if (!qRows[0]) throw new Error("Question not found");
+    const dup = await db.select().from(controlQuestions).where(and(eq(controlQuestions.control_id, controlId), eq(controlQuestions.question_id, questionId)));
+    if (dup[0]) return dup[0] as ControlQuestionLink;
+    const [row] = await db.insert(controlQuestions).values({ control_id: controlId, question_id: questionId }).returning();
+    return row as ControlQuestionLink;
+  }
+
+  async unlinkControlQuestion(controlId: number, questionId: number): Promise<boolean> {
+    const [row] = await db
+      .delete(controlQuestions)
+      .where(and(eq(controlQuestions.control_id, controlId), eq(controlQuestions.question_id, questionId)))
+      .returning();
+    return !!row;
+  }
+
+  async getControlsForQuestion(questionId: number): Promise<StudyControl[]> {
+    const links = await db.select().from(controlQuestions).where(eq(controlQuestions.question_id, questionId));
+    if (links.length === 0) return [];
+    const ids = links.map((l) => l.control_id);
+    const data = await db.select().from(studyControls).where(inArray(studyControls.id, ids));
+    return data as unknown as StudyControl[];
+  }
+
+  async bulkImportControls(bundle: RawControlBundle): Promise<{ diagrams: number; controls: number; questions: number; links: number; skippedQuestions: number }> {
+    // Pass 1: diagrams
+    const existingDiagrams = (await db.select().from(controlDiagrams)) as unknown as ControlDiagram[];
+    const diagramKeyToId = new Map<string, number>();
+    for (const d of existingDiagrams) {
+      const key = `${d.vehicle_type}|${d.gearbox ?? ''}`;
+      diagramKeyToId.set(key, d.id);
+    }
+    let diagInserted = 0;
+    for (const d of bundle.control_diagrams) {
+      const key = `${d.vehicle_type}|${d.gearbox ?? ''}`;
+      if (diagramKeyToId.has(key)) continue;
+      const [row] = await db.insert(controlDiagrams).values({
+        vehicle_type: d.vehicle_type,
+        gearbox: d.gearbox ?? null,
+        label: d.label,
+        image_url: d.image_url ?? null,
+        is_inferred: d.is_inferred ?? false,
+      }).returning();
+      diagramKeyToId.set(key, (row as any).id);
+      diagInserted++;
+    }
+
+    // Pass 1b: controls, resolving diagram_key to real ids
+    const existingControls = (await db.select().from(studyControls)) as unknown as StudyControl[];
+    const controlKey = (diagramId: number, compNum: number | null, name: string) => `${diagramId}#${compNum ?? ''}#${name}`;
+    const seenControls = new Set(existingControls.map((c) => controlKey(c.diagram_id, c.component_number, c.component_name)));
+    const controlByDiagramAndNumber = new Map<string, number>();
+    for (const c of existingControls) controlByDiagramAndNumber.set(`${c.diagram_id}#${c.component_number ?? ''}`, c.id);
+    let controlInserted = 0;
+    for (const c of bundle.study_controls) {
+      const diagKey = bundle.control_diagrams.find((d) => d.key === c.diagram_key);
+      if (!diagKey) continue;
+      const diagramId = diagramKeyToId.get(`${diagKey.vehicle_type}|${diagKey.gearbox ?? ''}`);
+      if (!diagramId) continue;
+      const dedupeKey = controlKey(diagramId, c.component_number ?? null, c.component_name);
+      if (!seenControls.has(dedupeKey)) {
+        const [row] = await db.insert(studyControls).values({
+          diagram_id: diagramId,
+          component_number: c.component_number ?? null,
+          component_name: c.component_name,
+          function_notes: c.function_notes ?? null,
+          applicable_codes: diagKey.vehicle_type === 'motorcycle' ? [1] : diagKey.vehicle_type === 'lmv' ? [2, 3] : [3],
+          is_verified_exam_question: false,
+          is_reviewed: false,
+        }).returning();
+        seenControls.add(dedupeKey);
+        controlByDiagramAndNumber.set(`${diagramId}#${c.component_number ?? ''}`, (row as any).id);
+        controlInserted++;
+      } else {
+        const id = controlByDiagramAndNumber.get(`${diagramId}#${c.component_number ?? ''}`);
+        if (id) controlByDiagramAndNumber.set(`${diagramId}#${c.component_number ?? ''}`, id);
+      }
+    }
+
+    // Pass 2: sample questions (shuffle options, keep correct marker), then links
+    const allQuestions = (await db.select().from(questions)) as unknown as Question[];
+    const existingQ = new Set(allQuestions.map((q) => `${q.question_text}#${q.license_code}#${q.category}`));
+    let qInserted = 0;
+    let skippedQuestions = 0;
+    let linksAdded = 0;
+    const LETTERS = ['A', 'B', 'C', 'D', 'E', 'F'];
+    for (const sq of bundle.sample_questions || []) {
+      const diagKey = bundle.control_diagrams.find((d) => d.key === sq.diagram_key);
+      const license = diagKey?.vehicle_type === 'motorcycle' ? '1' : diagKey?.vehicle_type === 'lmv' ? '2' : diagKey?.vehicle_type === 'hmv' ? '3' : '2';
+      const dedupe = `${sq.question_text}#${license}#3`;
+      if (existingQ.has(dedupe)) { skippedQuestions++; continue; }
+      const diagRealId = diagKey ? diagramKeyToId.get(`${diagKey.vehicle_type}|${diagKey.gearbox ?? ''}`) : undefined;
+      const targetIds: number[] = [];
+      for (const compNum of sq.linked_component_numbers || []) {
+        if (diagRealId) {
+          const cid = controlByDiagramAndNumber.get(`${diagRealId}#${compNum}`);
+          if (cid) targetIds.push(cid);
+        }
+      }
+      // Shuffle options, keep correct flag on the right text
+      const correctText = sq.options[sq.correct_index];
+      const others = sq.options.filter((_, i) => i !== sq.correct_index);
+      const shuffled = [correctText, ...others].sort(() => Math.random() - 0.5);
+      const options = shuffled.map((answer_text, i) => ({
+        answer_number: LETTERS[i] || String(i + 1),
+        answer_text,
+        correct_answer: answer_text === correctText,
+      }));
+      let qNum = allQuestions.length > 0 ? Math.max(...allQuestions.map((x) => x.question_number || 0)) + qInserted + 1 : qInserted + 1;
+      const [qRow] = await db.insert(questions).values({
+        question_number: qNum,
+        question_text: sq.question_text,
+        category: 3,
+        license_code: license,
+        contains_image: false,
+        image_link: null,
+        options,
+        source_id: null,
+        is_duplicate: false,
+        is_official: false,
+        is_reviewed: false,
+      }).returning();
+      allQuestions.push(qRow as any);
+      existingQ.add(dedupe);
+      qInserted++;
+      for (const cid of targetIds) {
+        const dup = await db.select().from(controlQuestions).where(and(eq(controlQuestions.control_id, cid), eq(controlQuestions.question_id, (qRow as any).id)));
+        if (dup[0]) continue;
+        await db.insert(controlQuestions).values({ control_id: cid, question_id: (qRow as any).id });
+        linksAdded++;
+      }
+    }
+    return { diagrams: diagInserted, controls: controlInserted, questions: qInserted, links: linksAdded, skippedQuestions };
   }
 }
 

@@ -94,27 +94,29 @@ export default function Study() {
             </CardContent>
           </Card>
 
-          {[
-            { icon: Car, title: "Vehicle Controls", desc: "Prose-based module" },
-          ].map((m) => (
-            <Card key={m.title} className="rounded-3xl opacity-60">
-              <CardContent className="p-5 flex items-center gap-4">
-                <div className="h-12 w-12 rounded-2xl bg-muted flex items-center justify-center text-muted-foreground shrink-0">
-                  <m.icon className="h-6 w-6" />
-                </div>
-                <div className="flex-1">
-                  <p className="font-display font-bold">{m.title}</p>
-                  <p className="text-xs text-muted-foreground">{m.desc}</p>
-                </div>
-                <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground bg-muted px-2 py-1 rounded-full">
-                  Coming soon
-                </span>
-              </CardContent>
-            </Card>
-          ))}
+          <Card
+            className="glass-card border-none shadow-xl rounded-3xl cursor-pointer transition-transform hover:-translate-y-0.5"
+            onClick={() => setLocation("/study/controls")}
+          >
+            <CardContent className="p-5 flex items-center gap-4">
+              <div
+                className="h-12 w-12 rounded-2xl flex items-center justify-center text-white shrink-0"
+                style={{ background: "linear-gradient(135deg, #E53E1A, #F5A623)" }}
+              >
+                <Car className="h-6 w-6" />
+              </div>
+              <div className="flex-1">
+                <p className="font-display font-bold">Vehicle Controls</p>
+                <p className="text-xs text-muted-foreground">Browse components & recognition/recall flashcards</p>
+              </div>
+              <span className="text-[10px] font-black uppercase tracking-widest text-green-600 bg-green-500/10 px-2 py-1 rounded-full">
+                Active
+              </span>
+            </CardContent>
+          </Card>
         </div>
 
-        {/* Continue Learning — weakest groups from localStorage learning records */}
+         {/* Continue Learning — weakest groups from localStorage learning records */}
         {weak.length > 0 && (
           <div className="glass-card rounded-3xl border-none shadow-xl p-5 space-y-3">
             <div className="flex items-center gap-2">

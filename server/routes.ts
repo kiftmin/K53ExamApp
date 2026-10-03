@@ -1,6 +1,6 @@
 import { storage } from "./storage.js";
 import { api } from "../shared/routes.js";
-import { questionSchema, sourceSchema, MOBILE_NUMBER_REGEX, studySignSchema, rawSignImportSchema, type InsertStudySign, studyRuleSchema, rawRuleImportSchema, type InsertStudyRule } from "../shared/schema.js";
+import { questionSchema, sourceSchema, MOBILE_NUMBER_REGEX, studySignSchema, rawSignImportSchema, type InsertStudySign, studyRuleSchema, rawRuleImportSchema, type InsertStudyRule, studyControlSchema, rawControlBundleSchema } from "../shared/schema.js";
 import {
   generateAccessCode,
   generateDailyCode,
@@ -17,6 +17,7 @@ import {
 import { getAdminEmail, isSmtpConfigured, sendAdminEmail } from "./mailer.js";
 import { slugifyCode, listStagedImages, stageImageUpload, attachStagedToCode, saveImageForCode, deleteStagedImage } from "./sign-images.js";
 import { validateAdminAccess, requireAdminAuth } from "./admin-auth.js";
+import { studyRuleSchema, rawRuleImportSchema, type InsertStudyRule, studyControlSchema, rawControlBundleSchema } from "../shared/schema.js";
 import { z } from "zod";
 
 export async function registerRoutes(
@@ -168,6 +169,21 @@ export async function registerRoutes(
       res.json(updated);
     } catch (err) {
       console.error("Error updating question:", err);
+      res.status(400).json({ message: "Invalid question data", error: err });
+    }
+  });
+
+  app.patch('/api/questions/:id', requireAdminAuth, async (req: any, res: any) => {
+    try {
+      const id = parseInt(req.params.id);
+      const parsed = questionSchema.partial().parse(req.body);
+      const updated = await storage.updateQuestion(id, parsed);
+      if (!updated) {
+        return res.status(404).json({ message: "Question not found" });
+      }
+      res.json(updated);
+    } catch (err) {
+      console.error("Error patching question:", err);
       res.status(400).json({ message: "Invalid question data", error: err });
     }
   });
@@ -930,6 +946,143 @@ export async function registerRoutes(
       res.status(204).send();
     } catch (err) {
       console.error("Error unlinking rule question:", err);
+      res.status(500).json({ message: "Failed to unlink question" });
+    }
+  });
+
+
+  // === Vehicle Controls study module ===
+
+  app.get('/api/control-diagrams', async (_req: any, res: any) => {
+    try {
+      res.json(await storage.getControlDiagrams());
+    } catch (err) {
+      console.error("Error listing control diagrams:", err);
+      res.status(500).json({ message: "Failed to load diagrams" });
+    }
+  });
+
+  app.get('/api/controls', async (req: any, res: any) => {
+    try {
+      const vehicle_type = typeof req.query.vehicle_type === 'string' && req.query.vehicle_type ? req.query.vehicle_type : undefined;
+      const gearbox = typeof req.query.gearbox === 'string' && req.query.gearbox ? req.query.gearbox : undefined;
+      const diagram_id = req.query.diagram_id ? parseInt(String(req.query.diagram_id), 10) : undefined;
+      const search = typeof req.query.search === 'string' ? req.query.search : undefined;
+      const unreviewed = req.query.unreviewed === 'true' ? true : undefined;
+      res.json(await storage.getControls({ vehicle_type, gearbox, diagram_id, search, unreviewed }));
+    } catch (err) {
+      console.error("Error listing controls:", err);
+      res.status(500).json({ message: "Failed to load controls" });
+    }
+  });
+
+  app.post('/api/controls/import', requireAdminAuth, async (req: any, res: any) => {
+    try {
+      const parsed = rawControlBundleSchema.parse(req.body);
+      const result = await storage.bulkImportControls(parsed);
+      res.status(201).json({ message: `Imported ${result.controls} components, ${result.questions} questions across ${result.diagrams} new diagrams.`, ...result });
+    } catch (err) {
+      console.error("Error importing controls bundle:", err);
+      res.status(400).json({ message: "Invalid controls import payload", error: err });
+    }
+  });
+
+  app.get('/api/controls/:id', async (req: any, res: any) => {
+    try {
+      const id = parseInt(req.params.id, 10);
+      if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
+      const item = await storage.getControlById(id);
+      if (!item) return res.status(404).json({ message: "Control not found" });
+      res.json(item);
+    } catch (err) {
+      console.error("Error reading control:", err);
+      res.status(500).json({ message: "Failed to load control" });
+    }
+  });
+
+  app.post('/api/controls', requireAdminAuth, async (req: any, res: any) => {
+    try {
+      const parsed = studyControlSchema.parse(req.body);
+      const created = await storage.createControl(parsed);
+      res.status(201).json(created);
+    } catch (err) {
+      console.error("Error creating control:", err);
+      res.status(400).json({ message: "Invalid control data", error: err });
+    }
+  });
+
+  app.patch('/api/controls/:id', requireAdminAuth, async (req: any, res: any) => {
+    try {
+      const id = parseInt(req.params.id, 10);
+      if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
+      const parsed = studyControlSchema.partial().parse(req.body);
+      const updated = await storage.updateControl(id, parsed);
+      if (!updated) return res.status(404).json({ message: "Control not found" });
+      res.json(updated);
+    } catch (err) {
+      console.error("Error updating control:", err);
+      res.status(400).json({ message: "Invalid control data", error: err });
+    }
+  });
+
+  app.delete('/api/controls/:id', requireAdminAuth, async (req: any, res: any) => {
+    try {
+      const id = parseInt(req.params.id, 10);
+      if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
+      const ok = await storage.deleteControl(id);
+      if (!ok) return res.status(404).json({ message: "Control not found" });
+      res.status(204).send();
+    } catch (err) {
+      console.error("Error deleting control:", err);
+      res.status(500).json({ message: "Failed to delete control" });
+    }
+  });
+
+  app.get('/api/controls/:id/questions', async (req: any, res: any) => {
+    try {
+      const id = parseInt(req.params.id, 10);
+      if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
+      res.json(await storage.getQuestionsForControl(id));
+    } catch (err) {
+      console.error("Error reading control questions:", err);
+      res.status(500).json({ message: "Failed to load linked questions" });
+    }
+  });
+
+  app.get('/api/questions/:id/controls', async (req: any, res: any) => {
+    try {
+      const id = parseInt(req.params.id, 10);
+      if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
+      res.json(await storage.getControlsForQuestion(id));
+    } catch (err) {
+      console.error("Error reading controls for question:", err);
+      res.status(500).json({ message: "Failed to load linked controls" });
+    }
+  });
+
+  app.post('/api/controls/:id/questions', requireAdminAuth, async (req: any, res: any) => {
+    try {
+      const id = parseInt(req.params.id, 10);
+      if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
+      const { question_id } = z.object({ question_id: z.number() }).parse(req.body);
+      const link = await storage.linkControlQuestion(id, question_id);
+      res.status(201).json(link);
+    } catch (err: any) {
+      console.error("Error linking control question:", err);
+      res.status(400).json({ message: err?.message || "Failed to link question" });
+    }
+  });
+
+  app.delete('/api/controls/:id/questions/:questionId', requireAdminAuth, async (req: any, res: any) => {
+    try {
+      const id = parseInt(req.params.id, 10);
+      const questionId = parseInt(req.params.questionId, 10);
+      if (Number.isNaN(id) || Number.isNaN(questionId)) return res.status(400).json({ message: "Invalid id" });
+      const ok = await storage.unlinkControlQuestion(id, questionId);
+      if (!ok) return res.status(404).json({ message: "Link not found" });
+      res.status(204).send();
+    } catch (err) {
+      console.error("Error unlinking control question:", err);
       res.status(500).json({ message: "Failed to unlink question" });
     }
   });

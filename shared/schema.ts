@@ -23,7 +23,8 @@ export const questionSchema = z.object({
   options: z.array(optionSchema),
   source_id: z.number().nullable().optional(),
   is_duplicate: z.boolean().default(false),
-  is_official: z.boolean().default(false)
+  is_official: z.boolean().default(false),
+  is_reviewed: z.boolean().default(false)
 });
 
 export type Option = z.infer<typeof optionSchema>;
@@ -136,3 +137,65 @@ export const rawRuleImportSchema = z.object({
 export type RawRuleImport = z.infer<typeof rawRuleImportSchema>;
 
 export type RuleQuestionLink = { id: number; rule_id: number; question_id: number };
+
+// === Vehicle Controls study module ===
+
+export const controlDiagramSchema = z.object({
+  id: z.number().optional(),
+  vehicle_type: z.enum(["motorcycle", "lmv", "hmv"]),
+  gearbox: z.enum(["manual", "automatic"]).nullable().optional(),
+  label: z.string(),
+  image_url: z.string().nullable().optional(),
+  is_inferred: z.boolean().default(false),
+});
+export type ControlDiagram = z.infer<typeof controlDiagramSchema> & { id: number };
+export type InsertControlDiagram = Omit<z.infer<typeof controlDiagramSchema>, "id">;
+
+export const studyControlSchema = z.object({
+  id: z.number().optional(),
+  diagram_id: z.number(),
+  component_number: z.number().int().nullable().optional(),
+  component_name: z.string(),
+  function_notes: z.string().nullable().optional(),
+  applicable_codes: z.array(z.number().int().min(1).max(3)).optional(),
+  is_verified_exam_question: z.boolean().default(false),
+  is_reviewed: z.boolean().default(false),
+});
+export type StudyControl = z.infer<typeof studyControlSchema> & { id: number };
+export type InsertStudyControl = Omit<z.infer<typeof studyControlSchema>, "id">;
+
+export type ControlQuestionLink = { id: number; control_id: number; question_id: number };
+
+// Raw import shapes (vehicle-controls-import.json)
+export const rawControlDiagramSchema = z.object({
+  key: z.string(),
+  vehicle_type: z.enum(["motorcycle", "lmv", "hmv"]),
+  gearbox: z.enum(["manual", "automatic"]).nullable().optional(),
+  label: z.string(),
+  image_url: z.string().optional(),
+  is_inferred: z.boolean().optional().default(false),
+});
+
+export const rawStudyControlSchema = z.object({
+  diagram_key: z.string(),
+  component_number: z.number().int().nullable().optional(),
+  component_name: z.string(),
+  function_notes: z.string().nullable().optional(),
+});
+
+export const rawSampleQuestionSchema = z.object({
+  diagram_key: z.string(),
+  question_text: z.string(),
+  options: z.array(z.string()).min(2),
+  correct_index: z.number().int().min(0),
+  linked_component_numbers: z.array(z.number().int()).optional().default([]),
+});
+
+export const rawControlBundleSchema = z.object({
+  control_diagrams: z.array(rawControlDiagramSchema),
+  study_controls: z.array(rawStudyControlSchema),
+  sample_questions: z.array(rawSampleQuestionSchema).optional().default([]),
+  notes: z.array(z.string()).optional(),
+});
+
+export type RawControlBundle = z.infer<typeof rawControlBundleSchema>;

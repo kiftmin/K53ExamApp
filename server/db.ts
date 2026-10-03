@@ -72,6 +72,36 @@ export const ruleQuestions = pgTable('rule_questions', {
     question_id: integer('question_id').references(() => questions.id, { onDelete: 'cascade' }).notNull(),
 });
 
+// Vehicle Controls study module
+export const controlDiagrams = pgTable('control_diagrams', {
+    id: serial('id').primaryKey(),
+    vehicle_type: text('vehicle_type').notNull(), // 'motorcycle' | 'lmv' | 'hmv'
+    gearbox: text('gearbox'), // 'manual' | 'automatic' | null (motorcycle)
+    label: text('label').notNull(),
+    image_url: text('image_url'),
+    is_inferred: boolean('is_inferred').default(false).notNull(),
+    created_at: timestamp('created_at').defaultNow().notNull(),
+});
+
+export const studyControls = pgTable('study_controls', {
+    id: serial('id').primaryKey(),
+    diagram_id: integer('diagram_id').references(() => controlDiagrams.id, { onDelete: 'cascade' }).notNull(),
+    component_number: integer('component_number'),
+    component_name: text('component_name').notNull(),
+    function_notes: text('function_notes'),
+    applicable_codes: jsonb('applicable_codes').notNull(), // number[] e.g. [1], [2,3], [3]
+    is_verified_exam_question: boolean('is_verified_exam_question').default(false).notNull(),
+    is_reviewed: boolean('is_reviewed').default(false).notNull(),
+    created_at: timestamp('created_at').defaultNow().notNull(),
+    updated_at: timestamp('updated_at').defaultNow().notNull(),
+});
+
+export const controlQuestions = pgTable('control_questions', {
+    id: serial('id').primaryKey(),
+    control_id: integer('control_id').references(() => studyControls.id, { onDelete: 'cascade' }).notNull(),
+    question_id: integer('question_id').references(() => questions.id, { onDelete: 'cascade' }).notNull(),
+});
+
 // Define Drizzle Postgres Schema matching the Zod schema
 export const questions = pgTable('questions', {
     id: serial('id').primaryKey(),

@@ -1,14 +1,15 @@
 import type { ReactNode } from "react";
 import { Link } from "wouter";
-import { ListChecks, Database, KeyRound, Upload, ArrowLeft, Signpost, ScrollText } from "lucide-react";
+import { ListChecks, Database, KeyRound, Upload, ArrowLeft, Signpost, ScrollText, Car } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-export type AdminSection = "questions" | "signs" | "rules" | "sources" | "codes" | "import";
+export type AdminSection = "questions" | "signs" | "rules" | "controls" | "sources" | "codes" | "import";
 
 const NAV: { id: AdminSection; label: string; icon: typeof ListChecks }[] = [
   { id: "questions", label: "Question Bank", icon: ListChecks },
   { id: "signs", label: "Road Signs", icon: Signpost },
   { id: "rules", label: "Rules", icon: ScrollText },
+  { id: "controls", label: "Controls", icon: Car },
   { id: "sources", label: "Sources", icon: Database },
   { id: "codes", label: "Access Codes", icon: KeyRound },
   { id: "import", label: "Import", icon: Upload },
