@@ -59,7 +59,7 @@ const defaultValues: InsertQuestion = {
     ],
 };
 
-function LinkedCardsSection({ questionId }: { questionId?: number }) {
+function LinkedCardsSection({ questionId, category }: { questionId?: number; category: number }) {
     const queryClient = useQueryClient();
     const { toast } = useToast();
     const [search, setSearch] = useState("");
@@ -76,10 +76,13 @@ function LinkedCardsSection({ questionId }: { questionId?: number }) {
     const { data: allRules = [] } = useQuery<StudyRule[]>({ queryKey: ["/api/rules"] });
 
     const q = search.trim().toLowerCase();
+    const isSigns = category === 2;
+    const isRules = category === 1;
+    const isControls = category === 3;
     const linkedSignIds = new Set(linkedSigns.map((s) => s.id));
     const linkedRuleIds = new Set(linkedRules.map((r) => r.id));
-    const signMatches = q ? allSigns.filter((s) => !linkedSignIds.has(s.id) && (s.name.toLowerCase().includes(q) || (s.codes || []).some((c) => c.toLowerCase().includes(q)))).slice(0, 6) : [];
-    const ruleMatches = q ? allRules.filter((r) => !linkedRuleIds.has(r.id) && (r.body.toLowerCase().includes(q) || r.section_ref.toLowerCase().includes(q))).slice(0, 6) : [];
+    const signMatches = isSigns && q ? allSigns.filter((s) => !linkedSignIds.has(s.id) && (s.name.toLowerCase().includes(q) || (s.codes || []).some((c) => c.toLowerCase().includes(q)))).slice(0, 6) : [];
+    const ruleMatches = isRules && q ? allRules.filter((r) => !linkedRuleIds.has(r.id) && (r.body.toLowerCase().includes(q) || r.section_ref.toLowerCase().includes(q))).slice(0, 6) : [];
 
     const link = async (kind: "signs" | "rules", id: number) => {
         if (!questionId) return;
@@ -109,25 +112,39 @@ function LinkedCardsSection({ questionId }: { questionId?: number }) {
                 <p className="text-xs text-neutral-400 italic">Save the question first to link cards.</p>
             ) : (
                 <>
+                    {isControls ? (
+                        <p className="text-xs text-neutral-400 italic">Controls questions don't use linked cards yet.</p>
+                    ) : (
                     <div className="space-y-2">
-                        <p className="text-[11px] font-bold text-neutral-500 uppercase">Linked signs ({linkedSigns.length})</p>
-                        {linkedSigns.map((s) => (
-                            <div key={s.id} className="flex items-center justify-between bg-neutral-50 rounded-lg px-3 py-2 text-sm">
-                                <span className="font-medium">{s.name}</span>
-                                <button type="button" onClick={() => unlink("signs", s.id)} aria-label="Unlink"><Unlink className="h-3.5 w-3.5 text-neutral-400 hover:text-destructive" /></button>
-                            </div>
-                        ))}
-                        <p className="text-[11px] font-bold text-neutral-500 uppercase">Linked rules ({linkedRules.length})</p>
-                        {linkedRules.map((r) => (
-                            <div key={r.id} className="flex items-center justify-between bg-neutral-50 rounded-lg px-3 py-2 text-sm">
-                                <span className="font-medium truncate">{r.body.slice(0, 80)}</span>
-                                <button type="button" onClick={() => unlink("rules", r.id)} aria-label="Unlink"><Unlink className="h-3.5 w-3.5 text-neutral-400 hover:text-destructive" /></button>
-                            </div>
-                        ))}
+                        {isSigns && (
+                            <>
+                                <p className="text-[11px] font-bold text-neutral-500 uppercase">Linked signs ({linkedSigns.length})</p>
+                                {linkedSigns.map((s) => (
+                                    <div key={s.id} className="flex items-center justify-between bg-neutral-50 rounded-lg px-3 py-2 text-sm">
+                                        <span className="font-medium">{s.name}</span>
+                                        <button type="button" onClick={() => unlink("signs", s.id)} aria-label="Unlink"><Unlink className="h-3.5 w-3.5 text-neutral-400 hover:text-destructive" /></button>
+                                    </div>
+                                ))}
+                            </>
+                        )}
+                        {isRules && (
+                            <>
+                                <p className="text-[11px] font-bold text-neutral-500 uppercase">Linked rules ({linkedRules.length})</p>
+                                {linkedRules.map((r) => (
+                                    <div key={r.id} className="flex items-center justify-between bg-neutral-50 rounded-lg px-3 py-2 text-sm">
+                                        <span className="font-medium truncate">{r.body.slice(0, 80)}</span>
+                                        <button type="button" onClick={() => unlink("rules", r.id)} aria-label="Unlink"><Unlink className="h-3.5 w-3.5 text-neutral-400 hover:text-destructive" /></button>
+                                    </div>
+                                ))}
+                            </>
+                        )}
                     </div>
+                    )}
+                    {!isControls && (
+                    <>
                     <div className="relative">
                         <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-neutral-400" />
-                        <Input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search signs or rules to link…" className="h-9 pl-8 text-xs bg-white" />
+                        <Input value={search} onChange={(e) => setSearch(e.target.value)} placeholder={isSigns ? "Search signs to link…" : "Search rules to link…"} className="h-9 pl-8 text-xs bg-white" />
                     </div>
                     {(signMatches.length > 0 || ruleMatches.length > 0) && (
                         <div className="border border-neutral-200 rounded-lg divide-y max-h-40 overflow-y-auto">
@@ -144,6 +161,8 @@ function LinkedCardsSection({ questionId }: { questionId?: number }) {
                                 </button>
                             ))}
                         </div>
+                    )}
+                    </>
                     )}
                 </>
             )}
@@ -519,7 +538,7 @@ export default function QuestionModal({
                             </div>
 
                             {/* Section 4: Linked Cards */}
-                            <LinkedCardsSection questionId={question?.id} />
+                            <LinkedCardsSection questionId={question?.id} category={form.watch("category")} />
                         </form>
                     </Form>
                 </div>
