@@ -31,7 +31,7 @@ import {
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
-import { ChevronLeft, ChevronRight, X, Link2, Unlink, Search } from "lucide-react";
+import { ChevronLeft, ChevronRight, X, Link2, Unlink, Search, Eye } from "lucide-react";
 
 interface QuestionModalProps {
     isOpen: boolean;
@@ -63,6 +63,7 @@ function LinkedCardsSection({ questionId, category }: { questionId?: number; cat
     const queryClient = useQueryClient();
     const { toast } = useToast();
     const [search, setSearch] = useState("");
+    const [preview, setPreview] = useState<{ kind: "signs" | "rules"; id: number } | null>(null);
 
     const { data: linkedSigns = [] } = useQuery<StudySign[]>({
         queryKey: [`/api/questions/${questionId}/signs`],
@@ -146,21 +147,64 @@ function LinkedCardsSection({ questionId, category }: { questionId?: number; cat
                         <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-neutral-400" />
                         <Input value={search} onChange={(e) => setSearch(e.target.value)} placeholder={isSigns ? "Search signs to link…" : "Search rules to link…"} className="h-9 pl-8 text-xs bg-white" />
                     </div>
-                    {(signMatches.length > 0 || ruleMatches.length > 0) && (
+                            {(signMatches.length > 0 || ruleMatches.length > 0) && (
                         <div className="border border-neutral-200 rounded-lg divide-y max-h-40 overflow-y-auto">
                             {signMatches.map((s) => (
-                                <button key={`s${s.id}`} type="button" onClick={() => link("signs", s.id)} className="w-full text-left px-3 py-2 text-xs hover:bg-neutral-50 flex items-center justify-between">
-                                    <span>Sign: {s.name} <span className="text-neutral-400 font-mono">{(s.codes || []).join(",")}</span></span>
-                                    <Link2 className="h-3.5 w-3.5" />
-                                </button>
+                                <div key={`s${s.id}`} className="flex items-center justify-between px-3 py-2 text-xs hover:bg-neutral-50">
+                                    <button type="button" onClick={() => link("signs", s.id)} className="flex-1 text-left flex items-center justify-between">
+                                        <span>Sign: {s.name} <span className="text-neutral-400 font-mono">{(s.codes || []).join(",")}</span></span>
+                                        <Link2 className="h-3.5 w-3.5" />
+                                    </button>
+                                    <button type="button" title="Preview" onClick={() => setPreview({ kind: "signs", id: s.id })} className="ml-2 p-1 text-neutral-400 hover:text-primary">
+                                        <Eye className="h-3.5 w-3.5" />
+                                    </button>
+                                </div>
                             ))}
                             {ruleMatches.map((r) => (
-                                <button key={`r${r.id}`} type="button" onClick={() => link("rules", r.id)} className="w-full text-left px-3 py-2 text-xs hover:bg-neutral-50 flex items-center justify-between">
-                                    <span className="truncate">Rule {r.section_ref}: {r.body.slice(0, 60)}</span>
-                                    <Link2 className="h-3.5 w-3.5" />
-                                </button>
+                                <div key={`r${r.id}`} className="flex items-center justify-between px-3 py-2 text-xs hover:bg-neutral-50">
+                                    <button type="button" onClick={() => link("rules", r.id)} className="flex-1 text-left flex items-center justify-between">
+                                        <span className="truncate">Rule {r.section_ref}: {r.body.slice(0, 60)}</span>
+                                        <Link2 className="h-3.5 w-3.5" />
+                                    </button>
+                                    <button type="button" title="Preview" onClick={() => setPreview({ kind: "rules", id: r.id })} className="ml-2 p-1 text-neutral-400 hover:text-primary">
+                                        <Eye className="h-3.5 w-3.5" />
+                                    </button>
+                                </div>
                             ))}
                         </div>
+                    )}
+                    {preview && (
+                        <Dialog open onOpenChange={(o) => !o && setPreview(null)}>
+                            <DialogContent className="max-w-sm">
+                                <DialogHeader><DialogTitle>Card preview</DialogTitle></DialogHeader>
+                                {preview.kind === "signs"
+                                    ? (() => {
+                                        const s = allSigns.find((x) => x.id === preview.id);
+                                        if (!s) return null;
+                                        return (
+                                            <div className="space-y-3">
+                                                {s.images?.[0]?.image_url && (
+                                                    <img src={s.images[0].image_url} alt={s.name} className="w-full max-h-48 object-contain bg-white rounded-xl border" />
+                                                )}
+                                                <p className="font-bold">{s.name}</p>
+                                                <p className="text-xs text-neutral-500">{s.heading} › {s.subheading}</p>
+                                                <p className="text-xs font-mono text-neutral-600">{(s.codes || []).join(", ")}</p>
+                                            </div>
+                                        );
+                                    })()
+                                    : (() => {
+                                        const r = allRules.find((x) => x.id === preview.id);
+                                        if (!r) return null;
+                                        return (
+                                            <div className="space-y-2">
+                                                <p className="text-xs font-mono font-bold text-neutral-500">{r.section_ref}</p>
+                                                <p className="text-sm leading-relaxed">{r.body}</p>
+                                                <p className="text-xs text-neutral-500">{r.heading} › {r.subheading}</p>
+                                            </div>
+                                        );
+                                    })()}
+                            </DialogContent>
+                        </Dialog>
                     )}
                     </>
                     )}
