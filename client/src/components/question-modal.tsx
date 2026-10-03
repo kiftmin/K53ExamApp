@@ -1,8 +1,8 @@
 import * as React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm, useFieldArray } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Question, InsertQuestion, questionSchema, Source, CATEGORY_NAMES } from "@shared/schema";
+import { Question, InsertQuestion, questionSchema, Source, CATEGORY_NAMES, type StudySign, type StudyRule } from "@shared/schema";
 import {
     Dialog,
     DialogContent,
@@ -31,7 +31,7 @@ import {
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, X, Link2, Unlink, Search } from "lucide-react";
 
 interface QuestionModalProps {
     isOpen: boolean;
@@ -58,6 +58,98 @@ const defaultValues: InsertQuestion = {
         { answer_number: "C", answer_text: "", correct_answer: false },
     ],
 };
+
+function LinkedCardsSection({ questionId }: { questionId?: number }) {
+    const queryClient = useQueryClient();
+    const { toast } = useToast();
+    const [search, setSearch] = useState("");
+
+    const { data: linkedSigns = [] } = useQuery<StudySign[]>({
+        queryKey: [`/api/questions/${questionId}/signs`],
+        enabled: !!questionId,
+    });
+    const { data: linkedRules = [] } = useQuery<StudyRule[]>({
+        queryKey: [`/api/questions/${questionId}/rules`],
+        enabled: !!questionId,
+    });
+    const { data: allSigns = [] } = useQuery<StudySign[]>({ queryKey: ["/api/signs"] });
+    const { data: allRules = [] } = useQuery<StudyRule[]>({ queryKey: ["/api/rules"] });
+
+    const q = search.trim().toLowerCase();
+    const linkedSignIds = new Set(linkedSigns.map((s) => s.id));
+    const linkedRuleIds = new Set(linkedRules.map((r) => r.id));
+    const signMatches = q ? allSigns.filter((s) => !linkedSignIds.has(s.id) && (s.name.toLowerCase().includes(q) || (s.codes || []).some((c) => c.toLowerCase().includes(q)))).slice(0, 6) : [];
+    const ruleMatches = q ? allRules.filter((r) => !linkedRuleIds.has(r.id) && (r.body.toLowerCase().includes(q) || r.section_ref.toLowerCase().includes(q))).slice(0, 6) : [];
+
+    const link = async (kind: "signs" | "rules", id: number) => {
+        if (!questionId) return;
+        try {
+            await apiRequest("POST", `/api/${kind}/${id}/questions`, { question_id: questionId });
+            queryClient.invalidateQueries({ queryKey: [`/api/questions/${questionId}/${kind}`] });
+            toast({ title: "Card linked" });
+        } catch (e: any) {
+            toast({ title: "Link failed", description: e.message, variant: "destructive" });
+        }
+    };
+    const unlink = async (kind: "signs" | "rules", id: number) => {
+        if (!questionId) return;
+        try {
+            await apiRequest("DELETE", `/api/${kind}/${id}/questions/${questionId}`);
+            queryClient.invalidateQueries({ queryKey: [`/api/questions/${questionId}/${kind}`] });
+            toast({ title: "Card unlinked" });
+        } catch (e: any) {
+            toast({ title: "Unlink failed", description: e.message, variant: "destructive" });
+        }
+    };
+
+    return (
+        <div className="bg-white p-5 rounded-xl border border-neutral-200 shadow-sm space-y-4">
+            <h3 className="text-[10px] font-black text-neutral-400 uppercase tracking-widest">Linked Cards</h3>
+            {!questionId ? (
+                <p className="text-xs text-neutral-400 italic">Save the question first to link cards.</p>
+            ) : (
+                <>
+                    <div className="space-y-2">
+                        <p className="text-[11px] font-bold text-neutral-500 uppercase">Linked signs ({linkedSigns.length})</p>
+                        {linkedSigns.map((s) => (
+                            <div key={s.id} className="flex items-center justify-between bg-neutral-50 rounded-lg px-3 py-2 text-sm">
+                                <span className="font-medium">{s.name}</span>
+                                <button type="button" onClick={() => unlink("signs", s.id)} aria-label="Unlink"><Unlink className="h-3.5 w-3.5 text-neutral-400 hover:text-destructive" /></button>
+                            </div>
+                        ))}
+                        <p className="text-[11px] font-bold text-neutral-500 uppercase">Linked rules ({linkedRules.length})</p>
+                        {linkedRules.map((r) => (
+                            <div key={r.id} className="flex items-center justify-between bg-neutral-50 rounded-lg px-3 py-2 text-sm">
+                                <span className="font-medium truncate">{r.body.slice(0, 80)}</span>
+                                <button type="button" onClick={() => unlink("rules", r.id)} aria-label="Unlink"><Unlink className="h-3.5 w-3.5 text-neutral-400 hover:text-destructive" /></button>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="relative">
+                        <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-neutral-400" />
+                        <Input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search signs or rules to link…" className="h-9 pl-8 text-xs bg-white" />
+                    </div>
+                    {(signMatches.length > 0 || ruleMatches.length > 0) && (
+                        <div className="border border-neutral-200 rounded-lg divide-y max-h-40 overflow-y-auto">
+                            {signMatches.map((s) => (
+                                <button key={`s${s.id}`} type="button" onClick={() => link("signs", s.id)} className="w-full text-left px-3 py-2 text-xs hover:bg-neutral-50 flex items-center justify-between">
+                                    <span>Sign: {s.name} <span className="text-neutral-400 font-mono">{(s.codes || []).join(",")}</span></span>
+                                    <Link2 className="h-3.5 w-3.5" />
+                                </button>
+                            ))}
+                            {ruleMatches.map((r) => (
+                                <button key={`r${r.id}`} type="button" onClick={() => link("rules", r.id)} className="w-full text-left px-3 py-2 text-xs hover:bg-neutral-50 flex items-center justify-between">
+                                    <span className="truncate">Rule {r.section_ref}: {r.body.slice(0, 60)}</span>
+                                    <Link2 className="h-3.5 w-3.5" />
+                                </button>
+                            ))}
+                        </div>
+                    )}
+                </>
+            )}
+        </div>
+    );
+}
 
 export default function QuestionModal({ 
     isOpen, 
@@ -425,6 +517,9 @@ export default function QuestionModal({
                                     ))}
                                 </div>
                             </div>
+
+                            {/* Section 4: Linked Cards */}
+                            <LinkedCardsSection questionId={question?.id} />
                         </form>
                     </Form>
                 </div>
