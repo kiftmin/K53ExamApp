@@ -187,8 +187,14 @@ function LinkedCardsSection({ questionId, category }: { questionId?: number; cat
                                                     <img src={s.images[0].image_url} alt={s.name} className="w-full max-h-48 object-contain bg-white rounded-xl border" />
                                                 )}
                                                 <p className="font-bold">{s.name}</p>
-                                                <p className="text-xs text-neutral-500">{s.heading} › {s.subheading}</p>
+                                                <p className="text-xs text-neutral-500">{s.heading} &gt; {s.subheading}</p>
                                                 <p className="text-xs font-mono text-neutral-600">{(s.codes || []).join(", ")}</p>
+                                                {[["Where", s.where_text], ["Purpose", s.purpose_text], ["Action", s.action_text]].filter(([, v]) => v).map(([label, v]) => (
+                                                    <div key={label as string}>
+                                                        <p className="text-[10px] font-black uppercase tracking-wider text-neutral-400">{label}</p>
+                                                        <p className="text-sm text-neutral-700 mt-0.5">{v}</p>
+                                                    </div>
+                                                ))}
                                             </div>
                                         );
                                     })()
