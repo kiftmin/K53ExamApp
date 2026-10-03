@@ -49,6 +49,9 @@ export interface IStorage {
   getQuestionsForRule(ruleId: number): Promise<Question[]>;
   linkRuleQuestion(ruleId: number, questionId: number): Promise<RuleQuestionLink>;
   unlinkRuleQuestion(ruleId: number, questionId: number): Promise<boolean>;
+
+  getSignsForQuestion(questionId: number): Promise<StudySign[]>;
+  getRulesForQuestion(questionId: number): Promise<StudyRule[]>;
 }
 
 export class NeonDatabaseStorage implements IStorage {
@@ -467,6 +470,22 @@ export class NeonDatabaseStorage implements IStorage {
       .where(and(eq(ruleQuestions.rule_id, ruleId), eq(ruleQuestions.question_id, questionId)))
       .returning();
     return !!row;
+  }
+
+  async getSignsForQuestion(questionId: number): Promise<StudySign[]> {
+    const links = await db.select().from(signQuestions).where(eq(signQuestions.question_id, questionId));
+    if (links.length === 0) return [];
+    const signIds = links.map((l) => l.sign_id);
+    const data = await db.select().from(studySigns).where(inArray(studySigns.id, signIds));
+    return data as unknown as StudySign[];
+  }
+
+  async getRulesForQuestion(questionId: number): Promise<StudyRule[]> {
+    const links = await db.select().from(ruleQuestions).where(eq(ruleQuestions.question_id, questionId));
+    if (links.length === 0) return [];
+    const ruleIds = links.map((l) => l.rule_id);
+    const data = await db.select().from(studyRules).where(inArray(studyRules.id, ruleIds));
+    return data as unknown as StudyRule[];
   }
 }
 

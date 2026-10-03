@@ -50,8 +50,6 @@ app.get("/api/seed", async (req: any, res: any) => {
             options JSONB NOT NULL
           );
         `;
-        // Pure-additive column migrations (safe on every run)
-        await client`ALTER TABLE questions ADD COLUMN IF NOT EXISTS explanation TEXT;`;
         console.log("Table 'questions' is confirmed ready over Neon HTTP.");
 
         const dataPath = path.join(__dirname, "../server/data/questiondata.json");

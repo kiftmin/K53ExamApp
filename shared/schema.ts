@@ -23,8 +23,7 @@ export const questionSchema = z.object({
   options: z.array(optionSchema),
   source_id: z.number().nullable().optional(),
   is_duplicate: z.boolean().default(false),
-  is_official: z.boolean().default(false),
-  explanation: z.string().nullable().optional()
+  is_official: z.boolean().default(false)
 });
 
 export type Option = z.infer<typeof optionSchema>;

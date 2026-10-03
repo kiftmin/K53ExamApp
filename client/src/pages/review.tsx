@@ -10,8 +10,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, CheckCircle2, XCircle, AlertTriangle } from "lucide-react";
-import { CATEGORY_NAMES } from "@shared/schema";
+import { ArrowLeft, CheckCircle2, XCircle, AlertTriangle, Info } from "lucide-react";
+import { CATEGORY_NAMES, type StudySign, type StudyRule } from "@shared/schema";
 
 const getCategoryLabel = (cat: number) => {
   return CATEGORY_NAMES[cat] || `Category ${cat}`;
@@ -25,6 +25,76 @@ const getLicenseLabel = (code: string) => {
     default: return null;
   }
 };
+
+function QuestionLinkedCards({ questionId }: { questionId: number }) {
+  const [signs, setSigns] = useState<StudySign[] | null>(null);
+  const [rules, setRules] = useState<StudyRule[] | null>(null);
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    Promise.all([
+      fetch(`/api/questions/${questionId}/signs`).then((r) => (r.ok ? r.json() : [])),
+      fetch(`/api/questions/${questionId}/rules`).then((r) => (r.ok ? r.json() : [])),
+    ])
+      .then(([s, r]) => {
+        if (!cancelled) {
+          setSigns(Array.isArray(s) ? s : []);
+          setRules(Array.isArray(r) ? r : []);
+        }
+      })
+      .catch(() => {
+        if (!cancelled) { setSigns([]); setRules([]); }
+      });
+    return () => { cancelled = true; };
+  }, [questionId]);
+
+  if (!signs || !rules || (signs.length === 0 && rules.length === 0)) return null;
+
+  return (
+    <div className="mt-4">
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 bg-blue-50 border border-blue-100 rounded-full px-3 py-1.5"
+      >
+        <Info className="w-3.5 h-3.5" />
+        {open ? "Hide source" : "See source"}
+      </button>
+      {open && (
+        <div className="mt-3 space-y-3">
+          {signs.map((s) => (
+            <div key={s.id} className="rounded-xl border border-border bg-white p-4 space-y-2">
+              <div className="flex items-center gap-3">
+                {s.images?.[0]?.image_url && (
+                  <img src={s.images[0].image_url} alt={s.name} className="w-14 h-14 object-contain bg-neutral-50 rounded-lg" />
+                )}
+                <div>
+                  <p className="font-bold text-sm">{s.name}</p>
+                  <p className="text-[10px] text-muted-foreground font-mono">{(s.codes || []).join(", ")}</p>
+                </div>
+              </div>
+              {[["Where", s.where_text], ["Purpose", s.purpose_text], ["Action", s.action_text]]
+                .filter(([, v]) => v)
+                .map(([label, v]) => (
+                  <div key={label as string}>
+                    <p className="text-[10px] font-black uppercase tracking-wider text-muted-foreground">{label}</p>
+                    <p className="text-sm text-neutral-700">{v}</p>
+                  </div>
+                ))}
+            </div>
+          ))}
+          {rules.map((r) => (
+            <div key={r.id} className="rounded-xl border border-border bg-white p-4 space-y-1">
+              <p className="text-[10px] font-mono font-bold text-muted-foreground">{r.section_ref}</p>
+              <p className="text-sm text-neutral-800 leading-relaxed">{r.body}</p>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function Review() {
   const [_, setLocation] = useLocation();
@@ -157,12 +227,7 @@ export default function Review() {
                         </div>
                       )}
 
-                      {q.explanation && (
-                        <div className="mt-4 rounded-xl border border-blue-100 bg-blue-50/60 p-4">
-                          <p className="text-[10px] font-black uppercase tracking-wider text-blue-600">Why?</p>
-                          <p className="text-sm text-neutral-700 mt-1 leading-relaxed">{q.explanation}</p>
-                        </div>
-                      )}
+                      <QuestionLinkedCards questionId={q.id} />
                     </div>
                   </AccordionContent>
                 </AccordionItem>

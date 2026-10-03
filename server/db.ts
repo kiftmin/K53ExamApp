@@ -84,6 +84,5 @@ export const questions = pgTable('questions', {
     options: jsonb('options').notNull(), // Stores array of option objects
     source_id: integer('source_id').references(() => sources.id),
     is_duplicate: boolean('is_duplicate').default(false).notNull(),
-    is_official: boolean('is_official').default(false).notNull(),
-    explanation: text('explanation'),
+    is_official: boolean('is_official').default(false).notNull()
 });

@@ -134,6 +134,29 @@ export async function registerRoutes(
     }
   });
 
+  // Reverse lookups: which cards link back to this question (learner-facing)
+  app.get('/api/questions/:id/signs', async (req: any, res: any) => {
+    try {
+      const id = parseInt(req.params.id, 10);
+      if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
+      res.json(await storage.getSignsForQuestion(id));
+    } catch (err) {
+      console.error("Error reading signs for question:", err);
+      res.status(500).json({ message: "Failed to load linked signs" });
+    }
+  });
+
+  app.get('/api/questions/:id/rules', async (req: any, res: any) => {
+    try {
+      const id = parseInt(req.params.id, 10);
+      if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
+      res.json(await storage.getRulesForQuestion(id));
+    } catch (err) {
+      console.error("Error reading rules for question:", err);
+      res.status(500).json({ message: "Failed to load linked rules" });
+    }
+  });
+
   app.put('/api/questions/:id', requireAdminAuth, async (req: any, res: any) => {
     try {
       const id = parseInt(req.params.id);
