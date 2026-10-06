@@ -4,6 +4,7 @@
 
 const FAV_SIGNS_KEY = "k53_favorite_signs";
 const LEARNING_SIGNS_KEY = "k53_sign_learning";
+const DONE_SIGNS_KEY = "k53_done_signs";
 
 // === Learning records (Phase 2 mastery model) ===
 
@@ -98,6 +99,29 @@ function writeIds(key: string, ids: number[]): void {
 
 export function getFavoriteSignIds(): number[] {
   return readIds(FAV_SIGNS_KEY);
+}
+
+export function getDoneSignIds(): number[] {
+  return readIds(DONE_SIGNS_KEY);
+}
+
+/** Remove the given ids from a bookmark list. Returns the new list. */
+export function removeSignBookmarks(kind: "done" | "favorite" | "both", ids: number[]): void {
+  const drop = new Set(ids);
+  if (kind === "favorite" || kind === "both") {
+    writeIds(FAV_SIGNS_KEY, readIds(FAV_SIGNS_KEY).filter((id) => !drop.has(id)));
+  }
+  if (kind === "done" || kind === "both") {
+    writeIds(DONE_SIGNS_KEY, readIds(DONE_SIGNS_KEY).filter((id) => !drop.has(id)));
+  }
+}
+
+/** Toggles done. Returns true if the sign is now marked done. */
+export function toggleDoneSign(id: number): boolean {
+  const ids = readIds(DONE_SIGNS_KEY);
+  const next = ids.includes(id) ? ids.filter((x) => x !== id) : [...ids, id];
+  writeIds(DONE_SIGNS_KEY, next);
+  return next.includes(id);
 }
 
 export function isFavoriteSign(id: number): boolean {

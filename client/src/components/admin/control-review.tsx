@@ -4,15 +4,64 @@ import type { StudyControl, ControlDiagram, Question } from "@shared/schema";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
-import { BadgeCheck, Check, Pencil, AlertTriangle, Shuffle, MousePointerClick } from "lucide-react";
+import { BadgeCheck, Check, Pencil, MousePointerClick } from "lucide-react";
 import ControlForm from "./control-form";
+import ControlDiagramView from "@/components/control-diagram-view";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Image as ImageIcon } from "lucide-react";
 
-type Flag = "hmv_a_inferred" | "lmv_ambiguous" | "generated_distractors";
+function SampleQuestionDiagramButton({ questionId, diagrams }: { questionId: number; diagrams: ControlDiagram[] }) {
+  const [open, setOpen] = useState(false);
+  const { data: linked = [] } = useQuery<StudyControl[]>({
+    queryKey: [`/api/questions/${questionId}/controls`],
+    queryFn: async () => {
+      const r = await fetch(`/api/questions/${questionId}/controls`);
+      if (!r.ok) throw new Error(`${r.status}`);
+      return r.json();
+    },
+  });
+  if (linked.length === 0) return null;
+  const diagram = diagrams.find((d) => d.id === linked[0].diagram_id);
+  const placed = linked.filter((c) => c.position_x != null && c.position_y != null);
+  const sameDiagram = linked.every((c) => c.diagram_id === linked[0].diagram_id);
+
+  return (
+    <>
+      <Button size="sm" variant="outline" className="h-7 text-[11px]" onClick={() => setOpen(true)}>
+        <ImageIcon className="h-3.5 w-3.5 mr-1" /> View diagram
+      </Button>
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle>Linked components</DialogTitle>
+          </DialogHeader>
+          {diagram && diagram.image_url && sameDiagram ? (
+            <ControlDiagramView
+              diagram={diagram}
+              controls={linked}
+              mode="preview"
+              highlightControlIds={placed.map((c) => c.id)}
+            />
+          ) : (
+            <p className="text-xs text-muted-foreground italic">No diagram image available for these components.</p>
+          )}
+          <ul className="space-y-1.5 text-sm">
+            {linked.map((c) => (
+              <li key={c.id}>
+                <span className="font-bold">{c.component_number != null ? `${c.component_number}. ` : ""}{c.component_name}</span>
+                {c.function_notes && <span className="text-muted-foreground"> — {c.function_notes}</span>}
+              </li>
+            ))}
+          </ul>
+        </DialogContent>
+      </Dialog>
+    </>
+  );
+}
 
 export default function ControlReviewPanel() {
   const queryClient = useQueryClient();
   const { toast } = useToast();
-  const [flag, setFlag] = useState<Flag | "all">("all");
   const [editing, setEditing] = useState<StudyControl | null>(null);
   const [formOpen, setFormOpen] = useState(false);
 
@@ -39,24 +88,9 @@ export default function ControlReviewPanel() {
     [allQuestions]
   );
 
-  const inferredIds = useMemo(
-    () => new Set(diagrams.filter((d) => d.is_inferred).map((d) => d.id)),
-    [diagrams]
-  );
-
   const flagged = useMemo(() => {
-    const controlRows = flag === "hmv_a_inferred"
-      ? unreviewedControls.filter((c) => inferredIds.has(c.diagram_id))
-      : flag === "lmv_ambiguous" || flag === "generated_distractors"
-        ? []
-        : unreviewedControls;
-
-    const questionRows = flag === "hmv_a_inferred"
-      ? []
-      : unreviewedSampleQs;
-
-    return { controlRows, questionRows };
-  }, [flag, unreviewedControls, unreviewedSampleQs, inferredIds]);
+    return { controlRows: unreviewedControls, questionRows: unreviewedSampleQs };
+  }, [unreviewedControls, unreviewedSampleQs]);
 
   const approveControl = useMutation({
     mutationFn: async (id: number) => { await apiRequest("PATCH", `/api/controls/${id}`, { is_reviewed: true }); },
@@ -66,9 +100,6 @@ export default function ControlReviewPanel() {
     mutationFn: async (id: number) => { await apiRequest("PATCH", `/api/questions/${id}`, { is_reviewed: true }); },
     onSuccess: () => { queryClient.invalidateQueries({ queryKey: ["/api/questions"] }); toast({ title: "Marked reviewed" }); },
   });
-
-  const lmvCount = useMemo(() => unreviewedSampleQs.filter((q) => q.license_code === "2").length, [unreviewedSampleQs]);
-  const hmvCount = useMemo(() => unreviewedControls.filter((c) => inferredIds.has(c.diagram_id)).length, [unreviewedControls, inferredIds]);
 
   if (lc || lq) return <p className="text-sm text-muted-foreground py-8 text-center">Loading review queue…</p>;
 
@@ -89,33 +120,12 @@ export default function ControlReviewPanel() {
       <div className="glass-card rounded-2xl p-4 border-l-4 border-amber-400 space-y-2">
         <p className="text-[11px] font-black uppercase tracking-widest text-amber-700">Review flags from the import notes</p>
         <div className="flex flex-wrap gap-2">
-          <button
-            onClick={() => setFlag(flag === "hmv_a_inferred" ? "all" : "hmv_a_inferred")}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold border ${flag === "hmv_a_inferred" ? "bg-amber-500 text-white border-amber-500" : "border-amber-300 text-amber-800 bg-amber-50"}`}
-          >
-            <AlertTriangle className="h-3.5 w-3.5" /> HMV-auto inferred ({hmvCount})
-          </button>
-          <button
-            onClick={() => setFlag(flag === "lmv_ambiguous" ? "all" : "lmv_ambiguous")}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold border ${flag === "lmv_ambiguous" ? "bg-blue-500 text-white border-blue-500" : "border-blue-300 text-blue-800 bg-blue-50"}`}
-          >
-            <Shuffle className="h-3.5 w-3.5" /> LMV manual/auto ambiguity ({lmvCount})
-          </button>
-          <button
-            onClick={() => setFlag(flag === "generated_distractors" ? "all" : "generated_distractors")}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold border ${flag === "generated_distractors" ? "bg-red-500 text-white border-red-500" : "border-red-300 text-red-800 bg-red-50"}`}
-          >
+          <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold border border-red-300 text-red-800 bg-red-50">
             <MousePointerClick className="h-3.5 w-3.5" /> Generated distractors ({unreviewedSampleQs.length})
-          </button>
-          {flag !== "all" && (
-            <button onClick={() => setFlag("all")} className="px-3 py-1.5 text-xs font-semibold text-muted-foreground">Show all</button>
-          )}
+          </span>
         </div>
         <p className="text-[11px] text-muted-foreground">
-          {flag === "hmv_a_inferred" && "Every HMV-automatic component was inferred from the LMV-automatic table — verify names/numbers against the manual before publishing."}
-          {flag === "lmv_ambiguous" && "LMV sample questions were imported as manual unless explicitly marked; consider whether they should also apply to automatic."}
-          {flag === "generated_distractors" && "All distractor options in these sample questions were machine-generated and have not been checked against real K53 exam distractors."}
-          {flag === "all" && "Use the chips to isolate one flag category. Nothing auto-publishes."}
+          All distractor options in these sample questions were machine-generated and have not been checked against real K53 exam distractors.
         </p>
       </div>
 
@@ -123,24 +133,32 @@ export default function ControlReviewPanel() {
       {flagged.controlRows.length > 0 && (
         <div className="space-y-2">
           <p className="text-[11px] font-black uppercase tracking-widest text-muted-foreground px-1">Components ({flagged.controlRows.length})</p>
-          {flagged.controlRows.map((c) => (
-            <div key={c.id} className="rounded-2xl border border-border bg-card p-3 flex items-center justify-between gap-2">
-              <div className="flex items-start gap-2 flex-1">
-                <span className="w-6 h-6 rounded-md bg-primary/10 text-primary text-xs font-bold flex items-center justify-center mt-0.5">{c.component_number ?? "?"}</span>
-                <div>
-                  <p className="text-sm font-semibold">{c.component_name}</p>
-                  {c.function_notes && <p className="text-xs text-muted-foreground line-clamp-2">{c.function_notes}</p>}
-                  {inferredIds.has(c.diagram_id) && (
-                    <span className="text-[10px] font-bold text-amber-700 bg-amber-100 px-1.5 py-0.5 rounded">INFERRED hmv_a</span>
-                  )}
-                </div>
-              </div>
-              <div className="flex gap-1">
-                <Button size="sm" className="h-8 text-xs brand-gradient border-none" onClick={() => approveControl.mutate(c.id)}><Check className="h-3.5 w-3.5 mr-1" /> Approve</Button>
-                <Button size="sm" variant="outline" className="h-8 text-xs" onClick={() => { setEditing(c); setFormOpen(true); }}><Pencil className="h-3.5 w-3.5" /></Button>
-              </div>
-            </div>
-          ))}
+           {flagged.controlRows.map((c) => {
+             const diag = diagrams.find((d) => d.id === c.diagram_id);
+             return (
+             <div key={c.id} className="rounded-2xl border border-border bg-card p-3 flex items-center justify-between gap-2">
+               <div className="flex items-start gap-2 flex-1">
+                 <span className="w-6 h-6 rounded-md bg-primary/10 text-primary text-xs font-bold flex items-center justify-center mt-0.5">{c.component_number ?? "?"}</span>
+                 <div>
+                   <p className="text-sm font-semibold">{c.component_name}</p>
+                   {c.function_notes && <p className="text-xs text-muted-foreground line-clamp-2">{c.function_notes}</p>}
+                   {(c.position_x == null || c.position_y == null) && (
+                     <span className="text-[10px] font-semibold text-muted-foreground bg-muted px-1.5 py-0.5 rounded ml-1">no position</span>
+                   )}
+                 </div>
+               </div>
+               {diag?.image_url && (
+                 <div className="w-28 shrink-0">
+                   <ControlDiagramView diagram={diag} controls={[c]} mode="preview" highlightControlId={c.id} />
+                 </div>
+               )}
+               <div className="flex gap-1">
+                 <Button size="sm" className="h-8 text-xs brand-gradient border-none" onClick={() => approveControl.mutate(c.id)}><Check className="h-3.5 w-3.5 mr-1" /> Approve</Button>
+                 <Button size="sm" variant="outline" className="h-8 text-xs" onClick={() => { setEditing(c); setFormOpen(true); }}><Pencil className="h-3.5 w-3.5" /></Button>
+               </div>
+             </div>
+             );
+           })}
         </div>
       )}
 
@@ -164,7 +182,10 @@ export default function ControlReviewPanel() {
                   </li>
                 ))}
               </ul>
-              <Button size="sm" className="h-8 text-xs brand-gradient border-none mt-1" onClick={() => approveQuestion.mutate(q.id)}><Check className="h-3.5 w-3.5 mr-1" /> Approve</Button>
+              <div className="flex items-center gap-2 flex-wrap">
+                <SampleQuestionDiagramButton questionId={q.id} diagrams={diagrams} />
+                <Button size="sm" className="h-8 text-xs brand-gradient border-none" onClick={() => approveQuestion.mutate(q.id)}><Check className="h-3.5 w-3.5 mr-1" /> Approve</Button>
+              </div>
             </div>
           ))}
           {flagged.questionRows.length > 50 && (

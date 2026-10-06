@@ -6,8 +6,10 @@ import { Layout } from "@/components/layout";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Heart, Layers, Search, ArrowLeft } from "lucide-react";
-import { toggleFavoriteControl, getFavoriteControlIds } from "@/lib/control-storage";
+import { Heart, Layers, Search, ArrowLeft, CheckCircle2, HeartOff, CircleX } from "lucide-react";
+import { toggleFavoriteControl, getFavoriteControlIds, getDoneControlIds, toggleDoneControl, removeControlBookmarks } from "@/lib/control-storage";
+import ControlDiagramView from "@/components/control-diagram-view";
+import ControlsPractice from "@/components/controls-practice";
 import { useStudyGate } from "./study";
 import ControlsStudyGate from "@/components/controls-study-gate";
 import { cn } from "@/lib/utils";
@@ -35,6 +37,8 @@ export default function StudyControlsBrowse() {
 }
 
 function BrowseInner({ licence, gearbox, reset, allowed, setLocation, search, setSearch, favOnly, setFavOnly, favsTick, setFavsTick }: any) {
+  const [selected, setSelected] = useState<Record<number, StudyControl | null>>({});
+  const [view, setView] = useState<"explore" | "practice">("explore");
   const vehicle_type = licence === 1 ? "motorcycle" : licence === 2 ? "lmv" : "hmv";
   const gearboxParam = vehicle_type === "motorcycle" ? undefined : gearbox;
 
@@ -63,6 +67,7 @@ function BrowseInner({ licence, gearbox, reset, allowed, setLocation, search, se
   }, [controls, search, favOnly, favsTick]);
 
   const favorites = useMemo(() => getFavoriteControlIds(), [favsTick]);
+  const doneIds = useMemo(() => getDoneControlIds(), [favsTick]);
 
   return (
     <div className="py-4 space-y-4">
@@ -80,6 +85,22 @@ function BrowseInner({ licence, gearbox, reset, allowed, setLocation, search, se
         </div>
       </div>
 
+      <div className="grid grid-cols-2 rounded-xl border border-border p-1 bg-muted/40">
+        {([{ k: "explore", label: "Explore" }, { k: "practice", label: "Diagram quiz" }] as const).map(({ k, label }) => (
+          <button
+            key={k}
+            onClick={() => setView(k)}
+            className={cn("h-9 rounded-lg text-xs font-bold", view === k ? "bg-background shadow-sm text-foreground" : "text-muted-foreground")}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+
+      {view === "practice" ? (
+        <ControlsPractice controls={controls} diagrams={diagrams} />
+      ) : (
+      <>
       <div className="relative">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
         <Input placeholder="Search components or function…" value={search} onChange={(e) => setSearch(e.target.value)} className="pl-9 h-11 bg-background/60 rounded-xl" />
@@ -105,20 +126,64 @@ function BrowseInner({ licence, gearbox, reset, allowed, setLocation, search, se
           const recognition = list.filter((c) => c.component_number == null);
           return (
             <div key={diagramId} className="space-y-2">
-              <p className="text-[11px] font-black uppercase tracking-widest text-muted-foreground px-1">
+              <p className="text-[11px] font-black uppercase tracking-widest text-muted-foreground px-1 flex items-center gap-1.5">
+                {list.length > 0 && list.every((c) => doneIds.includes(c.id)) && <CheckCircle2 className="h-3.5 w-3.5 text-green-600" />}
                 {diagram?.label || `Diagram ${diagramId}`}
+                {list.some((c) => favorites.includes(c.id)) && (
+                  <button
+                    aria-label="Clear favorites for this diagram"
+                    title="Clear favorites"
+                    onClick={() => { removeControlBookmarks("favorite", list.map((c) => c.id)); setFavsTick((t: number) => t + 1); }}
+                    className="text-red-500 ml-auto p-1"
+                  >
+                    <HeartOff className="h-3.5 w-3.5" />
+                  </button>
+                )}
+                {list.some((c) => doneIds.includes(c.id)) && (
+                  <button
+                    aria-label="Clear done for this diagram"
+                    title="Clear done"
+                    onClick={() => { removeControlBookmarks("done", list.map((c) => c.id)); setFavsTick((t: number) => t + 1); }}
+                    className="text-green-600 p-1"
+                  >
+                    <CircleX className="h-3.5 w-3.5" />
+                  </button>
+                )}
               </p>
+              {diagram && (
+                <>
+                  <ControlDiagramView
+                    diagram={diagram}
+                    controls={list}
+                    mode="explore"
+                    onMarkerSelect={(c) => setSelected((s) => ({ ...s, [diagramId]: c }))}
+                  />
+                  {selected[diagramId] && (
+                    <div className="rounded-2xl border border-primary/30 bg-primary/5 p-3 space-y-1">
+                      <p className="font-bold text-sm">
+                        {selected[diagramId]!.component_number != null && `Control ${selected[diagramId]!.component_number} — `}
+                        {selected[diagramId]!.component_name}
+                      </p>
+                      {selected[diagramId]!.function_notes && <p className="text-xs text-muted-foreground">{selected[diagramId]!.function_notes}</p>}
+                    </div>
+                  )}
+                </>
+              )}
               {numbered.map((c) => {
                 const fav = favorites.includes(c.id);
+                const done = doneIds.includes(c.id);
                 return (
                   <div key={c.id} className="rounded-2xl border border-border bg-card p-4 flex items-start gap-3">
                     <span className="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold flex items-center justify-center shrink-0">{c.component_number}</span>
                     <div className="flex-1">
-                      <p className="font-bold text-sm">{c.component_name}</p>
+                      <p className={cn("font-bold text-sm", done && "text-muted-foreground line-through")}>{c.component_name}</p>
                       {c.function_notes && <p className="text-xs text-muted-foreground mt-1">{c.function_notes}</p>}
                     </div>
                     <button onClick={() => { toggleFavoriteControl(c.id); setFavsTick((t: number) => t + 1); }} aria-label="Favorite" className="pt-1">
                       <Heart className={cn("h-4 w-4", fav ? "fill-red-500 text-red-500" : "text-muted-foreground")} />
+                    </button>
+                    <button onClick={() => { toggleDoneControl(c.id); setFavsTick((t: number) => t + 1); }} aria-label="Mark done" className="pt-1">
+                      <CheckCircle2 className={cn("h-4 w-4", done ? "fill-green-600 text-green-600" : "text-muted-foreground")} />
                     </button>
                   </div>
                 );
@@ -128,14 +193,18 @@ function BrowseInner({ licence, gearbox, reset, allowed, setLocation, search, se
                   <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Recognition only</p>
                   {recognition.map((c) => {
                     const fav = favorites.includes(c.id);
+                    const done = doneIds.includes(c.id);
                     return (
                       <div key={c.id} className="rounded-2xl border border-border/60 bg-card/60 p-3 flex items-start gap-3">
                         <div className="flex-1">
-                          <p className="font-bold text-sm">{c.component_name}</p>
+                          <p className={cn("font-bold text-sm", done && "text-muted-foreground line-through")}>{c.component_name}</p>
                           {c.function_notes && <p className="text-xs text-muted-foreground mt-1">{c.function_notes}</p>}
                         </div>
                         <button onClick={() => { toggleFavoriteControl(c.id); setFavsTick((t: number) => t + 1); }} aria-label="Favorite" className="pt-1">
                           <Heart className={cn("h-4 w-4", fav ? "fill-red-500 text-red-500" : "text-muted-foreground")} />
+                        </button>
+                        <button onClick={() => { toggleDoneControl(c.id); setFavsTick((t: number) => t + 1); }} aria-label="Mark done" className="pt-1">
+                          <CheckCircle2 className={cn("h-4 w-4", done ? "fill-green-600 text-green-600" : "text-muted-foreground")} />
                         </button>
                       </div>
                     );
@@ -145,6 +214,8 @@ function BrowseInner({ licence, gearbox, reset, allowed, setLocation, search, se
             </div>
           );
         })
+      )}
+      </>
       )}
     </div>
   );

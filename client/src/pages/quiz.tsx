@@ -10,6 +10,32 @@ import { ChevronRight, ShieldAlert, RotateCcw, ChevronLeft, Clock } from "lucide
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { CATEGORY_NAMES } from "@shared/schema";
+import { useQuery } from "@tanstack/react-query";
+import type { StudyControl, ControlDiagram } from "@shared/schema";
+import ControlDiagramView from "@/components/control-diagram-view";
+
+function ControlQuestionDiagram({ questionId }: { questionId: number }) {
+  const { data: linkedControls = [] } = useQuery<StudyControl[]>({
+    queryKey: [`/api/questions/${questionId}/controls`],
+    queryFn: async () => {
+      const r = await fetch(`/api/questions/${questionId}/controls`);
+      if (!r.ok) throw new Error(`${r.status}`);
+      return r.json();
+    },
+  });
+  const { data: diagrams = [] } = useQuery<ControlDiagram[]>({ queryKey: ["/api/control-diagrams"] });
+  if (linkedControls.length === 0) return null;
+  const diagram = diagrams.find((d) => d.id === linkedControls[0].diagram_id);
+  if (!diagram || !diagram.image_url) return null;
+  return (
+    <ControlDiagramView
+      diagram={diagram}
+      controls={linkedControls}
+      mode="preview"
+      highlightControlId={linkedControls[0]?.id ?? null}
+    />
+  );
+}
 import {
   AlertDialog,
   AlertDialogAction,
@@ -211,6 +237,8 @@ export default function Quiz() {
                   <h3 className="text-xl sm:text-2xl font-display font-medium text-foreground leading-snug">
                     {currentQ.question_text}
                   </h3>
+
+                  {currentQ.category === 3 && <ControlQuestionDiagram questionId={currentQ.id} />}
 
                   {currentQ.contains_image && currentQ.image_link && (
                     <div className="relative rounded-xl overflow-hidden border bg-muted flex items-center justify-center min-h-[200px]">

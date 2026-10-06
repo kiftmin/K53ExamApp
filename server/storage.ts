@@ -54,6 +54,7 @@ export interface IStorage {
   getRulesForQuestion(questionId: number): Promise<StudyRule[]>;
 
   getControlDiagrams(): Promise<ControlDiagram[]>;
+  updateControlDiagram(id: number, data: Partial<InsertControlDiagram>): Promise<ControlDiagram | undefined>;
   getControls(filters?: { vehicle_type?: string; gearbox?: string; diagram_id?: number; search?: string; unreviewed?: boolean; missingImage?: boolean }): Promise<StudyControl[]>;
   getControlById(id: number): Promise<(StudyControl & { question_ids: number[] }) | undefined>;
   createControl(data: InsertStudyControl): Promise<StudyControl>;
@@ -512,6 +513,25 @@ export class NeonDatabaseStorage implements IStorage {
     const rows = await db.select().from(controlDiagrams);
     return (rows as unknown as ControlDiagram[]).sort((a, b) =>
       a.vehicle_type.localeCompare(b.vehicle_type) || (a.gearbox || '').localeCompare(b.gearbox || ''));
+  }
+
+  async updateControlDiagram(id: number, data: Partial<InsertControlDiagram>): Promise<ControlDiagram | undefined> {
+    const patch: Record<string, unknown> = {};
+    if (data.vehicle_type !== undefined) patch.vehicle_type = data.vehicle_type;
+    if (data.gearbox !== undefined) patch.gearbox = data.gearbox;
+    if (data.label !== undefined) patch.label = data.label;
+    if (data.image_url !== undefined) patch.image_url = data.image_url;
+    if (data.is_inferred !== undefined) patch.is_inferred = data.is_inferred;
+    if (Object.keys(patch).length === 0) {
+      const rows = await db.select().from(controlDiagrams).where(eq(controlDiagrams.id, id));
+      return (rows[0] as unknown as ControlDiagram) || undefined;
+    }
+    const [row] = await db
+      .update(controlDiagrams)
+      .set(patch as any)
+      .where(eq(controlDiagrams.id, id))
+      .returning();
+    return (row as unknown as ControlDiagram) || undefined;
   }
 
   async getControls(filters?: { vehicle_type?: string; gearbox?: string; diagram_id?: number; search?: string; unreviewed?: boolean }): Promise<StudyControl[]> {

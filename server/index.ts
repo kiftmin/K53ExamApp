@@ -131,6 +131,8 @@ app.use((req, res, next) => {
         applicable_codes JSONB NOT NULL,
         is_verified_exam_question BOOLEAN NOT NULL DEFAULT FALSE,
         is_reviewed BOOLEAN NOT NULL DEFAULT FALSE,
+        position_x REAL,
+        position_y REAL,
         created_at TIMESTAMP NOT NULL DEFAULT NOW(),
         updated_at TIMESTAMP NOT NULL DEFAULT NOW()
       );
@@ -145,6 +147,8 @@ app.use((req, res, next) => {
     // Pure-additive column migrations (safe to run every boot)
     // Existing questions keep the bank's curated state → default TRUE on migration.
     await client`ALTER TABLE questions ADD COLUMN IF NOT EXISTS is_reviewed BOOLEAN NOT NULL DEFAULT TRUE;`;
+    await client`ALTER TABLE study_controls ADD COLUMN IF NOT EXISTS position_x REAL;`;
+    await client`ALTER TABLE study_controls ADD COLUMN IF NOT EXISTS position_y REAL;`;
   } catch (err) {
     console.error("Failed to ensure study tables:", err);
   }

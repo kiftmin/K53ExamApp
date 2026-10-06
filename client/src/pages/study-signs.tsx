@@ -8,9 +8,94 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { useQuiz } from "@/lib/quiz-context";
-import { getFavoriteSignIds, toggleFavoriteSign } from "@/lib/sign-storage";
+import { getFavoriteSignIds, toggleFavoriteSign, getDoneSignIds, toggleDoneSign, removeSignBookmarks } from "@/lib/sign-storage";
 import { useToast } from "@/hooks/use-toast";
-import { ArrowLeft, BadgeCheck, Heart, ImageOff, Layers, Search } from "lucide-react";
+import { ArrowLeft, BadgeCheck, ChevronDown, CheckCircle2, Heart, ImageOff, Layers, Search, HeartOff, CircleX } from "lucide-react";
+
+function SubheadingSignGroup({ subheading, list, favorites, doneIds, forceOpen, onOpen, onToggleFav, onToggleDone, onClearBookmarks }: any) {
+  const [open, setOpen] = useState(false);
+  const isOpen = forceOpen || open;
+  const allDone = list.length > 0 && list.every((s: StudySign) => doneIds.includes(s.id));
+  const hasFavs = list.some((s: StudySign) => favorites.includes(s.id));
+  const hasDone = list.some((s: StudySign) => doneIds.includes(s.id));
+  return (
+    <div className="rounded-2xl border border-border bg-card/40">
+      <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between px-4 py-2.5 text-left">
+        <span className="text-xs font-bold text-muted-foreground flex items-center gap-1.5">
+          {allDone && <CheckCircle2 className="h-3.5 w-3.5 text-green-600" />}
+          {subheading} <span className="text-muted-foreground/60">({list.length})</span>
+        </span>
+        <span className="flex items-center gap-1.5">
+          {hasFavs && (
+            <span
+              role="button"
+              aria-label="Clear favorites"
+              title="Clear favorites"
+              onClick={(e) => { e.stopPropagation(); onClearBookmarks("favorite", list.map((s: StudySign) => s.id)); }}
+              className="p-1 text-red-500"
+            >
+              <HeartOff className="h-3.5 w-3.5" />
+            </span>
+          )}
+          {hasDone && (
+            <span
+              role="button"
+              aria-label="Clear done"
+              title="Clear done"
+              onClick={(e) => { e.stopPropagation(); onClearBookmarks("done", list.map((s: StudySign) => s.id)); }}
+              className="p-1 text-green-600"
+            >
+              <CircleX className="h-3.5 w-3.5" />
+            </span>
+          )}
+          <ChevronDown className={cn("h-4 w-4 text-muted-foreground transition-transform", isOpen && "rotate-180")} />
+        </span>
+      </button>
+      {isOpen && (
+        <div className="px-3 pb-3 space-y-2">
+          {list.map((s: StudySign) => {
+            const thumb = s.images?.[0]?.image_url;
+            const fav = favorites.includes(s.id);
+            const done = doneIds.includes(s.id);
+            return (
+              <button
+                key={s.id}
+                onClick={() => onOpen(s.id)}
+                className="w-full flex items-center gap-3 p-2.5 rounded-2xl border border-border bg-card text-left hover-elevate"
+              >
+                <div className="h-14 w-14 rounded-xl bg-white border border-border flex items-center justify-center overflow-hidden shrink-0">
+                  {thumb ? (
+                    <img src={thumb} alt={s.name} className="h-full w-full object-contain" loading="lazy" />
+                  ) : (
+                    <ImageOff className="h-5 w-5 text-muted-foreground" />
+                  )}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className={cn("text-sm font-bold leading-snug flex items-center gap-1", done && "text-muted-foreground line-through")}>
+                    <span className="truncate">{s.name}</span>
+                    {s.is_verified_exam_question && <BadgeCheck className="h-3.5 w-3.5 shrink-0 text-green-600" />}
+                    {fav && <Heart className="h-3.5 w-3.5 shrink-0 text-red-500 fill-red-500" />}
+                  </p>
+                  <div className="flex flex-wrap gap-1 mt-1">
+                    {(s.codes || []).map((c) => (
+                      <Badge key={c} variant="outline" className="text-[10px] font-mono">{c}</Badge>
+                    ))}
+                  </div>
+                </div>
+                <span onClick={(e) => { e.stopPropagation(); onToggleFav(s.id); }} aria-label="Favorite" className="p-1">
+                  <Heart className={cn("h-4 w-4", favorites.includes(s.id) ? "fill-red-500 text-red-500" : "text-muted-foreground")} />
+                </span>
+                <span onClick={(e) => { e.stopPropagation(); onToggleDone(s.id); }} aria-label="Mark done" className="p-1">
+                  <CheckCircle2 className={cn("h-4 w-4", done ? "fill-green-600 text-green-600" : "text-muted-foreground")} />
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
 import { cn } from "@/lib/utils";
 import { useStudyGate } from "./study";
 
@@ -24,6 +109,7 @@ export default function StudySignsBrowse() {
   const [search, setSearch] = useState("");
   const [openId, setOpenId] = useState<number | null>(null);
   const [favorites, setFavorites] = useState<number[]>(() => getFavoriteSignIds());
+  const [doneIds, setDoneIds] = useState<number[]>(() => getDoneSignIds());
 
   const { data: signs = [], isLoading } = useQuery<StudySign[]>({
     queryKey: ["/api/signs"],
@@ -54,13 +140,21 @@ export default function StudySignsBrowse() {
   }, [signs, heading, subheading, search]);
 
   const grouped = useMemo(() => {
-    const map = new Map<string, StudySign[]>();
+    const map = new Map<string, Map<string, StudySign[]>>();
     for (const s of filtered) {
-      const list = map.get(s.subheading) || [];
-      list.push(s);
-      map.set(s.subheading, list);
+      const heading = s.heading || "Other";
+      const sub = s.subheading || "(general)";
+      if (!map.has(heading)) map.set(heading, new Map());
+      const inner = map.get(heading)!;
+      if (!inner.has(sub)) inner.set(sub, []);
+      inner.get(sub)!.push(s);
     }
-    return Array.from(map.entries()).sort(([a], [b]) => a.localeCompare(b));
+    return Array.from(map.entries())
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([heading, inner]) => [
+        heading,
+        Array.from(inner.entries()).sort(([a], [b]) => a.localeCompare(b)),
+      ] as [string, [string, StudySign[]][]]);
   }, [filtered]);
 
   const toggleFav = (id: number) => {
@@ -152,44 +246,54 @@ export default function StudySignsBrowse() {
         ) : grouped.length === 0 ? (
           <p className="text-sm text-muted-foreground text-center py-10">No signs match.</p>
         ) : (
-          grouped.map(([sub, list]) => (
-            <div key={sub} className="space-y-2">
-              <p className="text-[11px] font-black uppercase tracking-widest text-muted-foreground px-1">{sub}</p>
-              <div className="space-y-2">
-                {list.map((s) => {
-                  const thumb = s.images?.[0]?.image_url;
-                  const fav = favorites.includes(s.id);
-                  return (
-                    <button
-                      key={s.id}
-                      onClick={() => setOpenId(s.id)}
-                      className="w-full flex items-center gap-3 p-2.5 rounded-2xl border border-border bg-card text-left hover-elevate"
-                    >
-                      <div className="h-14 w-14 rounded-xl bg-white border border-border flex items-center justify-center overflow-hidden shrink-0">
-                        {thumb ? (
-                          <img src={thumb} alt={s.name} className="h-full w-full object-contain" loading="lazy" />
-                        ) : (
-                          <ImageOff className="h-5 w-5 text-muted-foreground" />
-                        )}
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-sm font-bold leading-snug flex items-center gap-1">
-                          <span className="truncate">{s.name}</span>
-                          {s.is_verified_exam_question && <BadgeCheck className="h-3.5 w-3.5 shrink-0 text-green-600" />}
-                          {fav && <Heart className="h-3.5 w-3.5 shrink-0 text-red-500 fill-red-500" />}
-                        </p>
-                        <div className="flex flex-wrap gap-1 mt-1">
-                          {(s.codes || []).map((c) => (
-                            <Badge key={c} variant="outline" className="text-[10px] font-mono">{c}</Badge>
-                          ))}
-                        </div>
-                      </div>
-                    </button>
-                  );
-                })}
-              </div>
+          grouped.map(([h, subs]) => {
+            const headingDone = subs.every(([, list]) => list.length > 0 && list.every((s: StudySign) => doneIds.includes(s.id)));
+            const sectionIds = subs.flatMap(([, list]) => list.map((s: StudySign) => s.id));
+            const sectionHasFavs = sectionIds.some((id: number) => favorites.includes(id));
+            const sectionHasDone = sectionIds.some((id: number) => doneIds.includes(id));
+            return (
+            <div key={h} className="space-y-2">
+              <p className="text-[11px] font-black uppercase tracking-widest text-primary px-1 flex items-center gap-1.5">
+                {headingDone && <CheckCircle2 className="h-3.5 w-3.5 text-green-600" />}
+                {h}
+              {sectionHasFavs && (
+                <button
+                  aria-label="Clear favorites for this section"
+                  title="Clear favorites"
+                  onClick={() => { removeSignBookmarks("favorite", sectionIds); setFavorites(getFavoriteSignIds()); }}
+                  className="text-red-500 ml-auto p-1"
+                >
+                  <HeartOff className="h-3.5 w-3.5" />
+                </button>
+              )}
+              {sectionHasDone && (
+                <button
+                  aria-label="Clear done for this section"
+                  title="Clear done"
+                  onClick={() => { removeSignBookmarks("done", sectionIds); setDoneIds(getDoneSignIds()); }}
+                  className="text-green-600 p-1"
+                >
+                  <CircleX className="h-3.5 w-3.5" />
+                </button>
+              )}
+              </p>
+              {subs.map(([sub, list]) => (
+                <SubheadingSignGroup
+                  key={sub}
+                  subheading={sub}
+                  list={list}
+                  favorites={favorites}
+                  doneIds={doneIds}
+                  forceOpen={search.trim().length > 0}
+                  onOpen={(id: number) => setOpenId(id)}
+                  onToggleFav={toggleFav}
+                  onToggleDone={(id: number) => { toggleDoneSign(id); setFavorites(getFavoriteSignIds()); setDoneIds(getDoneSignIds()); }}
+                  onClearBookmarks={(kind: "favorite" | "done", ids: number[]) => { removeSignBookmarks(kind, ids); setFavorites(getFavoriteSignIds()); setDoneIds(getDoneSignIds()); }}
+                />
+              ))}
             </div>
-          ))
+            );
+          })
         )}
 
         <Sheet open={openId !== null} onOpenChange={(o) => !o && setOpenId(null)}>
@@ -241,6 +345,14 @@ export default function StudySignsBrowse() {
                   >
                     <Heart className={cn("h-4 w-4 mr-1", favorites.includes(openSign.id) && "fill-current")} />
                     {favorites.includes(openSign.id) ? "Favorited" : "Favorite"}
+                  </Button>
+                  <Button
+                    variant={doneIds.includes(openSign.id) ? "default" : "outline"}
+                    onClick={() => { toggleDoneSign(openSign.id); setDoneIds(getDoneSignIds()); }}
+                    className="flex-1 h-11 rounded-xl font-bold"
+                  >
+                    <CheckCircle2 className={cn("h-4 w-4 mr-1", doneIds.includes(openSign.id) && "fill-current")} />
+                    {doneIds.includes(openSign.id) ? "Done" : "Mark done"}
                   </Button>
                   {linkedQuestions.length > 0 && (
                     <Button onClick={practiceInQuiz} className="flex-1 h-11 rounded-xl font-bold brand-gradient border-none">

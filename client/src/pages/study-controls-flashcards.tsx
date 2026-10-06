@@ -1,12 +1,13 @@
 import { useMemo, useRef, useState, type TouchEvent as ReactTouchEvent } from "react";
 import { useLocation } from "wouter";
 import { useQuery } from "@tanstack/react-query";
-import type { StudyControl } from "@shared/schema";
+import type { StudyControl, ControlDiagram } from "@shared/schema";
 import { Layout } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Progress } from "@/components/ui/progress";
+import ControlDiagramView from "@/components/control-diagram-view";
 import { getFavoriteControlIds, getSeenControlIds, markControlSeen, rateControl, getAllControlLearning, type RecallRating } from "@/lib/control-storage";
 import { ArrowLeft, ChevronLeft, ChevronRight, RotateCcw, Shuffle } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -73,6 +74,7 @@ function Deck({
     },
     enabled: allowed,
   });
+  const { data: diagrams = [] } = useQuery<ControlDiagram[]>({ queryKey: ["/api/control-diagrams"] });
 
   const deck = useMemo(() => {
     const favs = new Set(getFavoriteControlIds());
@@ -129,13 +131,22 @@ function Deck({
   // Card face depends on direction:
   // recognition (diagram → name): front shows component number & "which control is this?", back shows name + function.
   // recall (function → number/name): front shows function/notes, back shows number + name.
+  const currentDiagram = current ? diagrams.find((d) => d.id === current.diagram_id) : undefined;
+  const currentPlaced = current && current.position_x != null && current.position_y != null;
+
   const front = current
     ? direction === "recognition"
       ? (
-        <div className="text-center space-y-2">
-          <p className="text-[11px] uppercase tracking-widest text-muted-foreground font-bold">On the diagram:</p>
-          <p className="text-5xl font-display font-extrabold">{current.component_number ?? "?"}</p>
-          <p className="text-xs text-muted-foreground">Which control is this?</p>
+        <div className="w-full space-y-2">
+          {currentDiagram && currentPlaced ? (
+            <ControlDiagramView diagram={currentDiagram} controls={[current]} mode="preview" highlightControlId={current.id} />
+          ) : (
+            <div className="text-center space-y-2">
+              <p className="text-[11px] uppercase tracking-widest text-muted-foreground font-bold">On the diagram:</p>
+              <p className="text-5xl font-display font-extrabold">{current.component_number ?? "?"}</p>
+            </div>
+          )}
+          <p className="text-xs text-muted-foreground text-center">Which control is this?</p>
         </div>
       )
       : (
@@ -207,12 +218,12 @@ function Deck({
       ) : (
         current && (
           <div className="select-none [perspective:1200px]" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd} onClick={onCardClick}>
-            <div className={cn("relative w-full min-h-[320px] transition-transform duration-300 [transform-style:preserve-3d]", flipped && "[transform:rotateX(180deg)]")}>
-              <div className="absolute inset-0 rounded-3xl border border-border bg-card p-6 flex flex-col items-center justify-center gap-3 [backface-visibility:hidden]">
+            <div className={cn("relative w-full min-h-[440px] transition-transform duration-300 [transform-style:preserve-3d]", flipped && "[transform:rotateX(180deg)]")}>
+              <div className="absolute inset-0 rounded-3xl border border-border bg-card p-6 flex flex-col items-center justify-center gap-3 [backface-visibility:hidden] overflow-y-auto">
                 {front}
                 <p className="text-[11px] text-muted-foreground font-semibold">Tap or swipe up/down to flip · swipe left/right to move</p>
               </div>
-              <div className="absolute inset-0 rounded-3xl border border-primary/30 bg-primary/5 p-6 flex flex-col items-center justify-center gap-2 [transform:rotateX(180deg)] [backface-visibility:hidden]">
+              <div className="absolute inset-0 rounded-3xl border border-primary/30 bg-primary/5 p-6 flex flex-col items-center justify-center gap-2 [transform:rotateX(180deg)] [backface-visibility:hidden] overflow-y-auto">
                 {back}
               </div>
             </div>

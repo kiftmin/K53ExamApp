@@ -1,6 +1,6 @@
 import { storage } from "./storage.js";
 import { api } from "../shared/routes.js";
-import { questionSchema, sourceSchema, MOBILE_NUMBER_REGEX, studySignSchema, rawSignImportSchema, type InsertStudySign, studyRuleSchema, rawRuleImportSchema, type InsertStudyRule, studyControlSchema, rawControlBundleSchema } from "../shared/schema.js";
+import { questionSchema, sourceSchema, MOBILE_NUMBER_REGEX, studySignSchema, rawSignImportSchema, type InsertStudySign, studyRuleSchema, rawRuleImportSchema, type InsertStudyRule, studyControlSchema, rawControlBundleSchema, controlDiagramSchema } from "../shared/schema.js";
 import {
   generateAccessCode,
   generateDailyCode,
@@ -16,8 +16,8 @@ import {
 } from "./access-code.js";
 import { getAdminEmail, isSmtpConfigured, sendAdminEmail } from "./mailer.js";
 import { slugifyCode, listStagedImages, stageImageUpload, attachStagedToCode, saveImageForCode, deleteStagedImage } from "./sign-images.js";
+import { saveImageForDiagram } from "./diagram-images.js";
 import { validateAdminAccess, requireAdminAuth } from "./admin-auth.js";
-import { studyRuleSchema, rawRuleImportSchema, type InsertStudyRule, studyControlSchema, rawControlBundleSchema } from "../shared/schema.js";
 import { z } from "zod";
 
 export async function registerRoutes(
@@ -959,6 +959,34 @@ export async function registerRoutes(
     } catch (err) {
       console.error("Error listing control diagrams:", err);
       res.status(500).json({ message: "Failed to load diagrams" });
+    }
+  });
+
+  app.patch('/api/control-diagrams/:id', requireAdminAuth, async (req: any, res: any) => {
+    try {
+      const id = parseInt(req.params.id, 10);
+      if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
+      const updated = await storage.updateControlDiagram(id, controlDiagramSchema.partial().parse(req.body));
+      if (!updated) return res.status(404).json({ message: "Diagram not found" });
+      res.json(updated);
+    } catch (err: any) {
+      console.error("Error updating diagram:", err);
+      res.status(400).json({ message: err?.message || "Failed to update diagram" });
+    }
+  });
+
+  app.post('/api/control-diagrams/:id/image', requireAdminAuth, async (req: any, res: any) => {
+    try {
+      const id = parseInt(req.params.id, 10);
+      if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
+      const { filename, dataUrl } = z.object({ filename: z.string(), dataUrl: z.string() }).parse(req.body);
+      const image_url = saveImageForDiagram(id, filename, dataUrl);
+      const updated = await storage.updateControlDiagram(id, { image_url });
+      if (!updated) return res.status(404).json({ message: "Diagram not found" });
+      res.json(updated);
+    } catch (err: any) {
+      console.error("Error uploading diagram image:", err);
+      res.status(400).json({ message: err?.message || "Failed to upload diagram image" });
     }
   });
 

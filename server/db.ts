@@ -1,6 +1,6 @@
 import { neon } from '@neondatabase/serverless';
 import { drizzle } from 'drizzle-orm/neon-http';
-import { pgTable, serial, text, integer, boolean, jsonb, timestamp } from 'drizzle-orm/pg-core';
+import { pgTable, serial, text, integer, boolean, jsonb, timestamp, real } from 'drizzle-orm/pg-core';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
@@ -92,6 +92,8 @@ export const studyControls = pgTable('study_controls', {
     applicable_codes: jsonb('applicable_codes').notNull(), // number[] e.g. [1], [2,3], [3]
     is_verified_exam_question: boolean('is_verified_exam_question').default(false).notNull(),
     is_reviewed: boolean('is_reviewed').default(false).notNull(),
+    position_x: real('position_x'),
+    position_y: real('position_y'),
     created_at: timestamp('created_at').defaultNow().notNull(),
     updated_at: timestamp('updated_at').defaultNow().notNull(),
 });

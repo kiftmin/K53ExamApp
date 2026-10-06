@@ -160,6 +160,8 @@ export const studyControlSchema = z.object({
   applicable_codes: z.array(z.number().int().min(1).max(3)).optional(),
   is_verified_exam_question: z.boolean().default(false),
   is_reviewed: z.boolean().default(false),
+  position_x: z.number().min(0).max(100).nullable().optional(),
+  position_y: z.number().min(0).max(100).nullable().optional(),
 });
 export type StudyControl = z.infer<typeof studyControlSchema> & { id: number };
 export type InsertStudyControl = Omit<z.infer<typeof studyControlSchema>, "id">;

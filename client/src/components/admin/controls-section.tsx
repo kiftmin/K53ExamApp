@@ -24,6 +24,7 @@ import { BadgeCheck, Pencil, Plus, Search, Trash2 } from "lucide-react";
 import ControlForm from "./control-form";
 import ControlImportPanel from "./control-import";
 import ControlReviewPanel from "./control-review";
+import DiagramPlacementPanel from "./diagram-placement";
 
 export default function ControlsSection() {
   const queryClient = useQueryClient();
@@ -94,9 +95,14 @@ export default function ControlsSection() {
       <Tabs value={tab} onValueChange={setTab}>
         <TabsList>
           <TabsTrigger value="browse">Browse</TabsTrigger>
+          <TabsTrigger value="diagrams">Diagrams</TabsTrigger>
           <TabsTrigger value="import">Import</TabsTrigger>
           <TabsTrigger value="review">Review queue{unreviewedCount > 0 ? ` (${unreviewedCount})` : ""}</TabsTrigger>
         </TabsList>
+
+        <TabsContent value="diagrams" className="space-y-4">
+          <DiagramPlacementPanel />
+        </TabsContent>
 
         <TabsContent value="import" className="space-y-4">
           <ControlImportPanel />

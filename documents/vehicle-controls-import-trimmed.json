@@ -1,0 +1,2217 @@
+{
+  "control_diagrams": [
+    {
+      "key": "motorcycle",
+      "vehicle_type": "motorcycle",
+      "gearbox": null,
+      "label": "Motorcycle",
+      "image_url": "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1791198402/motorcycle_n4xi0h.jpg",
+      "is_inferred": false
+    },
+    {
+      "key": "lmv_m",
+      "vehicle_type": "lmv",
+      "gearbox": "manual",
+      "label": "Light Motor Vehicle — Manual Gearbox",
+      "image_url": "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1791198401/Light_motor_vehicle_mud6mo.jpg",
+      "is_inferred": false
+    },
+    {
+      "key": "hmv_m",
+      "vehicle_type": "hmv",
+      "gearbox": "manual",
+      "label": "Heavy Motor Vehicle — Manual Gearbox",
+      "image_url": "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1791198400/HEavy_motor_vehicle_v9cdxo.jpg",
+      "is_inferred": false
+    }
+  ],
+  "study_controls": [
+    {
+      "diagram_key": "motorcycle",
+      "component_number": 1,
+      "component_name": "Gear lever",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "motorcycle",
+      "component_number": 2,
+      "component_name": "Clutch",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "motorcycle",
+      "component_number": 3,
+      "component_name": "Left and right rear-view mirrors",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "motorcycle",
+      "component_number": 4,
+      "component_name": "Front brake",
+      "function_notes": "Applies the front brake and activates the stop lamp."
+    },
+    {
+      "diagram_key": "motorcycle",
+      "component_number": 5,
+      "component_name": "Throttle (twist grip)",
+      "function_notes": "Regulates fuel supply to the engine; controls engine speed."
+    },
+    {
+      "diagram_key": "motorcycle",
+      "component_number": 6,
+      "component_name": "Indicator light switch",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "motorcycle",
+      "component_number": 7,
+      "component_name": "Rear brake",
+      "function_notes": "Operated by foot."
+    },
+    {
+      "diagram_key": "motorcycle",
+      "component_number": 8,
+      "component_name": "Handlebars",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "motorcycle",
+      "component_number": 9,
+      "component_name": "Fuel tank",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "motorcycle",
+      "component_number": null,
+      "component_name": "Front mudguard",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "motorcycle",
+      "component_number": null,
+      "component_name": "Service brake",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "motorcycle",
+      "component_number": null,
+      "component_name": "Exhaust system",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "motorcycle",
+      "component_number": null,
+      "component_name": "Foot rest/peg",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "motorcycle",
+      "component_number": null,
+      "component_name": "Seat",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "motorcycle",
+      "component_number": null,
+      "component_name": "Rear mudguard",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "motorcycle",
+      "component_number": null,
+      "component_name": "Engine",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "motorcycle",
+      "component_number": null,
+      "component_name": "Ignition",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "motorcycle",
+      "component_number": null,
+      "component_name": "Speedometer",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "motorcycle",
+      "component_number": null,
+      "component_name": "Starter button",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "motorcycle",
+      "component_number": null,
+      "component_name": "Rear wheel",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "motorcycle",
+      "component_number": null,
+      "component_name": "Silencer",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "motorcycle",
+      "component_number": null,
+      "component_name": "Front foot peg",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "motorcycle",
+      "component_number": null,
+      "component_name": "Head lamp",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "motorcycle",
+      "component_number": null,
+      "component_name": "Shock absorber",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "motorcycle",
+      "component_number": null,
+      "component_name": "Front wheel",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "motorcycle",
+      "component_number": null,
+      "component_name": "Rear lamp",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "motorcycle",
+      "component_number": null,
+      "component_name": "Rear tyre",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "lmv_m",
+      "component_number": 1,
+      "component_name": "Centre rear-view mirror",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "lmv_m",
+      "component_number": 2,
+      "component_name": "Window wiper",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "lmv_m",
+      "component_number": 3,
+      "component_name": "Left and right rear-view mirrors",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "lmv_m",
+      "component_number": 4,
+      "component_name": "Steering wheel",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "lmv_m",
+      "component_number": 5,
+      "component_name": "Indicator light switch",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "lmv_m",
+      "component_number": 6,
+      "component_name": "Gear lever",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "lmv_m",
+      "component_number": 7,
+      "component_name": "Hand brake",
+      "function_notes": "Some vehicles have this as a foot-operated control (e.g. Mercedes-Benz)."
+    },
+    {
+      "diagram_key": "lmv_m",
+      "component_number": 8,
+      "component_name": "Clutch",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "lmv_m",
+      "component_number": 9,
+      "component_name": "Brake",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "lmv_m",
+      "component_number": 10,
+      "component_name": "Accelerator",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "lmv_m",
+      "component_number": 11,
+      "component_name": "Horn",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "hmv_m",
+      "component_number": 1,
+      "component_name": "Centre rear-view mirror",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "hmv_m",
+      "component_number": 2,
+      "component_name": "Window wiper",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "hmv_m",
+      "component_number": 3,
+      "component_name": "Left and right rear-view mirrors",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "hmv_m",
+      "component_number": 4,
+      "component_name": "Steering wheel",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "hmv_m",
+      "component_number": 5,
+      "component_name": "Indicator light switch",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "hmv_m",
+      "component_number": 6,
+      "component_name": "Gear lever",
+      "function_notes": "Operates differently from an automatic gearbox system."
+    },
+    {
+      "diagram_key": "hmv_m",
+      "component_number": 7,
+      "component_name": "Hand brake",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "hmv_m",
+      "component_number": 8,
+      "component_name": "Clutch",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "hmv_m",
+      "component_number": 9,
+      "component_name": "Brake",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "hmv_m",
+      "component_number": 10,
+      "component_name": "Accelerator",
+      "function_notes": null
+    },
+    {
+      "diagram_key": "hmv_m",
+      "component_number": 11,
+      "component_name": "Horn",
+      "function_notes": null
+    }
+  ],
+  "sample_questions": [
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "The distance it takes the driver of a motor vehicle to stop it is... (i) Longer on a wet road than on a dry road (ii) Longer if the vehicle is travelling at a higher speed (iii) Longer if the vehicle is loaded SELECT THE CORRECT COMBINATION",
+      "options": [
+        "None of the above are correct",
+        "All of the above are correct",
+        "(i) is only correct"
+      ],
+      "correct_index": 1,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To select a gear you must use numbers...",
+      "options": [
+        "7&9",
+        "5&8",
+        "6&8"
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To stop your vehicle, you must use number...",
+      "options": [
+        "9",
+        "8",
+        "7"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "Number...is not found in an automatic vehicle",
+      "options": [
+        "2",
+        "6",
+        "8"
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To turn, number...is used",
+      "options": [
+        "4",
+        "5",
+        "10"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To ensure that your parked vehicle, does not move you must use number..",
+      "options": [
+        "7",
+        "8",
+        "9"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To accelerate your vehicle you must use number",
+      "options": [
+        "6",
+        "8",
+        "10"
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "What controls must you use when you are going to turn sharp",
+      "options": [
+        "1,3,5,6 and 8 only",
+        "3,4,5,9 and 10 only",
+        "1,3,4,5,6,8,9 and 10 only"
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To select a gear, you must use numbers...",
+      "options": [
+        "7&9",
+        "5&8",
+        "6&8"
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To stop your vehicle you must use number...",
+      "options": [
+        "9",
+        "8",
+        "7"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To turn your vehicle, number... is used",
+      "options": [
+        "5",
+        "4",
+        "6"
+      ],
+      "correct_index": 1,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To ensure that your parked vehicle does not move, use number...",
+      "options": [
+        "7",
+        "8",
+        "9"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To accelerate your vehicle you must use number...",
+      "options": [
+        "6",
+        "8",
+        "10"
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "What controls must you use when you are going to turn sharp?",
+      "options": [
+        "1, 3, 5, 6 and 8 only",
+        "3, 4, 5, 9 and 10 only",
+        "1, 3, 4, 5, 6, 8 and 9 only"
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To indicate that you are going to turn, you must use number...",
+      "options": [
+        "3",
+        "5",
+        "11"
+      ],
+      "correct_index": 1,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To ride faster, you must use number...",
+      "options": [
+        "7",
+        "5",
+        "4"
+      ],
+      "correct_index": 1,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To turn you must use number",
+      "options": [
+        "8",
+        "1",
+        "7"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To stop you must use number...",
+      "options": [
+        "4 and 7",
+        "2 and 7",
+        "1 and 2"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To change gears, you must use numbers...",
+      "options": [
+        "1 and 5",
+        "2 and 7",
+        "1 and 2"
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To indicate that you are going to turn you must use number...",
+      "options": [
+        "6",
+        "4",
+        "8"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "What controls must you use when you are going to make a sharp turn?",
+      "options": [
+        "1,3,5,6 and 8 only",
+        "1,2,4 and 8 only",
+        "1,2,3,4,6 and 8 only"
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "What controls must you never use in combination?",
+      "options": [
+        "2 and 4",
+        "4 and 8",
+        "4 and 7"
+      ],
+      "correct_index": 1,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To select a gear, you must use numbers…",
+      "options": [
+        "7 & 9",
+        "5 & 8",
+        "6 & 8"
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To stop your vehicle, you must use number…",
+      "options": [
+        "9",
+        "8",
+        "7"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "Number ... is not found in an automatic vehicle…",
+      "options": [
+        "2",
+        "6",
+        "8"
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To turn, number ... is used.",
+      "options": [
+        "4",
+        "5",
+        "10"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To ensure that your parked vehicle does not move, use number…",
+      "options": [
+        "7",
+        "8",
+        "9"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To accelerate your vehicle, use number…",
+      "options": [
+        "6",
+        "8",
+        "10"
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "What controls are you going to use when you are going to turn sharp?",
+      "options": [
+        "1,3,5,6 and 8 only",
+        "3,4,5,9 and 10 only",
+        "1,3,4,5,6,8,9 and 10 only"
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To stop your vehicle, you must use number..",
+      "options": [
+        "9",
+        "8",
+        "7"
+      ],
+      "correct_index": 1,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To select a gear, you must use numbers...",
+      "options": [
+        "7\\u00269",
+        "5\\u00268",
+        "6\\u00268"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To ensure that your parked vehicle does not move, use the number…",
+      "options": [
+        "7",
+        "8",
+        "9"
+      ],
+      "correct_index": 1,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To turn, number ... is used...",
+      "options": [
+        "5",
+        "4",
+        "6"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "What controls are you going to use when you are going to turn sharp?",
+      "options": [
+        "1,3,5,6 and 8 only",
+        "3,4,5,9 and 10 only",
+        "1,3,4,5,6,8,9 and 10 only"
+      ],
+      "correct_index": 1,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To turn you must use number",
+      "options": [
+        "8",
+        "1",
+        "7"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "What controls must you never use in combination?",
+      "options": [
+        "2 and 4",
+        "4 and 8",
+        "4 and 7"
+      ],
+      "correct_index": 1,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "What controls must you use when you are going to make a sharp turn?",
+      "options": [
+        "1, 3, 5, 6 and 8 only",
+        "1, 2, 4 and 8 only",
+        "1, 2, 3, 4, 6 and 8 only"
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To stop, you must use number:",
+      "options": [
+        "4 and 7",
+        "2 and 7",
+        "1 and 2"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To changes gears, you must use numbers:",
+      "options": [
+        "4 and 2 / 1and 5",
+        "2 and 7",
+        "1 and 2"
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To indicate that you are going to turn, you must use number:",
+      "options": [
+        "6",
+        "4",
+        "8"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To ride faster, you must use number:",
+      "options": [
+        "7",
+        "5",
+        "4"
+      ],
+      "correct_index": 1,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To Select a gear, you must use numbers:",
+      "options": [
+        "7 and 9",
+        "5 and 8",
+        "6 and 8"
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To select a gear, you must use number:",
+      "options": [
+        "7 and 9",
+        "5 and 8",
+        "6 and 8"
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To turn your vehicle, number ____ is used:",
+      "options": [
+        "5",
+        "4",
+        "6"
+      ],
+      "correct_index": 1,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To indicate that you are going to turn, you must use number:",
+      "options": [
+        "3",
+        "5",
+        "11"
+      ],
+      "correct_index": 1,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To accelerate your vehicle, you must use:",
+      "options": [
+        "6",
+        "8",
+        "10"
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "The ... warns other road users of your intention to steer to the right or left, or to turn to the right or left.",
+      "options": [
+        "11.",
+        "7.",
+        "5."
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "The distance for a heavy vehicle to stop is...\n(i) Longer if carrying a load.\n(ii) Longer on a wet surface than on dry surface.\n(iii) Longer when driving at a higher speed.",
+      "options": [
+        "All of the above.",
+        "(i) only is correct.",
+        "(ii) and (iii) only are correct."
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "Which control helps the driver when engaging or disengaging a gear?",
+      "options": [
+        "8.",
+        "7.",
+        "3."
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To change gears, which controls are used?",
+      "options": [
+        "8 and 6.",
+        "8 and 10.",
+        "8 and 7."
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "Which control is used to ensure that your parked vehicle does not move?",
+      "options": [
+        "11.",
+        "10.",
+        "7."
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "Which control is used to accelerate your vehicle?",
+      "options": [
+        "10.",
+        "7.",
+        "3."
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "Which control helps the driver when engaging or disengaging a gear?",
+      "options": [
+        "9.",
+        "10.",
+        "8."
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To turn a sharp curve on the road, you must use...",
+      "options": [
+        "1, 3, 5 and 7.",
+        "2, 6, 8 and 9.",
+        "1, 4, 6, 8, 9 and 10 only."
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "Which control is used to clean your vehicle's windscreen?",
+      "options": [
+        "2.",
+        "1.",
+        "3."
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "Which control is used to alert other road users so to avoid accidents.",
+      "options": [
+        "11.",
+        "2.",
+        "3."
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "The ... control increases the vehicle's speed.",
+      "options": [
+        "10.",
+        "9.",
+        "8."
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "When control number 9 is used, the distance it takes the driver of a motor vehicle to stop it is ... (i) longer on a wet road than on a dry road. (ii) longer if the vehicle is travelling at a higher speed. (iii) longer if the vehicle is loaded. SELECT THE CORRECT COMBINATION",
+      "options": [
+        "All of the above are correct.",
+        "None of the above are correct.",
+        "Only (i) is correct."
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "The following control is used to change the direction of the vehicle:",
+      "options": [
+        "6.",
+        "4.",
+        "5."
+      ],
+      "correct_index": 1,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "What is the purpose of an accelerator?",
+      "options": [
+        "it is used to turn a vehicle in an emergency.",
+        "It is used to stop a vehicle.",
+        "It is used to increase or decrease the speed of a vehicle."
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "When the motor vehicle is stationary, what must the driver do to ensure that the motor vehicle does not move?",
+      "options": [
+        "The wheels must be turned toward the kerb/sidewalk.",
+        "The parking brake must be securely applied.",
+        "The gear lever must be left in the neutral position."
+      ],
+      "correct_index": 1,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To select a gear, you must use numbers ...",
+      "options": [
+        "6 and 8.",
+        "5 and 8.",
+        "7 and 9."
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "The following control is used to select the appropriate gear of the vehicle:",
+      "options": [
+        "8.",
+        "7.",
+        "6."
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "What type of brakes must be fitted on a heavy motor vehicle?",
+      "options": [
+        "Service brakes, parking brakes and emergency brakes.",
+        "Parking brake only.",
+        "Service brakes only."
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "Control no. 6 is the ...",
+      "options": [
+        "gear lever.",
+        "parking brake.",
+        "clutch pedal."
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "What is the function of a clutch?",
+      "options": [
+        "It is used to disconnect the engine from the transmission.",
+        "It is used to reduce the speed of a vehicle.",
+        "It is used to freewheel down a hill."
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "Which controls must you use when there is a sharp turn in the road?",
+      "options": [
+        "1, 3, 5, 6 and 8 only.",
+        "3, 6, 5, 9 and 10 only.",
+        "1, 3, 4, 6, 8, 9 and 10 only."
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": []
+    },
+    {
+      "diagram_key": "motorcycle",
+      "question_text": "To regulate the fuel supply to the engine you will make use of the…",
+      "options": [
+        "Front brake (control 4)",
+        "Clutch (control 2)",
+        "Handlebars (control 8)",
+        "Throttle (control 5)"
+      ],
+      "correct_index": 3,
+      "linked_component_numbers": [
+        5
+      ]
+    },
+    {
+      "diagram_key": "motorcycle",
+      "question_text": "In the case of a motorcycle, the lever that applies the front brake and activates the stop lamp is…",
+      "options": [
+        "Control 5",
+        "Control 2",
+        "Control 4",
+        "Control 7"
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": [
+        4
+      ]
+    },
+    {
+      "diagram_key": "motorcycle",
+      "question_text": "On a motorcycle, the lever that applies the rear brake is…",
+      "options": [
+        "Control 4",
+        "Control 7",
+        "Control 5",
+        "Control 2"
+      ],
+      "correct_index": 1,
+      "linked_component_numbers": [
+        7
+      ]
+    },
+    {
+      "diagram_key": "motorcycle",
+      "question_text": "Which controls are used in combination to bring the motorcycle to a complete standstill?",
+      "options": [
+        "Controls 4 and 5",
+        "Controls 2 and 5",
+        "Controls 4 and 7",
+        "Controls 7 and 8"
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": [
+        4,
+        7
+      ]
+    },
+    {
+      "diagram_key": "motorcycle",
+      "question_text": "Which control is used to increase or decrease the speed of a motorcycle?",
+      "options": [
+        "Control 8",
+        "Control 7",
+        "Control 4",
+        "Control 5"
+      ],
+      "correct_index": 3,
+      "linked_component_numbers": [
+        5
+      ]
+    },
+    {
+      "diagram_key": "motorcycle",
+      "question_text": "Which controls are used to control the speed of a motorcycle?",
+      "options": [
+        "Controls 4 and 5 only",
+        "Controls 5, 7 and 8",
+        "Controls 2, 5 and 7",
+        "Controls 4, 5 and 7"
+      ],
+      "correct_index": 3,
+      "linked_component_numbers": [
+        4,
+        5,
+        7
+      ]
+    },
+    {
+      "diagram_key": "motorcycle",
+      "question_text": "The switch used to activate indicator signals, to communicate your intentions, is…",
+      "options": [
+        "Control 6",
+        "Control 4",
+        "Control 5",
+        "Control 8"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": [
+        6
+      ]
+    },
+    {
+      "diagram_key": "motorcycle",
+      "question_text": "The twist grip that controls the engine speed is…",
+      "options": [
+        "Control 5",
+        "Control 2",
+        "Control 8",
+        "Control 4"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": [
+        5
+      ]
+    },
+    {
+      "diagram_key": "motorcycle",
+      "question_text": "Which controls are used to change gears?",
+      "options": [
+        "Controls 1 and 8",
+        "Controls 1 and 2",
+        "Controls 2 and 7",
+        "Control 1 only"
+      ],
+      "correct_index": 1,
+      "linked_component_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "diagram_key": "motorcycle",
+      "question_text": "Which control is used to indicate that you are going to turn?",
+      "options": [
+        "Control 8",
+        "Control 3",
+        "Control 6",
+        "Control 5"
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": [
+        6
+      ]
+    },
+    {
+      "diagram_key": "motorcycle",
+      "question_text": "To ride faster, you must use control…",
+      "options": [
+        "Control 2",
+        "Control 5",
+        "Control 4",
+        "Control 7"
+      ],
+      "correct_index": 1,
+      "linked_component_numbers": [
+        5
+      ]
+    },
+    {
+      "diagram_key": "motorcycle",
+      "question_text": "To stop, you must use the following controls…",
+      "options": [
+        "Controls 5 and 8",
+        "Controls 4 and 7",
+        "Controls 2 and 5",
+        "Control 4 only"
+      ],
+      "correct_index": 1,
+      "linked_component_numbers": [
+        4,
+        7
+      ]
+    },
+    {
+      "diagram_key": "motorcycle",
+      "question_text": "In order to turn the motorcycle, you must use control…",
+      "options": [
+        "Control 5",
+        "Control 6",
+        "Control 3",
+        "Control 8"
+      ],
+      "correct_index": 3,
+      "linked_component_numbers": [
+        8
+      ]
+    },
+    {
+      "diagram_key": "motorcycle",
+      "question_text": "When controls 4 and 7 are used, the distance it takes you to stop your motorcycle is longer on a wet road than on a dry road, longer if you ride at a higher speed, and longer if carrying a passenger. Select the correct combination.",
+      "options": [
+        "All of the options are correct",
+        "Only (i) and (ii)",
+        "Only (ii) and (iii)",
+        "None of the options are correct"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": [
+        4,
+        7
+      ]
+    },
+    {
+      "diagram_key": "motorcycle",
+      "question_text": "Which control is used by the rider of a motorcycle to monitor the traffic situation to the rear?",
+      "options": [
+        "Control 8",
+        "Control 6",
+        "Control 5",
+        "Control 3"
+      ],
+      "correct_index": 3,
+      "linked_component_numbers": [
+        3
+      ]
+    },
+    {
+      "diagram_key": "motorcycle",
+      "question_text": "Which control is used to disengage the engine from the gearbox?",
+      "options": [
+        "Control 2",
+        "Control 1",
+        "Control 5",
+        "Control 8"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": [
+        2
+      ]
+    },
+    {
+      "diagram_key": "motorcycle",
+      "question_text": "Which control is used to check traffic to the rear?",
+      "options": [
+        "Control 9",
+        "Control 6",
+        "Control 4",
+        "Control 3"
+      ],
+      "correct_index": 3,
+      "linked_component_numbers": [
+        3
+      ]
+    },
+    {
+      "diagram_key": "motorcycle",
+      "question_text": "Which control is used when the rider of a motorcycle wants to signal an intention to steer to the left?",
+      "options": [
+        "Control 6",
+        "Control 2",
+        "Control 5",
+        "Control 8"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": [
+        6
+      ]
+    },
+    {
+      "diagram_key": "motorcycle",
+      "question_text": "Which controls must be used in combination immediately before coming to a standstill?",
+      "options": [
+        "Controls 2, 4 and 7",
+        "Controls 1, 4 and 7",
+        "Controls 4 and 7 only",
+        "Controls 2 and 7 only"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": [
+        2,
+        4,
+        7
+      ]
+    },
+    {
+      "diagram_key": "motorcycle",
+      "question_text": "In order to negotiate a sharp turn in the road, which controls must be used?",
+      "options": [
+        "All controls except 9",
+        "Controls 1, 2, 3 and 8 only",
+        "Controls 1, 2, 3, 4, 5, 7 and 8",
+        "Controls 4, 5, 7 and 8 only"
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7,
+        8
+      ]
+    },
+    {
+      "diagram_key": "motorcycle",
+      "question_text": "Which lever is used to change the gears?",
+      "options": [
+        "Control 1",
+        "Control 8",
+        "Control 2",
+        "Control 6"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": [
+        1
+      ]
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "Which control would you use to look at what is on the right-hand rear side of your vehicle?",
+      "options": [
+        "Control 5",
+        "Control 1",
+        "Control 11",
+        "Control 3"
+      ],
+      "correct_index": 3,
+      "linked_component_numbers": [
+        3
+      ]
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "The following control is used to accelerate your vehicle…",
+      "options": [
+        "Control 6",
+        "Control 9",
+        "Control 8",
+        "Control 10"
+      ],
+      "correct_index": 3,
+      "linked_component_numbers": [
+        10
+      ]
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "What control is used to ensure that your parked vehicle does not move?",
+      "options": [
+        "Control 7",
+        "Control 6",
+        "Control 9",
+        "Control 11"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": [
+        7
+      ]
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "In order to change gear, you must use control/s…",
+      "options": [
+        "Controls 6 and 7",
+        "Controls 8 and 9",
+        "Control 6 only",
+        "Controls 6 and 8"
+      ],
+      "correct_index": 3,
+      "linked_component_numbers": [
+        6,
+        8
+      ]
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "To stop your vehicle you must use number…",
+      "options": [
+        "Control 10",
+        "Control 8",
+        "Control 7",
+        "Control 9"
+      ],
+      "correct_index": 3,
+      "linked_component_numbers": [
+        9
+      ]
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "When braking, the distance it takes the driver of a motor vehicle to stop is longer on a wet road than on a dry road, longer if travelling at a higher speed, and longer if the vehicle is loaded. Select the correct combination.",
+      "options": [
+        "Only (i) and (ii)",
+        "All of the options are correct",
+        "None of the options are correct",
+        "Only (ii) and (iii)"
+      ],
+      "correct_index": 1,
+      "linked_component_numbers": [
+        9
+      ]
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "The control that assists the driver when engaging or disengaging a gear is…",
+      "options": [
+        "Control 9",
+        "Control 7",
+        "Control 6",
+        "Control 8"
+      ],
+      "correct_index": 3,
+      "linked_component_numbers": [
+        8
+      ]
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "The speed of the vehicle can be increased by control…",
+      "options": [
+        "Control 8",
+        "Control 10",
+        "Control 9",
+        "Control 6"
+      ],
+      "correct_index": 1,
+      "linked_component_numbers": [
+        10
+      ]
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "Which control is used before applying the brake, in order to slow down or stop?",
+      "options": [
+        "Control 3",
+        "Control 9",
+        "Control 1",
+        "Control 5"
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": [
+        1
+      ]
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "Which control is used before changing direction of a vehicle?",
+      "options": [
+        "Control 5",
+        "Control 1",
+        "Control 4",
+        "Control 11"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": [
+        5
+      ]
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "Which control is used before changing the speed of the vehicle?",
+      "options": [
+        "Control 10",
+        "Control 1",
+        "Control 5",
+        "Control 9"
+      ],
+      "correct_index": 1,
+      "linked_component_numbers": [
+        1
+      ]
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "Which control is used to advise other road users of your intention to steer, or turn, left or right?",
+      "options": [
+        "Control 11",
+        "Control 4",
+        "Control 1",
+        "Control 5"
+      ],
+      "correct_index": 3,
+      "linked_component_numbers": [
+        5
+      ]
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "The following control is used to alert other road users in order to avoid a collision…",
+      "options": [
+        "Control 11",
+        "Control 2",
+        "Control 5",
+        "Control 9"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": [
+        11
+      ]
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "Which control is used to avoid the vehicle stalling just before coming to a complete standstill?",
+      "options": [
+        "Control 7",
+        "Control 6",
+        "Control 8",
+        "Control 9"
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": [
+        8
+      ]
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "In order to bring the vehicle to a complete standstill, what control is used?",
+      "options": [
+        "Control 10",
+        "Control 7",
+        "Control 9",
+        "Control 8"
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": [
+        9
+      ]
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "Which control is used to change the direction of the vehicle?",
+      "options": [
+        "Control 6",
+        "Control 5",
+        "Control 1",
+        "Control 4"
+      ],
+      "correct_index": 3,
+      "linked_component_numbers": [
+        4
+      ]
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "Which control is used to clean the front windscreen of the vehicle?",
+      "options": [
+        "Control 2",
+        "Control 1",
+        "Control 3",
+        "Control 11"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": [
+        2
+      ]
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "Which control is used to decrease speed or stop?",
+      "options": [
+        "Control 9",
+        "Control 10",
+        "Control 7",
+        "Control 8"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": [
+        9
+      ]
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "Which control is used to keep the vehicle stationary after parking?",
+      "options": [
+        "Control 7",
+        "Control 6",
+        "Control 11",
+        "Control 9"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": [
+        7
+      ]
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "Which control is used to see what is to the rear of the vehicle?",
+      "options": [
+        "Control 5",
+        "Control 3",
+        "Control 1",
+        "Control 11"
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": [
+        1
+      ]
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "Which control is used to select a gear?",
+      "options": [
+        "Control 9",
+        "Control 8",
+        "Control 7",
+        "Control 6"
+      ],
+      "correct_index": 3,
+      "linked_component_numbers": [
+        6
+      ]
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "The control used to steer the vehicle to the left or right is…",
+      "options": [
+        "Control 5",
+        "Control 4",
+        "Control 6",
+        "Control 1"
+      ],
+      "correct_index": 1,
+      "linked_component_numbers": [
+        4
+      ]
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "The following control is used to turn…",
+      "options": [
+        "Control 4",
+        "Control 9",
+        "Control 1",
+        "Control 5"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": [
+        4
+      ]
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "When driving in the rain, the following control is used…",
+      "options": [
+        "Control 9",
+        "Control 2",
+        "Control 3",
+        "Control 1"
+      ],
+      "correct_index": 1,
+      "linked_component_numbers": [
+        2
+      ]
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "Which control is used when parking and leaving a vehicle unattended?",
+      "options": [
+        "Control 9",
+        "Control 6",
+        "Control 11",
+        "Control 7"
+      ],
+      "correct_index": 3,
+      "linked_component_numbers": [
+        7
+      ]
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "The control that must be used to ensure the vehicle remains stationary is…",
+      "options": [
+        "Control 7",
+        "Control 6",
+        "Control 8",
+        "Control 9"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": [
+        7
+      ]
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "Which control(s) is used to stop the vehicle in an emergency?",
+      "options": [
+        "Control 9",
+        "Control 8",
+        "Control 10",
+        "Control 7"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": [
+        9
+      ]
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "Which control(s) is/are used to see what is to the rear and sides of the vehicle?",
+      "options": [
+        "Control 1 only",
+        "Controls 3 and 11",
+        "Controls 1 and 5",
+        "Controls 1 and 3"
+      ],
+      "correct_index": 3,
+      "linked_component_numbers": [
+        1,
+        3
+      ]
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "Which control(s) is/are used when changing from one gear to another?",
+      "options": [
+        "Control 6 only",
+        "Controls 8 and 9",
+        "Controls 6 and 7",
+        "Controls 6 and 8"
+      ],
+      "correct_index": 3,
+      "linked_component_numbers": [
+        6,
+        8
+      ]
+    },
+    {
+      "diagram_key": "lmv_m",
+      "question_text": "Which controls must you use when there is a sharp turn in the road?",
+      "options": [
+        "Controls 1, 4, 5 and 9 only",
+        "All controls",
+        "Controls 4, 6, 8 and 9 only",
+        "Controls 1, 4, 6, 8, 9 and 10 only"
+      ],
+      "correct_index": 3,
+      "linked_component_numbers": [
+        1,
+        4,
+        6,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "diagram_key": "hmv_m",
+      "question_text": "Control no 8 is used to…",
+      "options": [
+        "Assist with changing gears (clutch)",
+        "Steer the vehicle",
+        "Stop the vehicle",
+        "Sound a warning"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": [
+        8
+      ]
+    },
+    {
+      "diagram_key": "hmv_m",
+      "question_text": "Control no. 1 is the…",
+      "options": [
+        "Horn",
+        "Steering wheel",
+        "Rear-view mirror (interior)",
+        "Indicator switch"
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": [
+        1
+      ]
+    },
+    {
+      "diagram_key": "hmv_m",
+      "question_text": "Control no. 2 is the…",
+      "options": [
+        "Accelerator",
+        "Steering wheel",
+        "Windscreen wipers",
+        "Horn"
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": [
+        2
+      ]
+    },
+    {
+      "diagram_key": "hmv_m",
+      "question_text": "Control no. 4 is the…",
+      "options": [
+        "Gear lever",
+        "Steering wheel",
+        "Hand brake",
+        "Horn"
+      ],
+      "correct_index": 1,
+      "linked_component_numbers": [
+        4
+      ]
+    },
+    {
+      "diagram_key": "hmv_m",
+      "question_text": "Control no. 5 is the…",
+      "options": [
+        "Horn",
+        "Steering wheel",
+        "Direction indicator",
+        "Window wiper"
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": [
+        5
+      ]
+    },
+    {
+      "diagram_key": "hmv_m",
+      "question_text": "Control no. 6 is the…",
+      "options": [
+        "Clutch",
+        "Accelerator",
+        "Hand brake",
+        "Gear lever"
+      ],
+      "correct_index": 3,
+      "linked_component_numbers": [
+        6
+      ]
+    },
+    {
+      "diagram_key": "hmv_m",
+      "question_text": "Which control assists the driver when changing gears?",
+      "options": [
+        "Control 6",
+        "Control 7",
+        "Control 9",
+        "Control 8"
+      ],
+      "correct_index": 3,
+      "linked_component_numbers": [
+        8
+      ]
+    },
+    {
+      "diagram_key": "hmv_m",
+      "question_text": "Which control is used to change the direction of the vehicle?",
+      "options": [
+        "Control 4",
+        "Control 1",
+        "Control 5",
+        "Control 6"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": [
+        4
+      ]
+    },
+    {
+      "diagram_key": "hmv_m",
+      "question_text": "Which control is used to keep a parked vehicle stationary?",
+      "options": [
+        "Control 7",
+        "Control 6",
+        "Control 9",
+        "Control 11"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": [
+        7
+      ]
+    },
+    {
+      "diagram_key": "hmv_m",
+      "question_text": "Which control is used to select the appropriate gear of the vehicle?",
+      "options": [
+        "Control 7",
+        "Control 6",
+        "Control 9",
+        "Control 8"
+      ],
+      "correct_index": 1,
+      "linked_component_numbers": [
+        6
+      ]
+    },
+    {
+      "diagram_key": "hmv_m",
+      "question_text": "Which of the following is a foot control?",
+      "options": [
+        "Control 4 (steering wheel)",
+        "Control 11 (horn)",
+        "Control 9 (brake)",
+        "Control 5 (indicator)"
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": [
+        9
+      ]
+    },
+    {
+      "diagram_key": "hmv_m",
+      "question_text": "Which of the following is NOT a hand control?",
+      "options": [
+        "Control 10 (accelerator)",
+        "Control 4 (steering wheel)",
+        "Control 6 (gear lever)",
+        "Control 5 (indicator)"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": [
+        10
+      ]
+    },
+    {
+      "diagram_key": "hmv_m",
+      "question_text": "Which control is used to indicate the intention to change direction?",
+      "options": [
+        "Control 4",
+        "Control 5",
+        "Control 11",
+        "Control 1"
+      ],
+      "correct_index": 1,
+      "linked_component_numbers": [
+        5
+      ]
+    },
+    {
+      "diagram_key": "hmv_m",
+      "question_text": "Which control is used to monitor traffic?",
+      "options": [
+        "Control 9",
+        "Control 5",
+        "Control 1 only",
+        "Control 3"
+      ],
+      "correct_index": 3,
+      "linked_component_numbers": [
+        3
+      ]
+    },
+    {
+      "diagram_key": "hmv_m",
+      "question_text": "To accelerate your vehicle, you must use number…",
+      "options": [
+        "Control 8",
+        "Control 10",
+        "Control 9",
+        "Control 6"
+      ],
+      "correct_index": 1,
+      "linked_component_numbers": [
+        10
+      ]
+    },
+    {
+      "diagram_key": "hmv_m",
+      "question_text": "To bring a vehicle to a complete standstill, control no. ____ is used.",
+      "options": [
+        "Control 10",
+        "Control 7",
+        "Control 9",
+        "Control 8"
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": [
+        9
+      ]
+    },
+    {
+      "diagram_key": "hmv_m",
+      "question_text": "To bring the speed down or stop the vehicle completely, the following control is used…",
+      "options": [
+        "Control 8",
+        "Control 10",
+        "Control 7",
+        "Control 9"
+      ],
+      "correct_index": 3,
+      "linked_component_numbers": [
+        9
+      ]
+    },
+    {
+      "diagram_key": "hmv_m",
+      "question_text": "To ensure that your parked vehicle does not move, use number…",
+      "options": [
+        "Control 11",
+        "Control 9",
+        "Control 6",
+        "Control 7"
+      ],
+      "correct_index": 3,
+      "linked_component_numbers": [
+        7
+      ]
+    },
+    {
+      "diagram_key": "hmv_m",
+      "question_text": "To increase and decrease the speed of the vehicle, the following control is used…",
+      "options": [
+        "Control 6",
+        "Control 9",
+        "Control 10",
+        "Control 8"
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": [
+        10
+      ]
+    },
+    {
+      "diagram_key": "hmv_m",
+      "question_text": "To indicate that you are going to turn, you must use number…",
+      "options": [
+        "Control 11",
+        "Control 5",
+        "Control 1",
+        "Control 4"
+      ],
+      "correct_index": 1,
+      "linked_component_numbers": [
+        5
+      ]
+    },
+    {
+      "diagram_key": "hmv_m",
+      "question_text": "To keep the windscreen clear during rainy conditions, the following is used…",
+      "options": [
+        "Control 9",
+        "Control 3",
+        "Control 1",
+        "Control 2"
+      ],
+      "correct_index": 3,
+      "linked_component_numbers": [
+        2
+      ]
+    },
+    {
+      "diagram_key": "hmv_m",
+      "question_text": "To monitor traffic to the rear, the following is used…",
+      "options": [
+        "Control 5",
+        "Control 1 only",
+        "Control 3",
+        "Control 9"
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": [
+        3
+      ]
+    },
+    {
+      "diagram_key": "hmv_m",
+      "question_text": "To select a gear, you must use numbers…",
+      "options": [
+        "Control 6 only",
+        "Controls 8 and 9",
+        "Controls 6 and 7",
+        "Controls 6 and 8"
+      ],
+      "correct_index": 3,
+      "linked_component_numbers": [
+        6,
+        8
+      ]
+    },
+    {
+      "diagram_key": "hmv_m",
+      "question_text": "To stop your vehicle, you must use number…",
+      "options": [
+        "Control 8",
+        "Control 10",
+        "Control 7",
+        "Control 9"
+      ],
+      "correct_index": 3,
+      "linked_component_numbers": [
+        9
+      ]
+    },
+    {
+      "diagram_key": "hmv_m",
+      "question_text": "To turn your vehicle, number ____ is used.",
+      "options": [
+        "Control 5",
+        "Control 1",
+        "Control 4",
+        "Control 6"
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": [
+        4
+      ]
+    },
+    {
+      "diagram_key": "hmv_m",
+      "question_text": "When control number 9 is used, the distance it takes the driver of a motor vehicle to stop is longer on a wet road than on a dry road, longer if the vehicle is travelling at a higher speed, and longer if the vehicle is loaded. Select the correct combination.",
+      "options": [
+        "None of the above are correct",
+        "Only (i) and (ii)",
+        "All of the above are correct",
+        "Only (ii) and (iii)"
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": [
+        9
+      ]
+    },
+    {
+      "diagram_key": "hmv_m",
+      "question_text": "When intending to change direction, the following controls are used…",
+      "options": [
+        "Controls 4 and 5 only",
+        "Controls 3, 4 and 5",
+        "Controls 1 and 5 only",
+        "Controls 1, 3 and 5"
+      ],
+      "correct_index": 3,
+      "linked_component_numbers": [
+        1,
+        3,
+        5
+      ]
+    },
+    {
+      "diagram_key": "hmv_m",
+      "question_text": "When you stop on a steep incline and want to prevent the vehicle from rolling backwards, you use control(s) no. ________",
+      "options": [
+        "Control 7",
+        "Control 6",
+        "Control 8",
+        "Control 9"
+      ],
+      "correct_index": 0,
+      "linked_component_numbers": [
+        7
+      ]
+    },
+    {
+      "diagram_key": "hmv_m",
+      "question_text": "Which controls must you use when there is a sharp turn in the road?",
+      "options": [
+        "All controls",
+        "Controls 1, 4, 5 and 9 only",
+        "Controls 1, 3, 4, 6, 8, 9 and 10 only",
+        "Controls 4, 6, 8 and 9 only"
+      ],
+      "correct_index": 2,
+      "linked_component_numbers": [
+        1,
+        3,
+        4,
+        6,
+        8,
+        9,
+        10
+      ]
+    }
+  ],
+  "notes": [
+    "Trimmed bundle: motorcycle + LMV manual + HMV manual only. Automatic variants removed."
+  ]
+}

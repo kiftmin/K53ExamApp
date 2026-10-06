@@ -4,6 +4,7 @@
 const FAV_RULES_KEY = "k53_favorite_rules";
 const RULE_CODE_KEY = "k53_rules_licence_code";
 const LEARNING_RULES_KEY = "k53_rule_learning";
+const DONE_RULES_KEY = "k53_done_rules";
 
 // === Learning records (Phase 2 mastery model) ===
 
@@ -121,6 +122,29 @@ function writeIds(key: string, ids: number[]): void {
 
 export function getFavoriteRuleIds(): number[] {
   return readIds(FAV_RULES_KEY);
+}
+
+export function getDoneRuleIds(): number[] {
+  return readIds(DONE_RULES_KEY);
+}
+
+/** Remove the given ids from a bookmark list. */
+export function removeRuleBookmarks(kind: "done" | "favorite" | "both", ids: number[]): void {
+  const drop = new Set(ids);
+  if (kind === "favorite" || kind === "both") {
+    writeIds(FAV_RULES_KEY, readIds(FAV_RULES_KEY).filter((id) => !drop.has(id)));
+  }
+  if (kind === "done" || kind === "both") {
+    writeIds(DONE_RULES_KEY, readIds(DONE_RULES_KEY).filter((id) => !drop.has(id)));
+  }
+}
+
+/** Toggles done. Returns true if the rule is now marked done. */
+export function toggleDoneRule(id: number): boolean {
+  const ids = readIds(DONE_RULES_KEY);
+  const next = ids.includes(id) ? ids.filter((x) => x !== id) : [...ids, id];
+  writeIds(DONE_RULES_KEY, next);
+  return next.includes(id);
 }
 
 export function isFavoriteRule(id: number): boolean {

@@ -5,6 +5,7 @@ const FAV_CONTROLS_KEY = "k53_favorite_controls";
 const LEARNING_CONTROLS_KEY = "k53_control_learning";
 const CONTROLS_CODE_KEY = "k53_controls_licence_code";
 const CONTROLS_GEARBOX_KEY = "k53_controls_gearbox";
+const DONE_CONTROLS_KEY = "k53_done_controls";
 
 export type LearningStatus = "new" | "learning" | "review" | "mastered";
 export type RecallRating = "again" | "hard" | "good" | "easy";
@@ -30,6 +31,27 @@ function writeIds(key: string, ids: number[]): void {
   try { localStorage.setItem(key, JSON.stringify(ids)); } catch { /* ignore */ }
 }
 export function getFavoriteControlIds(): number[] { return readIds(FAV_CONTROLS_KEY); }
+
+export function getDoneControlIds(): number[] { return readIds(DONE_CONTROLS_KEY); }
+
+/** Remove the given ids from a bookmark list. */
+export function removeControlBookmarks(kind: "done" | "favorite" | "both", ids: number[]): void {
+  const drop = new Set(ids);
+  if (kind === "favorite" || kind === "both") {
+    writeIds(FAV_CONTROLS_KEY, readIds(FAV_CONTROLS_KEY).filter((id) => !drop.has(id)));
+  }
+  if (kind === "done" || kind === "both") {
+    writeIds(DONE_CONTROLS_KEY, readIds(DONE_CONTROLS_KEY).filter((id) => !drop.has(id)));
+  }
+}
+
+/** Toggles done. Returns true if the control is now marked done. */
+export function toggleDoneControl(id: number): boolean {
+  const ids = readIds(DONE_CONTROLS_KEY);
+  const next = ids.includes(id) ? ids.filter((x) => x !== id) : [...ids, id];
+  writeIds(DONE_CONTROLS_KEY, next);
+  return next.includes(id);
+}
 export function toggleFavoriteControl(id: number): boolean {
   const ids = readIds(FAV_CONTROLS_KEY);
   const next = ids.includes(id) ? ids.filter((x) => x !== id) : [...ids, id];

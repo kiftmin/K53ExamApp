@@ -143,6 +143,8 @@ app.get("/api/seed/signs", async (_req: any, res: any) => {
             applicable_codes JSONB NOT NULL,
             is_verified_exam_question BOOLEAN NOT NULL DEFAULT FALSE,
             is_reviewed BOOLEAN NOT NULL DEFAULT FALSE,
+            position_x REAL,
+            position_y REAL,
             created_at TIMESTAMP NOT NULL DEFAULT NOW(),
             updated_at TIMESTAMP NOT NULL DEFAULT NOW()
           );

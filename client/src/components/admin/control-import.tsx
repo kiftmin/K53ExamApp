@@ -63,8 +63,6 @@ export default function ControlImportPanel() {
       <div className="text-xs text-muted-foreground border-t pt-3 space-y-1">
         <p className="font-bold uppercase tracking-wider text-[10px] text-amber-700">Flagged for review in the bundle notes:</p>
         <ul className="list-disc pl-4 space-y-0.5">
-          <li>HMV — Automatic Gearbox diagram (hmv_a) is inferred from LMV-automatic by analogy; every component notes "INFERRED".</li>
-          <li>Most LMV sample_questions default to the manual variant (lmv_m); a manual/automatic split decision is unresolved.</li>
           <li>All distractor options in sample questions were generated, not taken from the source manual.</li>
         </ul>
       </div>
