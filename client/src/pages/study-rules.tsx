@@ -3,6 +3,7 @@ import { useLocation } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import type { StudyRule } from "@shared/schema";
 import { Layout } from "@/components/layout";
+import { FormattedText } from "@/components/formatted-text";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -61,7 +62,7 @@ function SubheadingGroup({ subheading, list, favorites, doneIds, onToggleFav, on
             return (
               <div key={r.id} className="rounded-2xl border border-border bg-card p-4 space-y-2">
                 <div className="flex items-start justify-between gap-2">
-                  <p className={cn("text-sm leading-snug flex-1", done && "text-muted-foreground line-through")}>{r.body}</p>
+                  <FormattedText text={r.body} className={cn("text-sm leading-snug flex-1", done && "text-muted-foreground line-through")} />
                   <div className="flex items-center gap-1 shrink-0">
                     <button
                       onClick={() => onToggleFav(r.id)}

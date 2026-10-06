@@ -3,6 +3,7 @@ import { useLocation } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import type { Question, StudySign } from "@shared/schema";
 import { Layout } from "@/components/layout";
+import { FormattedText } from "@/components/formatted-text";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -334,7 +335,7 @@ export default function StudySignsBrowse() {
                 ].filter((x) => x.text).map((x) => (
                   <div key={x.label}>
                     <p className="text-[11px] font-black uppercase tracking-widest text-muted-foreground">{x.label}</p>
-                    <p className="text-sm mt-0.5">{x.text}</p>
+                    <FormattedText text={x.text} className="text-sm mt-0.5" />
                   </div>
                 ))}
                 <div className="flex gap-2">

@@ -498,22 +498,19 @@ export default function Home() {
           </CardContent>
         </Card>
 
-        {/* Study entry — cold-study modules live behind the same access-code gate */}
+        {/* Study entry — all three modules via the study hub */}
         <button
           onClick={() => accessCodeValidated && setLocation("/study")}
           disabled={!accessCodeValidated}
           className="w-full max-w-md mt-4 flex items-center gap-3 p-4 rounded-2xl border border-border bg-card text-left transition-all hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-none"
         >
-          <div
-            className="h-10 w-10 rounded-xl flex items-center justify-center text-white shrink-0"
-            style={{ background: "linear-gradient(135deg, #E53E1A, #F5A623)" }}
-          >
+          <div className="h-10 w-10 rounded-xl flex items-center justify-center text-white shrink-0" style={{ background: "linear-gradient(135deg, #4A6FA5, #6B8EBF)" }}>
             <BookOpen className="h-5 w-5" />
           </div>
           <div className="flex-1">
-            <p className="text-sm font-bold">Study road signs</p>
+            <p className="text-sm font-bold">All Study Modules</p>
             <p className="text-xs text-muted-foreground">
-              {accessCodeValidated ? "Browse & flashcards — no test pressure" : "Verify your access code above to unlock"}
+              {accessCodeValidated ? "Signs, Controls & Rules" : "Verify your access code above to unlock"}
             </p>
           </div>
         </button>

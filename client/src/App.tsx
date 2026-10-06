@@ -19,6 +19,7 @@ import StudyControlsBrowse from "@/pages/study-controls";
 import StudyControlsFlashcards from "@/pages/study-controls-flashcards";
 
 import Admin from "@/pages/admin";
+import { BottomNav } from "@/components/bottom-nav";
 
 function Router() {
   return (
@@ -46,6 +47,7 @@ function App() {
       <TooltipProvider>
         <QuizProvider>
           <Router />
+          <BottomNav />
         </QuizProvider>
         <Toaster />
       </TooltipProvider>

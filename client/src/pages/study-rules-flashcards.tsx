@@ -3,6 +3,7 @@ import { useLocation } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import type { StudyRule } from "@shared/schema";
 import { Layout } from "@/components/layout";
+import { FormattedText } from "@/components/formatted-text";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
@@ -175,7 +176,7 @@ function Deck({
           <div className="select-none [perspective:1200px]" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd} onClick={onCardClick}>
             <div className={cn("relative w-full min-h-[320px] transition-transform duration-300 [transform-style:preserve-3d]", flipped && "[transform:rotateX(180deg)]")}>
               <div className="absolute inset-0 rounded-3xl border border-border bg-card p-6 flex flex-col items-center justify-center gap-3 [backface-visibility:hidden]">
-                <p className="text-base leading-relaxed text-center">{current.body}</p>
+                <FormattedText text={current.body} className="text-base leading-relaxed text-center" />
                 <p className="text-[11px] text-muted-foreground font-semibold">Tap or swipe up/down to flip · swipe left/right to move</p>
               </div>
               <div className="absolute inset-0 rounded-3xl border border-primary/30 bg-primary/5 p-6 flex flex-col items-center justify-center gap-2 [transform:rotateX(180deg)] [backface-visibility:hidden]">

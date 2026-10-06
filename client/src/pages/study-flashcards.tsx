@@ -3,6 +3,7 @@ import { useLocation } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import type { StudySign } from "@shared/schema";
 import { Layout } from "@/components/layout";
+import { FormattedText } from "@/components/formatted-text";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
@@ -239,7 +240,7 @@ export default function StudySignsFlashcards() {
                   ].filter((x) => x.text).map((x) => (
                     <div key={x.label}>
                       <p className="text-[11px] font-black uppercase tracking-widest text-muted-foreground">{x.label}</p>
-                      <p className="text-sm mt-0.5">{x.text}</p>
+                      <FormattedText text={x.text} className="text-sm mt-0.5" />
                     </div>
                   ))}
                 </div>
