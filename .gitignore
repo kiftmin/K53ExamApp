@@ -8,4 +8,3 @@ vite.config.ts.*
 data/
 .vs/
 sign-assets/
-client/public/assets/
