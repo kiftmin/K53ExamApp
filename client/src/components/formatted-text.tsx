@@ -5,7 +5,7 @@ export function FormattedText({ text, className }: { text: string | null | undef
   if (!text) return null;
   const lines = text.split("\n");
   return (
-    <p className={className} style={{ whiteSpace: "pre-line" }}>
+    <p className={`${className ?? ""} whitespace-pre-wrap`}>
       {lines.map((line, li) => (
         <React.Fragment key={li}>
           {line.split(/(\*\*[^*]+\*\*)/).map((part, i) =>
