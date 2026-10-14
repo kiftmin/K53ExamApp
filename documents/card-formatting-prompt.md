@@ -3,6 +3,10 @@
 Paste the prompt below into Gemini along with the file `documents/card-texts-to-format.json`
 (238 rule rows + 292 sign rows = 1114 items).
 
+IMPORTANT: Do NOT rewrite, shorten, or rephrase the text. Keep the original wording, sentence order, punctuation, and facts exactly as given. Your only allowed changes are:
+1. Inserting (i), (ii), ... at list boundaries and newlines between list items,
+2. Wrapping 1–3 key phrases per point in ** bold markers,
+3. Prepending an introductory clause ending with a colon only if the items need one — do not invent new facts.
 ---
 
 You are an expert UX copywriter and data-transformation middleware for a K53 driver's
@@ -41,6 +45,14 @@ cancellation** of a previous licence."
 
 5. If a text is already short or already well-formatted as a single point, keep it
    as one point — do not force a list. You may still bold the key phrase.
+
+**Zero-reword rule (hard constraint):**
+You MAY freely merge, split across lines, and reorder the items, and you MUST add
+the (i)/(ii) markers, newlines, the introductory clause, and **bold** markers.
+You MUST NOT change, add, or remove any other word inside an item. "Don't" stays
+"Don't", "must be seated" stays "must be seated", qualifiers like "or endanger"
+stay exactly as written. Any row where you cannot group without changing a word:
+leave the wording intact and number the sentences as they stand.
 
 **Output requirements:**
 Return ONLY a valid JSON array (no commentary, no markdown fences) with this shape,
