@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Source, CATEGORY_NAMES } from "@shared/schema";
 import { useQuestions } from "@/hooks/use-questions";
 import { useQuiz } from "@/lib/quiz-context";
+import { useAccessCode } from "@/lib/use-access-code";
 import { Layout } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -50,33 +51,29 @@ export default function NewTest() {
   const presetMode = searchParams.get("mode");
   const isSimulationPreset = presetMode === "simulation";
 
+  const {
+    code,
+    mobile,
+    validated,
+    requiresMobile,
+    error,
+    loading,
+    setCode,
+    setMobile,
+    verify,
+  } = useAccessCode();
+
   const [formData, setFormData] = useState({
     name: "",
     surname: "",
     licenseCode: "",
     category: "",
-    accessCode: "",
-    mobileNumber: "",
     isSimulation: isSimulationPreset,
     source: "all",
     onlyOfficial: false,
   });
 
-  const [accessCodeValidated, setAccessCodeValidated] = useState(false);
-  const [accessCodeError, setAccessCodeError] = useState("");
-  const [validatingCode, setValidatingCode] = useState(false);
-
-  const codePrefix = formData.accessCode?.charAt(0)?.toUpperCase() || "";
-  const requiresMobile = ["W", "M", "X"].includes(codePrefix);
-
   useEffect(() => {
-    const savedCode = sessionStorage.getItem("k53_access_code");
-    const savedMobile = sessionStorage.getItem("k53_mobile_number");
-    if (savedCode) {
-      setFormData((prev) => ({ ...prev, accessCode: savedCode, mobileNumber: savedMobile || "" }));
-      setAccessCodeValidated(true);
-    }
-
     const savedName = localStorage.getItem("k53_name");
     const savedSurname = localStorage.getItem("k53_surname");
     const savedLicenseCode = localStorage.getItem("k53_license_code");
@@ -96,7 +93,7 @@ export default function NewTest() {
     formData.surname &&
     formData.licenseCode &&
     (formData.category || formData.isSimulation) &&
-    accessCodeValidated;
+    validated;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -121,48 +118,6 @@ export default function NewTest() {
     );
 
     setLocation("/quiz");
-  };
-
-  const handleValidateCode = async () => {
-    const code = formData.accessCode.trim().toUpperCase();
-    if (!code || code.length !== 7) {
-      setAccessCodeError("Please enter a 7-character code (e.g. DXXXXXX).");
-      return;
-    }
-    const prefix = code.charAt(0);
-    const needsMobile = ["W", "M", "X"].includes(prefix);
-    if (needsMobile && !/^\d{10}$/.test(formData.mobileNumber.trim())) {
-      setAccessCodeError("This code requires a linked 10-digit mobile number.");
-      return;
-    }
-    setValidatingCode(true);
-    setAccessCodeError("");
-    try {
-      const res = await fetch("/api/access-code/validate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          code,
-          mobileNumber: needsMobile ? formData.mobileNumber.trim() : undefined,
-        }),
-      });
-      const data = await res.json();
-      if (data.valid) {
-        setAccessCodeValidated(true);
-        sessionStorage.setItem("k53_access_code", code);
-        if (needsMobile) {
-          sessionStorage.setItem("k53_mobile_number", formData.mobileNumber.trim());
-        } else {
-          sessionStorage.removeItem("k53_mobile_number");
-        }
-      } else {
-        setAccessCodeError(data.message || "Invalid access code. Please try again.");
-      }
-    } catch {
-      setAccessCodeError("Failed to validate code. Please try again.");
-    } finally {
-      setValidatingCode(false);
-    }
   };
 
   return (
@@ -242,40 +197,31 @@ export default function NewTest() {
                     <Input
                       id="accessCode"
                       placeholder="D / W / M / X + 6 chars"
-                      value={formData.accessCode}
+                      value={code}
                       onChange={(e) => {
-                        const val = e.target.value
-                          .replace(/[^a-zA-Z0-9]/g, "")
-                          .toUpperCase()
-                          .slice(0, 7);
-                        setFormData((prev) => ({ ...prev, accessCode: val }));
-                        if (accessCodeValidated) {
-                          setAccessCodeValidated(false);
-                          sessionStorage.removeItem("k53_access_code");
-                        }
-                        setAccessCodeError("");
+                        setCode(e.target.value);
                       }}
                       maxLength={7}
-                      className={`h-11 bg-background/60 focus:bg-background transition-colors font-mono text-base tracking-[0.25em] ${accessCodeValidated
+                      className={`h-11 bg-background/60 focus:bg-background transition-colors font-mono text-base tracking-[0.25em] ${validated
                         ? "border-green-500 bg-green-50/50"
-                        : accessCodeError
+                        : error
                           ? "border-red-500"
                           : ""
                         }`}
-                      disabled={accessCodeValidated}
+                      disabled={validated}
                     />
-                    {!accessCodeValidated ? (
+                    {!validated ? (
                       <Button
                         type="button"
-                        onClick={handleValidateCode}
-                        disabled={validatingCode || formData.accessCode.length !== 7}
+                        onClick={verify}
+                        disabled={loading || code.length !== 7}
                         className="h-11 px-5 text-sm font-bold"
                         style={{
                           background: "linear-gradient(135deg, #E53E1A, #F5A623)",
                           border: "none",
                         }}
                       >
-                        {validatingCode ? "Verifying..." : "Verify"}
+                        {loading ? "Verifying..." : "Verify"}
                       </Button>
                     ) : (
                       <div className="h-11 flex items-center px-3 text-green-600 font-semibold text-sm gap-1 whitespace-nowrap">
@@ -284,10 +230,10 @@ export default function NewTest() {
                       </div>
                     )}
                   </div>
-                  {accessCodeError && (
-                    <p className="text-xs text-red-500 mt-1">{accessCodeError}</p>
+                  {error && (
+                    <p className="text-xs text-red-500 mt-1">{error}</p>
                   )}
-                  {(requiresMobile || formData.mobileNumber) && (
+                  {(requiresMobile || mobile) && (
                     <div className="space-y-1.5">
                       <Label htmlFor="mobileNumber" className="text-sm font-semibold">
                         Mobile Number (linked to code)
@@ -296,19 +242,13 @@ export default function NewTest() {
                         id="mobileNumber"
                         placeholder="10-digit mobile number"
                         inputMode="numeric"
-                        value={formData.mobileNumber}
+                        value={mobile}
                         onChange={(e) => {
-                          const val = e.target.value.replace(/\D/g, "").slice(0, 10);
-                          setFormData((prev) => ({ ...prev, mobileNumber: val }));
-                          if (accessCodeValidated) {
-                            setAccessCodeValidated(false);
-                            sessionStorage.removeItem("k53_access_code");
-                          }
-                          setAccessCodeError("");
+                          setMobile(e.target.value);
                         }}
                         maxLength={10}
                         className="h-11 bg-background/60 font-mono tracking-[0.2em]"
-                        disabled={accessCodeValidated}
+                        disabled={validated}
                       />
                       <p className="text-[11px] text-muted-foreground">
                         Required for Weekly (W), Monthly (M) and Master (X) codes. Daily (D) codes don't need it.

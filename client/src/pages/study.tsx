@@ -10,7 +10,10 @@ export function useStudyGate(): boolean {
   const [, setLocation] = useLocation();
   const allowed = typeof sessionStorage !== "undefined" && !!sessionStorage.getItem("k53_access_code");
   useEffect(() => {
-    if (!allowed) setLocation("/");
+    if (!allowed) {
+      const here = window.location.pathname;
+      setLocation(`/?unlock=${encodeURIComponent(here)}`);
+    }
   }, [allowed, setLocation]);
   return allowed;
 }
