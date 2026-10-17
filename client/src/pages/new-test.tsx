@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "wouter";
+import { useLocation, useSearch } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { Source, CATEGORY_NAMES } from "@shared/schema";
 import { useQuestions } from "@/hooks/use-questions";
@@ -27,7 +27,8 @@ const CATEGORIES = Object.entries(CATEGORY_NAMES).map(([value, label]) => ({
 }));
 
 export default function NewTest() {
-  const [location, setLocation] = useLocation();
+  const [, setLocation] = useLocation();
+  const search = useSearch();
   const { data: questions, isLoading, isError } = useQuestions();
   const { startQuiz } = useQuiz();
 
@@ -45,7 +46,7 @@ export default function NewTest() {
     queryKey: ["/api/sources/active-ids"],
   });
 
-  const searchParams = new URLSearchParams(location.slice(1));
+  const searchParams = new URLSearchParams(search);
   const presetMode = searchParams.get("mode");
   const isSimulationPreset = presetMode === "simulation";
 

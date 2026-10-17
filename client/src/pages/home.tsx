@@ -5,7 +5,7 @@ import { weakestGroups } from "@/lib/mastery-summary";
 import { Layout } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { BookOpen, ChevronRight } from "lucide-react";
+import { BookOpen, ChevronRight, Target, Clock } from "lucide-react";
 
 const LOGO_URL = "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773061809/logo_edited_vlgoqy.jpg";
 
@@ -21,14 +21,14 @@ const DASHBOARD = [
     title: "Category Test",
     description: "Focus on one vehicle category",
     path: "/new-test?mode=category",
-    icon: BookOpen,
+    icon: Target,
     gradient: "linear-gradient(135deg, #E53E1A, #F5A623)",
   },
   {
     title: "Exam Simulation",
     description: "Full 64-question timed test",
     path: "/new-test?mode=simulation",
-    icon: BookOpen,
+    icon: Clock,
     gradient: "linear-gradient(135deg, #E53E1A, #F5A623)",
   },
 ];
