@@ -1,0 +1,1754 @@
+[
+ {
+  "id": 3,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To **bring traffic to a stop**."
+ },
+ {
+  "id": 23,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicates that a road or part of a road:\n(i) may be **used by motorcyclists only**, and\n(ii) motorcyclists **must follow the route indicated** by the sign."
+ },
+ {
+  "id": 90,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To reserve a portion of a road or a parking area for **use by delivery vehicles only**."
+ },
+ {
+  "id": 95,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To reserve a portion of a road or a parking area for **use by abnormal vehicles only**."
+ },
+ {
+  "id": 98,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To reserve a portion of a road or a parking area for **use by high occupancy vehicles only**."
+ },
+ {
+  "id": 120,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To inform you that the regulatory sign **only applies during night time**."
+ },
+ {
+  "id": 103,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To allow minibuses to **take up and drop passengers off** (such a vehicle must **display an appropriate emblem or logo**)."
+ },
+ {
+  "id": 105,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate that a traffic lane is **reserved for buses and minibuses only**."
+ },
+ {
+  "id": 104,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To reserve a road, lane or parking area for **buses and minibuses only**."
+ },
+ {
+  "id": 43,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicates that the road or portion of the road is set aside for **use by buses, midibuses and minibuses**."
+ },
+ {
+  "id": 108,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate that a traffic lane is **reserved for buses and midi buses only**."
+ },
+ {
+  "id": 107,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To reserve a road, lane or parking area for **buses and midi buses only**."
+ },
+ {
+  "id": 130,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that you are approaching an intersection where **another road meets yours at an angle**."
+ },
+ {
+  "id": 135,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that the **one-way roadway is ending soon** and that approaching vehicles will **use the same carriageway** as you."
+ },
+ {
+  "id": 136,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that the **single carriageway is ending** and that you will soon **enter a one-way road**."
+ },
+ {
+  "id": 140,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a **very sharp, U-shaped curve ahead** to the left or right."
+ },
+ {
+  "id": 126,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that a **hazard in the form of a crossroad** is ahead."
+ },
+ {
+  "id": 152,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a **demarcated pedestrian crossing ahead**."
+ },
+ {
+  "id": 63,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To **prohibit motorcars** from entering the area, for **safety or any other reasons**."
+ },
+ {
+  "id": 182,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that **heavy vehicles regularly cross or join** the road from the left or right."
+ },
+ {
+  "id": 19,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate to drivers the **direction in which they must turn** at the intersection ahead."
+ },
+ {
+  "id": 85,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To reserve a portion of a road or a parking area for **use by motorcycles only**."
+ },
+ {
+  "id": 96,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To reserve a portion of a road or a parking area for **use by rickshaws only**."
+ },
+ {
+  "id": 112,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate where the **reserved lane for buses, midi buses and minibuses begins**."
+ },
+ {
+  "id": 158,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a **gate or boom across the road ahead**."
+ },
+ {
+  "id": 160,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a **railway crossing ahead**."
+ },
+ {
+  "id": 167,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that the **road narrows when crossing a bridge**."
+ },
+ {
+  "id": 168,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that the carriageway ahead narrows to a width that will allow **only one vehicle at a time to pass**."
+ },
+ {
+  "id": 169,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that the **road ahead narrows from both sides**."
+ },
+ {
+  "id": 133,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Road split and merge warnings:\n(i) to warn that **traffic could merge from the left or right** at sharp angles, or\n(ii) to warn that the road **will soon split in two** requiring a choice of route."
+ },
+ {
+  "id": 210,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To **confirm the number and status** of the route on which you are travelling."
+ },
+ {
+  "id": 143,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that the **one-way roadway** you are travelling on will **soon become a two-way roadway**."
+ },
+ {
+  "id": 166,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that the **tarred road will end soon** and will have a **gravel surface ahead**."
+ },
+ {
+  "id": 29,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicates that the road or a portion of the road is **set aside for use by delivery vehicles only**."
+ },
+ {
+  "id": 32,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicates that the road or a portion of the road is **set aside for use by construction vehicles**."
+ },
+ {
+  "id": 187,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn the driver that **there is a drift ahead** and that the **road could be flooded**."
+ },
+ {
+  "id": 188,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn of the possibility of **low-flying aircraft** and **sudden aircraft noise** near the road."
+ },
+ {
+  "id": 39,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To give you a **last opportunity to follow an alternative route**, or to proceed on the route and **pay toll fees**."
+ },
+ {
+  "id": 45,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To inform you of the **speed limit applicable on this road** (applies from the sign)."
+ },
+ {
+  "id": 208,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To point out the **direction to a transport terminus** from a road that would otherwise have taken you past it."
+ },
+ {
+  "id": 149,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a **yield sign ahead**, which you may not be able to see in time."
+ },
+ {
+  "id": 66,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicates to the driver of a midibus that he or she **shall not proceed beyond such sign**."
+ },
+ {
+  "id": 242,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To inform you by means of a diagram that there is an **entrance to an arrestor bed ahead**."
+ },
+ {
+  "id": 229,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate in good time **exits that are close together**, all **leading to the same town**."
+ },
+ {
+  "id": 75,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicates to the driver of an agricultural vehicle that he or she **shall not proceed beyond such sign**."
+ },
+ {
+  "id": 76,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicates to the driver of an animal-drawn vehicle that he or she **shall not proceed beyond such sign**."
+ },
+ {
+  "id": 250,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To inform you of a **temporary experiment or research** being carried out on the road."
+ },
+ {
+  "id": 253,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate that there is a **bus stop ahead**."
+ },
+ {
+  "id": 87,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To reserve a portion of a road or a parking area for **use by taxis only**."
+ },
+ {
+  "id": 262,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To **prohibit drivers** from **driving in this area**."
+ },
+ {
+  "id": 97,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To reserve a portion of a road or a parking area for **use by tour buses only**."
+ },
+ {
+  "id": 286,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate the **direction you may drive** in a lane or on a road."
+ },
+ {
+  "id": 109,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate where the **reserved lane for buses and midi buses begins**."
+ },
+ {
+  "id": 111,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate that a traffic lane is **reserved for buses, midi buses and minibuses only**."
+ },
+ {
+  "id": 171,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a **depression or ridge in the road**, or that the road is **uneven and potholed**."
+ },
+ {
+  "id": 180,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that the **road shoulder material may be soft** and **dangerous for moving off the road**."
+ },
+ {
+  "id": 194,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a possibility of **elephants being present** on the road ahead."
+ },
+ {
+  "id": 195,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a possibility of **warthogs being present** on the road ahead."
+ },
+ {
+  "id": 203,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that the **road does not continue beyond the sign** and that a **turn left or right must be made**."
+ },
+ {
+  "id": 185,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that the road leads to a **jetty edge or riverbank**."
+ },
+ {
+  "id": 5,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To bring traffic from **all three directions to a stop**."
+ },
+ {
+  "id": 116,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate that the regulatory sign **applies only for the periods or conditions indicated**."
+ },
+ {
+  "id": 7,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Mounted back to back to indicate whether you **may proceed or must stop**."
+ },
+ {
+  "id": 128,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that you are approaching an intersection where you **have to yield to cross-traffic** (thicker leg indicates priority)."
+ },
+ {
+  "id": 147,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there are **isolated or new traffic lights** ahead."
+ },
+ {
+  "id": 6,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To bring traffic from **all four directions to a stop**."
+ },
+ {
+  "id": 12,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate that there is a **one-way carriageway** to the left, right, or ahead."
+ },
+ {
+  "id": 145,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that the double-lane road **narrows by a full lane** from the left or right side."
+ },
+ {
+  "id": 148,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a **stop sign ahead**, which cannot be seen in time."
+ },
+ {
+  "id": 94,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To reserve a portion of a road or a parking area for **use by vehicles conveying hazardous substances only**."
+ },
+ {
+  "id": 153,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that **pedestrians may be crossing the road** for the next 2 km."
+ },
+ {
+  "id": 161,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a **tunnel ahead**."
+ },
+ {
+  "id": 261,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate where the **left or right-edge of the road** is."
+ },
+ {
+  "id": 172,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there are **speed humps on the carriageway ahead** requiring a reduction of speed."
+ },
+ {
+  "id": 198,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a possibility of **electrical shock from overhead power cables** on the road ahead."
+ },
+ {
+  "id": 9,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To compel you to **give priority to pedestrians** crossing or wanting to cross the road."
+ },
+ {
+  "id": 10,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn you that there is a **traffic circle ahead** where drivers **must expect to yield**."
+ },
+ {
+  "id": 8,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate that you **must yield to other traffic**."
+ },
+ {
+  "id": 11,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate that **no traffic may proceed** past the sign on the road, carriageway or lane."
+ },
+ {
+  "id": 165,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that **heavy vehicles travel slowly** down a descent."
+ },
+ {
+  "id": 4,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To allow **traffic turning left** to do so **without stopping**, if safe."
+ },
+ {
+  "id": 14,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate that there is a **single carriageway ahead** for use by **vehicles from both directions**."
+ },
+ {
+  "id": 170,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that the road ahead **narrows from the left or right-hand side**."
+ },
+ {
+  "id": 192,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a **possibility of congested traffic**."
+ },
+ {
+  "id": 273,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a **railway crossing ahead**."
+ },
+ {
+  "id": 260,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To **prohibit you from crossing the line**."
+ },
+ {
+  "id": 189,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that **tractors or slow-moving agricultural vehicles** could cross or enter the road ahead."
+ },
+ {
+  "id": 191,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a possibility of **reduced visibility from fog or smoke** ahead."
+ },
+ {
+  "id": 196,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a possibility of **hippos being present** on the road ahead."
+ },
+ {
+  "id": 197,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is an **overall width restriction** as indicated in metres on the road ahead."
+ },
+ {
+  "id": 209,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate that a **route of equal or higher status** can be entered, consisting of a **pair of one-way roadways**."
+ },
+ {
+  "id": 213,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To inform in advance that a **numbered route changes direction** or that the cross-street is a **numbered class-B route**."
+ },
+ {
+  "id": 214,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To point out that a route **other than the toll route** can be followed."
+ },
+ {
+  "id": 215,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate to cyclists and other road users that there is a **special route for cyclists only**."
+ },
+ {
+  "id": 228,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate the **direction of various destinations** at the end of a **freeway exit (off-ramp)**."
+ },
+ {
+  "id": 217,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate the **numbers of routes and destinations** leading from this intersection."
+ },
+ {
+  "id": 222,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate early on that there is an **exit from the freeway** to **certain routes ahead**."
+ },
+ {
+  "id": 224,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To confirm early on that there is an **exit from the freeway** to **certain destinations ahead**."
+ },
+ {
+  "id": 276,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn drivers that the indicated lane can be **used by traffic from the opposite direction** at various times."
+ },
+ {
+  "id": 218,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To **confirm the route to a destination** and the **distance indicated in kilometres**."
+ },
+ {
+  "id": 211,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate to drivers the **route number of the class-B route**."
+ },
+ {
+  "id": 206,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To point out the direction you must follow to **reach the more important route**."
+ },
+ {
+  "id": 221,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To inform in advance **which lane leads** to a **specific destination**."
+ },
+ {
+  "id": 207,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To point out the **direction of a transport terminus** from a route that would otherwise take you past it."
+ },
+ {
+  "id": 284,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To guide you to **follow the correct route** in the intersection."
+ },
+ {
+  "id": 117,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To **limit the times and periods** of stopping."
+ },
+ {
+  "id": 193,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a possibility of **horses and riders being present** on the road ahead."
+ },
+ {
+  "id": 200,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn of an **obstruction next to the road** and that the **road alignment is altered**."
+ },
+ {
+  "id": 201,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that the road ahead **curves suddenly to the left or right**."
+ },
+ {
+  "id": 237,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To guide by diagram that the right-hand lane is **subject to a compulsory regulatory sign** (opposing flow shown by dotted arrow)."
+ },
+ {
+  "id": 179,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that one side of the carriageway is **at a higher level than the other**."
+ },
+ {
+  "id": 71,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicates to the driver of a vehicle **conveying dangerous goods** that he or she **shall not proceed beyond such sign**."
+ },
+ {
+  "id": 216,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate the **numbers of routes and destinations** leading from an intersection."
+ },
+ {
+  "id": 219,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To guide you to **small locations or destinations** on **less travelled routes**."
+ },
+ {
+  "id": 230,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate that the **road crosses a freeway** and show **where that freeway leads**."
+ },
+ {
+  "id": 231,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate the **position of the near-side on-ramp** at a freeway access interchange with route number and destination."
+ },
+ {
+  "id": 232,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate that the **far-side on-ramp is ahead**, showing the route number and destination reached."
+ },
+ {
+  "id": 233,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate the **position of the far-side on-ramp** at a freeway access interchange."
+ },
+ {
+  "id": 234,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate that the **freeway splits ahead** and lanes **lead to different destinations**."
+ },
+ {
+  "id": 240,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate that there is an **arrestor bed ahead** and mark its entrance."
+ },
+ {
+  "id": 183,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To **warn of a hazard ahead**."
+ },
+ {
+  "id": 25,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate that the road or portion of the road is **set aside for use by taxis**."
+ },
+ {
+  "id": 142,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there are **two sharp curves ahead in opposite directions**."
+ },
+ {
+  "id": 241,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that, because of a **steep descent**, it is necessary to **engage a lower gear**."
+ },
+ {
+  "id": 239,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To guide drivers by diagram that a **curved multi-lane carriageway converges** with a straight multi-lane carriageway without decreasing lanes."
+ },
+ {
+  "id": 238,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To guide by diagram that a **lane merges with another lane** or that **roadways join**."
+ },
+ {
+  "id": 227,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To inform early **which lane at the end of the off-ramp** leads to which destination."
+ },
+ {
+  "id": 278,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that **traffic lanes are reduced** from the left, right, or both sides."
+ },
+ {
+  "id": 245,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To inform you that the **road ahead or to the left or right ends**."
+ },
+ {
+  "id": 247,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To inform you of the existence of a **park-and-ride terminus** with a bus or train service."
+ },
+ {
+  "id": 74,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicates to a driver of a tour bus that he or she **shall not proceed beyond such sign**."
+ },
+ {
+  "id": 249,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To inform you of the existence of an **information office or notice board**."
+ },
+ {
+  "id": 251,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To inform you that traffic signals are **co-ordinated for green lights** if you maintain the indicated speed."
+ },
+ {
+  "id": 252,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To point out that signals at this intersection **do not follow the normal sequence**."
+ },
+ {
+  "id": 254,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To show that there is a **transport modal transfer point or terminus nearby**."
+ },
+ {
+  "id": 258,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To inform that it is **prohibited to drive** with any part of your vehicle on the **right-hand side of this line**."
+ },
+ {
+  "id": 259,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To inform you that **you may not cross this line**."
+ },
+ {
+  "id": 255,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate where you must **bring your vehicle to a standstill**."
+ },
+ {
+  "id": 24,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicate that a road or part of a road may be **used by motorcars only**."
+ },
+ {
+  "id": 33,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicates that the road or portion of the road is **set aside for vehicles conveying dangerous goods**."
+ },
+ {
+  "id": 106,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate where the **reserved lane for buses and minibuses begins**."
+ },
+ {
+  "id": 118,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To inform you that the regulatory sign **applies when visibility is reduced**."
+ },
+ {
+  "id": 18,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate the **direction in which you must proceed**."
+ },
+ {
+  "id": 17,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate that you **must drive to the left or right** of an obstruction."
+ },
+ {
+  "id": 271,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate the limits within which **only cyclists may travel**."
+ },
+ {
+  "id": 277,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a **yield sign ahead**."
+ },
+ {
+  "id": 283,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To show that you are using a part of the road with **traffic in the same direction**."
+ },
+ {
+  "id": 256,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate that you must **give priority to all who cross in front of you** at this point."
+ },
+ {
+  "id": 223,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate early on that there is an **exit from the freeway to certain destinations ahead**."
+ },
+ {
+  "id": 199,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that the **gravel road you are travelling on will end ahead**."
+ },
+ {
+  "id": 186,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn about **strong crosswinds** that could force your vehicle off course."
+ },
+ {
+  "id": 181,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that traffic ahead is **controlled temporarily by a 'Stop/Ry-Go' sign**."
+ },
+ {
+  "id": 46,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To **prevent certain heavy vehicles** from using a road or part of a road."
+ },
+ {
+  "id": 50,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To **prohibit noise**."
+ },
+ {
+  "id": 54,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To **prohibit traffic from turning left or right**."
+ },
+ {
+  "id": 73,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicates to a person pulling a rickshaw that he or she **shall not proceed beyond such sign**."
+ },
+ {
+  "id": 205,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that the **robot ahead or attached is out of order**."
+ },
+ {
+  "id": 285,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate an **increase in the number of lanes ahead**."
+ },
+ {
+  "id": 62,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To **prohibit motorcycles** on part of a carriageway for **safety reasons**."
+ },
+ {
+  "id": 89,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To reserve a portion of a road or a parking area for **use by midi-buses only**."
+ },
+ {
+  "id": 102,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To allow minibuses to **take up and drop passengers off** (displaying proper emblem/logo)."
+ },
+ {
+  "id": 101,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To reserve a portion of a road or a parking area for **use by authorised vehicles only**."
+ },
+ {
+  "id": 42,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicates that the road or portion of the road is set aside for **use by buses and midibuses**."
+ },
+ {
+  "id": 119,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To inform you that the regulatory sign **applies during daytime**."
+ },
+ {
+  "id": 138,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a **gentle curve ahead to the left or right**."
+ },
+ {
+  "id": 154,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that **children might be crossing the road**."
+ },
+ {
+  "id": 159,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a **motor gate to the left, right, or middle** of the road."
+ },
+ {
+  "id": 173,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn about **unusually slippery conditions on the road ahead**."
+ },
+ {
+  "id": 124,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate that the reservation is **further restricted by a maximum number of vehicles**."
+ },
+ {
+  "id": 15,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To **regulate the minimum speed of traffic**."
+ },
+ {
+  "id": 127,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that you are approaching an intersection where **you have right of way** (thicker leg indicates priority)."
+ },
+ {
+  "id": 13,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To **give priority to pedestrians** while limiting other traffic to **emergency, loading, and maintenance vehicles**."
+ },
+ {
+  "id": 16,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To **compel drivers of certain heavy vehicles** to use the road or part of the road indicated."
+ },
+ {
+  "id": 28,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicates that the road or a portion of the road is **set aside for use by buses**."
+ },
+ {
+  "id": 27,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicates that the road or a portion of the road is **set aside for use by midibuses**."
+ },
+ {
+  "id": 30,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicates that the road or portion of the road is **set aside for use by goods vehicles**."
+ },
+ {
+  "id": 31,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicates that the road or portion of the road is set aside for **goods vehicles exceeding the indicated mass limit**."
+ },
+ {
+  "id": 36,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicates that the road or a portion of the road is **set aside for use by tour buses**."
+ },
+ {
+  "id": 150,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicates that there is a **traffic officer ahead controlling traffic**."
+ },
+ {
+  "id": 38,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicates that the road or a portion of the road is **set aside for use by animal-drawn vehicles**."
+ },
+ {
+  "id": 47,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To **prohibit certain heavy vehicles** from using the road."
+ },
+ {
+  "id": 48,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn you against a **height restriction ahead**."
+ },
+ {
+  "id": 53,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To **prohibit vehicles from turning at an intersection**."
+ },
+ {
+  "id": 57,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To **prohibit drivers from parking** during any time of the day or night."
+ },
+ {
+  "id": 58,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To **ensure traffic flow** and prevent stationary vehicles from **impairing driver visibility**."
+ },
+ {
+  "id": 41,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicates that the road or portion of the road is set aside for **use by buses and minibuses**."
+ },
+ {
+  "id": 64,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicates to the driver of a taxi that he or she **shall not proceed beyond such sign**."
+ },
+ {
+  "id": 26,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicates that the road or a portion of the road is **set aside for use by minibuses**."
+ },
+ {
+  "id": 37,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicates that the road or a portion of the road is **set aside for use by agricultural vehicles**."
+ },
+ {
+  "id": 35,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicates that the road or a portion of the road is **set aside for use by rickshaws**."
+ },
+ {
+  "id": 51,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To **prohibit pedestrians and stationary vehicles**."
+ },
+ {
+  "id": 55,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To **prohibit vehicles from turning around** so that they face the opposite direction."
+ },
+ {
+  "id": 69,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicates to the driver of a goods vehicle that he or she **shall not proceed beyond such sign**."
+ },
+ {
+  "id": 70,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicates to the driver of a construction vehicle that he or she **shall not proceed beyond such sign**."
+ },
+ {
+  "id": 246,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To inform you that you **have the right of way** at the intersection ahead."
+ },
+ {
+  "id": 86,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To reserve a portion of a road or a parking area for **use by motor cars only**."
+ },
+ {
+  "id": 100,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To reserve a portion of a road or a parking area for **use by disabled persons' vehicles only**."
+ },
+ {
+  "id": 113,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate that a **freeway begins at the sign** and freeway rules are **effective from here**."
+ },
+ {
+  "id": 114,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate that a **single-carriageway freeway begins** and freeway rules are **effective from here**."
+ },
+ {
+  "id": 134,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that the **road forks into two roads**."
+ },
+ {
+  "id": 139,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a **sharp curve ahead to the left or right**."
+ },
+ {
+  "id": 155,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn the driver that **there can be cyclists ahead**."
+ },
+ {
+  "id": 157,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there may be **wild animals on or crossing the road**."
+ },
+ {
+  "id": 176,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that a **grader is working on the carriageway ahead**."
+ },
+ {
+  "id": 177,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there are **loose stones or gravel on the road**."
+ },
+ {
+  "id": 202,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that the road ahead does not carry on straight, but **merges with another road**."
+ },
+ {
+  "id": 204,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that **part of the road is temporarily closed** to traffic."
+ },
+ {
+  "id": 212,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To inform in time that you are **approaching a class-B route**."
+ },
+ {
+  "id": 65,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicates to the driver of a minibus that he or she **shall not proceed beyond such sign**."
+ },
+ {
+  "id": 68,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicates to the driver of a delivery vehicle that he or she **shall not proceed beyond such sign**."
+ },
+ {
+  "id": 67,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicates to the driver of a bus that he or she **shall not proceed beyond such sign**."
+ },
+ {
+  "id": 72,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicates to the driver of an abnormal vehicle that he or she **shall not proceed beyond such sign**."
+ },
+ {
+  "id": 77,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicates to a horse rider that **horses and riders are prohibited** beyond such sign."
+ },
+ {
+  "id": 162,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a **structure ahead** of which the **height is indicated on the sign**."
+ },
+ {
+  "id": 175,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there are **temporary construction or maintenance works ahead**."
+ },
+ {
+  "id": 80,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To **prohibit hawkers in this area** during any time of the day or night."
+ },
+ {
+  "id": 92,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To reserve a portion of a road or a parking area for **goods vehicles exceeding the indicated GVM only**."
+ },
+ {
+  "id": 93,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To reserve a portion of a road or a parking area for **use by construction vehicles only**."
+ },
+ {
+  "id": 83,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To inform you that a parking area is **reserved for bicycles only**."
+ },
+ {
+  "id": 129,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that you are approaching an intersection where you have to **turn sharp right or left**."
+ },
+ {
+  "id": 263,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate **where you may park**."
+ },
+ {
+  "id": 264,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To **identify parking only** for road users **identified by the symbol**."
+ },
+ {
+  "id": 265,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To show that you **may only proceed** in the **direction indicated by the arrow** in your lane."
+ },
+ {
+  "id": 266,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To identify that part of the carriageway **reserved for buses only** during indicated periods."
+ },
+ {
+  "id": 267,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To **prohibit drivers from stopping** in the demarcated area to prevent obstructing traffic."
+ },
+ {
+  "id": 268,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate an area where you **may not stop except for pedestrians crossing** or a stopped vehicle."
+ },
+ {
+  "id": 269,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To **prohibit drivers from stopping** where stationary vehicles may disrupt traffic or obstruct views."
+ },
+ {
+  "id": 272,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate the **direction you must follow** around the circle or mini-circle."
+ },
+ {
+  "id": 274,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a **break in the continuing roadway** and the lane with a side line **will soon turn off**."
+ },
+ {
+  "id": 275,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that vehicles on the other side of the road marking are **moving in the opposite direction**."
+ },
+ {
+  "id": 282,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a **speed hump in the road**."
+ },
+ {
+  "id": 288,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To inform that an area is **reserved for a specific group** or leads to a **specific destination**."
+ },
+ {
+  "id": 287,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate a section of the road to be **used by cyclists to cross the road**."
+ },
+ {
+  "id": 289,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To supply you with **additional information**."
+ },
+ {
+  "id": 292,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To **direct traffic**."
+ },
+ {
+  "id": 123,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate that the sign applies to drivers of vehicles operated by the **company, owner or organisation indicated**."
+ },
+ {
+  "id": 243,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To inform by diagram that the lane below is **subject to a compulsory regulatory sign**."
+ },
+ {
+  "id": 293,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To direct traffic via flag signals:\n(i) **stop signal** requiring vehicles to stop until proceed signal is displayed, and\n(ii) **proceed signal** indicating that vehicles may proceed."
+ },
+ {
+  "id": 291,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Overhead lane control signals:\n(i) **steady green downward arrow** indicates you may drive in the lane,\n(ii) **steady red cross** indicates you shall not drive in the lane, and\n(iii) **yellow arrow left or right** indicates the lane is closed ahead."
+ },
+ {
+  "id": 294,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Warns a road user to **proceed slowly and be alert**."
+ },
+ {
+  "id": 279,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn in time that you will be **obliged to follow a certain direction** at the first intersection."
+ },
+ {
+  "id": 280,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn you that there is a **no-overtaking line or no-crossing line ahead**."
+ },
+ {
+  "id": 281,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate where defective-brake vehicles can **drive off the road** to be **stopped by a gravel section**."
+ },
+ {
+  "id": 121,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate that the restriction **applies in the direction of the arrow**."
+ },
+ {
+  "id": 122,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate that **parking fees must be paid** in the parking area."
+ },
+ {
+  "id": 225,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate **exactly where the exit is**."
+ },
+ {
+  "id": 220,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To give advance guidance regarding the **shape of the intersection** and route numbers/destinations."
+ },
+ {
+  "id": 235,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To guide by diagram that one of the lanes of a carriageway **comes to an end**."
+ },
+ {
+  "id": 226,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate the **separation between the off-ramp and the main road**."
+ },
+ {
+  "id": 20,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate that the road or part of the road may be **used by pedestrians only**."
+ },
+ {
+  "id": 21,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate that the road or part of the road may be **used by cyclists only**."
+ },
+ {
+  "id": 40,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate that you must **switch on your headlights** in order to see and be seen."
+ },
+ {
+  "id": 110,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To reserve a road, lane or parking area for **buses, midi buses and minibuses only**."
+ },
+ {
+  "id": 61,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To **prevent cyclists and pedestrians** from using a certain road where they could cause danger."
+ },
+ {
+  "id": 44,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate that you must **move in a clockwise direction** at the junction."
+ },
+ {
+  "id": 52,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To **prohibit drivers without special authorisation** from entering a closed road."
+ },
+ {
+  "id": 56,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To inform drivers that **overtaking vehicles is prohibited** for the next 500m."
+ },
+ {
+  "id": 60,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To **prohibit cyclists** from using the carriageway, lane or path where they cause danger."
+ },
+ {
+  "id": 99,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To reserve a portion of a road or a parking area for **use by ambulances/emergency vehicles only**."
+ },
+ {
+  "id": 82,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Reserved traffic lane rules:\n(i) R302/TR302 indicate **no other class of vehicle may use that part of the road**, and\n(ii) R303/TR303 indicate **where the bus-only reserved lane starts**."
+ },
+ {
+  "id": 125,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To **cancel a restriction**."
+ },
+ {
+  "id": 88,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To reserve a portion of a road or a parking area for **use by minibuses only**."
+ },
+ {
+  "id": 91,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To reserve a portion of a road or a parking area for **use by goods vehicles only**."
+ },
+ {
+  "id": 156,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there may be **free ranging animals** such as cattle, horses or sheep on the road."
+ },
+ {
+  "id": 115,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Pedestrian/traffic zone restrictions:\n(i) **prohibits entry** of vehicles >3500kg or >10 seats (except local delivery),\n(ii) requires drivers to **yield right of way to pedestrians** and prohibits through-traffic, and\n(iii) **limits vehicle speed to 30km/h** in the area."
+ },
+ {
+  "id": 244,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To indicate that there is an **exit about 300m, 200m and 100m ahead**."
+ },
+ {
+  "id": 248,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To **give more information** about the main message on regulatory, warning or guidance signs."
+ },
+ {
+  "id": 78,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicates you shall not proceed unless overall vehicle width is **less than the width indicated in metres**."
+ },
+ {
+  "id": 81,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicates the road is **reserved for buses only** and only buses may park in the area."
+ },
+ {
+  "id": 270,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To **prevent drivers from stopping** where stationary vehicles disrupt traffic or view."
+ },
+ {
+  "id": 257,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To inform you that **priority must be given to pedestrians** crossing or wanting to cross."
+ },
+ {
+  "id": 144,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that the one-way street will soon be **crossed by a street with two-way traffic**."
+ },
+ {
+  "id": 22,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Pedestrian and cycle lane rules:\n(i) to indicate a road set aside for **cyclists and/or pedestrians only**,\n(ii) to show **which part of a road** each user group must use, and\n(iii) divided signs indicate **separate sub-paths for cyclists or pedestrians**."
+ },
+ {
+  "id": 34,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicates that the road or a portion of the road is **set aside for use by abnormal vehicles**."
+ },
+ {
+  "id": 49,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To **prohibit long vehicles** from using a road where they cannot safely negotiate curves."
+ },
+ {
+  "id": 59,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To **prohibit pedestrians from proceeding** past this sign where they cause danger."
+ },
+ {
+  "id": 79,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicates that **no vehicle towing another vehicle** shall proceed beyond such sign."
+ },
+ {
+  "id": 84,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Parking area rules:\n(i) R305-P indicates parking for **vehicles under 3500kg** with paid fee and no time limit, and\n(ii) R306-P indicates parking with a **displayed maximum allowed time limit**."
+ },
+ {
+  "id": 141,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn of a **series of curves ahead** (W209 first bend left, W208 first bend right)."
+ },
+ {
+  "id": 132,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that your road is **joined by two side roads in short succession** from opposite sides."
+ },
+ {
+  "id": 163,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that curves or structures make it impossible for **vehicles longer than indicated** to proceed."
+ },
+ {
+  "id": 164,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that the road will **climb or descend steeply**."
+ },
+ {
+  "id": 236,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To inform by diagram that the **number of lanes will be increased soon** (opposing flow shown by dotted arrow)."
+ },
+ {
+  "id": 146,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that **one or more concealed driveways enter** from the left or right."
+ },
+ {
+  "id": 174,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that **rocks could fall on the carriageway** from the left or right-hand side."
+ },
+ {
+  "id": 178,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To **warn that there is danger of some kind ahead**."
+ },
+ {
+  "id": 290,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To **regulate traffic coming from different directions**."
+ },
+ {
+  "id": 184,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn about a **temporary stop sign, collision scene, or roadblock** where police are on duty."
+ },
+ {
+  "id": 190,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that the road ahead **may be obstructed by an accident scene or wreckage**."
+ },
+ {
+  "id": 131,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that **traffic may be approaching you** from the left or right-hand side."
+ },
+ {
+  "id": 137,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a **traffic circle ahead** where you **may need to yield to other traffic**."
+ },
+ {
+  "id": 151,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "Indicate that there is a **scholar patrol operating ahead**."
+ }
+]

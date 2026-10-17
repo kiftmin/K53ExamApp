@@ -1,0 +1,1430 @@
+[
+ {
+  "id": 130,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "**No more than two people** may ride on a motorcycle, excluding anyone in an **attached sidecar**."
+ },
+ {
+  "id": 131,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A passenger may only be carried if:\n(i) the motorcycle's **engine exceeds 50cc**, and\n(ii) the passenger is **seated in a sidecar** or **astride a pillion**."
+ },
+ {
+  "id": 132,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "**No more than two adults** may be carried in a **sidecar attached** to a motorcycle."
+ },
+ {
+  "id": 134,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Neither the rider nor passenger may **take hold of another vehicle** that is **in motion**."
+ },
+ {
+  "id": 135,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "**All wheels** of the motorcycle must **stay in contact** with the road surface at all times."
+ },
+ {
+  "id": 226,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A person may not drive a motor vehicle of a prescribed class without a **professional driving permit** (kept with them in the vehicle), except a **learner accompanied** by someone registered as a **professional driver** for that class."
+ },
+ {
+  "id": 62,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A vehicle may not be operated on a public road in a manner that causes **excessive noise**."
+ },
+ {
+  "id": 136,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Riders must:\n(i) travel in **single file** within the same lane, except briefly to **overtake another motorcycle**, and\n(ii) ensure **two motorcycles do not overtake** another vehicle at the same time."
+ },
+ {
+  "id": 137,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A sidecar must:\n(i) be attached to the **left side** of the motorcycle, and\n(ii) **not be fitted** to a motorcycle with an engine **under 50cc**."
+ },
+ {
+  "id": 139,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A driver must **yield right of way**, **slow down**, or **stop** for a pedestrian crossing a roadway within a pedestrian crossing."
+ },
+ {
+  "id": 140,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A driver **may not pass** a vehicle that has **stopped at a pedestrian crossing**."
+ },
+ {
+  "id": 141,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Pedestrian signal rules:\n(i) pedestrians **may not cross** while the **red man light** is showing,\n(ii) if the **red man flashes**, pedestrians already in the road must **finish crossing quickly**, and\n(iii) those not yet in the road must **wait for the green man**."
+ },
+ {
+  "id": 142,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A vehicle is deemed **abandoned by its owner** if left in the same place for:\n(i) more than **24 hours** outside an urban area, or\n(ii) more than **7 days** within an urban area."
+ },
+ {
+  "id": 143,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Do not:\n(i) cause a vehicle's **wheel to drag or spin** on the roadway (except in an emergency),\n(ii) use **chocks or shoes** between a moving wheel and the road surface, or\n(iii) use or move a vehicle in a way that **damages the road**."
+ },
+ {
+  "id": 144,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "The following **may not use a freeway**:\n(i) **animal-drawn vehicles** and **pedal cycles**,\n(ii) **motorcycles under 50cc** or electrically propelled, **motor quadrucycles**, and **disability vehicles under 230kg**, and\n(iii) **tractors** (outside road construction or maintenance use)."
+ },
+ {
+  "id": 245,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **parking brake** is a brake, normally a **hand brake**, used to keep a vehicle **stationary**."
+ },
+ {
+  "id": 152,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "The towed vehicle's **steering must be controlled** by a person **licensed to drive** that class of vehicle."
+ },
+ {
+  "id": 153,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "If the towed vehicle's **brakes don't comply** with requirements, it must be connected by a **draw-bar or tow-bar** rather than a rope or chain."
+ },
+ {
+  "id": 154,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A drawing vehicle may tow:\n(i) a maximum of **two trailers**, or\n(ii) **one other motor vehicle** that isn't a trailer."
+ },
+ {
+  "id": 155,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "In an **emergency**, it is permitted to tow **one other motor vehicle** (not a trailer) together with a trailer."
+ },
+ {
+  "id": 156,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Don't **cross or enter** a public road unless:\n(i) it's **clear of moving traffic** for a sufficient distance, or\n(ii) you can do so **with safety** to yourself and other traffic."
+ },
+ {
+  "id": 158,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A light motor vehicle's tyres must show a **clearly visible tread pattern** across the full breadth and circumference, at least **1mm deep**."
+ },
+ {
+  "id": 88,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A light motor vehicle **may not drive on the shoulder** of a public road, except:\n(i) between **sunrise and sunset**,\n(ii) while **being overtaken** on a single-lane-each-way road,\n(iii) if it can be **done safely**, and\n(iv) if visibility is **at least 150 metres**."
+ },
+ {
+  "id": 101,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Passing on the left is allowed, if it can be done safely:\n(i) when the vehicle ahead is **turning right** or has signalled to,\n(ii) on a **one-way urban road** wide enough for two or more lanes,\n(iii) on an **urban road** wide enough for two or more lanes each way,\n(iv) where **signs designate lanes** on a one-way road, or\n(v) under a **traffic officer's direction**."
+ },
+ {
+  "id": 107,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "At a junction where vehicles must move around a **traffic island**, **give way to all traffic** approaching from your right, unless a **traffic officer or road sign** directs you otherwise."
+ },
+ {
+  "id": 108,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Don't park:\n(i) where a **traffic officer directs otherwise** or in **contravention of a sign**,\n(ii) where **stopping isn't permitted** or where the vehicle would **obscure a road sign**, or\n(iii) **on the sidewalk** or blocking a **private or public vehicular entrance**."
+ },
+ {
+  "id": 113,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Don't stop:\n(i) alongside or opposite an **excavation or obstruction** if it would obstruct traffic,\n(ii) in a **tunnel, subway, or on a bridge** (or within 6 metres of one),\n(iii) where the roadway has been **narrowed** (or within 6 metres of the narrowing),\n(iv) in **contravention of a sign** or facing oncoming traffic on the **right side**,\n(v) alongside another vehicle on a road **under 9 metres wide**,\n(vi) within a **railway level crossing** or within **9 metres of a pedestrian crossing's** approach side, or\n(vii) anywhere it would **endanger or obstruct traffic**."
+ },
+ {
+  "id": 124,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Don't let the engine:\n(i) emit **abnormal smoke or fumes**,\n(ii) run while the vehicle is **stationary and unattended**, or\n(iii) run while **fuel is being delivered** into the tank."
+ },
+ {
+  "id": 133,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Motorcycle carrying rules:\n(i) a rider **may not carry** a person, animal, or **bulky object in front** of them, and\n(ii) a **non-bulky object** may be carried if **securely attached** and doesn't **obstruct view or control**."
+ },
+ {
+  "id": 145,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Don't **stop on a freeway** except:\n(i) by **sign or traffic officer** direction,\n(ii) in a **designated stopping/parking area**, or\n(iii) for **reasons beyond your control**."
+ },
+ {
+  "id": 157,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Stop:\n(i) as directed by a **road traffic sign** or a uniformed **traffic officer**,\n(ii) at the request or signal of a person **leading livestock** (cattle, horse, donkey, mule, sheep, goat, pig, or ostrich), or\n(iii) when **animals are crossing** the road -- only proceeding once all have crossed and **it's safe**."
+ },
+ {
+  "id": 171,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Don't **drive**, or occupy the driver's seat with the **engine running**, while under the influence of **intoxicating liquor or a narcotic drug**."
+ },
+ {
+  "id": 172,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A heavy motor vehicle may not be used if:\n(i) its **fuel tank, carburettor, or fuel pipes** are defective or exposed as a danger,\n(ii) the fuel tank **lacks an effective cap**, or\n(iii) the **electrical wiring and battery** aren't properly installed, insulated, and maintained."
+ },
+ {
+  "id": 190,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **junction** is the portion of an intersection within the **lateral limits** of the intersecting roadways, including any **stop or yield line marking** painted there."
+ },
+ {
+  "id": 201,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **professional driver** drives a motor vehicle of a prescribed class and must hold a **professional driving permit**; this doesn't apply to a **learner accompanied** by a registered professional driver for that class."
+ },
+ {
+  "id": 216,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **vehicle** is a device designed mainly to **travel on wheels or crawler tracks** (excluding devices that move solely on rails)."
+ },
+ {
+  "id": 126,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Don't **drive, pull, or push** a vehicle on a **sidewalk**."
+ },
+ {
+  "id": 6,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **Code 2 learner's licence**:\n(i) authorises driving any motor vehicle or combination (other than a motorcycle or tricycle) with tare, GVM, or GCM **not exceeding 3500kg**,\n(ii) requires **direct supervision** of a licensed driver for that class,\n(iii) requires a **minimum age of 17**, and\n(iv) is **valid for 24 months** from the test date."
+ },
+ {
+  "id": 7,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **Code 3 learner's licence**:\n(i) authorises driving any motor vehicle or combination (other than a motorcycle, tricycle, or quadrucycle) covering **light and heavy vehicles**,\n(ii) requires **direct supervision** of a licensed driver for that class,\n(iii) requires a **minimum age of 18**, and\n(iv) is **valid for 24 months** from the test date."
+ },
+ {
+  "id": 8,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A motorcycle's lamps must be **undamaged**, **properly secured**, and **capable of being lit** at all times."
+ },
+ {
+  "id": 250,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "To **'stop'** means to bring a vehicle to a **standstill**."
+ },
+ {
+  "id": 14,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Dip your main beam for **oncoming traffic**, and when **following another vehicle**."
+ },
+ {
+  "id": 15,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Every headlamp on dipped beam must **adequately illuminate** the road ahead, enabling the driver to see a person, vehicle, or substantial object **at least 45 metres** away."
+ },
+ {
+  "id": 16,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A vehicle may **not be driven in motion** using only its **parking lamps**."
+ },
+ {
+  "id": 17,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A motorcycle or motor tricycle must be fitted with a **rear lamp emitting red light**."
+ },
+ {
+  "id": 18,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A light motor vehicle must be fitted with **rear lamps emitting red light**."
+ },
+ {
+  "id": 19,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A heavy motor vehicle must be fitted with at least **one rear lamp on each side** emitting **red light**."
+ },
+ {
+  "id": 20,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A light motor vehicle or motorcycle must have **rear stop lamps** that emit a **red light brighter** than the rear lamps, visible at **30 metres in normal sunlight**."
+ },
+ {
+  "id": 21,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A heavy motor vehicle must have at least **one stop lamp on each side** at the rear, meeting the same **brightness and visibility** requirements."
+ },
+ {
+  "id": 22,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "An **illuminated stop lamp** indicates the vehicle is **decreasing speed** and **may stop**."
+ },
+ {
+  "id": 23,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A vehicle must have at least **one number-plate lamp** at the rear, making every letter and figure on the plate **visible from 20 metres** by a person of normal eyesight."
+ },
+ {
+  "id": 24,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A number plate must be **SABS-approved** and fitted so it **cannot easily be detached**."
+ },
+ {
+  "id": 25,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A number plate must be **upright (or within 30 degrees)**, with every letter and figure **clearly legible** and the **whole plate visible**."
+ },
+ {
+  "id": 26,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Number plate requirements:\n(i) motorcycles, motor tricycles, and trailers need only a **rear number plate**, and\n(ii) all other motor vehicles need **one at the front and one at the rear**."
+ },
+ {
+  "id": 27,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Fog lamps may only be lit in **conditions of poor visibility** caused by **snow, fog, mist, dust, or smoke**."
+ },
+ {
+  "id": 29,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A driver must have a **full, clear view** of the road ahead, and to the **left and right**, while the vehicle is in use."
+ },
+ {
+  "id": 33,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A light or heavy motor vehicle's **steering gear** must be maintained in a condition that allows the vehicle to be **steered safely and efficiently**."
+ },
+ {
+  "id": 149,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "The tow-rope, chain, or tow-bar between two vehicles **may not exceed 3.5 metres** in length."
+ },
+ {
+  "id": 35,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A motorcycle must have **two independent, working braking systems** -- one acting on the **front wheel**, one on the **rear wheel(s)**."
+ },
+ {
+  "id": 36,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A light or heavy motor vehicle must be equipped with a working **service brake**, **parking brake**, and **emergency brake** (the emergency and parking brake may be one and the same)."
+ },
+ {
+  "id": 37,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A hooter may **only be used** when necessary on the **grounds of safety**."
+ },
+ {
+  "id": 38,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A light motor vehicle must have a **working hooter**, audible by a person of normal hearing from **90 metres**."
+ },
+ {
+  "id": 39,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **tune-playing siren or horn** may not be used on a **private vehicle**."
+ },
+ {
+  "id": 40,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A driver must **immediately give way** to any emergency vehicle sounding a **siren and displaying warning lights**."
+ },
+ {
+  "id": 41,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Emergency vehicles include:\n(i) fire-fighting, rescue, and emergency medical/ambulance vehicles (**red light**),\n(ii) a vehicle driven by a traffic officer on duty (**blue light**), and\n(iii) a vehicle engaged in civil protection (**green light**)."
+ },
+ {
+  "id": 42,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Seatbelts are **compulsory for children and adults** aged 3 and older while the vehicle is **moving forward**."
+ },
+ {
+  "id": 43,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "If seatbelts are fitted, **rear-seat passengers must wear them** while the vehicle is being driven."
+ },
+ {
+  "id": 44,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A child is defined as **aged 3 to 14**, unless **taller than 1.5 metres**, in which case they're treated as an **adult regardless of age**."
+ },
+ {
+  "id": 45,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "An adult may not occupy:\n(i) a seat **without wearing a seatbelt**, nor\n(ii) a seat on a row without seatbelts if a **belted seat on that row is available**."
+ },
+ {
+  "id": 46,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A driver must ensure:\n(i) a child uses an **appropriate child restraint** where available, or a **seatbelt** if no restraint is available, and\n(ii) if no belted seat is available and the vehicle has a rear seat, the child must **sit there**."
+ },
+ {
+  "id": 47,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "It is **not compulsory** to wear a seatbelt while **reversing** or moving in or out of a **parking bay or area**."
+ },
+ {
+  "id": 48,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A motorcycle, tricycle, or quadrucycle rider and any passenger (including a sidecar passenger) must wear a **properly fitted, purpose-designed protective helmet** with the **chin strap fastened**."
+ },
+ {
+  "id": 49,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A rider must ensure any passenger **under 14 years old** also wears a **protective helmet**."
+ },
+ {
+  "id": 87,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A driver passing a **stationary bus** must do so with **due care** for people approaching or leaving it."
+ },
+ {
+  "id": 53,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A vehicle must have an **efficient exhaust silencer** that channels exhaust gas through it."
+ },
+ {
+  "id": 54,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Exhaust smoke **may not be dense enough** to be a **nuisance**, or to **obstruct other road users' vision**."
+ },
+ {
+  "id": 55,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "The exhaust:\n(i) may **not be positioned** where oil or flammable liquid could drip onto it, and\n(ii) may **not leak gas or smoke** into the cab or passenger compartment."
+ },
+ {
+  "id": 57,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A light or heavy motor vehicle's **engine must be covered** so that it isn't a **source of danger**."
+ },
+ {
+  "id": 58,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Heavy motor vehicles, goods vehicles, minibuses, and buses (but not motor cars, ambulances, or motorcycles) must carry at least **one emergency warning triangle**."
+ },
+ {
+  "id": 59,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "For a combination of vehicles, the warning triangle for **each vehicle** in the combination may **all be carried on the drawing vehicle**."
+ },
+ {
+  "id": 146,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Freeway restrictions:\n(i) don't give a **hand signal** on a freeway (except for reasons beyond your control),\n(ii) don't be on a **freeway on foot**, and\n(iii) don't leave an **animal** where it could stray onto one."
+ },
+ {
+  "id": 60,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A stationary vehicle must place a warning triangle:\n(i) at least **45 metres away** in the direction traffic will approach from,\n(ii) at roughly the **same distance from the roadway edge** as the vehicle's own centre, and\n(iii) with the **reflective side facing oncoming traffic**."
+ },
+ {
+  "id": 61,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A warning triangle isn't required if the vehicle is stopped:\n(i) in a **loading zone** or on a **traffic officer's or sign's direction**,\n(ii) because of other traffic while the driver **stays in the driving seat**, or\n(iii) during a **state or municipal function**."
+ },
+ {
+  "id": 63,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A vehicle capable of reaching **60 km/h or more** must be equipped with a **working speedometer**."
+ },
+ {
+  "id": 64,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A general speed limit applies to all roads even without a sign:\n(i) **60 km/h** in urban areas,\n(ii) **100 km/h** on non-freeway roads outside urban areas, and\n(iii) **120 km/h** on freeways, unless a sign indicates otherwise."
+ },
+ {
+  "id": 65,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Exceeding the applicable speed limit is an **offence**."
+ },
+ {
+  "id": 66,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Buses and minibuses conveying persons for reward have a speed limit of **100 km/h**."
+ },
+ {
+  "id": 67,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "An **80 km/h speed limit** applies to:\n(i) a **goods vehicle** with a GVM over 9000kg,\n(ii) a combination where the **combined GVM** of the goods vehicle and trailer(s) exceeds 9000kg,\n(iii) an articulated vehicle whose **truck-tractor GCM exceeds 9000kg**, and\n(iv) any **breakdown vehicle** towing another vehicle."
+ },
+ {
+  "id": 69,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Maximum vehicle height limits:\n(i) a **double-deck bus** (with load) may not exceed **4.65 metres** in height, and\n(ii) any **other motor vehicle** may not exceed **4.3 metres**."
+ },
+ {
+  "id": 70,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Maximum overall width limits:\n(i) a bus with a front wheel track over 1.9 metres may not exceed **2.6 metres**,\n(ii) a goods vehicle of 12,000kg GVM or more may not exceed **2.6 metres**, and\n(iii) any other vehicle may not exceed **2.5 metres**."
+ },
+ {
+  "id": 72,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Goods must be **safely contained** within, or **securely fastened** to, the vehicle, and **protected from falling or spilling**."
+ },
+ {
+  "id": 73,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "On a motor car's roof, goods **may not exceed half the car's height** measured from ground level, **except pedal cycles**."
+ },
+ {
+  "id": 74,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A shipping container fitted with twist-lock provisions must be secured with **at least four twist locks**."
+ },
+ {
+  "id": 75,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Baggage on a motorcycle should be placed in **carriers securely attached** to the motorcycle."
+ },
+ {
+  "id": 76,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "The section of a goods vehicle carrying persons must be enclosed to:\n(i) at least **350mm above a seated person**, or\n(ii) at least **900mm above a standing person**."
+ },
+ {
+  "id": 77,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "It is against the law for **passengers to ride in a caravan**."
+ },
+ {
+  "id": 78,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A motorcycle's load (or sidecar load) may not project:\n(i) more than **600mm in front** of the front axle,\n(ii) more than **900mm behind** the rear axle,\n(iii) more than **450mm to either side**, or\n(iv) more than **300mm beyond** the sidecar wheel."
+ },
+ {
+  "id": 79,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A light or heavy vehicle's goods may not project sideways from the centre-line by:\n(i) more than **1.3 metres** (bus or goods vehicle over 12,000kg GVM), or\n(ii) more than **1.25 metres** (any other vehicle), excluding mirrors or indicators."
+ },
+ {
+  "id": 80,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A light or heavy vehicle's goods may not project:\n(i) more than **300mm beyond the front** of the vehicle, or\n(ii) more than **1.8 metres beyond the rear**."
+ },
+ {
+  "id": 82,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A load projecting more than **150mm to the side** or **300mm to the rear** must be marked with:\n(i) a **red flag (300mm x 300mm)** during the day, and\n(ii) **white (front) or red (rear) retro-reflectors** at night or whenever visibility is poor."
+ },
+ {
+  "id": 83,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "On a public road divided into two or more roadways, **drive only on the left-hand roadway**, unless directed or permitted otherwise by a **road traffic sign or a traffic officer**."
+ },
+ {
+  "id": 84,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Drive on the **left side of the roadway**, without **encroaching right**, unless it can be done safely or you're directed otherwise by a sign or traffic officer."
+ },
+ {
+  "id": 85,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "When another vehicle wants to pass you, keep as **near to the left edge** of the roadway as is safely possible, and **don't speed up** until it has passed."
+ },
+ {
+  "id": 86,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "When passing oncoming traffic, **don't encroach onto the roadway to your right** in a way that **obstructs or endangers** it."
+ },
+ {
+  "id": 92,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Direction indicators **must be used** every time you **turn left or right**, or **change lanes**."
+ },
+ {
+  "id": 93,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A light motor vehicle's indicators must:\n(i) **flash intermittently**,\n(ii) be clearly **visible at 30 metres** in daylight, and\n(iii) show **white, yellow, or amber light** to the front, and **yellow, amber, or red light** to the rear."
+ },
+ {
+  "id": 94,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A motorcycle, motorcycle with sidecar, or motor tricycle must have a **red retro-reflector fitted at the rear**."
+ },
+ {
+  "id": 95,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A light motor vehicle must have **two red retro-reflectors** at the rear, **one on each side**."
+ },
+ {
+  "id": 96,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A heavy motor vehicle must have **two red retro-reflectors** at the same height at the rear, **one on each side**."
+ },
+ {
+  "id": 97,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A heavy vehicle or combination longer than 7 metres must have **yellow retro-reflectors along each side**, spaced so no two successive ones are **more than 3.6 metres apart**, unless **yellow reflective strips** are fitted instead."
+ },
+ {
+  "id": 98,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Since 1 January 2001, a goods vehicle with a GVM over 10,000kg **must have yellow reflective material** on its sides and rear; it's **optional (but permitted)** for vehicles under 10,000kg GVM."
+ },
+ {
+  "id": 99,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Pass another vehicle on the **right at a safe distance**, and **don't return to the left side** until safely clear of the vehicle you passed."
+ },
+ {
+  "id": 100,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "**Exceeding the speed limit** while overtaking or passing is **not permitted**."
+ },
+ {
+  "id": 102,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Passing may **never be done** by driving on the **shoulder or the verge** of a public road."
+ },
+ {
+  "id": 103,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Don't pass other traffic when approaching the **summit of a rise**, a **curve**, or anywhere **visibility is too restricted** to see oncoming traffic, unless you can do so without encroaching right, or the road is restricted to one direction."
+ },
+ {
+  "id": 104,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "When another vehicle wants to pass you, **keep left** and **don't accelerate** until it has passed."
+ },
+ {
+  "id": 1,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A learner's licence test covers:\n(i) **rules of the road** and related legislation,\n(ii) **road traffic signs**, signals, and markings, and\n(iii) **vehicle controls**.\nOnce passed, the learner's licence is **valid for 24 months**."
+ },
+ {
+  "id": 2,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A person is disqualified from obtaining or holding a licence:\n(i) while **addicted to narcotics or excessive alcohol** use,\n(ii) while **disqualified or suspended** by a court or authority, or\n(iii) during a period **following cancellation** of a previous licence."
+ },
+ {
+  "id": 3,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A person **may not apply for a licence** for a class of vehicle they are **already licensed to drive** under an existing licence."
+ },
+ {
+  "id": 4,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A person is disqualified if suffering from:\n(i) **uncontrolled epilepsy**, disabling giddiness, or fainting,\n(ii) a **mental illness** requiring detention or treatment, or a condition causing **muscular incoordination**,\n(iii) **uncontrolled diabetes mellitus**, or **defective vision** below the prescribed standard, or\n(iv) any other disease or defect likely to **prevent safe driving**.\nDeafness alone is not disqualifying."
+ },
+ {
+  "id": 5,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **Code 1 learner's licence**:\n(i) authorises **riding a motorcycle** (but not a motor quadrucycle) on a public road,\n(ii) requires a **minimum age of 16** (under 18 you're limited to a **125cc engine**), and\n(iii) prohibits carrying **any passengers**."
+ },
+ {
+  "id": 10,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "On a light or heavy motor vehicle, all lamps must be **undamaged**, **unobscured**, **properly secured**, and **capable of being lit** at all times."
+ },
+ {
+  "id": 12,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "These lighting rules don't apply to a vehicle stopped:\n(i) **parked off the roadway**,\n(ii) in a **demarcated parking place**, or\n(iii) within **12 metres of a lit street lamp** illuminating the road."
+ },
+ {
+  "id": 13,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Every headlamp on main beam must **adequately illuminate** the road ahead, enabling the driver to see a person, vehicle, or substantial object **at least 100 metres** away."
+ },
+ {
+  "id": 32,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A motorcycle's **steering gear** must be maintained so it can be **steered safely and efficiently**, and handlebar width and handgrip height must meet **prescribed measurements** based on engine capacity."
+ },
+ {
+  "id": 34,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A vehicle's turning radius **may not exceed 13.1 metres**."
+ },
+ {
+  "id": 51,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A light motor vehicle's windscreen must:\n(i) give the driver **sufficient visibility** for safe driving,\n(ii) be made of **safety glass**, and\n(iii) allow at least **70% light transmittance**."
+ },
+ {
+  "id": 52,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A light or heavy motor vehicle with a windscreen must have at least **one wiper** that continuously, evenly, and adequately **clears the area** directly in front of the driver."
+ },
+ {
+  "id": 81,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A light or heavy vehicle may not have a bracket projecting **more than 150mm** beyond the vehicle's widest part (**side mirrors and indicators excepted**)."
+ },
+ {
+  "id": 89,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "On a road divided into lanes by markings, **don't change lanes** unless it can be done without **obstructing or endangering** other traffic."
+ },
+ {
+  "id": 90,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Before stopping or turning, give a **clear, timely signal** of your intention, **long enough and visible enough** to warn anyone approaching from the front, rear, or side."
+ },
+ {
+  "id": 91,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A motor vehicle must be equipped with **flasher-type direction indicators** on both sides."
+ },
+ {
+  "id": 109,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Don't park within **1.5 metres of a fire hydrant**."
+ },
+ {
+  "id": 110,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Outside an urban area, **don't park on the roadway** (excluding the shoulder), or with any part of the vehicle **within 1 metre** of the roadway edge, except for reasons beyond your control."
+ },
+ {
+  "id": 112,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Don't **stop on the roadway** except:\n(i) to **avoid an accident**,\n(ii) on a **traffic officer's direction**, or\n(iii) for **reasons beyond your control**."
+ },
+ {
+  "id": 125,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Don't deposit **fuel, oil, grease**, or other **flammable or offensive matter** on or alongside a road."
+ },
+ {
+  "id": 127,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A motorcycle rider must **obey every road sign** and rule of the road, unless a **traffic officer instructs otherwise**."
+ },
+ {
+  "id": 148,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A motorcycle **may not be used to tow** another vehicle."
+ },
+ {
+  "id": 150,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Towing at **over 30 km/h** with a rope or chain is not allowed -- a **draw-bar or tow-bar connection** is required instead."
+ },
+ {
+  "id": 151,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A towed vehicle may **only carry passengers** at over 30 km/h if it is a **semi-trailer**."
+ },
+ {
+  "id": 161,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A motorcycle may **not be fitted** with a **retreaded tyre**."
+ },
+ {
+  "id": 173,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Acceptable identification includes:\n(i) a **South African ID document or card**,\n(ii) a valid **South African passport**,\n(iii) a **foreign ID or traffic register number certificate** (for non-residents), or\n(iv) a **driving licence card**."
+ },
+ {
+  "id": 174,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "An **articulated motor vehicle** is a combination of a **truck-tractor and a semi-trailer**."
+ },
+ {
+  "id": 191,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **licence disc** is a disc issued under the Act that licenses a vehicle for use on a public road, **valid for 12 months**."
+ },
+ {
+  "id": 192,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **midibus** is a sub-category of bus designed to carry **more than 16 and up to 35 people**, including the driver."
+ },
+ {
+  "id": 195,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **motorcycle** is a motor vehicle with two wheels, including one with a **sidecar attached**."
+ },
+ {
+  "id": 212,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **tractor** is a motor vehicle designed mainly for **drawing other vehicles** with a GCM **not exceeding 24,000kg**; it does not include a truck-tractor."
+ },
+ {
+  "id": 213,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **trailer** is a vehicle not self-propelled, designed to be **drawn by a motor vehicle**, excluding a motorcycle sidecar."
+ },
+ {
+  "id": 227,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A motor vehicle licence and licence disc are **valid for 12 months** from the first day of the month of issue; the **expiry date is shown on both**."
+ },
+ {
+  "id": 105,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A driver wanting to overtake a vehicle ahead (not in the left lane) may signal their intention by **flashing their headlights**."
+ },
+ {
+  "id": 106,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "On a freeway, **keep left** and **overtake on the right**."
+ },
+ {
+  "id": 111,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Within an urban area, don't park:\n(i) within **9 metres** of the approach side of a pedestrian crossing,\n(ii) within **5 metres** of an intersection or over a **traffic signal's mechanism**,\n(iii) more than **450mm from the kerb** or on a road **narrower than 5.5 metres**, or\n(iv) on a **traffic island, pedestrian mall, or pedestrian lane**."
+ },
+ {
+  "id": 114,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Obey **every road traffic sign** and rule of the road, unless a **traffic officer instructs you otherwise**."
+ },
+ {
+  "id": 159,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A motorcycle with an engine **over 50cc** must have tyres showing a **clearly visible tread pattern** across the full breadth and circumference, at least **1mm deep**."
+ },
+ {
+  "id": 160,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A motorcycle with an engine of **50cc or under** may not run a tyre with **less than 80% visible tread pattern** across the tread width."
+ },
+ {
+  "id": 163,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "If asked by someone with reasonable grounds, a driver must give:\n(i) **their name and address**,\n(ii) the **vehicle owner's name and address**, and\n(iii) the **vehicle's registration number**."
+ },
+ {
+  "id": 165,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Except on a medical practitioner's instruction, a driver **may not consume alcohol or narcotic drugs** before **reporting an accident**."
+ },
+ {
+  "id": 166,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "If a person has been killed or injured and the accident fully obstructs the roadway, a vehicle **may not be moved** unless:\n(i) its position is **clearly marked on the road**, or\n(ii) a **traffic officer authorises** its removal."
+ },
+ {
+  "id": 167,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A vehicle damaged in a collision **may not be removed** from the accident scene without the **driver's or owner's permission**."
+ },
+ {
+  "id": 168,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Don't drive on a public road without **reasonable consideration** for other road users."
+ },
+ {
+  "id": 169,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Don't drive **recklessly or negligently**, or in a manner that **wilfully disregards the safety** of people or property."
+ },
+ {
+  "id": 170,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Don't drive with a blood alcohol concentration of **0.05g per 100ml or more** (**0.02g per 100ml or more** for a professional driver)."
+ },
+ {
+  "id": 175,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **bridge** includes a **culvert** and a **causeway**."
+ },
+ {
+  "id": 176,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **bus** is a motor vehicle designed or adapted to carry **more than 16 people**, including the driver."
+ },
+ {
+  "id": 177,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **combination of motor vehicles** means **two or more motor vehicles coupled together**."
+ },
+ {
+  "id": 178,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **dedicated lane** is a portion of road reserved for certain periods for the **exclusive use of certain vehicle categories**, as shown by an appropriate sign."
+ },
+ {
+  "id": 179,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **direction indicator** is a device fitted to a vehicle allowing the driver to **signal an intention** to change direction left or right."
+ },
+ {
+  "id": 180,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "**DLTC** stands for **Driving Licence Testing Centre**, registered under the National Road Traffic Act."
+ },
+ {
+  "id": 164,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "If details haven't been given to an officer at the scene, the accident must be **reported to a police station within 24 hours**, along with any **further information required**."
+ },
+ {
+  "id": 181,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **driver** is any person who:\n(i) **drives or attempts to drive** a vehicle,\n(ii) **rides or attempts to ride** a pedal cycle, or\n(iii) **leads a draught, pack, or saddle animal**, or a herd or flock of animals."
+ },
+ {
+  "id": 182,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "The **edge of the roadway** is:\n(i) the **boundary between roadway and shoulder** as indicated by a sign, or\n(ii) otherwise the edge of the **surfaced or improved part** of the road."
+ },
+ {
+  "id": 183,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **freeway** is a public road, or section of one, **designated as a freeway** by an appropriate road traffic sign."
+ },
+ {
+  "id": 184,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "**Goods** means any **movable property**."
+ },
+ {
+  "id": 185,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **goods vehicle** is a motor vehicle (other than a motorcycle, tricycle, quadrucycle, motor car, minibus, or bus) designed to **carry goods on a public road**; it includes a **truck-tractor, adaptor dolly, converter dolly, and breakdown vehicle**."
+ },
+ {
+  "id": 186,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "**Gross Combination Mass (GCM)** is the **maximum mass** of a vehicle combination (including drawing vehicle) and its load, as specified by the **manufacturer or registering authority**."
+ },
+ {
+  "id": 187,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "**Gross Vehicle Mass (GVM)** is the **maximum mass** of a vehicle and its load, as specified by the **manufacturer or registering authority**."
+ },
+ {
+  "id": 188,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **haulage tractor** is a motor vehicle designed mainly for drawing other vehicles, with a **GCM exceeding 24,000kg**; it does not include a truck-tractor or tractor."
+ },
+ {
+  "id": 189,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "An **intersection** is the area where **two or more public roads** open to vehicular traffic **join or cross at any angle**."
+ },
+ {
+  "id": 193,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **minibus** is a motor vehicle designed to carry **more than nine but not more than 16 people**, including the driver."
+ },
+ {
+  "id": 194,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **motor car** is a motor vehicle (other than a motorcycle, tricycle, or quadrucycle) designed to carry **not more than nine people**, including the driver."
+ },
+ {
+  "id": 196,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **motor quadrucycle** is a motor vehicle (other than a tractor) with four wheels, designed to be driven using **motorcycle-type controls**."
+ },
+ {
+  "id": 197,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **motor tricycle** is a motor vehicle (other than a motorcycle or tractor) with three wheels, designed to be driven using **motorcycle-type controls**."
+ },
+ {
+  "id": 198,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **motor vehicle** is any **self-propelled vehicle**, including a trailer and a pedal-and-motor vehicle designed to be propelled by pedals, an engine, or both."
+ },
+ {
+  "id": 199,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **number plate** is a prescribed plate displaying a vehicle's **licence number or motor trade number**."
+ },
+ {
+  "id": 200,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **pedestrian crossing** is a portion of road designated as such by a sign, or, absent a sign, the portion at an intersection within the extension of the **kerb line and adjacent boundary line**."
+ },
+ {
+  "id": 202,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **public road** is any road, street, or thoroughfare **commonly used by, or open to, the public**, including its verge and any bridge, ferry, or drift it crosses."
+ },
+ {
+  "id": 203,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **retro-reflector** is a reflector complying with **SABS specification 513**, bearing a certification or approval mark."
+ },
+ {
+  "id": 204,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **road traffic sign** is a sign for **prohibiting, limiting, regulating, or controlling traffic** (in general or a particular class) on a public road."
+ },
+ {
+  "id": 205,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "The **roadway** is the portion of a road built or intended for **vehicular traffic**, between the edges of the roadway."
+ },
+ {
+  "id": 206,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **semi-trailer** is a trailer with no front axle, designed so **at least 15% of its tare** is borne by the vehicle drawing it."
+ },
+ {
+  "id": 207,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "The **shoulder** is the portion of road between the **edge of the roadway and the kerb line**."
+ },
+ {
+  "id": 208,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "**Tare**, for a vehicle, is its mass **ready to travel on a road**, including standard accessories and permanent structural parts, but **excluding fuel**."
+ },
+ {
+  "id": 209,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **traffic island** is a physical island that **channels traffic** within a junction or on a public road."
+ },
+ {
+  "id": 210,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **traffic lane** is a longitudinal division of a road wide enough for a **single line of vehicles**."
+ },
+ {
+  "id": 215,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "An **urban area** is a local authority area that has been **surveyed and subdivided into erven**, including the public roads bordering it."
+ },
+ {
+  "id": 217,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **verge** is the portion of a road, including the sidewalk, that is **not the roadway or the shoulder**."
+ },
+ {
+  "id": 218,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "**LMV** means Light Motor Vehicle -- tare/GVM **not exceeding 3500kg**."
+ },
+ {
+  "id": 219,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "**HMV** means Heavy Motor Vehicle -- tare **exceeds 3500kg**, or a minibus/bus/goods vehicle GVM exceeds 3500kg, or an articulated/combination vehicle's GCM (or trailer GVM) exceeds prescribed thresholds."
+ },
+ {
+  "id": 220,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "**MC** means Motorcycle, and includes a **motorcycle, tricycle, and quadrucycle**."
+ },
+ {
+  "id": 162,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "After being involved in or contributing to an accident, a driver must:\n(i) **stop immediately**,\n(ii) **check for and assist** with any injuries, and\n(iii) **assess the damage**."
+ },
+ {
+  "id": 138,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A driver may **not hold a cellular or communication device** in one or both hands, or with any other part of the body, **while driving**."
+ },
+ {
+  "id": 71,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Goods may not be loaded so that they:\n(i) **touch the road surface**, or\n(ii) **obstruct the driver's view** to the front, either side, or in the rear-view mirror."
+ },
+ {
+  "id": 221,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "No person may drive a motor vehicle on a public road except under a **licence issued in terms of the Act**, and must **keep that licence with them** in the vehicle."
+ },
+ {
+  "id": 222,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A driving licence is issued by a DLTC and is either a **provisional licence (learner's)** or a **full driving licence**."
+ },
+ {
+  "id": 223,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A learner's licence application requirements:\n(i) apply at a DLTC on **form LL1** with two identical photos, **acceptable ID (plus copy)**, and the fee, and\n(ii) applicants **65 or older** must also submit a **medical certificate (form MC)** from a registered practitioner."
+ },
+ {
+  "id": 224,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A licence holder who permanently changes residence must **notify the registering authority** of their new address **within 14 days**."
+ },
+ {
+  "id": 225,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "An owner, operator, or person in charge may **not employ or permit anyone to drive** a vehicle unless that person is **licensed to drive it**."
+ },
+ {
+  "id": 244,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "To **'park'** means to keep a vehicle stationary for **longer than is reasonably necessary** to load or unload people or goods, excluding **delays beyond control**."
+ },
+ {
+  "id": 228,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "The owner of a vehicle is **responsible for all offences** committed with it on a public road, if the owner **permitted its use**."
+ },
+ {
+  "id": 229,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A motor vehicle may still be operated for **up to 21 days** after its licence expires (a 'period of grace'), provided the **previous licence number and disc** are displayed."
+ },
+ {
+  "id": 230,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "To **'cross'** a public road means to move in a direction that **intersects the normal course of travel** of traffic on that road."
+ },
+ {
+  "id": 231,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "**'Drawing'** means towing a vehicle designed or adapted **solely to be drawn**, using a vehicle designed **solely for that purpose** -- as distinct from general 'towing'."
+ },
+ {
+  "id": 232,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **driving licence card** is a card issued in terms of the **National Road Traffic Act**."
+ },
+ {
+  "id": 233,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "**'Driving time'** is any period a driver **occupies the driver's seat** while the vehicle is operated or while the **engine is running**."
+ },
+ {
+  "id": 234,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "An **emergency brake** is a brake, **other than the service brake**, that is able to stop a vehicle."
+ },
+ {
+  "id": 235,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "The **'front end'** of a vehicle is the part that **projects furthest forward** (for a semi-trailer, a line through the kingpin connecting its widest point ahead)."
+ },
+ {
+  "id": 236,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "An **instructor** is someone who, for direct reward, **teaches another person to drive** or teaches road rules/signs for a licence."
+ },
+ {
+  "id": 237,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "The **kerb line** is the boundary between the **shoulder and the verge**, or between the **edge of the roadway and the verge** where there is no shoulder."
+ },
+ {
+  "id": 238,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **medical practitioner** is a person registered as such under the **Medical, Dental and Supplementary Health Service Professions Act**."
+ },
+ {
+  "id": 239,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "To **'operate on a public road'** means to **use or drive a vehicle** (or permit it to be used or driven), or to have or permit a vehicle to be on a public road."
+ },
+ {
+  "id": 240,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "**Overall length** is the distance between the **front end and rear end** of a vehicle, or between the **front of leading vehicle and rear of rearmost vehicle**."
+ },
+ {
+  "id": 241,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "**Overall height** is the distance from ground level to the **highest point of the vehicle or load**, excluding overhead electrical gear."
+ },
+ {
+  "id": 242,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "**Overall width** is the distance between parallel planes touching the **widest projecting points** on either side -- **excluding mirrors and indicators**."
+ },
+ {
+  "id": 243,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "The **'owner'** of a vehicle is the person with the **right to use and enjoy it** under law/contract, or a **motor dealer** in possession of it for sale."
+ },
+ {
+  "id": 9,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A motorcycle's headlamp must be **lit at all times** when riding on a public road, **day and night**."
+ },
+ {
+  "id": 11,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Headlamps, rear lamps, and number-plate lamps must be lit:\n(i) between **sunset and sunrise**, and\n(ii) at any other time when persons and vehicles aren't **clearly visible at 150 metres**."
+ },
+ {
+  "id": 28,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A vehicle **may not use an adjustable spot lamp**, except:\n(i) **official vehicles** (ambulance, fire-fighting, police, traffic control),\n(ii) vehicles used by a **medical practitioner or veterinarian**, or\n(iii) **breakdown or utility vehicles** working at an emergency or overhead line inspection."
+ },
+ {
+  "id": 30,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A vehicle must be fitted with a **rear-view mirror** giving a clear view of traffic behind (**tractors are excepted**)."
+ },
+ {
+  "id": 31,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A motor car, minibus, bus, or goods vehicle must have:\n(i) both an **exterior mirror on the driving side** and an **interior mirror**, or\n(ii) **two exterior mirrors** if the interior one doesn't give a clear rear view."
+ },
+ {
+  "id": 50,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Helmets aren't required if the motorcycle has **SABS-compliant seatbelts** and the engine cannot run unless the rider and passenger are **wearing them**."
+ },
+ {
+  "id": 56,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A vehicle may not be used if:\n(i) its **fuel tank, carburettor, or fuel pipes** are defective or exposed as a danger,\n(ii) the fuel tank **lacks an effective cap**, or\n(iii) the **electrical wiring and battery** aren't properly installed, insulated, and maintained."
+ },
+ {
+  "id": 68,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "Maximum vehicle length limits:\n(i) **8 metres** for a trailer (not semi-trailer) under 12,000kg GVM,\n(ii) **12.5 metres** for a trailer over 12,000kg GVM or any single vehicle,\n(iii) **18.5 metres** for an articulated motor vehicle, and\n(iv) **22 metres** for a bus-train or combination of motor vehicles."
+ },
+ {
+  "id": 246,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "The **'rear end'** of a vehicle is the part that **projects furthest to the rear**."
+ },
+ {
+  "id": 247,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "**'Roadworthy'**, for a vehicle, means it complies with relevant legal provisions and is **fit to be operated on a public road**."
+ },
+ {
+  "id": 248,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **service brake** is a brake, normally a **footbrake**, used to reduce speed or bring a vehicle to a stop."
+ },
+ {
+  "id": 249,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "A **sidewalk** is the portion of a verge intended for the **exclusive use of pedestrians**."
+ },
+ {
+  "id": 251,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "**'The Act'** refers to the **National Road Traffic Act, 1996 (Act No. 93 of 1996)**, which governs road traffic in South Africa."
+ },
+ {
+  "id": 252,
+  "table": "study_rules",
+  "field": "body",
+  "formatted_text": "**'Towing'** means towing a vehicle **not designed or adapted solely to be drawn** -- as distinct from 'drawing'."
+ }
+]

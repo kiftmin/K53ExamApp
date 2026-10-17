@@ -1,0 +1,2382 @@
+[
+ {
+  "id": 131,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "A passenger may only be carried if the motorcycle's engine exceeds 50cc and the passenger must be seated in a sidecar or astride a pillion",
+  "formatted": "A passenger may only be carried if the motorcycle's engine exceeds 50cc and the passenger is seated in a sidecar or astride a pillion"
+ },
+ {
+  "id": 136,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "Riders must travel in single file within the same lane except briefly to overtake another motorcycle two motorcycles may not overtake another vehicle at the same time",
+  "formatted": "Riders must travel in single file within the same lane except briefly to overtake another motorcycle and ensure two motorcycles do not overtake another vehicle at the same time"
+ },
+ {
+  "id": 137,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "A sidecar must be attached to the left side of the motorcycle and may not be fitted to a motorcycle with an engine under 50cc",
+  "formatted": "A sidecar must be attached to the left side of the motorcycle and not be fitted to a motorcycle with an engine under 50cc"
+ },
+ {
+  "id": 141,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "Pedestrians may not cross while the red man light is showing if the red man flashes pedestrians already in the road must finish crossing quickly while those not yet in the road must wait for the green man",
+  "formatted": "Pedestrian signal rules pedestrians may not cross while the red man light is showing if the red man flashes pedestrians already in the road must finish crossing quickly and those not yet in the road must wait for the green man"
+ },
+ {
+  "id": 142,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "A vehicle left in the same place for more than 24 hours outside an urban area or 7 days within an urban area is deemed abandoned by its owner",
+  "formatted": "A vehicle is deemed abandoned by its owner if left in the same place for more than 24 hours outside an urban area or more than 7 days within an urban area"
+ },
+ {
+  "id": 143,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "Don't cause a vehicle's wheel to drag or spin on the roadway except in an emergency use chocks or shoes between a moving wheel and the road surface or otherwise use or move a vehicle in a way that damages the road",
+  "formatted": "Do not cause a vehicle's wheel to drag or spin on the roadway except in an emergency use chocks or shoes between a moving wheel and the road surface or use or move a vehicle in a way that damages the road"
+ },
+ {
+  "id": 144,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "Animal-drawn vehicles pedal cycles motorcycles under 50cc or electrically propelled motor quadrucycles disability vehicles under 230kg and tractors outside road construction or maintenance use may not use a freeway",
+  "formatted": "The following may not use a freeway animal-drawn vehicles and pedal cycles motorcycles under 50cc or electrically propelled motor quadrucycles and disability vehicles under 230kg and tractors outside road construction or maintenance use"
+ },
+ {
+  "id": 108,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "Don't park where a traffic officer directs otherwise in contravention of a sign where stopping isn't permitted where the vehicle would obscure a road sign on the sidewalk or blocking a private or public vehicular entrance",
+  "formatted": "Don't park where a traffic officer directs otherwise or in contravention of a sign where stopping isn't permitted or where the vehicle would obscure a road sign or on the sidewalk or blocking a private or public vehicular entrance"
+ },
+ {
+  "id": 113,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "Don't stop alongside or opposite an excavation or obstruction if it would obstruct or endanger traffic in a tunnel subway or on a bridge or within 6 metres of one where the roadway has been narrowed or within 6 metres of the narrowing in contravention of a sign facing oncoming traffic on the right side alongside another vehicle on a road under 9 metres wide within a railway level crossing within 9 metres of a pedestrian crossing's approach side or anywhere it would endanger or obstruct traffic",
+  "formatted": "Don't stop alongside or opposite an excavation or obstruction if it would obstruct traffic in a tunnel subway or on a bridge or within 6 metres of one where the roadway has been narrowed or within 6 metres of the narrowing in contravention of a sign or facing oncoming traffic on the right side alongside another vehicle on a road under 9 metres wide within a railway level crossing or within 9 metres of a pedestrian crossing's approach side or anywhere it would endanger or obstruct traffic"
+ },
+ {
+  "id": 133,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "A rider may not carry a person animal or bulky object in front of them a non-bulky object may be carried if securely attached and doesn't obstruct the rider's view or control",
+  "formatted": "Motorcycle carrying rules a rider may not carry a person animal or bulky object in front of them and a non-bulky object may be carried if securely attached and doesn't obstruct view or control"
+ },
+ {
+  "id": 172,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "A heavy motor vehicle may not be used if its fuel tank carburettor or fuel pipes are defective or exposed as a danger if the fuel tank lacks an effective cap or if the electrical wiring and battery aren't properly installed insulated and maintained",
+  "formatted": "A heavy motor vehicle may not be used if its fuel tank carburettor or fuel pipes are defective or exposed as a danger the fuel tank lacks an effective cap or the electrical wiring and battery aren't properly installed insulated and maintained"
+ },
+ {
+  "id": 6,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "A Code 2 learner's licence authorises driving any motor vehicle or combination other than a motorcycle or tricycle with tare GVM or GCM not exceeding 3500kg only under the direct supervision of a licensed driver for that class Minimum age is 17 valid for 24 months from the test date",
+  "formatted": "A Code 2 learner's licence authorises driving any motor vehicle or combination other than a motorcycle or tricycle with tare GVM or GCM not exceeding 3500kg requires direct supervision of a licensed driver for that class requires a minimum age of 17 and is valid for 24 months from the test date"
+ },
+ {
+  "id": 7,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "A Code 3 learner's licence authorises driving any motor vehicle or combination other than a motorcycle tricycle or quadrucycle -- covering both light and heavy vehicles -- only under the direct supervision of a licensed driver for that class Minimum age is 18 valid for 24 months from the test date",
+  "formatted": "A Code 3 learner's licence authorises driving any motor vehicle or combination other than a motorcycle tricycle or quadrucycle covering light and heavy vehicles requires direct supervision of a licensed driver for that class requires a minimum age of 18 and is valid for 24 months from the test date"
+ },
+ {
+  "id": 26,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "Motorcycles motor tricycles and trailers need only a rear number plate all other motor vehicles need one at the front and one at the rear",
+  "formatted": "Number plate requirements motorcycles motor tricycles and trailers need only a rear number plate and all other motor vehicles need one at the front and one at the rear"
+ },
+ {
+  "id": 46,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "A driver must ensure a child uses an appropriate child restraint where available or a seatbelt if no restraint is available if no belted seat is available and the vehicle has a rear seat the child must sit there",
+  "formatted": "A driver must ensure a child uses an appropriate child restraint where available or a seatbelt if no restraint is available and if no belted seat is available and the vehicle has a rear seat the child must sit there"
+ },
+ {
+  "id": 146,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "Don't give a hand signal on a freeway except for reasons beyond your control be on a freeway on foot or leave an animal where it could stray onto one",
+  "formatted": "Freeway restrictions don't give a hand signal on a freeway except for reasons beyond your control don't be on a freeway on foot and don't leave an animal where it could stray onto one"
+ },
+ {
+  "id": 60,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "A stationary vehicle must place a warning triangle at least 45 metres away in the direction traffic will approach from at roughly the same distance from the roadway edge as the vehicle's own centre with the reflective side facing oncoming traffic",
+  "formatted": "A stationary vehicle must place a warning triangle at least 45 metres away in the direction traffic will approach from at roughly the same distance from the roadway edge as the vehicle's own centre and with the reflective side facing oncoming traffic"
+ },
+ {
+  "id": 61,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "A warning triangle isn't required if the vehicle is stopped in a loading zone on a traffic officer's or sign's direction because of other traffic while the driver stays in the driving seat or during a state or municipal function",
+  "formatted": "A warning triangle isn't required if the vehicle is stopped in a loading zone or on a traffic officer's or sign's direction because of other traffic while the driver stays in the driving seat or during a state or municipal function"
+ },
+ {
+  "id": 69,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "A double-deck bus with load may not exceed 4 65 metres in height any other motor vehicle may not exceed 4 3 metres",
+  "formatted": "Maximum vehicle height limits a double-deck bus with load may not exceed 4 65 metres in height and any other motor vehicle may not exceed 4 3 metres"
+ },
+ {
+  "id": 70,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "A bus with a front wheel track over 1 9 metres may not exceed 2 6 metres overall width a goods vehicle of 12 000kg GVM or more may not exceed 2 6 metres any other vehicle may not exceed 2 5 metres",
+  "formatted": "Maximum overall width limits a bus with a front wheel track over 1 9 metres may not exceed 2 6 metres a goods vehicle of 12 000kg GVM or more may not exceed 2 6 metres and any other vehicle may not exceed 2 5 metres"
+ },
+ {
+  "id": 76,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "The section of a goods vehicle carrying persons must be enclosed to at least 350mm above a seated person or 900mm above a standing person",
+  "formatted": "The section of a goods vehicle carrying persons must be enclosed to at least 350mm above a seated person or at least 900mm above a standing person"
+ },
+ {
+  "id": 78,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "A motorcycle's load or sidecar load may not project more than 600mm in front of the front axle 900mm behind the rear axle 450mm to either side or 300mm beyond the sidecar wheel",
+  "formatted": "A motorcycle's load or sidecar load may not project more than 600mm in front of the front axle more than 900mm behind the rear axle more than 450mm to either side or more than 300mm beyond the sidecar wheel"
+ },
+ {
+  "id": 79,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "A light or heavy vehicle's goods may not project sideways from the centre-line by more than 1 3 metres bus or goods vehicle over 12 000kg GVM or 1 25 metres any other vehicle excluding mirrors or indicators",
+  "formatted": "A light or heavy vehicle's goods may not project sideways from the centre-line by more than 1 3 metres bus or goods vehicle over 12 000kg GVM or more than 1 25 metres any other vehicle excluding mirrors or indicators"
+ },
+ {
+  "id": 80,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "A light or heavy vehicle's goods may not project more than 300mm beyond the front of the vehicle or 1 8 metres beyond the rear",
+  "formatted": "A light or heavy vehicle's goods may not project more than 300mm beyond the front of the vehicle or more than 1 8 metres beyond the rear"
+ },
+ {
+  "id": 1,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "A learner's licence test covers rules of the road and related legislation road traffic signs signals markings and vehicle controls Once passed the learner's licence is valid for 24 months",
+  "formatted": "A learner's licence test covers rules of the road and related legislation road traffic signs signals and markings and vehicle controls Once passed the learner's licence is valid for 24 months"
+ },
+ {
+  "id": 4,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "A person is disqualified if suffering from uncontrolled epilepsy disabling giddiness or fainting e g from hypertension a mental illness requiring detention or treatment a condition causing muscular incoordination uncontrolled diabetes mellitus defective vision below the prescribed standard or any other disease or defect likely to prevent safe driving Deafness alone is not disqualifying",
+  "formatted": "A person is disqualified if suffering from uncontrolled epilepsy disabling giddiness or fainting a mental illness requiring detention or treatment or a condition causing muscular incoordination uncontrolled diabetes mellitus or defective vision below the prescribed standard or any other disease or defect likely to prevent safe driving Deafness alone is not disqualifying"
+ },
+ {
+  "id": 5,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "A Code 1 learner's licence authorises riding a motorcycle but not a motor quadrucycle on a public road Minimum age is 16 under 18 you're limited to a 125cc engine no passengers may be carried",
+  "formatted": "A Code 1 learner's licence authorises riding a motorcycle but not a motor quadrucycle on a public road requires a minimum age of 16 under 18 you're limited to a 125cc engine and prohibits carrying any passengers"
+ },
+ {
+  "id": 12,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "These lighting rules don't apply to a vehicle parked off the roadway in a demarcated parking place or within 12 metres of a lit street lamp illuminating the road",
+  "formatted": "These lighting rules don't apply to a vehicle stopped parked off the roadway in a demarcated parking place or within 12 metres of a lit street lamp illuminating the road"
+ },
+ {
+  "id": 111,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "Within an urban area don't park within 9 metres of the approach side of a pedestrian crossing within 5 metres of an intersection over a traffic signal's mechanism more than 450mm from the kerb on a road narrower than 5 5 metres or on a traffic island pedestrian mall or pedestrian lane",
+  "formatted": "Within an urban area don't park within 9 metres of the approach side of a pedestrian crossing within 5 metres of an intersection or over a traffic signal's mechanism more than 450mm from the kerb or on a road narrower than 5 5 metres or on a traffic island pedestrian mall or pedestrian lane"
+ },
+ {
+  "id": 164,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "If these details haven't already been given to a traffic officer at the scene the accident must be reported to a police station within 24 hours along with any further information required",
+  "formatted": "If details haven't been given to an officer at the scene the accident must be reported to a police station within 24 hours along with any further information required"
+ },
+ {
+  "id": 182,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "The edge of the roadway is the boundary between the roadway and the shoulder as indicated by a sign or otherwise the edge of the surfaced or improved part of the road",
+  "formatted": "The edge of the roadway is the boundary between roadway and shoulder as indicated by a sign or otherwise the edge of the surfaced or improved part of the road"
+ },
+ {
+  "id": 186,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "Gross Combination Mass GCM is the maximum mass of a vehicle combination including the drawing vehicle and its load as specified by the manufacturer or failing that the registering authority",
+  "formatted": "Gross Combination Mass GCM is the maximum mass of a vehicle combination including drawing vehicle and its load as specified by the manufacturer or registering authority"
+ },
+ {
+  "id": 187,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "Gross Vehicle Mass GVM is the maximum mass of a vehicle and its load as specified by the manufacturer or failing that the registering authority",
+  "formatted": "Gross Vehicle Mass GVM is the maximum mass of a vehicle and its load as specified by the manufacturer or registering authority"
+ },
+ {
+  "id": 199,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "A number plate is a prescribed plate displaying a vehicle's licence number or a motor trade number",
+  "formatted": "A number plate is a prescribed plate displaying a vehicle's licence number or motor trade number"
+ },
+ {
+  "id": 219,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "HMV means Heavy Motor Vehicle -- tare exceeds 3500kg or a minibus bus goods vehicle GVM exceeds 3500kg or an articulated combination vehicle's GCM or trailer GVM exceeds the prescribed thresholds",
+  "formatted": "HMV means Heavy Motor Vehicle -- tare exceeds 3500kg or a minibus bus goods vehicle GVM exceeds 3500kg or an articulated combination vehicle's GCM or trailer GVM exceeds prescribed thresholds"
+ },
+ {
+  "id": 138,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "A driver may not hold a cellular or other communication device in one or both hands or with any other part of the body while driving",
+  "formatted": "A driver may not hold a cellular or communication device in one or both hands or with any other part of the body while driving"
+ },
+ {
+  "id": 221,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "No person may drive a motor vehicle on a public road except under a licence issued in terms of the National Road Traffic Act and must keep that licence or document with them in the vehicle",
+  "formatted": "No person may drive a motor vehicle on a public road except under a licence issued in terms of the Act and must keep that licence with them in the vehicle"
+ },
+ {
+  "id": 222,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "A licence to drive a motor vehicle is issued by a driving licence testing centre and is either a provisional licence a learner's licence or a full driving licence",
+  "formatted": "A driving licence is issued by a DLTC and is either a provisional licence learner's or a full driving licence"
+ },
+ {
+  "id": 223,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "A learner's licence application is made at a DLTC on form LL1 accompanied by two identical photos acceptable identification plus a copy and the appropriate fee applicants 65 or older must also submit a medical certificate form MC from a medical practitioner or occupational health practitioner",
+  "formatted": "A learner's licence application requirements apply at a DLTC on form LL1 with two identical photos acceptable ID plus copy and the fee and applicants 65 or older must also submit a medical certificate form MC from a registered practitioner"
+ },
+ {
+  "id": 224,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "A licence holder who permanently changes their place of residence must notify the registering authority of their new residential and postal address within 14 days",
+  "formatted": "A licence holder who permanently changes residence must notify the registering authority of their new address within 14 days"
+ },
+ {
+  "id": 225,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "An owner operator or person in charge of a vehicle may not employ or permit anyone to drive it on a public road unless that person is licensed to drive it",
+  "formatted": "An owner operator or person in charge may not employ or permit anyone to drive a vehicle unless that person is licensed to drive it"
+ },
+ {
+  "id": 244,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "To 'park' means to keep a vehicle stationary for longer than is reasonably necessary to load or unload people or goods excluding delays beyond the driver's control",
+  "formatted": "To 'park' means to keep a vehicle stationary for longer than is reasonably necessary to load or unload people or goods excluding delays beyond control"
+ },
+ {
+  "id": 229,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "A motor vehicle may still be operated for up to 21 days after its licence expires a 'period of grace' provided the previous licence number and disc are displayed in the prescribed manner",
+  "formatted": "A motor vehicle may still be operated for up to 21 days after its licence expires a 'period of grace' provided the previous licence number and disc are displayed"
+ },
+ {
+  "id": 231,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "'Drawing' means towing a vehicle that is designed or adapted solely to be drawn using a vehicle designed or adapted solely for that purpose -- as distinct from general 'towing'",
+  "formatted": "'Drawing' means towing a vehicle designed or adapted solely to be drawn using a vehicle designed solely for that purpose -- as distinct from general 'towing'"
+ },
+ {
+  "id": 232,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "A driving licence card is a driving licence card issued in terms of the National Road Traffic Act",
+  "formatted": "A driving licence card is a card issued in terms of the National Road Traffic Act"
+ },
+ {
+  "id": 233,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "'Driving time' is any period a driver occupies the driver's seat of a vehicle while it is being operated on a public road or while the engine is running",
+  "formatted": "'Driving time' is any period a driver occupies the driver's seat while the vehicle is operated or while the engine is running"
+ },
+ {
+  "id": 235,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "The 'front end' of a vehicle is the part that projects furthest forward for a semi-trailer a line through the kingpin connecting the vehicle's widest point ahead of it",
+  "formatted": "The 'front end' of a vehicle is the part that projects furthest forward for a semi-trailer a line through the kingpin connecting its widest point ahead"
+ },
+ {
+  "id": 236,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "An instructor is someone who for direct reward teaches another person to drive a motor vehicle or teaches the rules of the road or road signs for a learner's or driving licence",
+  "formatted": "An instructor is someone who for direct reward teaches another person to drive or teaches road rules signs for a licence"
+ },
+ {
+  "id": 237,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "The kerb line is the boundary between the shoulder and the verge or where there's no shoulder the boundary between the edge of the roadway and the verge",
+  "formatted": "The kerb line is the boundary between the shoulder and the verge or between the edge of the roadway and the verge where there is no shoulder"
+ },
+ {
+  "id": 240,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "Overall length is the distance between the front end and rear end of a vehicle or for a combination between the front of the leading vehicle and the rear of the rearmost vehicle",
+  "formatted": "Overall length is the distance between the front end and rear end of a vehicle or between the front of leading vehicle and rear of rearmost vehicle"
+ },
+ {
+  "id": 241,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "Overall height is the distance from ground level to the highest point of the vehicle or its load excluding overhead electrical contacting gear or a catwalk on electrically driven vehicles",
+  "formatted": "Overall height is the distance from ground level to the highest point of the vehicle or load excluding overhead electrical gear"
+ },
+ {
+  "id": 242,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "Overall width is the distance between two planes parallel to the vehicle's centre-line touching the widest projecting points on either side -- excluding side mirrors direction indicators or small fitments like air deflectors",
+  "formatted": "Overall width is the distance between parallel planes touching the widest projecting points on either side -- excluding mirrors and indicators"
+ },
+ {
+  "id": 243,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "The 'owner' of a vehicle is the person with the right to use and enjoy it under common law or a contractual agreement or a motor dealer in possession of it for sale",
+  "formatted": "The 'owner' of a vehicle is the person with the right to use and enjoy it under law contract or a motor dealer in possession of it for sale"
+ },
+ {
+  "id": 28,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "A vehicle may not use an adjustable spot lamp on a public road except official vehicles ambulance fire-fighting police traffic control vehicles used by a medical practitioner or veterinarian for professional duties or a breakdown vehicle or utility vehicle working at an accident breakdown or overhead line inspection",
+  "formatted": "A vehicle may not use an adjustable spot lamp except official vehicles ambulance fire-fighting police traffic control vehicles used by a medical practitioner or veterinarian or breakdown or utility vehicles working at an emergency or overhead line inspection"
+ },
+ {
+  "id": 30,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "A vehicle must be fitted with a rear-view mirror giving a clear view of traffic behind in clear weather tractors are excepted",
+  "formatted": "A vehicle must be fitted with a rear-view mirror giving a clear view of traffic behind tractors are excepted"
+ },
+ {
+  "id": 31,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "A motor car minibus bus or goods vehicle must have both an exterior mirror on the driving side and an interior mirror -- or two exterior mirrors if the interior one doesn't give a clear rear view",
+  "formatted": "A motor car minibus bus or goods vehicle must have both an exterior mirror on the driving side and an interior mirror or two exterior mirrors if the interior one doesn't give a clear rear view"
+ },
+ {
+  "id": 50,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "Helmets aren't required if the motorcycle has SABS-compliant seatbelts and the engine cannot run unless the rider and any passenger are wearing them",
+  "formatted": "Helmets aren't required if the motorcycle has SABS-compliant seatbelts and the engine cannot run unless the rider and passenger are wearing them"
+ },
+ {
+  "id": 56,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "A vehicle may not be used if its fuel tank carburettor or fuel pipes are defective or exposed as a danger if the fuel tank lacks an effective cap or if the electrical wiring and battery aren't properly installed insulated and maintained",
+  "formatted": "A vehicle may not be used if its fuel tank carburettor or fuel pipes are defective or exposed as a danger the fuel tank lacks an effective cap or the electrical wiring and battery aren't properly installed insulated and maintained"
+ },
+ {
+  "id": 68,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "Maximum vehicle lengths 8 metres for a trailer not semi-trailer under 12 000kg GVM 12 5 metres for one over 12 000kg GVM 18 5 metres for an articulated motor vehicle 22 metres for a bus-train or any combination of motor vehicles 12 5 metres for any other vehicle",
+  "formatted": "Maximum vehicle length limits 8 metres for a trailer not semi-trailer under 12 000kg GVM 12 5 metres for a trailer over 12 000kg GVM or any single vehicle 18 5 metres for an articulated motor vehicle and 22 metres for a bus-train or combination of motor vehicles"
+ },
+ {
+  "id": 247,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "'Roadworthy' for a vehicle means it complies with the relevant legal provisions and is otherwise fit to be operated on a public road",
+  "formatted": "'Roadworthy' for a vehicle means it complies with relevant legal provisions and is fit to be operated on a public road"
+ },
+ {
+  "id": 248,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "A service brake is a brake normally a footbrake used to reduce a vehicle's speed or bring it to a stop",
+  "formatted": "A service brake is a brake normally a footbrake used to reduce speed or bring a vehicle to a stop"
+ },
+ {
+  "id": 252,
+  "table": "study_rules",
+  "field": "body",
+  "raw": "'Towing' means towing a vehicle that is not designed or adapted solely to be drawn -- as distinct from 'drawing' which refers to vehicles built solely for that purpose",
+  "formatted": "'Towing' means towing a vehicle not designed or adapted solely to be drawn -- as distinct from 'drawing'"
+ },
+ {
+  "id": 188,
+  "table": "study_signs",
+  "field": "where_text",
+  "raw": "on any road especially near airports",
+  "formatted": "On any road especially near airports"
+ },
+ {
+  "id": 185,
+  "table": "study_signs",
+  "field": "where_text",
+  "raw": "On any road close to water harbours",
+  "formatted": "On any road close to water or harbours"
+ },
+ {
+  "id": 147,
+  "table": "study_signs",
+  "field": "where_text",
+  "raw": "On any road before a intersection with traffic light",
+  "formatted": "On any road before an intersection with traffic light"
+ },
+ {
+  "id": 148,
+  "table": "study_signs",
+  "field": "where_text",
+  "raw": "On any road before a intersection with a stop sign",
+  "formatted": "On any road before an intersection with a stop sign"
+ },
+ {
+  "id": 273,
+  "table": "study_signs",
+  "field": "where_text",
+  "raw": "On any road before a railway crossings between the warning sign and the railway crossing",
+  "formatted": "On any road before a railway crossing between the warning sign and the railway crossing"
+ },
+ {
+  "id": 232,
+  "table": "study_signs",
+  "field": "where_text",
+  "raw": "On the left-hand side of an ordinary road after a Near-side on-ramp direction sign",
+  "formatted": "On the left-hand side of an ordinary road after a 'Near-side on-ramp direction' sign"
+ },
+ {
+  "id": 17,
+  "table": "study_signs",
+  "field": "where_text",
+  "raw": "At obstructions such as traffic islands Only one of these signs will be displayed at a time",
+  "formatted": "At obstructions such as traffic islands only one sign displayed at a time"
+ },
+ {
+  "id": 186,
+  "table": "study_signs",
+  "field": "where_text",
+  "raw": "On any the road especially in rural and mountainous areas",
+  "formatted": "On any road especially in rural and mountainous areas"
+ },
+ {
+  "id": 57,
+  "table": "study_signs",
+  "field": "where_text",
+  "raw": "On a public road where the road is narrow near an intersection or where a parked vehicle can impair the vision of other drivers",
+  "formatted": "On a public road where the road is narrow near an intersection or where a parked vehicle can impair vision"
+ },
+ {
+  "id": 58,
+  "table": "study_signs",
+  "field": "where_text",
+  "raw": "On any public road The sign may be supplemented by a red no stopping line",
+  "formatted": "On any public road may be supplemented by a red 'no stopping line'"
+ },
+ {
+  "id": 37,
+  "table": "study_signs",
+  "field": "where_text",
+  "raw": "In areas where there are farms and other activities that require agricultural vehicles",
+  "formatted": "In areas where there are farms and activities requiring agricultural vehicles"
+ },
+ {
+  "id": 35,
+  "table": "study_signs",
+  "field": "where_text",
+  "raw": "In areas where there many tourist tractions",
+  "formatted": "In areas where there are many tourist attractions"
+ },
+ {
+  "id": 80,
+  "table": "study_signs",
+  "field": "where_text",
+  "raw": "On a public road where the road is narrow near an intersection or where a parked vehicle can impair the vision of other drivers",
+  "formatted": "On a public road where the road is narrow near an intersection or where a parked vehicle can impair vision"
+ },
+ {
+  "id": 292,
+  "table": "study_signs",
+  "field": "where_text",
+  "raw": "In areas where there is high traffic congestion at the scene of an accident or the normal traffic signals are not operational",
+  "formatted": "In areas where there is high traffic congestion at the scene of an accident or when normal traffic signals are not operational"
+ },
+ {
+  "id": 293,
+  "table": "study_signs",
+  "field": "where_text",
+  "raw": "In areas where there is road works ahead herdsman leading cattle or other animals across or next to a roadway",
+  "formatted": "In areas where there is road works ahead or a herdsman leading cattle or other animals across or next to a roadway"
+ },
+ {
+  "id": 294,
+  "table": "study_signs",
+  "field": "where_text",
+  "raw": "In areas where there is road works ahead herdsman leading cattle or other animals across or next to a roadway",
+  "formatted": "In areas where there is road works ahead or a herdsman leading cattle or other animals across or next to a roadway"
+ },
+ {
+  "id": 61,
+  "table": "study_signs",
+  "field": "where_text",
+  "raw": "At the beginning of or entrance to a carriageway lane or path",
+  "formatted": "At the beginning of or entrance to any carriageway lane or path"
+ },
+ {
+  "id": 52,
+  "table": "study_signs",
+  "field": "where_text",
+  "raw": "On any public road where it is necessary to close the road for general traffic The temporary sign is usually displayed at road works",
+  "formatted": "On any public road where it is necessary to close the road for general traffic usually displayed at road works"
+ },
+ {
+  "id": 131,
+  "table": "study_signs",
+  "field": "where_text",
+  "raw": "On any road before you reach the place where another road joins your road from the left W107 TW107 or from the right W108 TW108",
+  "formatted": "On any road before you reach the place where another road joins your road from the left or right"
+ },
+ {
+  "id": 23,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "Indicate that a road or part of a road may be used by motorcyclists only Motorcyclists must follow the route indicated by the road traffic sign",
+  "formatted": "Indicates that a road or part of a road may be used by motorcyclists only and motorcyclists must follow the route indicated by the sign"
+ },
+ {
+  "id": 103,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To allow minibuses to take up and drop passengers off Such a vehicle must display an appropriate emblem logo or any other indication that they are minibuses",
+  "formatted": "To allow minibuses to take up and drop passengers off such a vehicle must display an appropriate emblem or logo"
+ },
+ {
+  "id": 130,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn that you are approaching an intersection where another road meet yours at an angle",
+  "formatted": "To warn that you are approaching an intersection where another road meets yours at an angle"
+ },
+ {
+  "id": 168,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn that the carriageway ahead narrows to a width that will make it possible for only one vehicle at a time to pass",
+  "formatted": "To warn that the carriageway ahead narrows to a width that will allow only one vehicle at a time to pass"
+ },
+ {
+  "id": 133,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn that traffic could merge from the left W112 TW112 or from the right W114 TW114 at sharp angles To warn that the road you are travelling on will soon split in two and you will have to make a choice which road to take",
+  "formatted": "Road split and merge warnings to warn that traffic could merge from the left or right at sharp angles or to warn that the road will soon split in two requiring a choice of route"
+ },
+ {
+  "id": 166,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn that the tarred road you are driving on will end soon and will have a gravel surface ahead",
+  "formatted": "To warn that the tarred road will end soon and will have a gravel surface ahead"
+ },
+ {
+  "id": 45,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "Inform you of the speed limit applicable on this road The restriction applies from the sign",
+  "formatted": "To inform you of the speed limit applicable on this road applies from the sign"
+ },
+ {
+  "id": 208,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To point out the direction to a transport terminus from a road that would otherwise have taken you past the terminus",
+  "formatted": "To point out the direction to a transport terminus from a road that would otherwise have taken you past it"
+ },
+ {
+  "id": 149,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn that there is a yield sign ahead which you may not be able to see in time without a warning",
+  "formatted": "To warn that there is a yield sign ahead which you may not be able to see in time"
+ },
+ {
+  "id": 229,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To indicate in good time exits that is close together all leading to the same town",
+  "formatted": "To indicate in good time exits that are close together all leading to the same town"
+ },
+ {
+  "id": 171,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn that there is a depression or a ridge in the road or that the road in general is uneven and potholed",
+  "formatted": "To warn that there is a depression or ridge in the road or that the road is uneven and potholed"
+ },
+ {
+  "id": 180,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn that the material of the road shoulder may be softer than reasonably expected and could be dangerous for anyone who wants to move of the road",
+  "formatted": "To warn that the road shoulder material may be soft and dangerous for moving off the road"
+ },
+ {
+  "id": 203,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn that the road does not continue beyond the sign and that a turn either to the left or to the right must be made",
+  "formatted": "To warn that the road does not continue beyond the sign and that a turn left or right must be made"
+ },
+ {
+  "id": 116,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To indicate that the regulatory sign applies only for the period s or during conditions indicated on this sign",
+  "formatted": "To indicate that the regulatory sign applies only for the periods or conditions indicated"
+ },
+ {
+  "id": 7,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "These are two different signs which are mounted back to back It indicates whether you may proceed or must stop",
+  "formatted": "Mounted back to back to indicate whether you may proceed or must stop"
+ },
+ {
+  "id": 128,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn that you are approaching an intersection where you have to yield to cross-traffic The thicker leg of the cross on the sign indicates which road has priority",
+  "formatted": "To warn that you are approaching an intersection where you have to yield to cross-traffic thicker leg indicates priority"
+ },
+ {
+  "id": 147,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn that there are isolated and particularly new traffic lights or traffic lights near an isolated traffic light at a pedestrian crossing ahead",
+  "formatted": "To warn that there are isolated or new traffic lights ahead"
+ },
+ {
+  "id": 145,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn that the double-lane road you are driving on narrows by a full lane from the left W215 or TW215 or from the right-hand side W214 or TW 214",
+  "formatted": "To warn that the double-lane road narrows by a full lane from the left or right side"
+ },
+ {
+  "id": 172,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn that there are speed humps on the carriageway ahead which require a reduction of speed",
+  "formatted": "To warn that there are speed humps on the carriageway ahead requiring a reduction of speed"
+ },
+ {
+  "id": 198,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn that there is a possibility of electrical shock from the overhead electrical power cables on the road ahead",
+  "formatted": "To warn that there is a possibility of electrical shock from overhead power cables on the road ahead"
+ },
+ {
+  "id": 9,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To compel you to give priority to pedestrians crossing the road or wanting to cross the road",
+  "formatted": "To compel you to give priority to pedestrians crossing or wanting to cross the road"
+ },
+ {
+  "id": 10,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn you that there is a traffic circle ahead where they must expect to yield",
+  "formatted": "To warn you that there is a traffic circle ahead where drivers must expect to yield"
+ },
+ {
+  "id": 4,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To allow traffic turning left to do so if it can be done without interfering with cross traffic without stopping",
+  "formatted": "To allow traffic turning left to do so without stopping if safe"
+ },
+ {
+  "id": 14,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To indicate that there is a single carriageway ahead for use by vehicle from both directions",
+  "formatted": "To indicate that there is a single carriageway ahead for use by vehicles from both directions"
+ },
+ {
+  "id": 170,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn that the road ahead narrows from the left W330 TW330 or from the right-hand W329 TW329 side",
+  "formatted": "To warn that the road ahead narrows from the left or right-hand side"
+ },
+ {
+  "id": 189,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn that tractors or other slow-moving agricultural vehicles could cross or enter the road ahead",
+  "formatted": "To warn that tractors or slow-moving agricultural vehicles could cross or enter the road ahead"
+ },
+ {
+  "id": 191,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn that there is a possibility reduced visibility on the road ahead that might cause a hazard to road users",
+  "formatted": "To warn that there is a possibility of reduced visibility from fog or smoke ahead"
+ },
+ {
+  "id": 197,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn that there is overall width of vehicles restriction as indicated in metres on the road ahead",
+  "formatted": "To warn that there is an overall width restriction as indicated in metres on the road ahead"
+ },
+ {
+  "id": 209,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To indicate that a route of equal or higher status can be entered from the road on which you are travelling This new route consists of a pair of one-way roadways",
+  "formatted": "To indicate that a route of equal or higher status can be entered consisting of a pair of one-way roadways"
+ },
+ {
+  "id": 213,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To inform in advance that a particular numbered route changes direction at the intersection ahead or that the cross-street at the intersection ahead is a numbered class-B route",
+  "formatted": "To inform in advance that a numbered route changes direction or that the cross-street is a numbered class-B route"
+ },
+ {
+  "id": 228,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To indicate the direction of the various destinations at the end of a freeway exit off-ramp",
+  "formatted": "To indicate the direction of various destinations at the end of a freeway exit off-ramp"
+ },
+ {
+  "id": 217,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To indicate the numbers of the routes leading from this intersection and destinations that can be reached from this intersection",
+  "formatted": "To indicate the numbers of routes and destinations leading from this intersection"
+ },
+ {
+  "id": 276,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn drivers that the lane indicated by this marking can be used for traffic from the opposite direction at various times of day or night",
+  "formatted": "To warn drivers that the indicated lane can be used by traffic from the opposite direction at various times"
+ },
+ {
+  "id": 218,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To confirm the route to a destination and the distance indicated in kilometres to such destinations",
+  "formatted": "To confirm the route to a destination and the distance indicated in kilometres"
+ },
+ {
+  "id": 207,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To point out the direction of a transport terminus from a route that would otherwise have taken you past a bus terminus harbour airport or helipad",
+  "formatted": "To point out the direction of a transport terminus from a route that would otherwise take you past it"
+ },
+ {
+  "id": 200,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn that there is an obstruction or temporary obstruction next to the road and that the road alignment to the left or right hand side is altered",
+  "formatted": "To warn of an obstruction next to the road and that the road alignment is altered"
+ },
+ {
+  "id": 201,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn that the road ahead curves suddenly to the left W406 W408 TW406 TW408 or to the right W405 W407 TW405 TW407",
+  "formatted": "To warn that the road ahead curves suddenly to the left or right"
+ },
+ {
+  "id": 237,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To guide you by means of a diagram which indicates that the right-hand lane of a two-lane carriageway or part of a carriageway is subject to a compulsory requirement of a 'command' or 'prohibition' regulatory sign Opposing traffic flow is indicated by a dotted arrow",
+  "formatted": "To guide by diagram that the right-hand lane is subject to a compulsory regulatory sign opposing flow shown by dotted arrow"
+ },
+ {
+  "id": 179,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn that the level of the right-hand side of the carriageway is higher than the left-hand side TW340 or the left-hand side of the carriageway is higher than the right-hand side TW341",
+  "formatted": "To warn that one side of the carriageway is at a higher level than the other"
+ },
+ {
+  "id": 216,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To indicate the numbers of the routes leading from an intersection and destinations that can be reached from this intersection",
+  "formatted": "To indicate the numbers of routes and destinations leading from an intersection"
+ },
+ {
+  "id": 219,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To guide you to small locations or to destinations on less travelled routes",
+  "formatted": "To guide you to small locations or destinations on less travelled routes"
+ },
+ {
+  "id": 230,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To indicate that the road crosses a freeway and show where that freeway is leading to",
+  "formatted": "To indicate that the road crosses a freeway and show where that freeway leads"
+ },
+ {
+  "id": 231,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To indicate the position of the near-side on-ramp at a freeway access interchange with the freeway route number and the destination of the freeway",
+  "formatted": "To indicate the position of the near-side on-ramp at a freeway access interchange with route number and destination"
+ },
+ {
+  "id": 232,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To indicate that the far-side on-ramp to a freeway access interchange is some distance ahead and to indicate the route number and the destination that will be reached by turning onto that on-ramp",
+  "formatted": "To indicate that the far-side on-ramp is ahead showing the route number and destination reached"
+ },
+ {
+  "id": 234,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To indicate that the freeway splits ahead and that the lanes lead to different destinations as indicated",
+  "formatted": "To indicate that the freeway splits ahead and lanes lead to different destinations"
+ },
+ {
+  "id": 240,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To indicate that there is an arrestor bed ahead and to indicate the entrance to such an arrestor bed",
+  "formatted": "To indicate that there is an arrestor bed ahead and mark its entrance"
+ },
+ {
+  "id": 142,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn that there are two sharp curves ahead in opposite directions W210 indicates the first curve is to the right and W211 that the first curve is to the left",
+  "formatted": "To warn that there are two sharp curves ahead in opposite directions"
+ },
+ {
+  "id": 239,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To guide drivers by means of a diagram which indicates that a curved multi-lane carriageway converges with a straight multi-lane carriageway from the left or right without a decrease in lanes",
+  "formatted": "To guide drivers by diagram that a curved multi-lane carriageway converges with a straight multi-lane carriageway without decreasing lanes"
+ },
+ {
+  "id": 238,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To guide you by means of a diagram which indicates that a lane merges with another lane or that roadways join",
+  "formatted": "To guide by diagram that a lane merges with another lane or that roadways join"
+ },
+ {
+  "id": 227,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To inform early which lane at the intersection at the end of the of-ramp leads to which destination",
+  "formatted": "To inform early which lane at the end of the off-ramp leads to which destination"
+ },
+ {
+  "id": 278,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn that the traffic lanes are reduced from the left WM6 1 or right WM6 3 or from both WM6 2 sides",
+  "formatted": "To warn that traffic lanes are reduced from the left right or both sides"
+ },
+ {
+  "id": 245,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To inform you that the road ahead or the road to the left or right ends",
+  "formatted": "To inform you that the road ahead or to the left or right ends"
+ },
+ {
+  "id": 247,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To inform you of the existence of a park-and-ride terminus that has a bus IN9 or train IN10 service",
+  "formatted": "To inform you of the existence of a park-and-ride terminus with a bus or train service"
+ },
+ {
+  "id": 251,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To inform you that the traffic signals on this route are co-ordinated and that the signals will be green at all the subsequent intersections if you maintain the indicated speed",
+  "formatted": "To inform you that traffic signals are co-ordinated for green lights if you maintain the indicated speed"
+ },
+ {
+  "id": 252,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To point out that the signals at this intersection does not follow the normal sequence At a normal intersection you would expect that the signal in your direction will change to green after the signal for cross traffic was yellow At this intersection your signal may remain red whilst the signal in the opposite direction changes to green",
+  "formatted": "To point out that signals at this intersection do not follow the normal sequence"
+ },
+ {
+  "id": 254,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To show that there is a transport modal transfer point or terminus nearby where passengers may change their mode of transport",
+  "formatted": "To show that there is a transport modal transfer point or terminus nearby"
+ },
+ {
+  "id": 33,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "Indicates that the road or a portion of the road is set aside for use by vehicles conveying dangerous goods",
+  "formatted": "Indicates that the road or portion of the road is set aside for vehicles conveying dangerous goods"
+ },
+ {
+  "id": 17,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To indicate that you must drive to the left or right of an obstruction where the sign is displayed",
+  "formatted": "To indicate that you must drive to the left or right of an obstruction"
+ },
+ {
+  "id": 186,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn about strong crosswinds that could force your vehicles off course",
+  "formatted": "To warn about strong crosswinds that could force your vehicle off course"
+ },
+ {
+  "id": 181,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn that traffic ahead is being controlled temporarily by a Stop Ry-Go sign",
+  "formatted": "To warn that traffic ahead is controlled temporarily by a 'Stop Ry-Go' sign"
+ },
+ {
+  "id": 205,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn that the robot ahead or to which the sign is attached is out of order",
+  "formatted": "To warn that the robot ahead or attached is out of order"
+ },
+ {
+  "id": 102,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To allow minibuses to take up and drop passengers off Such a vehicle must display an appropriate emblem logo or any other indication that they are minibuses",
+  "formatted": "To allow minibuses to take up and drop passengers off displaying proper emblem logo"
+ },
+ {
+  "id": 159,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn that there is a motor gate to the left or right or in the middle of the road",
+  "formatted": "To warn that there is a motor gate to the left right or middle of the road"
+ },
+ {
+  "id": 124,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To indicate to the driver that the reservation indicated on the regulatory sign is further restricted by a maximum number of vehicles as indicated on this sign",
+  "formatted": "To indicate that the reservation is further restricted by a maximum number of vehicles"
+ },
+ {
+  "id": 127,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn that you are approaching an intersection where you have right of way The thicker leg of the cross on the signs indicates which road has priority",
+  "formatted": "To warn that you are approaching an intersection where you have right of way thicker leg indicates priority"
+ },
+ {
+  "id": 13,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To give priority to pedestrians but limit other traffic to emergency vehicles vehicles loading and off loading goods and maintenance vehicles",
+  "formatted": "To give priority to pedestrians while limiting other traffic to emergency loading and maintenance vehicles"
+ },
+ {
+  "id": 16,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To compel drivers of certain heavy vehicles to use the road or part of the road indicated by this road traffic sign",
+  "formatted": "To compel drivers of certain heavy vehicles to use the road or part of the road indicated"
+ },
+ {
+  "id": 27,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "Indicates that the road or a portion of the road is set aside for use by midibuses and that the driver of a midibus shall only use such road or portion of such road",
+  "formatted": "Indicates that the road or a portion of the road is set aside for use by midibuses"
+ },
+ {
+  "id": 31,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "Indicates that the road or a portion of the road is set aside for use by goods vehicles with a gross vehicle mass GVM or a gross combination mass GCM exceeding the mass indicated in tonnes by means of a number on such sign",
+  "formatted": "Indicates that the road or portion of the road is set aside for goods vehicles exceeding the indicated mass limit"
+ },
+ {
+  "id": 150,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "Indicate that there is a traffic officer ahead controlling the traffic",
+  "formatted": "Indicates that there is a traffic officer ahead controlling traffic"
+ },
+ {
+  "id": 58,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To ensure traffic flow and prevent that driver's views are not impaired by stationary vehicles",
+  "formatted": "To ensure traffic flow and prevent stationary vehicles from impairing driver visibility"
+ },
+ {
+  "id": 55,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To vehicles from turning around so that it faces the opposite direction",
+  "formatted": "To prohibit vehicles from turning around so that they face the opposite direction"
+ },
+ {
+  "id": 113,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To indicate that a freeway begins at the sign and that the rules that apply to freeways are effective from here",
+  "formatted": "To indicate that a freeway begins at the sign and freeway rules are effective from here"
+ },
+ {
+  "id": 114,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To indicate that a single-carriageway freeway begins at the sign and that all rules that apply to freeways are effective from here",
+  "formatted": "To indicate that a single-carriageway freeway begins and freeway rules are effective from here"
+ },
+ {
+  "id": 157,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn that there may be wild animals on the road or crossing the road",
+  "formatted": "To warn that there may be wild animals on or crossing the road"
+ },
+ {
+  "id": 77,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "Indicates to a horse rider that horses and riders whether mounted on or leading a horse are prohibited beyond such sign",
+  "formatted": "Indicates to a horse rider that horses and riders are prohibited beyond such sign"
+ },
+ {
+  "id": 162,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn that there is a structure ahead of which the height is indicated on the road traffic sign",
+  "formatted": "To warn that there is a structure ahead of which the height is indicated on the sign"
+ },
+ {
+  "id": 92,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To reserve a portion of a road or a parking area for use by goods vehicles exceeding the indicated GVM only",
+  "formatted": "To reserve a portion of a road or a parking area for goods vehicles exceeding the indicated GVM only"
+ },
+ {
+  "id": 129,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn that you are approaching an intersection where you have to turn sharp to the right or left",
+  "formatted": "To warn that you are approaching an intersection where you have to turn sharp right or left"
+ },
+ {
+  "id": 266,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To identify that part of the carriageway which is reserved for buses only during the periods indicated on the sign",
+  "formatted": "To identify that part of the carriageway reserved for buses only during indicated periods"
+ },
+ {
+  "id": 267,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To prohibit drivers from stopping in the demarcated area because this could prevent other traffic from turning or driving further forward",
+  "formatted": "To prohibit drivers from stopping in the demarcated area to prevent obstructing traffic"
+ },
+ {
+  "id": 268,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To indicate an area where you may not stop except for pedestrians crossing or wanting to cross the road or for a vehicle that has already stopped",
+  "formatted": "To indicate an area where you may not stop except for pedestrians crossing or a stopped vehicle"
+ },
+ {
+  "id": 269,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To prohibit drivers from stopping where stationary vehicles may disrupt the traffic or where the environment obstructs the view and such vehicles may obstruct the view more",
+  "formatted": "To prohibit drivers from stopping where stationary vehicles may disrupt traffic or obstruct views"
+ },
+ {
+  "id": 274,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn you that there is a break intersection or off ramp in the continuing part of the roadway and to inform you that if you are in a lane that has a line on one side that lane will soon turn off from the road which you are now travelling",
+  "formatted": "To warn that there is a break in the continuing roadway and the lane with a side line will soon turn off"
+ },
+ {
+  "id": 288,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "At a cycle lane a road that leads to an airport and where a parking bay is reserved for the handicapped only As additional markings with standard signs and markings to inform you that an area is reserved for a specific group or that a road is leading to a specific destination",
+  "formatted": "To inform that an area is reserved for a specific group or leads to a specific destination"
+ },
+ {
+  "id": 123,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To indicate that the sign applies to drivers of vehicles operated by the company owner or organisation indicated by the logo or words",
+  "formatted": "To indicate that the sign applies to drivers of vehicles operated by the company owner or organisation indicated"
+ },
+ {
+  "id": 243,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To inform you by means of a diagram that the lane below the sign is subject to a compulsory requirement indicated by a 'command' or 'prohibition' regulatory sign",
+  "formatted": "To inform by diagram that the lane below is subject to a compulsory regulatory sign"
+ },
+ {
+  "id": 293,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To direct traffic Flag signal to stop indicating to the driver of a vehicle that he or she shall stop until the proceed flag signal is displayed and Flag signal to proceed - indicating to the driver that he or she shall proceed when the flag signal is displayed",
+  "formatted": "To direct traffic via flag signals stop signal requiring vehicles to stop until proceed signal is displayed and proceed signal indicating that vehicles may proceed"
+ },
+ {
+  "id": 291,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "Steady green downward pointing arrow S16 - Indicates to the driver that he she may drive in the lane over which the arrow is displayed Steady red cross S17 - Indicates to a driver that he she shall not drive in the lane over which the cross is displayed Lane might be open to vehicles travelling in the opposite direction Yellow arrow left S18 and right S19 Indicates to the driver that the lane he she is driving in is closed ahead",
+  "formatted": "Overhead lane control signals steady green downward arrow indicates you may drive in the lane steady red cross indicates you shall not drive in the lane and yellow arrow left or right indicates the lane is closed ahead"
+ },
+ {
+  "id": 281,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To indicate where especially drivers of heavy vehicles who become aware that a vehicle's brakes became defective can drive such a vehicle of the road and it will be stopped by the gravel section ahead",
+  "formatted": "To indicate where defective-brake vehicles can drive off the road to be stopped by a gravel section"
+ },
+ {
+  "id": 121,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To indicate that the restriction indicated on the regulatory sign applies in the direction of the arrow",
+  "formatted": "To indicate that the restriction applies in the direction of the arrow"
+ },
+ {
+  "id": 220,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To give advance guidance regarding the shape of the intersection ahead the numbers and destinations of the routes leaving the intersection",
+  "formatted": "To give advance guidance regarding the shape of the intersection and route numbers destinations"
+ },
+ {
+  "id": 235,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To guide you by means of a diagram which indicates that one of the lanes of a carriageway comes to an end",
+  "formatted": "To guide by diagram that one of the lanes of a carriageway comes to an end"
+ },
+ {
+  "id": 61,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To prevent cyclists and pedestrians from using a certain road or a certain section of a road where they can cause a danger to themselves or other road users",
+  "formatted": "To prevent cyclists and pedestrians from using a certain road where they could cause danger"
+ },
+ {
+  "id": 52,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To prohibit drivers without special authorisation from entering a certain road or section of a road",
+  "formatted": "To prohibit drivers without special authorisation from entering a closed road"
+ },
+ {
+  "id": 60,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To prohibit cyclists from using the carriageway lane or path where they can cause a danger to themselves and to other road users",
+  "formatted": "To prohibit cyclists from using the carriageway lane or path where they cause danger"
+ },
+ {
+  "id": 82,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "Signs R302 and TR302 indicate that no other class of vehicle may use that part of the road Signs R303 and TR303 indicate where the reserved traffic lane which only buses may enter starts",
+  "formatted": "Reserved traffic lane rules R302 TR302 indicate no other class of vehicle may use that part of the road and R303 TR303 indicate where the bus-only reserved lane starts"
+ },
+ {
+  "id": 115,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To prohibit the entry of all vehicles with a mass exceeding 3 500 kg or vehicles which have more than 10 seats except for local access or delivery To yield right of way to pedestrians in the street To prohibit vehicles from driving through the area without breaking their journey To limit the speed of vehicles in the area to 30km h",
+  "formatted": "Pedestrian traffic zone restrictions prohibits entry of vehicles 3500kg or 10 seats except local delivery requires drivers to yield right of way to pedestrians and prohibits through-traffic and limits vehicle speed to 30km h in the area"
+ },
+ {
+  "id": 248,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To give more information about the main message on regulatory warning or diagrammatical guidance signs",
+  "formatted": "To give more information about the main message on regulatory warning or guidance signs"
+ },
+ {
+  "id": 78,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "Indicates to the driver of a vehicle that he or she shall not proceed beyond the sign unless the overall width of the vehicle is less than the width indicated in metres by means of a number on such sign",
+  "formatted": "Indicates you shall not proceed unless overall vehicle width is less than the width indicated in metres"
+ },
+ {
+  "id": 81,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "Indicate that the road or part of the carriageway is reserved for buses only and that only buses may park in the area indicated by sign R301-P",
+  "formatted": "Indicates the road is reserved for buses only and only buses may park in the area"
+ },
+ {
+  "id": 270,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To prevent drivers from stopping where stationary vehicles may disrupt the traffic or where the environment obstructs the view and such vehicles obstruct the view more",
+  "formatted": "To prevent drivers from stopping where stationary vehicles disrupt traffic or view"
+ },
+ {
+  "id": 257,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To inform you that priority must be given to pedestrians crossing or wanting to cross the road at these places",
+  "formatted": "To inform you that priority must be given to pedestrians crossing or wanting to cross"
+ },
+ {
+  "id": 144,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn that one-way street you are driving on will soon be crossed by a street that carries two-way traffic",
+  "formatted": "To warn that the one-way street will soon be crossed by a street with two-way traffic"
+ },
+ {
+  "id": 22,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To indicate that a road or part of a road may be used by cyclists and or pedestrians only To indicate to cyclists and pedestrians which part of a road they must use Signs R113 and TR115 indicate that part of the road is divided and that part may be used by cyclists and pedestrians only A certain part may be used by cyclists or by pedestrians only as indicated by the road traffic sign",
+  "formatted": "Pedestrian and cycle lane rules to indicate a road set aside for cyclists and or pedestrians only to show which part of a road each user group must use and divided signs indicate separate sub-paths for cyclists or pedestrians"
+ },
+ {
+  "id": 49,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To prohibit long vehicles from using a road where such a vehicle will not be able to negotiate a curve or will turn in such a manner that it will disrupt or endanger other traffic",
+  "formatted": "To prohibit long vehicles from using a road where they cannot safely negotiate curves"
+ },
+ {
+  "id": 59,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To prohibit pedestrians from proceeding past this sign where they could cause a danger to themselves and to vehicles",
+  "formatted": "To prohibit pedestrians from proceeding past this sign where they cause danger"
+ },
+ {
+  "id": 79,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "Indicates to the driver of a vehicle that no vehicle which is towing another vehicle shall proceed beyond such sign",
+  "formatted": "Indicates that no vehicle towing another vehicle shall proceed beyond such sign"
+ },
+ {
+  "id": 84,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "Sign R305-P indicates a parking area for vehicles with a GVM of less than 3 500 kg where no time limit applies but a fee must be paid Sign R306-P indicates a parking area that may be used free of charge or at a fee and the maximum time allowed for a vehicle to be parked is displayed",
+  "formatted": "Parking area rules R305-P indicates parking for vehicles under 3500kg with paid fee and no time limit and R306-P indicates parking with a displayed maximum allowed time limit"
+ },
+ {
+  "id": 141,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn of a series of curves ahead In the case of W209 the first curve is to the left and in the case of W208 the first bend is to the right",
+  "formatted": "To warn of a series of curves ahead W209 first bend left W208 first bend right"
+ },
+ {
+  "id": 132,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn that your road is first joined by another road from the left hand side first and within a short distance by another from the right hand side W110 TW110 or from the right first and then from the left W109 TW109",
+  "formatted": "To warn that your road is joined by two side roads in short succession from opposite sides"
+ },
+ {
+  "id": 163,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn that curves in the road or other structures on the side of the road make it impossible for vehicles longer than the length indicated on this road sign",
+  "formatted": "To warn that curves or structures make it impossible for vehicles longer than indicated to proceed"
+ },
+ {
+  "id": 236,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To inform you by means of a diagram that the number of lanes of the road which you are travelling on will be increased soon Opposing traffic flow is indicated by a dotted arrow",
+  "formatted": "To inform by diagram that the number of lanes will be increased soon opposing flow shown by dotted arrow"
+ },
+ {
+  "id": 146,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn that one or more concealed driveways enter the road you are driving on from the left or right in such a way that you cannot easily see the road or traffic travelling on that road",
+  "formatted": "To warn that one or more concealed driveways enter from the left or right"
+ },
+ {
+  "id": 174,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn that rocks could fall on the carriageway from the left W334 TW334 or from the right-hand side W335 TW335",
+  "formatted": "To warn that rocks could fall on the carriageway from the left or right-hand side"
+ },
+ {
+  "id": 184,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn about a temporary stop sign a collision scene roadblock or similar scene where police are on duty",
+  "formatted": "To warn about a temporary stop sign collision scene or roadblock where police are on duty"
+ },
+ {
+  "id": 190,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "raw": "To warn the driver that - the road ahead may be obstructed there could be pedestrians rescue teams and police or traffic officers controlling the traffic at the scene there could be wreckage injured persons animals or broken glass on the road surface",
+  "formatted": "To warn that the road ahead may be obstructed by an accident scene or wreckage"
+ },
+ {
+  "id": 3,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Bring your vehicle to a stop behind the stop line If there is no stop line the front of the vehicle must come to a stand still in line with the stop sign At a three or four-way stop you may not move off before all the other vehicles which stopped before you have moved off Proceed only when it is safe",
+  "formatted": "Bring your vehicle to a stop behind the stop line If there is no stop line the front of the vehicle must come to a standstill in line with the stop sign At a three or four-way stop you may not move off before all vehicles that stopped before you have moved off Proceed only when it is safe"
+ },
+ {
+  "id": 103,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Do not stop to take up or drop passengers off if you are not driving a mini-bus of the organisation indicated on the sign You may only wait with or park your mini-bus here if the road traffic sign indicates that the stop is a terminus",
+  "formatted": "Minibus stop rules do not stop to pick up or drop off passengers unless driving a minibus of the organisation indicated and you may only wait or park here if the sign indicates that the stop is a terminus"
+ },
+ {
+  "id": 182,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Look out for trucks that could force you to slow down Slow down and look out for trucks that want to cross or join the road Also look out for anything spilt or dropped on the road by the trucks like gravel sand or water that could affect the handling of your vehicle",
+  "formatted": "Truck hazard instructions look out for trucks that could force you to slow down or that want to cross or join the road and look out for spilt materials like gravel sand or water that could affect your vehicle's handling"
+ },
+ {
+  "id": 158,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Slow down and be prepared to stop should the gates be closing or are closed",
+  "formatted": "Slow down and be prepared to stop should the gates be closing or closed"
+ },
+ {
+  "id": 160,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Slow down and look to the right and left for oncoming trains If a train is approaching stop in time but not within the railway crossing reserve",
+  "formatted": "Slow down and look left and right for oncoming trains If a train is approaching stop in time outside the railway reserve"
+ },
+ {
+  "id": 133,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Pass the intersection at a safe speed and look out for merging traffic that might not yield Decide well in time which road to take Be on the look out for approaching traffic whose path you will cross when taking the right hand side road",
+  "formatted": "Split and merge action rules pass the intersection at a safe speed and look out for merging traffic that might not yield or decide well in time which road to take looking out for approaching traffic whose path you will cross"
+ },
+ {
+  "id": 210,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Make sure that the route you are travelling on is the route that you want to take to reach your destination",
+  "formatted": "Make sure that the route you are travelling on is the route you want to take to reach your destination"
+ },
+ {
+  "id": 143,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Be aware that you are entering a roadway with two-way traffic and have to be more careful when overtaking to allow for oncoming vehicles",
+  "formatted": "Be aware that you are entering a roadway with two-way traffic and have to be more careful when overtaking"
+ },
+ {
+  "id": 166,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Slow down and look out for a ditches or potholes at the joint between the gravel and the tarred surface Steering will be lighter on the gravel vehicles will tend to skid easier and will need a longer stopping distance",
+  "formatted": "Gravel transition instructions slow down and look out for ditches or potholes at the joint between gravel and tar and be aware that steering will be lighter vehicles will skid easier and stopping distance will be longer"
+ },
+ {
+  "id": 187,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Slow down and if it is not known how deep the water is stop If passable drive through the water slowly",
+  "formatted": "Slow down and if water depth is unknown stop If passable drive through the water slowly"
+ },
+ {
+  "id": 188,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Do not get a frightened and do not brake suddenly",
+  "formatted": "Do not get frightened and do not brake suddenly"
+ },
+ {
+  "id": 39,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Consider both the alternative and the route indicated by this road traffic sign and decide in good time which to follow",
+  "formatted": "Consider both the alternative and the toll route and decide in good time which to follow"
+ },
+ {
+  "id": 66,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Do not enter this area if you are driving motorcar",
+  "formatted": "Do not enter this area if you are driving a midibus"
+ },
+ {
+  "id": 229,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Make sure which exit you need to take and move in good time to the correct lane to leave the freeway",
+  "formatted": "Make sure which exit you need and move in good time to the correct lane to leave the freeway"
+ },
+ {
+  "id": 75,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Do not enter this area if you are driving a tractor or agricultural vehicles",
+  "formatted": "Do not enter this area if you are driving a tractor or agricultural vehicle"
+ },
+ {
+  "id": 76,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Do not enter this area if you are driving animal-drawn vehicle",
+  "formatted": "Do not enter this area if you are driving an animal-drawn vehicle"
+ },
+ {
+  "id": 250,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Obey all other road traffic signs Look out for vehicles pedestrians and other hazards engaged in the experiment",
+  "formatted": "Obey all other road traffic signs Look out for vehicles pedestrians and hazards engaged in the experiment"
+ },
+ {
+  "id": 262,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Drive in such a way that you do not stop park or drive over the island unless on the orders of a traffic or police officer to avoid a collision or in an emergency",
+  "formatted": "Drive in such a way that you do not stop park or drive over the island unless on officer orders to avoid a collision or in an emergency"
+ },
+ {
+  "id": 286,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "The driver must be guided by the arrows and never unless otherwise requested by a traffic officer drive in the direction opposite to what the arrows show",
+  "formatted": "The driver must be guided by the arrows and never drive in the opposite direction unless requested by a traffic officer"
+ },
+ {
+  "id": 180,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Do not drive or stop on the shoulder If this is unavoidable for example to avoid a collision slow down as much as possible because the vehicle will pull in the direction of the shoulder when you move off the road",
+  "formatted": "Do not drive or stop on the shoulder If unavoidable slow down as much as possible because the vehicle will pull toward the shoulder"
+ },
+ {
+  "id": 7,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Stop if the STOP sign is displayed and move off or proceed with caution if safe when the GO sign is displayed",
+  "formatted": "Stop-Go instructions stop if the STOP sign is displayed and move off or proceed with caution if safe when the GO sign is displayed"
+ },
+ {
+  "id": 147,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Slow down immediately and be ready to stop if the light changes from green to amber Make sure there are no pedestrians or cross-traffic who might not obey the signals",
+  "formatted": "Traffic light warning action slow down immediately and be ready to stop if the light changes from green to amber and make sure there are no pedestrians or cross-traffic who might not obey signals"
+ },
+ {
+  "id": 6,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Bring your vehicle to a standstill behind the stop line If there is no stop line the front of your vehicle must be brought to a stop in line with the stop sign Proceed only when it is safe If more than one vehicle stops at such an intersection the vehicle which stopped first should move off first",
+  "formatted": "4-Way Stop action bring your vehicle to a standstill behind the stop line or in line with the sign if no line exists proceed only when it is safe and if multiple vehicles stop the vehicle which stopped first should move off first"
+ },
+ {
+  "id": 261,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Avoid driving to the left of the left-edge line You may however drive here only whilst being overtaken by another vehicle if you can so without endangering yourself other traffic pedestrians or property during daytime and if persons and vehicles on the road are clearly discernible at a distance of at least 150 metres It is not compulsory to drive to the left of the line when you are being overtaken keep in mind that you have very little space when doing so If your vehicle breaks down stop as far left from the line as possible and switch on your emergency lights The right-edge line is usually found on one-way roads such as dual carriageways or freeways and may not be crossed",
+  "formatted": "Road edge line rules avoid driving to the left of the left-edge line permitted daytime only while being overtaken if clear visibility 150m if your vehicle breaks down stop as far left as possible and switch on emergency lights and the right-edge line on dual carriageways or freeways may not be crossed"
+ },
+ {
+  "id": 9,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Look out for pedestrians crossing the road or near the road and be ready to stop",
+  "formatted": "Look out for pedestrians crossing or near the road and be ready to stop"
+ },
+ {
+  "id": 10,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Look out for other vehicles and yield to vehicles already in the circle or that will cross the yield line at their entrance to the circle before you will cross yours Stop if necessary The driver who reaches his her yield line first may proceed first At a mini circle you must as at a normal intersection signal in time in which direction you want to turn",
+  "formatted": "Traffic circle action yield to vehicles already in the circle or crossing the yield line first and stop if necessary at mini-circles the driver reaching the line first may proceed first and signal in time in which direction you want to turn"
+ },
+ {
+  "id": 165,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Slow down and particularly in mountainous areas with sharp curves be able to stop within the distance you can see Remember to allow for a longer stopping distance on a descent especially when your vehicle is heavily laden",
+  "formatted": "Slow down and be able to stop within sight distance Allow for a longer stopping distance on a descent especially when heavily laden"
+ },
+ {
+  "id": 4,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "If you intend to carry straight on bring your vehicle to a standstill behind the stop line When turning left yield to all traffic which is close enough to pose a hazard Proceed only when it is safe",
+  "formatted": "Yield-left turn action if carrying straight on bring your vehicle to a standstill behind the stop line and when turning left yield to all traffic close enough to pose a hazard proceeding only when safe"
+ },
+ {
+  "id": 192,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Look out for slow moving vehicle and adapt speed accordingly",
+  "formatted": "Look out for slow moving vehicles and adapt speed accordingly"
+ },
+ {
+  "id": 189,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Look out for agricultural vehicles and slow down of they want to cross the road or are crossing it",
+  "formatted": "Look out for agricultural vehicles and slow down if they want to cross or are crossing"
+ },
+ {
+  "id": 191,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Look out for Fog or smoke and slow down Be on the look out for other slow moving vehicles",
+  "formatted": "Look out for fog or smoke slow down and be alert for slow moving vehicles"
+ },
+ {
+  "id": 197,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Do not continue of your vehicle is wider than indicated on the sign",
+  "formatted": "Do not continue if your vehicle is wider than indicated on the sign"
+ },
+ {
+  "id": 209,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "You need to know before hand in which direction you want to travel e g North N or South S",
+  "formatted": "You need to know beforehand in which direction you want to travel e g North or South"
+ },
+ {
+  "id": 214,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Decide in advance whether you want to take the toll or alternative route If you want to take the alternative route slow down for the intersection Remember that the alternative route is usually not of the same high standard as the toll route",
+  "formatted": "Toll alternative rules decide in advance whether to take the toll or alternative route slow down for the intersection if taking the alternative route and remember that alternative routes are usually not of the same high standard as toll routes"
+ },
+ {
+  "id": 215,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Do not use this route and look out for cyclists that could suddenly change direction to follow the cycle route",
+  "formatted": "Do not use this route and look out for cyclists who could suddenly change direction to follow the cycle route"
+ },
+ {
+  "id": 228,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Slow down and be ready to stop turn left or right depending on road traffic signs and signals and your destination",
+  "formatted": "Slow down and be ready to stop or turn depending on traffic signs signals and your destination"
+ },
+ {
+  "id": 217,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Slow down and make sure you take the correct route Also look out for other traffic at the intersection that might not yield",
+  "formatted": "Slow down to ensure you take the correct route and look out for non-yielding traffic at the intersection"
+ },
+ {
+  "id": 218,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Note the destination and in particular note the distance to the destination so that you can plan your trip to fill up with petrol or rest",
+  "formatted": "Note the destination and distance in kilometres so you can plan your trip for fuel or rest"
+ },
+ {
+  "id": 200,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Do not pass to the right of W401 or TW401 and to the left of W402 or TW402",
+  "formatted": "Do not pass to the right of W401 TW401 and to the left of W402 TW402"
+ },
+ {
+  "id": 201,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Slow down to take the curve at a safe speed or to be able to stop within the distance you can see",
+  "formatted": "Slow down to take the curve at a safe speed or to be able to stop within sight distance"
+ },
+ {
+  "id": 237,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Whenever a lane ends converges merges or is added make sure in time that there is a big enough gap in the traffic to merge with the traffic Also yield to other traffic which might merge",
+  "formatted": "Whenever a lane ends converges merges or is added ensure a sufficient traffic gap to merge in time and yield to other merging traffic"
+ },
+ {
+  "id": 179,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Slow down and be aware that your vehicle may tend to the left or right if you straddle the step between the higher and lower level Because of the ridge vehicles may also be slow to return to the higher level and could react suddenly if the wheel mounts the ridge Do not make any sudden jerking steering motions because it could cause you to lose control completely",
+  "formatted": "Step level driving instructions slow down and be aware your vehicle may pull left or right if straddling the step expect sluggish or sudden wheel response when mounting the ridge and do not make sudden jerking steering motions as it could cause loss of control"
+ },
+ {
+  "id": 230,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Decide on the direction and route you want to follow and position your vehicle to join the on-ramp at the freeway or proceed straight ahead",
+  "formatted": "Decide on your direction and route and position your vehicle to join the on-ramp or proceed straight"
+ },
+ {
+  "id": 234,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Signal in time and make sure you are in the right-hand lane if you want to turn right to join the freeway",
+  "formatted": "Signal in time and ensure you are in the right-hand lane if turning right to join the freeway"
+ },
+ {
+  "id": 183,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Slow down and look out for other road traffic signs that indicate a specific hazard",
+  "formatted": "Slow down and look out for other traffic signs indicating a specific hazard"
+ },
+ {
+  "id": 142,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Slow down enough to be able to round the curves safely or stop within the sight distance you can see",
+  "formatted": "Slow down enough to round the curves safely or stop within your sight distance"
+ },
+ {
+  "id": 241,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "If you are driving a heavy motor vehicle engage a lower gear so that the vehicle will move down the descent more slowly If the lower gear does not have the desired effect engage an even lower gear to keep the speed constant and protect the brakes against overheating",
+  "formatted": "Steep descent action if driving a heavy motor vehicle engage a lower gear to move down more slowly and if ineffective engage an even lower gear to maintain constant speed and protect brakes from overheating"
+ },
+ {
+  "id": 239,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Whenever a lane ends converges merges or is added make sure in time that there is a big enough gap in the traffic to merge with the traffic Also yield to other traffic which might merge",
+  "formatted": "Whenever a lane ends converges merges or is added ensure a sufficient traffic gap to merge in time and yield to other merging traffic"
+ },
+ {
+  "id": 238,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Whenever a lane ends converges merges or is added make sure in time that there is a big enough gap in the traffic to merge with the traffic Also yield to other traffic which might merge",
+  "formatted": "Whenever a lane ends converges merges or is added ensure a sufficient traffic gap to merge in time and yield to other merging traffic"
+ },
+ {
+  "id": 278,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Change lanes in time if the lane you are travelling in ends Check both the blind spots where two lanes end from both sides to make sure there is no other vehicle that is also changing lanes",
+  "formatted": "Lane reduction action change lanes in time if your lane ends and check both blind spots when two lanes end from both sides to avoid other changing vehicles"
+ },
+ {
+  "id": 251,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "If possible maintain the recommended speed However make sure that it is safe to enter every intersection and look out for drivers that do not yield The speed indicated is a recommendation and not a speed limit",
+  "formatted": "Coordinated signals action if possible maintain recommended speed which is a recommendation not a speed limit and ensure it is safe to enter every intersection looking out for drivers who do not yield"
+ },
+ {
+  "id": 252,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Do not move off when approaching traffic moves off Wait until the signal is green The sequence of the traffic signals at this intersection can be different during normal and during peak times",
+  "formatted": "Do not move off when approaching traffic moves off Wait until the signal is green"
+ },
+ {
+  "id": 254,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Make sure that it is safe to slow down and stop to drop someone off or pick someone up Also look out for pedestrians who may cross the road",
+  "formatted": "Make sure it is safe to slow down and stop to drop off or pick up passengers and look out for crossing pedestrians"
+ },
+ {
+  "id": 258,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Do not cross the line except to gain direct access to an entrance on the other side of the line to gain direct access from such an entrance to the road or to pass a stationary obstruction In all these cases you must ensure that it is safe to do so",
+  "formatted": "Do not cross the line except to gain access to an entrance or pass a stationary obstruction when safe to do so"
+ },
+ {
+  "id": 259,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "You may under no circumstances drive on the right hand side or cross these lines with any part of your vehicle except to drive around a stationary vehicle or stationary obstruction in the road",
+  "formatted": "Under no circumstances drive on the right side or cross these lines except to drive around a stationary vehicle or obstruction"
+ },
+ {
+  "id": 255,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Stop with the front of your vehicle behind the stop sign If there is no stop sign the stop line will have the same meaning as a stop sign",
+  "formatted": "Stop with the front of your vehicle behind the stop sign or line if no sign exists"
+ },
+ {
+  "id": 24,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "You may only drive a motorcar on this road or this part of the road Where this sign is displayed you must use that part of the road indicated by this sign When driving one of the following vehicles you may use such a road only when the sign depicting your type of vehicle is displayed",
+  "formatted": "Motorcar lane rules you may only drive a motorcar on this road or designated part and other vehicle types may use the road only when the sign depicting their specific vehicle type is displayed"
+ },
+ {
+  "id": 271,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Do no drive in the demarcated area",
+  "formatted": "Do not drive in the demarcated area"
+ },
+ {
+  "id": 256,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Give way to any one who crosses your path of travel or who wants to cross your path Even if there is no yield sign you still have to give way",
+  "formatted": "Give way to anyone who crosses your path of travel or wants to cross even if no yield sign is present"
+ },
+ {
+  "id": 186,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Determine if a wind is blowing and from which direction Any shielding of the wind by a truck bridge or excavation will affect your vehicle and you should adjust the steering in time",
+  "formatted": "Determine wind speed and direction Any shielding by trucks bridges or excavations will affect handling so adjust steering in time"
+ },
+ {
+  "id": 46,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "If the GVM or GCM of your vehicle exceeds the mass indicated in tons use another road or part of the road which is not indicated by this sign If your vehicle's GVM or GCM is less than the indicated mass in tons you may use this road",
+  "formatted": "Heavy vehicle mass limit rules if GVM or GCM exceeds the indicated mass in tons use another road or unindicated part and if GVM or GCM is less than the indicated mass you may use this road"
+ },
+ {
+  "id": 50,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "If the noise level of your vehicle is high you may not proceed past the sign and for 100 metres after passing the sign the vehicle's hooter may not be used",
+  "formatted": "If the noise level of your vehicle is high you may not proceed past the sign and for 100m after the hooter may not be used"
+ },
+ {
+  "id": 54,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Where a left-turn prohibition is displayed you may proceed straight or turn right Where a right-turn prohibition is displayed you may proceed straight or turn left",
+  "formatted": "Turn prohibition rules where a left-turn prohibition is displayed you may proceed straight or turn right and where a right-turn prohibition is displayed you may proceed straight or turn left"
+ },
+ {
+  "id": 205,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Slow down yield to other traffic and be ready to stop if traffic intensity and volume require it Look out for a traffic officer or stop sign that might be controlling the traffic",
+  "formatted": "Slow down yield to traffic and be ready to stop Look out for a traffic officer or stop sign controlling traffic"
+ },
+ {
+  "id": 62,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Motorcyclists may not enter this part of the carriageway or if this sign is displayed on a freeway motorcyclists must leave at the first exit",
+  "formatted": "Motorcyclists may not enter this part of the carriageway or if displayed on a freeway motorcyclists must leave at the first exit"
+ },
+ {
+  "id": 102,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Do not stop to take up or drop passengers off if you are not driving a mini-bus of the organisation indicated on the sign You may only wait with or park your mini-bus here if the road traffic sign indicates that the stop is a terminus",
+  "formatted": "Minibus stop rules do not stop to pick up or drop off passengers unless driving a minibus of the organization indicated and you may only wait or park here if the sign indicates that the stop is a terminus"
+ },
+ {
+  "id": 138,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Ensure that you drive at such a speed that you can take the curve safely or stop within the distance that you can see",
+  "formatted": "Ensure that you drive at such a speed that you can take the curve safely or stop within sight distance"
+ },
+ {
+  "id": 154,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Slow down immediately and look out for children who could be crossing the road unexpectedly or even be playing the road",
+  "formatted": "Slow down immediately and look out for children who could cross unexpectedly or be playing in the road"
+ },
+ {
+  "id": 173,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Slow down since any sudden braking or harsh steering could cause your vehicle to start skidding sooner than usual for the next 2 km",
+  "formatted": "Slow down as sudden braking or harsh steering could cause your vehicle to skid for the next 2 km"
+ },
+ {
+  "id": 124,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Do not enter an area if that would mean there would be more than the number of vehicles indicated",
+  "formatted": "Do not enter an area if that would mean exceeding the maximum number of vehicles indicated"
+ },
+ {
+  "id": 13,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "When driving any of the above-mentioned vehicles drive carefully in the area at a maximum speed of 15 km h Priority must be given to pedestrians crossing or wanting to cross the road When loading or off loading goods only do so in areas marked by road traffic signs No other vehicles are permitted in such an area",
+  "formatted": "Pedestrian area rules permitted vehicles must drive carefully at a maximum speed of 15 km h priority must be given to pedestrians crossing or wanting to cross and load unload only in designated marked areas all other vehicles prohibited"
+ },
+ {
+  "id": 16,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "When driving a vehicle with a Gross Vehicle Mass GVM or Gross Combination Mass GCM in excess of the mass indicated in tons use only the part of the road indicated by this sign If the GVM or GCM of your vehicle is less than the mass indicated in tons use a part of the road not indicated by this sign",
+  "formatted": "Heavy vehicle lane selection if GVM or GCM exceeds the mass indicated in tons use only the part of the road indicated and if GVM or GCM is less than the indicated mass use a part of the road not indicated"
+ },
+ {
+  "id": 150,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Slow down and be ready to stop the vehicle if the officer instructs you to do so",
+  "formatted": "Slow down and be ready to stop if the officer instructs you to do so"
+ },
+ {
+  "id": 47,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "If the axle mass of any of your vehicle's axles exceeds the indicated mass in tons use another road or part of the road not indicated by this sign",
+  "formatted": "If the axle mass of any axle exceeds the indicated mass in tons use another road or part not indicated by this sign"
+ },
+ {
+  "id": 48,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "If your vehicle or load is higher than the indicated height in metres another road not indicated by this sign must be used",
+  "formatted": "If your vehicle or load is higher than the indicated height in metres another road must be used"
+ },
+ {
+  "id": 58,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Do not stop unless to obey a traffic light or a traffic officer or to avoid a collision",
+  "formatted": "Do not stop unless to obey a traffic light officer or to avoid a collision"
+ },
+ {
+  "id": 51,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "No pedestrian may attempt to be picked up by a passing vehicle A driver of a vehicle may not pick up passengers for the next 500m",
+  "formatted": "Hitchhiking prohibition rules no pedestrian may attempt to be picked up by a passing vehicle and a driver may not pick up passengers for the next 500m"
+ },
+ {
+  "id": 69,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Do not enter this area if you are driving motorcar",
+  "formatted": "Do not enter this area if you are driving a goods vehicle"
+ },
+ {
+  "id": 70,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Do not enter this area if you are driving motorcar",
+  "formatted": "Do not enter this area if you are driving a construction vehicle"
+ },
+ {
+  "id": 114,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Follow all the rules which apply to freeways",
+  "formatted": "Follow all the rules that apply to freeways"
+ },
+ {
+  "id": 134,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Decide well in time which road to take Look out for approaching traffic whose path you will cross when taking the right hand road",
+  "formatted": "Decide well in time which road to take Look out for approaching traffic whose path you will cross when turning right"
+ },
+ {
+  "id": 139,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Slow down so that you can take the curve safely or stop within the distance that you can see",
+  "formatted": "Slow down so that you can take the curve safely or stop within sight distance"
+ },
+ {
+  "id": 157,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Slow down and be on the look out for the next 2 km for wild animals",
+  "formatted": "Slow down and be on the look out for wild animals for the next 2 km"
+ },
+ {
+  "id": 176,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Slow down and drive slowly past the grader The full width of the road may not be available and there could be sand or gravel on the carriageway that could affect the handling of their vehicles",
+  "formatted": "Slow down and drive slowly past the grader Road width may be restricted with sand or gravel on the carriageway"
+ },
+ {
+  "id": 177,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Slow down and be aware that oncoming vehicles could throw up stones that could cause damage Your vehicle's braking and turning capacity could also be affected negatively",
+  "formatted": "Loose gravel instructions slow down and beware of oncoming vehicles throwing up stones and note that braking and turning capacity could be negatively affected"
+ },
+ {
+  "id": 204,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Slow down and do not attempt to drive past the sign Look out for a additional regulatory signs that will indicate an alternative route",
+  "formatted": "Slow down and do not attempt to drive past Look for additional regulatory signs indicating an alternative route"
+ },
+ {
+  "id": 68,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Do not enter this area if you are driving motorcar",
+  "formatted": "Do not enter this area if you are driving a delivery vehicle"
+ },
+ {
+  "id": 67,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Do not enter this area if you are driving motorcar",
+  "formatted": "Do not enter this area if you are driving a bus"
+ },
+ {
+  "id": 162,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "If your vehicle is higher than the bridge or structure as indicated by this sign find an alternative route",
+  "formatted": "If your vehicle is higher than indicated by the sign find an alternative route"
+ },
+ {
+  "id": 175,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Slow down and look out for other temporary road traffic signs people regulating the traffic or who might be crossing the road",
+  "formatted": "Slow down and look out for temporary signs or personnel regulating or crossing traffic"
+ },
+ {
+  "id": 129,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Look out for cross-traffic Slow down and be prepared to stop and go round the corner at a safe speed",
+  "formatted": "Look out for cross-traffic Slow down be prepared to stop and round the corner at a safe speed"
+ },
+ {
+  "id": 263,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Make sure that your vehicle is parked completely inside the lines that mark the parking bay In the case of angle parking you must park as far as possible from the road with the front of your vehicle not further than 150mm from the kerb but no part of the vehicle may be on or over the sidewalk",
+  "formatted": "Parking bay rules park completely inside marked lines for angle parking park as far as possible from the road with front bumper within 150mm of kerb and no part of the vehicle may be on or over the sidewalk"
+ },
+ {
+  "id": 264,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "If you are not part of the group identified by the sign you may not park here In an emergency you may stop or park at the sign that indicates the SOS telephone Only goods vehicles may stop or park in the demarcated are that indicates a loading zone",
+  "formatted": "Special parking bay rules do not park here if you are not part of the identified group in an emergency you may stop at the SOS telephone sign and only goods vehicles may stop in a demarcated loading zone"
+ },
+ {
+  "id": 265,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Choose the correct lane in time to travel in the direction you want to go Make sure that other traffic is obeying the mandatory direction arrows in their lanes Check your blind spot before turning right to see that a vehicle in the lane next to you who is suppose to turn right because of the mandatory right-turn arrow in his lane is not carrying straight on",
+  "formatted": "Mandatory arrow actions choose the correct lane in time to travel in your desired direction ensure other traffic obeys mandatory direction arrows in their lanes and check blind spots before turning right to ensure adjacent vehicles turn as marked"
+ },
+ {
+  "id": 266,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "If you are not driving a bus do not drive in the lane indicated by the sign during the times on the sign",
+  "formatted": "If you are not driving a bus do not drive in the lane during the times on the sign"
+ },
+ {
+  "id": 267,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Do not stop in the demarcated box and make sure that you will be able to drive through the intersection before entering the intersection",
+  "formatted": "Do not stop in the demarcated box and ensure you can drive completely through before entering"
+ },
+ {
+  "id": 268,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Look out for pedestrians that may cross the road slow down and stop if someone wants to cross the road Do not overtake inside this area or a vehicle that has stopped at any pedestrian crossing",
+  "formatted": "Pedestrian zone actions look out for pedestrians slow down and stop if someone wants to cross and do not overtake inside this area or pass a vehicle stopped at a crossing"
+ },
+ {
+  "id": 269,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Except in any emergency do not stop at these lines In the case of a broken line you may not stop during the times indicated by a road traffic sign",
+  "formatted": "No-stopping line actions do not stop at these lines except in an emergency and in the case of a broken line do not stop during restricted times"
+ },
+ {
+  "id": 272,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Only drive around the circle in the direction indicated by the arrows Yield to traffic coming from your right hand side At a mini-circle yield to traffic that reaches their yield line first before you reach yours Drive slowly so that you can stop if someone does not yield",
+  "formatted": "Circle navigation rules drive only in the direction indicated by arrows yield to traffic from your right and at mini-circles yield to vehicles reaching their line first and drive slowly so you can stop if another driver fails to yield"
+ },
+ {
+  "id": 274,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Yield to any traffic that wants to change lanes The continuity lines will soon change to a channelizing line or painted island which will make it illegal to change direction Check your blind spot to make sure there are no other vehicles that might cut in front of you",
+  "formatted": "Continuity line rules yield to traffic wanting to change lanes note lines will change to solid channelizing lines making lane changes illegal and check blind spots to ensure no vehicles cut in front"
+ },
+ {
+  "id": 275,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Be on the look out for approaching vehicles which may move over onto your side of the road",
+  "formatted": "Be on the look out for approaching vehicles which may move onto your side of the road"
+ },
+ {
+  "id": 288,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Do not use a road or a marked portion of a road if you are not part of the group identified by the marking",
+  "formatted": "Do not use a road or marked portion if you are not part of the group identified"
+ },
+ {
+  "id": 287,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Look out for cyclists crossing or who want to cross the road",
+  "formatted": "Look out for cyclists crossing or wanting to cross the road"
+ },
+ {
+  "id": 289,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Read the message on the road and then concentrate on the possible danger indicated by the message",
+  "formatted": "Read the message on the road and concentrate on the possible danger indicated"
+ },
+ {
+  "id": 292,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Driver must focus on the signals given by the officer and strictly adhere to the signal given The traffic officer signals takes precedence over any other traffic signal a Stop-Stop traffic approaching from the front b Stop-Stop traffic approaching from the rear c Stop-Stop traffic approaching from the rear d Go Proceed - Indicates to the driver that he she may proceed e Go Proceed - Indicates to the driver that he she may proceed",
+  "formatted": "Traffic officer signals take precedence Stop signals require stopping when indicated from front or rear and Go Proceed signals indicate that the driver may proceed"
+ },
+ {
+  "id": 123,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "If your vehicle belongs to the company or organisation indicated by this sign obey the regulatory sign",
+  "formatted": "If your vehicle belongs to the company or organisation indicated obey the regulatory sign"
+ },
+ {
+  "id": 243,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Do not turn in at such a road unless you are going to a destination in the road that ends",
+  "formatted": "Do not turn in at such a road unless going to a destination in the road that ends"
+ },
+ {
+  "id": 280,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Ensure not to cross the prohibition line that follows the sign If you are on the right-hand side of the road move back to the left-hand lane as soon as possible before the prohibition line starts",
+  "formatted": "Prohibition line warning do not cross the prohibition line that follows the sign and if on the right-hand side move back to the left lane before the line starts"
+ },
+ {
+  "id": 220,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Make use of this advance direction sign to decide where you want to go before reaching actual intersection",
+  "formatted": "Use this advance sign to decide your route before reaching the actual intersection"
+ },
+ {
+  "id": 235,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Whenever a lane ends converges merges or is added make sure in time that there is a big enough gap in the traffic to merge with the traffic Also yield to other traffic which might merge",
+  "formatted": "Whenever a lane ends converges merges or is added ensure a sufficient traffic gap to merge in time and yield to other merging traffic"
+ },
+ {
+  "id": 226,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Always pass on the left-hand side of this road traffic sign if you want to leave the freeway and on the right-hand side if you do not want to leave",
+  "formatted": "Gore sign positioning pass on the left-hand side if you want to leave the freeway and pass on the right-hand side if you do not want to leave"
+ },
+ {
+  "id": 20,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Do not use the road or part of the road indicated by this sign Pedestrians may use only the part of the road indicated by this sign",
+  "formatted": "Do not use the road or part indicated by this sign Pedestrians may use only the part indicated"
+ },
+ {
+  "id": 21,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Do not use the road or part of the road indicated by this sign Cyclists may use only the part of the road indicated by this sign",
+  "formatted": "Do not use the road or part indicated by this sign Cyclists may use only the part indicated"
+ },
+ {
+  "id": 61,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Look out for cyclists and pedestrians who use the road despite the prohibition Cyclists and pedestrians must follow a different route and may not proceed beyond this sign",
+  "formatted": "Cyclists and pedestrians must follow a different route and may not proceed beyond Drivers must look out for prohibited users"
+ },
+ {
+  "id": 44,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Yield right of way to vehicle approaching from the right within the roundabout where such vehicles are close enough to cause a danger or potential danger Proceed clockwise at the junction if it is safe to do so",
+  "formatted": "Roundabout navigation yield right of way to vehicles approaching from the right close enough to pose danger and proceed clockwise at the junction when safe"
+ },
+ {
+  "id": 56,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "If sign R214 or TR214 is displayed do not overtake any vehicle for the next 500m If you are driving a heavy motor vehicle do not overtake another heavy vehicle if sign R215 is displayed",
+  "formatted": "No overtaking rules if R214 TR214 is displayed do not overtake any vehicle for the next 500m and if R215 is displayed on a heavy vehicle do not overtake another heavy vehicle"
+ },
+ {
+  "id": 60,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Look out for cyclists who use the road despite the prohibition Cyclists must follow a different route and may not proceed beyond this sign",
+  "formatted": "Cyclists must follow a different route and may not proceed beyond Drivers must look out for prohibited cyclists"
+ },
+ {
+  "id": 125,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "From here you do not have to comply with the restriction sign with a symbol similar to this sign but without the red cross",
+  "formatted": "From here you do not have to comply with the restriction sign matching this symbol"
+ },
+ {
+  "id": 156,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Slow down and be on the look out for the next 2 km for animals",
+  "formatted": "Slow down and be on the look out for animals for the next 2 km"
+ },
+ {
+  "id": 115,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Drive slowly obey the special rules mentioned above and be particularly on the look out for children playing in the street",
+  "formatted": "Drive slowly obey special zone rules and be on the lookout for children playing in the street"
+ },
+ {
+  "id": 248,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Pay attention to these signs in order to realise what the danger is what a safe speed is how far away the danger is and the distance the danger will continue",
+  "formatted": "Pay attention to these signs to realise the nature of danger safe speed and distance length of danger"
+ },
+ {
+  "id": 78,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Do not enter this area if the overall width of the vehicle you are driving exceeds the width indicated on the sign",
+  "formatted": "Do not enter this area if overall vehicle width exceeds the width indicated on the sign"
+ },
+ {
+  "id": 270,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Exception an emergency you may stop for short periods but may not park here Parking means that a vehicle is stationary whether the engine is running or not for a longer period than is longer than that needed to on or off load goods or passengers",
+  "formatted": "Except in an emergency you may stop for short periods but may not park here"
+ },
+ {
+  "id": 257,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Look out for any pedestrians crossing or wanting to cross the road and give them priority by slowing down or stopping",
+  "formatted": "Look out for crossing pedestrians and give them priority by slowing down or stopping"
+ },
+ {
+  "id": 144,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "If you are driving in the left hand lane and want to turn to the right at the first intersection change to the right hand lane in good time If you are driving in the right hand lane and wish to turn to the left at the first intersection change to the left hand lane in good time",
+  "formatted": "Lane positioning before two-way cross street if driving in the left lane and turning right change to the right lane in good time and if driving in the right lane and turning left change to the left lane in good time"
+ },
+ {
+  "id": 22,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Do not drive on this road or part of this road Cyclists and pedestrians may use only that part of the road indicated by these signs Where this part of the road is divided cyclists may use the part indicated on the sign by a bicycle symbol Pedestrians may use the part indicated on the sign by a pedestrian symbol",
+  "formatted": "Pedestrian and cycle path usage do not drive a motor vehicle on this road or designated path cyclists and pedestrians must use only their designated portions and on divided paths cyclists use the bicycle section and pedestrians use the pedestrian section"
+ },
+ {
+  "id": 59,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Despite the fact that pedestrians are prohibited on such a road you must still look out for them Pedestrians may not enter or cross a road where this sign is displayed",
+  "formatted": "Pedestrians may not enter or cross where displayed Drivers must still look out for pedestrians"
+ },
+ {
+  "id": 84,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Park in accordance with the road traffic sign and road traffic markings If necessary pay the tariff and do not park for longer than the time indicated",
+  "formatted": "Park in accordance with signs and markings Pay applicable tariffs and do not exceed allowed time limits"
+ },
+ {
+  "id": 141,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Slow down e3nough to take the curves safely or stop within the distance you can see Remember that there could be any number of curves after the first one without further warning",
+  "formatted": "Slow down enough to take curves safely or stop within sight distance Note that unwarned curves may follow"
+ },
+ {
+  "id": 132,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Slow down and be prepared to stop or turn at a safe speed Look out for traffic at the intersection that might not yield",
+  "formatted": "Slow down and be prepared to stop or turn at a safe speed Look out for non-yielding traffic"
+ },
+ {
+  "id": 163,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Find an alternative route if your vehicle is longer that the length indicated in metres on this sign",
+  "formatted": "Find an alternative route if your vehicle is longer than the length indicated in metres"
+ },
+ {
+  "id": 164,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Be aware of slow-moving traffic particularly in mountainous areas with sharp curves Allow for a longer stopping distance on a descent and especially when your vehicle is heavily laden",
+  "formatted": "Be aware of slow-moving traffic Allow for a longer stopping distance on descents especially when heavily laden"
+ },
+ {
+  "id": 236,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Whenever a lane ends converges merges or is added make sure in time that there is a big enough gap in the traffic to merge with the traffic Also yield to other traffic which might merge",
+  "formatted": "Whenever a lane ends converges merges or is added ensure a sufficient traffic gap to merge in time and yield to other merging traffic"
+ },
+ {
+  "id": 146,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Slow down so that you can stop or yield if there is cross traffic that do not yield at the intersection Remember that a driver of such a vehicle that joins your road from the concealed driveway sometimes finds it also difficult to see you",
+  "formatted": "Slow down so you can stop or yield if cross traffic fails to yield Remember drivers joining from concealed driveways may struggle to see you"
+ },
+ {
+  "id": 174,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Slow down to be able to stop within their sight distance if a fall occurs or has occurred Such falls occur more often when it rains and therefore reduce your speed further since your stopping distance during rainy weather will be longer",
+  "formatted": "Slow down to stop within sight distance if rockfalls occur Reduce speed further in rain as stopping distances increase"
+ },
+ {
+  "id": 178,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Slow down and look out for anything on or next to the carriageway that could cause you to change speed or direction",
+  "formatted": "Slow down and look out for anything that could cause you to change speed or direction"
+ },
+ {
+  "id": 290,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "These lights must be obeyed at all times in the following manner Red - Stop Flashing red arrow to the left - After stopping the driver may turn if there is no traffic Remember to yield to pedestrian traffic and oncoming traffic that wants to turn right and traffic from the right passing through the intersection Amber - Stop except where it cannot be done safely Constant amber arrow - Stop and wait until the flashing green arrow shows you may go Green - Go if it is safe Flashing green arrows - Right of way in the direction of the flashing arrow Constant green arrow - Shows the direction in which traffic must go for example one-way streets Flashing amber disc - Drive on carefully but yield to pedestrians Pedestrians may cross the roadway Flashing red signal - Indicates that the driver must stop and may carry on when it is safe as at stop sign At a railway crossing a flashing red light indicates that a train is coming and you may not drive on until the light stops flashing Red figure light signal Shows pedestrians that they may not cross the road until the green figure light signal is shown If this sign flashes pedestrians who have not entered the roadway must wait until a green figure light signal shows Pedestrians who are already in the intersection must cross the intersection as quickly as possible",
+  "formatted": "Traffic light rules Red Stop Flashing red arrow left Stop then turn if clear yield to pedestrians oncoming right-turners right-side traffic Amber Stop unless unsafe Constant amber arrow Stop and wait for green arrow Green Go if safe Flashing green arrow Right of way in arrow direction Constant green arrow Mandatory movement direction Flashing amber disc Drive carefully and yield to pedestrians Flashing red signal Stop then proceed when safe like a stop sign Flashing red at railway crossing Stop until flashing stops and Red figure Pedestrians do not cross Flashing red figure Pedestrians in roadway cross quickly those waiting do not enter"
+ },
+ {
+  "id": 184,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Be ready to stop at the stop sign that follows after the flashing blue light or on demand of a police officer",
+  "formatted": "Be ready to stop at the stop sign following the flashing blue light or on demand of a police officer"
+ },
+ {
+  "id": 190,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Slow down immediately look out for someone controlling the traffic and be ready to stop If there is enough or professional help on the scene do not stop out of curiosity Do not look at the collision scene or wreckage concentrate on the route to be followed without driving over or into anything",
+  "formatted": "Accident scene instructions slow down immediately look for traffic controllers and be ready to stop if help is present do not stop out of curiosity and do not gawk at wreckage focus on your route to avoid debris"
+ },
+ {
+  "id": 131,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Slow down so that you will be able to stop or go around the corner or pass the intersection at a safe speed Look out for other traffic at the intersection that might not yield",
+  "formatted": "Slow down so you can stop turn or pass at a safe speed Look out for non-yielding traffic at the intersection"
+ },
+ {
+  "id": 137,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Slow down so that you can stop or drive around the circle at a safe speed Look out for road traffic signs and markings which will tell you whether you have the right of way or whether you have to yield If there is no indication you have to give way to traffic approaching from the right Vehicles within a traffic circle have right of way If you have right of way still look out for traffic in the circle which may not yield to you If sign R2 2 is displayed at the traffic circle you must yield to any driver who crosses his yield line first before you cross yours",
+  "formatted": "Circle approach rules slow down to stop or navigate the circle safely yield to traffic approaching from the right vehicles in circle have right of way unless signs specify otherwise and if sign R2 2 is present yield to any driver who crosses their yield line first"
+ },
+ {
+  "id": 151,
+  "table": "study_signs",
+  "field": "action_text",
+  "raw": "Slow down and look out for a stop sign displayed by the scholar patrol Look out at all times for children who may suddenly cross the road",
+  "formatted": "Slow down and look out for stop signs displayed by the scholar patrol Watch for children who may suddenly cross"
+ }
+]
