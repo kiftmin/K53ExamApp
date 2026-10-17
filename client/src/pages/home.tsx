@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocation, useSearch } from "wouter";
 import { useQuery } from "@tanstack/react-query";
-import type { StudySign, StudyRule } from "@shared/schema";
+import type { StudySign, StudyRule, StudyControl } from "@shared/schema";
 import { weakestGroups } from "@/lib/mastery-summary";
 import { useAccessCode } from "@/lib/use-access-code";
 import { Layout } from "@/components/layout";
@@ -58,8 +58,17 @@ export default function Home() {
   const { data: rules = [] } = useQuery<StudyRule[]>({
     queryKey: ["/api/rules"],
   });
+  const { data: controls = [] } = useQuery<StudyControl[]>({
+    queryKey: ["/api/controls"],
+  });
 
-  const weak = weakestGroups(signs, rules, 3);
+  const controlsForSummary = controls.map((c) => ({
+    id: c.id,
+    heading: c.component_name,
+    subheading: c.function_notes ?? null,
+  }));
+
+  const weak = weakestGroups(signs, rules, controlsForSummary, 3);
   const revisionPath = weak.length > 0 ? gModulePath(weak[0]!) : "/study";
 
   const unlockTarget = new URLSearchParams(search).get("unlock");

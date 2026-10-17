@@ -4,6 +4,7 @@
 
 import { getAllSignLearning } from "./sign-storage";
 import { getAllRuleLearning } from "./rule-storage";
+import { getAllControlLearning } from "./control-storage";
 
 export interface GroupMastery {
   heading: string;
@@ -48,9 +49,13 @@ export function summarizeRules<T extends { id: number; heading: string; subheadi
   return summarize(items, getAllRuleLearning(), "rules");
 }
 
-/** Lowest-mastery groups with weak items, signs + rules combined, weakest first. */
-export function weakestGroups(signs: any[], rules: any[], limit = 3): GroupMastery[] {
-  return [...summarizeSigns(signs), ...summarizeRules(rules)]
+export function summarizeControls(items: { id: number; heading: string; subheading?: string | null }[]): GroupMastery[] {
+  return summarize(items, getAllControlLearning(), "controls");
+}
+
+/** Lowest-mastery groups with weak items, signs + rules + controls combined, weakest first. */
+export function weakestGroups(signs: any[], rules: any[], controls: any[], limit = 3): GroupMastery[] {
+  return [...summarizeSigns(signs), ...summarizeRules(rules), ...summarizeControls(controls)]
     .filter((g) => g.weak > 0)
     .sort((a, b) => a.pct - b.pct || b.weak - a.weak)
     .slice(0, limit);
