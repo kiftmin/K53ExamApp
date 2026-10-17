@@ -1,5 +1,8 @@
 // Favorites + seen-ids + licence/gearbox session for the Controls study module.
 // Mirrors rule-storage.ts — plain JSON in localStorage.
+// Progress is server-synced for W/M/X codes via progress-sync.ts.
+
+import { syncEnabled, fetchProgress, pushProgress, mergeServerIntoLocal, type LearnerRecord } from "./progress-sync";
 
 const FAV_CONTROLS_KEY = "k53_favorite_controls";
 const LEARNING_CONTROLS_KEY = "k53_control_learning";
@@ -92,6 +95,11 @@ export function rateControl(id: number, rating: RecallRating): LearningRecord {
   };
   map[id] = record;
   writeLearningMap(LEARNING_CONTROLS_KEY, map);
+
+  if (syncEnabled()) {
+    pushProgress("control", id, record);
+  }
+
   return record;
 }
 export function getAllControlLearning(): Record<number, LearningRecord> { return readLearningMap(LEARNING_CONTROLS_KEY); }
@@ -155,4 +163,13 @@ export function isVehicleTypeForCode(code: number | null, vehicleType: string, g
   if (code === 2) return vehicleType === "lmv";
   if (code === 3) return vehicleType === "hmv";
   return false;
+}
+
+/** Sync session start: fetch server progress for this mobile + item type and merge into localStorage (server wins). Call once on Browse/Flashcard mount. */
+export async function initControlSync(): Promise<void> {
+  if (!syncEnabled()) return;
+  const server = await fetchProgress("control");
+  const local = readLearningMap(LEARNING_CONTROLS_KEY);
+  const merged = mergeServerIntoLocal(local, server);
+  writeLearningMap(LEARNING_CONTROLS_KEY, merged);
 }

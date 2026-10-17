@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Heart, Layers, Search, ArrowLeft, CheckCircle2, HeartOff, CircleX } from "lucide-react";
-import { toggleFavoriteControl, getFavoriteControlIds, getDoneControlIds, toggleDoneControl, removeControlBookmarks } from "@/lib/control-storage";
+import { toggleFavoriteControl, getFavoriteControlIds, getDoneControlIds, toggleDoneControl, removeControlBookmarks, initControlSync } from "@/lib/control-storage";
 import ControlDiagramView from "@/components/control-diagram-view";
 import ControlsPractice from "@/components/controls-practice";
 import { useStudyGate } from "./study";
@@ -51,6 +51,12 @@ function BrowseInner({ licence, gearbox, reset, allowed, setLocation, search, se
     },
     enabled: allowed,
   });
+
+  useEffect(() => {
+    if (allowed) {
+      initControlSync();
+    }
+  }, [allowed]);
   const { data: diagrams = [] } = useQuery<ControlDiagram[]>({ queryKey: ["/api/control-diagrams"] });
 
   const byDiagram = useMemo(() => {

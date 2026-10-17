@@ -144,6 +144,21 @@ app.use((req, res, next) => {
         question_id INTEGER NOT NULL REFERENCES questions(id) ON DELETE CASCADE
       );
     `;
+    await client`
+      CREATE TABLE IF NOT EXISTS learner_progress (
+        id SERIAL PRIMARY KEY,
+        mobile_number TEXT NOT NULL,
+        item_type TEXT NOT NULL,
+        item_id INTEGER NOT NULL,
+        status TEXT NOT NULL,
+        correct INTEGER NOT NULL DEFAULT 0,
+        incorrect INTEGER NOT NULL DEFAULT 0,
+        last_rating TEXT,
+        last_seen_at TIMESTAMP,
+        updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
+        CONSTRAINT learner_progress_unique_item UNIQUE (mobile_number, item_type, item_id)
+      );
+    `;
     // Pure-additive column migrations (safe to run every boot)
     // Existing questions keep the bank's curated state → default TRUE on migration.
     await client`ALTER TABLE questions ADD COLUMN IF NOT EXISTS is_reviewed BOOLEAN NOT NULL DEFAULT TRUE;`;

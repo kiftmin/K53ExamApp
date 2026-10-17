@@ -12,6 +12,7 @@ import {
   requiresMobile,
   validateDailyCode,
   isValidMobile,
+  validateCodeAndMobile,
   type AccessCodeType,
 } from "./access-code.js";
 import { getAdminEmail, isSmtpConfigured, sendAdminEmail } from "./mailer.js";
@@ -19,6 +20,7 @@ import { slugifyCode, listStagedImages, stageImageUpload, attachStagedToCode, sa
 import { saveImageForDiagram } from "./diagram-images.js";
 import { validateAdminAccess, requireAdminAuth } from "./admin-auth.js";
 import { z } from "zod";
+import { learnerProgressSchema, learnerProgressUpsertSchema, type InsertLearnerProgress } from "../shared/schema.js";
 
 export async function registerRoutes(
   _httpServer: any,
@@ -332,48 +334,65 @@ export async function registerRoutes(
         mobileNumber: z.string().optional().nullable(),
       }).parse(req.body);
 
-      const normalized = code.trim().toUpperCase();
-      const type = getTypeFromCode(normalized);
+      const result = await validateCodeAndMobile(code, mobileNumber, (normalized) => storage.getAccessCodeByCode(normalized));
 
-      if (!type) {
-        return res.json({ valid: false, message: "Unknown code type. Codes start with D, W, M or X." });
+      if (!result.valid) {
+        return res.json({ valid: false, type: result.type as any, requiresMobile: result.requiresMobile, message: result.message });
       }
-
-      if (type === 'daily') {
-        // 1) Deterministic daily code for today
-        if (validateDailyCode(normalized)) {
-          return res.json({ valid: true, type });
-        }
-        // 2) On-demand daily codes stored in DB
-        const stored = await storage.getAccessCodeByCode(normalized);
-        if (stored && stored.type === 'daily' && !stored.is_revoked) {
-          if (stored.expires_at && new Date(stored.expires_at).getTime() < Date.now()) {
-            return res.json({ valid: false, type, message: "Daily code expired." });
-          }
-          return res.json({ valid: true, type });
-        }
-        return res.json({ valid: false, type, message: "Invalid daily code." });
-      }
-
-      // W / M / X require linked mobile number
-      const mobile = (mobileNumber || '').trim();
-      if (!isValidMobile(mobile)) {
-        return res.json({ valid: false, type, requiresMobile: true, message: "A 10-digit mobile number is required for this code." });
-      }
-      const stored = await storage.getAccessCodeByCode(normalized);
-      if (!stored || stored.type !== type || stored.is_revoked) {
-        return res.json({ valid: false, type, requiresMobile: true, message: "Invalid code." });
-      }
-      if ((stored.mobile_number || '').trim() !== mobile) {
-        return res.json({ valid: false, type, requiresMobile: true, message: "Mobile number does not match this code." });
-      }
-      if (stored.expires_at && new Date(stored.expires_at).getTime() < Date.now()) {
-        return res.json({ valid: false, type, requiresMobile: true, message: "Code expired." });
-      }
-      return res.json({ valid: true, type, requiresMobile: true });
+      return res.json({ valid: true, type: result.type, requiresMobile: result.type !== 'daily' });
     } catch (err) {
       console.error("Error validating access code:", err);
       res.status(500).json({ valid: false, message: "Failed to validate access code" });
+    }
+  });
+
+  // === Learner progress (server-synced mastery state, keyed by mobile number) ===
+  // Re-validates the code+mobile pair on every request before reading/writing.
+
+  app.get('/api/learner-progress', async (req: any, res: any) => {
+    try {
+      const { code, mobileNumber, item_type } = z.object({
+        code: z.string().min(1),
+        mobileNumber: z.string().min(1),
+        item_type: z.enum(['sign', 'rule', 'control']),
+      }).parse(req.query);
+
+      const result = await validateCodeAndMobile(code, mobileNumber, (normalized) => storage.getAccessCodeByCode(normalized));
+      if (!result.valid) {
+        return res.status(401).json({ valid: false, message: result.message });
+      }
+
+      const rows = await storage.getLearnerProgress(mobileNumber.trim(), item_type);
+      return res.json({ valid: true, type: result.type, progress: rows });
+    } catch (err) {
+      console.error("Error fetching learner progress:", err);
+      res.status(500).json({ valid: false, message: "Failed to load progress" });
+    }
+  });
+
+  app.post('/api/learner-progress', async (req: any, res: any) => {
+    try {
+      const { code, mobileNumber, item_type, item_id, status, correct, incorrect, last_rating, last_seen_at } = learnerProgressUpsertSchema.parse(req.body);
+
+      const result = await validateCodeAndMobile(code, mobileNumber, (normalized) => storage.getAccessCodeByCode(normalized));
+      if (!result.valid) {
+        return res.status(401).json({ valid: false, message: result.message });
+      }
+
+      const row = await storage.upsertLearnerProgress({
+        mobile_number: mobileNumber.trim(),
+        item_type,
+        item_id,
+        status,
+        correct,
+        incorrect,
+        last_rating,
+        last_seen_at,
+      });
+      return res.json({ valid: true, type: result.type, progress: row });
+    } catch (err) {
+      console.error("Error upserting learner progress:", err);
+      res.status(500).json({ valid: false, message: "Failed to save progress" });
     }
   });
 

@@ -1,5 +1,8 @@
 // Favorites + seen-ids + learner licence code for the Rules study module.
 // Mirrors sign-storage.ts — plain JSON in localStorage, no backend changes.
+// Progress is server-synced for W/M/X codes via progress-sync.ts.
+
+import { syncEnabled, fetchProgress, pushProgress, mergeServerIntoLocal, type LearnerRecord } from "./progress-sync";
 
 const FAV_RULES_KEY = "k53_favorite_rules";
 const RULE_CODE_KEY = "k53_rules_licence_code";
@@ -66,6 +69,11 @@ export function rateRule(id: number, rating: RecallRating): LearningRecord {
   };
   map[id] = record;
   writeLearningMap(LEARNING_RULES_KEY, map);
+
+  if (syncEnabled()) {
+    pushProgress("rule", id, record);
+  }
+
   return record;
 }
 
@@ -99,6 +107,15 @@ export function clearSeenRules(): void {
   } catch {
     // ignore
   }
+}
+
+/** Sync session start: fetch server progress for this mobile + item type and merge into localStorage (server wins). Call once on Browse/Flashcard mount. */
+export async function initRuleSync(): Promise<void> {
+  if (!syncEnabled()) return;
+  const server = await fetchProgress("rule");
+  const local = readLearningMap(LEARNING_RULES_KEY);
+  const merged = mergeServerIntoLocal(local, server);
+  writeLearningMap(LEARNING_RULES_KEY, merged);
 }
 
 function readIds(key: string): number[] {

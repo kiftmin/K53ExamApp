@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { useQuiz } from "@/lib/quiz-context";
-import { getFavoriteSignIds, toggleFavoriteSign, getDoneSignIds, toggleDoneSign, removeSignBookmarks } from "@/lib/sign-storage";
+import { getFavoriteSignIds, toggleFavoriteSign, getDoneSignIds, toggleDoneSign, removeSignBookmarks, initSignSync } from "@/lib/sign-storage";
 import { useToast } from "@/hooks/use-toast";
 import { ArrowLeft, BadgeCheck, ChevronDown, CheckCircle2, Heart, ImageOff, Layers, Search, HeartOff, CircleX } from "lucide-react";
 
@@ -116,6 +116,12 @@ export default function StudySignsBrowse() {
     queryKey: ["/api/signs"],
     enabled: allowed,
   });
+
+  useEffect(() => {
+    if (allowed) {
+      initSignSync();
+    }
+  }, [allowed]);
 
   const { data: linkedQuestions = [] } = useQuery<Question[]>({
     queryKey: [`/api/signs/${openId}/questions`],

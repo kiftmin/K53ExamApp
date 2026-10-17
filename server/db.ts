@@ -104,6 +104,22 @@ export const controlQuestions = pgTable('control_questions', {
     question_id: integer('question_id').references(() => questions.id, { onDelete: 'cascade' }).notNull(),
 });
 
+// Learner progress (server-synced mastery state, keyed by mobile number)
+export const learnerProgress = pgTable('learner_progress', {
+    id: serial('id').primaryKey(),
+    mobile_number: text('mobile_number').notNull(),
+    item_type: text('item_type').notNull(),   // 'sign' | 'rule' | 'control'
+    item_id: integer('item_id').notNull(),
+    status: text('status').notNull(),          // 'new' | 'learning' | 'review' | 'mastered'
+    correct: integer('correct').default(0).notNull(),
+    incorrect: integer('incorrect').default(0).notNull(),
+    last_rating: text('last_rating'),
+    last_seen_at: timestamp('last_seen_at'),
+    updated_at: timestamp('updated_at').defaultNow().notNull(),
+}, (table) => ({
+    uniqueItem: unique().on(table.mobile_number, table.item_type, table.item_id),
+}));
+
 // Define Drizzle Postgres Schema matching the Zod schema
 export const questions = pgTable('questions', {
     id: serial('id').primaryKey(),

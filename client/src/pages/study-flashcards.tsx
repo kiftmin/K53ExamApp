@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState, type TouchEvent as ReactTouchEvent } from "react";
+import { useMemo, useRef, useState, useEffect, type TouchEvent as ReactTouchEvent } from "react";
 import { useLocation } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import type { StudySign } from "@shared/schema";
@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Progress } from "@/components/ui/progress";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { getFavoriteSignIds, getSeenSignIds, markSignSeen, rateSign, getAllSignLearning, type RecallRating } from "@/lib/sign-storage";
+import { getFavoriteSignIds, getSeenSignIds, markSignSeen, rateSign, getAllSignLearning, initSignSync, type RecallRating } from "@/lib/sign-storage";
 import { summarizeSigns } from "@/lib/mastery-summary";
 import { ArrowLeft, ChevronLeft, ChevronRight, RotateCcw, Shuffle } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -42,6 +42,12 @@ export default function StudySignsFlashcards() {
     queryKey: ["/api/signs"],
     enabled: allowed,
   });
+
+  useEffect(() => {
+    if (allowed) {
+      initSignSync();
+    }
+  }, [allowed]);
 
   const headings = useMemo(() => Array.from(new Set(signs.map((s) => s.heading))).sort(), [signs]);
   const subheadings = useMemo(

@@ -1,5 +1,5 @@
-import { db, questions, sources, accessCodes, studySigns, signQuestions, studyRules, ruleQuestions, controlDiagrams, studyControls, controlQuestions } from './db.js';
-import { Question, InsertQuestion, Source, InsertSource, AccessCode, InsertAccessCode, StudySign, InsertStudySign, SignQuestionLink, StudyRule, InsertStudyRule, RuleQuestionLink, ControlDiagram, InsertControlDiagram, StudyControl, InsertStudyControl, ControlQuestionLink, RawControlBundle } from '../shared/schema.js';
+import { db, questions, sources, accessCodes, studySigns, signQuestions, studyRules, ruleQuestions, controlDiagrams, studyControls, controlQuestions, learnerProgress } from './db.js';
+import { Question, InsertQuestion, Source, InsertSource, AccessCode, InsertAccessCode, StudySign, InsertStudySign, SignQuestionLink, StudyRule, InsertStudyRule, RuleQuestionLink, ControlDiagram, InsertControlDiagram, StudyControl, InsertStudyControl, ControlQuestionLink, RawControlBundle, LearnerProgressRow, InsertLearnerProgress } from '../shared/schema.js';
 import { eq, inArray, desc, and } from 'drizzle-orm';
 
 export interface IStorage {
@@ -64,6 +64,10 @@ export interface IStorage {
   linkControlQuestion(controlId: number, questionId: number): Promise<ControlQuestionLink>;
   unlinkControlQuestion(controlId: number, questionId: number): Promise<boolean>;
   getControlsForQuestion(questionId: number): Promise<StudyControl[]>;
+
+  // Learner progress (server-synced mastery state)
+  getLearnerProgress(mobileNumber: string, itemType: string): Promise<LearnerProgressRow[]>;
+  upsertLearnerProgress(data: InsertLearnerProgress): Promise<LearnerProgressRow>;
   bulkImportControls(bundle: RawControlBundle): Promise<{ diagrams: number; controls: number; questions: number; links: number; skippedQuestions: number }>;
 }
 
@@ -636,11 +640,61 @@ export class NeonDatabaseStorage implements IStorage {
   }
 
   async getControlsForQuestion(questionId: number): Promise<StudyControl[]> {
-    const links = await db.select().from(controlQuestions).where(eq(controlQuestions.question_id, questionId));
+    const links = await db.select().from(controlQuestions).where(controlQuestions.question_id.eq(questionId));
     if (links.length === 0) return [];
     const ids = links.map((l) => l.control_id);
     const data = await db.select().from(studyControls).where(inArray(studyControls.id, ids));
     return data as unknown as StudyControl[];
+  }
+
+  // === Learner progress (server-synced mastery state) ===
+
+  async getLearnerProgress(mobileNumber: string, itemType: string): Promise<LearnerProgressRow[]> {
+    const rows = await db.select().from(learnerProgress).where(
+      and(
+        eq(learnerProgress.mobile_number, mobileNumber),
+        eq(learnerProgress.item_type, itemType)
+      )
+    );
+    return rows as unknown as LearnerProgressRow[];
+  }
+
+  async upsertLearnerProgress(data: InsertLearnerProgress): Promise<LearnerProgressRow> {
+    const [existing] = await db.select().from(learnerProgress).where(
+      and(
+        eq(learnerProgress.mobile_number, data.mobile_number),
+        eq(learnerProgress.item_type, data.item_type),
+        eq(learnerProgress.item_id, data.item_id)
+      )
+    );
+
+    if (existing) {
+      const [row] = await db
+        .update(learnerProgress)
+        .set({
+          status: data.status,
+          correct: data.correct,
+          incorrect: data.incorrect,
+          last_rating: data.last_rating ?? null,
+          last_seen_at: data.last_seen_at ? new Date(data.last_seen_at) : null,
+          updated_at: new Date(),
+        })
+        .where(eq(learnerProgress.id, existing.id))
+        .returning();
+      return row as unknown as LearnerProgressRow;
+    }
+
+    const [row] = await db.insert(learnerProgress).values({
+      mobile_number: data.mobile_number,
+      item_type: data.item_type,
+      item_id: data.item_id,
+      status: data.status,
+      correct: data.correct,
+      incorrect: data.incorrect,
+      last_rating: data.last_rating ?? null,
+      last_seen_at: data.last_seen_at ? new Date(data.last_seen_at) : null,
+    }).returning();
+    return row as unknown as LearnerProgressRow;
   }
 
   async bulkImportControls(bundle: RawControlBundle): Promise<{ diagrams: number; controls: number; questions: number; links: number; skippedQuestions: number }> {

@@ -1,6 +1,9 @@
 // Favorites + learning records for the Study modules.
 // Same localStorage pattern quiz-context.tsx uses for quiz state —
 // plain JSON, no backend changes needed.
+// Progress is server-synced for W/M/X codes via progress-sync.ts.
+
+import { syncEnabled, fetchProgress, pushProgress, mergeServerIntoLocal, type LearnerRecord } from "./progress-sync";
 
 const FAV_SIGNS_KEY = "k53_favorite_signs";
 const LEARNING_SIGNS_KEY = "k53_sign_learning";
@@ -67,6 +70,11 @@ export function rateSign(id: number, rating: RecallRating): LearningRecord {
   };
   map[id] = record;
   writeLearningMap(LEARNING_SIGNS_KEY, map);
+
+  if (syncEnabled()) {
+    pushProgress("sign", id, record);
+  }
+
   return record;
 }
 
@@ -170,4 +178,13 @@ export function clearSeenSigns(): void {
   } catch {
     // ignore
   }
+}
+
+/** Sync session start: fetch server progress for this mobile + item type and merge into localStorage (server wins). Call once on Browse/Flashcard mount. */
+export async function initSignSync(): Promise<void> {
+  if (!syncEnabled()) return;
+  const server = await fetchProgress("sign");
+  const local = readLearningMap(LEARNING_SIGNS_KEY);
+  const merged = mergeServerIntoLocal(local, server);
+  writeLearningMap(LEARNING_SIGNS_KEY, merged);
 }

@@ -201,3 +201,33 @@ export const rawControlBundleSchema = z.object({
 });
 
 export type RawControlBundle = z.infer<typeof rawControlBundleSchema>;
+
+// === Learner progress (server-synced mastery state, keyed by mobile number) ===
+
+export const learnerProgressSchema = z.object({
+  id: z.number().optional(),
+  mobile_number: z.string(),
+  item_type: z.enum(['sign', 'rule', 'control']),
+  item_id: z.number(),
+  status: z.enum(['new', 'learning', 'review', 'mastered']),
+  correct: z.number().default(0),
+  incorrect: z.number().default(0),
+  last_rating: z.string().nullable().optional(),
+  last_seen_at: z.coerce.date().nullable().optional(),
+  updated_at: z.coerce.date().optional(),
+});
+
+export type LearnerProgressRow = z.infer<typeof learnerProgressSchema> & { id: number };
+export type InsertLearnerProgress = Omit<z.infer<typeof learnerProgressSchema>, "id">;
+
+export const learnerProgressUpsertSchema = z.object({
+  code: z.string().min(1),
+  mobileNumber: z.string().min(1),
+  item_type: z.enum(['sign', 'rule', 'control']),
+  item_id: z.number(),
+  status: z.enum(['new', 'learning', 'review', 'mastered']),
+  correct: z.number().default(0),
+  incorrect: z.number().default(0),
+  last_rating: z.string().nullable().optional(),
+  last_seen_at: z.coerce.date().nullable().optional(),
+});

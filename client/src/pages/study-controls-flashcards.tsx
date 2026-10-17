@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState, type TouchEvent as ReactTouchEvent } from "react";
+import { useMemo, useRef, useState, useEffect, type TouchEvent as ReactTouchEvent } from "react";
 import { useLocation } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import type { StudyControl, ControlDiagram } from "@shared/schema";
@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Progress } from "@/components/ui/progress";
 import ControlDiagramView from "@/components/control-diagram-view";
-import { getFavoriteControlIds, getSeenControlIds, markControlSeen, rateControl, getAllControlLearning, type RecallRating } from "@/lib/control-storage";
+import { getFavoriteControlIds, getSeenControlIds, markControlSeen, rateControl, getAllControlLearning, initControlSync, type RecallRating } from "@/lib/control-storage";
 import { ArrowLeft, ChevronLeft, ChevronRight, RotateCcw, Shuffle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useStudyGate } from "./study";
@@ -26,6 +26,12 @@ function shuffle<T>(arr: T[]): T[] {
 export default function StudyControlsFlashcards() {
   const [, setLocation] = useLocation();
   const allowed = useStudyGate();
+
+  useEffect(() => {
+    if (allowed) {
+      initControlSync();
+    }
+  }, [allowed]);
   const [favoritesOnly, setFavoritesOnly] = useState(false);
   const [unseenOnly, setUnseenOnly] = useState(false);
   const [shuffled, setShuffled] = useState(true);

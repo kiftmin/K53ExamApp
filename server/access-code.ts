@@ -1,4 +1,5 @@
 import { createHmac, randomBytes } from 'crypto';
+import { AccessCode } from '../shared/schema.js';
 
 const SAST_OFFSET_MS = 2 * 60 * 60 * 1000; // UTC+2
 
@@ -129,4 +130,57 @@ export function getTimeUntilNextCode(): { hours: number; minutes: number; second
 
 export function isValidMobile(mobile: unknown): boolean {
     return typeof mobile === 'string' && /^\d{10}$/.test(mobile.trim());
+}
+
+/**
+ * Shared mobile-ownership validation for W/M/X codes.
+ * Re-proves that the given mobile number is linked to a currently valid,
+ * non-revoked, non-expired code of the matching type.
+ *
+ * Returns { valid: true, code } on success, or { valid: false, message, requiresMobile } on failure.
+ * The caller must pass a getAccessCodeByCode lookup (e.g. storage.getAccessCodeByCode).
+ */
+export async function validateCodeAndMobile(
+  code: string,
+  mobileNumber: string | undefined | null,
+  getAccessCodeByCode: (normalized: string) => Promise<AccessCode | undefined>
+): Promise<{ valid: true; type: AccessCodeType; code: AccessCode } | { valid: false; message: string; requiresMobile?: boolean }> {
+  const normalized = code.trim().toUpperCase();
+  const type = getTypeFromCode(normalized);
+
+  if (!type) {
+    return { valid: false, message: "Unknown code type. Codes start with D, W, M or X." };
+  }
+
+  if (type === 'daily') {
+    // Daily codes don't establish a mobile-linked identity — not eligible for progress sync.
+    if (validateDailyCode(normalized)) {
+      return { valid: true, type, code: { id: 0, code: normalized, type: 'daily', mobile_number: null, has_admin_access: false, is_revoked: false, created_at: new Date() } as unknown as AccessCode };
+    }
+    const stored = await getAccessCodeByCode(normalized);
+    if (stored && stored.type === 'daily' && !stored.is_revoked) {
+      if (stored.expires_at && new Date(stored.expires_at).getTime() < Date.now()) {
+        return { valid: false, type, message: "Daily code expired." };
+      }
+      return { valid: true, type, code: stored };
+    }
+    return { valid: false, type, message: "Invalid daily code." };
+  }
+
+  // W / M / X require linked mobile number
+  const mobile = (mobileNumber || '').trim();
+  if (!isValidMobile(mobile)) {
+    return { valid: false, type, requiresMobile: true, message: "A 10-digit mobile number is required for this code." };
+  }
+  const stored = await getAccessCodeByCode(normalized);
+  if (!stored || stored.type !== type || stored.is_revoked) {
+    return { valid: false, type, requiresMobile: true, message: "Invalid code." };
+  }
+  if ((stored.mobile_number || '').trim() !== mobile) {
+    return { valid: false, type, requiresMobile: true, message: "Mobile number does not match this code." };
+  }
+  if (stored.expires_at && new Date(stored.expires_at).getTime() < Date.now()) {
+    return { valid: false, type, requiresMobile: true, message: "Code expired." };
+  }
+  return { valid: true, type, code: stored };
 }

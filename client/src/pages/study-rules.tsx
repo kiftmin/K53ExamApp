@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Heart, Layers, Search, ArrowLeft, ChevronDown, CheckCircle2, HeartOff, CircleX } from "lucide-react";
-import { toggleFavoriteRule, getFavoriteRuleIds, getDoneRuleIds, toggleDoneRule, removeRuleBookmarks } from "@/lib/rule-storage";
+import { toggleFavoriteRule, getFavoriteRuleIds, getDoneRuleIds, toggleDoneRule, removeRuleBookmarks, initRuleSync } from "@/lib/rule-storage";
 import { useStudyGate } from "./study";
 import RulesCodeGate from "@/components/rules-code-gate";
 import { cn } from "@/lib/utils";
@@ -134,6 +134,12 @@ function BrowseInner({
     },
     enabled: allowed,
   });
+
+  useEffect(() => {
+    if (allowed) {
+      initRuleSync();
+    }
+  }, [allowed]);
 
   const favorites = useMemo(() => getFavoriteRuleIds(), [favsTick]);
   const doneIds = useMemo(() => getDoneRuleIds(), [favsTick]);

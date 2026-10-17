@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState, type TouchEvent as ReactTouchEvent } from "react";
+import { useMemo, useRef, useState, useEffect, type TouchEvent as ReactTouchEvent } from "react";
 import { useLocation } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import type { StudyRule } from "@shared/schema";
@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Progress } from "@/components/ui/progress";
-import { getFavoriteRuleIds, getSeenRuleIds, markRuleSeen, rateRule, getAllRuleLearning, type RecallRating } from "@/lib/rule-storage";
+import { getFavoriteRuleIds, getSeenRuleIds, markRuleSeen, rateRule, getAllRuleLearning, initRuleSync, type RecallRating } from "@/lib/rule-storage";
 import { summarizeRules } from "@/lib/mastery-summary";
 import { ArrowLeft, ChevronLeft, ChevronRight, RotateCcw, Shuffle } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -27,6 +27,12 @@ function shuffle<T>(arr: T[]): T[] {
 export default function StudyRulesFlashcards() {
   const [, setLocation] = useLocation();
   const allowed = useStudyGate();
+
+  useEffect(() => {
+    if (allowed) {
+      initRuleSync();
+    }
+  }, [allowed]);
   const [favoritesOnly, setFavoritesOnly] = useState(false);
   const [unseenOnly, setUnseenOnly] = useState(false);
   const [shuffled, setShuffled] = useState(true);
