@@ -7,6 +7,7 @@ import { QuizProvider } from "@/lib/quiz-context";
 
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
+import NewTest from "@/pages/new-test";
 import Quiz from "@/pages/quiz";
 import Results from "@/pages/results";
 import Review from "@/pages/review";
@@ -25,6 +26,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/new-test" component={NewTest} />
       <Route path="/admin" component={Admin} />
       <Route path="/quiz" component={Quiz} />
       <Route path="/results" component={Results} />

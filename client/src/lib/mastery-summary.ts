@@ -8,6 +8,7 @@ import { getAllRuleLearning } from "./rule-storage";
 export interface GroupMastery {
   heading: string;
   subheading: string;
+  module: "signs" | "rules" | "controls";
   mastered: number;
   total: number; // mastered + review + learning
   pct: number; // 0-100
@@ -16,14 +17,15 @@ export interface GroupMastery {
 
 function summarize<T extends { id: number; heading: string; subheading?: string | null; section_ref?: string | null }>(
   items: T[],
-  learning: Record<number, { status: string }>
+  learning: Record<number, { status: string }>,
+  module: "signs" | "rules" | "controls"
 ): GroupMastery[] {
   const groups = new Map<string, GroupMastery>();
   for (const item of items) {
     const key = `${item.heading}|||${item.subheading || ""}`;
     let g = groups.get(key);
     if (!g) {
-      g = { heading: item.heading, subheading: item.subheading || "(general)", mastered: 0, total: 0, pct: 0, weak: 0 };
+      g = { heading: item.heading, subheading: item.subheading || "(general)", module, mastered: 0, total: 0, pct: 0, weak: 0 };
       groups.set(key, g);
     }
     const rec = learning[item.id];
@@ -39,11 +41,11 @@ function summarize<T extends { id: number; heading: string; subheading?: string 
 }
 
 export function summarizeSigns<T extends { id: number; heading: string; subheading?: string | null }>(items: T[]): GroupMastery[] {
-  return summarize(items, getAllSignLearning());
+  return summarize(items, getAllSignLearning(), "signs");
 }
 
 export function summarizeRules<T extends { id: number; heading: string; subheading?: string | null }>(items: T[]): GroupMastery[] {
-  return summarize(items, getAllRuleLearning());
+  return summarize(items, getAllRuleLearning(), "rules");
 }
 
 /** Lowest-mastery groups with weak items, signs + rules combined, weakest first. */
