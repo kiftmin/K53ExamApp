@@ -7,14 +7,13 @@ import { Card, CardContent } from "@/components/ui/card";
 import { BookOpen, Car, Signpost, TrafficCone, ArrowLeft } from "lucide-react";
 
 export function useStudyGate(): boolean {
-  const [, setLocation] = useLocation();
+  const [location, setLocation] = useLocation();
   const allowed = typeof sessionStorage !== "undefined" && !!sessionStorage.getItem("k53_access_code");
   useEffect(() => {
     if (!allowed) {
-      const here = window.location.pathname;
-      setLocation(`/?unlock=${encodeURIComponent(here)}`);
+      setLocation(`/?unlock=${encodeURIComponent(location)}`);
     }
-  }, [allowed, setLocation]);
+  }, [allowed, location, setLocation]);
   return allowed;
 }
 
