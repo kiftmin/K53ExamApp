@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useLocation } from "wouter";
-import { House, BookOpen, Settings, Menu, X } from "lucide-react";
+import { House, BookOpen, Settings, Menu, X, LogOut } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const LINKS = [
@@ -9,9 +9,28 @@ const LINKS = [
   { path: "/admin", label: "Admin", icon: Settings },
 ];
 
+function clearSession() {
+  if (typeof sessionStorage !== "undefined") {
+    sessionStorage.removeItem("k53_access_code");
+    sessionStorage.removeItem("k53_mobile_number");
+  }
+  if (typeof localStorage !== "undefined") {
+    localStorage.removeItem("k53_name");
+    localStorage.removeItem("k53_surname");
+    localStorage.removeItem("k53_license_code");
+    localStorage.removeItem("driving-license-quiz-state");
+  }
+}
+
 export function SlideoutNav() {
   const [open, setOpen] = useState(false);
   const [location, setLocation] = useLocation();
+
+  const handleLogout = () => {
+    clearSession();
+    setOpen(false);
+    setLocation("/");
+  };
 
   return (
     <>
@@ -49,6 +68,15 @@ export function SlideoutNav() {
                 {label}
               </button>
             ))}
+            <div className="pt-3 border-t border-border mt-3 space-y-1">
+              <button
+                onClick={handleLogout}
+                className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-foreground hover:bg-muted hover:text-destructive"
+              >
+                <LogOut className="h-4 w-4 text-destructive" />
+                Logout
+              </button>
+            </div>
           </aside>
         </div>
       )}
