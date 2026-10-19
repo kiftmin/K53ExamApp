@@ -1,0 +1,104 @@
+[
+ {
+  "id": "study_signs|purpose_text|115",
+  "original": "To prohibit the entry of all vehicles with a mass exceeding 3 500 kg, or vehicles, which have more than 10 seats, except for local access or delivery. To yield right of way to pedestrians in the street. To prohibit vehicles from driving through the area without breaking their journey. To limit the speed of vehicles in the area to 30km/h",
+  "before": "To prohibit the entry of all vehicles with a mass exceeding 3 500 kg, or vehicles, which have more than 10 seats, except for local access or delivery. To yield right of way to pedestrians in the street. To prohibit vehicles from driving through the area without breaking their journey. To limit the speed of vehicles in the area to 30km/h.",
+  "after": "To prohibit the entry of all vehicles with a mass exceeding 3 500 kg, or vehicles, which have more than 10 seats, except for local access or delivery. To yield right of way to pedestrians in the street. To prohibit vehicles from driving through the area without breaking their journey. To limit the speed of vehicles in the area to 30km/h"
+ },
+ {
+  "id": "study_signs|purpose_text|126",
+  "original": "To warn that a hazard in the form of a crossroad is ahead",
+  "before": "To warn that a hazard in the form of a crossroad is ahead.",
+  "after": "To warn that a hazard in the form of a crossroad is ahead"
+ },
+ {
+  "id": "study_signs|where_text|265",
+  "original": "On any road before an intersection",
+  "before": "On any road before an intersection.",
+  "after": "On any road before an intersection"
+ },
+ {
+  "id": "study_signs|purpose_text|5",
+  "original": "To bring traffic from all three directions to a stop",
+  "before": "To bring traffic from all three directions to a stop.",
+  "after": "To bring traffic from all three directions to a stop"
+ },
+ {
+  "id": "study_signs|purpose_text|26",
+  "original": "Indicates that the road or a portion of the road is set aside for use by minibuses",
+  "before": "Indicates that the road or a portion of the road is set aside for use by minibuses.",
+  "after": "Indicates that the road or a portion of the road is set aside for use by minibuses"
+ },
+ {
+  "id": "study_signs|purpose_text|29",
+  "original": "Indicates that the road or a portion of the road is set aside for use by delivery vehicles only",
+  "before": "Indicates that the road or a portion of the road is set aside for use by delivery vehicles only.",
+  "after": "Indicates that the road or a portion of the road is set aside for use by delivery vehicles only"
+ },
+ {
+  "id": "study_signs|purpose_text|32",
+  "original": "Indicates that the road or a portion of the road is set aside for use by construction vehicles",
+  "before": "Indicates that the road or a portion of the road is set aside for use by construction vehicles.",
+  "after": "Indicates that the road or a portion of the road is set aside for use by construction vehicles"
+ },
+ {
+  "id": "study_signs|purpose_text|33",
+  "original": "Indicates that the road or a portion of the road is set aside for use by vehicles conveying dangerous goods",
+  "before": "Indicates that the road or a portion of the road is set aside for use by vehicles conveying dangerous goods.",
+  "after": "Indicates that the road or a portion of the road is set aside for use by vehicles conveying dangerous goods"
+ },
+ {
+  "id": "study_signs|purpose_text|37",
+  "original": "Indicates that the road or a portion of the road is set aside for use by agricultural vehicles",
+  "before": "Indicates that the road or a portion of the road is set aside for use by agricultural vehicles.",
+  "after": "Indicates that the road or a portion of the road is set aside for use by agricultural vehicles"
+ },
+ {
+  "id": "study_signs|purpose_text|38",
+  "original": "Indicates that the road or a portion of the road is set aside for use by animal-drawn vehicles",
+  "before": "Indicates that the road or a portion of the road is set aside for use by animal-drawn vehicles.",
+  "after": "Indicates that the road or a portion of the road is set aside for use by animal-drawn vehicles"
+ },
+ {
+  "id": "study_signs|purpose_text|193",
+  "original": "To warn that there is a possibility of horses and riders being present on the road ahead..",
+  "before": "To warn that there is a possibility of horses and riders being present on the road ahead.",
+  "after": "To warn that there is a possibility of horses and riders being present on the road ahead.."
+ },
+ {
+  "id": "study_signs|purpose_text|196",
+  "original": "To warn that there is a possibility of hippos being present on the road ahead..",
+  "before": "To warn that there is a possibility of hippos being present on the road ahead.",
+  "after": "To warn that there is a possibility of hippos being present on the road ahead.."
+ },
+ {
+  "id": "study_signs|action_text|162",
+  "original": "If your vehicle is higher than the bridge or structure as indicated by this sign, find an alternative route",
+  "before": "If your vehicle is higher than the bridge or structure as indicated by this sign, find an alternative route.",
+  "after": "If your vehicle is higher than the bridge or structure as indicated by this sign, find an alternative route"
+ },
+ {
+  "id": "study_signs|action_text|200",
+  "original": "Do not pass to the right of W401 or TW401 and to the left of W402 or TW402",
+  "before": "Do not pass to the right of W401 or TW401 and to the left of W402 or TW402.",
+  "after": "Do not pass to the right of W401 or TW401 and to the left of W402 or TW402"
+ },
+ {
+  "id": "study_signs|action_text|202",
+  "original": "Slow down to turn left or right or to stop..",
+  "before": "Slow down to turn left or right or to stop.",
+  "after": "Slow down to turn left or right or to stop.."
+ },
+ {
+  "id": "study_signs|action_text|253",
+  "original": "Be aware that buses may slow down and stop. Look out for pedestrians when overtaking",
+  "before": "Be aware that buses may slow down and stop. Look out for pedestrians when overtaking.",
+  "after": "Be aware that buses may slow down and stop. Look out for pedestrians when overtaking"
+ },
+ {
+  "id": "study_signs|action_text|253",
+  "original": "Be aware that buses may slow down and stop. Look out for pedestrians when overtaking",
+  "before": "Be aware that buses may slow down and stop. Look out for pedestrians when overtaking.",
+  "after": "Be aware that buses may slow down and stop. Look out for pedestrians when overtaking"
+ }
+]

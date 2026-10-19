@@ -1,0 +1,138 @@
+[
+ {
+  "id": 25,
+  "table": "study_rules",
+  "field": "body",
+  "original_text": "A number plate must be upright (or within 30 degrees), with every letter and figure clearly legible and the whole plate visible.",
+  "previous_attempt": "A number plate must be:\n(i) **upright** (or within 30 degrees),\n(ii) with every letter and figure **clearly legible**, and\n(iii) the **whole plate visible**.",
+  "problem": "removed [legible]; added [legible,]"
+ },
+ {
+  "id": 56,
+  "table": "study_rules",
+  "field": "body",
+  "original_text": "A vehicle may not be used if its fuel tank, carburettor, or fuel pipes are defective or exposed as a danger, if the fuel tank lacks an effective cap, or if the electrical wiring and battery aren't properly installed, insulated, and maintained.",
+  "previous_attempt": "A vehicle **may not be used** if:\n(i) its fuel tank, carburettor, or fuel pipes are **defective or exposed** as a danger,\n(ii) the fuel tank lacks an **effective cap**, or\n(iii) the electrical wiring and battery aren't properly **installed, insulated, and maintained**.",
+  "problem": "removed [if | if]; added []"
+ },
+ {
+  "id": 101,
+  "table": "study_rules",
+  "field": "body",
+  "original_text": "Passing on the left is allowed, if it can be done safely, when the vehicle ahead is turning right or has signalled to; on a one-way urban road wide enough for two or more lanes; on an urban road wide enough for two or more lanes each way; where signs designate lanes on a one-way road; or under a traffic officer's direction.",
+  "previous_attempt": "**Passing on the left** is allowed, if it can be done safely:\n(i) when the vehicle ahead is **turning right** or has signalled to;\n(ii) on a one-way urban road **wide enough for two or more lanes**;\n(iii) on an urban road **wide enough for two or more lanes each way**;\n(iv) where **signs designate lanes** on a one-way road; or\n(v) under a **traffic officer's direction**.",
+  "problem": "removed [safely,]; added [safely]"
+ },
+ {
+  "id": 146,
+  "table": "study_rules",
+  "field": "body",
+  "original_text": "Don't give a hand signal on a freeway (except for reasons beyond your control), be on a freeway on foot, or leave an animal where it could stray onto one.",
+  "previous_attempt": "On a freeway:\n(i) **don't give a hand signal** (except for reasons beyond your control),\n(ii) don't be on it **on foot**, or\n(iii) **leave an animal** where it could stray onto one.",
+  "problem": "removed [Don't | on | a | freeway | a | freeway]; added [On | a | freeway | don't | don't | it]"
+ },
+ {
+  "id": 172,
+  "table": "study_rules",
+  "field": "body",
+  "original_text": "A heavy motor vehicle may not be used if its fuel tank, carburettor, or fuel pipes are defective or exposed as a danger, if the fuel tank lacks an effective cap, or if the electrical wiring and battery aren't properly installed, insulated, and maintained.",
+  "previous_attempt": "A heavy motor vehicle **may not be used** if:\n(i) its fuel tank, carburettor, or fuel pipes are **defective or exposed** as a danger,\n(ii) the fuel tank lacks an **effective cap**, or\n(iii) the electrical wiring and battery aren't properly **installed, insulated, and maintained**.",
+  "problem": "removed [if | if]; added []"
+ },
+ {
+  "id": 13,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "original_text": "To give priority to pedestrians but limit other traffic to emergency vehicles, vehicles loading and off loading goods and maintenance vehicles.",
+  "previous_attempt": "To **give priority to pedestrians** but limit other traffic to:\n(i) **emergency vehicles**,\n(ii) **vehicles loading and off loading goods**, and\n(iii) **maintenance vehicles**.",
+  "problem": "removed [goods]; added [goods,]"
+ },
+ {
+  "id": 14,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "original_text": "To indicate that there is a single carriageway ahead for use by vehicle from both directions.",
+  "previous_attempt": "To indicate that there is a **single carriageway ahead** for use by vehicles from **both directions**.",
+  "problem": "removed [vehicle]; added [vehicles]"
+ },
+ {
+  "id": 27,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "original_text": "Indicates that the road or a portion of the road is set aside for use by midibuses. and that the driver of a midibus shall only use such road or portion of such road.",
+  "previous_attempt": "Indicates that the road or a portion of the road is set aside for **use by midibuses**, and that the driver of a midibus **shall only use such road** or portion of such road.",
+  "problem": "removed [midibuses.]; added [midibuses,]"
+ },
+ {
+  "id": 55,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "original_text": "To vehicles from turning around so that it faces the opposite direction.",
+  "previous_attempt": "To **prohibit vehicles from turning around** so that it faces the opposite direction.",
+  "problem": "removed []; added [prohibit]"
+ },
+ {
+  "id": 78,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "original_text": "Indicates to the driver of a vehicle that he or she shall not proceed beyond the sign unless the overall width of the vehicle, is less than the width indicated in metres, by means of a number on such sign.",
+  "previous_attempt": "Indicates to the driver of a vehicle that he or she **shall not proceed beyond the sign** unless the **overall width of the vehicle** is less than the width indicated in metres by means of a number on such sign.",
+  "problem": "removed [vehicle, | metres,]; added [vehicle | metres]"
+ },
+ {
+  "id": 84,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "original_text": "Sign (R305-P) indicates a parking area for vehicles with a GVM of less than 3 500 kg where no time limit applies but a fee must be paid. Sign (R306-P) indicates a parking area that may be used free of charge or at a fee and the maximum time allowed for a vehicle to be parked, is displayed.",
+  "previous_attempt": "Sign **(R305-P)** indicates a parking area for vehicles with a **GVM of less than 3 500 kg** where **no time limit applies but a fee must be paid**. Sign **(R306-P)** indicates a parking area that may be used **free of charge or at a fee** and the **maximum time allowed** for a vehicle to be parked is displayed.",
+  "problem": "removed [parked,]; added [parked]"
+ },
+ {
+  "id": 180,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "original_text": "To warn that the material of the road shoulder may be softer than reasonably expected and could be dangerous for anyone who wants to move of the road.",
+  "previous_attempt": "To warn that the **material of the road shoulder may be softer** than reasonably expected and could be **dangerous for anyone who wants to move off the road**.",
+  "problem": "removed [of]; added [off]"
+ },
+ {
+  "id": 281,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "original_text": "To indicate where especially drivers of heavy vehicles who become aware that a vehicle's brakes became defective, can drive such a vehicle of the road and it will be stopped by the gravel section ahead.",
+  "previous_attempt": "To indicate where especially drivers of heavy vehicles who become aware that a vehicle's brakes became defective, can **drive such a vehicle off the road and it will be stopped by the gravel section ahead**.",
+  "problem": "removed [of]; added [off]"
+ },
+ {
+  "id": 291,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "original_text": "Steady green downward pointing arrow (S16) - Indicates to the driver that he/she may drive in the lane over which the arrow is displayed. Steady red cross (S17) - Indicates to a driver that he/she shall not drive in the lane over which the cross is displayed. Lane might be open to vehicles travelling in the opposite direction. Yellow arrow left (S18) and right (S19) Indicates to the driver that the lane he/she is driving in is closed ahead.",
+  "previous_attempt": "Steady green downward pointing arrow (S16) - Indicates to the driver that he/she **may drive in the lane** over which the arrow is displayed. Steady red cross (S17) - Indicates to a driver that he/she **shall not drive in the lane** over which the cross is displayed. Lane might be open to vehicles travelling in the opposite direction. Yellow arrow left (S18) and right (S19) - Indicates to the driver that the **lane he/she is driving in is closed ahead**.",
+  "problem": "removed []; added [-]"
+ },
+ {
+  "id": 293,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "original_text": "To direct traffic. (i) Flag signal to stop indicating to the driver of a vehicle that he or she shall stop until the proceed flag signal is displayed; and (ii) Flag signal to proceed - indicating to the driver that he or she shall proceed when the flag signal is displayed.",
+  "previous_attempt": "To **direct traffic**. (i) Flag signal to stop - indicating to the driver of a vehicle that he or she shall stop until the proceed flag signal is displayed; and (ii) Flag signal to proceed - indicating to the driver that he or she shall proceed when the flag signal is displayed.",
+  "problem": "removed []; added [-]"
+ },
+ {
+  "id": 141,
+  "table": "study_signs",
+  "field": "action_text",
+  "original_text": "Slow down e3nough to take the curves safely or stop within the distance you can see. Remember that there could be any number of curves after the first one without further warning.",
+  "previous_attempt": "**Slow down enough** to take the curves safely or stop within the distance you can see. Remember that there could be **any number of curves after the first one** without further warning.",
+  "problem": "removed [e3nough]; added [enough]"
+ },
+ {
+  "id": 264,
+  "table": "study_signs",
+  "field": "action_text",
+  "original_text": "If you are not part of the group identified by the sign, you may not park here. In an emergency you may stop or park at the sign that indicates the SOS telephone. Only goods vehicles may stop or park in the demarcated are that indicates a loading zone.",
+  "previous_attempt": "**If you are not part of the group identified by the sign, you may not park here**. In an emergency you may **stop or park at the sign that indicates the SOS telephone**. **Only goods vehicles may stop or park in the demarcated area** that indicates a loading zone.",
+  "problem": "removed [are]; added [area]"
+ }
+]
