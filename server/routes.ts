@@ -22,6 +22,21 @@ import { validateAdminAccess, requireAdminAuth } from "./admin-auth.js";
 import { z } from "zod";
 import { learnerProgressSchema, learnerProgressUpsertSchema, type InsertLearnerProgress } from "../shared/schema.js";
 
+// Neon serverless connections occasionally fail on the first attempt; retry a
+// couple of times before surfacing a 500 to the client.
+async function withDbRetry<T>(fn: () => Promise<T>, tries = 3): Promise<T> {
+  let lastErr: unknown;
+  for (let i = 0; i < tries; i++) {
+    try {
+      return await fn();
+    } catch (err) {
+      lastErr = err;
+      await new Promise((r) => setTimeout(r, 200 * (i + 1)));
+    }
+  }
+  throw lastErr;
+}
+
 export async function registerRoutes(
   _httpServer: any,
   app: any
@@ -337,7 +352,7 @@ export async function registerRoutes(
       const result = await validateCodeAndMobile(code, mobileNumber, (normalized) => storage.getAccessCodeByCode(normalized));
 
       if (!result.valid) {
-        return res.json({ valid: false, type: result.type as any, requiresMobile: result.requiresMobile, message: result.message });
+        return res.json({ valid: false, type: getTypeFromCode(code), requiresMobile: result.requiresMobile, message: result.message });
       }
       return res.json({ valid: true, type: result.type, requiresMobile: result.type !== 'daily' });
     } catch (err) {
@@ -362,7 +377,7 @@ export async function registerRoutes(
         return res.status(401).json({ valid: false, message: result.message });
       }
 
-      const rows = await storage.getLearnerProgress(mobileNumber.trim(), item_type);
+      const rows = await withDbRetry(() => storage.getLearnerProgress(mobileNumber.trim(), item_type));
       return res.json({ valid: true, type: result.type, progress: rows });
     } catch (err) {
       console.error("Error fetching learner progress:", err);
@@ -379,7 +394,7 @@ export async function registerRoutes(
         return res.status(401).json({ valid: false, message: result.message });
       }
 
-      const row = await storage.upsertLearnerProgress({
+      const row = await withDbRetry(() => storage.upsertLearnerProgress({
         mobile_number: mobileNumber.trim(),
         item_type,
         item_id,
@@ -388,7 +403,7 @@ export async function registerRoutes(
         incorrect,
         last_rating,
         last_seen_at,
-      });
+      }));
       return res.json({ valid: true, type: result.type, progress: row });
     } catch (err) {
       console.error("Error upserting learner progress:", err);

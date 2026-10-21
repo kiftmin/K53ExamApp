@@ -115,6 +115,7 @@ export const studyRuleSchema = z.object({
   heading: z.string().min(1),
   subheading: z.string().min(1),
   title: z.string().nullable().optional(),
+  question: z.string().nullable().optional(),
   body: z.string().min(1),
   applicable_codes: z.array(z.number().int().min(0).max(3)).min(1),
   is_verified_exam_question: z.boolean().default(false),

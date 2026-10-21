@@ -1,0 +1,507 @@
+[
+ {
+  "id": 51,
+  "section_ref": "6.19",
+  "heading": "Road Traffic Rules",
+  "subheading": "Windscreen",
+  "body": "A light motor vehicle's windscreen must give the driver sufficient visibility for safe driving, be made of safety glass, and allow at least 70% light transmittance.",
+  "applicable_codes": [
+   2
+  ]
+ },
+ {
+  "id": 52,
+  "section_ref": "6.20",
+  "heading": "Road Traffic Rules",
+  "subheading": "Windscreen Wipers",
+  "body": "A light or heavy motor vehicle with a windscreen must have at least one wiper that continuously, evenly, and adequately clears the area directly in front of the driver.",
+  "applicable_codes": [
+   2,
+   3
+  ]
+ },
+ {
+  "id": 53,
+  "section_ref": "6.21",
+  "heading": "Road Traffic Rules",
+  "subheading": "Exhaust Silencers / Exhaust Pipes",
+  "body": "A vehicle must have an efficient exhaust silencer that channels exhaust gas through it.",
+  "applicable_codes": [
+   0
+  ]
+ },
+ {
+  "id": 54,
+  "section_ref": "6.21",
+  "heading": "Road Traffic Rules",
+  "subheading": "Exhaust Silencers / Exhaust Pipes",
+  "body": "Exhaust smoke may not be dense enough to be a nuisance, or to obstruct other road users' vision.",
+  "applicable_codes": [
+   0
+  ]
+ },
+ {
+  "id": 55,
+  "section_ref": "6.21",
+  "heading": "Road Traffic Rules",
+  "subheading": "Exhaust Silencers / Exhaust Pipes",
+  "body": "The exhaust may not be positioned where oil or flammable liquid could drip onto it, and may not leak gas or smoke into the cab or passenger compartment.",
+  "applicable_codes": [
+   0
+  ]
+ },
+ {
+  "id": 56,
+  "section_ref": "6.22",
+  "heading": "Road Traffic Rules",
+  "subheading": "Fuel Tank, Electrical Wiring and Battery",
+  "body": "A vehicle may not be used if its fuel tank, carburettor, or fuel pipes are defective or exposed as a danger, if the fuel tank lacks an effective cap, or if the electrical wiring and battery aren't properly installed, insulated, and maintained.",
+  "applicable_codes": [
+   0
+  ]
+ },
+ {
+  "id": 57,
+  "section_ref": "6.23",
+  "heading": "Road Traffic Rules",
+  "subheading": "Engine",
+  "body": "A light or heavy motor vehicle's engine must be covered so that it isn't a source of danger.",
+  "applicable_codes": [
+   2,
+   3
+  ]
+ },
+ {
+  "id": 58,
+  "section_ref": "6.24",
+  "heading": "Road Traffic Rules",
+  "subheading": "Emergency Warning Signs (Triangles)",
+  "body": "Heavy motor vehicles, goods vehicles, minibuses, and buses (but not motor cars, ambulances, or motorcycles) must carry at least one emergency warning triangle.",
+  "applicable_codes": [
+   3
+  ]
+ },
+ {
+  "id": 59,
+  "section_ref": "6.24",
+  "heading": "Road Traffic Rules",
+  "subheading": "Emergency Warning Signs (Triangles)",
+  "body": "For a combination of vehicles, the warning triangle for each vehicle in the combination may all be carried on the drawing vehicle.",
+  "applicable_codes": [
+   3
+  ]
+ },
+ {
+  "id": 60,
+  "section_ref": "6.24",
+  "heading": "Road Traffic Rules",
+  "subheading": "Emergency Warning Signs (Triangles)",
+  "body": "A stationary vehicle must place a warning triangle at least 45 metres away in the direction traffic will approach from, at roughly the same distance from the roadway edge as the vehicle's own centre, with the reflective side facing oncoming traffic.",
+  "applicable_codes": [
+   3
+  ]
+ },
+ {
+  "id": 61,
+  "section_ref": "6.24",
+  "heading": "Road Traffic Rules",
+  "subheading": "Emergency Warning Signs (Triangles)",
+  "body": "A warning triangle isn't required if the vehicle is stopped in a loading zone, on a traffic officer's or sign's direction, because of other traffic while the driver stays in the driving seat, or during a state or municipal function.",
+  "applicable_codes": [
+   3
+  ]
+ },
+ {
+  "id": 62,
+  "section_ref": "6.25",
+  "heading": "Road Traffic Rules",
+  "subheading": "Excessive Noise",
+  "body": "A vehicle may not be operated on a public road in a manner that causes excessive noise.",
+  "applicable_codes": [
+   0
+  ]
+ },
+ {
+  "id": 63,
+  "section_ref": "6.26",
+  "heading": "Road Traffic Rules",
+  "subheading": "Speedometers",
+  "body": "A vehicle capable of reaching 60 km/h or more must be equipped with a working speedometer.",
+  "applicable_codes": [
+   0
+  ]
+ },
+ {
+  "id": 64,
+  "section_ref": "6.27",
+  "heading": "Road Traffic Rules",
+  "subheading": "Speed Limits",
+  "body": "A general speed limit applies to all roads even without a sign: 60 km/h in urban areas, 100 km/h on non-freeway roads outside urban areas, and 120 km/h on freeways, unless a sign indicates otherwise.",
+  "applicable_codes": [
+   0
+  ]
+ },
+ {
+  "id": 65,
+  "section_ref": "6.27",
+  "heading": "Road Traffic Rules",
+  "subheading": "Speed Limits",
+  "body": "Exceeding the applicable speed limit is an offence.",
+  "applicable_codes": [
+   0
+  ]
+ },
+ {
+  "id": 66,
+  "section_ref": "6.28",
+  "heading": "Road Traffic Rules",
+  "subheading": "Speed Limit for Passenger Vehicles Conveying Persons for Reward",
+  "body": "Buses and minibuses conveying persons for reward have a speed limit of 100 km/h.",
+  "applicable_codes": [
+   3
+  ]
+ },
+ {
+  "id": 67,
+  "section_ref": "6.29",
+  "heading": "Road Traffic Rules",
+  "subheading": "Speed Limit for a Particular Class of Vehicles",
+  "body": "An 80 km/h speed limit applies to a goods vehicle with a GVM over 9000kg, a combination where the combined GVM of the goods vehicle and trailer(s) exceeds 9000kg, an articulated vehicle whose truck-tractor GCM exceeds 9000kg, and any breakdown vehicle towing another vehicle.",
+  "applicable_codes": [
+   3
+  ]
+ },
+ {
+  "id": 68,
+  "section_ref": "6.30",
+  "heading": "Road Traffic Rules",
+  "subheading": "Overall Length of Vehicles",
+  "body": "Maximum vehicle lengths: 8 metres for a trailer (not semi-trailer) under 12,000kg GVM; 12.5 metres for one over 12,000kg GVM; 18.5 metres for an articulated motor vehicle; 22 metres for a bus-train or any combination of motor vehicles; 12.5 metres for any other vehicle.",
+  "applicable_codes": [
+   3
+  ]
+ },
+ {
+  "id": 69,
+  "section_ref": "6.31",
+  "heading": "Road Traffic Rules",
+  "subheading": "Overall Height of Vehicle",
+  "body": "A double-deck bus (with load) may not exceed 4.65 metres in height; any other motor vehicle may not exceed 4.3 metres.",
+  "applicable_codes": [
+   3
+  ]
+ },
+ {
+  "id": 70,
+  "section_ref": "6.32",
+  "heading": "Road Traffic Rules",
+  "subheading": "Overall Width of Vehicles",
+  "body": "A bus with a front wheel track over 1.9 metres may not exceed 2.6 metres overall width; a goods vehicle of 12,000kg GVM or more may not exceed 2.6 metres; any other vehicle may not exceed 2.5 metres.",
+  "applicable_codes": [
+   3
+  ]
+ },
+ {
+  "id": 71,
+  "section_ref": "6.33",
+  "heading": "Road Traffic Rules",
+  "subheading": "Conveyance of Goods",
+  "body": "Goods may not be loaded so that they touch the road surface, or obstruct the driver's view to the front, either side, or in the rear-view mirror.",
+  "applicable_codes": [
+   0
+  ]
+ },
+ {
+  "id": 72,
+  "section_ref": "6.33",
+  "heading": "Road Traffic Rules",
+  "subheading": "Conveyance of Goods",
+  "body": "Goods must be safely contained within, or securely fastened to, the vehicle, and protected from falling or spilling.",
+  "applicable_codes": [
+   0
+  ]
+ },
+ {
+  "id": 73,
+  "section_ref": "6.33",
+  "heading": "Road Traffic Rules",
+  "subheading": "Conveyance of Goods",
+  "body": "On a motor car's roof, goods may not exceed half the car's height measured from ground level, except pedal cycles.",
+  "applicable_codes": [
+   2
+  ]
+ },
+ {
+  "id": 74,
+  "section_ref": "6.33",
+  "heading": "Road Traffic Rules",
+  "subheading": "Conveyance of Goods",
+  "body": "A shipping container fitted with twist-lock provisions must be secured with at least four twist locks.",
+  "applicable_codes": [
+   3
+  ]
+ },
+ {
+  "id": 75,
+  "section_ref": "6.33",
+  "heading": "Road Traffic Rules",
+  "subheading": "Conveyance of Goods",
+  "body": "Baggage on a motorcycle should be placed in carriers securely attached to the motorcycle.",
+  "applicable_codes": [
+   1
+  ]
+ },
+ {
+  "id": 76,
+  "section_ref": "6.34",
+  "heading": "Road Traffic Rules",
+  "subheading": "Circumstances Under Which Persons May Be Carried on a Goods Vehicle",
+  "body": "The section of a goods vehicle carrying persons must be enclosed to at least 350mm above a seated person, or 900mm above a standing person.",
+  "applicable_codes": [
+   3
+  ]
+ },
+ {
+  "id": 77,
+  "section_ref": "6.34",
+  "heading": "Road Traffic Rules",
+  "subheading": "Circumstances Under Which Persons May Be Carried on a Goods Vehicle",
+  "body": "It is against the law for passengers to ride in a caravan.",
+  "applicable_codes": [
+   0
+  ]
+ },
+ {
+  "id": 78,
+  "section_ref": "6.35",
+  "heading": "Road Traffic Rules",
+  "subheading": "Projections / Overhang",
+  "body": "A motorcycle's load (or sidecar load) may not project more than 600mm in front of the front axle, 900mm behind the rear axle, 450mm to either side, or 300mm beyond the sidecar wheel.",
+  "applicable_codes": [
+   1
+  ]
+ },
+ {
+  "id": 79,
+  "section_ref": "6.35",
+  "heading": "Road Traffic Rules",
+  "subheading": "Projections / Overhang",
+  "body": "A light or heavy vehicle's goods may not project sideways from the centre-line by more than 1.3 metres (bus or goods vehicle over 12,000kg GVM) or 1.25 metres (any other vehicle), excluding mirrors or indicators.",
+  "applicable_codes": [
+   2,
+   3
+  ]
+ },
+ {
+  "id": 80,
+  "section_ref": "6.35",
+  "heading": "Road Traffic Rules",
+  "subheading": "Projections / Overhang",
+  "body": "A light or heavy vehicle's goods may not project more than 300mm beyond the front of the vehicle, or 1.8 metres beyond the rear.",
+  "applicable_codes": [
+   2,
+   3
+  ]
+ },
+ {
+  "id": 81,
+  "section_ref": "6.35",
+  "heading": "Road Traffic Rules",
+  "subheading": "Projections / Overhang",
+  "body": "A light or heavy vehicle may not have a bracket projecting more than 150mm beyond the vehicle's widest part (side mirrors and indicators excepted).",
+  "applicable_codes": [
+   2,
+   3
+  ]
+ },
+ {
+  "id": 82,
+  "section_ref": "6.36",
+  "heading": "Road Traffic Rules",
+  "subheading": "Warning Flags / Reflectors",
+  "body": "A load projecting more than 150mm to the side, or 300mm to the rear, must be marked with a red flag (300mm x 300mm) during the day, and white (front) or red (rear) retro-reflectors at night or whenever visibility is poor.",
+  "applicable_codes": [
+   0
+  ]
+ },
+ {
+  "id": 83,
+  "section_ref": "6.37",
+  "heading": "Road Traffic Rules",
+  "subheading": "Driving on Divided Public Road",
+  "body": "On a public road divided into two or more roadways, drive only on the left-hand roadway, unless directed or permitted otherwise by a road traffic sign or a traffic officer.",
+  "applicable_codes": [
+   0
+  ]
+ },
+ {
+  "id": 84,
+  "section_ref": "6.38",
+  "heading": "Road Traffic Rules",
+  "subheading": "Driving on Left Side of Roadway",
+  "body": "Drive on the left side of the roadway, without encroaching right, unless it can be done safely or you're directed otherwise by a sign or traffic officer.",
+  "applicable_codes": [
+   0
+  ]
+ },
+ {
+  "id": 85,
+  "section_ref": "6.38",
+  "heading": "Road Traffic Rules",
+  "subheading": "Driving on Left Side of Roadway",
+  "body": "When another vehicle wants to pass you, keep as near to the left edge of the roadway as is safely possible, and don't speed up until it has passed.",
+  "applicable_codes": [
+   0
+  ]
+ },
+ {
+  "id": 86,
+  "section_ref": "6.38",
+  "heading": "Road Traffic Rules",
+  "subheading": "Driving on Left Side of Roadway",
+  "body": "When passing oncoming traffic, don't encroach onto the roadway to your right in a way that obstructs or endangers it.",
+  "applicable_codes": [
+   0
+  ]
+ },
+ {
+  "id": 87,
+  "section_ref": "6.38",
+  "heading": "Road Traffic Rules",
+  "subheading": "Driving on Left Side of Roadway",
+  "body": "A driver passing a stationary bus must do so with due care for people approaching or leaving it.",
+  "applicable_codes": [
+   0
+  ]
+ },
+ {
+  "id": 88,
+  "section_ref": "6.39",
+  "heading": "Road Traffic Rules",
+  "subheading": "Prohibition on Driving on Shoulder of Road",
+  "body": "A light motor vehicle may not drive on the shoulder of a public road, except between sunrise and sunset, while being overtaken on a single-lane-each-way road, if it can be done safely, and if visibility is at least 150 metres.",
+  "applicable_codes": [
+   2
+  ]
+ },
+ {
+  "id": 89,
+  "section_ref": "6.40",
+  "heading": "Road Traffic Rules",
+  "subheading": "Lane Changing",
+  "body": "On a road divided into lanes by markings, don't change lanes unless it can be done without obstructing or endangering other traffic.",
+  "applicable_codes": [
+   0
+  ]
+ },
+ {
+  "id": 90,
+  "section_ref": "6.41",
+  "heading": "Road Traffic Rules",
+  "subheading": "Driving Signals",
+  "body": "Before stopping or turning, give a clear, timely signal of your intention, long enough and visible enough to warn anyone approaching from the front, rear, or side.",
+  "applicable_codes": [
+   0
+  ]
+ },
+ {
+  "id": 91,
+  "section_ref": "6.42",
+  "heading": "Road Traffic Rules",
+  "subheading": "Direction Indicators",
+  "body": "A motor vehicle must be equipped with flasher-type direction indicators on both sides.",
+  "applicable_codes": [
+   0
+  ]
+ },
+ {
+  "id": 92,
+  "section_ref": "6.42",
+  "heading": "Road Traffic Rules",
+  "subheading": "Direction Indicators",
+  "body": "Direction indicators must be used every time you turn left or right, or change lanes.",
+  "applicable_codes": [
+   0
+  ]
+ },
+ {
+  "id": 93,
+  "section_ref": "6.42",
+  "heading": "Road Traffic Rules",
+  "subheading": "Direction Indicators",
+  "body": "A light motor vehicle's indicators must flash intermittently, be clearly visible at 30 metres in daylight, and show white, yellow, or amber light to the front, and yellow, amber, or red light to the rear.",
+  "applicable_codes": [
+   2
+  ]
+ },
+ {
+  "id": 94,
+  "section_ref": "6.43.1",
+  "heading": "Road Traffic Rules",
+  "subheading": "Retro-Reflectors",
+  "body": "A motorcycle, motorcycle with sidecar, or motor tricycle must have a red retro-reflector fitted at the rear.",
+  "applicable_codes": [
+   1
+  ]
+ },
+ {
+  "id": 95,
+  "section_ref": "6.43.2",
+  "heading": "Road Traffic Rules",
+  "subheading": "Retro-Reflectors",
+  "body": "A light motor vehicle must have two red retro-reflectors at the rear, one on each side.",
+  "applicable_codes": [
+   2
+  ]
+ },
+ {
+  "id": 96,
+  "section_ref": "6.43.3",
+  "heading": "Road Traffic Rules",
+  "subheading": "Retro-Reflectors",
+  "body": "A heavy motor vehicle must have two red retro-reflectors at the same height at the rear, one on each side.",
+  "applicable_codes": [
+   3
+  ]
+ },
+ {
+  "id": 97,
+  "section_ref": "6.43.3",
+  "heading": "Road Traffic Rules",
+  "subheading": "Retro-Reflectors",
+  "body": "A heavy vehicle or combination longer than 7 metres must have yellow retro-reflectors along each side, spaced so no two successive ones are more than 3.6 metres apart, unless yellow reflective strips are fitted instead.",
+  "applicable_codes": [
+   3
+  ]
+ },
+ {
+  "id": 98,
+  "section_ref": "6.44",
+  "heading": "Road Traffic Rules",
+  "subheading": "Yellow Reflective Material",
+  "body": "Since 1 January 2001, a goods vehicle with a GVM over 10,000kg must have yellow reflective material on its sides and rear; it's optional (but permitted) for vehicles under 10,000kg GVM.",
+  "applicable_codes": [
+   3
+  ]
+ },
+ {
+  "id": 99,
+  "section_ref": "6.45",
+  "heading": "Road Traffic Rules",
+  "subheading": "Overtaking / Passing",
+  "body": "Pass another vehicle on the right at a safe distance, and don't return to the left side until safely clear of the vehicle you passed.",
+  "applicable_codes": [
+   0
+  ]
+ },
+ {
+  "id": 100,
+  "section_ref": "6.45",
+  "heading": "Road Traffic Rules",
+  "subheading": "Overtaking / Passing",
+  "body": "Exceeding the speed limit while overtaking or passing is not permitted.",
+  "applicable_codes": [
+   0
+  ]
+ }
+]

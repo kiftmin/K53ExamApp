@@ -25,6 +25,7 @@ const emptyDefaults: InsertStudyRule = {
   heading: "",
   subheading: "",
   title: "",
+  question: "",
   body: "",
   applicable_codes: [0],
   is_verified_exam_question: false,
@@ -147,6 +148,20 @@ export default function RuleForm({ open, onClose, rule }: RuleFormProps) {
                   <FormLabel>Title (optional short label)</FormLabel>
                   <FormControl>
                     <Input {...field} value={field.value || ""} placeholder="e.g. Seatbelt compulsion" className="h-11" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="question"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Flashcard question</FormLabel>
+                  <FormControl>
+                    <Textarea {...field} value={field.value || ""} rows={2} placeholder="e.g. What does a learner's licence test cover?" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

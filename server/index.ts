@@ -95,6 +95,7 @@ app.use((req, res, next) => {
         heading TEXT NOT NULL,
         subheading TEXT NOT NULL,
         title TEXT,
+        question TEXT,
         body TEXT NOT NULL,
         applicable_codes JSONB NOT NULL,
         is_verified_exam_question BOOLEAN NOT NULL DEFAULT FALSE,
@@ -164,6 +165,7 @@ app.use((req, res, next) => {
     await client`ALTER TABLE questions ADD COLUMN IF NOT EXISTS is_reviewed BOOLEAN NOT NULL DEFAULT TRUE;`;
     await client`ALTER TABLE study_controls ADD COLUMN IF NOT EXISTS position_x REAL;`;
     await client`ALTER TABLE study_controls ADD COLUMN IF NOT EXISTS position_y REAL;`;
+    await client`ALTER TABLE study_rules ADD COLUMN IF NOT EXISTS question TEXT;`;
   } catch (err) {
     console.error("Failed to ensure study tables:", err);
   }

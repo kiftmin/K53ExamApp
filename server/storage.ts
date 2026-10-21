@@ -392,6 +392,7 @@ export class NeonDatabaseStorage implements IStorage {
       if (q) {
         rules = rules.filter((r) =>
           r.body.toLowerCase().includes(q) ||
+          (r.question || '').toLowerCase().includes(q) ||
           (r.title || '').toLowerCase().includes(q) ||
           r.section_ref.toLowerCase().includes(q) ||
           r.heading.toLowerCase().includes(q) ||
@@ -415,6 +416,7 @@ export class NeonDatabaseStorage implements IStorage {
       heading: data.heading,
       subheading: data.subheading,
       title: data.title ?? null,
+      question: data.question ?? null,
       body: data.body,
       applicable_codes: data.applicable_codes,
       is_verified_exam_question: data.is_verified_exam_question ?? false,
@@ -453,6 +455,7 @@ export class NeonDatabaseStorage implements IStorage {
         heading: r.heading,
         subheading: r.subheading,
         title: r.title ?? null,
+        question: r.question ?? null,
         body: r.body,
         applicable_codes: r.applicable_codes,
         is_verified_exam_question: r.is_verified_exam_question ?? false,

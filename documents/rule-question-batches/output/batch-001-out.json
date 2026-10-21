@@ -1,0 +1,205 @@
+```json
+[
+  {
+    "id": 1,
+    "question": "What does a learner's licence test cover, and how long is the licence valid once passed?"
+  },
+  {
+    "id": 2,
+    "question": "Under what circumstances is a person disqualified from obtaining or holding a licence?"
+  },
+  {
+    "id": 3,
+    "question": "When is a person prohibited from applying for a licence?"
+  },
+  {
+    "id": 4,
+    "question": "Which medical conditions or physical defects disqualify a person from holding a licence?"
+  },
+  {
+    "id": 5,
+    "question": "What are the restrictions and requirements for holding a Code 1 learner's licence?"
+  },
+  {
+    "id": 6,
+    "question": "What are the conditions, age limit, and validity period for a Code 2 learner's licence?"
+  },
+  {
+    "id": 7,
+    "question": "What are the conditions, age limit, and validity period for a Code 3 learner's licence?"
+  },
+  {
+    "id": 8,
+    "question": "What are the general condition requirements for a motorcycle's lamps?"
+  },
+  {
+    "id": 9,
+    "question": "When must a motorcycle's headlamp be lit on a public road?"
+  },
+  {
+    "id": 10,
+    "question": "What condition must all lamps on a light or heavy motor vehicle be in?"
+  },
+  {
+    "id": 11,
+    "question": "When must headlamps, rear lamps, and number-plate lamps be lit on a motor vehicle?"
+  },
+  {
+    "id": 12,
+    "question": "When do motor vehicle lighting requirements not apply to a parked vehicle?"
+  },
+  {
+    "id": 13,
+    "question": "How far must a headlamp on main beam adequately illuminate the road ahead?"
+  },
+  {
+    "id": 14,
+    "question": "When must a driver dip the main beam of their headlamps?"
+  },
+  {
+    "id": 15,
+    "question": "How far must a headlamp on dipped beam adequately illuminate the road ahead?"
+  },
+  {
+    "id": 16,
+    "question": "May a vehicle be driven using only its parking lamps?"
+  },
+  {
+    "id": 17,
+    "question": "What rear lamp requirement applies to a motorcycle or motor tricycle?"
+  },
+  {
+    "id": 18,
+    "question": "What rear lamps are required on a light motor vehicle?"
+  },
+  {
+    "id": 19,
+    "question": "What rear lamps are required on a heavy motor vehicle?"
+  },
+  {
+    "id": 20,
+    "question": "What stop lamp requirements apply to a light motor vehicle or motorcycle?"
+  },
+  {
+    "id": 21,
+    "question": "What stop lamp requirements apply to a heavy motor vehicle?"
+  },
+  {
+    "id": 22,
+    "question": "What does an illuminated stop lamp indicate to other road users?"
+  },
+  {
+    "id": 23,
+    "question": "What is the requirement for a vehicle's rear number-plate lamp?"
+  },
+  {
+    "id": 24,
+    "question": "What mounting and approval requirements apply to number plates?"
+  },
+  {
+    "id": 25,
+    "question": "What positioning and visibility requirements apply to a number plate?"
+  },
+  {
+    "id": 26,
+    "question": "Which motor vehicles require both front and rear number plates?"
+  },
+  {
+    "id": 27,
+    "question": "Under what conditions may fog lamps be used?"
+  },
+  {
+    "id": 28,
+    "question": "Who is permitted to use an adjustable spot lamp on a public road?"
+  },
+  {
+    "id": 29,
+    "question": "What view of the road must a driver have while operating a vehicle?"
+  },
+  {
+    "id": 30,
+    "question": "What general rear-view mirror requirement applies to motor vehicles?"
+  },
+  {
+    "id": 31,
+    "question": "What mirror configuration is required for a motor car, minibus, bus, or goods vehicle?"
+  },
+  {
+    "id": 32,
+    "question": "What maintenance and dimension requirements apply to a motorcycle's steering gear?"
+  },
+  {
+    "id": 33,
+    "question": "What maintenance standard is required for a light or heavy motor vehicle's steering gear?"
+  },
+  {
+    "id": 34,
+    "question": "What is the maximum allowed turning radius for a vehicle?"
+  },
+  {
+    "id": 35,
+    "question": "What braking systems are required on a motorcycle?"
+  },
+  {
+    "id": 36,
+    "question": "What braking systems are required on a light or heavy motor vehicle?"
+  },
+  {
+    "id": 37,
+    "question": "When may a driver use a vehicle's hooter?"
+  },
+  {
+    "id": 38,
+    "question": "What functional requirement applies to a light motor vehicle's hooter?"
+  },
+  {
+    "id": 39,
+    "question": "May a private vehicle be fitted with a tune-playing siren or horn?"
+  },
+  {
+    "id": 40,
+    "question": "How must a driver respond when an emergency vehicle sounds a siren and displays warning lights?"
+  },
+  {
+    "id": 41,
+    "question": "Which vehicles are classified as emergency vehicles and what warning light colors do they use?"
+  },
+  {
+    "id": 42,
+    "question": "For whom is wearing a seatbelt compulsory while a vehicle moves forward?"
+  },
+  {
+    "id": 43,
+    "question": "When must rear-seat passengers wear seatbelts?"
+  },
+  {
+    "id": 44,
+    "question": "How is a child defined for seatbelt compliance purposes?"
+  },
+  {
+    "id": 45,
+    "question": "When is an adult prohibited from sitting in a seat without wearing a seatbelt?"
+  },
+  {
+    "id": 46,
+    "question": "What seating and restraint duties does a driver owe to a child passenger?"
+  },
+  {
+    "id": 47,
+    "question": "When is wearing a seatbelt not compulsory?"
+  },
+  {
+    "id": 48,
+    "question": "What helmet requirements apply to motorcycle, tricycle, and quadrucycle riders and passengers?"
+  },
+  {
+    "id": 49,
+    "question": "What duty does a motorcycle rider have regarding passengers under 14 years old?"
+  },
+  {
+    "id": 50,
+    "question": "When are protective helmets not required for motorcycle riders and passengers?"
+  }
+]
+
+```

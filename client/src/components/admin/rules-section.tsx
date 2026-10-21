@@ -102,7 +102,7 @@ export default function RulesSection() {
       if (allowed && !(r.applicable_codes || []).some((c) => allowed.includes(c))) return false;
       if (unverifiedOnly && r.is_verified_exam_question) return false;
       if (reviewedOnly && !r.is_reviewed) return false;
-      if (q && !(r.body.toLowerCase().includes(q) || r.section_ref.toLowerCase().includes(q) || (r.title || "").toLowerCase().includes(q))) return false;
+      if (q && !(r.body.toLowerCase().includes(q) || (r.question || "").toLowerCase().includes(q) || r.section_ref.toLowerCase().includes(q) || (r.title || "").toLowerCase().includes(q))) return false;
       return true;
     });
   }, [rules, heading, subheading, search, code, unverifiedOnly, reviewedOnly]);

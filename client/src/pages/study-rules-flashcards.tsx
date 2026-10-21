@@ -181,14 +181,18 @@ function Deck({
         current && (
           <div className="select-none [perspective:1200px]" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd} onClick={onCardClick}>
             <div className={cn("relative w-full min-h-[320px] transition-transform duration-300 [transform-style:preserve-3d]", flipped && "[transform:rotateX(180deg)]")}>
-              <div className="absolute inset-0 rounded-3xl border border-border bg-card p-6 flex flex-col items-center justify-center gap-3 [backface-visibility:hidden]">
-                <FormattedText text={current.body} className="text-base leading-relaxed text-center" />
-                <p className="text-[11px] text-muted-foreground font-semibold">Tap or swipe up/down to flip · swipe left/right to move</p>
-              </div>
-              <div className="absolute inset-0 rounded-3xl border border-primary/30 bg-primary/5 p-6 flex flex-col items-center justify-center gap-2 [transform:rotateX(180deg)] [backface-visibility:hidden]">
-                <p className="text-xs font-mono font-bold text-muted-foreground">{current.section_ref}</p>
-                {current.title && <p className="font-display font-bold text-center">{current.title}</p>}
+              <div className="absolute inset-0 rounded-3xl border border-border bg-card p-6 flex flex-col items-center justify-center gap-4 [backface-visibility:hidden]">
+                <p className="text-[11px] font-mono font-bold text-muted-foreground">{current.section_ref}</p>
+                <p className="font-display text-xl font-bold leading-snug text-center">
+                  {current.question || current.body}
+                </p>
                 <p className="text-xs text-muted-foreground text-center">{current.heading} › {current.subheading}</p>
+                <p className="text-[11px] text-muted-foreground font-semibold text-center">Tap or swipe up/down to reveal the answer · swipe left/right to move</p>
+              </div>
+              <div className="absolute inset-0 rounded-3xl border border-primary/30 bg-primary/5 p-6 flex flex-col items-start gap-3 overflow-y-auto [transform:rotateX(180deg)] [backface-visibility:hidden]">
+                <p className="text-[11px] font-mono font-bold text-muted-foreground">{current.section_ref}</p>
+                <FormattedText text={current.body} className="text-base leading-relaxed text-left" />
+                <p className="mt-auto w-full text-[11px] text-muted-foreground font-semibold text-center">Tap or swipe up/down to flip back</p>
               </div>
             </div>
           </div>

@@ -1,0 +1,205 @@
+```json
+[
+  {
+    "id": 101,
+    "question": "Under what circumstances is passing another vehicle on the left allowed?"
+  },
+  {
+    "id": 102,
+    "question": "May a driver pass other traffic by driving on the shoulder or verge of a public road?"
+  },
+  {
+    "id": 103,
+    "question": "When is passing other traffic prohibited on a rise, curve, or restricted visibility area?"
+  },
+  {
+    "id": 104,
+    "question": "How must a driver react when another vehicle wants to pass them?"
+  },
+  {
+    "id": 105,
+    "question": "How may a driver signal their intention to overtake a vehicle ahead?"
+  },
+  {
+    "id": 106,
+    "question": "What is the rule regarding lane positioning and overtaking on a freeway?"
+  },
+  {
+    "id": 107,
+    "question": "Who has the right of way at a junction where vehicles move around a traffic island?"
+  },
+  {
+    "id": 108,
+    "question": "Where is parking prohibited regarding road signs, sidewalks, and entrances?"
+  },
+  {
+    "id": 109,
+    "question": "How close to a fire hydrant is parking prohibited?"
+  },
+  {
+    "id": 110,
+    "question": "What are the restrictions on parking outside an urban area?"
+  },
+  {
+    "id": 111,
+    "question": "What distance and location restrictions apply to parking within an urban area?"
+  },
+  {
+    "id": 112,
+    "question": "Under what circumstances is stopping on the roadway permitted?"
+  },
+  {
+    "id": 113,
+    "question": "Where is stopping prohibited due to potential traffic obstruction or hazard?"
+  },
+  {
+    "id": 114,
+    "question": "What is a driver's general duty regarding road traffic signs and rules of the road?"
+  },
+  {
+    "id": 115,
+    "question": "When is reversing a vehicle permitted?"
+  },
+  {
+    "id": 116,
+    "question": "What are the minimum required following distances for different types of vehicles?"
+  },
+  {
+    "id": 117,
+    "question": "What restrictions apply to persons, animals, or objects occupying space inside a vehicle while driving?"
+  },
+  {
+    "id": 118,
+    "question": "What control and view must a driver maintain while driving a vehicle?"
+  },
+  {
+    "id": 119,
+    "question": "What requirement applies to a vehicle left unattended?"
+  },
+  {
+    "id": 120,
+    "question": "What must a driver do before pulling away from a stationary roadside position?"
+  },
+  {
+    "id": 121,
+    "question": "How must a driver respond to a vehicle sounding a warning device or bell?"
+  },
+  {
+    "id": 122,
+    "question": "When may a driver let a part of their body protrude from a moving vehicle?"
+  },
+  {
+    "id": 123,
+    "question": "May a person or animal occupy an external part of a moving vehicle?"
+  },
+  {
+    "id": 124,
+    "question": "What prohibitions apply regarding engine emissions, idling while unattended, and refueling?"
+  },
+  {
+    "id": 125,
+    "question": "Is depositing fuel, oil, grease, or flammable matter on a road permitted?"
+  },
+  {
+    "id": 126,
+    "question": "May a vehicle be driven, pulled, or pushed on a sidewalk?"
+  },
+  {
+    "id": 127,
+    "question": "What is a motorcycle rider's general duty regarding road signs and rules?"
+  },
+  {
+    "id": 128,
+    "question": "What position must a motorcycle rider maintain while riding?"
+  },
+  {
+    "id": 129,
+    "question": "What requirements apply to carrying a passenger on a motorcycle?"
+  },
+  {
+    "id": 130,
+    "question": "How many people may ride on a motorcycle, excluding a sidecar?"
+  },
+  {
+    "id": 131,
+    "question": "What engine capacity and seating requirements apply to carrying a passenger on a motorcycle?"
+  },
+  {
+    "id": 132,
+    "question": "How many adults may be carried in a motorcycle sidecar?"
+  },
+  {
+    "id": 133,
+    "question": "What restrictions apply to carrying objects or persons in front of a motorcycle rider?"
+  },
+  {
+    "id": 134,
+    "question": "May a motorcycle rider or passenger hold onto another moving vehicle?"
+  },
+  {
+    "id": 135,
+    "question": "What rule applies to a motorcycle's wheels while riding?"
+  },
+  {
+    "id": 136,
+    "question": "What formation and overtaking rules apply to motorcycle riders sharing a lane?"
+  },
+  {
+    "id": 137,
+    "question": "On which side must a sidecar be attached, and to what minimum engine size?"
+  },
+  {
+    "id": 138,
+    "question": "What restriction applies to holding a cellular device while driving?"
+  },
+  {
+    "id": 139,
+    "question": "What duty does a driver owe to a pedestrian within a pedestrian crossing?"
+  },
+  {
+    "id": 140,
+    "question": "May a driver pass a vehicle that has stopped at a pedestrian crossing?"
+  },
+  {
+    "id": 141,
+    "question": "How must pedestrians obey red figure light signals at pedestrian crossings?"
+  },
+  {
+    "id": 142,
+    "question": "When is a stationary vehicle deemed to be abandoned by its owner?"
+  },
+  {
+    "id": 143,
+    "question": "What actions involving vehicle wheels or movement that cause road damage are prohibited?"
+  },
+  {
+    "id": 144,
+    "question": "Which specific vehicle types are prohibited from using a freeway?"
+  },
+  {
+    "id": 145,
+    "question": "Under what circumstances is stopping on a freeway permitted?"
+  },
+  {
+    "id": 146,
+    "question": "What actions regarding hand signals, pedestrians, and animals are prohibited on a freeway?"
+  },
+  {
+    "id": 147,
+    "question": "What duty applies when a vehicle ahead wants to merge from a freeway on-ramp?"
+  },
+  {
+    "id": 148,
+    "question": "May a motorcycle be used to tow another vehicle?"
+  },
+  {
+    "id": 149,
+    "question": "What is the maximum permitted length for a tow-rope, chain, or tow-bar?"
+  },
+  {
+    "id": 150,
+    "question": "When is a draw-bar or tow-bar connection required instead of a rope or chain for towing?"
+  }
+]
+
+```

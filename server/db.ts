@@ -58,6 +58,7 @@ export const studyRules = pgTable('study_rules', {
     heading: text('heading').notNull(), // "Road Traffic Rules"
     subheading: text('subheading').notNull(), // "Seatbelts"
     title: text('title'),
+    question: text('question'), // flashcard prompt generated from body
     body: text('body').notNull(), // atomic rule statement
     applicable_codes: jsonb('applicable_codes').notNull(), // number[] e.g. [0], [1], [2,3]
     is_verified_exam_question: boolean('is_verified_exam_question').default(false).notNull(),

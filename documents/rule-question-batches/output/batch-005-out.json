@@ -1,0 +1,205 @@
+```json
+[
+  {
+    "id": 201,
+    "question": "What requirement must a professional driver meet to operate a prescribed motor vehicle?"
+  },
+  {
+    "id": 202,
+    "question": "What is included in the definition of a public road?"
+  },
+  {
+    "id": 203,
+    "question": "What specification must a retro-reflector comply with?"
+  },
+  {
+    "id": 204,
+    "question": "What is the purpose of a road traffic sign?"
+  },
+  {
+    "id": 205,
+    "question": "What is defined as the roadway?"
+  },
+  {
+    "id": 206,
+    "question": "What design feature defines a semi-trailer regarding its tare distribution?"
+  },
+  {
+    "id": 207,
+    "question": "What part of the road is defined as the shoulder?"
+  },
+  {
+    "id": 208,
+    "question": "How is a vehicle's tare mass calculated?"
+  },
+  {
+    "id": 209,
+    "question": "What is the function of a traffic island?"
+  },
+  {
+    "id": 210,
+    "question": "How is a traffic lane defined?"
+  },
+  {
+    "id": 211,
+    "question": "What is the definition and function of a traffic signal?"
+  },
+  {
+    "id": 212,
+    "question": "How is a tractor defined regarding drawing capacity and weight limits?"
+  },
+  {
+    "id": 213,
+    "question": "What defines a trailer?"
+  },
+  {
+    "id": 214,
+    "question": "How is a truck-tractor defined?"
+  },
+  {
+    "id": 215,
+    "question": "What area is defined as an urban area?"
+  },
+  {
+    "id": 216,
+    "question": "How is a vehicle defined under road traffic regulations?"
+  },
+  {
+    "id": 217,
+    "question": "What portion of a road is defined as the verge?"
+  },
+  {
+    "id": 218,
+    "question": "What weight limits define a Light Motor Vehicle (LMV)?"
+  },
+  {
+    "id": 219,
+    "question": "What specifications define a Heavy Motor Vehicle (HMV)?"
+  },
+  {
+    "id": 220,
+    "question": "What vehicle types are included under the motorcycle classification?"
+  },
+  {
+    "id": 221,
+    "question": "What requirement applies to driving a vehicle on a public road regarding driver licensing?"
+  },
+  {
+    "id": 222,
+    "question": "What types of driving licences are issued by testing centres?"
+  },
+  {
+    "id": 223,
+    "question": "What documents and fees are required when applying for a learner's licence?"
+  },
+  {
+    "id": 224,
+    "question": "Within what time frame must a licence holder report a permanent change of address?"
+  },
+  {
+    "id": 225,
+    "question": "What duty does a vehicle owner or operator have regarding driver licensing?"
+  },
+  {
+    "id": 226,
+    "question": "Who must hold a professional driving permit to operate a vehicle of a prescribed class?"
+  },
+  {
+    "id": 227,
+    "question": "How long are a motor vehicle licence and licence disc valid?"
+  },
+  {
+    "id": 228,
+    "question": "Who is responsible for offences committed with a vehicle on a public road?"
+  },
+  {
+    "id": 229,
+    "question": "How long is the period of grace to operate a vehicle after its licence expires?"
+  },
+  {
+    "id": 230,
+    "question": "What does it mean to cross a public road?"
+  },
+  {
+    "id": 231,
+    "question": "How is drawing distinguished from general towing?"
+  },
+  {
+    "id": 232,
+    "question": "What is a driving licence card?"
+  },
+  {
+    "id": 233,
+    "question": "What constitutes driving time for a driver?"
+  },
+  {
+    "id": 234,
+    "question": "What is the definition of an emergency brake?"
+  },
+  {
+    "id": 235,
+    "question": "How is the front end of a vehicle defined?"
+  },
+  {
+    "id": 236,
+    "question": "Who is classified as a driving instructor?"
+  },
+  {
+    "id": 237,
+    "question": "How is the kerb line defined?"
+  },
+  {
+    "id": 238,
+    "question": "How is a medical practitioner defined under the Act?"
+  },
+  {
+    "id": 239,
+    "question": "What does it mean to operate a vehicle on a public road?"
+  },
+  {
+    "id": 240,
+    "question": "How is the overall length of a vehicle or combination measured?"
+  },
+  {
+    "id": 241,
+    "question": "How is overall height measured for a motor vehicle?"
+  },
+  {
+    "id": 242,
+    "question": "How is the overall width of a vehicle determined?"
+  },
+  {
+    "id": 243,
+    "question": "Who is considered the owner of a vehicle?"
+  },
+  {
+    "id": 244,
+    "question": "What is the legal definition of parking a vehicle?"
+  },
+  {
+    "id": 245,
+    "question": "What is the definition and primary function of a parking brake?"
+  },
+  {
+    "id": 246,
+    "question": "What is defined as the rear end of a vehicle?"
+  },
+  {
+    "id": 247,
+    "question": "What does it mean for a vehicle to be roadworthy?"
+  },
+  {
+    "id": 248,
+    "question": "What is the definition and primary function of a service brake?"
+  },
+  {
+    "id": 249,
+    "question": "What part of a verge is defined as a sidewalk?"
+  },
+  {
+    "id": 250,
+    "question": "What is the legal definition of the term stop?"
+  }
+]
+
+```
