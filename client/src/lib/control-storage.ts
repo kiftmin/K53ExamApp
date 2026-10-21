@@ -2,7 +2,7 @@
 // Mirrors rule-storage.ts — plain JSON in localStorage.
 // Progress is server-synced for W/M/X codes via progress-sync.ts.
 
-import { syncEnabled, fetchProgress, pushProgress, mergeServerIntoLocal, type LearnerRecord } from "./progress-sync";
+import { syncEnabled, pushProgress, hydrateProgress, type LearnerRecord } from "./progress-sync";
 
 const FAV_CONTROLS_KEY = "k53_favorite_controls";
 const LEARNING_CONTROLS_KEY = "k53_control_learning";
@@ -165,11 +165,20 @@ export function isVehicleTypeForCode(code: number | null, vehicleType: string, g
   return false;
 }
 
-/** Sync session start: fetch server progress for this mobile + item type and merge into localStorage (server wins). Call once on Browse/Flashcard mount. */
+/** Hydrate control progress from the server (server authoritative, local uploaded once when empty). */
 export async function initControlSync(): Promise<void> {
-  if (!syncEnabled()) return;
-  const server = await fetchProgress("control");
   const local = readLearningMap(LEARNING_CONTROLS_KEY);
-  const merged = mergeServerIntoLocal(local, server);
-  writeLearningMap(LEARNING_CONTROLS_KEY, merged);
+  const hydrated = await hydrateProgress("control", local);
+  if (hydrated !== null) writeLearningMap(LEARNING_CONTROLS_KEY, hydrated);
+}
+
+/** Remove all device-local control progress and bookmarks (logout). */
+export function clearControlLocalData(): void {
+  try {
+    localStorage.removeItem(LEARNING_CONTROLS_KEY);
+    localStorage.removeItem(FAV_CONTROLS_KEY);
+    localStorage.removeItem(DONE_CONTROLS_KEY);
+  } catch {
+    // ignore
+  }
 }

@@ -2,7 +2,7 @@
 // Mirrors sign-storage.ts — plain JSON in localStorage, no backend changes.
 // Progress is server-synced for W/M/X codes via progress-sync.ts.
 
-import { syncEnabled, fetchProgress, pushProgress, mergeServerIntoLocal, type LearnerRecord } from "./progress-sync";
+import { syncEnabled, pushProgress, hydrateProgress, type LearnerRecord } from "./progress-sync";
 
 const FAV_RULES_KEY = "k53_favorite_rules";
 const RULE_CODE_KEY = "k53_rules_licence_code";
@@ -109,13 +109,22 @@ export function clearSeenRules(): void {
   }
 }
 
-/** Sync session start: fetch server progress for this mobile + item type and merge into localStorage (server wins). Call once on Browse/Flashcard mount. */
+/** Hydrate rule progress from the server (server authoritative, local uploaded once when empty). */
 export async function initRuleSync(): Promise<void> {
-  if (!syncEnabled()) return;
-  const server = await fetchProgress("rule");
   const local = readLearningMap(LEARNING_RULES_KEY);
-  const merged = mergeServerIntoLocal(local, server);
-  writeLearningMap(LEARNING_RULES_KEY, merged);
+  const hydrated = await hydrateProgress("rule", local);
+  if (hydrated !== null) writeLearningMap(LEARNING_RULES_KEY, hydrated);
+}
+
+/** Remove all device-local rule progress and bookmarks (logout). */
+export function clearRuleLocalData(): void {
+  try {
+    localStorage.removeItem(LEARNING_RULES_KEY);
+    localStorage.removeItem(FAV_RULES_KEY);
+    localStorage.removeItem(DONE_RULES_KEY);
+  } catch {
+    // ignore
+  }
 }
 
 function readIds(key: string): number[] {

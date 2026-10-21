@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { KeyRound, CalendarSearch, Copy } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { apiRequest } from "@/lib/queryClient";
 import AccessCodeManager from "@/components/access-code-manager";
 
 export default function AccessCodesSection() {
@@ -16,7 +17,7 @@ export default function AccessCodesSection() {
   useEffect(() => {
     const fetchCode = async () => {
       try {
-        const res = await fetch('/api/access-code/today');
+        const res = await apiRequest("GET", '/api/access-code/today');
         const data = await res.json();
         setTodayCode(data.code);
         setTodayDate(data.date);
@@ -105,7 +106,7 @@ export default function AccessCodesSection() {
             <Button
               onClick={async () => {
                 if (!lookupDate) return;
-                const res = await fetch(`/api/access-code/lookup?date=${lookupDate}`);
+                const res = await apiRequest("GET", `/api/access-code/lookup?date=${lookupDate}`);
                 const data = await res.json();
                 setLookupCode(data.code);
               }}

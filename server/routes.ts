@@ -312,7 +312,7 @@ export async function registerRoutes(
 
   // === Access Code Endpoints (D/W/M/X) ===
 
-  app.get('/api/access-code/today', async (_req: any, res: any) => {
+  app.get('/api/access-code/today', requireAdminAuth, async (_req: any, res: any) => {
     try {
       const todayDate = getTodaySAST();
       const code = generateDailyCode(todayDate);
@@ -324,7 +324,7 @@ export async function registerRoutes(
     }
   });
 
-  app.get('/api/access-code/lookup', async (req: any, res: any) => {
+  app.get('/api/access-code/lookup', requireAdminAuth, async (req: any, res: any) => {
     try {
       const date = req.query.date as string;
       if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) {
@@ -376,8 +376,12 @@ export async function registerRoutes(
       if (!result.valid) {
         return res.status(401).json({ valid: false, message: result.message });
       }
+      if (result.type === 'daily') {
+        return res.status(403).json({ valid: false, message: "Progress sync requires a Weekly, Monthly or Master code." });
+      }
 
-      const rows = await withDbRetry(() => storage.getLearnerProgress(mobileNumber.trim(), item_type));
+      const mobile = (result.code.mobile_number || '').trim();
+      const rows = await withDbRetry(() => storage.getLearnerProgress(mobile, item_type));
       return res.json({ valid: true, type: result.type, progress: rows });
     } catch (err) {
       console.error("Error fetching learner progress:", err);
@@ -393,9 +397,13 @@ export async function registerRoutes(
       if (!result.valid) {
         return res.status(401).json({ valid: false, message: result.message });
       }
+      if (result.type === 'daily') {
+        return res.status(403).json({ valid: false, message: "Progress sync requires a Weekly, Monthly or Master code." });
+      }
 
+      const mobile = (result.code.mobile_number || '').trim();
       const row = await withDbRetry(() => storage.upsertLearnerProgress({
-        mobile_number: mobileNumber.trim(),
+        mobile_number: mobile,
         item_type,
         item_id,
         status,
@@ -413,7 +421,7 @@ export async function registerRoutes(
 
   // --- On-demand code management (used by Session Access panel) ---
 
-  app.get('/api/access-codes', async (_req: any, res: any) => {
+  app.get('/api/access-codes', requireAdminAuth, async (_req: any, res: any) => {
     try {
       const codes = await storage.getAccessCodes();
       res.json(codes);

@@ -7,13 +7,8 @@ async function throwIfResNotOk(res: Response) {
   }
 }
 
-export async function apiRequest(
-  method: string,
-  url: string,
-  data?: unknown | undefined,
-): Promise<Response> {
-  const headers: Record<string, string> = data ? { "Content-Type": "application/json" } : {};
-  // Attach cached admin credentials so server-side requireAdminAuth passes.
+/** Attach cached admin credentials so server-side requireAdminAuth passes. */
+function attachAdminHeaders(headers: Record<string, string>): void {
   // sessionStorage holds them after a successful AdminGate login.
   try {
     const key = sessionStorage.getItem("k53_admin_key");
@@ -23,6 +18,15 @@ export async function apiRequest(
   } catch {
     // sessionStorage unavailable — headers simply not attached
   }
+}
+
+export async function apiRequest(
+  method: string,
+  url: string,
+  data?: unknown | undefined,
+): Promise<Response> {
+  const headers: Record<string, string> = data ? { "Content-Type": "application/json" } : {};
+  attachAdminHeaders(headers);
   const res = await fetch(url, {
     method,
     headers,
@@ -40,8 +44,11 @@ export const getQueryFn: <T>(options: {
 }) => QueryFunction<T> =
   ({ on401: unauthorizedBehavior }) =>
   async ({ queryKey }) => {
+    const headers: Record<string, string> = {};
+    attachAdminHeaders(headers);
     const res = await fetch(queryKey.join("/") as string, {
       credentials: "include",
+      headers,
     });
 
     if (unauthorizedBehavior === "returnNull" && res.status === 401) {

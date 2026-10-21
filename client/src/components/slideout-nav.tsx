@@ -2,6 +2,9 @@ import { useState } from "react";
 import { useLocation } from "wouter";
 import { House, BookOpen, Settings, Menu, X, LogOut } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { clearSignLocalData } from "@/lib/sign-storage";
+import { clearRuleLocalData } from "@/lib/rule-storage";
+import { clearControlLocalData } from "@/lib/control-storage";
 
 const LINKS = [
   { path: "/", label: "Home", icon: House },
@@ -19,6 +22,9 @@ function clearSession() {
     localStorage.removeItem("k53_surname");
     localStorage.removeItem("k53_license_code");
     localStorage.removeItem("driving-license-quiz-state");
+    clearSignLocalData();
+    clearRuleLocalData();
+    clearControlLocalData();
   }
 }
 

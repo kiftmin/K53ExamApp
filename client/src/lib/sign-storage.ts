@@ -3,7 +3,7 @@
 // plain JSON, no backend changes needed.
 // Progress is server-synced for W/M/X codes via progress-sync.ts.
 
-import { syncEnabled, fetchProgress, pushProgress, mergeServerIntoLocal, type LearnerRecord } from "./progress-sync";
+import { syncEnabled, pushProgress, hydrateProgress, type LearnerRecord } from "./progress-sync";
 
 const FAV_SIGNS_KEY = "k53_favorite_signs";
 const LEARNING_SIGNS_KEY = "k53_sign_learning";
@@ -180,11 +180,20 @@ export function clearSeenSigns(): void {
   }
 }
 
-/** Sync session start: fetch server progress for this mobile + item type and merge into localStorage (server wins). Call once on Browse/Flashcard mount. */
+/** Hydrate sign progress from the server (server authoritative, local uploaded once when empty). */
 export async function initSignSync(): Promise<void> {
-  if (!syncEnabled()) return;
-  const server = await fetchProgress("sign");
   const local = readLearningMap(LEARNING_SIGNS_KEY);
-  const merged = mergeServerIntoLocal(local, server);
-  writeLearningMap(LEARNING_SIGNS_KEY, merged);
+  const hydrated = await hydrateProgress("sign", local);
+  if (hydrated !== null) writeLearningMap(LEARNING_SIGNS_KEY, hydrated);
+}
+
+/** Remove all device-local sign progress and bookmarks (logout). */
+export function clearSignLocalData(): void {
+  try {
+    localStorage.removeItem(LEARNING_SIGNS_KEY);
+    localStorage.removeItem(FAV_SIGNS_KEY);
+    localStorage.removeItem(DONE_SIGNS_KEY);
+  } catch {
+    // ignore
+  }
 }

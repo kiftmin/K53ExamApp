@@ -38,17 +38,17 @@ type ServerProgressRow = {
   updated_at: string;
 };
 
-/** Fetch all progress rows for this mobile + item type. Server wins. */
-export async function fetchProgress(itemType: "sign" | "rule" | "control"): Promise<Record<number, LearnerRecord>> {
+/** Fetch all progress rows for this mobile + item type. Returns null on failure. */
+export async function fetchProgress(itemType: "sign" | "rule" | "control"): Promise<Record<number, LearnerRecord> | null> {
   const code = currentCode();
   const mobile = currentMobile();
-  if (!code || !mobile) return {};
+  if (!code || !mobile) return null;
 
   try {
     const res = await fetch(`${API_BASE}/api/learner-progress?code=${encodeURIComponent(code)}&mobileNumber=${encodeURIComponent(mobile)}&item_type=${encodeURIComponent(itemType)}`, {
       credentials: "include",
     });
-    if (!res.ok) return {};
+    if (!res.ok) return null;
     const data = await res.json();
     const rows: ServerProgressRow[] = data.progress || [];
     const map: Record<number, LearnerRecord> = {};
@@ -63,7 +63,7 @@ export async function fetchProgress(itemType: "sign" | "rule" | "control"): Prom
     }
     return map;
   } catch {
-    return {};
+    return null;
   }
 }
 
@@ -99,25 +99,32 @@ export async function pushProgress(
   }
 }
 
-/** Merge server records into a local learning map, server wins for conflicts. */
-export function mergeServerIntoLocal(
-  localMap: Record<number, LearnerRecord>,
-  serverMap: Record<number, LearnerRecord>
-): Record<number, LearnerRecord> {
-  const merged = { ...localMap };
-  for (const [id, serverRec] of Object.entries(serverMap)) {
-    const numId = Number(id);
-    const local = merged[numId];
-    if (!local) {
-      merged[numId] = serverRec;
-    } else {
-      // Server wins: use whichever has the later last_seen_at
-      const serverTime = new Date(serverRec.lastSeenAt).getTime();
-      const localTime = new Date(local.lastSeenAt).getTime();
-      if (serverTime >= localTime) {
-        merged[numId] = serverRec;
-      }
-    }
+/**
+ * Server-authoritative hydration for W/M/X learners.
+ * - Server has rows: replace local progress with the server rows.
+ * - Server has no rows: keep local progress and upload it once.
+ * - Request failed: keep local progress and retry on the next mount.
+ * Returns null when sync is disabled.
+ */
+export async function hydrateProgress(
+  itemType: "sign" | "rule" | "control",
+  localMap: Record<number, LearnerRecord>
+): Promise<Record<number, LearnerRecord> | null> {
+  if (!syncEnabled()) return null;
+
+  // Never write back data if the learner logged out or switched accounts mid-sync.
+  const identity = `${currentCode() || ""}|${currentMobile() || ""}`;
+  const stillCurrent = () => `${currentCode() || ""}|${currentMobile() || ""}` === identity;
+
+  const serverMap = await fetchProgress(itemType);
+  if (serverMap === null) return stillCurrent() ? localMap : null;
+  if (Object.keys(serverMap).length > 0) return stillCurrent() ? serverMap : null;
+
+  const entries = Object.entries(localMap);
+  if (entries.length === 0) return stillCurrent() ? {} : null;
+
+  for (const [id, record] of entries) {
+    await pushProgress(itemType, Number(id), record);
   }
-  return merged;
+  return stillCurrent() ? localMap : null;
 }

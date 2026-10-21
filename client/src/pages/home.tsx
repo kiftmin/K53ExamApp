@@ -1,8 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useLocation, useSearch } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import type { StudySign, StudyRule, StudyControl } from "@shared/schema";
 import { weakestGroups } from "@/lib/mastery-summary";
+import { initSignSync } from "@/lib/sign-storage";
+import { initRuleSync } from "@/lib/rule-storage";
+import { initControlSync } from "@/lib/control-storage";
 import { useAccessCode } from "@/lib/use-access-code";
 import { Layout } from "@/components/layout";
 import { Button } from "@/components/ui/button";
@@ -62,14 +65,32 @@ export default function Home() {
     queryKey: ["/api/controls"],
   });
 
-  const controlsForSummary = controls.map((c) => ({
-    id: c.id,
-    heading: c.component_name,
-    subheading: c.function_notes ?? null,
-  }));
+  const [syncTick, setSyncTick] = useState(0);
 
-  const weak = weakestGroups(signs, rules, controlsForSummary, 3);
+  const weak = useMemo(() => {
+    const controlsForSummary = controls.map((c) => ({
+      id: c.id,
+      heading: c.component_name,
+      subheading: c.function_notes ?? null,
+    }));
+    return weakestGroups(signs, rules, controlsForSummary, 3);
+  }, [signs, rules, controls, syncTick]);
+
   const revisionPath = weak.length > 0 ? gModulePath(weak[0]!) : "/study";
+
+  useEffect(() => {
+    if (!validated) return;
+    let cancelled = false;
+    (async () => {
+      try {
+        await Promise.all([initSignSync(), initRuleSync(), initControlSync()]);
+      } catch {
+        // Keep local data if hydration fails.
+      }
+      if (!cancelled) setSyncTick((t) => t + 1);
+    })();
+    return () => { cancelled = true; };
+  }, [validated]);
 
   const unlockTarget = new URLSearchParams(search).get("unlock");
   const showVerifyCard = !!unlockTarget && !validated;
