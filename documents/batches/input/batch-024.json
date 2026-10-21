@@ -1,0 +1,254 @@
+[
+ {
+  "id": 253,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Be aware that buses may slow down and stop. Look out for pedestrians when overtaking"
+ },
+ {
+  "id": 254,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Make sure that it is safe to slow down and stop to drop someone off or pick someone up. Also look out for pedestrians who may cross the road."
+ },
+ {
+  "id": 255,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Stop with the front of your vehicle behind the stop sign. If there is no stop sign, the stop line will have the same meaning as a stop sign."
+ },
+ {
+  "id": 256,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Give way to any one who crosses your path of travel or who wants to cross your path. Even if there is no yield sign, you still have to give way."
+ },
+ {
+  "id": 257,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Look out for any pedestrians crossing or wanting to cross the road and give them priority by slowing down or stopping."
+ },
+ {
+  "id": 258,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not cross the line, except to gain direct access to an entrance on the other side of the line, to gain direct access from such an entrance to the road or to pass a stationary obstruction. In all these cases you must ensure that it is safe to do so."
+ },
+ {
+  "id": 259,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "You may under no circumstances drive on the right hand side or cross these lines with any part of your vehicle, except to drive around a stationary vehicle or stationary obstruction in the road."
+ },
+ {
+  "id": 260,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Drive in such a way that no part of your vehicle crosses the line."
+ },
+ {
+  "id": 261,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Avoid driving to the left of the left-edge line. You may, however drive here only; whilst being overtaken by another vehicle, if you can so without endangering yourself, other traffic, pedestrians or property, during daytime and if persons and vehicles on the road are clearly discernible at a distance of at least 150 metres. It is not compulsory to drive to the left of the line when you are being overtaken, keep in mind that you have very little space when doing so. If your vehicle breaks down, stop as far left from the line as possible and switch on your emergency lights. The right-edge line is usually found on one-way roads such as dual carriageways or freeways and may not be crossed."
+ },
+ {
+  "id": 262,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Drive in such a way that you do not stop, park or drive over the island, unless on the orders of a traffic or police officer, to avoid a collision or in an emergency."
+ },
+ {
+  "id": 263,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Make sure that your vehicle is parked completely inside the lines that mark the parking bay. In the case of angle parking you must park as far as possible from the road, with the front of your vehicle not further than 150mm from the kerb but no part of the vehicle may be on or over the sidewalk."
+ },
+ {
+  "id": 264,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "If you are not part of the group identified by the sign, you may not park here. In an emergency you may stop or park at the sign that indicates the SOS telephone. Only goods vehicles may stop or park in the demarcated are that indicates a loading zone."
+ },
+ {
+  "id": 265,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Choose the correct lane in time to travel in the direction you want to go. Make sure that other traffic is obeying the mandatory direction arrows in their lanes. Check your blind spot before turning right to see that a vehicle in the lane next to you who is suppose to turn right (because of the mandatory right-turn arrow in his lane) is not carrying straight on."
+ },
+ {
+  "id": 266,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "If you are not driving a bus do not drive in the lane indicated by the sign during the times on the sign."
+ },
+ {
+  "id": 267,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not stop in the demarcated box and make sure that you will be able to drive through the intersection before entering the intersection."
+ },
+ {
+  "id": 268,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Look out for pedestrians that may cross the road, slow down and stop if someone wants to cross the road. Do not overtake inside this area or a vehicle that has stopped at any pedestrian crossing."
+ },
+ {
+  "id": 269,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Except in any emergency, do not stop at these lines. In the case of a broken line, you may not stop during the times indicated by a road traffic sign."
+ },
+ {
+  "id": 270,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Exception an emergency, you may stop for short periods, but may not park here. Parking means that a vehicle is stationary (whether the engine is running or not) for a longer period than is longer than that needed to on or off load goods or passengers."
+ },
+ {
+  "id": 271,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do no drive in the demarcated area."
+ },
+ {
+  "id": 272,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Only drive around the circle in the direction indicated by the arrows. Yield to traffic coming from your right hand side. At a mini-circle yield to traffic that reaches their yield line first before you reach yours. Drive slowly so that you can stop if someone does not yield."
+ },
+ {
+  "id": 273,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Slow down and if necessary, stop before the crossing."
+ },
+ {
+  "id": 274,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Yield to any traffic that wants to change lanes. The continuity lines will soon change to a channelizing line or painted island, which will make it illegal to change direction. Check your blind spot to make sure there are no other vehicles that might cut in front of you."
+ },
+ {
+  "id": 275,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Be on the look out for approaching vehicles which may move over onto your side of the road."
+ },
+ {
+  "id": 276,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Be on the look out for approaching vehicles."
+ },
+ {
+  "id": 277,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Slow down if other traffic is approaching the intersection and stop if necessary."
+ },
+ {
+  "id": 278,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Change lanes in time if the lane you are travelling in ends. Check both the blind spots where two lanes end from both sides to make sure there is no other vehicle that is also changing lanes."
+ },
+ {
+  "id": 279,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Choose the correct lane in time to drive in the direction that you want to go."
+ },
+ {
+  "id": 280,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Ensure not to cross the prohibition line that follows the sign. If you are on the right-hand side of the road move back to the left-hand lane as soon as possible before the prohibition line starts."
+ },
+ {
+  "id": 281,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Only drive into this arrestor bed when your brakes fail."
+ },
+ {
+  "id": 282,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Slow down and release your brake before driving over the speed hump."
+ },
+ {
+  "id": 283,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Drive in the centre of your demarcated lane."
+ },
+ {
+  "id": 284,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Turn according to the markings."
+ },
+ {
+  "id": 285,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Ensure that you do not straddle any lane markings."
+ },
+ {
+  "id": 286,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "The driver must be guided by the arrows and never, unless otherwise requested by a traffic officer, drive in the direction opposite to what the arrows show."
+ },
+ {
+  "id": 287,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Look out for cyclists crossing or who want to cross the road."
+ },
+ {
+  "id": 288,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not use a road or a marked portion of a road if you are not part of the group identified by the marking."
+ },
+ {
+  "id": 289,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Read the message on the road and then concentrate on the possible danger indicated by the message."
+ },
+ {
+  "id": 290,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "These lights must be obeyed at all times in the following manner: Red - Stop. Flashing red arrow to the left - After stopping, the driver may turn if there is no traffic. Remember to yield to pedestrian traffic and oncoming traffic that wants to turn right, and traffic from the right passing through the intersection. Amber - Stop, except where it cannot be done safely. Constant amber arrow - Stop and wait until the flashing green arrow shows you may go. Green - Go if it is safe. Flashing green arrows - Right of way in the direction of the flashing arrow. Constant green arrow - Shows the direction in which traffic must go, for example one-way streets. Flashing amber disc - Drive on carefully, but yield to pedestrians. Pedestrians may cross the roadway. Flashing red signal - Indicates that the driver must stop and may carry on when it is safe (as at stop sign). At a railway crossing a flashing red light indicates that a train is coming and you may not drive on until the light stops flashing. (Red) figure light signal. Shows pedestrians that they may not cross the road until the green figure light signal is shown. If this sign flashes pedestrians who have not entered the roadway must wait until a green figure light signal shows. Pedestrians who are already in the intersection must cross the intersection as quickly as possible."
+ },
+ {
+  "id": 291,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "The driver must leave the lane in the direction of the arrow."
+ },
+ {
+  "id": 292,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Driver must focus on the signals given by the officer, and strictly adhere to the signal given. The traffic officer signals takes precedence over any other traffic signal. a) Stop-Stop traffic approaching from the front b) Stop-Stop traffic approaching from the rear c) Stop-Stop traffic approaching from the rear d) Go/Proceed - Indicates to the driver that he/she may proceed e) Go/Proceed - Indicates to the driver that he/she may proceed"
+ },
+ {
+  "id": 293,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Stop or proceed depending on the displayed flag signal."
+ },
+ {
+  "id": 294,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Proceed slowly and be alert."
+ }
+]

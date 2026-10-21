@@ -1,0 +1,302 @@
+[
+ {
+  "id": 3,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Bring your vehicle to a **stop behind the stop line**[cite: 27]. If there is no stop line, the front of the vehicle must come to a **stand still in line with the stop sign**[cite: 27]. At a three or four-way stop you may **not move off before all the other vehicles** which stopped before you have moved off[cite: 27]. **Proceed only when it is safe**[cite: 27]."
+ },
+ {
+  "id": 4,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "If you intend to carry straight on, bring your vehicle to a **standstill behind the stop line**[cite: 27]. When turning left, **yield to all traffic**, which is close enough to pose a hazard[cite: 27]. **Proceed only when it is safe**[cite: 27]."
+ },
+ {
+  "id": 5,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "If more than one vehicle stops at the intersection, the vehicle, which **stopped first, should move off first**[cite: 27]."
+ },
+ {
+  "id": 6,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Bring your vehicle to a **standstill behind the stop line**[cite: 27]. If there is no stop line, the front of your vehicle must be brought to a **stop in line with the stop sign**[cite: 27]. **Proceed only when it is safe**[cite: 27]. If more than one vehicle stops at such an intersection, the vehicle, which **stopped first, should move off first**[cite: 27]."
+ },
+ {
+  "id": 7,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Stop if the STOP sign is displayed** and move off or proceed with caution if safe **when the GO sign is displayed**[cite: 27]."
+ },
+ {
+  "id": 8,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "If other traffic is approaching the intersection, **reduce speed and, if necessary, stop**[cite: 27]."
+ },
+ {
+  "id": 9,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Look out for **pedestrians crossing the road** or near the road and **be ready to stop**[cite: 27]."
+ },
+ {
+  "id": 10,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Look out for other vehicles and **yield to vehicles already in the circle** or that will cross the yield line at their entrance to the circle before you will cross yours[cite: 27]. **Stop if necessary**[cite: 27]. The driver who **reaches his/her yield line first may proceed first**[cite: 27]. At a mini circle you must, as at a normal intersection, **signal in time in which direction you want to turn**[cite: 27]."
+ },
+ {
+  "id": 11,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Do not enter the carriageway** where this sign is displayed[cite: 27]."
+ },
+ {
+  "id": 12,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Proceed in the direction of the arrow** only if you want to use that specific carriageway[cite: 27]."
+ },
+ {
+  "id": 13,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "When driving any of the above-mentioned vehicles, **drive carefully** in the area at a **maximum speed of 15 km/h**[cite: 27]. **Priority must be given to pedestrians** crossing or wanting to cross the road[cite: 27]. When loading or off loading goods, **only do so in areas marked by road traffic signs**[cite: 27]. **No other vehicles are permitted** in such an area[cite: 27]."
+ },
+ {
+  "id": 14,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Look out for other vehicles and **yield to vehicles already in the carriageway**[cite: 27]."
+ },
+ {
+  "id": 15,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Do not drive slower** than the speed indicated in km/h[cite: 27]."
+ },
+ {
+  "id": 16,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "When driving a vehicle with a Gross Vehicle Mass (GVM) or Gross Combination Mass (GCM) **in excess of the mass indicated in tons**, **use only the part of the road indicated by this sign**[cite: 27]. If the GVM or GCM of your vehicle is less than the mass indicated in tons, **use a part of the road not indicated by this sign**[cite: 27]."
+ },
+ {
+  "id": 17,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Pass to the left or right of the obstruction**, as indicated by the sign[cite: 27]."
+ },
+ {
+  "id": 18,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Drive only in the direction indicated by the arrow**[cite: 27]."
+ },
+ {
+  "id": 19,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Proceed only in the direction indicated by the arrow**[cite: 27]."
+ },
+ {
+  "id": 20,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Do not use the road** or part of the road indicated by this sign[cite: 27]. **Pedestrians may use only the part of the road** indicated by this sign[cite: 27]."
+ },
+ {
+  "id": 21,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Do not use the road** or part of the road indicated by this sign[cite: 27]. **Cyclists may use only the part of the road** indicated by this sign[cite: 27]."
+ },
+ {
+  "id": 22,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Do not drive on this road** or part of this road[cite: 27]. **Cyclists and pedestrians may use only that part** of the road indicated by these signs[cite: 27]. Where this part of the road is divided, **cyclists may use the part indicated** on the sign by a bicycle symbol[cite: 27]. **Pedestrians may use the part indicated** on the sign by a pedestrian symbol[cite: 27]."
+ },
+ {
+  "id": 23,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**No driver of any other vehicle may use the road** or part of the road indicated by this sign[cite: 27]. **Motorcyclists may use only that part** of the road indicated by this sign[cite: 27]."
+ },
+ {
+  "id": 24,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "You may **only drive a motorcar** on this road or this part of the road[cite: 27]. Where this sign is displayed, you **must use that part of the road indicated** by this sign[cite: 27]. When driving one of the following vehicles, you may use such a road **only when the sign depicting your type of vehicle is displayed**[cite: 27]."
+ },
+ {
+  "id": 25,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "The driver of the taxi **shall use that road**[cite: 27]."
+ },
+ {
+  "id": 26,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "The driver of a minibus **shall only use such road or portion** of such road[cite: 27]."
+ },
+ {
+  "id": 27,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "The driver of a midibus **shall only use such road or portion** of such road[cite: 27]."
+ },
+ {
+  "id": 28,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "The driver of a bus **shall only use such road or portion** of such road[cite: 27]."
+ },
+ {
+  "id": 29,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "The driver of a delivery vehicle **shall only use such road or portion** of such road[cite: 27]."
+ },
+ {
+  "id": 30,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "The driver of such goods vehicle **shall only use such road or portion** of such road[cite: 27]."
+ },
+ {
+  "id": 31,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "The driver of such goods vehicle **shall only use such road or portion** of such road[cite: 27]."
+ },
+ {
+  "id": 32,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "The driver of a construction vehicle **shall only use such road or portion** of such road[cite: 27]."
+ },
+ {
+  "id": 33,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "The driver of a vehicle conveying dangerous goods **shall only use such road or portion** of such road[cite: 27]."
+ },
+ {
+  "id": 34,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "The driver of an abnormal vehicle **shall only use such road or portion** of such road[cite: 27]."
+ },
+ {
+  "id": 35,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "The person pulling a rickshaw **shall only use such road or portion** of such road[cite: 27]."
+ },
+ {
+  "id": 36,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "The driver of a tour bus **shall only use such road or portion** of such road[cite: 27]."
+ },
+ {
+  "id": 37,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "The driver of an agricultural vehicle **shall only use such road or portion** of such road[cite: 27]."
+ },
+ {
+  "id": 38,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "The driver of an animal-drawn vehicle **shall only use such road or portion** of such road[cite: 27]."
+ },
+ {
+  "id": 39,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Consider both the alternative and the route indicated** by this road traffic sign and **decide in good time which to follow**[cite: 27]."
+ },
+ {
+  "id": 40,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Switch the lights** of your vehicle on in the **dip position**[cite: 27]."
+ },
+ {
+  "id": 41,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "The driver of a bus or minibus **shall only use such road or portion** of such road[cite: 27]."
+ },
+ {
+  "id": 42,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "The driver of a bus or midibus **shall only use such road or portion** of such road[cite: 27]."
+ },
+ {
+  "id": 43,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "The driver of a bus, midibus or minibus **shall only use such road or portion** of such road[cite: 27]."
+ },
+ {
+  "id": 44,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Yield right of way to vehicle approaching from the right** within the roundabout, where such vehicles are close enough to cause a danger or potential danger[cite: 27]. **Proceed clockwise** at the junction if it is safe to do so[cite: 27]."
+ },
+ {
+  "id": 45,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Do not exceed the speed indicated** by this sign[cite: 27]."
+ },
+ {
+  "id": 46,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "If the GVM or GCM of your vehicle exceeds the mass indicated in tons, **use another road or part of the road**, which is not indicated by this sign[cite: 27]. If your vehicle's GVM or GCM is less than the indicated mass in tons, **you may use this road**[cite: 27]."
+ },
+ {
+  "id": 47,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "If the axle mass of any of your vehicle's axles exceeds the indicated mass in tons, **use another road or part of the road** not indicated by this sign[cite: 27]."
+ },
+ {
+  "id": 48,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "If your vehicle (or load) is higher than the indicated height in metres, **another road not indicated by this sign, must be used**[cite: 27]."
+ },
+ {
+  "id": 49,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "If applicable, **take an alternative route**[cite: 27]."
+ },
+ {
+  "id": 50,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "If the noise level of your vehicle is high, **you may not proceed past the sign**, and for 100 metres after passing the sign, the **vehicle's hooter may not be used**[cite: 27]."
+ },
+ {
+  "id": 51,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**No pedestrian may attempt to be picked up** by a passing vehicle[cite: 27]. A driver of a vehicle **may not pick up passengers** for the next 500m[cite: 27]."
+ },
+ {
+  "id": 52,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Do not proceed past the sign** or enter the road **without special permission**[cite: 27]."
+ }
+]

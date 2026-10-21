@@ -1,0 +1,254 @@
+[
+ {
+  "id": 253,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate that there is a bus stop ahead."
+ },
+ {
+  "id": 254,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To show that there is a transport modal transfer point or terminus nearby where passengers may change their mode of transport."
+ },
+ {
+  "id": 255,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate where you must bring your vehicle to a standstill."
+ },
+ {
+  "id": 256,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate that you must give priority to all who cross in front of you at this point."
+ },
+ {
+  "id": 257,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To inform you that priority must be given to pedestrians crossing or wanting to cross the road at these places."
+ },
+ {
+  "id": 258,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To inform that it is prohibited to drive with any part of your vehicle on the right-hand side of this line."
+ },
+ {
+  "id": 259,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To inform you that you may not cross this line."
+ },
+ {
+  "id": 260,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To prohibit you from crossing the line."
+ },
+ {
+  "id": 261,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate where the left or right-edge of the road is."
+ },
+ {
+  "id": 262,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To prohibit drivers from driving in this area."
+ },
+ {
+  "id": 263,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate where you may park."
+ },
+ {
+  "id": 264,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To identify parking only for road users identified by the symbol."
+ },
+ {
+  "id": 265,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To show that you may only proceed in the direction indicated by the arrow in your lane."
+ },
+ {
+  "id": 266,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To identify that part of the carriageway which is reserved for buses only during the periods indicated on the sign."
+ },
+ {
+  "id": 267,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To prohibit drivers from stopping in the demarcated area because this could prevent other traffic from turning or driving further forward."
+ },
+ {
+  "id": 268,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate an area where you may not stop except for pedestrians crossing or wanting to cross the road or for a vehicle that has already stopped."
+ },
+ {
+  "id": 269,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To prohibit drivers from stopping where stationary vehicles may disrupt the traffic or where the environment obstructs the view and such vehicles may obstruct the view more."
+ },
+ {
+  "id": 270,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To prevent drivers from stopping where stationary vehicles may disrupt the traffic, or where the environment obstructs the view and such vehicles obstruct the view more."
+ },
+ {
+  "id": 271,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate the limits within which only cyclists may travel."
+ },
+ {
+  "id": 272,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate the direction you must follow around the circle or mini-circle."
+ },
+ {
+  "id": 273,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn that there is a railway crossing ahead."
+ },
+ {
+  "id": 274,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn you that there is a break (intersection or off ramp) in the continuing part of the roadway and to inform you that if you are in a lane that has a line on one side, that lane will soon turn off from the road which you are now travelling."
+ },
+ {
+  "id": 275,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn that vehicles on the other side of the road marking are moving in the opposite direction."
+ },
+ {
+  "id": 276,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn drivers that the lane indicated by this marking can be used for traffic from the opposite direction at various times of day or night."
+ },
+ {
+  "id": 277,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn that there is a yield sign ahead."
+ },
+ {
+  "id": 278,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn that the traffic lanes are reduced from the left (WM6.1) or right (WM6.3) or from both (WM6.2) sides."
+ },
+ {
+  "id": 279,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn in time that you will be obliged to follow a certain direction at the first intersection."
+ },
+ {
+  "id": 280,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn you that there is a no-overtaking line or no-crossing line ahead."
+ },
+ {
+  "id": 281,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate where especially drivers of heavy vehicles who become aware that a vehicle's brakes became defective, can drive such a vehicle of the road and it will be stopped by the gravel section ahead."
+ },
+ {
+  "id": 282,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn that there is a speed hump in the road."
+ },
+ {
+  "id": 283,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To show that you are using a part of the road with traffic in the same direction."
+ },
+ {
+  "id": 284,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To guide you to follow the correct route in the intersection."
+ },
+ {
+  "id": 285,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate an increase in the number of lanes ahead."
+ },
+ {
+  "id": 286,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate the direction you may drive in a lane or on a road."
+ },
+ {
+  "id": 287,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate a section of the road to be used by cyclists to cross the road."
+ },
+ {
+  "id": 288,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "At a cycle lane, a road that leads to an airport and where a parking bay is reserved for the handicapped only. As additional markings with standard signs and markings to inform you that an area is reserved for a specific group or that a road is leading to a specific destination."
+ },
+ {
+  "id": 289,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To supply you with additional information."
+ },
+ {
+  "id": 290,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To regulate traffic coming from different directions."
+ },
+ {
+  "id": 291,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "Steady green downward pointing arrow (S16) - Indicates to the driver that he/she may drive in the lane over which the arrow is displayed. Steady red cross (S17) - Indicates to a driver that he/she shall not drive in the lane over which the cross is displayed. Lane might be open to vehicles travelling in the opposite direction. Yellow arrow left (S18) and right (S19) Indicates to the driver that the lane he/she is driving in is closed ahead."
+ },
+ {
+  "id": 292,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To direct traffic."
+ },
+ {
+  "id": 293,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To direct traffic. (i) Flag signal to stop indicating to the driver of a vehicle that he or she shall stop until the proceed flag signal is displayed; and (ii) Flag signal to proceed - indicating to the driver that he or she shall proceed when the flag signal is displayed."
+ },
+ {
+  "id": 294,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "Warns a road user to proceed slowly and be alert."
+ }
+]

@@ -1,0 +1,305 @@
+```json
+[
+ {
+  "id": 203,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Decide which direction to go and slow down**.[cite: 23]"
+ },
+ {
+  "id": 204,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Slow down and do not attempt to drive past the sign**.[cite: 23] **Look out for additional regulatory signs** that will indicate an alternative route.[cite: 23]"
+ },
+ {
+  "id": 205,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Slow down, yield to other traffic and be ready to stop** if traffic intensity and volume require it.[cite: 23] **Look out for a traffic officer or stop sign** that might be controlling the traffic.[cite: 23]"
+ },
+ {
+  "id": 206,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Follow the traffic signs** if you want to join the more important route and **look out for the next trailblazer**.[cite: 23]"
+ },
+ {
+  "id": 207,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Follow the traffic signs** if you want to go to the terminus and **look out for the transport trailblazer** that follows.[cite: 23]"
+ },
+ {
+  "id": 208,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Join the other route** if you want to go to the terminus.[cite: 23]"
+ },
+ {
+  "id": 209,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "You need to **know before hand in which direction you want to travel**, e.g. North(N) or South(S).[cite: 23]"
+ },
+ {
+  "id": 210,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Make sure that the route you are travelling on is the route** that you want to take to reach your destination.[cite: 23]"
+ },
+ {
+  "id": 211,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Slow down for the intersection** and **make sure that you take the correct route**.[cite: 23]"
+ },
+ {
+  "id": 212,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Make sure which route you want to follow**, **slow down for the intersection and take the correct route**.[cite: 23]"
+ },
+ {
+  "id": 213,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Make sure which route you want to follow**, **slow down for the intersection and take the correct route**.[cite: 23]"
+ },
+ {
+  "id": 214,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Decide in advance whether you want to take the toll or alternative route**.[cite: 23] If you want to take the alternative route, **slow down for the intersection**.[cite: 23] Remember that the alternative route is usually **not of the same high standard as the toll route**.[cite: 23]"
+ },
+ {
+  "id": 215,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Do not use this route** and **look out for cyclists** that could suddenly change direction to follow the cycle route.[cite: 23]"
+ },
+ {
+  "id": 216,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Make sure which route you want to follow**, **slow down for the intersection and take the correct route**.[cite: 23]"
+ },
+ {
+  "id": 217,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Slow down and make sure you take the correct route**.[cite: 23] Also **look out for other traffic** at the intersection that might not yield.[cite: 23]"
+ },
+ {
+  "id": 218,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Note the destination and in particular note the distance to the destination** so that you can plan your trip to fill up with petrol or rest.[cite: 23]"
+ },
+ {
+  "id": 219,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Slow down and look out for traffic** that might not yield at the intersection.[cite: 23]"
+ },
+ {
+  "id": 220,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Make use of this **advance direction sign to decide where you want to go** before reaching actual intersection.[cite: 23]"
+ },
+ {
+  "id": 221,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Move in good time to the correct lane** that leads to your destination or route.[cite: 23]"
+ },
+ {
+  "id": 222,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "If you want to leave the freeway, **move to the left hand lane in good time**.[cite: 23]"
+ },
+ {
+  "id": 223,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "If you want to leave the freeway, **move to the left hand lane in good time**.[cite: 23]"
+ },
+ {
+  "id": 224,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "If you want to leave the freeway, **you should be in the extreme left hand lane by now**.[cite: 23]"
+ },
+ {
+  "id": 225,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Only leave the freeway if you are in the left-hand lane**.[cite: 23]"
+ },
+ {
+  "id": 226,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Always pass on the left-hand side** of this road traffic sign if you want to leave the freeway and **on the right-hand side** if you do not want to leave.[cite: 23]"
+ },
+ {
+  "id": 227,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Move to the correct lane in good time** to turn left or right at the intersection.[cite: 23]"
+ },
+ {
+  "id": 228,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Slow down and be ready to stop, turn left or right**, depending on road traffic signs and signals and your destination.[cite: 23]"
+ },
+ {
+  "id": 229,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Make sure which exit you need to take** and **move in good time to the correct lane** to leave the freeway.[cite: 23]"
+ },
+ {
+  "id": 230,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Decide on the direction and route you want to follow** and **position your vehicle to join the on-ramp** at the freeway or proceed straight ahead.[cite: 23]"
+ },
+ {
+  "id": 231,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Slow down and turn in the direction of the sign** or proceed straight ahead.[cite: 23]"
+ },
+ {
+  "id": 232,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Slow down and move to the right-hand side** of your traffic lane if you want to join the freeway.[cite: 23]"
+ },
+ {
+  "id": 233,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Slow down and make sure you are in the right-hand lane** if you want to join the freeway.[cite: 23]"
+ },
+ {
+  "id": 234,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Signal in time and make sure you are in the right-hand lane** if you want to turn right to join the freeway.[cite: 23]"
+ },
+ {
+  "id": 235,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Whenever a lane ends, converges, merges or is added, **make sure in time that there is a big enough gap in the traffic** to merge with the traffic.[cite: 23] Also **yield to other traffic**, which might merge.[cite: 23]"
+ },
+ {
+  "id": 236,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Whenever a lane ends, converges, merges or is added, **make sure in time that there is a big enough gap in the traffic** to merge with the traffic.[cite: 23] Also **yield to other traffic**, which might merge.[cite: 23]"
+ },
+ {
+  "id": 237,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Whenever a lane ends, converges, merges or is added, **make sure in time that there is a big enough gap in the traffic** to merge with the traffic.[cite: 23] Also **yield to other traffic**, which might merge.[cite: 23]"
+ },
+ {
+  "id": 238,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Whenever a lane ends, converges, merges or is added, **make sure in time that there is a big enough gap in the traffic** to merge with the traffic.[cite: 23] Also **yield to other traffic**, which might merge.[cite: 23]"
+ },
+ {
+  "id": 239,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Whenever a lane ends, converges, merges or is added, **make sure in time that there is a big enough gap in the traffic** to merge with the traffic.[cite: 23] Also **yield to other traffic**, which might merge.[cite: 23]"
+ },
+ {
+  "id": 240,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Should the brakes of your vehicle fail, **drive straight into the arrestor bed**.[cite: 23]"
+ },
+ {
+  "id": 241,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "If you are driving a heavy motor vehicle, **engage a lower gear** so that the vehicle will move down the descent more slowly.[cite: 23] If the lower gear does not have the desired effect, **engage an even lower gear** to keep the speed constant and **protect the brakes against overheating**.[cite: 23]"
+ },
+ {
+  "id": 242,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Do not turn in at such a road** unless you are going to a destination in the road that ends.[cite: 23]"
+ },
+ {
+  "id": 243,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Do not turn in at such a road** unless you are going to a destination in the road that ends.[cite: 23]"
+ },
+ {
+  "id": 244,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "If possible **enter the exit at the same speed as the maximum speed** for that road.[cite: 23]"
+ },
+ {
+  "id": 245,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Do not turn in at such a road** unless you are going to a destination in the road that ends.[cite: 23]"
+ },
+ {
+  "id": 246,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Do not slow down unnecessarily**, but **make sure that other traffic will yield**.[cite: 23]"
+ },
+ {
+  "id": 247,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Stop in this parking area** if you want to reach your destination using other transport.[cite: 23]"
+ },
+ {
+  "id": 248,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Pay attention to these signs** in order to realise what the danger is, what a safe speed is, how far away the danger is and the distance the danger will continue.[cite: 23]"
+ },
+ {
+  "id": 249,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "You can **obtain information about the area** at this sign.[cite: 23]"
+ },
+ {
+  "id": 250,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Obey all other road traffic signs**.[cite: 23] **Look out for vehicles, pedestrians and other hazards** engaged in the experiment.[cite: 23]"
+ },
+ {
+  "id": 251,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "If possible **maintain the recommended speed**.[cite: 23] However, **make sure that it is safe to enter every intersection** and **look out for drivers that do not yield**.[cite: 23] The speed indicated is a **recommendation and not a speed limit**.[cite: 23]"
+ },
+ {
+  "id": 252,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Do not move off when approaching traffic moves off**.[cite: 23] **Wait until the signal is green**.[cite: 23] The sequence of the traffic signals at this intersection can be **different during normal and during peak times**.[cite: 23]"
+ }
+]
+
+```

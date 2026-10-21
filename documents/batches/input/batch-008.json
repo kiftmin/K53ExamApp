@@ -1,0 +1,302 @@
+[
+ {
+  "id": 53,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road before a junction."
+ },
+ {
+  "id": 54,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At intersections on any public road."
+ },
+ {
+  "id": 55,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On a public road before or on the far side of an intersection."
+ },
+ {
+  "id": 56,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road."
+ },
+ {
+  "id": 57,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On a public road where the road is narrow, near an intersection or where a parked vehicle can impair the vision of other drivers."
+ },
+ {
+  "id": 58,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road. The sign may be supplemented by a red \"no stopping line\"."
+ },
+ {
+  "id": 59,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At the beginning of and at entrances to any carriageway, lane or path."
+ },
+ {
+  "id": 60,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At the beginning of or entrance to any carriageway, lane or path."
+ },
+ {
+  "id": 61,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At the beginning of or entrance to a carriageway, lane or path."
+ },
+ {
+  "id": 62,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road and at the beginning of pedestrian and separate cycle lanes."
+ },
+ {
+  "id": 63,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road, lane, path or area."
+ },
+ {
+  "id": 64,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road, lane, path or area."
+ },
+ {
+  "id": 65,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road, lane, path or area."
+ },
+ {
+  "id": 66,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road, lane, path or area."
+ },
+ {
+  "id": 67,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road, lane, path or area."
+ },
+ {
+  "id": 68,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road, lane, path or area."
+ },
+ {
+  "id": 69,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road, lane, path or area."
+ },
+ {
+  "id": 70,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road, lane, path or area."
+ },
+ {
+  "id": 71,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road, lane, path or area."
+ },
+ {
+  "id": 72,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road, lane, path or area."
+ },
+ {
+  "id": 73,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road, lane, path or area."
+ },
+ {
+  "id": 74,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road, lane, path or area."
+ },
+ {
+  "id": 75,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road, lane, path or area."
+ },
+ {
+  "id": 76,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road, lane, path or area."
+ },
+ {
+  "id": 77,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road, lane, path or area."
+ },
+ {
+  "id": 78,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road where there is a limit in the road width."
+ },
+ {
+  "id": 79,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road, lane, path or area."
+ },
+ {
+  "id": 80,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On a public road where the road is narrow, near an intersection, or where a parked vehicle can impair the vision of other drivers."
+ },
+ {
+  "id": 81,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At the entrance to any carriageway, lane or parking area."
+ },
+ {
+  "id": 82,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road, particularly in urban areas."
+ },
+ {
+  "id": 83,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At the entrance to or in a demarcated area."
+ },
+ {
+  "id": 84,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road or other area where parking bays are demarcated."
+ },
+ {
+  "id": 85,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road or at an entrance to a parking area."
+ },
+ {
+  "id": 86,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road or at an entrance to a parking area."
+ },
+ {
+  "id": 87,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road or at an entrance to a parking area."
+ },
+ {
+  "id": 88,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road or at an entrance to a parking area."
+ },
+ {
+  "id": 89,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road or at an entrance to a parking area."
+ },
+ {
+  "id": 90,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road or at an entrance to a parking area."
+ },
+ {
+  "id": 91,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road or at an entrance to a parking area."
+ },
+ {
+  "id": 92,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road or at an entrance to a parking area."
+ },
+ {
+  "id": 93,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road or at an entrance to a parking area."
+ },
+ {
+  "id": 94,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road or at an entrance to a parking area."
+ },
+ {
+  "id": 95,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road or at an entrance to a parking area."
+ },
+ {
+  "id": 96,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road or at an entrance to a parking area."
+ },
+ {
+  "id": 97,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road or at an entrance to a parking area."
+ },
+ {
+  "id": 98,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road or at an entrance to a parking area."
+ },
+ {
+  "id": 99,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road or at an entrance to a parking area."
+ },
+ {
+  "id": 100,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road or at an entrance to a parking area."
+ },
+ {
+  "id": 101,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road or at an entrance to a parking area."
+ },
+ {
+  "id": 102,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road."
+ }
+]

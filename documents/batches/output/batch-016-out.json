@@ -1,0 +1,302 @@
+[
+ {
+  "id": 153,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that **pedestrians may be crossing the road** for the **next 2 km**.[cite: 18]"
+ },
+ {
+  "id": 154,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that **children might be crossing the road**.[cite: 18]"
+ },
+ {
+  "id": 155,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn the driver that there can be **cyclists ahead**.[cite: 18]"
+ },
+ {
+  "id": 156,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there may be **free ranging animals** such as **cattle, horses or sheep** on the road.[cite: 18]"
+ },
+ {
+  "id": 157,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there may be **wild animals on the road** or crossing the road.[cite: 18]"
+ },
+ {
+  "id": 158,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a **gate or boom across the road ahead**.[cite: 18]"
+ },
+ {
+  "id": 159,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a **motor gate to the left or right** or in the **middle of the road**.[cite: 18]"
+ },
+ {
+  "id": 160,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a **railway crossing ahead**.[cite: 18]"
+ },
+ {
+  "id": 161,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a **tunnel ahead**.[cite: 18]"
+ },
+ {
+  "id": 162,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a **structure ahead** of which the **height is indicated** on the road traffic sign.[cite: 18]"
+ },
+ {
+  "id": 163,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that **curves in the road or other structures** on the side of the road make it **impossible for vehicles longer than the length indicated** on this road sign.[cite: 18]"
+ },
+ {
+  "id": 164,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that the road will **climb or descend steeply**.[cite: 18]"
+ },
+ {
+  "id": 165,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that **heavy vehicles travel slowly down a descent**.[cite: 18]"
+ },
+ {
+  "id": 166,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that the **tarred road** you are driving on **will end soon** and will have a **gravel surface ahead**.[cite: 18]"
+ },
+ {
+  "id": 167,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that the **road narrows when crossing a bridge**.[cite: 18]"
+ },
+ {
+  "id": 168,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that the carriageway ahead **narrows to a width** that will make it possible for **only one vehicle at a time to pass**.[cite: 18]"
+ },
+ {
+  "id": 169,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that the **road ahead narrows from both sides**.[cite: 18]"
+ },
+ {
+  "id": 170,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that the road ahead **narrows from the left** (W330, TW330) or from the **right-hand** (W329, TW329) **side**.[cite: 18]"
+ },
+ {
+  "id": 171,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a **depression or a ridge in the road**, or that the road in general is **uneven and potholed**.[cite: 18]"
+ },
+ {
+  "id": 172,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there are **speed humps on the carriageway ahead** which require a **reduction of speed**.[cite: 18]"
+ },
+ {
+  "id": 173,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn about **unusually slippery conditions** on the road ahead.[cite: 18]"
+ },
+ {
+  "id": 174,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that **rocks could fall on the carriageway** from the **left** (W334, TW334) or from the **right-hand side** (W335, TW335).[cite: 18]"
+ },
+ {
+  "id": 175,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there are **temporary construction or maintenance works ahead**.[cite: 18]"
+ },
+ {
+  "id": 176,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that a **grader is working on the carriageway ahead**.[cite: 18]"
+ },
+ {
+  "id": 177,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there are **loose stones or gravel on the road**.[cite: 18]"
+ },
+ {
+  "id": 178,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is **danger of some kind ahead**.[cite: 18]"
+ },
+ {
+  "id": 179,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that the **level of the right-hand side** of the carriageway is **higher than the left-hand side** (TW340), or the **left-hand side** of the carriageway is **higher than the right-hand side** (TW341).[cite: 18]"
+ },
+ {
+  "id": 180,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that the **material of the road shoulder may be softer** than reasonably expected and could be **dangerous for anyone who wants to move off the road**.[cite: 18]"
+ },
+ {
+  "id": 181,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that traffic ahead is being **controlled temporarily by a \"Stop/Ry-Go\" sign**.[cite: 18]"
+ },
+ {
+  "id": 182,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that **heavy vehicles regularly cross or join the road** from the left or right.[cite: 18]"
+ },
+ {
+  "id": 183,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn of a **hazard ahead**.[cite: 18]"
+ },
+ {
+  "id": 184,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn about a **temporary stop sign**, a **collision scene, roadblock or similar scene** where police are on duty.[cite: 18]"
+ },
+ {
+  "id": 185,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that the road leads to a **jetty edge or riverbank**.[cite: 18]"
+ },
+ {
+  "id": 186,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn about **strong crosswinds** that could **force your vehicles off course**.[cite: 18]"
+ },
+ {
+  "id": 187,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn the driver that there is a **drift ahead** and that the **road could be flooded**.[cite: 18]"
+ },
+ {
+  "id": 188,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn of the possibility of **low-flying aircraft** and **sudden aircraft noise near the road**.[cite: 18]"
+ },
+ {
+  "id": 189,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that **tractors or other slow-moving agricultural vehicles** could cross or enter the road ahead.[cite: 18]"
+ },
+ {
+  "id": 190,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn the driver that - the **road ahead may be obstructed**, there could be **pedestrians, rescue teams and police or traffic officers** controlling the traffic at the scene, there could be **wreckage, injured persons, animals or broken glass** on the road surface.[cite: 18]"
+ },
+ {
+  "id": 191,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a possibility **reduced visibility on the road ahead** that might cause a hazard to road users.[cite: 18]"
+ },
+ {
+  "id": 192,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a possibility of **congested traffic**.[cite: 18]"
+ },
+ {
+  "id": 193,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a possibility of **horses and riders** being present on the road ahead.[cite: 18]"
+ },
+ {
+  "id": 194,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a possibility of **elephants** being present on the road ahead.[cite: 18]"
+ },
+ {
+  "id": 195,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a possibility of **warthogs** being present on the road ahead.[cite: 18]"
+ },
+ {
+  "id": 196,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a possibility of **hippos** being present on the road ahead.[cite: 18]"
+ },
+ {
+  "id": 197,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is **overall width of vehicles restriction** as indicated in metres on the road ahead.[cite: 18]"
+ },
+ {
+  "id": 198,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is a possibility of **electrical shock from the overhead electrical power cables** on the road ahead.[cite: 18]"
+ },
+ {
+  "id": 199,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that the **gravel road** you are travelling on **will end ahead**.[cite: 18]"
+ },
+ {
+  "id": 200,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that there is an **obstruction or temporary obstruction** next to the road and that the **road alignment to the left or right hand side is altered**.[cite: 18]"
+ },
+ {
+  "id": 201,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that the road ahead **curves suddenly to the left** (W406, W408, TW406, TW408) or to the **right** (W405, W407, TW405, TW407).[cite: 18]"
+ },
+ {
+  "id": 202,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "formatted_text": "To warn that the road ahead **does not carry on straight**, but **merges with another road**.[cite: 18]"
+ }
+]

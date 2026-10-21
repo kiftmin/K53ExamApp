@@ -1,0 +1,302 @@
+[
+ {
+  "id": 53,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To prohibit vehicles from turning at an intersection."
+ },
+ {
+  "id": 54,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To prohibit traffic from turning left or right."
+ },
+ {
+  "id": 55,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To vehicles from turning around so that it faces the opposite direction."
+ },
+ {
+  "id": 56,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To inform drivers that overtaking vehicles is prohibited for the next 500m."
+ },
+ {
+  "id": 57,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To prohibit drivers from parking during any time of the day or night."
+ },
+ {
+  "id": 58,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To ensure traffic flow and prevent that driver's views are not impaired by stationary vehicles."
+ },
+ {
+  "id": 59,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To prohibit pedestrians from proceeding past this sign where they could cause a danger to themselves and to vehicles."
+ },
+ {
+  "id": 60,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To prohibit cyclists from using the carriageway, lane or path where they can cause a danger to themselves and to other road users."
+ },
+ {
+  "id": 61,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To prevent cyclists and pedestrians from using a certain road or a certain section of a road where they can cause a danger to themselves or other road users."
+ },
+ {
+  "id": 62,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To prohibit motorcycles, on part of a carriageway, for safety reasons."
+ },
+ {
+  "id": 63,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To prohibit motorcars from entering the area, for safety or any other reasons."
+ },
+ {
+  "id": 64,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "Indicates to the driver of a taxi that he or she shall not proceed beyond such sign."
+ },
+ {
+  "id": 65,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "Indicates to the driver of a minibus that he or she shall not proceed beyond such sign."
+ },
+ {
+  "id": 66,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "Indicates to the driver of a midibus that he or she shall not proceed beyond such sign."
+ },
+ {
+  "id": 67,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "Indicates to the driver of a bus that he or she shall not proceed beyond such sign."
+ },
+ {
+  "id": 68,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "Indicates to the driver of a delivery vehicle that he or she shall not proceed beyond such sign."
+ },
+ {
+  "id": 69,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "Indicates to the driver of a goods vehicle that he or she shall not proceed beyond such sign."
+ },
+ {
+  "id": 70,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "Indicates to the driver of a construction vehicle that he or she shall not proceed beyond such sign."
+ },
+ {
+  "id": 71,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "Indicates to the driver of a vehicle conveying dangerous goods that he or she shall not proceed beyond such sign."
+ },
+ {
+  "id": 72,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "Indicates to the driver of an abnormal vehicle that he or she shall not proceed beyond such sign."
+ },
+ {
+  "id": 73,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "Indicates to a person pulling a rickshaw that he or she shall not proceed beyond such sign."
+ },
+ {
+  "id": 74,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "Indicates to a driver of a tour bus that he or she shall not proceed beyond such sign."
+ },
+ {
+  "id": 75,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "Indicates to the driver of an agricultural vehicle that he or she shall not proceed beyond such sign."
+ },
+ {
+  "id": 76,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "Indicates to the driver of an animal-drawn vehicle that he or she shall not proceed beyond such sign."
+ },
+ {
+  "id": 77,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "Indicates to a horse rider that horses and riders, whether mounted on or leading a horse, are prohibited beyond such sign."
+ },
+ {
+  "id": 78,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "Indicates to the driver of a vehicle that he or she shall not proceed beyond the sign unless the overall width of the vehicle, is less than the width indicated in metres, by means of a number on such sign."
+ },
+ {
+  "id": 79,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "Indicates to the driver of a vehicle that no vehicle which is towing another vehicle shall proceed beyond such sign."
+ },
+ {
+  "id": 80,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To prohibit hawkers in this area during any time of the day or night."
+ },
+ {
+  "id": 81,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "Indicate that the road or part of the carriageway is reserved for buses only and that only buses may park in the area indicated by sign (R301-P)."
+ },
+ {
+  "id": 82,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "Signs R302 and TR302 indicate that no other class of vehicle may use that part of the road. Signs: R303 and TR303 indicate where the reserved traffic lane which only buses may enter, starts."
+ },
+ {
+  "id": 83,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To inform you that a parking area is reserved for bicycles only."
+ },
+ {
+  "id": 84,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "Sign (R305-P) indicates a parking area for vehicles with a GVM of less than 3 500 kg where no time limit applies but a fee must be paid. Sign (R306-P) indicates a parking area that may be used free of charge or at a fee and the maximum time allowed for a vehicle to be parked, is displayed."
+ },
+ {
+  "id": 85,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To reserve a portion of a road or a parking area for use by motorcycles only."
+ },
+ {
+  "id": 86,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To reserve a portion of a road or a parking area for use by motor cars only."
+ },
+ {
+  "id": 87,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To reserve a portion of a road or a parking area for use by taxis only."
+ },
+ {
+  "id": 88,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To reserve a portion of a road or a parking area for use by minibuses only."
+ },
+ {
+  "id": 89,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To reserve a portion of a road or a parking area for use by midi-buses only."
+ },
+ {
+  "id": 90,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To reserve a portion of a road or a parking area for use by delivery vehicles only."
+ },
+ {
+  "id": 91,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To reserve a portion of a road or a parking area for use by goods vehicles only."
+ },
+ {
+  "id": 92,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To reserve a portion of a road or a parking area for use by goods vehicles exceeding the indicated GVM only."
+ },
+ {
+  "id": 93,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To reserve a portion of a road or a parking area for use by construction vehicles only."
+ },
+ {
+  "id": 94,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To reserve a portion of a road or a parking area for use by vehicles conveying hazardous substances only."
+ },
+ {
+  "id": 95,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To reserve a portion of a road or a parking area for use by abnormal vehicles only."
+ },
+ {
+  "id": 96,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To reserve a portion of a road or a parking area for use by rickshaws only."
+ },
+ {
+  "id": 97,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To reserve a portion of a road or a parking area for use by tour buses only."
+ },
+ {
+  "id": 98,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To reserve a portion of a road or a parking area for use by high occupancy vehicles only."
+ },
+ {
+  "id": 99,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To reserve a portion of a road or a parking area for use by ambulances/emergency vehicles only."
+ },
+ {
+  "id": 100,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To reserve a portion of a road or a parking area for use by disabled persons' vehicles only."
+ },
+ {
+  "id": 101,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To reserve a portion of a road or a parking area for use by authorised vehicles only."
+ },
+ {
+  "id": 102,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To allow minibuses to take up and drop passengers off. Such a vehicle must display an appropriate emblem, logo or any other indication that they are minibuses."
+ }
+]

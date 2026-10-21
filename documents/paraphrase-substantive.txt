@@ -1,0 +1,1497 @@
+
+=== body id 131 -[be must] +[is]
+RAW: A passenger may only be carried if the motorcycle's engine exceeds 50cc, and the passenger must be seated in a sidecar or astride a pillion.
+NEW: A passenger may only be carried if:
+(i) the motorcycle's **engine exceeds 50cc**, and
+(ii) the passenger is **seated in a sidecar** or **astride a pillion**.
+
+=== body id 136 -[may] +[and ensure do]
+RAW: Riders must travel in single file within the same lane, except briefly to overtake another motorcycle; two motorcycles may not overtake another vehicle at the same time.
+NEW: Riders must:
+(i) travel in **single file** within the same lane, except briefly to **overtake another motorcycle**, and
+(ii) ensure **two motorcycles do not overtake** another vehicle at the same time.
+
+=== body id 137 -[may]
+RAW: A sidecar must be attached to the left side of the motorcycle, and may not be fitted to a motorcycle with an engine under 50cc.
+NEW: A sidecar must:
+(i) be attached to the **left side** of the motorcycle, and
+(ii) **not be fitted** to a motorcycle with an engine **under 50cc**.
+
+=== body id 141 -[while] +[pedestrian signal rule and]
+RAW: Pedestrians may not cross while the red man light is showing; if the red man flashes, pedestrians already in the road must finish crossing quickly, while those not yet in the road must wait for the green man.
+NEW: Pedestrian signal rules:
+(i) pedestrians **may not cross** while the **red man light** is showing,
+(ii) if the **red man flashes**, pedestrians already in the road must **finish crossing quickly**, and
+(iii) those not yet in the road must **wait for the green man**.
+
+=== body id 142 +[if more than]
+RAW: A vehicle left in the same place for more than 24 hours (outside an urban area) or 7 days (within an urban area) is deemed abandoned by its owner.
+NEW: A vehicle is deemed **abandoned by its owner** if left in the same place for:
+(i) more than **24 hours** outside an urban area, or
+(ii) more than **7 days** within an urban area.
+
+=== body id 143 -[otherwise]
+RAW: Don't cause a vehicle's wheel to drag or spin on the roadway (except in an emergency), use chocks or shoes between a moving wheel and the road surface, or otherwise use or move a vehicle in a way that damages the road.
+NEW: Do not:
+(i) cause a vehicle's **wheel to drag or spin** on the roadway (except in an emergency),
+(ii) use **chocks or shoes** between a moving wheel and the road surface, or
+(iii) use or move a vehicle in a way that **damages the road**.
+
+=== body id 144 +[follow and and]
+RAW: Animal-drawn vehicles, pedal cycles, motorcycles under 50cc or electrically propelled, motor quadrucycles, disability vehicles under 230kg, and tractors (outside road construction or maintenance use) may not use a freeway.
+NEW: The following **may not use a freeway**:
+(i) **animal-drawn vehicles** and **pedal cycles**,
+(ii) **motorcycles under 50cc** or electrically propelled, **motor quadrucycles**, and **disability vehicles under 230kg**, and
+(iii) **tractors** (outside road construction or maintenance use).
+
+=== body id 108 +[or or or]
+RAW: Don't park where a traffic officer directs otherwise, in contravention of a sign, where stopping isn't permitted, where the vehicle would obscure a road sign, on the sidewalk, or blocking a private or public vehicular entrance.
+NEW: Don't park:
+(i) where a **traffic officer directs otherwise** or in **contravention of a sign**,
+(ii) where **stopping isn't permitted** or where the vehicle would **obscure a road sign**, or
+(iii) **on the sidewalk** or blocking a **private or public vehicular entrance**.
+
+=== body id 113 -[endanger] +[or]
+RAW: Don't stop alongside or opposite an excavation or obstruction if it would obstruct or endanger traffic, in a tunnel, subway, or on a bridge (or within 6 metres of one), where the roadway has been narrowed (or within 6 metres of the narrowing), in contravention of a sign, facing oncoming traffic on the right side, alongside another vehicle on a road under 9 metres wide, within a railway level crossing, within 9 metres of a pedestrian crossing's approach side, or anywhere it would endanger or obstruct traffic.
+NEW: Don't stop:
+(i) alongside or opposite an **excavation or obstruction** if it would obstruct traffic,
+(ii) in a **tunnel, subway, or on a bridge** (or within 6 metres of one),
+(iii) where the roadway has been **narrowed** (or within 6 metres of the narrowing),
+(iv) in **contravention of a sign** or facing oncoming traffic on the **right side**,
+(v) alongside another vehicle on a road **under 9 metres wide**,
+(vi) within a **railway level crossing** or within **9 metres of a pedestrian crossing's** approach side, or
+(vii) anywhere it would **endanger or obstruct traffic**.
+
+=== body id 133 -[rider] +[motorcycle carry rule and]
+RAW: A rider may not carry a person, animal, or bulky object in front of them; a non-bulky object may be carried if securely attached and doesn't obstruct the rider's view or control.
+NEW: Motorcycle carrying rules:
+(i) a rider **may not carry** a person, animal, or **bulky object in front** of them, and
+(ii) a **non-bulky object** may be carried if **securely attached** and doesn't **obstruct view or control**.
+
+=== body id 172 -[if if]
+RAW: A heavy motor vehicle may not be used if its fuel tank, carburettor, or fuel pipes are defective or exposed as a danger, if the fuel tank lacks an effective cap, or if the electrical wiring and battery aren't properly installed, insulated, and maintained.
+NEW: A heavy motor vehicle may not be used if:
+(i) its **fuel tank, carburettor, or fuel pipes** are defective or exposed as a danger,
+(ii) the fuel tank **lacks an effective cap**, or
+(iii) the **electrical wiring and battery** aren't properly installed, insulated, and maintained.
+
+=== body id 6 -[only under] +[require require of and]
+RAW: A Code 2 learner's licence authorises driving any motor vehicle or combination (other than a motorcycle or tricycle) with tare, GVM, or GCM not exceeding 3500kg, only under the direct supervision of a licensed driver for that class. Minimum age is 17; valid for 24 months from the test date.
+NEW: A **Code 2 learner's licence**:
+(i) authorises driving any motor vehicle or combination (other than a motorcycle or tricycle) with tare, GVM, or GCM **not exceeding 3500kg**,
+(ii) requires **direct supervision** of a licensed driver for that class,
+(iii) requires a **minimum age of 17**, and
+(iv) is **valid for 24 months** from the test date.
+
+=== body id 7 -[-- -- both only under] +[and require require of]
+RAW: A Code 3 learner's licence authorises driving any motor vehicle or combination (other than a motorcycle, tricycle, or quadrucycle) -- covering both light and heavy vehicles -- only under the direct supervision of a licensed driver for that class. Minimum age is 18; valid for 24 months from the test date.
+NEW: A **Code 3 learner's licence**:
+(i) authorises driving any motor vehicle or combination (other than a motorcycle, tricycle, or quadrucycle) covering **light and heavy vehicles**,
+(ii) requires **direct supervision** of a licensed driver for that class,
+(iii) requires a **minimum age of 18**, and
+(iv) is **valid for 24 months** from the test date.
+
+=== body id 26 +[number plate requirement and]
+RAW: Motorcycles, motor tricycles, and trailers need only a rear number plate; all other motor vehicles need one at the front and one at the rear.
+NEW: Number plate requirements:
+(i) motorcycles, motor tricycles, and trailers need only a **rear number plate**, and
+(ii) all other motor vehicles need **one at the front and one at the rear**.
+
+=== body id 46 +[and]
+RAW: A driver must ensure a child uses an appropriate child restraint where available, or a seatbelt if no restraint is available; if no belted seat is available and the vehicle has a rear seat, the child must sit there.
+NEW: A driver must ensure:
+(i) a child uses an **appropriate child restraint** where available, or a **seatbelt** if no restraint is available, and
+(ii) if no belted seat is available and the vehicle has a rear seat, the child must **sit there**.
+
+=== body id 146 -[or] +[freeway restriction do do not not and]
+RAW: Don't give a hand signal on a freeway (except for reasons beyond your control), be on a freeway on foot, or leave an animal where it could stray onto one.
+NEW: Freeway restrictions:
+(i) don't give a **hand signal** on a freeway (except for reasons beyond your control),
+(ii) don't be on a **freeway on foot**, and
+(iii) don't leave an **animal** where it could stray onto one.
+
+=== body id 60 +[and]
+RAW: A stationary vehicle must place a warning triangle at least 45 metres away in the direction traffic will approach from, at roughly the same distance from the roadway edge as the vehicle's own centre, with the reflective side facing oncoming traffic.
+NEW: A stationary vehicle must place a warning triangle:
+(i) at least **45 metres away** in the direction traffic will approach from,
+(ii) at roughly the **same distance from the roadway edge** as the vehicle's own centre, and
+(iii) with the **reflective side facing oncoming traffic**.
+
+=== body id 61 +[or]
+RAW: A warning triangle isn't required if the vehicle is stopped in a loading zone, on a traffic officer's or sign's direction, because of other traffic while the driver stays in the driving seat, or during a state or municipal function.
+NEW: A warning triangle isn't required if the vehicle is stopped:
+(i) in a **loading zone** or on a **traffic officer's or sign's direction**,
+(ii) because of other traffic while the driver **stays in the driving seat**, or
+(iii) during a **state or municipal function**.
+
+=== body id 69 +[maximum vehicle height limit and]
+RAW: A double-deck bus (with load) may not exceed 4.65 metres in height; any other motor vehicle may not exceed 4.3 metres.
+NEW: Maximum vehicle height limits:
+(i) a **double-deck bus** (with load) may not exceed **4.65 metres** in height, and
+(ii) any **other motor vehicle** may not exceed **4.3 metres**.
+
+=== body id 70 +[maximum limit and]
+RAW: A bus with a front wheel track over 1.9 metres may not exceed 2.6 metres overall width; a goods vehicle of 12,000kg GVM or more may not exceed 2.6 metres; any other vehicle may not exceed 2.5 metres.
+NEW: Maximum overall width limits:
+(i) a bus with a front wheel track over 1.9 metres may not exceed **2.6 metres**,
+(ii) a goods vehicle of 12,000kg GVM or more may not exceed **2.6 metres**, and
+(iii) any other vehicle may not exceed **2.5 metres**.
+
+=== body id 76 +[at least]
+RAW: The section of a goods vehicle carrying persons must be enclosed to at least 350mm above a seated person, or 900mm above a standing person.
+NEW: The section of a goods vehicle carrying persons must be enclosed to:
+(i) at least **350mm above a seated person**, or
+(ii) at least **900mm above a standing person**.
+
+=== body id 78 +[more more more than than than]
+RAW: A motorcycle's load (or sidecar load) may not project more than 600mm in front of the front axle, 900mm behind the rear axle, 450mm to either side, or 300mm beyond the sidecar wheel.
+NEW: A motorcycle's load (or sidecar load) may not project:
+(i) more than **600mm in front** of the front axle,
+(ii) more than **900mm behind** the rear axle,
+(iii) more than **450mm to either side**, or
+(iv) more than **300mm beyond** the sidecar wheel.
+
+=== body id 79 +[more than]
+RAW: A light or heavy vehicle's goods may not project sideways from the centre-line by more than 1.3 metres (bus or goods vehicle over 12,000kg GVM) or 1.25 metres (any other vehicle), excluding mirrors or indicators.
+NEW: A light or heavy vehicle's goods may not project sideways from the centre-line by:
+(i) more than **1.3 metres** (bus or goods vehicle over 12,000kg GVM), or
+(ii) more than **1.25 metres** (any other vehicle), excluding mirrors or indicators.
+
+=== body id 80 +[more than]
+RAW: A light or heavy vehicle's goods may not project more than 300mm beyond the front of the vehicle, or 1.8 metres beyond the rear.
+NEW: A light or heavy vehicle's goods may not project:
+(i) more than **300mm beyond the front** of the vehicle, or
+(ii) more than **1.8 metres beyond the rear**.
+
+=== body id 1 +[and]
+RAW: A learner's licence test covers rules of the road and related legislation, road traffic signs/signals/markings, and vehicle controls. Once passed, the learner's licence is valid for 24 months.
+NEW: A learner's licence test covers:
+(i) **rules of the road** and related legislation,
+(ii) **road traffic signs**, signals, and markings, and
+(iii) **vehicle controls**.
+Once passed, the learner's licence is **valid for 24 months**.
+
+=== body id 4 -[from hypertension] +[or or]
+RAW: A person is disqualified if suffering from uncontrolled epilepsy, disabling giddiness or fainting (e.g. from hypertension), a mental illness requiring detention or treatment, a condition causing muscular incoordination, uncontrolled diabetes mellitus, defective vision below the prescribed standard, or any other disease or defect likely to prevent safe driving. Deafness alone is not disqualifying.
+NEW: A person is disqualified if suffering from:
+(i) **uncontrolled epilepsy**, disabling giddiness, or fainting,
+(ii) a **mental illness** requiring detention or treatment, or a condition causing **muscular incoordination**,
+(iii) **uncontrolled diabetes mellitus**, or **defective vision** below the prescribed standard, or
+(iv) any other disease or defect likely to **prevent safe driving**.
+Deafness alone is not disqualifying.
+
+=== body id 5 -[is no may be carri] +[require of and prohibit carry any]
+RAW: A Code 1 learner's licence authorises riding a motorcycle (but not a motor quadrucycle) on a public road. Minimum age is 16; under 18 you're limited to a 125cc engine; no passengers may be carried.
+NEW: A **Code 1 learner's licence**:
+(i) authorises **riding a motorcycle** (but not a motor quadrucycle) on a public road,
+(ii) requires a **minimum age of 16** (under 18 you're limited to a **125cc engine**), and
+(iii) prohibits carrying **any passengers**.
+
+=== body id 12 +[stopp]
+RAW: These lighting rules don't apply to a vehicle parked off the roadway, in a demarcated parking place, or within 12 metres of a lit street lamp illuminating the road.
+NEW: These lighting rules don't apply to a vehicle stopped:
+(i) **parked off the roadway**,
+(ii) in a **demarcated parking place**, or
+(iii) within **12 metres of a lit street lamp** illuminating the road.
+
+=== body id 111 +[or or]
+RAW: Within an urban area, don't park within 9 metres of the approach side of a pedestrian crossing, within 5 metres of an intersection, over a traffic signal's mechanism, more than 450mm from the kerb, on a road narrower than 5.5 metres, or on a traffic island, pedestrian mall, or pedestrian lane.
+NEW: Within an urban area, don't park:
+(i) within **9 metres** of the approach side of a pedestrian crossing,
+(ii) within **5 metres** of an intersection or over a **traffic signal's mechanism**,
+(iii) more than **450mm from the kerb** or on a road **narrower than 5.5 metres**, or
+(iv) on a **traffic island, pedestrian mall, or pedestrian lane**.
+
+=== body id 164 -[these already traffic]
+RAW: If these details haven't already been given to a traffic officer at the scene, the accident must be reported to a police station within 24 hours, along with any further information required.
+NEW: If details haven't been given to an officer at the scene, the accident must be **reported to a police station within 24 hours**, along with any **further information required**.
+
+=== body id 186 -[fail that]
+RAW: Gross Combination Mass (GCM) is the maximum mass of a vehicle combination (including the drawing vehicle) and its load, as specified by the manufacturer or, failing that, the registering authority.
+NEW: **Gross Combination Mass (GCM)** is the **maximum mass** of a vehicle combination (including drawing vehicle) and its load, as specified by the **manufacturer or registering authority**.
+
+=== body id 187 -[fail that]
+RAW: Gross Vehicle Mass (GVM) is the maximum mass of a vehicle and its load, as specified by the manufacturer or, failing that, the registering authority.
+NEW: **Gross Vehicle Mass (GVM)** is the **maximum mass** of a vehicle and its load, as specified by the **manufacturer or registering authority**.
+
+=== body id 138 -[other]
+RAW: A driver may not hold a cellular or other communication device in one or both hands, or with any other part of the body, while driving.
+NEW: A driver may **not hold a cellular or communication device** in one or both hands, or with any other part of the body, **while driving**.
+
+=== body id 221 -[road national traffic or document]
+RAW: No person may drive a motor vehicle on a public road except under a licence issued in terms of the National Road Traffic Act, and must keep that licence (or document) with them in the vehicle.
+NEW: No person may drive a motor vehicle on a public road except under a **licence issued in terms of the Act**, and must **keep that licence with them** in the vehicle.
+
+=== body id 222 -[licence licence to drive motor vehicle test centre] +[dltc]
+RAW: A licence to drive a motor vehicle is issued by a driving licence testing centre, and is either a provisional licence (a learner's licence) or a full driving licence.
+NEW: A driving licence is issued by a DLTC and is either a **provisional licence (learner's)** or a **full driving licence**.
+
+=== body id 223 -[is made accompani by identification appropriate or medical practitioner occupational health] +[requirement apply with id and register]
+RAW: A learner's licence application is made at a DLTC on form LL1, accompanied by two identical photos, acceptable identification (plus a copy), and the appropriate fee; applicants 65 or older must also submit a medical certificate (form MC) from a medical practitioner or occupational health practitioner.
+NEW: A learner's licence application requirements:
+(i) apply at a DLTC on **form LL1** with two identical photos, **acceptable ID (plus copy)**, and the fee, and
+(ii) applicants **65 or older** must also submit a **medical certificate (form MC)** from a registered practitioner.
+
+=== body id 224 -[their place of residential and postal]
+RAW: A licence holder who permanently changes their place of residence must notify the registering authority of their new residential and postal address within 14 days.
+NEW: A licence holder who permanently changes residence must **notify the registering authority** of their new address **within 14 days**.
+
+=== body id 225 -[of it on public road]
+RAW: An owner, operator, or person in charge of a vehicle may not employ or permit anyone to drive it on a public road unless that person is licensed to drive it.
+NEW: An owner, operator, or person in charge may **not employ or permit anyone to drive** a vehicle unless that person is **licensed to drive it**.
+
+=== body id 244 -[driver]
+RAW: To 'park' means to keep a vehicle stationary for longer than is reasonably necessary to load or unload people or goods, excluding delays beyond the driver's control.
+NEW: To **'park'** means to keep a vehicle stationary for **longer than is reasonably necessary** to load or unload people or goods, excluding **delays beyond control**.
+
+=== body id 229 -[in prescrib manner]
+RAW: A motor vehicle may still be operated for up to 21 days after its licence expires (a 'period of grace'), provided the previous licence number and disc are displayed in the prescribed manner.
+NEW: A motor vehicle may still be operated for **up to 21 days** after its licence expires (a 'period of grace'), provided the **previous licence number and disc** are displayed.
+
+=== body id 231 -[that is or adapt]
+RAW: 'Drawing' means towing a vehicle that is designed or adapted solely to be drawn, using a vehicle designed or adapted solely for that purpose -- as distinct from general 'towing'.
+NEW: **'Drawing'** means towing a vehicle designed or adapted **solely to be drawn**, using a vehicle designed **solely for that purpose** -- as distinct from general 'towing'.
+
+=== body id 232 -[driv licence]
+RAW: A driving licence card is a driving licence card issued in terms of the National Road Traffic Act.
+NEW: A **driving licence card** is a card issued in terms of the **National Road Traffic Act**.
+
+=== body id 233 -[of it be on public road]
+RAW: 'Driving time' is any period a driver occupies the driver's seat of a vehicle while it is being operated on a public road, or while the engine is running.
+NEW: **'Driving time'** is any period a driver **occupies the driver's seat** while the vehicle is operated or while the **engine is running**.
+
+=== body id 235 -[of vehicle it] +[its]
+RAW: The 'front end' of a vehicle is the part that projects furthest forward (for a semi-trailer, a line through the kingpin connecting the vehicle's widest point ahead of it).
+NEW: The **'front end'** of a vehicle is the part that **projects furthest forward** (for a semi-trailer, a line through the kingpin connecting its widest point ahead).
+
+=== body id 236 -[motor vehicle or or of road learner driv]
+RAW: An instructor is someone who, for direct reward, teaches another person to drive a motor vehicle, or teaches the rules of the road or road signs for a learner's or driving licence.
+NEW: An **instructor** is someone who, for direct reward, **teaches another person to drive** or teaches road rules/signs for a licence.
+
+=== body id 237 -[boundary]
+RAW: The kerb line is the boundary between the shoulder and the verge, or, where there's no shoulder, the boundary between the edge of the roadway and the verge.
+NEW: The **kerb line** is the boundary between the **shoulder and the verge**, or between the **edge of the roadway and the verge** where there is no shoulder.
+
+=== body id 240 -[for combination]
+RAW: Overall length is the distance between the front end and rear end of a vehicle, or (for a combination) between the front of the leading vehicle and the rear of the rearmost vehicle.
+NEW: **Overall length** is the distance between the **front end and rear end** of a vehicle, or between the **front of leading vehicle and rear of rearmost vehicle**.
+
+=== body id 241 -[vehicle or its contact catwalk on electrically driven]
+RAW: Overall height is the distance from ground level to the highest point of the vehicle or its load, excluding overhead electrical contacting gear or a catwalk on electrically driven vehicles.
+NEW: **Overall height** is the distance from ground level to the **highest point of the vehicle or load**, excluding overhead electrical gear.
+
+=== body id 242 -[two to vehicle centre-line side direction or small fitment like air deflector] +[and]
+RAW: Overall width is the distance between two planes parallel to the vehicle's centre-line, touching the widest projecting points on either side -- excluding side mirrors, direction indicators, or small fitments like air deflectors.
+NEW: **Overall width** is the distance between parallel planes touching the **widest projecting points** on either side -- **excluding mirrors and indicators**.
+
+=== body id 243 -[common or contractual agreement] +[contract]
+RAW: The 'owner' of a vehicle is the person with the right to use and enjoy it under common law or a contractual agreement, or a motor dealer in possession of it for sale.
+NEW: The **'owner'** of a vehicle is the person with the **right to use and enjoy it** under law/contract, or a **motor dealer** in possession of it for sale.
+
+=== body id 28 -[vehicle on public road for professional dutie breakdown accident] +[emergency]
+RAW: A vehicle may not use an adjustable spot lamp on a public road, except official vehicles (ambulance, fire-fighting, police, traffic control), vehicles used by a medical practitioner or veterinarian for professional duties, or a breakdown vehicle or utility vehicle working at an accident, breakdown, or overhead line inspection.
+NEW: A vehicle **may not use an adjustable spot lamp**, except:
+(i) **official vehicles** (ambulance, fire-fighting, police, traffic control),
+(ii) vehicles used by a **medical practitioner or veterinarian**, or
+(iii) **breakdown or utility vehicles** working at an emergency or overhead line inspection.
+
+=== body id 30 -[clear in weather]
+RAW: A vehicle must be fitted with a rear-view mirror giving a clear view of traffic behind in clear weather (tractors are excepted).
+NEW: A vehicle must be fitted with a **rear-view mirror** giving a clear view of traffic behind (**tractors are excepted**).
+
+=== body id 31 -[--]
+RAW: A motor car, minibus, bus, or goods vehicle must have both an exterior mirror on the driving side and an interior mirror -- or two exterior mirrors if the interior one doesn't give a clear rear view.
+NEW: A motor car, minibus, bus, or goods vehicle must have:
+(i) both an **exterior mirror on the driving side** and an **interior mirror**, or
+(ii) **two exterior mirrors** if the interior one doesn't give a clear rear view.
+
+=== body id 50 -[any]
+RAW: Helmets aren't required if the motorcycle has SABS-compliant seatbelts and the engine cannot run unless the rider and any passenger are wearing them.
+NEW: Helmets aren't required if the motorcycle has **SABS-compliant seatbelts** and the engine cannot run unless the rider and passenger are **wearing them**.
+
+=== body id 56 -[if if]
+RAW: A vehicle may not be used if its fuel tank, carburettor, or fuel pipes are defective or exposed as a danger, if the fuel tank lacks an effective cap, or if the electrical wiring and battery aren't properly installed, insulated, and maintained.
+NEW: A vehicle may not be used if:
+(i) its **fuel tank, carburettor, or fuel pipes** are defective or exposed as a danger,
+(ii) the fuel tank **lacks an effective cap**, or
+(iii) the **electrical wiring and battery** aren't properly installed, insulated, and maintained.
+
+=== body id 68 -[metre for 12 5 one any other] +[limit trailer or single and]
+RAW: Maximum vehicle lengths: 8 metres for a trailer (not semi-trailer) under 12,000kg GVM; 12.5 metres for one over 12,000kg GVM; 18.5 metres for an articulated motor vehicle; 22 metres for a bus-train or any combination of motor vehicles; 12.5 metres for any other vehicle.
+NEW: Maximum vehicle length limits:
+(i) **8 metres** for a trailer (not semi-trailer) under 12,000kg GVM,
+(ii) **12.5 metres** for a trailer over 12,000kg GVM or any single vehicle,
+(iii) **18.5 metres** for an articulated motor vehicle, and
+(iv) **22 metres** for a bus-train or combination of motor vehicles.
+
+=== body id 247 -[otherwise]
+RAW: 'Roadworthy', for a vehicle, means it complies with the relevant legal provisions and is otherwise fit to be operated on a public road.
+NEW: **'Roadworthy'**, for a vehicle, means it complies with relevant legal provisions and is **fit to be operated on a public road**.
+
+=== body id 248 -[it]
+RAW: A service brake is a brake, normally a footbrake, used to reduce a vehicle's speed or bring it to a stop.
+NEW: A **service brake** is a brake, normally a **footbrake**, used to reduce speed or bring a vehicle to a stop.
+
+=== body id 252 -[vehicle that that is solely to which refer built for purpose]
+RAW: 'Towing' means towing a vehicle that is not designed or adapted solely to be drawn -- as distinct from 'drawing', which refers to vehicles built solely for that purpose.
+NEW: **'Towing'** means towing a vehicle **not designed or adapted solely to be drawn** -- as distinct from 'drawing'.
+
+=== where_text id 185 +[or]
+RAW: On any road close to water, harbours.
+NEW: On **any road close to water**, or **harbours**.
+
+=== where_text id 17 -[of these will be]
+RAW: At obstructions such as traffic islands. Only one of these signs will be displayed at a time.
+NEW: At **obstructions** such as **traffic islands** (only one sign displayed at a time).
+
+=== where_text id 57 -[of other driver]
+RAW: On a public road where the road is narrow, near an intersection or where a parked vehicle can impair the vision of other drivers.
+NEW: On a public road where the **road is narrow**, **near an intersection**, or where a parked vehicle can **impair vision**.
+
+=== where_text id 58 -[sign]
+RAW: On any public road. The sign may be supplemented by a red "no stopping line".
+NEW: On **any public road** (may be supplemented by a red **'no stopping line'**).
+
+=== where_text id 37 -[other that require] +[requir]
+RAW: In areas where there are farms and other activities that require agricultural vehicles.
+NEW: In areas where there are **farms and activities** requiring **agricultural vehicles**.
+
+=== where_text id 35 -[traction] +[are attraction]
+RAW: In areas where there many tourist tractions.
+NEW: In areas where there are **many tourist attractions**.
+
+=== where_text id 80 -[of other driver]
+RAW: On a public road where the road is narrow, near an intersection, or where a parked vehicle can impair the vision of other drivers.
+NEW: On a public road where the **road is narrow**, **near an intersection**, or where a parked vehicle can **impair vision**.
+
+=== where_text id 292 +[when]
+RAW: In areas where there is high traffic congestion, at the scene of an accident or the normal traffic signals are not operational.
+NEW: In areas where there is **high traffic congestion**, at the **scene of an accident**, or when normal traffic signals are **not operational**.
+
+=== where_text id 293 +[or]
+RAW: In areas where there is road works ahead, herdsman leading cattle or other animals across or next to a roadway.
+NEW: In areas where there is **road works ahead**, or a **herdsman leading cattle or other animals** across or next to a roadway.
+
+=== where_text id 294 +[or]
+RAW: In areas where there is road works ahead, herdsman leading cattle or other animals across or next to a roadway.
+NEW: In areas where there is **road works ahead**, or a **herdsman leading cattle or other animals** across or next to a roadway.
+
+=== where_text id 61 +[any]
+RAW: At the beginning of or entrance to a carriageway, lane or path.
+NEW: At the **beginning of or entrance to** any **carriageway, lane or path**.
+
+=== where_text id 52 -[is temporary sign]
+RAW: On any public road where it is necessary to close the road for general traffic. The temporary sign is usually displayed at road works.
+NEW: On **any public road** where it is necessary to **close the road for general traffic** (usually displayed at road works).
+
+=== where_text id 131 -[from w107 tw107 w108 tw108]
+RAW: On any road before you reach the place where another road joins your road from the left (W107) (TW107) or from the right (W108) (TW108).
+NEW: On **any road** before you reach the place where **another road joins your road** from the left or right.
+
+=== purpose_text id 23 -[road traffic] +[and]
+RAW: Indicate that a road or part of a road may be used by motorcyclists only. Motorcyclists must follow the route indicated by the road traffic sign.
+NEW: Indicates that a road or part of a road:
+(i) may be **used by motorcyclists only**, and
+(ii) motorcyclists **must follow the route indicated** by the sign.
+
+=== purpose_text id 103 -[minibuse any other indication that they are]
+RAW: To allow minibuses to take up and drop passengers off. Such a vehicle must display an appropriate emblem, logo or any other indication that they are minibuses.
+NEW: To allow minibuses to **take up and drop passengers off** (such a vehicle must **display an appropriate emblem or logo**).
+
+=== purpose_text id 168 -[make it possible for] +[allow]
+RAW: To warn that the carriageway ahead narrows to a width that will make it possible for only one vehicle at a time to pass.
+NEW: To warn that the carriageway ahead narrows to a width that will allow **only one vehicle at a time to pass**.
+
+=== purpose_text id 133 -[to to from w112 tw112 w114 tw114 you you are travell on will have make which take] +[split merge warn or requir of route]
+RAW: To warn that traffic could merge from the left (W112, TW112) or from the right (W114, TW114) at sharp angles / To warn that the road you are travelling on will soon split in two and you will have to make a choice which road to take.
+NEW: Road split and merge warnings:
+(i) to warn that **traffic could merge from the left or right** at sharp angles, or
+(ii) to warn that the road **will soon split in two** requiring a choice of route.
+
+=== purpose_text id 166 -[you are driv on]
+RAW: To warn that the tarred road you are driving on will end soon and will have a gravel surface ahead.
+NEW: To warn that the **tarred road will end soon** and will have a **gravel surface ahead**.
+
+=== purpose_text id 45 -[restriction] +[to]
+RAW: Inform you of the speed limit applicable on this road. The restriction applies from the sign.
+NEW: To inform you of the **speed limit applicable on this road** (applies from the sign).
+
+=== purpose_text id 208 -[terminu] +[it]
+RAW: To point out the direction to a transport terminus from a road that would otherwise have taken you past the terminus.
+NEW: To point out the **direction to a transport terminus** from a road that would otherwise have taken you past it.
+
+=== purpose_text id 149 -[warn without]
+RAW: To warn that there is a yield sign ahead, which you may not be able to see in time without a warning.
+NEW: To warn that there is a **yield sign ahead**, which you may not be able to see in time.
+
+=== purpose_text id 229 -[is] +[are]
+RAW: To indicate in good time exits that is close together, all leading to the same town.
+NEW: To indicate in good time **exits that are close together**, all **leading to the same town**.
+
+=== purpose_text id 171 -[in general]
+RAW: To warn that there is a depression or a ridge in the road, or that the road in general is uneven and potholed.
+NEW: To warn that there is a **depression or ridge in the road**, or that the road is **uneven and potholed**.
+
+=== purpose_text id 180 -[to of of be softer than reasonably expect could anyone who want move] +[soft mov off]
+RAW: To warn that the material of the road shoulder may be softer than reasonably expected and could be dangerous for anyone who wants to move of the road.
+NEW: To warn that the **road shoulder material may be soft** and **dangerous for moving off the road**.
+
+=== purpose_text id 203 -[to to either]
+RAW: To warn that the road does not continue beyond the sign and that a turn either to the left or to the right must be made.
+NEW: To warn that the **road does not continue beyond the sign** and that a **turn left or right must be made**.
+
+=== purpose_text id 116 -[sign dur on thi]
+RAW: To indicate that the regulatory sign applies only for the period(s) or during conditions indicated on this sign.
+NEW: To indicate that the regulatory sign **applies only for the periods or conditions indicated**.
+
+=== purpose_text id 7 -[these are are two different sign which it] +[to]
+RAW: These are two different signs, which are mounted back to back. It indicates whether you may proceed or must stop.
+NEW: Mounted back to back to indicate whether you **may proceed or must stop**.
+
+=== purpose_text id 128 -[of cross on sign which road has]
+RAW: To warn that you are approaching an intersection where you have to yield to cross-traffic. (The thicker leg of the cross on the sign indicates which road has priority.)
+NEW: To warn that you are approaching an intersection where you **have to yield to cross-traffic** (thicker leg indicates priority).
+
+=== purpose_text id 147 -[isolat and particularly traffic traffic light light near at pedestrian cross]
+RAW: To warn that there are isolated and particularly new traffic lights or traffic lights near an isolated traffic light at a pedestrian crossing ahead.
+NEW: To warn that there are **isolated or new traffic lights** ahead.
+
+=== purpose_text id 145 -[you are driv on from w215 or or tw215 right-hand w214 tw 214] +[right]
+RAW: To warn that the double-lane road you are driving on narrows by a full lane from the left (W215 or TW215) or from the right-hand side (W214 or TW 214).
+NEW: To warn that the double-lane road **narrows by a full lane** from the left or right side.
+
+=== purpose_text id 172 -[which require] +[requir]
+RAW: To warn that there are speed humps on the carriageway ahead which require a reduction of speed.
+NEW: To warn that there are **speed humps on the carriageway ahead** requiring a reduction of speed.
+
+=== purpose_text id 198 -[electrical]
+RAW: To warn that there is a possibility of electrical shock from the overhead electrical power cables on the road ahead.
+NEW: To warn that there is a possibility of **electrical shock from overhead power cables** on the road ahead.
+
+=== purpose_text id 9 -[road]
+RAW: To compel you to give priority to pedestrians crossing the road or wanting to cross the road.
+NEW: To compel you to **give priority to pedestrians** crossing or wanting to cross the road.
+
+=== purpose_text id 10 -[they] +[driver]
+RAW: To warn you that there is a traffic circle ahead where they must expect to yield.
+NEW: To warn you that there is a **traffic circle ahead** where drivers **must expect to yield**.
+
+=== purpose_text id 4 -[traffic it can be done without interfer with cross] +[safe]
+RAW: To allow traffic turning left, to do so (if it can be done without interfering with cross traffic) without stopping.
+NEW: To allow **traffic turning left** to do so **without stopping**, if safe.
+
+=== purpose_text id 170 -[from w330 tw330 w329 tw329]
+RAW: To warn that the road ahead narrows from the left (W330, TW330) or from the right-hand (W329, TW329) side.
+NEW: To warn that the road ahead **narrows from the left or right-hand side**.
+
+=== purpose_text id 189 -[other]
+RAW: To warn that tractors or other slow-moving agricultural vehicles could cross or enter the road ahead.
+NEW: To warn that **tractors or slow-moving agricultural vehicles** could cross or enter the road ahead.
+
+=== purpose_text id 191 -[to that on road road might cause hazard user] +[of from fog or smoke]
+RAW: To warn that there is a possibility reduced visibility on the road ahead that might cause a hazard to road users.
+NEW: To warn that there is a possibility of **reduced visibility from fog or smoke** ahead.
+
+=== purpose_text id 197 -[of vehicle]
+RAW: To warn that there is overall width of vehicles restriction as indicated in metres on the road ahead.
+NEW: To warn that there is an **overall width restriction** as indicated in metres on the road ahead.
+
+=== purpose_text id 209 -[route from road on which you are travell thi new]
+RAW: To indicate that a route of equal or higher status can be entered from the road on which you are travelling. This new route consists of a pair of one-way roadways.
+NEW: To indicate that a **route of equal or higher status** can be entered, consisting of a **pair of one-way roadways**.
+
+=== purpose_text id 213 -[particular at at intersection intersection ahead ahead]
+RAW: To inform in advance that a particular numbered route changes direction at the intersection ahead or that the cross-street at the intersection ahead is a numbered class-B route.
+NEW: To inform in advance that a **numbered route changes direction** or that the cross-street is a **numbered class-B route**.
+
+=== purpose_text id 217 -[from thi intersection that can be reach]
+RAW: To indicate the numbers of the routes leading from this intersection and destinations that can be reached from this intersection.
+NEW: To indicate the **numbers of routes and destinations** leading from this intersection.
+
+=== purpose_text id 276 -[thi mark for of day or night]
+RAW: To warn drivers that the lane indicated by this marking can be used for traffic from the opposite direction at various times of day or night.
+NEW: To warn drivers that the indicated lane can be **used by traffic from the opposite direction** at various times.
+
+=== purpose_text id 218 -[to destination such]
+RAW: To confirm the route to a destination and the distance indicated in kilometres to such destinations.
+NEW: To **confirm the route to a destination** and the **distance indicated in kilometres**.
+
+=== purpose_text id 207 -[terminu have taken bus harbour airport or helipad] +[take it]
+RAW: To point out the direction of a transport terminus from a route that would otherwise have taken you past a bus terminus, harbour, airport or helipad.
+NEW: To point out the **direction of a transport terminus** from a route that would otherwise take you past it.
+
+=== purpose_text id 200 -[to that there is obstruction or or temporary left right hand side] +[of]
+RAW: To warn that there is an obstruction or temporary obstruction next to the road and that the road alignment to the left or right hand side is altered.
+NEW: To warn of an **obstruction next to the road** and that the **road alignment is altered**.
+
+=== purpose_text id 201 -[to w406 w408 tw406 tw408 w405 w407 tw405 tw407]
+RAW: To warn that the road ahead curves suddenly to the left (W406, W408, TW406, TW408) or to the right (W405, W407, TW405, TW407).
+NEW: To warn that the road ahead **curves suddenly to the left or right**.
+
+=== purpose_text id 237 -[you mean of of of of which indicate two-lane carriageway carriageway or or part is requirement command prohibition traffic indicat] +[shown]
+RAW: To guide you by means of a diagram, which indicates that, the right-hand lane of a two-lane carriageway or part of a carriageway is subject to a compulsory requirement of a 'command' or 'prohibition' regulatory sign. Opposing traffic flow is indicated by a dotted arrow.
+NEW: To guide by diagram that the right-hand lane is **subject to a compulsory regulatory sign** (opposing flow shown by dotted arrow).
+
+=== purpose_text id 179 -[of of right-hand right-hand side side side carriageway is higher than left-hand left-hand tw340 or tw341] +[one at other]
+RAW: To warn that the level of the right-hand side of the carriageway is higher than the left-hand side (TW340), or the left-hand side of the carriageway is higher than the right-hand side (TW341).
+NEW: To warn that one side of the carriageway is **at a higher level than the other**.
+
+=== purpose_text id 216 -[from intersection that can be reach thi]
+RAW: To indicate the numbers of the routes leading from an intersection and destinations that can be reached from this intersection.
+NEW: To indicate the **numbers of routes and destinations** leading from an intersection.
+
+=== purpose_text id 219 -[to]
+RAW: To guide you to small locations or to destinations on less travelled routes.
+NEW: To guide you to **small locations or destinations** on **less travelled routes**.
+
+=== purpose_text id 230 -[to is]
+RAW: To indicate that the road crosses a freeway and show where that freeway is leading to.
+NEW: To indicate that the **road crosses a freeway** and show **where that freeway leads**.
+
+=== purpose_text id 231 -[of freeway freeway]
+RAW: To indicate the position of the near-side on-ramp at a freeway access interchange, with the freeway route number and the destination of the freeway.
+NEW: To indicate the **position of the near-side on-ramp** at a freeway access interchange with route number and destination.
+
+=== purpose_text id 232 -[to to indicate that that on-ramp freeway access interchange some distance and will be by turn onto] +[show]
+RAW: To indicate that the far-side on-ramp to a freeway access interchange, is some distance ahead and to indicate the route number and the destination that will be reached by turning onto that on-ramp.
+NEW: To indicate that the **far-side on-ramp is ahead**, showing the route number and destination reached.
+
+=== purpose_text id 234 -[that as indicat]
+RAW: To indicate that the freeway splits ahead and that the lanes lead to different destinations as indicated.
+NEW: To indicate that the **freeway splits ahead** and lanes **lead to different destinations**.
+
+=== purpose_text id 240 -[to to indicate arrestor bed such] +[mark its]
+RAW: To indicate that there is an arrestor bed ahead and to indicate the entrance to such an arrestor bed.
+NEW: To indicate that there is an **arrestor bed ahead** and mark its entrance.
+
+=== purpose_text id 142 -[to to that curve curve w210 indicate first first is is right and w211 left]
+RAW: To warn that there are two sharp curves ahead in opposite directions. W210 indicates the first curve is to the right and W211 that the first curve is to the left.
+NEW: To warn that there are **two sharp curves ahead in opposite directions**.
+
+=== purpose_text id 239 -[mean of which indicate from left or right decrease in] +[decreas]
+RAW: To guide drivers by means of a diagram, which indicates that, a curved multi-lane carriageway converges with a straight multi-lane carriageway from the left or right, without a decrease in lanes.
+NEW: To guide drivers by diagram that a **curved multi-lane carriageway converges** with a straight multi-lane carriageway without decreasing lanes.
+
+=== purpose_text id 238 -[you mean of which indicate]
+RAW: To guide you by means of a diagram, which indicates that, a lane merges with another lane or that roadways join.
+NEW: To guide by diagram that a **lane merges with another lane** or that **roadways join**.
+
+=== purpose_text id 227 -[at intersection of-ramp] +[off-ramp]
+RAW: To inform early which lane at the intersection at the end of the of-ramp, leads to which destination.
+NEW: To inform early **which lane at the end of the off-ramp** leads to which destination.
+
+=== purpose_text id 278 -[from wm6 wm6 wm6 1 or 3 2]
+RAW: To warn that the traffic lanes are reduced from the left (WM6.1) or right (WM6.3) or from both (WM6.2) sides.
+NEW: To warn that **traffic lanes are reduced** from the left, right, or both sides.
+
+=== purpose_text id 245 -[road]
+RAW: To inform you that the road ahead or the road to the left or right ends.
+NEW: To inform you that the **road ahead or to the left or right ends**.
+
+=== purpose_text id 247 -[that has in9 in10] +[with]
+RAW: To inform you of the existence of a park-and-ride terminus that has a bus (IN9) or train (IN10) service.
+NEW: To inform you of the existence of a **park-and-ride terminus** with a bus or train service.
+
+=== purpose_text id 251 -[that signal on thi route and will be at all subsequent intersection] +[for light]
+RAW: To inform you that the traffic signals on this route are co-ordinated and that the signals will be green at all the subsequent intersections if you maintain the indicated speed.
+NEW: To inform you that traffic signals are **co-ordinated for green lights** if you maintain the indicated speed.
+
+=== purpose_text id 252 -[to to that signal signal signal signal at at thi intersection intersection doe normal you would expect in in your your direction direction will change change green green after for cross traffic was yellow may remain red whilst opposite] +[do]
+RAW: To point out that the signals at this intersection does not follow the normal sequence. At a normal intersection you would expect that the signal in your direction will change to green after the signal for cross traffic was yellow. At this intersection your signal may remain red whilst the signal in the opposite direction changes to green.
+NEW: To point out that signals at this intersection **do not follow the normal sequence**.
+
+=== purpose_text id 254 -[transport where passenger may change their mode of]
+RAW: To show that there is a transport modal transfer point or terminus nearby where passengers may change their mode of transport.
+NEW: To show that there is a **transport modal transfer point or terminus nearby**.
+
+=== purpose_text id 33 -[use by]
+RAW: Indicates that the road or a portion of the road is set aside for use by vehicles conveying dangerous goods
+NEW: Indicates that the road or portion of the road is **set aside for vehicles conveying dangerous goods**.
+
+=== purpose_text id 17 -[where sign is display]
+RAW: To indicate that you must drive to the left or right of an obstruction where the sign is displayed.
+NEW: To indicate that you **must drive to the left or right** of an obstruction.
+
+=== purpose_text id 181 -[be]
+RAW: To warn that traffic ahead is being controlled temporarily by a "Stop/Ry-Go" sign.
+NEW: To warn that traffic ahead is **controlled temporarily by a 'Stop/Ry-Go' sign**.
+
+=== purpose_text id 205 -[to which sign is]
+RAW: To warn that the robot ahead or to which the sign is attached is out of order.
+NEW: To warn that the **robot ahead or attached is out of order**.
+
+=== purpose_text id 102 -[minibuse such vehicle must appropriate or any other indication that they are] +[proper]
+RAW: To allow minibuses to take up and drop passengers off. Such a vehicle must display an appropriate emblem, logo or any other indication that they are minibuses.
+NEW: To allow minibuses to **take up and drop passengers off** (displaying proper emblem/logo).
+
+=== purpose_text id 159 -[or in]
+RAW: To warn that there is a motor gate to the left or right or in the middle of the road.
+NEW: To warn that there is a **motor gate to the left, right, or middle** of the road.
+
+=== purpose_text id 124 -[to driver indicat indicat on on regulatory sign sign as thi]
+RAW: To indicate to the driver that the reservation indicated on the regulatory sign is further restricted by a maximum number of vehicles as indicated on this sign.
+NEW: To indicate that the reservation is **further restricted by a maximum number of vehicles**.
+
+=== purpose_text id 127 -[of cross on sign which road has]
+RAW: To warn that you are approaching an intersection where you have right of way. (The thicker leg of the cross on the signs indicates which road has priority.)
+NEW: To warn that you are approaching an intersection where **you have right of way** (thicker leg indicates priority).
+
+=== purpose_text id 13 -[but vehicle vehicle load and off good] +[while]
+RAW: To give priority to pedestrians but limit other traffic to emergency vehicles, vehicles loading and off loading goods and maintenance vehicles.
+NEW: To **give priority to pedestrians** while limiting other traffic to **emergency, loading, and maintenance vehicles**.
+
+=== purpose_text id 16 -[road by thi traffic sign]
+RAW: To compel drivers of certain heavy vehicles to use the road or part of the road indicated by this road traffic sign.
+NEW: To **compel drivers of certain heavy vehicles** to use the road or part of the road indicated.
+
+=== purpose_text id 27 -[that road road or portion of of use and driver midibu shall only such such]
+RAW: Indicates that the road or a portion of the road is set aside for use by midibuses. and that the driver of a midibus shall only use such road or portion of such road.
+NEW: Indicates that the road or a portion of the road is **set aside for use by midibuses**.
+
+=== purpose_text id 31 -[or of use by by vehicle with gross gross mass mass gvm combination gcm in tonne mean number on such sign] +[limit]
+RAW: Indicates that the road or a portion of the road is set aside for use by goods vehicles with a gross vehicle mass (GVM) or a gross combination mass (GCM) exceeding the mass indicated in tonnes by means of a number on such sign.
+NEW: Indicates that the road or portion of the road is set aside for **goods vehicles exceeding the indicated mass limit**.
+
+=== purpose_text id 58 -[that view are not by] +[from visibility]
+RAW: To ensure traffic flow and prevent that driver's views are not impaired by stationary vehicles.
+NEW: To **ensure traffic flow** and prevent stationary vehicles from **impairing driver visibility**.
+
+=== purpose_text id 55 -[it] +[prohibit they]
+RAW: To vehicles from turning around so that it faces the opposite direction.
+NEW: To **prohibit vehicles from turning around** so that they face the opposite direction.
+
+=== purpose_text id 113 -[to that that apply]
+RAW: To indicate that a freeway begins at the sign and that the rules that apply to freeways are effective from here.
+NEW: To indicate that a **freeway begins at the sign** and freeway rules are **effective from here**.
+
+=== purpose_text id 114 -[to that that at sign all apply]
+RAW: To indicate that a single-carriageway freeway begins at the sign and that all rules that apply to freeways are effective from here.
+NEW: To indicate that a **single-carriageway freeway begins** and freeway rules are **effective from here**.
+
+=== purpose_text id 157 -[road]
+RAW: To warn that there may be wild animals on the road or crossing the road.
+NEW: To warn that there may be **wild animals on or crossing the road**.
+
+=== purpose_text id 77 -[horse whether mount on or lead]
+RAW: Indicates to a horse rider that horses and riders, whether mounted on or leading a horse, are prohibited beyond such sign.
+NEW: Indicates to a horse rider that **horses and riders are prohibited** beyond such sign.
+
+=== purpose_text id 162 -[road traffic]
+RAW: To warn that there is a structure ahead of which the height is indicated on the road traffic sign.
+NEW: To warn that there is a **structure ahead** of which the **height is indicated on the sign**.
+
+=== purpose_text id 92 -[use by]
+RAW: To reserve a portion of a road or a parking area for use by goods vehicles exceeding the indicated GVM only.
+NEW: To reserve a portion of a road or a parking area for **goods vehicles exceeding the indicated GVM only**.
+
+=== purpose_text id 129 -[to]
+RAW: To warn that you are approaching an intersection where you have to turn sharp to the right or left.
+NEW: To warn that you are approaching an intersection where you have to **turn sharp right or left**.
+
+=== purpose_text id 266 -[which is on sign]
+RAW: To identify that part of the carriageway which is reserved for buses only during the periods indicated on the sign.
+NEW: To identify that part of the carriageway **reserved for buses only** during indicated periods.
+
+=== purpose_text id 267 -[from because thi could other turn or driv further forward] +[to obstruct]
+RAW: To prohibit drivers from stopping in the demarcated area because this could prevent other traffic from turning or driving further forward.
+NEW: To **prohibit drivers from stopping** in the demarcated area to prevent obstructing traffic.
+
+=== purpose_text id 268 -[to for cross or want road that has already]
+RAW: To indicate an area where you may not stop except for pedestrians crossing or wanting to cross the road or for a vehicle that has already stopped.
+NEW: To indicate an area where you **may not stop except for pedestrians crossing** or a stopped vehicle.
+
+=== purpose_text id 269 -[where vehicle may environment obstruct view and such more]
+RAW: To prohibit drivers from stopping where stationary vehicles may disrupt the traffic or where the environment obstructs the view and such vehicles may obstruct the view more.
+NEW: To **prohibit drivers from stopping** where stationary vehicles may disrupt traffic or obstruct views.
+
+=== purpose_text id 274 -[to you you you you that that that intersection or off ramp in part of inform if are are lane has on one from road which now travell] +[with]
+RAW: To warn you that there is a break (intersection or off ramp) in the continuing part of the roadway and to inform you that if you are in a lane that has a line on one side, that lane will soon turn off from the road which you are now travelling.
+NEW: To warn that there is a **break in the continuing roadway** and the lane with a side line **will soon turn off**.
+
+=== purpose_text id 288 -[at cycle lane road road that that lead to airport and and where park bay is is reserv for handicapp only as additional mark mark with standard sign you]
+RAW: At a cycle lane, a road that leads to an airport and where a parking bay is reserved for the handicapped only. As additional markings with standard signs and markings to inform you that an area is reserved for a specific group or that a road is leading to a specific destination.
+NEW: To inform that an area is **reserved for a specific group** or leads to a **specific destination**.
+
+=== purpose_text id 123 -[by or logo word]
+RAW: To indicate that the sign applies to drivers of vehicles operated by the company, owner or organisation indicated by the logo or words.
+NEW: To indicate that the sign applies to drivers of vehicles operated by the **company, owner or organisation indicated**.
+
+=== purpose_text id 243 -[you by mean of sign requirement indicat command or prohibition]
+RAW: To inform you by means of a diagram that the lane below the sign is subject to a compulsory requirement indicated by a 'command' or 'prohibition' regulatory sign.
+NEW: To inform by diagram that the lane below is **subject to a compulsory regulatory sign**.
+
+=== purpose_text id 293 -[to to to flag flag flag indicat driver driver of that he he or or she she shall shall is display - when] +[via requir vehicle may]
+RAW: To direct traffic. (i) Flag signal to stop indicating to the driver of a vehicle that he or she shall stop until the proceed flag signal is displayed; and (ii) Flag signal to proceed - indicating to the driver that he or she shall proceed when the flag signal is displayed.
+NEW: To direct traffic via flag signals:
+(i) **stop signal** requiring vehicles to stop until proceed signal is displayed, and
+(ii) **proceed signal** indicating that vehicles may proceed.
+
+=== purpose_text id 291 -[point arrow s16 - - to to to to driver driver driver that that that he he he she she she in in over over which which is is is display display cross s17 might be open vehicle travell opposite direction s18 s19 driv] +[overhead control signal you you or]
+RAW: Steady green downward pointing arrow (S16) - Indicates to the driver that he/she may drive in the lane over which the arrow is displayed. Steady red cross (S17) - Indicates to a driver that he/she shall not drive in the lane over which the cross is displayed. Lane might be open to vehicles travelling in the opposite direction. Yellow arrow left (S18) and right (S19) Indicates to the driver that the lane he/she is driving in is closed ahead.
+NEW: Overhead lane control signals:
+(i) **steady green downward arrow** indicates you may drive in the lane,
+(ii) **steady red cross** indicates you shall not drive in the lane, and
+(iii) **yellow arrow left or right** indicates the lane is closed ahead.
+
+=== purpose_text id 281 -[especially driver of of heavy vehicle vehicle who become aware that brake became defective such and it will ahead] +[to defective-brake off]
+RAW: To indicate where especially drivers of heavy vehicles who become aware that a vehicle's brakes became defective, can drive such a vehicle of the road and it will be stopped by the gravel section ahead.
+NEW: To indicate where defective-brake vehicles can **drive off the road** to be **stopped by a gravel section**.
+
+=== purpose_text id 121 -[indicat on regulatory sign]
+RAW: To indicate that the restriction indicated on the regulatory sign applies in the direction of the arrow.
+NEW: To indicate that the restriction **applies in the direction of the arrow**.
+
+=== purpose_text id 220 -[of intersection ahead leav]
+RAW: To give advance guidance regarding the shape of the intersection ahead, the numbers and destinations of the routes leaving the intersection.
+NEW: To give advance guidance regarding the **shape of the intersection** and route numbers/destinations.
+
+=== purpose_text id 235 -[you mean of which indicate]
+RAW: To guide you by means of a diagram which indicates that one of the lanes of a carriageway comes to an end.
+NEW: To guide by diagram that one of the lanes of a carriageway **comes to an end**.
+
+=== purpose_text id 61 -[to certain road road or or section of can themselve other user] +[could]
+RAW: To prevent cyclists and pedestrians from using a certain road or a certain section of a road where they can cause a danger to themselves or other road users.
+NEW: To **prevent cyclists and pedestrians** from using a certain road where they could cause danger.
+
+=== purpose_text id 52 -[certain road or section of] +[clos]
+RAW: To prohibit drivers without special authorisation from entering a certain road or section of a road.
+NEW: To **prohibit drivers without special authorisation** from entering a closed road.
+
+=== purpose_text id 60 -[to to can themselve and other road user]
+RAW: To prohibit cyclists from using the carriageway, lane or path where they can cause a danger to themselves and to other road users.
+NEW: To **prohibit cyclists** from using the carriageway, lane or path where they cause danger.
+
+=== purpose_text id 82 -[sign sign and that may which only buse enter] +[reserv lane rule bus-only]
+RAW: Signs R302 and TR302 indicate that no other class of vehicle may use that part of the road. Signs: R303 and TR303 indicate where the reserved traffic lane which only buses may enter, starts.
+NEW: Reserved traffic lane rules:
+(i) R302/TR302 indicate **no other class of vehicle may use that part of the road**, and
+(ii) R303/TR303 indicate **where the bus-only reserved lane starts**.
+
+=== purpose_text id 115 -[to to to of all vehicle vehicle with mass exceed 3 500 kg or which have more than for access in street from driv through area without break their journey] +[pedestrian traffic zone restriction 3500kg require driver and and through-traffic]
+RAW: To prohibit the entry of all vehicles with a mass exceeding 3 500 kg, or vehicles, which have more than 10 seats, except for local access or delivery. To yield right of way to pedestrians in the street. To prohibit vehicles from driving through the area without breaking their journey. To limit the speed of vehicles in the area to 30km/h
+NEW: Pedestrian/traffic zone restrictions:
+(i) **prohibits entry** of vehicles >3500kg or >10 seats (except local delivery),
+(ii) requires drivers to **yield right of way to pedestrians** and prohibits through-traffic, and
+(iii) **limits vehicle speed to 30km/h** in the area.
+
+=== purpose_text id 248 -[diagrammatical]
+RAW: To give more information about the main message on regulatory, warning or diagrammatical guidance signs.
+NEW: To **give more information** about the main message on regulatory, warning or guidance signs.
+
+=== purpose_text id 78 -[to driver of of of vehicle that he or she beyond sign sign by mean number on such] +[you]
+RAW: Indicates to the driver of a vehicle that he or she shall not proceed beyond the sign unless the overall width of the vehicle, is less than the width indicated in metres, by means of a number on such sign.
+NEW: Indicates you shall not proceed unless overall vehicle width is **less than the width indicated in metres**.
+
+=== purpose_text id 81 -[that that or part of carriageway indicat by sign r301-p]
+RAW: Indicate that the road or part of the carriageway is reserved for buses only and that only buses may park in the area indicated by sign (R301-P).
+NEW: Indicates the road is **reserved for buses only** and only buses may park in the area.
+
+=== purpose_text id 270 -[where vehicle may environment obstruct obstruct view and such more]
+RAW: To prevent drivers from stopping where stationary vehicles may disrupt the traffic, or where the environment obstructs the view and such vehicles obstruct the view more.
+NEW: To **prevent drivers from stopping** where stationary vehicles disrupt traffic or view.
+
+=== purpose_text id 257 -[road at these place]
+RAW: To inform you that priority must be given to pedestrians crossing or wanting to cross the road at these places.
+NEW: To inform you that **priority must be given to pedestrians** crossing or wanting to cross.
+
+=== purpose_text id 144 -[that you are driv on carrie] +[with]
+RAW: To warn that one-way street you are driving on will soon be crossed by a street that carries two-way traffic.
+NEW: To warn that the one-way street will soon be **crossed by a street with two-way traffic**.
+
+=== purpose_text id 22 -[to indicate that that that road road road or part part part part of of may may may be be be us us us by by by by by cyclist cyclist and and pedestrian only only they sign r113 tr115 is certain as indicat traffic] +[cycle lane rule set aside for for show each user group separate sub-path]
+RAW: To indicate that a road or part of a road may be used by cyclists and/or pedestrians only. To indicate to cyclists and pedestrians which part of a road they must use. Signs R113 and TR115 indicate that part of the road is divided and that part may be used by cyclists and pedestrians only. A certain part may be used by cyclists or by pedestrians only, as indicated by the road traffic sign.
+NEW: Pedestrian and cycle lane rules:
+(i) to indicate a road set aside for **cyclists and/or pedestrians only**,
+(ii) to show **which part of a road** each user group must use, and
+(iii) divided signs indicate **separate sub-paths for cyclists or pedestrians**.
+
+=== purpose_text id 49 -[to vehicle such such will will will not be able or or turn in manner that it disrupt endanger other traffic] +[they cannot safely]
+RAW: To prohibit long vehicles from using a road where such a vehicle will not be able to negotiate a curve or will turn in such a manner that it will disrupt or endanger other traffic.
+NEW: To **prohibit long vehicles** from using a road where they cannot safely negotiate curves.
+
+=== purpose_text id 59 -[to to could themselve and vehicle]
+RAW: To prohibit pedestrians from proceeding past this sign where they could cause a danger to themselves and to vehicles.
+NEW: To **prohibit pedestrians from proceeding** past this sign where they cause danger.
+
+=== purpose_text id 79 -[to driver of vehicle which is]
+RAW: Indicates to the driver of a vehicle that no vehicle which is towing another vehicle shall proceed beyond such sign.
+NEW: Indicates that **no vehicle towing another vehicle** shall proceed beyond such sign.
+
+=== purpose_text id 84 -[sign sign area for vehicle gvm of of less than 3 500 kg where applie but fee must be be be that may us free charge or at to is] +[rule under 3500kg with and limit]
+RAW: Sign (R305-P) indicates a parking area for vehicles with a GVM of less than 3 500 kg where no time limit applies but a fee must be paid. Sign (R306-P) indicates a parking area that may be used free of charge or at a fee and the maximum time allowed for a vehicle to be parked, is displayed.
+NEW: Parking area rules:
+(i) R305-P indicates parking for **vehicles under 3500kg** with paid fee and no time limit, and
+(ii) R306-P indicates parking with a **displayed maximum allowed time limit**.
+
+=== purpose_text id 141 -[to to of of curve in in case case is is and] +[bend]
+RAW: To warn of a series of curves ahead. In the case of W209 the first curve is to the left and in the case of W208 the first bend is to the right.
+NEW: To warn of a **series of curves ahead** (W209 first bend left, W208 first bend right).
+
+=== purpose_text id 132 -[first first first by another another from from from left left hand hand and and within distance right right w110 tw110 or then w109 tw109] +[two in succession opposite]
+RAW: To warn that your road is first joined by another road from the left hand side first and within a short distance by another from the right hand side (W110,TW110) or from the right first and then from the left (W109,TW109).
+NEW: To warn that your road is **joined by two side roads in short succession** from opposite sides.
+
+=== purpose_text id 163 -[in road road road other on on side of length thi sign] +[to proce]
+RAW: To warn that curves in the road or other structures on the side of the road make it impossible for vehicles longer than the length indicated on this road sign.
+NEW: To warn that curves or structures make it impossible for **vehicles longer than indicated** to proceed.
+
+=== purpose_text id 236 -[you you mean of of road which are travell on traffic is indicat] +[shown]
+RAW: To inform you by means of a diagram that the number of lanes of the road which you are travelling on will be increased soon. Opposing traffic flow is indicated by a dotted arrow.
+NEW: To inform by diagram that the **number of lanes will be increased soon** (opposing flow shown by dotted arrow).
+
+=== purpose_text id 146 -[that that or road road road you you are driv on on in such way cannot easily see traffic travell]
+RAW: To warn that one or more concealed driveways enter the road you are driving on from the left or right in such a way that you cannot easily see the road or traffic travelling on that road.
+NEW: To warn that **one or more concealed driveways enter** from the left or right.
+
+=== purpose_text id 174 -[from w334 tw334 w335 tw335]
+RAW: To warn that rocks could fall on the carriageway from the left (W334, TW334) or from the right-hand side (W335, TW335).
+NEW: To warn that **rocks could fall on the carriageway** from the left or right-hand side.
+
+=== purpose_text id 184 -[scene similar]
+RAW: To warn about a temporary stop sign, a collision scene, roadblock or similar scene where police are on duty.
+NEW: To warn about a **temporary stop sign, collision scene, or roadblock** where police are on duty.
+
+=== purpose_text id 190 -[driver - road be be there there could could pedestrian rescue team and police or traffic traffic officer controll at injur person animal broken glass on surface] +[by accident]
+RAW: To warn the driver that - the road ahead may be obstructed, there could be pedestrians, rescue teams and police or traffic officers controlling the traffic at the scene, there could be wreckage, injured persons, animals or broken glass on the road surface.
+NEW: To warn that the road ahead **may be obstructed by an accident scene or wreckage**.
+
+=== action_text id 3 -[stand still other which] +[standstill that]
+RAW: Bring your vehicle to a stop behind the stop line. If there is no stop line, the front of the vehicle must come to a stand still in line with the stop sign. At a three or four-way stop you may not move off before all the other vehicles which stopped before you have moved off. Proceed only when it is safe.
+NEW: Bring your vehicle to a stop behind the stop line. If there is no stop line, the front of the vehicle must **come to a standstill in line with the stop sign**. At a three or four-way stop, **you may not move off** before all vehicles that stopped before you have moved off. **Proceed only when it is safe**.
+
+=== action_text id 103 -[not take if you are mini-bu mini-bu on sign with your road traffic] +[minibu minibu stop rule pick unless and]
+RAW: Do not stop to take up or drop passengers off if you are not driving a mini-bus of the organisation indicated on the sign. You may only wait with or park your mini-bus here if the road traffic sign indicates that the stop is a terminus.
+NEW: Minibus stop rules:
+(i) **do not stop to pick up or drop off passengers** unless driving a minibus of the organisation indicated, and
+(ii) **you may only wait or park** here if the sign indicates that the stop is a **terminus**.
+
+=== action_text id 182 -[look out for truck slow down road also anyth dropp on by of] +[hazard instruction material]
+RAW: Look out for trucks that could force you to slow down. Slow down and look out for trucks that want to cross or join the road. Also look out for anything spilt or dropped on the road by the trucks like gravel, sand or water that could affect the handling of your vehicle.
+NEW: Truck hazard instructions:
+(i) **look out for trucks** that could force you to slow down, or that **want to cross or join the road**, and
+(ii) **look out for spilt materials** like gravel, sand, or water that could **affect your vehicle's handling**.
+
+=== action_text id 158 -[are]
+RAW: Slow down and be prepared to stop should the gates be closing or are closed.
+NEW: **Slow down** and **be prepared to stop** should the gates be closing or closed.
+
+=== action_text id 160 -[to but not within cross] +[outside]
+RAW: Slow down and look to the right and left for oncoming trains. If a train is approaching stop in time, but not within the railway crossing reserve.
+NEW: **Slow down** and **look left and right** for oncoming trains. If a train is approaching, **stop in time outside the railway reserve**.
+
+=== action_text id 133 -[road be on when tak right hand side] +[split and merge action rule or]
+RAW: Pass the intersection at a safe speed and look out for merging traffic that might not yield. / Decide well in time which road to take. Be on the look out for approaching traffic whose path you will cross when taking the right hand side road.
+NEW: Split and merge action rules:
+(i) **pass the intersection at a safe speed** and look out for **merging traffic that might not yield**, or
+(ii) **decide well in time which road to take**, looking out for **approaching traffic whose path you will cross**.
+
+=== action_text id 210 -[that]
+RAW: Make sure that the route you are travelling on is the route that you want to take to reach your destination.
+NEW: **Make sure that the route** you are travelling on is the **route you want to take** to reach your destination.
+
+=== action_text id 143 -[to allow for oncom vehicle]
+RAW: Be aware that you are entering a roadway with two-way traffic and have to be more careful when overtaking to allow for oncoming vehicles.
+NEW: Be aware that you are **entering a roadway with two-way traffic** and have to be **more careful when overtaking**.
+
+=== action_text id 166 -[tarr surface on tend to ne] +[transition instruction and tar be be aware that]
+RAW: Slow down and look out for a ditches or potholes at the joint between the gravel and the tarred surface. Steering will be lighter on the gravel, vehicles will tend to skid easier and will need a longer stopping distance.
+NEW: Gravel transition instructions:
+(i) **slow down** and **look out for ditches or potholes** at the joint between gravel and tar, and
+(ii) be aware that **steering will be lighter**, vehicles will **skid easier**, and **stopping distance will be longer**.
+
+=== action_text id 187 -[it is not known how deep] +[depth unknown]
+RAW: Slow down and if it is not known how deep the water is, stop. If passable, drive through the water slowly.
+NEW: **Slow down** and, if water depth is unknown, **stop**. If passable, **drive through the water slowly**.
+
+=== action_text id 39 -[indicat by thi road traffic sign] +[toll]
+RAW: Consider both the alternative and the route indicated by this road traffic sign and decide in good time which to follow.
+NEW: **Consider both the alternative and the toll route**, and **decide in good time** which to follow.
+
+=== action_text id 66 -[motorcar] +[midibu]
+RAW: Do not enter this area if you are driving motorcar.
+NEW: **Do not enter this area** if you are driving a **midibus**.
+
+=== action_text id 229 -[to take]
+RAW: Make sure which exit you need to take and move in good time to the correct lane to leave the freeway.
+NEW: **Make sure which exit you need** and **move in good time to the correct lane** to leave the freeway.
+
+=== action_text id 250 -[other]
+RAW: Obey all other road traffic signs. Look out for vehicles, pedestrians and other hazards engaged in the experiment.
+NEW: **Obey all other road traffic signs**. **Look out for vehicles, pedestrians and hazards** engaged in the experiment.
+
+=== action_text id 262 -[or of traffic police]
+RAW: Drive in such a way that you do not stop, park or drive over the island, unless on the orders of a traffic or police officer, to avoid a collision or in an emergency.
+NEW: Drive in such a way that you **do not stop, park or drive over the island**, unless on **officer orders**, to **avoid a collision**, or in an **emergency**.
+
+=== action_text id 286 -[arrow otherwise to what show]
+RAW: The driver must be guided by the arrows and never, unless otherwise requested by a traffic officer, drive in the direction opposite to what the arrows show.
+NEW: The driver **must be guided by the arrows** and **never drive in the opposite direction**, unless requested by a traffic officer.
+
+=== action_text id 180 -[thi is for example to avoid collision in direction of when you move off road] +[toward]
+RAW: Do not drive or stop on the shoulder. If this is unavoidable, for example to avoid a collision, slow down as much as possible because the vehicle will pull in the direction of the shoulder when you move off the road.
+NEW: **Do not drive or stop on the shoulder**. If unavoidable, **slow down as much as possible** because the vehicle will pull toward the shoulder.
+
+=== action_text id 7 +[stop-go instruction]
+RAW: Stop if the STOP sign is displayed and move off or proceed with caution if safe when the GO sign is displayed.
+NEW: Stop-Go instructions:
+(i) **stop if the STOP sign is displayed**, and
+(ii) **move off or proceed with caution** if safe when the **GO sign is displayed**.
+
+=== action_text id 147 +[traffic light warn action and]
+RAW: Slow down immediately and be ready to stop if the light changes from green to amber. Make sure there are no pedestrians or cross-traffic who might not obey the signals.
+NEW: Traffic light warning action:
+(i) **slow down immediately** and be **ready to stop** if the light changes from green to amber, and
+(ii) **make sure there are no pedestrians** or cross-traffic who might not obey signals.
+
+=== action_text id 6 -[your vehicle to stop stop there is front of must be brought more than one at such intersection] +[4-way action or exist and multiple]
+RAW: Bring your vehicle to a standstill behind the stop line. If there is no stop line, the front of your vehicle must be brought to a stop in line with the stop sign. Proceed only when it is safe. If more than one vehicle stops at such an intersection, the vehicle, which stopped first, should move off first.
+NEW: 4-Way Stop action:
+(i) **bring your vehicle to a standstill** behind the stop line (or in line with the sign if no line exists),
+(ii) **proceed only when it is safe**, and
+(iii) if multiple vehicles stop, the **vehicle which stopped first** should **move off first**.
+
+=== action_text id 261 -[to to left of of line you you you you may however drive drive here whilst be overtaken by another vehicle vehicle if can so so without endanger yourself other traffic pedestrian or property dur and and person on road are are clearly discernible at at distance least 150 metre it is is not compulsory when when keep in mind that have very little space do your as from usually found one-way such] +[edge rule permitt while clear visibility 150m]
+RAW: Avoid driving to the left of the left-edge line. You may, however drive here only; whilst being overtaken by another vehicle, if you can so without endangering yourself, other traffic, pedestrians or property, during daytime and if persons and vehicles on the road are clearly discernible at a distance of at least 150 metres. It is not compulsory to drive to the left of the line when you are being overtaken, keep in mind that you have very little space when doing so. If your vehicle breaks down, stop as far left from the line as possible and switch on your emergency lights. The right-edge line is usually found on one-way roads such as dual carriageways or freeways and may not be crossed.
+NEW: Road edge line rules:
+(i) **avoid driving to the left** of the left-edge line (permitted daytime only while being overtaken if clear visibility >150m),
+(ii) if your vehicle breaks down, **stop as far left as possible** and **switch on emergency lights**, and
+(iii) the **right-edge line** on dual carriageways or freeways **may not be crossed**.
+
+=== action_text id 9 -[road]
+RAW: Look out for pedestrians crossing the road or near the road and be ready to stop.
+NEW: **Look out for pedestrians** crossing or near the road and **be ready to stop**.
+
+=== action_text id 10 -[look out for other vehicle yield to circle that will will cross at at their entrance before you you your who reache his her mini must as normal intersection] +[traffic action first and mini-circle reach]
+RAW: Look out for other vehicles and yield to vehicles already in the circle or that will cross the yield line at their entrance to the circle before you will cross yours. Stop if necessary. The driver who reaches his/her yield line first may proceed first. At a mini circle you must, as at a normal intersection, signal in time in which direction you want to turn.
+NEW: Traffic circle action:
+(i) **yield to vehicles already in the circle** or crossing the yield line first, and **stop if necessary**,
+(ii) at mini-circles, the **driver reaching the line first** may proceed first, and
+(iii) **signal in time** in which direction you want to turn.
+
+=== action_text id 165 -[particularly in mountainou area with sharp curve to you can see remember your vehicle is] +[sight]
+RAW: Slow down and, particularly in mountainous areas with sharp curves, be able to stop within the distance you can see. Remember to allow for a longer stopping distance on a descent especially when your vehicle is heavily laden.
+NEW: **Slow down** and be able to **stop within sight distance**. Allow for a **longer stopping distance on a descent**, especially when heavily laden.
+
+=== action_text id 4 -[you intend to which is is proce it] +[yield-left turn action and proceed]
+RAW: If you intend to carry straight on, bring your vehicle to a standstill behind the stop line. When turning left, yield to all traffic, which is close enough to pose a hazard. Proceed only when it is safe.
+NEW: Yield-left turn action:
+(i) if carrying straight on, **bring your vehicle to a standstill** behind the stop line, and
+(ii) when turning left, **yield to all traffic close enough to pose a hazard**, proceeding only when safe.
+
+=== action_text id 189 -[of road it] +[if]
+RAW: Look out for agricultural vehicles and slow down of they want to cross the road or are crossing it.
+NEW: **Look out for agricultural vehicles** and **slow down** if they want to cross or are crossing.
+
+=== action_text id 191 -[look out on other] +[alert]
+RAW: Look out for Fog or smoke and slow down. Be on the look out for other slow moving vehicles.
+NEW: **Look out for fog or smoke**, **slow down**, and **be alert for slow moving vehicles**.
+
+=== action_text id 197 -[of] +[if]
+RAW: Do not continue of your vehicle is wider than indicated on the sign.
+NEW: **Do not continue** if your vehicle is **wider than indicated** on the sign.
+
+=== action_text id 209 -[before hand n] +[beforehand]
+RAW: You need to know before hand in which direction you want to travel, e.g. North(N) or South(S).
+NEW: **You need to know beforehand** in which direction you want to travel (e.g. North or South).
+
+=== action_text id 214 -[you you want want to take is] +[toll alternative rule tak and are]
+RAW: Decide in advance whether you want to take the toll or alternative route. If you want to take the alternative route, slow down for the intersection. Remember that the alternative route is usually not of the same high standard as the toll route.
+NEW: Toll alternative rules:
+(i) **decide in advance** whether to take the toll or alternative route,
+(ii) **slow down for the intersection** if taking the alternative route, and
+(iii) remember that alternative routes are **usually not of the same high standard** as toll routes.
+
+=== action_text id 215 -[that] +[who]
+RAW: Do not use this route and look out for cyclists that could suddenly change direction to follow the cycle route.
+NEW: **Do not use this route** and **look out for cyclists** who could suddenly change direction to follow the cycle route.
+
+=== action_text id 228 -[and left right road]
+RAW: Slow down and be ready to stop, turn left or right, depending on road traffic signs and signals and your destination.
+NEW: **Slow down** and **be ready to stop or turn**, depending on traffic signs, signals, and your destination.
+
+=== action_text id 217 -[make sure also other that might not yield] +[to ensure non-yield]
+RAW: Slow down and make sure you take the correct route. Also look out for other traffic at the intersection that might not yield.
+NEW: **Slow down** to ensure you **take the correct route**, and **look out for non-yielding traffic** at the intersection.
+
+=== action_text id 218 -[note destination particular to to that fill up with petrol] +[kilometre for fuel]
+RAW: Note the destination and in particular note the distance to the destination so that you can plan your trip to fill up with petrol or rest.
+NEW: **Note the destination and distance** in kilometres so you can **plan your trip for fuel or rest**.
+
+=== action_text id 200 -[or or]
+RAW: Do not pass to the right of W401 or TW401 and to the left of W402 or TW402
+NEW: **Do not pass to the right** of W401/TW401 and **to the left** of W402/TW402.
+
+=== action_text id 201 -[you can see] +[sight]
+RAW: Slow down to take the curve at a safe speed or to be able to stop within the distance you can see.
+NEW: **Slow down** to take the curve at a safe speed or to **be able to stop within sight distance**.
+
+=== action_text id 237 -[merge is make sure in that there big enough traffic with also which might] +[ensure sufficient and merg]
+RAW: Whenever a lane ends, converges, merges or is added, make sure in time that there is a big enough gap in the traffic to merge with the traffic. Also yield to other traffic, which might merge.
+NEW: Whenever a lane ends, converges, merges or is added, **ensure a sufficient traffic gap to merge** in time, and **yield to other merging traffic**.
+
+=== action_text id 179 -[slow and be that vehicle may tend to to to to if you you straddle between higher higher lower level because because ridge also return could react suddenly any lose completely] +[step driv instruction pull or straddl expect sluggish sudden response when as loss]
+RAW: Slow down and be aware that your vehicle may tend to the left or right if you straddle the step between the higher and lower level. Because of the ridge vehicles may also be slow to return to the higher level and could react suddenly if the wheel mounts the ridge. Do not make any sudden jerking steering motions, because it could cause you to lose control completely.
+NEW: Step level driving instructions:
+(i) **slow down** and be aware your vehicle may pull left or right if straddling the step,
+(ii) expect **sluggish or sudden wheel response** when mounting the ridge, and
+(iii) **do not make sudden jerking steering motions** as it could cause loss of control.
+
+=== action_text id 230 -[you want to follow at freeway ahead] +[your]
+RAW: Decide on the direction and route you want to follow and position your vehicle to join the on-ramp at the freeway or proceed straight ahead.
+NEW: **Decide on your direction and route**, and **position your vehicle** to join the on-ramp or proceed straight.
+
+=== action_text id 234 -[make sure you want to] +[ensure]
+RAW: Signal in time and make sure you are in the right-hand lane if you want to turn right to join the freeway.
+NEW: **Signal in time** and **ensure you are in the right-hand lane** if turning right to join the freeway.
+
+=== action_text id 183 -[road that indicate] +[indicat]
+RAW: Slow down and look out for other road traffic signs that indicate a specific hazard.
+NEW: **Slow down** and **look out for other traffic signs** indicating a specific hazard.
+
+=== action_text id 142 -[to be able you can see] +[your]
+RAW: Slow down enough to be able to round the curves safely or stop within the sight distance you can see.
+NEW: **Slow down enough** to **round the curves safely** or **stop within your sight distance**.
+
+=== action_text id 241 -[you are vehicle lower gear so that will doe not have desir effect keep against] +[steep action to and ineffective maintain from]
+RAW: If you are driving a heavy motor vehicle, engage a lower gear so that the vehicle will move down the descent more slowly. If the lower gear does not have the desired effect, engage an even lower gear to keep the speed constant and protect the brakes against overheating.
+NEW: Steep descent action:
+(i) if driving a heavy motor vehicle, **engage a lower gear** to move down more slowly, and
+(ii) if ineffective, **engage an even lower gear** to maintain constant speed and **protect brakes from overheating**.
+
+=== action_text id 239 -[merge is make sure in that there big enough traffic with also which might] +[ensure sufficient and merg]
+RAW: Whenever a lane ends, converges, merges or is added, make sure in time that there is a big enough gap in the traffic to merge with the traffic. Also yield to other traffic, which might merge.
+NEW: Whenever a lane ends, converges, merges or is added, **ensure a sufficient traffic gap to merge** in time, and **yield to other merging traffic**.
+
+=== action_text id 238 -[merge is make sure in that there big enough traffic with also which might] +[ensure sufficient and merg]
+RAW: Whenever a lane ends, converges, merges or is added, make sure in time that there is a big enough gap in the traffic to merge with the traffic. Also yield to other traffic, which might merge.
+NEW: Whenever a lane ends, converges, merges or is added, **ensure a sufficient traffic gap to merge** in time, and **yield to other merging traffic**.
+
+=== action_text id 278 -[in you are travell where make sure there is is no that also] +[reduction action your and when avoid]
+RAW: Change lanes in time if the lane you are travelling in ends. Check both the blind spots where two lanes end from both sides to make sure there is no other vehicle that is also changing lanes.
+NEW: Lane reduction action:
+(i) **change lanes in time** if your lane ends, and
+(ii) **check both blind spots** when two lanes end from both sides to avoid other changing vehicles.
+
+=== action_text id 251 -[spe however make sure that that and indicat] +[coordinat signal action which ensure who]
+RAW: If possible maintain the recommended speed. However, make sure that it is safe to enter every intersection and look out for drivers that do not yield. The speed indicated is a recommendation and not a speed limit.
+NEW: Coordinated signals action:
+(i) if possible, **maintain recommended speed** (which is a recommendation, not a speed limit), and
+(ii) **ensure it is safe to enter** every intersection, looking out for drivers who do not yield.
+
+=== action_text id 252 -[traffic signal sequence of at thi intersection can be different dur dur normal and peak time]
+RAW: Do not move off when approaching traffic moves off. Wait until the signal is green. The sequence of the traffic signals at this intersection can be different during normal and during peak times.
+NEW: **Do not move off** when approaching traffic moves off. **Wait until the signal is green**.
+
+=== action_text id 254 -[that someone someone also who may road] +[and passenger]
+RAW: Make sure that it is safe to slow down and stop to drop someone off or pick someone up. Also look out for pedestrians who may cross the road.
+NEW: **Make sure it is safe to slow down and stop** to drop off or pick up passengers, and **look out for crossing pedestrians**.
+
+=== action_text id 258 -[line to to to gain direct direct access entrance on other side of from such road in all these case you must ensure that it is] +[when]
+RAW: Do not cross the line, except to gain direct access to an entrance on the other side of the line, to gain direct access from such an entrance to the road or to pass a stationary obstruction. In all these cases you must ensure that it is safe to do so.
+NEW: **Do not cross the line**, except to **gain access to an entrance** or **pass a stationary obstruction** when safe to do so.
+
+=== action_text id 259 -[you may hand with any part of your vehicle stationary in road]
+RAW: You may under no circumstances drive on the right hand side or cross these lines with any part of your vehicle, except to drive around a stationary vehicle or stationary obstruction in the road.
+NEW: Under no circumstances **drive on the right side or cross these lines**, except to **drive around a stationary vehicle or obstruction**.
+
+=== action_text id 255 -[stop stop stop sign there is will have same mean as] +[or exist]
+RAW: Stop with the front of your vehicle behind the stop sign. If there is no stop sign, the stop line will have the same meaning as a stop sign.
+NEW: **Stop with the front of your vehicle** behind the stop sign (or line if no sign exists).
+
+=== action_text id 24 -[you you thi thi thi road road part of of of of where sign sign is display must use that indicat by when driv one follow such your] +[motorcar lane rule designat and other type their specific]
+RAW: You may only drive a motorcar on this road or this part of the road. Where this sign is displayed, you must use that part of the road indicated by this sign. When driving one of the following vehicles, you may use such a road only when the sign depicting your type of vehicle is displayed.
+NEW: Motorcar lane rules:
+(i) you **may only drive a motorcar** on this road or designated part, and
+(ii) other vehicle types **may use the road only** when the sign depicting their specific vehicle type is displayed.
+
+=== action_text id 271 -[no] +[not]
+RAW: Do no drive in the demarcated area.
+NEW: **Do not drive** in the demarcated area.
+
+=== action_text id 256 -[give way to any one who your path there you still have] +[anyone present]
+RAW: Give way to any one who crosses your path of travel or who wants to cross your path. Even if there is no yield sign, you still have to give way.
+NEW: **Give way to anyone** who crosses your path of travel or wants to cross, even if **no yield sign is present**.
+
+=== action_text id 186 -[if wind is blow and from which of your vehicle you should] +[spe handl so]
+RAW: Determine if a wind is blowing and from which direction. Any shielding of the wind by a truck, bridge or excavation will affect your vehicle and you should adjust the steering in time.
+NEW: **Determine wind speed and direction**. Any shielding by trucks, bridges, or excavations will affect handling, so **adjust steering in time**.
+
+=== action_text id 46 -[of of your your vehicle indicat in ton road which is not by thi sign] +[heavy mass limit rule unindicat and]
+RAW: If the GVM or GCM of your vehicle exceeds the mass indicated in tons, use another road or part of the road, which is not indicated by this sign. If your vehicle's GVM or GCM is less than the indicated mass in tons, you may use this road.
+NEW: Heavy vehicle mass limit rules:
+(i) if GVM or GCM **exceeds the indicated mass in tons**, use another road or unindicated part, and
+(ii) if GVM or GCM is **less than the indicated mass**, you may use this road.
+
+=== action_text id 50 -[vehicle sign 100 metre pass] +[100m]
+RAW: If the noise level of your vehicle is high, you may not proceed past the sign, and for 100 metres after passing the sign, the vehicle's hooter may not be used.
+NEW: If the noise level of your vehicle is high, **you may not proceed past the sign**, and for 100m after, the **hooter may not be used**.
+
+=== action_text id 54 +[turn prohibition rule and]
+RAW: Where a left-turn prohibition is displayed, you may proceed straight or turn right. Where a right-turn prohibition is displayed, you may proceed straight or turn left.
+NEW: Turn prohibition rules:
+(i) where a **left-turn prohibition is displayed**, you may proceed straight or turn right, and
+(ii) where a **right-turn prohibition is displayed**, you may proceed straight or turn left.
+
+=== action_text id 205 -[other traffic and be if intensity volume require it that might]
+RAW: Slow down, yield to other traffic and be ready to stop if traffic intensity and volume require it. Look out for a traffic officer or stop sign that might be controlling the traffic.
+NEW: **Slow down, yield to traffic**, and **be ready to stop**. Look out for a **traffic officer or stop sign** controlling traffic.
+
+=== action_text id 62 -[thi sign is]
+RAW: Motorcyclists may not enter this part of the carriageway, or if this sign is displayed on a freeway, motorcyclists must leave at the first exit.
+NEW: Motorcyclists **may not enter this part** of the carriageway, or if displayed on a freeway, motorcyclists **must leave at the first exit**.
+
+=== action_text id 102 -[not take if you are mini-bu mini-bu organisation on sign with your road traffic] +[minibu minibu stop rule pick unless organization and]
+RAW: Do not stop to take up or drop passengers off if you are not driving a mini-bus of the organisation indicated on the sign. You may only wait with or park your mini-bus here if the road traffic sign indicates that the stop is a terminus.
+NEW: Minibus stop rules:
+(i) **do not stop to pick up or drop off passengers** unless driving a minibus of the organization indicated, and
+(ii) **you may only wait or park** here if the sign indicates that the stop is a **terminus**.
+
+=== action_text id 138 -[that you can see] +[sight]
+RAW: Ensure that you drive at such a speed that you can take the curve safely or stop within the distance that you can see.
+NEW: Ensure that you drive at such a speed that you can **take the curve safely** or **stop within sight distance**.
+
+=== action_text id 154 -[be road even] +[in]
+RAW: Slow down immediately and look out for children who could be crossing the road unexpectedly or even be playing the road.
+NEW: **Slow down immediately** and **look out for children** who could cross unexpectedly or be playing in the road.
+
+=== action_text id 173 -[since any start skidd sooner than usual] +[as skid]
+RAW: Slow down since any sudden braking or harsh steering could cause your vehicle to start skidding sooner than usual for the next 2 km.
+NEW: **Slow down**, as sudden braking or harsh steering could **cause your vehicle to skid** for the next 2 km.
+
+=== action_text id 124 -[would there be more than] +[exceed maximum]
+RAW: Do not enter an area if that would mean there would be more than the number of vehicles indicated.
+NEW: **Do not enter an area** if that would mean exceeding the **maximum number of vehicles indicated**.
+
+=== action_text id 13 -[when when driv any of above-mention in in area or road road load off good do so by traffic sign no are such] +[pedestrian rule must and unload designat all prohibit]
+RAW: When driving any of the above-mentioned vehicles, drive carefully in the area at a maximum speed of 15 km/h. Priority must be given to pedestrians crossing or wanting to cross the road. When loading or off loading goods, only do so in areas marked by road traffic signs. No other vehicles are permitted in such an area.
+NEW: Pedestrian area rules:
+(i) permitted vehicles must drive carefully at a **maximum speed of 15 km/h**,
+(ii) **priority must be given to pedestrians** crossing or wanting to cross, and
+(iii) load/unload **only in designated marked areas** (all other vehicles prohibited).
+
+=== action_text id 16 -[when driv vehicle vehicle with gross gross mass mass combination in in excess of of ton by by thi thi sign sign your] +[heavy lane selection if exce and]
+RAW: When driving a vehicle with a Gross Vehicle Mass (GVM) or Gross Combination Mass (GCM) in excess of the mass indicated in tons, use only the part of the road indicated by this sign. If the GVM or GCM of your vehicle is less than the mass indicated in tons, use a part of the road not indicated by this sign.
+NEW: Heavy vehicle lane selection:
+(i) if GVM or GCM **exceeds the mass indicated in tons**, use only the part of the road indicated, and
+(ii) if GVM or GCM is **less than the indicated mass**, use a part of the road not indicated.
+
+=== action_text id 150 -[vehicle]
+RAW: Slow down and be ready to stop the vehicle if the officer instructs you to do so.
+NEW: **Slow down** and **be ready to stop** if the officer instructs you to do so.
+
+=== action_text id 47 -[of of your vehicle road]
+RAW: If the axle mass of any of your vehicle's axles exceeds the indicated mass in tons, use another road or part of the road not indicated by this sign.
+NEW: If the axle mass of any axle **exceeds the indicated mass in tons**, use another road or part **not indicated by this sign**.
+
+=== action_text id 48 -[indicat not by thi sign]
+RAW: If your vehicle (or load) is higher than the indicated height in metres, another road not indicated by this sign, must be used.
+NEW: If your vehicle or load is **higher than the indicated height in metres**, another road **must be used**.
+
+=== action_text id 58 -[traffic or]
+RAW: Do not stop unless to obey a traffic light or a traffic officer or to avoid a collision.
+NEW: **Do not stop** unless to **obey a traffic light/officer** or to **avoid a collision**.
+
+=== action_text id 51 -[vehicle of] +[hitchhik prohibition rule and]
+RAW: No pedestrian may attempt to be picked up by a passing vehicle. A driver of a vehicle may not pick up passengers for the next 500m.
+NEW: Hitchhiking prohibition rules:
+(i) **no pedestrian may attempt to be picked up** by a passing vehicle, and
+(ii) a driver **may not pick up passengers** for the next 500m.
+
+=== action_text id 69 -[motorcar] +[good vehicle]
+RAW: Do not enter this area if you are driving motorcar.
+NEW: **Do not enter this area** if you are driving a **goods vehicle**.
+
+=== action_text id 70 -[motorcar] +[construction vehicle]
+RAW: Do not enter this area if you are driving motorcar.
+NEW: **Do not enter this area** if you are driving a **construction vehicle**.
+
+=== action_text id 114 -[which] +[that]
+RAW: Follow all the rules, which apply, to freeways.
+NEW: **Follow all the rules** that **apply to freeways**.
+
+=== action_text id 134 -[road tak hand] +[turn]
+RAW: Decide well in time which road to take. Look out for approaching traffic whose path you will cross when taking the right hand road
+NEW: **Decide well in time which road to take**. **Look out for approaching traffic** whose path you will cross when turning right.
+
+=== action_text id 139 -[that you can see] +[sight]
+RAW: Slow down so that you can take the curve safely or stop within the distance that you can see.
+NEW: **Slow down** so that you can **take the curve safely** or **stop within sight distance**.
+
+=== action_text id 176 -[and full of of not be available there could could that affect handl their vehicle] +[restrict with]
+RAW: Slow down and drive slowly past the grader. The full width of the road may not be available and there could be sand or gravel on the carriageway that could affect the handling of their vehicles.
+NEW: **Slow down and drive slowly** past the grader. Road width may be restricted with **sand or gravel on the carriageway**.
+
+=== action_text id 177 -[be aware that vehicle could could cause damage your also] +[loose gravel instruction and beware of note]
+RAW: Slow down and be aware that oncoming vehicles could throw up stones that could cause damage. Your vehicle's braking and turning capacity could also be affected negatively.
+NEW: Loose gravel instructions:
+(i) **slow down** and beware of oncoming vehicles **throwing up stones**, and
+(ii) note that **braking and turning capacity** could be negatively affected.
+
+=== action_text id 204 -[sign out that will indicate] +[indicat]
+RAW: Slow down and do not attempt to drive past the sign. Look out for a additional regulatory signs that will indicate an alternative route.
+NEW: **Slow down** and **do not attempt to drive past**. Look for **additional regulatory signs** indicating an alternative route.
+
+=== action_text id 68 -[motorcar] +[delivery vehicle]
+RAW: Do not enter this area if you are driving motorcar.
+NEW: **Do not enter this area** if you are driving a **delivery vehicle**.
+
+=== action_text id 67 -[motorcar] +[bus]
+RAW: Do not enter this area if you are driving motorcar.
+NEW: **Do not enter this area** if you are driving a **bus**.
+
+=== action_text id 162 -[bridge or structure as thi]
+RAW: If your vehicle is higher than the bridge or structure as indicated by this sign, find an alternative route
+NEW: If your vehicle is **higher than indicated by the sign**, **find an alternative route**.
+
+=== action_text id 175 -[other road road traffic people who might be] +[or personnel]
+RAW: Slow down and look out for other temporary road traffic signs, people regulating the traffic or who might be crossing the road.
+NEW: **Slow down** and **look out for temporary signs** or personnel **regulating or crossing traffic**.
+
+=== action_text id 129 -[and go]
+RAW: Look out for cross-traffic. Slow down and be prepared to stop and go round the corner at a safe speed.
+NEW: **Look out for cross-traffic**. **Slow down**, **be prepared to stop**, and **round the corner at a safe speed**.
+
+=== action_text id 263 -[make sure that that your your vehicle vehicle is in case of you must from not further than but] +[rule for bumper within and]
+RAW: Make sure that your vehicle is parked completely inside the lines that mark the parking bay. In the case of angle parking you must park as far as possible from the road, with the front of your vehicle not further than 150mm from the kerb but no part of the vehicle may be on or over the sidewalk.
+NEW: Parking bay rules:
+(i) **park completely inside marked lines**,
+(ii) for angle parking, park **as far as possible from the road** with front bumper **within 150mm of kerb**, and
+(iii) **no part of the vehicle** may be on or over the sidewalk.
+
+=== action_text id 264 -[you are by sign may park or or that that indicate indicate] +[special bay rule do and]
+RAW: If you are not part of the group identified by the sign, you may not park here. In an emergency you may stop or park at the sign that indicates the SOS telephone. Only goods vehicles may stop or park in the demarcated are that indicates a loading zone.
+NEW: Special parking bay rules:
+(i) **do not park here** if you are not part of the identified group,
+(ii) in an emergency, you **may stop at the SOS telephone sign**, and
+(iii) **only goods vehicles may stop** in a demarcated loading zone.
+
+=== action_text id 265 -[lane lane in in to to to you you want go make sure that that is is is right see next who suppose because of right-turn his not carry straight on] +[action desir ensure ensure and adjacent as mark]
+RAW: Choose the correct lane in time to travel in the direction you want to go. Make sure that other traffic is obeying the mandatory direction arrows in their lanes. Check your blind spot before turning right to see that a vehicle in the lane next to you who is suppose to turn right (because of the mandatory right-turn arrow in his lane) is not carrying straight on.
+NEW: Mandatory arrow actions:
+(i) **choose the correct lane in time** to travel in your desired direction,
+(ii) **ensure other traffic obeys** mandatory direction arrows in their lanes, and
+(iii) **check blind spots before turning right** to ensure adjacent vehicles turn as marked.
+
+=== action_text id 266 -[indicat by sign]
+RAW: If you are not driving a bus do not drive in the lane indicated by the sign during the times on the sign.
+NEW: If you are not driving a bus, **do not drive in the lane** during the **times on the sign**.
+
+=== action_text id 267 -[make sure that will be able to intersection intersection] +[ensure can completely]
+RAW: Do not stop in the demarcated box and make sure that you will be able to drive through the intersection before entering the intersection.
+NEW: **Do not stop in the demarcated box**, and ensure you can **drive completely through** before entering.
+
+=== action_text id 268 -[that that may cross road road has any] +[zone action and pass]
+RAW: Look out for pedestrians that may cross the road, slow down and stop if someone wants to cross the road. Do not overtake inside this area or a vehicle that has stopped at any pedestrian crossing.
+NEW: Pedestrian zone actions:
+(i) **look out for pedestrians**, slow down, and **stop if someone wants to cross**, and
+(ii) **do not overtake inside this area** or pass a vehicle stopped at a crossing.
+
+=== action_text id 269 -[any you may indicat by road traffic sign] +[no-stopp line action do and restrict]
+RAW: Except in any emergency, do not stop at these lines. In the case of a broken line, you may not stop during the times indicated by a road traffic sign.
+NEW: No-stopping line actions:
+(i) **do not stop at these lines** except in an emergency, and
+(ii) in the case of a broken line, **do not stop during restricted times**.
+
+=== action_text id 272 -[around yield traffic com your hand side that that reache before you someone doe not] +[navigation rule to and and vehicle another driver fail]
+RAW: Only drive around the circle in the direction indicated by the arrows. Yield to traffic coming from your right hand side. At a mini-circle yield to traffic that reaches their yield line first before you reach yours. Drive slowly so that you can stop if someone does not yield.
+NEW: Circle navigation rules:
+(i) **drive only in the direction** indicated by arrows,
+(ii) **yield to traffic from your right**, and at mini-circles yield to **vehicles reaching their line first**, and
+(iii) **drive slowly** so you can stop if another driver fails to yield.
+
+=== action_text id 274 -[to any that that will soon or paint island which make make it direction your sure there are other might of you] +[line rule lane note solid mak and ensure]
+RAW: Yield to any traffic that wants to change lanes. The continuity lines will soon change to a channelizing line or painted island, which will make it illegal to change direction. Check your blind spot to make sure there are no other vehicles that might cut in front of you.
+NEW: Continuity line rules:
+(i) **yield to traffic** wanting to change lanes,
+(ii) note lines will **change to solid channelizing lines**, making lane changes illegal, and
+(iii) **check blind spots** to ensure no vehicles cut in front.
+
+=== action_text id 275 -[over]
+RAW: Be on the look out for approaching vehicles which may move over onto your side of the road.
+NEW: **Be on the look out for approaching vehicles** which may move onto your side of the road.
+
+=== action_text id 288 -[road mark of by]
+RAW: Do not use a road or a marked portion of a road if you are not part of the group identified by the marking.
+NEW: **Do not use a road or marked portion** if you are **not part of the group identified**.
+
+=== action_text id 287 -[who]
+RAW: Look out for cyclists crossing or who want to cross the road.
+NEW: **Look out for cyclists** crossing or wanting to cross the road.
+
+=== action_text id 289 -[message then by]
+RAW: Read the message on the road and then concentrate on the possible danger indicated by the message.
+NEW: **Read the message on the road** and **concentrate on the possible danger** indicated.
+
+=== action_text id 292 -[driver driver must focu on signal given given by officer strictly adhere to to to traffic traffic traffic traffic over any other stop-stop stop-stop stop-stop approach approach approach from from b rear c d go proce proce - - indicate that he he she she may] +[stop require stopp when indicat or]
+RAW: Driver must focus on the signals given by the officer, and strictly adhere to the signal given. The traffic officer signals takes precedence over any other traffic signal. a) Stop-Stop traffic approaching from the front b) Stop-Stop traffic approaching from the rear c) Stop-Stop traffic approaching from the rear d) Go/Proceed - Indicates to the driver that he/she may proceed e) Go/Proceed - Indicates to the driver that he/she may proceed
+NEW: Traffic officer signals take precedence:
+(i) **Stop signals** require stopping when indicated from front or rear, and
+(ii) **Go/Proceed signals** indicate that the driver may proceed.
+
+=== action_text id 123 -[by thi sign]
+RAW: If your vehicle belongs to the company or organisation indicated by this sign, obey the regulatory sign.
+NEW: If your vehicle **belongs to the company or organisation** indicated, **obey the regulatory sign**.
+
+=== action_text id 243 -[you are]
+RAW: Do not turn in at such a road unless you are going to a destination in the road that ends.
+NEW: **Do not turn in at such a road** unless going to a **destination in the road that ends**.
+
+=== action_text id 280 -[ensure to you are of road left-hand as as soon possible] +[line warn do and left]
+RAW: Ensure not to cross the prohibition line that follows the sign. If you are on the right-hand side of the road move back to the left-hand lane as soon as possible before the prohibition line starts.
+NEW: Prohibition line warning:
+(i) **do not cross the prohibition line** that follows the sign, and
+(ii) if on the right-hand side, **move back to the left lane** before the line starts.
+
+=== action_text id 220 -[make of direction to where you want go] +[your route]
+RAW: Make use of this advance direction sign to decide where you want to go before reaching actual intersection.
+NEW: **Use this advance sign** to **decide your route** before reaching the actual intersection.
+
+=== action_text id 235 -[merge is make sure in that there big enough traffic with also which might] +[ensure sufficient and merg]
+RAW: Whenever a lane ends, converges, merges or is added, make sure in time that there is a big enough gap in the traffic to merge with the traffic. Also yield to other traffic, which might merge.
+NEW: Whenever a lane ends, converges, merges or is added, **ensure a sufficient traffic gap to merge** in time, and **yield to other merging traffic**.
+
+=== action_text id 226 -[alway of thi road traffic] +[gore position pass]
+RAW: Always pass on the left-hand side of this road traffic sign if you want to leave the freeway and on the right-hand side if you do not want to leave.
+NEW: Gore sign positioning:
+(i) **pass on the left-hand side** if you want to leave the freeway, and
+(ii) **pass on the right-hand side** if you do not want to leave.
+
+=== action_text id 20 -[road road of of by thi sign]
+RAW: Do not use the road or part of the road indicated by this sign. Pedestrians may use only the part of the road indicated by this sign.
+NEW: **Do not use the road** or part indicated by this sign. **Pedestrians may use only the part** indicated.
+
+=== action_text id 21 -[road road of of by thi sign]
+RAW: Do not use the road or part of the road indicated by this sign. Cyclists may use only the part of the road indicated by this sign.
+NEW: **Do not use the road** or part indicated by this sign. **Cyclists may use only the part** indicated.
+
+=== action_text id 61 -[cyclist and pedestrian who use road despite prohibition thi sign] +[must driver prohibit user]
+RAW: Look out for cyclists and pedestrians who use the road despite the prohibition. Cyclists and pedestrians must follow a different route and may not proceed beyond this sign.
+NEW: Cyclists and pedestrians **must follow a different route** and **may not proceed beyond**. Drivers must **look out for prohibited users**.
+
+=== action_text id 44 -[to vehicle within where such are cause danger or potential if it is do so] +[navigation pose and when]
+RAW: Yield right of way to vehicle approaching from the right within the roundabout, where such vehicles are close enough to cause a danger or potential danger. Proceed clockwise at the junction if it is safe to do so.
+NEW: Roundabout navigation:
+(i) **yield right of way** to vehicles approaching from the right close enough to pose danger, and
+(ii) **proceed clockwise at the junction** when safe.
+
+=== action_text id 56 -[if sign sign or you are driv motor] +[no overtak rule and on]
+RAW: If sign R214 or TR214 is displayed, do not overtake any vehicle for the next 500m. If you are driving a heavy motor vehicle, do not overtake another heavy vehicle if sign R215 is displayed.
+NEW: No overtaking rules:
+(i) if R214/TR214 is displayed, **do not overtake any vehicle** for the next 500m, and
+(ii) if R215 is displayed on a heavy vehicle, **do not overtake another heavy vehicle**.
+
+=== action_text id 60 -[who use road despite prohibition thi sign] +[must driver prohibit]
+RAW: Look out for cyclists who use the road despite the prohibition. Cyclists must follow a different route and may not proceed beyond this sign.
+NEW: Cyclists **must follow a different route** and **may not proceed beyond**. Drivers must **look out for prohibited cyclists**.
+
+=== action_text id 125 -[to with sign similar but without red cross] +[match]
+RAW: From here you do not have to comply with the restriction sign with a symbol similar to this sign but without the red cross.
+NEW: From here **you do not have to comply** with the restriction sign **matching this symbol**.
+
+=== action_text id 115 -[mention above particularly look out] +[zone lookout]
+RAW: Drive slowly, obey the special rules mentioned above and be particularly on the look out for children playing in the street.
+NEW: **Drive slowly**, obey special zone rules, and **be on the lookout for children playing** in the street.
+
+=== action_text id 248 -[in order what what danger is is is how far away will continue] +[nature of of length]
+RAW: Pay attention to these signs in order to realise what the danger is, what a safe speed is, how far away the danger is and the distance the danger will continue.
+NEW: Pay attention to these signs to realise the **nature of danger**, **safe speed**, and **distance/length of danger**.
+
+=== action_text id 78 -[of you are driv]
+RAW: Do not enter this area if the overall width of the vehicle you are driving exceeds the width indicated on the sign.
+NEW: **Do not enter this area** if overall vehicle width **exceeds the width indicated** on the sign.
+
+=== action_text id 270 -[exception for period not park mean that that vehicle is is is stationary whether engine runn or or or longer longer than than need to on off load good passenger] +[except in]
+RAW: Exception an emergency, you may stop for short periods, but may not park here. Parking means that a vehicle is stationary (whether the engine is running or not) for a longer period than is longer than that needed to on or off load goods or passengers.
+NEW: Except in an emergency, you **may stop for short periods** but **may not park here**.
+
+=== action_text id 257 -[any cross or want to road]
+RAW: Look out for any pedestrians crossing or wanting to cross the road and give them priority by slowing down or stopping.
+NEW: **Look out for crossing pedestrians** and give them priority by **slowing down or stopping**.
+
+=== action_text id 144 -[you you are are hand hand hand hand want to to to to at at first first intersection intersection wish] +[lane position before two-way cross street and]
+RAW: If you are driving in the left hand lane and want to turn to the right at the first intersection, change to the right hand lane in good time. If you are driving in the right hand lane and wish to turn to the left at the first intersection, change to the left hand lane in good time.
+NEW: Lane positioning before two-way cross street:
+(i) if driving in the left lane and turning right, **change to the right lane in good time**, and
+(ii) if driving in the right lane and turning left, **change to the left lane in good time**.
+
+=== action_text id 22 -[on thi thi road road road part part part part part of of of may may may that indicat indicat indicat by by by these sign sign sign where is symbol symbol] +[pedestrian and and and cycle path path path usage motor vehicle designat designat must their portion section section]
+RAW: Do not drive on this road or part of this road. Cyclists and pedestrians may use only that part of the road indicated by these signs. Where this part of the road is divided, cyclists may use the part indicated on the sign by a bicycle symbol. Pedestrians may use the part indicated on the sign by a pedestrian symbol.
+NEW: Pedestrian and cycle path usage:
+(i) **do not drive a motor vehicle** on this road or designated path,
+(ii) cyclists and pedestrians **must use only their designated portions**, and
+(iii) on divided paths, **cyclists use the bicycle section** and **pedestrians use the pedestrian section**.
+
+=== action_text id 59 -[despite fact that are prohibit on such road road you them thi sign is] +[driver]
+RAW: Despite the fact that pedestrians are prohibited on such a road, you must still look out for them. Pedestrians may not enter or cross a road where this sign is displayed.
+NEW: Pedestrians **may not enter or cross** where displayed. Drivers **must still look out for pedestrians**.
+
+=== action_text id 84 -[park road road traffic traffic if necessary for longer than indicat] +[applicable exce allow limit]
+RAW: Park in accordance with the road traffic sign and road traffic markings. If necessary pay the tariff and do not park for longer than the time indicated.
+NEW: **Park in accordance with signs and markings**. Pay applicable tariffs and **do not exceed allowed time limits**.
+
+=== action_text id 141 -[e3nough you can see remember there could be any number of after first one without further warn] +[enough sight note unwarn may follow]
+RAW: Slow down e3nough to take the curves safely or stop within the distance you can see. Remember that there could be any number of curves after the first one without further warning.
+NEW: **Slow down enough** to **take curves safely or stop within sight distance**. Note that **unwarned curves may follow**.
+
+=== action_text id 132 -[at intersection that might not yield] +[non-yield]
+RAW: Slow down and be prepared to stop or turn at a safe speed. Look out for traffic at the intersection that might not yield.
+NEW: **Slow down** and **be prepared to stop or turn** at a safe speed. **Look out for non-yielding traffic**.
+
+=== action_text id 163 -[that on thi sign] +[than]
+RAW: Find an alternative route if your vehicle is longer that the length indicated in metres on this sign.
+NEW: **Find an alternative route** if your vehicle is **longer than the length indicated** in metres.
+
+=== action_text id 164 -[particularly in mountainou area with sharp curve and your vehicle is]
+RAW: Be aware of slow-moving traffic, particularly in mountainous areas with sharp curves. Allow for a longer stopping distance on a descent and especially when your vehicle is heavily laden.
+NEW: **Be aware of slow-moving traffic**. Allow for a **longer stopping distance on descents**, especially when heavily laden.
+
+=== action_text id 236 -[merge is make sure in that there big enough traffic with also which might] +[ensure sufficient and merg]
+RAW: Whenever a lane ends, converges, merges or is added, make sure in time that there is a big enough gap in the traffic to merge with the traffic. Also yield to other traffic, which might merge.
+NEW: Whenever a lane ends, converges, merges or is added, **ensure a sufficient traffic gap to merge** in time, and **yield to other merging traffic**.
+
+=== action_text id 146 -[that that that that there is do not at intersection of such vehicle your road sometime find it also difficult] +[fail to may struggle]
+RAW: Slow down so that you can stop or yield if there is cross traffic that do not yield at the intersection. Remember that a driver of such a vehicle that joins your road from the concealed driveway sometimes finds it also difficult to see you.
+NEW: **Slow down** so you can stop or yield if cross traffic fails to yield. Remember **drivers joining from concealed driveways may struggle to see you**.
+
+=== action_text id 174 -[to be be able their fall fall occur or has occurr such more often when it and therefore your your since dur rainy weather will longer] +[rockfall in as increase]
+RAW: Slow down to be able to stop within their sight distance if a fall occurs or has occurred. Such falls occur more often when it rains and therefore reduce your speed further since your stopping distance during rainy weather will be longer.
+NEW: **Slow down** to stop within sight distance if rockfalls occur. **Reduce speed further in rain** as stopping distances increase.
+
+=== action_text id 178 -[on or next to carriageway]
+RAW: Slow down and look out for anything on or next to the carriageway that could cause you to change speed or direction.
+NEW: **Slow down** and **look out for anything** that could cause you to **change speed or direction**.
+
+=== action_text id 290 -[these light light light light light must must must must must be be obey at at all time in in follow manner - - - - - - - - - flash to to to after stopp driver driver may may may may may may turn if there is is is is is no traffic traffic traffic remember pedestrian pedestrian and and that that that that want right right from pass through intersection intersection intersection except where it it it cannot done safely until until until green green show show show show you you go go of which example one-way street drive on on on but cross roadway signal signal signal indicate indicate carry as as as sign train com not figure they road shown thi flashe who who have are already possible] +[rule red stop stop then then clear right-turner right-side unless unsafe mandatory movement proce like do do those]
+RAW: These lights must be obeyed at all times in the following manner: Red - Stop. Flashing red arrow to the left - After stopping, the driver may turn if there is no traffic. Remember to yield to pedestrian traffic and oncoming traffic that wants to turn right, and traffic from the right passing through the intersection. Amber - Stop, except where it cannot be done safely. Constant amber arrow - Stop and wait until the flashing green arrow shows you may go. Green - Go if it is safe. Flashing green arrows - Right of way in the direction of the flashing arrow. Constant green arrow - Shows the direction in which traffic must go, for example one-way streets. Flashing amber disc - Drive on carefully, but yield to pedestrians. Pedestrians may cross the roadway. Flashing red signal - Indicates that the driver must stop and may carry on when it is safe (as at stop sign). At a railway crossing a flashing red light indicates that a train is coming and you may not drive on until the light stops flashing. (Red) figure light signal. Shows pedestrians that they may not cross the road until the green figure light signal is shown. If this sign flashes pedestrians who have not entered the roadway must wait until a green figure light signal shows. Pedestrians who are already in the intersection must cross the intersection as quickly as possible.
+NEW: Traffic light rules:
+(i) **Red**: Stop; **Flashing red arrow left**: Stop, then turn if clear (yield to pedestrians, oncoming right-turners, right-side traffic),
+(ii) **Amber**: Stop unless unsafe; **Constant amber arrow**: Stop and wait for green arrow; **Green**: Go if safe,
+(iii) **Flashing green arrow**: Right of way in arrow direction; **Constant green arrow**: Mandatory movement direction; **Flashing amber disc**: Drive carefully and yield to pedestrians,
+(iv) **Flashing red signal**: Stop, then proceed when safe (like a stop sign); **Flashing red at railway crossing**: Stop until flashing stops, and
+(v) **Red figure**: Pedestrians do not cross; **Flashing red figure**: Pedestrians in roadway cross quickly, those waiting do not enter.
+
+=== action_text id 184 -[that after]
+RAW: Be ready to stop at the stop sign that follows after the flashing blue light or on demand of a police officer.
+NEW: **Be ready to stop** at the stop sign following the flashing blue light or **on demand of a police officer**.
+
+=== action_text id 190 -[look out someone controll be there enough or or or professional on scene collision concentrate follow without driv over into anyth] +[accident instruction controller and present gawk focu your avoid debri]
+RAW: Slow down immediately, look out for someone controlling the traffic and be ready to stop. If there is enough or professional help on the scene, do not stop out of curiosity. Do not look at the collision scene or wreckage, concentrate on the route to be followed without driving over or into anything.
+NEW: Accident scene instructions:
+(i) **slow down immediately**, look for traffic controllers, and **be ready to stop**,
+(ii) if help is present, **do not stop out of curiosity**, and
+(iii) **do not gawk at wreckage**; focus on your route to avoid debris.
+
+=== action_text id 131 -[that that will be able to or go around corner intersection other might not yield] +[can turn non-yield]
+RAW: Slow down so that you will be able to stop, or go around the corner or pass the intersection at a safe speed. Look out for other traffic at the intersection that might not yield.
+NEW: **Slow down** so you can stop, turn, or pass at a safe speed. **Look out for non-yielding traffic** at the intersection.
+
+=== action_text id 137 -[so that you you you you you you you you you can or drive around circle at at safe spe look look out out for for road traffic traffic traffic traffic mark which which will tell whether whether have have have have right right of of way way way to to yield if if there is no indication give within still may not display must his before cross your] +[approach rule navigate safely unless specify otherwise present their]
+RAW: Slow down so that you can stop or drive around the circle at a safe speed. Look out for road traffic signs and markings which will tell you whether you have the right of way or whether you have to yield. If there is no indication you have to give way to traffic approaching from the right. Vehicles within a traffic circle have right of way. If you have right of way still look out for traffic in the circle which may not yield to you. If sign R2.2 is displayed at the traffic circle, you must yield to any driver who crosses his yield line first before you cross yours.
+NEW: Circle approach rules:
+(i) **slow down** to stop or navigate the circle safely,
+(ii) **yield to traffic approaching from the right** (vehicles in circle have right of way unless signs specify otherwise), and
+(iii) if sign R2.2 is present, **yield to any driver who crosses their yield line first**.
+
+=== action_text id 151 -[look out at all time road] +[watch]
+RAW: Slow down and look out for a stop sign displayed by the scholar patrol. Look out at all times for children who may suddenly cross the road.
+NEW: **Slow down** and **look out for stop signs** displayed by the scholar patrol. **Watch for children** who may suddenly cross.

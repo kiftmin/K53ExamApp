@@ -1,0 +1,302 @@
+[
+ {
+  "id": 203,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "On any road, where the **carriageway ends**."
+ },
+ {
+  "id": 204,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "On any road, where the **carriageway is closed**."
+ },
+ {
+  "id": 205,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "On any road especially in **urban areas**."
+ },
+ {
+  "id": 206,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "On the **left-hand side** of a road."
+ },
+ {
+  "id": 207,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "On the **left-hand side** of any road which is **not a freeway**."
+ },
+ {
+  "id": 208,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "Generally on the **far left-hand corner** of an intersection."
+ },
+ {
+  "id": 209,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "On the **left-hand side** of any road where **two routes join** the numbered route by means of a set of **one-way carriageways**."
+ },
+ {
+  "id": 210,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "On **numbered metropolitan, regional, provincial, or national routes**."
+ },
+ {
+  "id": 211,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "In **urban areas** on the **opposite side of an intersection** near the street name sign or traffic light."
+ },
+ {
+  "id": 212,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "On the **left-hand side or on the median** of the road."
+ },
+ {
+  "id": 213,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "**Above the lanes** most appropriate to the movement which is indicated."
+ },
+ {
+  "id": 214,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "At the intersection of **toll and alternative routes**."
+ },
+ {
+  "id": 215,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "**On any road**."
+ },
+ {
+  "id": 216,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "On the **left-hand side** of any road **before an intersection**."
+ },
+ {
+  "id": 217,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "On the **far left-hand corner** of an intersection."
+ },
+ {
+  "id": 218,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "On the **left-hand side** of the road a **short distance beyond** an intersection."
+ },
+ {
+  "id": 219,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "On the **far left-hand corner** of an intersection."
+ },
+ {
+  "id": 220,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "On the **left-hand side** of the road **before an intersection**."
+ },
+ {
+  "id": 221,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "On any road with **more than one traffic lane**, especially in **rural areas**."
+ },
+ {
+  "id": 222,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "On the **left-hand side or in an overhead position** on a freeway, about **2 km before an off-ramp exit**."
+ },
+ {
+  "id": 223,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "On the **left-hand side** of a freeway, about **1 km before an off-ramp exit**."
+ },
+ {
+  "id": 224,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "On the **left-hand side** of a freeway, about **500m before an off-ramp exit**."
+ },
+ {
+  "id": 225,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "On the **left-hand side** of a freeway and as **close as possible to the off-ramp**."
+ },
+ {
+  "id": 226,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "Between the **right hand side of an off-ramp** and the **continuing freeway**."
+ },
+ {
+  "id": 227,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "On the **left or right-hand side** of an off-ramp."
+ },
+ {
+  "id": 228,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "On the **opposite side of the intersecting cross road** at the **end of an off-ramp**."
+ },
+ {
+  "id": 229,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "On the **left-hand side** of a freeway about **2km before the first exit** indicated."
+ },
+ {
+  "id": 230,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "On the **left-hand side** of an ordinary road."
+ },
+ {
+  "id": 231,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "On the **left-hand side** of an ordinary road on the **far side of an on-ramp**."
+ },
+ {
+  "id": 232,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "On the **left-hand side** of an ordinary road after a **\"Near-side on-ramp direction\" sign**."
+ },
+ {
+  "id": 233,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "Usually on the **left-hand side** of an ordinary road, **opposite an on-ramp**."
+ },
+ {
+  "id": 234,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "**On any freeway**."
+ },
+ {
+  "id": 235,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "**On any road**"
+ },
+ {
+  "id": 236,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "**On any road**"
+ },
+ {
+  "id": 237,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "**On any road**"
+ },
+ {
+  "id": 238,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "**On any road**"
+ },
+ {
+  "id": 239,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "**On any road**"
+ },
+ {
+  "id": 240,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "On **descents**."
+ },
+ {
+  "id": 241,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "On the **left-hand side** of the road."
+ },
+ {
+  "id": 242,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "In **any lane** of any road that leads to an **arrestor bed**."
+ },
+ {
+  "id": 243,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "In **any lane** of any road."
+ },
+ {
+  "id": 244,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "On the **left-hand side** of any road."
+ },
+ {
+  "id": 245,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "Displayed on the **left-hand side** of any road."
+ },
+ {
+  "id": 246,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "**On any road**."
+ },
+ {
+  "id": 247,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "At the **entrance to a parking area**."
+ },
+ {
+  "id": 248,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "**Below another sign**."
+ },
+ {
+  "id": 249,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "Next to the **entrance of a parking area** or in the **top right-hand or top left-hand corner** of a notice board."
+ },
+ {
+  "id": 250,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "On the **left-hand side** of the road."
+ },
+ {
+  "id": 251,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "On the **left-hand side** of the carriageway **before an intersection**."
+ },
+ {
+  "id": 252,
+  "table": "study_signs",
+  "field": "where_text",
+  "formatted_text": "At intersections at the **same pole as traffic signals (robot)** under signal head."
+ }
+]

@@ -1,0 +1,104 @@
+[
+{
+"id": 25,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A number plate must be:\n(i) **upright** (or within 30 degrees),\n(ii) with every letter and figure **clearly legible** and\n(iii) the **whole plate visible**."
+},
+{
+"id": 56,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A vehicle **may not be used** if its fuel tank, carburettor, or fuel pipes are **defective or exposed** as a danger, if the fuel tank lacks an **effective cap**, or if the electrical wiring and battery aren't properly **installed, insulated, and maintained**."
+},
+{
+"id": 101,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "**Passing on the left** is allowed, if it can be done safely, when the vehicle ahead is **turning right** or has signalled to; on a one-way urban road **wide enough for two or more lanes**; on an urban road **wide enough for two or more lanes each way**; where **signs designate lanes** on a one-way road; or under a **traffic officer's direction**."
+},
+{
+"id": 146,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "On a freeway:\n(i) **don't give a hand signal** (except for reasons beyond your control),\n(ii) **be on a freeway** **on foot**, or\n(iii) **leave an animal** where it could stray onto one."
+},
+{
+"id": 172,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A heavy motor vehicle **may not be used** if its fuel tank, carburettor, or fuel pipes are **defective or exposed** as a danger, if the fuel tank lacks an **effective cap**, or if the electrical wiring and battery aren't properly **installed, insulated, and maintained**."
+},
+{
+"id": 13,
+"table": "study_signs",
+"field": "purpose_text",
+"formatted_text": "To **give priority to pedestrians** but limit other traffic to:\n(i) **emergency vehicles**,\n(ii) **vehicles loading and off loading goods** and\n(iii) **maintenance vehicles**."
+},
+{
+"id": 14,
+"table": "study_signs",
+"field": "purpose_text",
+"formatted_text": "To indicate that there is a **single carriageway ahead** for use by **vehicle from both directions**."
+},
+{
+"id": 27,
+"table": "study_signs",
+"field": "purpose_text",
+"formatted_text": "Indicates that the road or a portion of the road is set aside for **use by midibuses. and** that the driver of a midibus **shall only use such road** or portion of such road."
+},
+{
+"id": 55,
+"table": "study_signs",
+"field": "purpose_text",
+"formatted_text": "To **vehicles from turning around** so that it faces the opposite direction."
+},
+{
+"id": 78,
+"table": "study_signs",
+"field": "purpose_text",
+"formatted_text": "Indicates to the driver of a vehicle, that he or she **shall not proceed beyond the sign** unless the **overall width of the vehicle**, is less than the width indicated in **metres**, by means of a number on such sign."
+},
+{
+"id": 84,
+"table": "study_signs",
+"field": "purpose_text",
+"formatted_text": "Sign **(R305-P)** indicates a parking area for vehicles with a **GVM of less than 3 500 kg** where **no time limit applies but a fee must be paid**. Sign **(R306-P)** indicates a parking area that may be used **free of charge or at a fee** and the **maximum time allowed** for a vehicle to be parked, is displayed."
+},
+{
+"id": 180,
+"table": "study_signs",
+"field": "purpose_text",
+"formatted_text": "To warn that the **material of the road shoulder may be softer** than reasonably expected and could be **dangerous for anyone who wants to move of the road**."
+},
+{
+"id": 281,
+"table": "study_signs",
+"field": "purpose_text",
+"formatted_text": "To indicate where especially drivers of heavy vehicles who become aware that a vehicle's brakes became defective, can **drive such a vehicle of the road and it will be stopped by the gravel section ahead**."
+},
+{
+"id": 291,
+"table": "study_signs",
+"field": "purpose_text",
+"formatted_text": "Steady green downward pointing arrow (S16) - Indicates to the driver that he/she **may drive in the lane** over which the arrow is displayed. Steady red cross (S17) - Indicates to a driver that he/she **shall not drive in the lane** over which the cross is displayed. Lane might be open to vehicles travelling in the opposite direction. Yellow arrow left (S18) and right (S19) Indicates to the driver that the **lane he/she is driving in is closed ahead**."
+},
+{
+"id": 293,
+"table": "study_signs",
+"field": "purpose_text",
+"formatted_text": "To **direct traffic**. (i) Flag signal to stop indicating to the driver of a vehicle that he or she shall stop until the proceed flag signal is displayed; and (ii) Flag signal to proceed - indicating to the driver that he or she shall proceed when the flag signal is displayed."
+},
+{
+"id": 141,
+"table": "study_signs",
+"field": "action_text",
+"formatted_text": "Slow down **e3nough** to take the curves safely or stop within the distance you can see. Remember that there could be **any number of curves after the first one** without further warning."
+},
+{
+"id": 264,
+"table": "study_signs",
+"field": "action_text",
+"formatted_text": "**If you are not part of the group identified by the sign, you may not park here**. In an emergency you may **stop or park at the sign that indicates the SOS telephone**. **Only goods vehicles may stop or park in the demarcated are** that indicates a loading zone."
+}
+]

@@ -1,0 +1,302 @@
+[
+ {
+  "id": 1,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A learner's licence test covers rules of the road and related legislation, road traffic signs/signals/markings, and vehicle controls. Once passed, the learner's licence is valid for 24 months."
+ },
+ {
+  "id": 2,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A person is disqualified from obtaining or holding a licence while addicted to narcotics or excessive alcohol use, while disqualified or suspended by a court or authority, or during a period following cancellation of a previous licence."
+ },
+ {
+  "id": 3,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A person may not apply for a licence for a class of vehicle they are already licensed to drive under an existing licence."
+ },
+ {
+  "id": 4,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A person is disqualified if suffering from uncontrolled epilepsy, disabling giddiness or fainting (e.g. from hypertension), a mental illness requiring detention or treatment, a condition causing muscular incoordination, uncontrolled diabetes mellitus, defective vision below the prescribed standard, or any other disease or defect likely to prevent safe driving. Deafness alone is not disqualifying."
+ },
+ {
+  "id": 5,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A Code 1 learner's licence authorises riding a motorcycle (but not a motor quadrucycle) on a public road. Minimum age is 16; under 18 you're limited to a 125cc engine; no passengers may be carried."
+ },
+ {
+  "id": 6,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A Code 2 learner's licence authorises driving any motor vehicle or combination (other than a motorcycle or tricycle) with tare, GVM, or GCM not exceeding 3500kg, only under the direct supervision of a licensed driver for that class. Minimum age is 17; valid for 24 months from the test date."
+ },
+ {
+  "id": 7,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A Code 3 learner's licence authorises driving any motor vehicle or combination (other than a motorcycle, tricycle, or quadrucycle) -- covering both light and heavy vehicles -- only under the direct supervision of a licensed driver for that class. Minimum age is 18; valid for 24 months from the test date."
+ },
+ {
+  "id": 8,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A motorcycle's lamps must be undamaged, properly secured, and capable of being lit at all times."
+ },
+ {
+  "id": 9,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A motorcycle's headlamp must be lit at all times when riding on a public road, day and night."
+ },
+ {
+  "id": 10,
+  "table": "study_rules",
+  "field": "body",
+  "text": "On a light or heavy motor vehicle, all lamps must be undamaged, unobscured, properly secured, and capable of being lit at all times."
+ },
+ {
+  "id": 11,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Headlamps, rear lamps, and number-plate lamps must be lit between sunset and sunrise, and at any other time when persons and vehicles aren't clearly visible at 150 metres."
+ },
+ {
+  "id": 12,
+  "table": "study_rules",
+  "field": "body",
+  "text": "These lighting rules don't apply to a vehicle parked off the roadway, in a demarcated parking place, or within 12 metres of a lit street lamp illuminating the road."
+ },
+ {
+  "id": 13,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Every headlamp on main beam must adequately illuminate the road ahead, enabling the driver to see a person, vehicle, or substantial object at least 100 metres away."
+ },
+ {
+  "id": 14,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Dip your main beam for oncoming traffic, and when following another vehicle."
+ },
+ {
+  "id": 15,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Every headlamp on dipped beam must adequately illuminate the road ahead, enabling the driver to see a person, vehicle, or substantial object at least 45 metres away."
+ },
+ {
+  "id": 16,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A vehicle may not be driven in motion using only its parking lamps."
+ },
+ {
+  "id": 17,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A motorcycle or motor tricycle must be fitted with a rear lamp emitting red light."
+ },
+ {
+  "id": 18,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A light motor vehicle must be fitted with rear lamps emitting red light."
+ },
+ {
+  "id": 19,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A heavy motor vehicle must be fitted with at least one rear lamp on each side emitting red light."
+ },
+ {
+  "id": 20,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A light motor vehicle or motorcycle must have rear stop lamps that emit a red light brighter than the rear lamps, visible at 30 metres in normal sunlight."
+ },
+ {
+  "id": 21,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A heavy motor vehicle must have at least one stop lamp on each side at the rear, meeting the same brightness and visibility requirements."
+ },
+ {
+  "id": 22,
+  "table": "study_rules",
+  "field": "body",
+  "text": "An illuminated stop lamp indicates the vehicle is decreasing speed and may stop."
+ },
+ {
+  "id": 23,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A vehicle must have at least one number-plate lamp at the rear, making every letter and figure on the plate visible from 20 metres by a person of normal eyesight."
+ },
+ {
+  "id": 24,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A number plate must be SABS-approved and fitted so it cannot easily be detached."
+ },
+ {
+  "id": 25,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A number plate must be upright (or within 30 degrees), with every letter and figure clearly legible and the whole plate visible."
+ },
+ {
+  "id": 26,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Motorcycles, motor tricycles, and trailers need only a rear number plate; all other motor vehicles need one at the front and one at the rear."
+ },
+ {
+  "id": 27,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Fog lamps may only be lit in conditions of poor visibility caused by snow, fog, mist, dust, or smoke."
+ },
+ {
+  "id": 28,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A vehicle may not use an adjustable spot lamp on a public road, except official vehicles (ambulance, fire-fighting, police, traffic control), vehicles used by a medical practitioner or veterinarian for professional duties, or a breakdown vehicle or utility vehicle working at an accident, breakdown, or overhead line inspection."
+ },
+ {
+  "id": 29,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A driver must have a full, clear view of the road ahead, and to the left and right, while the vehicle is in use."
+ },
+ {
+  "id": 30,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A vehicle must be fitted with a rear-view mirror giving a clear view of traffic behind in clear weather (tractors are excepted)."
+ },
+ {
+  "id": 31,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A motor car, minibus, bus, or goods vehicle must have both an exterior mirror on the driving side and an interior mirror -- or two exterior mirrors if the interior one doesn't give a clear rear view."
+ },
+ {
+  "id": 32,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A motorcycle's steering gear must be maintained so it can be steered safely and efficiently, and handlebar width and handgrip height must meet prescribed measurements based on engine capacity."
+ },
+ {
+  "id": 33,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A light or heavy motor vehicle's steering gear must be maintained in a condition that allows the vehicle to be steered safely and efficiently."
+ },
+ {
+  "id": 34,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A vehicle's turning radius may not exceed 13.1 metres."
+ },
+ {
+  "id": 35,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A motorcycle must have two independent, working braking systems -- one acting on the front wheel, one on the rear wheel(s)."
+ },
+ {
+  "id": 36,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A light or heavy motor vehicle must be equipped with a working service brake, parking brake, and emergency brake (the emergency and parking brake may be one and the same)."
+ },
+ {
+  "id": 37,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A hooter may only be used when necessary on the grounds of safety."
+ },
+ {
+  "id": 38,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A light motor vehicle must have a working hooter, audible by a person of normal hearing from 90 metres."
+ },
+ {
+  "id": 39,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A tune-playing siren or horn may not be used on a private vehicle."
+ },
+ {
+  "id": 40,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A driver must immediately give way to any emergency vehicle sounding a siren and displaying warning lights."
+ },
+ {
+  "id": 41,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Emergency vehicles include fire-fighting, rescue, and emergency medical/ambulance vehicles (red light), a vehicle driven by a traffic officer on duty (blue light), and a vehicle engaged in civil protection (green light)."
+ },
+ {
+  "id": 42,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Seatbelts are compulsory for children and adults aged 3 and older while the vehicle is moving forward."
+ },
+ {
+  "id": 43,
+  "table": "study_rules",
+  "field": "body",
+  "text": "If seatbelts are fitted, rear-seat passengers must wear them while the vehicle is being driven."
+ },
+ {
+  "id": 44,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A child is defined as aged 3 to 14, unless taller than 1.5 metres, in which case they're treated as an adult regardless of age."
+ },
+ {
+  "id": 45,
+  "table": "study_rules",
+  "field": "body",
+  "text": "An adult may not occupy a seat without wearing a seatbelt, nor a seat on a row without seatbelts if a belted seat on that row is available."
+ },
+ {
+  "id": 46,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A driver must ensure a child uses an appropriate child restraint where available, or a seatbelt if no restraint is available; if no belted seat is available and the vehicle has a rear seat, the child must sit there."
+ },
+ {
+  "id": 47,
+  "table": "study_rules",
+  "field": "body",
+  "text": "It is not compulsory to wear a seatbelt while reversing or moving in or out of a parking bay or area."
+ },
+ {
+  "id": 48,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A motorcycle, tricycle, or quadrucycle rider and any passenger (including a sidecar passenger) must wear a properly fitted, purpose-designed protective helmet with the chin strap fastened."
+ },
+ {
+  "id": 49,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A rider must ensure any passenger under 14 years old also wears a protective helmet."
+ },
+ {
+  "id": 50,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Helmets aren't required if the motorcycle has SABS-compliant seatbelts and the engine cannot run unless the rider and any passenger are wearing them."
+ }
+]

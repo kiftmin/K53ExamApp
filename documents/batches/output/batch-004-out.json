@@ -1,0 +1,302 @@
+[
+{
+"id": 151,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A towed vehicle **may only carry passengers** at **over 30 km/h** if it is a **semi-trailer**."
+},
+{
+"id": 152,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "The towed vehicle's **steering** must be controlled by a person **licensed** to drive that class of vehicle."
+},
+{
+"id": 153,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "If the towed vehicle's brakes **don't comply** with requirements, it must be connected by a **draw-bar or tow-bar** rather than a rope or chain."
+},
+{
+"id": 154,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A drawing vehicle may tow a maximum of:\n(i) **two trailers**, or\n(ii) **one other motor vehicle** that isn't a trailer."
+},
+{
+"id": 155,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "In an **emergency**, it is permitted to tow **one other motor vehicle** (not a trailer) **together with a trailer**."
+},
+{
+"id": 156,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "**Don't cross or enter** a public road unless it's **clear of moving traffic** for a sufficient distance, or you can do so **with safety** to yourself and other traffic."
+},
+{
+"id": 157,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "**Stop**:\n(i) as directed by a **road traffic sign** or a uniformed **traffic officer**,\n(ii) at the request or signal of a person **leading livestock** (cattle, horse, donkey, mule, sheep, goat, pig, or ostrich), or\n(iii) when **animals are crossing** the road -- only proceeding once all have crossed and it's safe."
+},
+{
+"id": 158,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A light motor vehicle's **tyres** must show a clearly visible **tread pattern** across the full breadth and circumference, **at least 1mm deep**."
+},
+{
+"id": 159,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A motorcycle with an engine **over 50cc** must have tyres showing a clearly visible **tread pattern** across the full breadth and circumference, **at least 1mm deep**."
+},
+{
+"id": 160,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A motorcycle with an engine of **50cc or under** may not run a tyre with **less than 80% visible tread pattern** across the tread width."
+},
+{
+"id": 161,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A motorcycle **may not** be fitted with a **retreaded tyre**."
+},
+{
+"id": 162,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "After being involved in or contributing to an accident, a driver must:\n(i) **stop immediately**,\n(ii) check for and **assist with any injuries**, and\n(iii) **assess the damage**."
+},
+{
+"id": 163,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "If asked by someone with reasonable grounds, a driver must give:\n(i) **their name and address**,\n(ii) the **vehicle owner's name and address**, and\n(iii) the vehicle's **registration number**."
+},
+{
+"id": 164,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "If these details haven't already been given to a traffic officer at the scene, the accident must be reported to a **police station** within **24 hours**, along with any further information required."
+},
+{
+"id": 165,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "**Except** on a medical practitioner's instruction, a driver **may not consume alcohol or narcotic drugs** before reporting an accident."
+},
+{
+"id": 166,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "If a person has been **killed or injured** and the accident fully obstructs the roadway, a vehicle **may not be moved** unless:\n(i) its position is **clearly marked** on the road, or\n(ii) a **traffic officer authorises** its removal."
+},
+{
+"id": 167,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A vehicle damaged in a collision **may not be removed** from the accident scene without the **driver's or owner's permission**."
+},
+{
+"id": 168,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "**Don't drive** on a public road without **reasonable consideration** for other road users."
+},
+{
+"id": 169,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "**Don't drive recklessly or negligently**, or in a manner that wilfully disregards the safety of people or property."
+},
+{
+"id": 170,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "**Don't drive** with a blood alcohol concentration of **0.05g per 100ml or more** (**0.02g per 100ml or more** for a professional driver)."
+},
+{
+"id": 171,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "**Don't drive**, or occupy the driver's seat with the engine running, while **under the influence** of intoxicating liquor or a narcotic drug."
+},
+{
+"id": 172,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A heavy motor vehicle **may not be used** if:\n(i) its fuel tank, carburettor, or fuel pipes are **defective or exposed** as a danger,\n(ii) the fuel tank lacks an **effective cap**, or\n(iii) the electrical wiring and battery aren't properly **installed, insulated, and maintained**."
+},
+{
+"id": 173,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "**Acceptable identification** includes:\n(i) a **South African ID document or card**,\n(ii) a valid **South African passport**,\n(iii) a **foreign ID or traffic register number certificate** (for non-residents), or\n(iv) a **driving licence card**."
+},
+{
+"id": 174,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "An **articulated motor vehicle** is a combination of a **truck-tractor** and a **semi-trailer**."
+},
+{
+"id": 175,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **bridge** includes a **culvert** and a **causeway**."
+},
+{
+"id": 176,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **bus** is a motor vehicle designed or adapted to carry **more than 16 people**, including the driver."
+},
+{
+"id": 177,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **combination of motor vehicles** means **two or more** motor vehicles coupled together."
+},
+{
+"id": 178,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **dedicated lane** is a portion of road reserved for certain periods for the **exclusive use** of certain vehicle categories, as shown by an appropriate sign."
+},
+{
+"id": 179,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **direction indicator** is a device fitted to a vehicle allowing the driver to signal an intention to **change direction left or right**."
+},
+{
+"id": 180,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "**DLTC** stands for **Driving Licence Testing Centre**, registered under the National Road Traffic Act."
+},
+{
+"id": 181,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **driver** is any person who:\n(i) **drives or attempts to drive** a vehicle,\n(ii) **rides or attempts to ride** a pedal cycle, or\n(iii) **leads** a draught, pack, or saddle animal, or a herd or flock of animals."
+},
+{
+"id": 182,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "The **edge of the roadway** is the boundary between the roadway and the shoulder, as indicated by a sign, or otherwise the edge of the surfaced or improved part of the road."
+},
+{
+"id": 183,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **freeway** is a public road, or section of one, designated as a freeway by an appropriate road traffic sign."
+},
+{
+"id": 184,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "**Goods** means any **movable property**."
+},
+{
+"id": 185,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **goods vehicle** is a motor vehicle (other than a motorcycle, tricycle, quadrucycle, motor car, minibus, or bus) designed to carry goods on a public road; it includes a **truck-tractor, adaptor dolly, converter dolly, and breakdown vehicle**."
+},
+{
+"id": 186,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "**Gross Combination Mass (GCM)** is the maximum mass of a vehicle combination (including the drawing vehicle) and its load, as specified by the manufacturer or, failing that, the registering authority."
+},
+{
+"id": 187,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "**Gross Vehicle Mass (GVM)** is the maximum mass of a vehicle and its load, as specified by the manufacturer or, failing that, the registering authority."
+},
+{
+"id": 188,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **haulage tractor** is a motor vehicle designed mainly for drawing other vehicles, with a GCM **exceeding 24,000kg**; it does not include a truck-tractor or tractor."
+},
+{
+"id": 189,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "An **intersection** is the area where **two or more public roads** open to vehicular traffic join or cross at any angle."
+},
+{
+"id": 190,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **junction** is the portion of an intersection within the lateral limits of the intersecting roadways, including any **stop or yield line marking** painted there."
+},
+{
+"id": 191,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **licence disc** is a disc issued under the Act that licenses a vehicle for use on a public road, valid for **12 months**."
+},
+{
+"id": 192,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **midibus** is a sub-category of bus designed to carry **more than 16 and up to 35 people**, including the driver."
+},
+{
+"id": 193,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **minibus** is a motor vehicle designed to carry **more than nine but not more than 16 people**, including the driver."
+},
+{
+"id": 194,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **motor car** is a motor vehicle (other than a motorcycle, tricycle, or quadrucycle) designed to carry **not more than nine people**, including the driver."
+},
+{
+"id": 195,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **motorcycle** is a motor vehicle with **two wheels**, including one with a sidecar attached."
+},
+{
+"id": 196,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **motor quadrucycle** is a motor vehicle (other than a tractor) with **four wheels**, designed to be driven using motorcycle-type controls."
+},
+{
+"id": 197,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **motor tricycle** is a motor vehicle (other than a motorcycle or tractor) with **three wheels**, designed to be driven using motorcycle-type controls."
+},
+{
+"id": 198,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **motor vehicle** is any **self-propelled vehicle**, including a trailer and a pedal-and-motor vehicle designed to be propelled by pedals, an engine, or both."
+},
+{
+"id": 199,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **number plate** is a prescribed plate displaying a vehicle's **licence number** or a **motor trade number**."
+},
+{
+"id": 200,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **pedestrian crossing** is a portion of road designated as such by a sign, or, absent a sign, the portion at an intersection within the extension of the kerb line and adjacent boundary line."
+}
+]

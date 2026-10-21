@@ -1,0 +1,14 @@
+[
+{
+"id": 251,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "**'The Act'** refers to the **National Road Traffic Act, 1996 (Act No. 93 of 1996)**, which governs road traffic in South Africa."
+},
+{
+"id": 252,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "**'Towing'** means towing a vehicle that is **not designed or adapted solely to be drawn** -- as distinct from **'drawing'**, which refers to vehicles **built solely for that purpose**."
+}
+]

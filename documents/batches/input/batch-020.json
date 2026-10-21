@@ -1,0 +1,302 @@
+[
+ {
+  "id": 53,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not turn left or right at the intersection, depending on the sign."
+ },
+ {
+  "id": 54,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Where a left-turn prohibition is displayed, you may proceed straight or turn right. Where a right-turn prohibition is displayed, you may proceed straight or turn left."
+ },
+ {
+  "id": 55,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not turn your vehicle around so that it faces the opposite direction."
+ },
+ {
+  "id": 56,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "If sign R214 or TR214 is displayed, do not overtake any vehicle for the next 500m. If you are driving a heavy motor vehicle, do not overtake another heavy vehicle if sign R215 is displayed."
+ },
+ {
+  "id": 57,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not park where these signs are displayed."
+ },
+ {
+  "id": 58,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not stop unless to obey a traffic light or a traffic officer or to avoid a collision."
+ },
+ {
+  "id": 59,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Despite the fact that pedestrians are prohibited on such a road, you must still look out for them. Pedestrians may not enter or cross a road where this sign is displayed."
+ },
+ {
+  "id": 60,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Look out for cyclists who use the road despite the prohibition. Cyclists must follow a different route and may not proceed beyond this sign."
+ },
+ {
+  "id": 61,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Look out for cyclists and pedestrians who use the road despite the prohibition. Cyclists and pedestrians must follow a different route and may not proceed beyond this sign."
+ },
+ {
+  "id": 62,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Motorcyclists may not enter this part of the carriageway, or if this sign is displayed on a freeway, motorcyclists must leave at the first exit."
+ },
+ {
+  "id": 63,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not enter this area if you are driving a motorcar."
+ },
+ {
+  "id": 64,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not enter this area if you are driving a taxi."
+ },
+ {
+  "id": 65,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not enter this area if you are driving a minibus."
+ },
+ {
+  "id": 66,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not enter this area if you are driving motorcar."
+ },
+ {
+  "id": 67,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not enter this area if you are driving motorcar."
+ },
+ {
+  "id": 68,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not enter this area if you are driving motorcar."
+ },
+ {
+  "id": 69,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not enter this area if you are driving motorcar."
+ },
+ {
+  "id": 70,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not enter this area if you are driving motorcar."
+ },
+ {
+  "id": 71,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not enter this area if you are driving a vehicle transporting dangerous substances."
+ },
+ {
+  "id": 72,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not enter this area if you are driving an abnormal vehicle."
+ },
+ {
+  "id": 73,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not enter this area if you are a rickshaw."
+ },
+ {
+  "id": 74,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not enter this area if you are driving a tour bus."
+ },
+ {
+  "id": 75,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not enter this area if you are driving a tractor or agricultural vehicles."
+ },
+ {
+  "id": 76,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not enter this area if you are driving animal-drawn vehicle."
+ },
+ {
+  "id": 77,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not enter this area if you are riding a horse."
+ },
+ {
+  "id": 78,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not enter this area if the overall width of the vehicle you are driving exceeds the width indicated on the sign."
+ },
+ {
+  "id": 79,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not enter this area if you are towing another vehicle or trailer."
+ },
+ {
+  "id": 80,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not stop or park for hawkers where these signs are displayed."
+ },
+ {
+  "id": 81,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not enter this area or park here if you are not driving a bus."
+ },
+ {
+  "id": 82,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not follow this bus route if you are not driving a bus."
+ },
+ {
+  "id": 83,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "If you are not riding a bicycle, do not enter or use this area."
+ },
+ {
+  "id": 84,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Park in accordance with the road traffic sign and road traffic markings. If necessary pay the tariff and do not park for longer than the time indicated."
+ },
+ {
+  "id": 85,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not use this road (R307, TR307) or parking area (R307-P, TR307-P) if you are not riding a motorcycle."
+ },
+ {
+  "id": 86,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not use this road or parking area if you are not driving a motor car."
+ },
+ {
+  "id": 87,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not use this road or parking area if you are not driving a taxi."
+ },
+ {
+  "id": 88,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not use this road or parking area if you are not driving a minibus."
+ },
+ {
+  "id": 89,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not use this road or parking area if you are not driving a midi-bus."
+ },
+ {
+  "id": 90,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not use this road or parking area if you are not driving a delivery vehicle."
+ },
+ {
+  "id": 91,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not use this road or parking area if you are not driving a goods vehicle."
+ },
+ {
+  "id": 92,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not use this road or parking area if your vehicle does not exceed the indicated GVM."
+ },
+ {
+  "id": 93,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not use this road or parking area if you are not driving a construction vehicle."
+ },
+ {
+  "id": 94,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not use this road or parking area if you are not driving a vehicle conveying hazardous substances."
+ },
+ {
+  "id": 95,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not use this road or parking area if you are not driving an abnormal vehicle."
+ },
+ {
+  "id": 96,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not use this road or parking area if you are not pulling a rickshaw."
+ },
+ {
+  "id": 97,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not use this road or parking area if you are not driving a tour bus."
+ },
+ {
+  "id": 98,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not use this road or parking area if you are not driving a high occupancy vehicle."
+ },
+ {
+  "id": 99,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not use this road or parking area if you are not driving an ambulance or emergency vehicle."
+ },
+ {
+  "id": 100,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not use this road or parking area if you are not driving a disabled person's vehicle."
+ },
+ {
+  "id": 101,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not use this road or parking area if you are not driving an authorised vehicle."
+ },
+ {
+  "id": 102,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not stop to take up or drop passengers off if you are not driving a mini-bus of the organisation indicated on the sign. You may only wait with or park your mini-bus here if the road traffic sign indicates that the stop is a terminus."
+ }
+]

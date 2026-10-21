@@ -1,0 +1,302 @@
+[
+{
+"id": 51,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A light motor vehicle's **windscreen** must give the driver sufficient visibility for safe driving, be made of **safety glass**, and allow at least **70% light transmittance**."
+},
+{
+"id": 52,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A light or heavy motor vehicle with a windscreen must have **at least one wiper** that continuously, evenly, and adequately clears the area directly in front of the driver."
+},
+{
+"id": 53,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A vehicle must have an efficient **exhaust silencer** that channels exhaust gas through it."
+},
+{
+"id": 54,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "**Exhaust smoke** may not be dense enough to be a **nuisance**, or to obstruct **other road users' vision**."
+},
+{
+"id": 55,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "The exhaust **may not be positioned** where oil or flammable liquid could drip onto it, and **may not leak** gas or smoke into the cab or passenger compartment."
+},
+{
+"id": 56,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A vehicle **may not be used** if:\n(i) its fuel tank, carburettor, or fuel pipes are **defective or exposed** as a danger,\n(ii) the fuel tank lacks an **effective cap**, or\n(iii) the electrical wiring and battery aren't properly **installed, insulated, and maintained**."
+},
+{
+"id": 57,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A light or heavy motor vehicle's **engine must be covered** so that it isn't a source of danger."
+},
+{
+"id": 58,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "Heavy motor vehicles, goods vehicles, minibuses, and buses (**but not** motor cars, ambulances, or motorcycles) must carry **at least one emergency warning triangle**."
+},
+{
+"id": 59,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "For a **combination** of vehicles, the warning triangle for each vehicle in the combination may all be carried on the **drawing vehicle**."
+},
+{
+"id": 60,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A stationary vehicle must place a warning triangle:\n(i) at least **45 metres** away in the direction traffic will approach from,\n(ii) at roughly the **same distance** from the roadway edge as the vehicle's own centre,\n(iii) with the **reflective side facing** oncoming traffic."
+},
+{
+"id": 61,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A warning triangle **isn't required** if the vehicle is stopped:\n(i) in a **loading zone**,\n(ii) on a traffic officer's or sign's **direction**,\n(iii) because of **other traffic** while the driver stays in the driving seat, or\n(iv) during a **state or municipal function**."
+},
+{
+"id": 62,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A vehicle may not be operated on a public road in a manner that causes **excessive noise**."
+},
+{
+"id": 63,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A vehicle capable of reaching **60 km/h** or more must be equipped with a working **speedometer**."
+},
+{
+"id": 64,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A general speed limit applies to all roads even without a sign:\n(i) **60 km/h** in urban areas,\n(ii) **100 km/h** on non-freeway roads outside urban areas, and\n(iii) **120 km/h** on freeways, unless a sign indicates otherwise."
+},
+{
+"id": 65,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "**Exceeding** the applicable speed limit is an **offence**."
+},
+{
+"id": 66,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "Buses and minibuses conveying persons for reward have a speed limit of **100 km/h**."
+},
+{
+"id": 67,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "An **80 km/h** speed limit applies to:\n(i) a goods vehicle with a GVM **over 9000kg**,\n(ii) a combination where the combined GVM of the goods vehicle and trailer(s) **exceeds 9000kg**,\n(iii) an articulated vehicle whose truck-tractor GCM **exceeds 9000kg**, and\n(iv) any **breakdown vehicle** towing another vehicle."
+},
+{
+"id": 68,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "Maximum vehicle lengths:\n(i) **8 metres** for a trailer (not semi-trailer) under 12,000kg GVM;\n(ii) **12.5 metres** for one over 12,000kg GVM;\n(iii) **18.5 metres** for an articulated motor vehicle;\n(iv) **22 metres** for a bus-train or any combination of motor vehicles;\n(v) **12.5 metres** for any other vehicle."
+},
+{
+"id": 69,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A double-deck bus (with load) may not exceed **4.65 metres** in height; any other motor vehicle may not exceed **4.3 metres**."
+},
+{
+"id": 70,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A bus with a front wheel track over 1.9 metres may not exceed **2.6 metres** overall width; a goods vehicle of 12,000kg GVM or more may not exceed **2.6 metres**; any other vehicle may not exceed **2.5 metres**."
+},
+{
+"id": 71,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "Goods may not be loaded so that they **touch the road surface**, or **obstruct the driver's view** to the front, either side, or in the rear-view mirror."
+},
+{
+"id": 72,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "Goods must be **safely contained** within, or **securely fastened** to, the vehicle, and **protected from falling or spilling**."
+},
+{
+"id": 73,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "On a motor car's roof, goods may not exceed **half the car's height** measured from ground level, **except pedal cycles**."
+},
+{
+"id": 74,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A shipping container fitted with twist-lock provisions must be secured with **at least four twist locks**."
+},
+{
+"id": 75,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "Baggage on a motorcycle should be placed in **carriers securely attached** to the motorcycle."
+},
+{
+"id": 76,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "The section of a goods vehicle carrying persons must be enclosed to **at least 350mm** above a seated person, or **900mm** above a standing person."
+},
+{
+"id": 77,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "It is **against the law** for passengers to ride in a caravan."
+},
+{
+"id": 78,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A motorcycle's load (or sidecar load) may not project more than:\n(i) **600mm** in front of the front axle,\n(ii) **900mm** behind the rear axle,\n(iii) **450mm** to either side, or\n(iv) **300mm** beyond the sidecar wheel."
+},
+{
+"id": 79,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A light or heavy vehicle's goods may not project sideways from the centre-line by more than **1.3 metres** (bus or goods vehicle over 12,000kg GVM) or **1.25 metres** (any other vehicle), excluding mirrors or indicators."
+},
+{
+"id": 80,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A light or heavy vehicle's goods may not project more than **300mm** beyond the front of the vehicle, or **1.8 metres** beyond the rear."
+},
+{
+"id": 81,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A light or heavy vehicle may not have a bracket projecting more than **150mm** beyond the vehicle's widest part (side mirrors and indicators excepted)."
+},
+{
+"id": 82,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A load projecting more than 150mm to the side, or 300mm to the rear, must be marked with a **red flag** (300mm x 300mm) during the day, and **white (front) or red (rear) retro-reflectors** at night or whenever visibility is poor."
+},
+{
+"id": 83,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "On a public road divided into two or more roadways, drive **only on the left-hand roadway**, unless directed or permitted otherwise by a road traffic sign or a traffic officer."
+},
+{
+"id": 84,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "Drive on the **left side** of the roadway, **without encroaching right**, unless it can be done safely or you're directed otherwise by a sign or traffic officer."
+},
+{
+"id": 85,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "When another vehicle wants to pass you, keep as near to the **left edge** of the roadway as is safely possible, and **don't speed up** until it has passed."
+},
+{
+"id": 86,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "When passing oncoming traffic, **don't encroach** onto the roadway to your right in a way that obstructs or endangers it."
+},
+{
+"id": 87,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A driver passing a stationary bus must do so with **due care** for people approaching or leaving it."
+},
+{
+"id": 88,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A light motor vehicle **may not** drive on the shoulder of a public road, **except**:\n(i) between **sunrise and sunset**,\n(ii) while being **overtaken** on a single-lane-each-way road,\n(iii) if it can be done **safely**, and\n(iv) if visibility is at least **150 metres**."
+},
+{
+"id": 89,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "On a road divided into lanes by markings, **don't change lanes** unless it can be done **without obstructing or endangering** other traffic."
+},
+{
+"id": 90,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "Before stopping or turning, give a **clear, timely signal** of your intention, long enough and visible enough to warn anyone approaching from the front, rear, or side."
+},
+{
+"id": 91,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A motor vehicle must be equipped with **flasher-type direction indicators** on both sides."
+},
+{
+"id": 92,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "Direction indicators must be used **every time** you turn left or right, or change lanes."
+},
+{
+"id": 93,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A light motor vehicle's indicators must:\n(i) **flash intermittently**,\n(ii) be clearly visible at **30 metres** in daylight, and\n(iii) show **white, yellow, or amber light** to the front, and **yellow, amber, or red light** to the rear."
+},
+{
+"id": 94,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A motorcycle, motorcycle with sidecar, or motor tricycle must have a **red retro-reflector** fitted at the rear."
+},
+{
+"id": 95,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A light motor vehicle must have **two red retro-reflectors** at the rear, one on each side."
+},
+{
+"id": 96,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A heavy motor vehicle must have **two red retro-reflectors** at the same height at the rear, one on each side."
+},
+{
+"id": 97,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A heavy vehicle or combination longer than 7 metres must have **yellow retro-reflectors** along each side, spaced so no two successive ones are more than 3.6 metres apart, unless **yellow reflective strips** are fitted instead."
+},
+{
+"id": 98,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "Since 1 January 2001, a goods vehicle with a GVM over 10,000kg must have **yellow reflective material** on its sides and rear; it's **optional** (but permitted) for vehicles under 10,000kg GVM."
+},
+{
+"id": 99,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "Pass another vehicle on the **right at a safe distance**, and **don't return** to the left side until safely clear of the vehicle you passed."
+},
+{
+"id": 100,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "Exceeding the speed limit while overtaking or passing is **not permitted**."
+}
+]

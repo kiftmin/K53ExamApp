@@ -1,0 +1,302 @@
+[
+ {
+  "id": 101,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Passing on the left is allowed, if it can be done safely, when the vehicle ahead is turning right or has signalled to; on a one-way urban road wide enough for two or more lanes; on an urban road wide enough for two or more lanes each way; where signs designate lanes on a one-way road; or under a traffic officer's direction."
+ },
+ {
+  "id": 102,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Passing may never be done by driving on the shoulder or the verge of a public road."
+ },
+ {
+  "id": 103,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Don't pass other traffic when approaching the summit of a rise, a curve, or anywhere visibility is too restricted to see oncoming traffic, unless you can do so without encroaching right, or the road is restricted to one direction."
+ },
+ {
+  "id": 104,
+  "table": "study_rules",
+  "field": "body",
+  "text": "When another vehicle wants to pass you, keep left and don't accelerate until it has passed."
+ },
+ {
+  "id": 105,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A driver wanting to overtake a vehicle ahead (not in the left lane) may signal their intention by flashing their headlights."
+ },
+ {
+  "id": 106,
+  "table": "study_rules",
+  "field": "body",
+  "text": "On a freeway, keep left and overtake on the right."
+ },
+ {
+  "id": 107,
+  "table": "study_rules",
+  "field": "body",
+  "text": "At a junction where vehicles must move around a traffic island, give way to all traffic approaching from your right, unless a traffic officer or road sign directs you otherwise."
+ },
+ {
+  "id": 108,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Don't park where a traffic officer directs otherwise, in contravention of a sign, where stopping isn't permitted, where the vehicle would obscure a road sign, on the sidewalk, or blocking a private or public vehicular entrance."
+ },
+ {
+  "id": 109,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Don't park within 1.5 metres of a fire hydrant."
+ },
+ {
+  "id": 110,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Outside an urban area, don't park on the roadway (excluding the shoulder), or with any part of the vehicle within 1 metre of the roadway edge, except for reasons beyond your control."
+ },
+ {
+  "id": 111,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Within an urban area, don't park within 9 metres of the approach side of a pedestrian crossing, within 5 metres of an intersection, over a traffic signal's mechanism, more than 450mm from the kerb, on a road narrower than 5.5 metres, or on a traffic island, pedestrian mall, or pedestrian lane."
+ },
+ {
+  "id": 112,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Don't stop on the roadway except to avoid an accident, on a traffic officer's direction, or for reasons beyond your control."
+ },
+ {
+  "id": 113,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Don't stop alongside or opposite an excavation or obstruction if it would obstruct or endanger traffic, in a tunnel, subway, or on a bridge (or within 6 metres of one), where the roadway has been narrowed (or within 6 metres of the narrowing), in contravention of a sign, facing oncoming traffic on the right side, alongside another vehicle on a road under 9 metres wide, within a railway level crossing, within 9 metres of a pedestrian crossing's approach side, or anywhere it would endanger or obstruct traffic."
+ },
+ {
+  "id": 114,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Obey every road traffic sign and rule of the road, unless a traffic officer instructs you otherwise."
+ },
+ {
+  "id": 115,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Don't reverse a vehicle unless it can be done safely."
+ },
+ {
+  "id": 116,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Keep a following distance of at least 2 seconds for light motor vehicles and motorcycles, and at least 3 seconds for heavy motor vehicles; increase this in rain, on a slippery surface, in poor visibility, or when being followed too closely."
+ },
+ {
+  "id": 117,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Don't allow a person, animal, or object to occupy a position that prevents full control of the vehicle, or let anyone interfere with the steering while driving."
+ },
+ {
+  "id": 118,
+  "table": "study_rules",
+  "field": "body",
+  "text": "While driving, maintain complete control of the vehicle and a full view of the road and traffic ahead."
+ },
+ {
+  "id": 119,
+  "table": "study_rules",
+  "field": "body",
+  "text": "An unattended vehicle must have its brake set, or otherwise be secured, so it cannot move from where it was left."
+ },
+ {
+  "id": 120,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Before pulling away from a parked or stationary roadside position, make sure it's safe and won't interfere with approaching traffic."
+ },
+ {
+  "id": 121,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Always give an immediate, absolute right of way to a vehicle sounding a warning device or bell."
+ },
+ {
+  "id": 122,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Don't let any part of your body protrude from a moving vehicle, except to give a hand signal."
+ },
+ {
+  "id": 123,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Don't allow a person or animal to occupy the roof, a step, a running board, or any other external part of a moving vehicle."
+ },
+ {
+  "id": 124,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Don't let the engine emit abnormal smoke or fumes, run while the vehicle is stationary and unattended, or run while fuel is being delivered into the tank."
+ },
+ {
+  "id": 125,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Don't deposit fuel, oil, grease, or other flammable or offensive matter on or alongside a road."
+ },
+ {
+  "id": 126,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Don't drive, pull, or push a vehicle on a sidewalk."
+ },
+ {
+  "id": 127,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A motorcycle rider must obey every road sign and rule of the road, unless a traffic officer instructs otherwise."
+ },
+ {
+  "id": 128,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A rider's feet must rest on the front foot rests, seated astride the saddle, with at least one hand on the handlebars at all times."
+ },
+ {
+  "id": 129,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A passenger must be briefed by the rider, seated on a securely fastened seat, with feet on securely fastened foot rests, astride the motorcycle."
+ },
+ {
+  "id": 130,
+  "table": "study_rules",
+  "field": "body",
+  "text": "No more than two people may ride on a motorcycle, excluding anyone in an attached sidecar."
+ },
+ {
+  "id": 131,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A passenger may only be carried if the motorcycle's engine exceeds 50cc, and the passenger must be seated in a sidecar or astride a pillion."
+ },
+ {
+  "id": 132,
+  "table": "study_rules",
+  "field": "body",
+  "text": "No more than two adults may be carried in a sidecar attached to a motorcycle."
+ },
+ {
+  "id": 133,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A rider may not carry a person, animal, or bulky object in front of them; a non-bulky object may be carried if securely attached and doesn't obstruct the rider's view or control."
+ },
+ {
+  "id": 134,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Neither the rider nor passenger may take hold of another vehicle that is in motion."
+ },
+ {
+  "id": 135,
+  "table": "study_rules",
+  "field": "body",
+  "text": "All wheels of the motorcycle must stay in contact with the road surface at all times."
+ },
+ {
+  "id": 136,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Riders must travel in single file within the same lane, except briefly to overtake another motorcycle; two motorcycles may not overtake another vehicle at the same time."
+ },
+ {
+  "id": 137,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A sidecar must be attached to the left side of the motorcycle, and may not be fitted to a motorcycle with an engine under 50cc."
+ },
+ {
+  "id": 138,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A driver may not hold a cellular or other communication device in one or both hands, or with any other part of the body, while driving."
+ },
+ {
+  "id": 139,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A driver must yield right of way, slow down, or stop for a pedestrian crossing a roadway within a pedestrian crossing."
+ },
+ {
+  "id": 140,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A driver may not pass a vehicle that has stopped at a pedestrian crossing."
+ },
+ {
+  "id": 141,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Pedestrians may not cross while the red man light is showing; if the red man flashes, pedestrians already in the road must finish crossing quickly, while those not yet in the road must wait for the green man."
+ },
+ {
+  "id": 142,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A vehicle left in the same place for more than 24 hours (outside an urban area) or 7 days (within an urban area) is deemed abandoned by its owner."
+ },
+ {
+  "id": 143,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Don't cause a vehicle's wheel to drag or spin on the roadway (except in an emergency), use chocks or shoes between a moving wheel and the road surface, or otherwise use or move a vehicle in a way that damages the road."
+ },
+ {
+  "id": 144,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Animal-drawn vehicles, pedal cycles, motorcycles under 50cc or electrically propelled, motor quadrucycles, disability vehicles under 230kg, and tractors (outside road construction or maintenance use) may not use a freeway."
+ },
+ {
+  "id": 145,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Don't stop on a freeway except by sign or traffic officer direction, in a designated stopping/parking area, or for reasons beyond your control."
+ },
+ {
+  "id": 146,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Don't give a hand signal on a freeway (except for reasons beyond your control), be on a freeway on foot, or leave an animal where it could stray onto one."
+ },
+ {
+  "id": 147,
+  "table": "study_rules",
+  "field": "body",
+  "text": "If a vehicle ahead wants to merge from an on-ramp, you must allow it to merge in front of you."
+ },
+ {
+  "id": 148,
+  "table": "study_rules",
+  "field": "body",
+  "text": "A motorcycle may not be used to tow another vehicle."
+ },
+ {
+  "id": 149,
+  "table": "study_rules",
+  "field": "body",
+  "text": "The tow-rope, chain, or tow-bar between two vehicles may not exceed 3.5 metres in length."
+ },
+ {
+  "id": 150,
+  "table": "study_rules",
+  "field": "body",
+  "text": "Towing at over 30 km/h with a rope or chain is not allowed -- a draw-bar or tow-bar connection is required instead."
+ }
+]

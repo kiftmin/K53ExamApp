@@ -1,0 +1,302 @@
+[
+ {
+  "id": 103,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road."
+ },
+ {
+  "id": 104,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At the entrance to any carriageway, lane or parking area."
+ },
+ {
+  "id": 105,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road, particularly in urban areas."
+ },
+ {
+  "id": 106,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road, particularly in urban areas."
+ },
+ {
+  "id": 107,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At the entrance to any carriageway, lane or parking area."
+ },
+ {
+  "id": 108,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road, particularly in urban areas."
+ },
+ {
+  "id": 109,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road, particularly in urban areas."
+ },
+ {
+  "id": 110,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At the entrance to any carriageway, lane or parking area."
+ },
+ {
+  "id": 111,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road, particularly in urban areas."
+ },
+ {
+  "id": 112,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road, particularly in urban areas."
+ },
+ {
+  "id": 113,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At the beginning of a dual-carriageway freeway."
+ },
+ {
+  "id": 114,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At the beginning of a single-carriageway freeway."
+ },
+ {
+  "id": 115,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road."
+ },
+ {
+  "id": 116,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "Below a regulatory sign on any public road."
+ },
+ {
+  "id": 117,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "Below a regulatory sign on any public road."
+ },
+ {
+  "id": 118,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "Below a regulatory sign on any public road."
+ },
+ {
+  "id": 119,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road."
+ },
+ {
+  "id": 120,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road."
+ },
+ {
+  "id": 121,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "Below a regulatory sign."
+ },
+ {
+  "id": 122,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "Below a regulatory sign."
+ },
+ {
+  "id": 123,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "Below an appropriate regulatory sign."
+ },
+ {
+  "id": 124,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "Below the appropriate regulatory sign."
+ },
+ {
+  "id": 125,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road."
+ },
+ {
+  "id": 126,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road."
+ },
+ {
+  "id": 127,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road."
+ },
+ {
+  "id": 128,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road."
+ },
+ {
+  "id": 129,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road before you reach the place where two roads meet."
+ },
+ {
+  "id": 130,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road."
+ },
+ {
+  "id": 131,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road before you reach the place where another road joins your road from the left (W107) (TW107) or from the right (W108) (TW108)."
+ },
+ {
+  "id": 132,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road before you reach the place where two roads join your road within a short distance."
+ },
+ {
+  "id": 133,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road."
+ },
+ {
+  "id": 134,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road before you reach a place where your road splits in two."
+ },
+ {
+  "id": 135,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any dual roadway."
+ },
+ {
+  "id": 136,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any single carriage way road."
+ },
+ {
+  "id": 137,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road."
+ },
+ {
+  "id": 138,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road."
+ },
+ {
+  "id": 139,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road."
+ },
+ {
+  "id": 140,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road especially in mountainous areas."
+ },
+ {
+  "id": 141,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road especially in mountainous areas."
+ },
+ {
+  "id": 142,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road especially in mountainous areas."
+ },
+ {
+  "id": 143,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any one-way road."
+ },
+ {
+  "id": 144,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "In urban areas."
+ },
+ {
+  "id": 145,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road with more than one traffic lane in the direction you are travelling."
+ },
+ {
+  "id": 146,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road."
+ },
+ {
+  "id": 147,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road before a intersection with traffic light."
+ },
+ {
+  "id": 148,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road before a intersection with a stop sign."
+ },
+ {
+  "id": 149,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road."
+ },
+ {
+  "id": 150,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road but especially in rural areas near schools."
+ },
+ {
+  "id": 151,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road near schools."
+ },
+ {
+  "id": 152,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road especially in rural areas."
+ }
+]

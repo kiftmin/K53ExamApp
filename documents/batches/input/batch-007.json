@@ -1,0 +1,302 @@
+[
+ {
+  "id": 3,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At intersections, railway crossings and scholar patrols."
+ },
+ {
+  "id": 4,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At intersections."
+ },
+ {
+  "id": 5,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At intersections."
+ },
+ {
+  "id": 6,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At intersections."
+ },
+ {
+  "id": 7,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "Usually at road works for temporary traffic control."
+ },
+ {
+  "id": 8,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At intersections and railway crossings."
+ },
+ {
+  "id": 9,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At intersections and pedestrian crossings"
+ },
+ {
+  "id": 10,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At traffic circles, particularly mini circles."
+ },
+ {
+  "id": 11,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "Usually found at the end of a one-way street, at the end of an off-ramp or at intersections where two-way traffic roads change to one-way traffic."
+ },
+ {
+  "id": 12,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At intersections where a one-way road joins another road."
+ },
+ {
+  "id": 13,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At the entrance to an area intended for pedestrians."
+ },
+ {
+  "id": 14,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At the entrance to any road intended for dual way traffic."
+ },
+ {
+  "id": 15,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road where slow-moving vehicles could disrupt the traffic flow."
+ },
+ {
+  "id": 16,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road."
+ },
+ {
+  "id": 17,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At obstructions such as traffic islands. Only one of these signs will be displayed at a time."
+ },
+ {
+  "id": 18,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At intersections."
+ },
+ {
+  "id": 19,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At intersections."
+ },
+ {
+  "id": 20,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At the beginning of any road or part of a road."
+ },
+ {
+  "id": 21,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At the beginning of any road or part of a road."
+ },
+ {
+  "id": 22,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At the beginning of any road or part of the road."
+ },
+ {
+  "id": 23,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At the beginning of any road or part of a road."
+ },
+ {
+  "id": 24,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At the beginning of any road or part of the road."
+ },
+ {
+  "id": 25,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At the beginning of any road or part of a road."
+ },
+ {
+  "id": 26,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At the beginning of any road or part of a road."
+ },
+ {
+  "id": 27,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At the beginning of any road or part of a road."
+ },
+ {
+  "id": 28,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At the beginning of any road or part of a road."
+ },
+ {
+  "id": 29,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At the beginning of any road or part of a road."
+ },
+ {
+  "id": 30,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At the beginning of any road or part of a road."
+ },
+ {
+  "id": 31,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At the beginning of any road or part of a road."
+ },
+ {
+  "id": 32,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "In areas where there is mining and industrial activities taking place."
+ },
+ {
+  "id": 33,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "In areas where there is mining and industrial activities taking place."
+ },
+ {
+  "id": 34,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "In areas where there is mining and industrial activities taking place."
+ },
+ {
+  "id": 35,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "In areas where there many tourist tractions."
+ },
+ {
+  "id": 36,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "In areas where there are tourist attractions or at stations and airports."
+ },
+ {
+  "id": 37,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "In areas where there are farms and other activities that require agricultural vehicles."
+ },
+ {
+  "id": 38,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road"
+ },
+ {
+  "id": 39,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road."
+ },
+ {
+  "id": 40,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road especially in mountainous areas before a tunnel."
+ },
+ {
+  "id": 41,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At the beginning of any road or part of a road."
+ },
+ {
+  "id": 42,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At the beginning of any road or part of a road."
+ },
+ {
+  "id": 43,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At the beginning of any road or part of a road."
+ },
+ {
+  "id": 44,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road where there are multiple roads intersecting."
+ },
+ {
+  "id": 45,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road."
+ },
+ {
+  "id": 46,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road."
+ },
+ {
+  "id": 47,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road."
+ },
+ {
+  "id": 48,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road."
+ },
+ {
+  "id": 49,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road, especially in mountainous areas."
+ },
+ {
+  "id": 50,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road usually near hospitals, churches and homes for the aged."
+ },
+ {
+  "id": 51,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road."
+ },
+ {
+  "id": 52,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any public road where it is necessary to close the road for general traffic. The temporary sign is usually displayed at road works."
+ }
+]

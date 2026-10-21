@@ -1,0 +1,302 @@
+[
+ {
+  "id": 103,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not stop to take up or drop passengers off** if you are not driving a **mini-bus of the organisation indicated on the sign**.[cite: 29] You may **only wait with or park your mini-bus here** if the road traffic sign indicates that the **stop is a terminus**.[cite: 29]"
+ },
+ {
+  "id": 104,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not use this road or parking area** if you are not driving a **bus or minibus**.[cite: 29]"
+ },
+ {
+  "id": 105,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not follow this route** if you are not driving a **bus or minibus**.[cite: 29]"
+ },
+ {
+  "id": 106,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not enter this lane** if you are not driving a **bus or minibus**.[cite: 29]"
+ },
+ {
+  "id": 107,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not use this road or parking area** if you are not driving a **bus or midi bus**.[cite: 29]"
+ },
+ {
+  "id": 108,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not follow this route** if you are not driving a **bus or midi bus**.[cite: 29]"
+ },
+ {
+  "id": 109,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not enter this lane** if you are not driving a **bus or midi bus**.[cite: 29]"
+ },
+ {
+  "id": 110,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not use this road or parking area** if you are not driving a **bus, midi bus or minibus**.[cite: 29]"
+ },
+ {
+  "id": 111,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not follow this route** if you are not driving a **bus, midi bus or minibus**.[cite: 29]"
+ },
+ {
+  "id": 112,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not enter this lane** if you are not driving a **bus, midi bus or minibus**.[cite: 29]"
+ },
+ {
+  "id": 113,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Follow all the rules** that apply to freeways.[cite: 29]"
+ },
+ {
+  "id": 114,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Follow all the rules**, which apply, to freeways.[cite: 29]"
+ },
+ {
+  "id": 115,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Drive slowly, obey the special rules** mentioned above and be particularly on the **look out for children playing in the street**.[cite: 29]"
+ },
+ {
+  "id": 116,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Obey the times** on this sign.[cite: 29]"
+ },
+ {
+  "id": 117,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not stop or park for longer than the times indicated**.[cite: 29]"
+ },
+ {
+  "id": 118,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Obey the regulatory sign when visibility is reduced**.[cite: 29]"
+ },
+ {
+  "id": 119,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Obey the regulatory sign during daytime**.[cite: 29]"
+ },
+ {
+  "id": 120,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Obey the regulatory sign during night time**.[cite: 29]"
+ },
+ {
+  "id": 121,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Obey the primary sign** according to the **direction indicated**.[cite: 29]"
+ },
+ {
+  "id": 122,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Pay the parking fee** and **display the receipt on or within your vehicle**.[cite: 29]"
+ },
+ {
+  "id": 123,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "If your vehicle belongs to the **company or organisation indicated** by this sign, **obey the regulatory sign**.[cite: 29]"
+ },
+ {
+  "id": 124,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not enter an area** if that would mean there would be **more than the number of vehicles indicated**.[cite: 29]"
+ },
+ {
+  "id": 125,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "From here you do **not have to comply with the restriction sign** with a symbol similar to this sign but without the red cross.[cite: 29]"
+ },
+ {
+  "id": 126,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Approach cautiously, look carefully and be able to stop** if cross-traffic requires it.[cite: 29]"
+ },
+ {
+  "id": 127,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Approach cautiously, look carefully and be able to stop** if cross-traffic does not yield.[cite: 29]"
+ },
+ {
+  "id": 128,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Approach cautiously**, and **yield to traffic approaching from left or right**.[cite: 29]"
+ },
+ {
+  "id": 129,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Look out for cross-traffic.[cite: 29] **Slow down and be prepared to stop** and go round the corner at a safe speed.[cite: 29]"
+ },
+ {
+  "id": 130,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Look out for cross-traffic.[cite: 29] **Slow down and be prepared to stop**.[cite: 29]"
+ },
+ {
+  "id": 131,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Slow down so that you will be able to stop**, or go around the corner or pass the intersection at a safe speed.[cite: 29] **Look out for other traffic** at the intersection that might not yield.[cite: 29]"
+ },
+ {
+  "id": 132,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Slow down and be prepared to stop or turn** at a safe speed.[cite: 29] **Look out for traffic** at the intersection that might not yield.[cite: 29]"
+ },
+ {
+  "id": 133,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Pass the intersection at a safe speed** and **look out for merging traffic** that might not yield.[cite: 29] / **Decide well in time which road to take**.[cite: 29] **Be on the look out for approaching traffic** whose path you will cross when taking the right hand side road.[cite: 29]"
+ },
+ {
+  "id": 134,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Decide well in time which road to take**.[cite: 29] **Look out for approaching traffic** whose path you will cross when taking the right hand road[cite: 29]"
+ },
+ {
+  "id": 135,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Position your vehicle on the road where it will not endanger approaching traffic**.[cite: 29] It may be necessary to change lanes.[cite: 29]"
+ },
+ {
+  "id": 136,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "You will be able to **overtake more safely** after entering the one way road.[cite: 29] This sign does **not indicate a freeway** and intersections can still be found on such a road.[cite: 29]"
+ },
+ {
+  "id": 137,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Slow down** so that you can stop or drive around the circle at a safe speed.[cite: 29] **Look out for road traffic signs and markings** which will tell you whether you have the right of way or whether you have to yield.[cite: 29] If there is no indication **you have to give way to traffic approaching from the right**.[cite: 29] Vehicles within a traffic circle have right of way.[cite: 29] If you have right of way still **look out for traffic in the circle** which may not yield to you.[cite: 29] If sign R2.2 is displayed at the traffic circle, you must **yield to any driver who crosses his yield line first** before you cross yours.[cite: 29]"
+ },
+ {
+  "id": 138,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Ensure that you **drive at such a speed that you can take the curve safely** or stop within the distance that you can see.[cite: 29]"
+ },
+ {
+  "id": 139,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Slow down** so that you can take the curve safely or stop within the distance that you can see.[cite: 29]"
+ },
+ {
+  "id": 140,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Slow down** so that you can take the curve safely or stop within the distance you can see.[cite: 29]"
+ },
+ {
+  "id": 141,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Slow down enough** to take the curves safely or stop within the distance you can see.[cite: 29] Remember that there could be **any number of curves after the first one** without further warning.[cite: 29]"
+ },
+ {
+  "id": 142,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Slow down enough** to be able to round the curves safely or stop within the sight distance you can see.[cite: 29]"
+ },
+ {
+  "id": 143,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Be aware that you are **entering a roadway with two-way traffic** and have to **be more careful when overtaking** to allow for oncoming vehicles.[cite: 29]"
+ },
+ {
+  "id": 144,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "If you are driving in the left hand lane and want to turn to the right at the first intersection, **change to the right hand lane in good time**.[cite: 29] If you are driving in the right hand lane and wish to turn to the left at the first intersection, **change to the left hand lane in good time**.[cite: 29]"
+ },
+ {
+  "id": 145,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Depending on which sign is displayed, **change in good time to the lane that carries on**.[cite: 29]"
+ },
+ {
+  "id": 146,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Slow down so that you can stop or yield** if there is cross traffic that do not yield at the intersection.[cite: 29] Remember that a driver of such a vehicle that joins your road from the concealed driveway sometimes **finds it also difficult to see you**.[cite: 29]"
+ },
+ {
+  "id": 147,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Slow down immediately and be ready to stop** if the light changes from green to amber.[cite: 29] **Make sure there are no pedestrians or cross-traffic** who might not obey the signals.[cite: 29]"
+ },
+ {
+  "id": 148,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Slow down in good time and be ready to stop** as required for sign R1.1.[cite: 29]"
+ },
+ {
+  "id": 149,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Slow down and be ready to stop if necessary**.[cite: 29]"
+ },
+ {
+  "id": 150,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Slow down and be ready to stop the vehicle if the officer instructs you to do so**.[cite: 29]"
+ },
+ {
+  "id": 151,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Slow down and look out for a stop sign** displayed by the scholar patrol.[cite: 29] **Look out at all times for children** who may suddenly cross the road.[cite: 29]"
+ },
+ {
+  "id": 152,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Slow down and stop if a pedestrian is waiting** at the crossing.[cite: 29] **Do not overtake other vehicles** that have stopped at the pedestrian crossing.[cite: 29]"
+ }
+]

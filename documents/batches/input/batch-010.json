@@ -1,0 +1,302 @@
+[
+ {
+  "id": 153,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On roads where there are more pedestrians than normally can be expected."
+ },
+ {
+  "id": 154,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road especially near schools, playgrounds and sports fields."
+ },
+ {
+  "id": 155,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road."
+ },
+ {
+  "id": 156,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road."
+ },
+ {
+  "id": 157,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "Especially on rural roads."
+ },
+ {
+  "id": 158,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "At a railway crossing or roadway ahead."
+ },
+ {
+  "id": 159,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "Especially on rural roads."
+ },
+ {
+  "id": 160,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road."
+ },
+ {
+  "id": 161,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road especially in mountainous areas."
+ },
+ {
+  "id": 162,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road."
+ },
+ {
+  "id": 163,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road but especially in mountainous areas."
+ },
+ {
+  "id": 164,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road but especially in mountainous areas."
+ },
+ {
+  "id": 165,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "Especially in mountainous areas."
+ },
+ {
+  "id": 166,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any tarred road, especially in the vicinity of farms."
+ },
+ {
+  "id": 167,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road."
+ },
+ {
+  "id": 168,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road."
+ },
+ {
+  "id": 169,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road."
+ },
+ {
+  "id": 170,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road."
+ },
+ {
+  "id": 171,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road."
+ },
+ {
+  "id": 172,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road."
+ },
+ {
+  "id": 173,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road."
+ },
+ {
+  "id": 174,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "Especially in mountainous areas."
+ },
+ {
+  "id": 175,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road."
+ },
+ {
+  "id": 176,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road."
+ },
+ {
+  "id": 177,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road."
+ },
+ {
+  "id": 178,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road."
+ },
+ {
+  "id": 179,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road."
+ },
+ {
+  "id": 180,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road."
+ },
+ {
+  "id": 181,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road."
+ },
+ {
+  "id": 182,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road."
+ },
+ {
+  "id": 183,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road."
+ },
+ {
+  "id": 184,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road."
+ },
+ {
+  "id": 185,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road close to water, harbours."
+ },
+ {
+  "id": 186,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any the road especially in rural and mountainous areas."
+ },
+ {
+  "id": 187,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road especially in rural areas."
+ },
+ {
+  "id": 188,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "on any road especially near airports."
+ },
+ {
+  "id": 189,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road especially in rural areas."
+ },
+ {
+  "id": 190,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road."
+ },
+ {
+  "id": 191,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road where there is fog or smoke."
+ },
+ {
+  "id": 192,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road."
+ },
+ {
+  "id": 193,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road."
+ },
+ {
+  "id": 194,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road, especially in wildlife sanctuaries."
+ },
+ {
+  "id": 195,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road, especially in wildlife sanctuaries."
+ },
+ {
+  "id": 196,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road, especially in wildlife sanctuaries and rivers."
+ },
+ {
+  "id": 197,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road."
+ },
+ {
+  "id": 198,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road."
+ },
+ {
+  "id": 199,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any gravel road."
+ },
+ {
+  "id": 200,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road especially in rural areas."
+ },
+ {
+  "id": 201,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road especially in mountainous areas."
+ },
+ {
+  "id": 202,
+  "table": "study_signs",
+  "field": "where_text",
+  "text": "On any road."
+ }
+]

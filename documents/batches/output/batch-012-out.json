@@ -1,0 +1,254 @@
+[
+{
+"id": 253,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "On the **left-hand side** of any road."
+},
+{
+"id": 254,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "On the **left-hand side** of any road."
+},
+{
+"id": 255,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "On any road especially at **intersections and pedestrian crossings**."
+},
+{
+"id": 256,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "On any road especially at **intersections**."
+},
+{
+"id": 257,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "On any road especially in **urban areas** at **intersections** and **close to schools**."
+},
+{
+"id": 258,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "On any road that carries **two-way traffic** (traffic from opposite directions)."
+},
+{
+"id": 259,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "On any road with **two-way traffic**."
+},
+{
+"id": 260,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "On carriageways and at intersections where traffic moves in the **same direction**."
+},
+{
+"id": 261,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "On the **left and right-hand edge** of the road."
+},
+{
+"id": 262,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "**On any road**."
+},
+{
+"id": 263,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "On any road especially in **urban areas**."
+},
+{
+"id": 264,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "At **parking bays**."
+},
+{
+"id": 265,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "On any road **before an intersection**."
+},
+{
+"id": 266,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "On the **left or right-hand side** of a road in an **urban area**."
+},
+{
+"id": 267,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "At **intersections**."
+},
+{
+"id": 268,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "On any road before a **pedestrian crossing**."
+},
+{
+"id": 269,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "**On any road**."
+},
+{
+"id": 270,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "**On any road**."
+},
+{
+"id": 271,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "On the **left-hand side** of any road."
+},
+{
+"id": 272,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "At **traffic circles and mini-circles**."
+},
+{
+"id": 273,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "On any road **before a railway crossings** between the warning sign and the railway crossing."
+},
+{
+"id": 274,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "**On any road**."
+},
+{
+"id": 275,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "On any road with **two-way traffic**."
+},
+{
+"id": 276,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "**On any road**."
+},
+{
+"id": 277,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "On any road **before coming to an intersection**."
+},
+{
+"id": 278,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "On a **multi-lane carriageway**."
+},
+{
+"id": 279,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "In a **traffic lane** on any road especially in **urban areas**."
+},
+{
+"id": 280,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "**On any road**."
+},
+{
+"id": 281,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "On any **rural road** especially in **mountainous areas**."
+},
+{
+"id": 282,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "On any road especially in **urban areas**."
+},
+{
+"id": 283,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "**On any road**."
+},
+{
+"id": 284,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "In an **intersection**."
+},
+{
+"id": 285,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "**On any road**."
+},
+{
+"id": 286,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "On any road especially **one way streets** or **wide intersections** with a complex layout."
+},
+{
+"id": 287,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "On any road especially in **urban areas**."
+},
+{
+"id": 288,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "**On any road**."
+},
+{
+"id": 289,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "**On any road**."
+},
+{
+"id": 290,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "Where **traffic density** can be better controlled by **traffic lights** at **intersections, junctions, pedestrian crossings**, etc."
+},
+{
+"id": 291,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "**Over traffic lanes**."
+},
+{
+"id": 292,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "In areas where there is **high traffic congestion**, at the **scene of an accident** or the **normal traffic signals are not operational**."
+},
+{
+"id": 293,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "In areas where there is **road works ahead, herdsman leading cattle** or other animals across or next to a roadway."
+},
+{
+"id": 294,
+"table": "study_signs",
+"field": "where_text",
+"formatted_text": "In areas where there is **road works ahead, herdsman leading cattle** or other animals across or next to a roadway."
+}
+]

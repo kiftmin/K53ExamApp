@@ -1,0 +1,302 @@
+[
+{
+"id": 201,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **professional driver** drives a motor vehicle of a prescribed class and must hold a **professional driving permit**; this **doesn't apply** to a learner accompanied by a registered professional driver for that class."
+},
+{
+"id": 202,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **public road** is any road, street, or thoroughfare commonly used by, or open to, the public, including its verge and any bridge, ferry, or drift it crosses."
+},
+{
+"id": 203,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **retro-reflector** is a reflector complying with SABS specification 513, bearing a certification or approval mark."
+},
+{
+"id": 204,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **road traffic sign** is a sign for prohibiting, limiting, regulating, or controlling traffic (in general or a particular class) on a public road."
+},
+{
+"id": 205,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "The **roadway** is the portion of a road built or intended for vehicular traffic, between the edges of the roadway."
+},
+{
+"id": 206,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **semi-trailer** is a trailer with no front axle, designed so at least 15% of its tare is borne by the vehicle drawing it."
+},
+{
+"id": 207,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "The **shoulder** is the portion of road between the edge of the roadway and the kerb line."
+},
+{
+"id": 208,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "**Tare**, for a vehicle, is its mass ready to travel on a road, including standard accessories and permanent structural parts, but excluding fuel."
+},
+{
+"id": 209,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **traffic island** is a physical island that channels traffic within a junction or on a public road."
+},
+{
+"id": 210,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **traffic lane** is a longitudinal division of a road wide enough for a single line of vehicles."
+},
+{
+"id": 211,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **traffic signal** is a road traffic sign that, by automatic light signals, alternately directs traffic to stop and permits it to proceed."
+},
+{
+"id": 212,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **tractor** is a motor vehicle designed mainly for drawing other vehicles with a GCM not exceeding 24,000kg; it does not include a truck-tractor."
+},
+{
+"id": 213,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **trailer** is a vehicle not self-propelled, designed to be drawn by a motor vehicle, excluding a motorcycle sidecar."
+},
+{
+"id": 214,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **truck-tractor** is a motor vehicle designed for drawing other vehicles, carrying no load other than that of a semi-trailer or ballast; it does not include a tractor or haulage tractor."
+},
+{
+"id": 215,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "An **urban area** is a local authority area that has been surveyed and subdivided into erven, including the public roads bordering it."
+},
+{
+"id": 216,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **vehicle** is a device designed mainly to travel on wheels or crawler tracks (excluding devices that move solely on rails)."
+},
+{
+"id": 217,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **verge** is the portion of a road, including the sidewalk, that is not the roadway or the shoulder."
+},
+{
+"id": 218,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "**LMV** means Light Motor Vehicle -- tare/GVM **not exceeding 3500kg**."
+},
+{
+"id": 219,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "**HMV** means Heavy Motor Vehicle -- tare **exceeds 3500kg**, or a minibus/bus/goods vehicle GVM **exceeds 3500kg**, or an articulated/combination vehicle's GCM (or trailer GVM) exceeds the prescribed thresholds."
+},
+{
+"id": 220,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "**MC** means Motorcycle, and includes a motorcycle, tricycle, and quadrucycle."
+},
+{
+"id": 221,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "No person may drive a motor vehicle on a public road **except under a licence** issued in terms of the National Road Traffic Act, and **must keep that licence** (or document) with them in the vehicle."
+},
+{
+"id": 222,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A licence to drive a motor vehicle is issued by a driving licence testing centre, and is either a **provisional licence** (a learner's licence) or a **full driving licence**."
+},
+{
+"id": 223,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A learner's licence application is made at a DLTC on **form LL1**, accompanied by:\n(i) **two identical photos**,\n(ii) **acceptable identification** (plus a copy), and\n(iii) the **appropriate fee**;\napplicants **65 or older** must also submit a **medical certificate** (form MC) from a medical practitioner or occupational health practitioner."
+},
+{
+"id": 224,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A licence holder who permanently changes their place of residence **must notify** the registering authority of their new residential and postal address **within 14 days**."
+},
+{
+"id": 225,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "An owner, operator, or person in charge of a vehicle **may not** employ or permit anyone to drive it on a public road **unless** that person is licensed to drive it."
+},
+{
+"id": 226,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A person **may not** drive a motor vehicle of a prescribed class **without a professional driving permit** (kept with them in the vehicle), **except** a learner accompanied by someone registered as a professional driver for that class."
+},
+{
+"id": 227,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A motor vehicle licence and licence disc are valid for **12 months** from the first day of the month of issue; the expiry date is shown on both."
+},
+{
+"id": 228,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "The owner of a vehicle is responsible for **all offences** committed with it on a public road, **if** the owner permitted its use."
+},
+{
+"id": 229,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A motor vehicle may still be operated for **up to 21 days** after its licence expires (a 'period of grace'), **provided** the previous licence number and disc are displayed in the prescribed manner."
+},
+{
+"id": 230,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "To **'cross'** a public road means to move in a direction that intersects the normal course of travel of traffic on that road."
+},
+{
+"id": 231,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "**'Drawing'** means towing a vehicle that is designed or adapted solely to be drawn, using a vehicle designed or adapted solely for that purpose -- as distinct from general 'towing'."
+},
+{
+"id": 232,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **driving licence card** is a driving licence card issued in terms of the National Road Traffic Act."
+},
+{
+"id": 233,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "**'Driving time'** is any period a driver occupies the driver's seat of a vehicle while it is being operated on a public road, or while the engine is running."
+},
+{
+"id": 234,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "An **emergency brake** is a brake, other than the service brake, that is able to stop a vehicle."
+},
+{
+"id": 235,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "The **'front end'** of a vehicle is the part that projects furthest forward (for a semi-trailer, a line through the kingpin connecting the vehicle's widest point ahead of it)."
+},
+{
+"id": 236,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "An **instructor** is someone who, for direct reward, teaches another person to drive a motor vehicle, or teaches the rules of the road or road signs for a learner's or driving licence."
+},
+{
+"id": 237,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "The **kerb line** is the boundary between the shoulder and the verge, or, where there's no shoulder, the boundary between the edge of the roadway and the verge."
+},
+{
+"id": 238,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **medical practitioner** is a person registered as such under the Medical, Dental and Supplementary Health Service Professions Act."
+},
+{
+"id": 239,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "To **'operate on a public road'** means to use or drive a vehicle (or permit it to be used or driven), or to have or permit a vehicle to be on a public road."
+},
+{
+"id": 240,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "**Overall length** is the distance between the front end and rear end of a vehicle, or (for a combination) between the front of the leading vehicle and the rear of the rearmost vehicle."
+},
+{
+"id": 241,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "**Overall height** is the distance from ground level to the highest point of the vehicle or its load, excluding overhead electrical contacting gear or a catwalk on electrically driven vehicles."
+},
+{
+"id": 242,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "**Overall width** is the distance between two planes parallel to the vehicle's centre-line, touching the widest projecting points on either side -- excluding side mirrors, direction indicators, or small fitments like air deflectors."
+},
+{
+"id": 243,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "The **'owner'** of a vehicle is the person with the right to use and enjoy it under common law or a contractual agreement, or a motor dealer in possession of it for sale."
+},
+{
+"id": 244,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "To **'park'** means to keep a vehicle stationary for longer than is reasonably necessary to load or unload people or goods, excluding delays beyond the driver's control."
+},
+{
+"id": 245,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **parking brake** is a brake, normally a hand brake, used to keep a vehicle stationary."
+},
+{
+"id": 246,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "The **'rear end'** of a vehicle is the part that projects furthest to the rear."
+},
+{
+"id": 247,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "**'Roadworthy'**, for a vehicle, means it complies with the relevant legal provisions and is otherwise fit to be operated on a public road."
+},
+{
+"id": 248,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **service brake** is a brake, normally a footbrake, used to reduce a vehicle's speed or bring it to a stop."
+},
+{
+"id": 249,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "A **sidewalk** is the portion of a verge intended for the exclusive use of pedestrians."
+},
+{
+"id": 250,
+"table": "study_rules",
+"field": "body",
+"formatted_text": "To **'stop'** means to bring a vehicle to a standstill."
+}
+]

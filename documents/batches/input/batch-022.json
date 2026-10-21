@@ -1,0 +1,302 @@
+[
+ {
+  "id": 153,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Slow down and look out for pedestrians who may be crossing the road."
+ },
+ {
+  "id": 154,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Slow down immediately and look out for children who could be crossing the road unexpectedly or even be playing the road."
+ },
+ {
+  "id": 155,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Slow down and be on the look out for cyclists using or crossing the road for the next 2 km."
+ },
+ {
+  "id": 156,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Slow down and be on the look out for the next 2 km for animals."
+ },
+ {
+  "id": 157,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Slow down and be on the look out for the next 2 km for wild animals."
+ },
+ {
+  "id": 158,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Slow down and be prepared to stop should the gates be closing or are closed."
+ },
+ {
+  "id": 159,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Slow down and make sure there is no oncoming traffic about to cross the same gate."
+ },
+ {
+  "id": 160,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Slow down and look to the right and left for oncoming trains. If a train is approaching stop in time, but not within the railway crossing reserve."
+ },
+ {
+  "id": 161,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Slow down and switch your car's headlights on in the dim position."
+ },
+ {
+  "id": 162,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "If your vehicle is higher than the bridge or structure as indicated by this sign, find an alternative route"
+ },
+ {
+  "id": 163,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Find an alternative route if your vehicle is longer that the length indicated in metres on this sign."
+ },
+ {
+  "id": 164,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Be aware of slow-moving traffic, particularly in mountainous areas with sharp curves. Allow for a longer stopping distance on a descent and especially when your vehicle is heavily laden."
+ },
+ {
+  "id": 165,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Slow down and, particularly in mountainous areas with sharp curves, be able to stop within the distance you can see. Remember to allow for a longer stopping distance on a descent especially when your vehicle is heavily laden."
+ },
+ {
+  "id": 166,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Slow down and look out for a ditches or potholes at the joint between the gravel and the tarred surface. Steering will be lighter on the gravel, vehicles will tend to skid easier and will need a longer stopping distance."
+ },
+ {
+  "id": 167,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Slow down and, if there is oncoming traffic, try not to cross the bridge at the same time as an approaching vehicle."
+ },
+ {
+  "id": 168,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Slow down if there is oncoming traffic, stop at least 6m from the structure and yield to the other vehicle."
+ },
+ {
+  "id": 169,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Slow down and adjust your position on the carriageway since oncoming vehicles will pass close to you."
+ },
+ {
+  "id": 170,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Slow down and adjust your position on the roadway."
+ },
+ {
+  "id": 171,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Slow down to avoid potholes without endangering other traffic."
+ },
+ {
+  "id": 172,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Slow down so that you can drive over the speed humps without damaging your vehicle or losing control."
+ },
+ {
+  "id": 173,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Slow down since any sudden braking or harsh steering could cause your vehicle to start skidding sooner than usual for the next 2 km."
+ },
+ {
+  "id": 174,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Slow down to be able to stop within their sight distance if a fall occurs or has occurred. Such falls occur more often when it rains and therefore reduce your speed further since your stopping distance during rainy weather will be longer."
+ },
+ {
+  "id": 175,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Slow down and look out for other temporary road traffic signs, people regulating the traffic or who might be crossing the road."
+ },
+ {
+  "id": 176,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Slow down and drive slowly past the grader. The full width of the road may not be available and there could be sand or gravel on the carriageway that could affect the handling of their vehicles."
+ },
+ {
+  "id": 177,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Slow down and be aware that oncoming vehicles could throw up stones that could cause damage. Your vehicle's braking and turning capacity could also be affected negatively."
+ },
+ {
+  "id": 178,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Slow down and look out for anything on or next to the carriageway that could cause you to change speed or direction."
+ },
+ {
+  "id": 179,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Slow down and be aware that your vehicle may tend to the left or right if you straddle the step between the higher and lower level. Because of the ridge vehicles may also be slow to return to the higher level and could react suddenly if the wheel mounts the ridge. Do not make any sudden jerking steering motions, because it could cause you to lose control completely."
+ },
+ {
+  "id": 180,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not drive or stop on the shoulder. If this is unavoidable, for example to avoid a collision, slow down as much as possible because the vehicle will pull in the direction of the shoulder when you move off the road."
+ },
+ {
+  "id": 181,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Slow down and get ready to stop."
+ },
+ {
+  "id": 182,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Look out for trucks that could force you to slow down. Slow down and look out for trucks that want to cross or join the road. Also look out for anything spilt or dropped on the road by the trucks like gravel, sand or water that could affect the handling of your vehicle."
+ },
+ {
+  "id": 183,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Slow down and look out for other road traffic signs that indicate a specific hazard."
+ },
+ {
+  "id": 184,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Be ready to stop at the stop sign that follows after the flashing blue light or on demand of a police officer."
+ },
+ {
+  "id": 185,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Slow down and look out for the end of the road so that you can stop in time."
+ },
+ {
+  "id": 186,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Determine if a wind is blowing and from which direction. Any shielding of the wind by a truck, bridge or excavation will affect your vehicle and you should adjust the steering in time."
+ },
+ {
+  "id": 187,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Slow down and if it is not known how deep the water is, stop. If passable, drive through the water slowly."
+ },
+ {
+  "id": 188,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not get a frightened and do not brake suddenly."
+ },
+ {
+  "id": 189,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Look out for agricultural vehicles and slow down of they want to cross the road or are crossing it."
+ },
+ {
+  "id": 190,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Slow down immediately, look out for someone controlling the traffic and be ready to stop. If there is enough or professional help on the scene, do not stop out of curiosity. Do not look at the collision scene or wreckage, concentrate on the route to be followed without driving over or into anything."
+ },
+ {
+  "id": 191,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Look out for Fog or smoke and slow down. Be on the look out for other slow moving vehicles."
+ },
+ {
+  "id": 192,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Look out for slow moving vehicle and adapt speed accordingly."
+ },
+ {
+  "id": 193,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Look out for horses and riders ahead and be prepared to slow down or stop."
+ },
+ {
+  "id": 194,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Look out for elephants ahead and be prepared to slow down or stop."
+ },
+ {
+  "id": 195,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Look out for warthogs ahead and be prepared to slow down or stop."
+ },
+ {
+  "id": 196,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Look out for hippos ahead and be prepared to slow down or stop."
+ },
+ {
+  "id": 197,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not continue of your vehicle is wider than indicated on the sign."
+ },
+ {
+  "id": 198,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Look out for electrical cables on the road way ahead."
+ },
+ {
+  "id": 199,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Look out for an asphalt, tar or concrete road ahead."
+ },
+ {
+  "id": 200,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Do not pass to the right of W401 or TW401 and to the left of W402 or TW402"
+ },
+ {
+  "id": 201,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Slow down to take the curve at a safe speed or to be able to stop within the distance you can see."
+ },
+ {
+  "id": 202,
+  "table": "study_signs",
+  "field": "action_text",
+  "text": "Slow down to turn left or right or to stop.."
+ }
+]

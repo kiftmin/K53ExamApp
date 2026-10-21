@@ -1,0 +1,302 @@
+[
+ {
+  "id": 103,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To allow minibuses to take up and drop passengers off. Such a vehicle must display an appropriate emblem, logo or any other indication that they are minibuses."
+ },
+ {
+  "id": 104,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To reserve a road, lane or parking area for buses and minibuses only."
+ },
+ {
+  "id": 105,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate that a traffic lane is reserved for buses and minibuses only."
+ },
+ {
+  "id": 106,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate where the reserved lane for buses and minibuses begins."
+ },
+ {
+  "id": 107,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To reserve a road, lane or parking area for buses and midi buses only."
+ },
+ {
+  "id": 108,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate that a traffic lane is reserved for buses and midi buses only."
+ },
+ {
+  "id": 109,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate where the reserved lane for buses and midi buses begins."
+ },
+ {
+  "id": 110,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To reserve a road, lane or parking area for buses, midi buses and minibuses only."
+ },
+ {
+  "id": 111,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate that a traffic lane is reserved for buses, midi buses and minibuses only."
+ },
+ {
+  "id": 112,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate where the reserved lane for buses, midi buses and minibuses begins."
+ },
+ {
+  "id": 113,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate that a freeway begins at the sign and that the rules that apply to freeways are effective from here."
+ },
+ {
+  "id": 114,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate that a single-carriageway freeway begins at the sign and that all rules that apply to freeways are effective from here."
+ },
+ {
+  "id": 115,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To prohibit the entry of all vehicles with a mass exceeding 3 500 kg, or vehicles, which have more than 10 seats, except for local access or delivery. To yield right of way to pedestrians in the street. To prohibit vehicles from driving through the area without breaking their journey. To limit the speed of vehicles in the area to 30km/h"
+ },
+ {
+  "id": 116,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate that the regulatory sign applies only for the period(s) or during conditions indicated on this sign."
+ },
+ {
+  "id": 117,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To limit the times and periods of stopping."
+ },
+ {
+  "id": 118,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To inform you that the regulatory sign applies when visibility is reduced."
+ },
+ {
+  "id": 119,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To inform you that the regulatory sign applies during daytime."
+ },
+ {
+  "id": 120,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To inform you that the regulatory sign only applies during night time."
+ },
+ {
+  "id": 121,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate that the restriction indicated on the regulatory sign applies in the direction of the arrow."
+ },
+ {
+  "id": 122,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate that parking fees must be paid in the parking area."
+ },
+ {
+  "id": 123,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate that the sign applies to drivers of vehicles operated by the company, owner or organisation indicated by the logo or words."
+ },
+ {
+  "id": 124,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate to the driver that the reservation indicated on the regulatory sign is further restricted by a maximum number of vehicles as indicated on this sign."
+ },
+ {
+  "id": 125,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To cancel a restriction."
+ },
+ {
+  "id": 126,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn that a hazard in the form of a crossroad is ahead"
+ },
+ {
+  "id": 127,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn that you are approaching an intersection where you have right of way. (The thicker leg of the cross on the signs indicates which road has priority.)"
+ },
+ {
+  "id": 128,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn that you are approaching an intersection where you have to yield to cross-traffic. (The thicker leg of the cross on the sign indicates which road has priority.)"
+ },
+ {
+  "id": 129,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn that you are approaching an intersection where you have to turn sharp to the right or left."
+ },
+ {
+  "id": 130,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn that you are approaching an intersection where another road meet yours at an angle."
+ },
+ {
+  "id": 131,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn that traffic may be approaching you from the left or right-hand side."
+ },
+ {
+  "id": 132,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn that your road is first joined by another road from the left hand side first and within a short distance by another from the right hand side (W110,TW110) or from the right first and then from the left (W109,TW109)."
+ },
+ {
+  "id": 133,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn that traffic could merge from the left (W112, TW112) or from the right (W114, TW114) at sharp angles / To warn that the road you are travelling on will soon split in two and you will have to make a choice which road to take."
+ },
+ {
+  "id": 134,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn that the road forks into two roads."
+ },
+ {
+  "id": 135,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn that the one-way roadway is ending soon and that approaching vehicles will use the same carriageway as you."
+ },
+ {
+  "id": 136,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn that the single carriageway is ending and that you will soon enter a one-way road."
+ },
+ {
+  "id": 137,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn that there is a traffic circle ahead where you may need to yield to other traffic."
+ },
+ {
+  "id": 138,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn that there is a gentle curve ahead to the left or right."
+ },
+ {
+  "id": 139,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn that there is a sharp curve ahead to the left or right."
+ },
+ {
+  "id": 140,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn that there is a very sharp, U-shaped curve ahead to the left or right."
+ },
+ {
+  "id": 141,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn of a series of curves ahead. In the case of W209 the first curve is to the left and in the case of W208 the first bend is to the right."
+ },
+ {
+  "id": 142,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn that there are two sharp curves ahead in opposite directions. W210 indicates the first curve is to the right and W211 that the first curve is to the left."
+ },
+ {
+  "id": 143,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn that the one-way roadway you are travelling on will soon become a two-way roadway."
+ },
+ {
+  "id": 144,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn that one-way street you are driving on will soon be crossed by a street that carries two-way traffic."
+ },
+ {
+  "id": 145,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn that the double-lane road you are driving on narrows by a full lane from the left (W215 or TW215) or from the right-hand side (W214 or TW 214)."
+ },
+ {
+  "id": 146,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn that one or more concealed driveways enter the road you are driving on from the left or right in such a way that you cannot easily see the road or traffic travelling on that road."
+ },
+ {
+  "id": 147,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn that there are isolated and particularly new traffic lights or traffic lights near an isolated traffic light at a pedestrian crossing ahead."
+ },
+ {
+  "id": 148,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn that there is a stop sign ahead, which cannot be seen in time."
+ },
+ {
+  "id": 149,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn that there is a yield sign ahead, which you may not be able to see in time without a warning."
+ },
+ {
+  "id": 150,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "Indicate that there is a traffic officer ahead controlling the traffic."
+ },
+ {
+  "id": 151,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "Indicate that there is a scholar patrol operating ahead."
+ },
+ {
+  "id": 152,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn that there is a demarcated pedestrian crossing ahead."
+ }
+]

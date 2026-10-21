@@ -100,5 +100,11 @@
   "original": "Be aware that buses may slow down and stop. Look out for pedestrians when overtaking",
   "before": "Be aware that buses may slow down and stop. Look out for pedestrians when overtaking.",
   "after": "Be aware that buses may slow down and stop. Look out for pedestrians when overtaking"
+ },
+ {
+  "id": "study_signs|action_text|227",
+  "original": "Move to the correct lane in good time to turn left or right at the intersection..",
+  "before": "Move to the correct lane in good time to turn left or right at the intersection.",
+  "after": "Move to the correct lane in good time to turn left or right at the intersection.."
  }
 ]

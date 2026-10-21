@@ -1,0 +1,302 @@
+[
+ {
+  "id": 53,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not turn left or right** at the intersection, depending on the sign.[cite: 28]"
+ },
+ {
+  "id": 54,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Where a **left-turn prohibition** is displayed, you may proceed straight or turn right.[cite: 28] Where a **right-turn prohibition** is displayed, you may proceed straight or turn left.[cite: 28]"
+ },
+ {
+  "id": 55,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not turn your vehicle around** so that it faces the opposite direction.[cite: 28]"
+ },
+ {
+  "id": 56,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "If sign R214 or TR214 is displayed, do **not overtake any vehicle for the next 500m**.[cite: 28] If you are driving a heavy motor vehicle, do **not overtake another heavy vehicle** if sign R215 is displayed.[cite: 28]"
+ },
+ {
+  "id": 57,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not park** where these signs are displayed.[cite: 28]"
+ },
+ {
+  "id": 58,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not stop** unless to obey a traffic light or a traffic officer or to avoid a collision.[cite: 28]"
+ },
+ {
+  "id": 59,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Despite the fact that pedestrians are prohibited on such a road, you must still **look out for them**.[cite: 28] Pedestrians may **not enter or cross a road** where this sign is displayed.[cite: 28]"
+ },
+ {
+  "id": 60,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Look out for **cyclists** who use the road despite the prohibition.[cite: 28] Cyclists must **follow a different route** and may **not proceed beyond this sign**.[cite: 28]"
+ },
+ {
+  "id": 61,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Look out for **cyclists and pedestrians** who use the road despite the prohibition.[cite: 28] Cyclists and pedestrians must **follow a different route** and may **not proceed beyond this sign**.[cite: 28]"
+ },
+ {
+  "id": 62,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Motorcyclists may **not enter this part of the carriageway**, or if this sign is displayed on a freeway, motorcyclists must **leave at the first exit**.[cite: 28]"
+ },
+ {
+  "id": 63,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not enter this area** if you are driving a **motorcar**.[cite: 28]"
+ },
+ {
+  "id": 64,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not enter this area** if you are driving a **taxi**.[cite: 28]"
+ },
+ {
+  "id": 65,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not enter this area** if you are driving a **minibus**.[cite: 28]"
+ },
+ {
+  "id": 66,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not enter this area** if you are driving **motorcar**.[cite: 28]"
+ },
+ {
+  "id": 67,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not enter this area** if you are driving **motorcar**.[cite: 28]"
+ },
+ {
+  "id": 68,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not enter this area** if you are driving **motorcar**.[cite: 28]"
+ },
+ {
+  "id": 69,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not enter this area** if you are driving **motorcar**.[cite: 28]"
+ },
+ {
+  "id": 70,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not enter this area** if you are driving **motorcar**.[cite: 28]"
+ },
+ {
+  "id": 71,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not enter this area** if you are driving a vehicle **transporting dangerous substances**.[cite: 28]"
+ },
+ {
+  "id": 72,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not enter this area** if you are driving an **abnormal vehicle**.[cite: 28]"
+ },
+ {
+  "id": 73,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not enter this area** if you are a **rickshaw**.[cite: 28]"
+ },
+ {
+  "id": 74,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not enter this area** if you are driving a **tour bus**.[cite: 28]"
+ },
+ {
+  "id": 75,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not enter this area** if you are driving a **tractor or agricultural vehicles**.[cite: 28]"
+ },
+ {
+  "id": 76,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not enter this area** if you are driving **animal-drawn vehicle**.[cite: 28]"
+ },
+ {
+  "id": 77,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not enter this area** if you are **riding a horse**.[cite: 28]"
+ },
+ {
+  "id": 78,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not enter this area** if the **overall width of the vehicle** you are driving exceeds the width indicated on the sign.[cite: 28]"
+ },
+ {
+  "id": 79,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not enter this area** if you are **towing another vehicle or trailer**.[cite: 28]"
+ },
+ {
+  "id": 80,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not stop or park for hawkers** where these signs are displayed.[cite: 28]"
+ },
+ {
+  "id": 81,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not enter this area or park here** if you are not driving a **bus**.[cite: 28]"
+ },
+ {
+  "id": 82,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not follow this bus route** if you are not driving a **bus**.[cite: 28]"
+ },
+ {
+  "id": 83,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "If you are **not riding a bicycle**, do **not enter or use this area**.[cite: 28]"
+ },
+ {
+  "id": 84,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Park **in accordance with the road traffic sign and road traffic markings**.[cite: 28] If necessary **pay the tariff** and do **not park for longer than the time indicated**.[cite: 28]"
+ },
+ {
+  "id": 85,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not use this road** (R307, TR307) or **parking area** (R307-P, TR307-P) if you are not riding a **motorcycle**.[cite: 28]"
+ },
+ {
+  "id": 86,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not use this road or parking area** if you are not driving a **motor car**.[cite: 28]"
+ },
+ {
+  "id": 87,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not use this road or parking area** if you are not driving a **taxi**.[cite: 28]"
+ },
+ {
+  "id": 88,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not use this road or parking area** if you are not driving a **minibus**.[cite: 28]"
+ },
+ {
+  "id": 89,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not use this road or parking area** if you are not driving a **midi-bus**.[cite: 28]"
+ },
+ {
+  "id": 90,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not use this road or parking area** if you are not driving a **delivery vehicle**.[cite: 28]"
+ },
+ {
+  "id": 91,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not use this road or parking area** if you are not driving a **goods vehicle**.[cite: 28]"
+ },
+ {
+  "id": 92,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not use this road or parking area** if your vehicle **does not exceed the indicated GVM**.[cite: 28]"
+ },
+ {
+  "id": 93,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not use this road or parking area** if you are not driving a **construction vehicle**.[cite: 28]"
+ },
+ {
+  "id": 94,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not use this road or parking area** if you are not driving a vehicle **conveying hazardous substances**.[cite: 28]"
+ },
+ {
+  "id": 95,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not use this road or parking area** if you are not driving an **abnormal vehicle**.[cite: 28]"
+ },
+ {
+  "id": 96,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not use this road or parking area** if you are not **pulling a rickshaw**.[cite: 28]"
+ },
+ {
+  "id": 97,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not use this road or parking area** if you are not driving a **tour bus**.[cite: 28]"
+ },
+ {
+  "id": 98,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not use this road or parking area** if you are not driving a **high occupancy vehicle**.[cite: 28]"
+ },
+ {
+  "id": 99,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not use this road or parking area** if you are not driving an **ambulance or emergency vehicle**.[cite: 28]"
+ },
+ {
+  "id": 100,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not use this road or parking area** if you are not driving a **disabled person's vehicle**.[cite: 28]"
+ },
+ {
+  "id": 101,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not use this road or parking area** if you are not driving an **authorised vehicle**.[cite: 28]"
+ },
+ {
+  "id": 102,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Do **not stop to take up or drop passengers off** if you are not driving a **mini-bus of the organisation indicated on the sign**.[cite: 28] You may **only wait with or park your mini-bus here** if the road traffic sign indicates that the **stop is a terminus**.[cite: 28]"
+ }
+]

@@ -1,0 +1,302 @@
+[
+ {
+  "id": 203,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn that the road does not continue beyond the sign and that a turn either to the left or to the right must be made."
+ },
+ {
+  "id": 204,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn that part of the road is temporarily closed to traffic."
+ },
+ {
+  "id": 205,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn that the robot ahead or to which the sign is attached is out of order."
+ },
+ {
+  "id": 206,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To point out the direction you must follow to reach the more important route."
+ },
+ {
+  "id": 207,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To point out the direction of a transport terminus from a route that would otherwise have taken you past a bus terminus, harbour, airport or helipad."
+ },
+ {
+  "id": 208,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To point out the direction to a transport terminus from a road that would otherwise have taken you past the terminus."
+ },
+ {
+  "id": 209,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate that a route of equal or higher status can be entered from the road on which you are travelling. This new route consists of a pair of one-way roadways."
+ },
+ {
+  "id": 210,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To confirm the number and status of the route on which you are travelling."
+ },
+ {
+  "id": 211,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate to drivers the route number of the class-B route."
+ },
+ {
+  "id": 212,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To inform in time that you are approaching a class-B route."
+ },
+ {
+  "id": 213,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To inform in advance that a particular numbered route changes direction at the intersection ahead or that the cross-street at the intersection ahead is a numbered class-B route."
+ },
+ {
+  "id": 214,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To point out that a route other than the toll route can be followed."
+ },
+ {
+  "id": 215,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate to cyclists and other road users that there is a special route for cyclists only."
+ },
+ {
+  "id": 216,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate the numbers of the routes leading from an intersection and destinations that can be reached from this intersection."
+ },
+ {
+  "id": 217,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate the numbers of the routes leading from this intersection and destinations that can be reached from this intersection."
+ },
+ {
+  "id": 218,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To confirm the route to a destination and the distance indicated in kilometres to such destinations."
+ },
+ {
+  "id": 219,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To guide you to small locations or to destinations on less travelled routes."
+ },
+ {
+  "id": 220,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To give advance guidance regarding the shape of the intersection ahead, the numbers and destinations of the routes leaving the intersection."
+ },
+ {
+  "id": 221,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To inform in advance which lane leads to a specific destination."
+ },
+ {
+  "id": 222,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate early on that there is an exit from the freeway to certain routes ahead."
+ },
+ {
+  "id": 223,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate early on that there is an exit from the freeway to certain destinations ahead."
+ },
+ {
+  "id": 224,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To confirm early on that there is an exit from the freeway to certain destinations ahead."
+ },
+ {
+  "id": 225,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate exactly where the exit is."
+ },
+ {
+  "id": 226,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate the separation between the off-ramp and the main road."
+ },
+ {
+  "id": 227,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To inform early which lane at the intersection at the end of the of-ramp, leads to which destination."
+ },
+ {
+  "id": 228,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate the direction of the various destinations at the end of a freeway exit (off-ramp)."
+ },
+ {
+  "id": 229,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate in good time exits that is close together, all leading to the same town."
+ },
+ {
+  "id": 230,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate that the road crosses a freeway and show where that freeway is leading to."
+ },
+ {
+  "id": 231,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate the position of the near-side on-ramp at a freeway access interchange, with the freeway route number and the destination of the freeway."
+ },
+ {
+  "id": 232,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate that the far-side on-ramp to a freeway access interchange, is some distance ahead and to indicate the route number and the destination that will be reached by turning onto that on-ramp."
+ },
+ {
+  "id": 233,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate the position of the far-side on-ramp at a freeway access interchange."
+ },
+ {
+  "id": 234,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate that the freeway splits ahead and that the lanes lead to different destinations as indicated."
+ },
+ {
+  "id": 235,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To guide you by means of a diagram which indicates that one of the lanes of a carriageway comes to an end."
+ },
+ {
+  "id": 236,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To inform you by means of a diagram that the number of lanes of the road which you are travelling on will be increased soon. Opposing traffic flow is indicated by a dotted arrow."
+ },
+ {
+  "id": 237,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To guide you by means of a diagram, which indicates that, the right-hand lane of a two-lane carriageway or part of a carriageway is subject to a compulsory requirement of a 'command' or 'prohibition' regulatory sign. Opposing traffic flow is indicated by a dotted arrow."
+ },
+ {
+  "id": 238,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To guide you by means of a diagram, which indicates that, a lane merges with another lane or that roadways join."
+ },
+ {
+  "id": 239,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To guide drivers by means of a diagram, which indicates that, a curved multi-lane carriageway converges with a straight multi-lane carriageway from the left or right, without a decrease in lanes."
+ },
+ {
+  "id": 240,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate that there is an arrestor bed ahead and to indicate the entrance to such an arrestor bed."
+ },
+ {
+  "id": 241,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To warn that, because of a steep descent, it is necessary to engage a lower gear."
+ },
+ {
+  "id": 242,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To inform you by means of a diagram that there is an entrance to an arrestor bed ahead."
+ },
+ {
+  "id": 243,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To inform you by means of a diagram that the lane below the sign is subject to a compulsory requirement indicated by a 'command' or 'prohibition' regulatory sign."
+ },
+ {
+  "id": 244,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To indicate that there is an exit about 300m, 200m and 100m ahead."
+ },
+ {
+  "id": 245,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To inform you that the road ahead or the road to the left or right ends."
+ },
+ {
+  "id": 246,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To inform you that you have the right of way at the intersection ahead."
+ },
+ {
+  "id": 247,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To inform you of the existence of a park-and-ride terminus that has a bus (IN9) or train (IN10) service."
+ },
+ {
+  "id": 248,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To give more information about the main message on regulatory, warning or diagrammatical guidance signs."
+ },
+ {
+  "id": 249,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To inform you of the existence of an information office or notice board."
+ },
+ {
+  "id": 250,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To inform you of a temporary experiment or research being carried out on the road."
+ },
+ {
+  "id": 251,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To inform you that the traffic signals on this route are co-ordinated and that the signals will be green at all the subsequent intersections if you maintain the indicated speed."
+ },
+ {
+  "id": 252,
+  "table": "study_signs",
+  "field": "purpose_text",
+  "text": "To point out that the signals at this intersection does not follow the normal sequence. At a normal intersection you would expect that the signal in your direction will change to green after the signal for cross traffic was yellow. At this intersection your signal may remain red whilst the signal in the opposite direction changes to green."
+ }
+]

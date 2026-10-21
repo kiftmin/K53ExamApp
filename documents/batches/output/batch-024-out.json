@@ -1,0 +1,254 @@
+[
+ {
+  "id": 253,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Be aware that buses may slow down and stop**[cite: 32]. **Look out for pedestrians when overtaking**[cite: 32]."
+ },
+ {
+  "id": 254,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Make sure that it is safe to slow down and stop** to drop someone off or pick someone up[cite: 32]. Also **look out for pedestrians who may cross the road**[cite: 32]."
+ },
+ {
+  "id": 255,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Stop with the front of your vehicle behind the stop sign**[cite: 32]. If there is no stop sign, the **stop line will have the same meaning as a stop sign**[cite: 32]."
+ },
+ {
+  "id": 256,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Give way to any one who crosses your path of travel** or who wants to cross your path[cite: 32]. Even if there is no yield sign, you **still have to give way**[cite: 32]."
+ },
+ {
+  "id": 257,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Look out for any pedestrians crossing or wanting to cross the road** and **give them priority by slowing down or stopping**[cite: 32]."
+ },
+ {
+  "id": 258,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Do not cross the line**, except to **gain direct access to an entrance on the other side** of the line, to **gain direct access from such an entrance to the road** or to **pass a stationary obstruction**[cite: 32]. In all these cases you must **ensure that it is safe to do so**[cite: 32]."
+ },
+ {
+  "id": 259,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**You may under no circumstances drive on the right hand side or cross these lines** with any part of your vehicle, except to **drive around a stationary vehicle or stationary obstruction** in the road[cite: 32]."
+ },
+ {
+  "id": 260,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Drive in such a way that no part of your vehicle crosses the line**[cite: 32]."
+ },
+ {
+  "id": 261,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Avoid driving to the left of the left-edge line**[cite: 32]. You may, however drive here only; **whilst being overtaken** by another vehicle, if you can **so without endangering yourself, other traffic, pedestrians or property**, **during daytime** and if **persons and vehicles on the road are clearly discernible** at a distance of at least 150 metres[cite: 32]. It is **not compulsory to drive to the left of the line** when you are being overtaken, keep in mind that you **have very little space when doing so**[cite: 32]. If your vehicle breaks down, **stop as far left from the line as possible and switch on your emergency lights**[cite: 32]. The **right-edge line is usually found on one-way roads** such as dual carriageways or freeways and **may not be crossed**[cite: 32]."
+ },
+ {
+  "id": 262,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Drive in such a way that you do not stop, park or drive over the island**, unless **on the orders of a traffic or police officer, to avoid a collision or in an emergency**[cite: 32]."
+ },
+ {
+  "id": 263,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Make sure that your vehicle is parked completely inside the lines** that mark the parking bay[cite: 32]. In the case of angle parking you must **park as far as possible from the road**, with the **front of your vehicle not further than 150mm from the kerb** but **no part of the vehicle may be on or over the sidewalk**[cite: 32]."
+ },
+ {
+  "id": 264,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**If you are not part of the group identified by the sign, you may not park here**[cite: 32]. In an emergency you may **stop or park at the sign that indicates the SOS telephone**[cite: 32]. **Only goods vehicles may stop or park in the demarcated area** that indicates a loading zone[cite: 32]."
+ },
+ {
+  "id": 265,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Choose the correct lane in time** to travel in the direction you want to go[cite: 32]. **Make sure that other traffic is obeying the mandatory direction arrows** in their lanes[cite: 32]. **Check your blind spot before turning right** to see that a vehicle in the lane next to you who is suppose to turn right (because of the mandatory right-turn arrow in his lane) **is not carrying straight on**[cite: 32]."
+ },
+ {
+  "id": 266,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**If you are not driving a bus do not drive in the lane** indicated by the sign during the times on the sign[cite: 32]."
+ },
+ {
+  "id": 267,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Do not stop in the demarcated box** and **make sure that you will be able to drive through the intersection** before entering the intersection[cite: 32]."
+ },
+ {
+  "id": 268,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Look out for pedestrians that may cross the road, slow down and stop** if someone wants to cross the road[cite: 32]. **Do not overtake inside this area** or a vehicle that has stopped at any pedestrian crossing[cite: 32]."
+ },
+ {
+  "id": 269,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Except in any emergency, do not stop at these lines**[cite: 32]. In the case of a broken line, you may **not stop during the times indicated** by a road traffic sign[cite: 32]."
+ },
+ {
+  "id": 270,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Except in an emergency**, you may **stop for short periods, but may not park here**[cite: 32]. Parking means that a vehicle is stationary (whether the engine is running or not) for a longer period than is needed to on or off load goods or passengers[cite: 32]."
+ },
+ {
+  "id": 271,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Do not drive in the demarcated area**[cite: 32]."
+ },
+ {
+  "id": 272,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Only drive around the circle in the direction indicated by the arrows**[cite: 32]. **Yield to traffic coming from your right hand side**[cite: 32]. At a mini-circle **yield to traffic that reaches their yield line first** before you reach yours[cite: 32]. **Drive slowly so that you can stop** if someone does not yield[cite: 32]."
+ },
+ {
+  "id": 273,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Slow down and if necessary, stop before the crossing**[cite: 32]."
+ },
+ {
+  "id": 274,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Yield to any traffic that wants to change lanes**[cite: 32]. The continuity lines will soon change to a channelizing line or painted island, which will **make it illegal to change direction**[cite: 32]. **Check your blind spot** to make sure there are no other vehicles that might cut in front of you[cite: 32]."
+ },
+ {
+  "id": 275,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Be on the look out for approaching vehicles** which may move over onto your side of the road[cite: 32]."
+ },
+ {
+  "id": 276,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Be on the look out for approaching vehicles**[cite: 32]."
+ },
+ {
+  "id": 277,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Slow down if other traffic is approaching the intersection** and **stop if necessary**[cite: 32]."
+ },
+ {
+  "id": 278,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Change lanes in time if the lane you are travelling in ends**[cite: 32]. **Check both the blind spots** where two lanes end from both sides to make sure there is no other vehicle that is also changing lanes[cite: 32]."
+ },
+ {
+  "id": 279,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Choose the correct lane in time** to drive in the direction that you want to go[cite: 32]."
+ },
+ {
+  "id": 280,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Ensure not to cross the prohibition line** that follows the sign[cite: 32]. If you are on the right-hand side of the road **move back to the left-hand lane as soon as possible** before the prohibition line starts[cite: 32]."
+ },
+ {
+  "id": 281,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Only drive into this arrestor bed when your brakes fail**[cite: 32]."
+ },
+ {
+  "id": 282,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Slow down and release your brake before driving over the speed hump**[cite: 32]."
+ },
+ {
+  "id": 283,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Drive in the centre of your demarcated lane**[cite: 32]."
+ },
+ {
+  "id": 284,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Turn according to the markings**[cite: 32]."
+ },
+ {
+  "id": 285,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Ensure that you do not straddle any lane markings**[cite: 32]."
+ },
+ {
+  "id": 286,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "The driver must be **guided by the arrows and never**, unless otherwise requested by a traffic officer, **drive in the direction opposite to what the arrows show**[cite: 32]."
+ },
+ {
+  "id": 287,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Look out for cyclists crossing** or who want to cross the road[cite: 32]."
+ },
+ {
+  "id": 288,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Do not use a road or a marked portion of a road** if you are not part of the group identified by the marking[cite: 32]."
+ },
+ {
+  "id": 289,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Read the message on the road and then concentrate** on the possible danger indicated by the message[cite: 32]."
+ },
+ {
+  "id": 290,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "These lights must be **obeyed at all times** in the following manner[cite: 32]: **Red - Stop**[cite: 32]. **Flashing red arrow to the left - After stopping, the driver may turn if there is no traffic**[cite: 32]. Remember to **yield to pedestrian traffic and oncoming traffic** that wants to turn right, and traffic from the right passing through the intersection[cite: 32]. **Amber - Stop**, except where it cannot be done safely[cite: 32]. **Constant amber arrow - Stop** and wait until the flashing green arrow shows you may go[cite: 32]. **Green - Go if it is safe**[cite: 32]. **Flashing green arrows - Right of way** in the direction of the flashing arrow[cite: 32]. **Constant green arrow - Shows the direction in which traffic must go**, for example one-way streets[cite: 32]. **Flashing amber disc - Drive on carefully, but yield to pedestrians**[cite: 32]. Pedestrians may cross the roadway[cite: 32]. **Flashing red signal - Indicates that the driver must stop** and may carry on when it is safe (as at stop sign)[cite: 32]. At a railway crossing a flashing red light indicates that a train is coming and you **may not drive on until the light stops flashing**[cite: 32]. **(Red) figure light signal**[cite: 32]. Shows pedestrians that they **may not cross the road until the green figure light signal is shown**[cite: 32]. If this sign flashes pedestrians who have not entered the roadway must wait until a green figure light signal shows[cite: 32]. Pedestrians who are already in the intersection must **cross the intersection as quickly as possible**[cite: 32]."
+ },
+ {
+  "id": 291,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "The driver must **leave the lane in the direction of the arrow**[cite: 32]."
+ },
+ {
+  "id": 292,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "Driver must **focus on the signals given by the officer**, and **strictly adhere to the signal given**[cite: 32]. The traffic officer signals **takes precedence over any other traffic signal**[cite: 32]. a) **Stop - Stop traffic approaching from the front**[cite: 32] b) **Stop - Stop traffic approaching from the rear**[cite: 32] c) **Stop - Stop traffic approaching from the rear**[cite: 32] d) **Go/Proceed - Indicates to the driver that he/she may proceed**[cite: 32] e) **Go/Proceed - Indicates to the driver that he/she may proceed**[cite: 32]"
+ },
+ {
+  "id": 293,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Stop or proceed** depending on the displayed flag signal[cite: 32]."
+ },
+ {
+  "id": 294,
+  "table": "study_signs",
+  "field": "action_text",
+  "formatted_text": "**Proceed slowly and be alert**[cite: 32]."
+ }
+]
