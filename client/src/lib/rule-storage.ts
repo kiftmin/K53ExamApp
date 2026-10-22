@@ -2,7 +2,7 @@
 // Mirrors sign-storage.ts — plain JSON in localStorage, no backend changes.
 // Progress is server-synced for W/M/X codes via progress-sync.ts.
 
-import { syncEnabled, pushProgress, hydrateProgress, type LearnerRecord } from "./progress-sync";
+import { syncEnabled, pushProgress, hydrateProgress, recordOwnerIfMissing, type LearnerRecord } from "./progress-sync";
 
 const FAV_RULES_KEY = "k53_favorite_rules";
 const RULE_CODE_KEY = "k53_rules_licence_code";
@@ -58,6 +58,7 @@ function nextStatus(record: LearningRecord | undefined, rating: RecallRating): L
 }
 
 export function rateRule(id: number, rating: RecallRating): LearningRecord {
+  recordOwnerIfMissing();
   const map = readLearningMap(LEARNING_RULES_KEY);
   const prev = map[id];
   const record: LearningRecord = {

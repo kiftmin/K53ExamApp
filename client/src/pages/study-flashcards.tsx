@@ -11,6 +11,7 @@ import { Progress } from "@/components/ui/progress";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { getFavoriteSignIds, getSeenSignIds, markSignSeen, rateSign, getAllSignLearning, initSignSync, type RecallRating } from "@/lib/sign-storage";
 import { summarizeSigns } from "@/lib/mastery-summary";
+import { ensureLocalOwner } from "@/lib/progress-owner";
 import { ArrowLeft, ChevronLeft, ChevronRight, RotateCcw, Shuffle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useStudyGate } from "./study";
@@ -45,6 +46,7 @@ export default function StudySignsFlashcards() {
 
   useEffect(() => {
     if (allowed) {
+      ensureLocalOwner();
       initSignSync();
     }
   }, [allowed]);

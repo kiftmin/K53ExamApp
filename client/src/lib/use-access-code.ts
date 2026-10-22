@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import { ensureLocalOwner } from "./progress-owner";
 
 const CODE_PREFIX_REQUIRES_MOBILE = ["W", "M", "X"];
 
@@ -81,13 +82,14 @@ export function useAccessCode(): UseAccessCodeReturn {
       });
       const data = await res.json();
       if (data.valid) {
-        setValidated(true);
         sessionStorage.setItem("k53_access_code", c);
         if (needsMobile) {
           sessionStorage.setItem("k53_mobile_number", mobile.trim());
         } else {
           sessionStorage.removeItem("k53_mobile_number");
         }
+        ensureLocalOwner();
+        setValidated(true);
       } else {
         setError(data.message || "Invalid access code. Please try again.");
       }

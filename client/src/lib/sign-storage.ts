@@ -3,7 +3,7 @@
 // plain JSON, no backend changes needed.
 // Progress is server-synced for W/M/X codes via progress-sync.ts.
 
-import { syncEnabled, pushProgress, hydrateProgress, type LearnerRecord } from "./progress-sync";
+import { syncEnabled, pushProgress, hydrateProgress, recordOwnerIfMissing, type LearnerRecord } from "./progress-sync";
 
 const FAV_SIGNS_KEY = "k53_favorite_signs";
 const LEARNING_SIGNS_KEY = "k53_sign_learning";
@@ -59,6 +59,7 @@ function nextStatus(record: LearningRecord | undefined, rating: RecallRating): L
 }
 
 export function rateSign(id: number, rating: RecallRating): LearningRecord {
+  recordOwnerIfMissing();
   const map = readLearningMap(LEARNING_SIGNS_KEY);
   const prev = map[id];
   const record: LearningRecord = {

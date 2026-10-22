@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { useQuiz } from "@/lib/quiz-context";
 import { getFavoriteSignIds, toggleFavoriteSign, getDoneSignIds, toggleDoneSign, removeSignBookmarks, initSignSync } from "@/lib/sign-storage";
+import { ensureLocalOwner } from "@/lib/progress-owner";
 import { useToast } from "@/hooks/use-toast";
 import { ArrowLeft, BadgeCheck, ChevronDown, CheckCircle2, Heart, ImageOff, Layers, Search, HeartOff, CircleX } from "lucide-react";
 
@@ -119,6 +120,7 @@ export default function StudySignsBrowse() {
 
   useEffect(() => {
     if (allowed) {
+      ensureLocalOwner();
       initSignSync();
     }
   }, [allowed]);

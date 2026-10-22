@@ -10,6 +10,7 @@ import { Switch } from "@/components/ui/switch";
 import { Progress } from "@/components/ui/progress";
 import { getFavoriteRuleIds, getSeenRuleIds, markRuleSeen, rateRule, getAllRuleLearning, initRuleSync, type RecallRating } from "@/lib/rule-storage";
 import { summarizeRules } from "@/lib/mastery-summary";
+import { ensureLocalOwner } from "@/lib/progress-owner";
 import { ArrowLeft, ChevronLeft, ChevronRight, RotateCcw, Shuffle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useStudyGate } from "./study";
@@ -30,6 +31,7 @@ export default function StudyRulesFlashcards() {
 
   useEffect(() => {
     if (allowed) {
+      ensureLocalOwner();
       initRuleSync();
     }
   }, [allowed]);

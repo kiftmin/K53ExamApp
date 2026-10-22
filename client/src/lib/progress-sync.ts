@@ -4,6 +4,8 @@
 
 const API_BASE = "";
 
+export const PROGRESS_OWNER_KEY = "k53_progress_owner";
+
 export interface LearnerRecord {
   status: "new" | "learning" | "review" | "mastered";
   correct: number;
@@ -24,6 +26,27 @@ export function currentMobile(): string | null {
 
 export function currentCode(): string | null {
   return typeof sessionStorage !== "undefined" ? sessionStorage.getItem("k53_access_code") : null;
+}
+
+export function progressIdentity(): string | null {
+  const code = currentCode();
+  if (!code) return null;
+  const prefix = code.charAt(0).toUpperCase();
+  if (prefix === "W" || prefix === "M" || prefix === "X") {
+    return currentMobile()?.trim() || null;
+  }
+  return prefix === "D" ? "daily" : null;
+}
+
+export function recordOwnerIfMissing(): void {
+  if (!syncEnabled() || typeof localStorage === "undefined") return;
+  try {
+    if (localStorage.getItem(PROGRESS_OWNER_KEY)) return;
+    const identity = progressIdentity();
+    if (identity) localStorage.setItem(PROGRESS_OWNER_KEY, identity);
+  } catch {
+    // ignore
+  }
 }
 
 type ServerProgressRow = {

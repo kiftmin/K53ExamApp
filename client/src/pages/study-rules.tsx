@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Heart, Layers, Search, ArrowLeft, ChevronDown, CheckCircle2, HeartOff, CircleX } from "lucide-react";
 import { toggleFavoriteRule, getFavoriteRuleIds, getDoneRuleIds, toggleDoneRule, removeRuleBookmarks, initRuleSync } from "@/lib/rule-storage";
+import { ensureLocalOwner } from "@/lib/progress-owner";
 import { useStudyGate } from "./study";
 import RulesCodeGate from "@/components/rules-code-gate";
 import { cn } from "@/lib/utils";
@@ -137,6 +138,7 @@ function BrowseInner({
 
   useEffect(() => {
     if (allowed) {
+      ensureLocalOwner();
       initRuleSync();
     }
   }, [allowed]);

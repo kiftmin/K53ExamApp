@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Heart, Layers, Search, ArrowLeft, CheckCircle2, HeartOff, CircleX } from "lucide-react";
 import { toggleFavoriteControl, getFavoriteControlIds, getDoneControlIds, toggleDoneControl, removeControlBookmarks, initControlSync } from "@/lib/control-storage";
+import { ensureLocalOwner } from "@/lib/progress-owner";
 import ControlDiagramView from "@/components/control-diagram-view";
 import ControlsPractice from "@/components/controls-practice";
 import { useStudyGate } from "./study";
@@ -54,6 +55,7 @@ function BrowseInner({ licence, gearbox, reset, allowed, setLocation, search, se
 
   useEffect(() => {
     if (allowed) {
+      ensureLocalOwner();
       initControlSync();
     }
   }, [allowed]);

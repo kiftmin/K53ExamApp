@@ -2,7 +2,7 @@
 // Mirrors rule-storage.ts — plain JSON in localStorage.
 // Progress is server-synced for W/M/X codes via progress-sync.ts.
 
-import { syncEnabled, pushProgress, hydrateProgress, type LearnerRecord } from "./progress-sync";
+import { syncEnabled, pushProgress, hydrateProgress, recordOwnerIfMissing, type LearnerRecord } from "./progress-sync";
 
 const FAV_CONTROLS_KEY = "k53_favorite_controls";
 const LEARNING_CONTROLS_KEY = "k53_control_learning";
@@ -84,6 +84,7 @@ function nextStatus(record: LearningRecord | undefined, rating: RecallRating): L
   }
 }
 export function rateControl(id: number, rating: RecallRating): LearningRecord {
+  recordOwnerIfMissing();
   const map = readLearningMap(LEARNING_CONTROLS_KEY);
   const prev = map[id];
   const record: LearningRecord = {

@@ -1,11 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
 import { useLocation, useSearch } from "wouter";
 import { useQuery } from "@tanstack/react-query";
-import type { StudySign, StudyRule, StudyControl } from "@shared/schema";
-import { weakestGroups } from "@/lib/mastery-summary";
+import type { StudySign, StudyRule, StudyControl, ControlDiagram } from "@shared/schema";
+import { weakestGroups, controlsForSummary } from "@/lib/mastery-summary";
 import { initSignSync } from "@/lib/sign-storage";
 import { initRuleSync } from "@/lib/rule-storage";
 import { initControlSync } from "@/lib/control-storage";
+import { ensureLocalOwner } from "@/lib/progress-owner";
 import { useAccessCode } from "@/lib/use-access-code";
 import { Layout } from "@/components/layout";
 import { Button } from "@/components/ui/button";
@@ -64,23 +65,23 @@ export default function Home() {
   const { data: controls = [] } = useQuery<StudyControl[]>({
     queryKey: ["/api/controls"],
   });
+  const { data: diagrams = [] } = useQuery<ControlDiagram[]>({
+    queryKey: ["/api/control-diagrams"],
+  });
 
   const [syncTick, setSyncTick] = useState(0);
 
-  const weak = useMemo(() => {
-    const controlsForSummary = controls.map((c) => ({
-      id: c.id,
-      heading: c.component_name,
-      subheading: c.function_notes ?? null,
-    }));
-    return weakestGroups(signs, rules, controlsForSummary, 3);
-  }, [signs, rules, controls, syncTick]);
+  const weak = useMemo(
+    () => weakestGroups(signs, rules, controlsForSummary(controls, diagrams), 3),
+    [signs, rules, controls, diagrams, syncTick]
+  );
 
   const revisionPath = weak.length > 0 ? gModulePath(weak[0]!) : "/study";
 
   useEffect(() => {
     if (!validated) return;
     let cancelled = false;
+    ensureLocalOwner();
     (async () => {
       try {
         await Promise.all([initSignSync(), initRuleSync(), initControlSync()]);
@@ -230,8 +231,10 @@ export default function Home() {
                 {weak.map((g) => (
                   <div key={`${g.heading}-${g.subheading}-${g.module}`} className="flex items-center justify-between rounded-xl bg-muted/50 px-3 py-2">
                     <div>
-                      <p className="text-xs font-bold">{g.subheading}</p>
-                      <p className="text-[10px] text-muted-foreground">{g.heading}</p>
+                      <p className="text-xs font-bold">{g.subheading === "(general)" ? g.heading : g.subheading}</p>
+                      {g.subheading !== "(general)" && (
+                        <p className="text-[10px] text-muted-foreground">{g.heading}</p>
+                      )}
                     </div>
                     <span className="text-xs font-bold text-amber-700">{g.weak} shaky · {g.pct}% mastered</span>
                   </div>

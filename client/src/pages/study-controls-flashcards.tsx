@@ -9,6 +9,8 @@ import { Switch } from "@/components/ui/switch";
 import { Progress } from "@/components/ui/progress";
 import ControlDiagramView from "@/components/control-diagram-view";
 import { getFavoriteControlIds, getSeenControlIds, markControlSeen, rateControl, getAllControlLearning, initControlSync, type RecallRating } from "@/lib/control-storage";
+import { controlPctByItem } from "@/lib/mastery-summary";
+import { ensureLocalOwner } from "@/lib/progress-owner";
 import { ArrowLeft, ChevronLeft, ChevronRight, RotateCcw, Shuffle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useStudyGate } from "./study";
@@ -29,6 +31,7 @@ export default function StudyControlsFlashcards() {
 
   useEffect(() => {
     if (allowed) {
+      ensureLocalOwner();
       initControlSync();
     }
   }, [allowed]);
@@ -69,12 +72,11 @@ function Deck({
   index, setIndex, flipped, setFlipped, direction, setDirection, touchStart, swiped,
 }: any) {
   const vehicle_type = licence === 1 ? "motorcycle" : licence === 2 ? "lmv" : "hmv";
-  const gearboxParam = vehicle_type === "motorcycle" ? undefined : gearbox;
 
   const { data: controls = [], isLoading } = useQuery<StudyControl[]>({
-    queryKey: [`/api/controls?vehicle_type=${vehicle_type}${gearboxParam ? `&gearbox=${gearboxParam}` : ""}`],
+    queryKey: [`/api/controls?vehicle_type=${vehicle_type}`],
     queryFn: async () => {
-      const r = await fetch(`/api/controls?vehicle_type=${vehicle_type}${gearboxParam ? `&gearbox=${gearboxParam}` : ""}`);
+      const r = await fetch(`/api/controls?vehicle_type=${vehicle_type}`);
       if (!r.ok) throw new Error(`${r.status}: ${await r.text()}`);
       return r.json();
     },
@@ -82,7 +84,21 @@ function Deck({
   });
   const { data: diagrams = [] } = useQuery<ControlDiagram[]>({ queryKey: ["/api/control-diagrams"] });
 
+  const revisionMode =
+    typeof window !== "undefined" &&
+    new URLSearchParams(window.location.search).get("revision") === "1";
+
   const deck = useMemo(() => {
+    if (revisionMode) {
+      const learning = getAllControlLearning();
+      const pctById = controlPctByItem(controls, diagrams);
+      return controls
+        .filter((c) => {
+          const status = learning[c.id]?.status ?? "new";
+          return status === "learning" || status === "new";
+        })
+        .sort((a, b) => (pctById.get(a.id) ?? 100) - (pctById.get(b.id) ?? 100));
+    }
     const favs = new Set(getFavoriteControlIds());
     const seen = new Set(getSeenControlIds());
     let pool = controls.filter((c: StudyControl) => {
@@ -94,7 +110,7 @@ function Deck({
     if (shuffled) pool = shuffle(pool);
     return pool;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [controls, favoritesOnly, unseenOnly, shuffled, reshuffleKey]);
+  }, [controls, diagrams, revisionMode, favoritesOnly, unseenOnly, shuffled, reshuffleKey]);
 
   const resetDeck = () => { setIndex(0); setFlipped(false); };
   const changeFilter = (fn: () => void) => { fn(); resetDeck(); };
@@ -219,7 +235,9 @@ function Deck({
       ) : deck.length === 0 ? (
         <div className="rounded-2xl border border-border p-10 text-center space-y-2">
           <p className="font-bold">Deck is empty</p>
-          <p className="text-sm text-muted-foreground">Adjust the filters.</p>
+          <p className="text-sm text-muted-foreground">
+            {revisionMode ? "No shaky controls left." : "Adjust the filters."}
+          </p>
         </div>
       ) : (
         current && (

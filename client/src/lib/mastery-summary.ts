@@ -2,6 +2,7 @@
 // "mastery %" = mastered / (mastered + review + learning); new items are
 // excluded from the denominator (not yet attempted, so not "weak").
 
+import type { ControlDiagram, StudyControl } from "@shared/schema";
 import { getAllSignLearning } from "./sign-storage";
 import { getAllRuleLearning } from "./rule-storage";
 import { getAllControlLearning } from "./control-storage";
@@ -53,10 +54,31 @@ export function summarizeControls(items: { id: number; heading: string; subheadi
   return summarize(items, getAllControlLearning(), "controls");
 }
 
+export function controlsForSummary(
+  controls: Pick<StudyControl, "id" | "diagram_id">[],
+  diagrams: Pick<ControlDiagram, "id" | "label">[]
+): { id: number; heading: string; subheading: null }[] {
+  const labels = new Map(diagrams.map((d) => [d.id, d.label]));
+  return controls.map((c) => ({
+    id: c.id,
+    heading: labels.get(c.diagram_id) || "Vehicle Controls",
+    subheading: null,
+  }));
+}
+
+export function controlPctByItem(
+  controls: Pick<StudyControl, "id" | "diagram_id">[],
+  diagrams: Pick<ControlDiagram, "id" | "label">[]
+): Map<number, number> {
+  const summary = controlsForSummary(controls, diagrams);
+  const pctByHeading = new Map(summarizeControls(summary).map((g) => [g.heading, g.pct]));
+  return new Map(summary.map((item) => [item.id, pctByHeading.get(item.heading) ?? 100]));
+}
+
 /** Lowest-mastery groups with weak items, signs + rules + controls combined, weakest first. */
 export function weakestGroups(signs: any[], rules: any[], controls: any[], limit = 3): GroupMastery[] {
   return [...summarizeSigns(signs), ...summarizeRules(rules), ...summarizeControls(controls)]
-    .filter((g) => g.weak > 0)
+    .filter((g) => g.total > 0 && g.weak > 0)
     .sort((a, b) => a.pct - b.pct || b.weak - a.weak)
     .slice(0, limit);
 }

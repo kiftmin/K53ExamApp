@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { clearSignLocalData } from "@/lib/sign-storage";
 import { clearRuleLocalData } from "@/lib/rule-storage";
 import { clearControlLocalData } from "@/lib/control-storage";
+import { clearProgressOwner } from "@/lib/progress-owner";
 
 const LINKS = [
   { path: "/", label: "Home", icon: House },
@@ -25,6 +26,7 @@ function clearSession() {
     clearSignLocalData();
     clearRuleLocalData();
     clearControlLocalData();
+    clearProgressOwner();
   }
 }
 
