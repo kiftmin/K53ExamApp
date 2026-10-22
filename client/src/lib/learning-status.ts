@@ -1,0 +1,41 @@
+// One shared status model for all three Study modules.
+// Kept value names (`new` / `learning` / `review` / `mastered`) and the
+// `RecallRating` type so progress-sync routes and shared/schema.ts
+// validation keep working — the learner-facing words are only
+// "Not yet" and "Got it". Legacy `review` rows read as known.
+
+export type LearningStatus = "new" | "learning" | "review" | "mastered";
+export type RecallRating = "again" | "hard" | "good" | "easy";
+
+export type LearningRecord = {
+  status: LearningStatus;
+  correct: number;
+  incorrect: number;
+  lastRating: RecallRating;
+  lastSeenAt: string; // ISO date
+};
+
+/** True for `mastered` and for legacy `review` rows. */
+export function isKnown(status: LearningStatus | undefined | null): boolean {
+  return status === "mastered" || status === "review";
+}
+
+/**
+ * Resolve the stored status after a rating.
+ * "Not yet" (again/hard) always gives `learning` — a known card drops back.
+ * "Got it" (good/easy) always gives `mastered`.
+ */
+export function nextStatus(record: LearningRecord | undefined, rating: RecallRating): LearningStatus {
+  if (rating === "good" || rating === "easy") return "mastered";
+  return "learning";
+}
+
+/** Count known vs total items from a learning map. */
+export function countKnown(
+  items: { id: number }[],
+  learning: Record<number, LearningRecord>
+): { known: number; total: number } {
+  let known = 0;
+  for (const item of items) if (isKnown(learning[item.id]?.status)) known++;
+  return { known, total: items.length };
+}

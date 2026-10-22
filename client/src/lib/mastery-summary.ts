@@ -1,57 +1,54 @@
-// Aggregates client-side learning records into per-group mastery percentages.
-// "mastery %" = mastered / (mastered + review + learning); new items are
-// excluded from the denominator (not yet attempted, so not "weak").
+// Aggregates client-side learning records into per-group stats.
+// A group tracks three numbers: known (mastered or legacy review),
+// to practise (status learning) and total (everything, incl. new).
+// New items are never counted as "to practise".
 
 import type { ControlDiagram, StudyControl } from "@shared/schema";
 import { getAllSignLearning } from "./sign-storage";
 import { getAllRuleLearning } from "./rule-storage";
 import { getAllControlLearning } from "./control-storage";
+import { isKnown } from "./learning-status";
 
-export interface GroupMastery {
+export interface GroupStats {
   heading: string;
   subheading: string;
   module: "signs" | "rules" | "controls";
-  mastered: number;
-  total: number; // mastered + review + learning
-  pct: number; // 0-100
-  weak: number; // learning + new (due for revision)
+  known: number;
+  toPractise: number; // status learning
+  total: number; // every item in the group
 }
 
-function summarize<T extends { id: number; heading: string; subheading?: string | null; section_ref?: string | null }>(
+function groupStats<T extends { id: number; heading: string; subheading?: string | null }>(
   items: T[],
   learning: Record<number, { status: string }>,
   module: "signs" | "rules" | "controls"
-): GroupMastery[] {
-  const groups = new Map<string, GroupMastery>();
+): GroupStats[] {
+  const groups = new Map<string, GroupStats>();
   for (const item of items) {
     const key = `${item.heading}|||${item.subheading || ""}`;
     let g = groups.get(key);
     if (!g) {
-      g = { heading: item.heading, subheading: item.subheading || "(general)", module, mastered: 0, total: 0, pct: 0, weak: 0 };
+      g = { heading: item.heading, subheading: item.subheading || "(general)", module, known: 0, toPractise: 0, total: 0 };
       groups.set(key, g);
     }
-    const rec = learning[item.id];
-    const status = rec?.status ?? "new";
-    if (status === "mastered") { g.mastered++; g.total++; }
-    else if (status === "review") { g.total++; g.weak++; }
-    else if (status === "learning") { g.total++; g.weak++; }
-    else { g.weak++; } // new
+    const status = learning[item.id]?.status ?? "new";
+    g.total++;
+    if (isKnown(status as any)) g.known++;
+    else if (status === "learning") g.toPractise++;
   }
-  return Array.from(groups.values())
-    .map((g) => ({ ...g, pct: g.total === 0 ? 0 : Math.round((g.mastered / g.total) * 100) }))
-    .filter((g) => g.total > 0 || g.weak > 0);
+  return Array.from(groups.values());
 }
 
-export function summarizeSigns<T extends { id: number; heading: string; subheading?: string | null }>(items: T[]): GroupMastery[] {
-  return summarize(items, getAllSignLearning(), "signs");
+export function groupsForSigns<T extends { id: number; heading: string; subheading?: string | null }>(items: T[]): GroupStats[] {
+  return groupStats(items, getAllSignLearning(), "signs");
 }
 
-export function summarizeRules<T extends { id: number; heading: string; subheading?: string | null }>(items: T[]): GroupMastery[] {
-  return summarize(items, getAllRuleLearning(), "rules");
+export function groupsForRules<T extends { id: number; heading: string; subheading?: string | null }>(items: T[]): GroupStats[] {
+  return groupStats(items, getAllRuleLearning(), "rules");
 }
 
-export function summarizeControls(items: { id: number; heading: string; subheading?: string | null }[]): GroupMastery[] {
-  return summarize(items, getAllControlLearning(), "controls");
+export function groupsForControls(items: { id: number; heading: string; subheading?: string | null }[]): GroupStats[] {
+  return groupStats(items, getAllControlLearning(), "controls");
 }
 
 export function controlsForSummary(
@@ -66,19 +63,21 @@ export function controlsForSummary(
   }));
 }
 
-export function controlPctByItem(
-  controls: Pick<StudyControl, "id" | "diagram_id">[],
-  diagrams: Pick<ControlDiagram, "id" | "label">[]
-): Map<number, number> {
-  const summary = controlsForSummary(controls, diagrams);
-  const pctByHeading = new Map(summarizeControls(summary).map((g) => [g.heading, g.pct]));
-  return new Map(summary.map((item) => [item.id, pctByHeading.get(item.heading) ?? 100]));
-}
-
-/** Lowest-mastery groups with weak items, signs + rules + controls combined, weakest first. */
-export function weakestGroups(signs: any[], rules: any[], controls: any[], limit = 3): GroupMastery[] {
-  return [...summarizeSigns(signs), ...summarizeRules(rules), ...summarizeControls(controls)]
-    .filter((g) => g.total > 0 && g.weak > 0)
-    .sort((a, b) => a.pct - b.pct || b.weak - a.weak)
-    .slice(0, limit);
+/**
+ * The one "Practise next" group: among groups with at least one
+ * to-practise card, pick the one with the highest
+ * toPractise / max(toPractise + known, 3). The floor of 3 stops one
+ * missed card from outranking a group the learner is genuinely
+ * struggling with; ties break on the larger to-practise count.
+ */
+export function nextPracticeGroup(signs: any[], rules: any[], controls: any[]): GroupStats | null {
+  const candidates = [
+    ...groupsForSigns(signs),
+    ...groupsForRules(rules),
+    ...groupsForControls(controls),
+  ].filter((g) => g.toPractise > 0);
+  if (candidates.length === 0) return null;
+  const score = (g: GroupStats) => g.toPractise / Math.max(g.toPractise + g.known, 3);
+  candidates.sort((a, b) => score(b) - score(a) || b.toPractise - a.toPractise);
+  return candidates[0] ?? null;
 }

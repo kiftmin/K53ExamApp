@@ -1,26 +1,19 @@
-// Favorites + seen-ids + learner licence code for the Rules study module.
+// Saved marks + learner licence code for the Rules study module.
 // Mirrors sign-storage.ts — plain JSON in localStorage, no backend changes.
 // Progress is server-synced for W/M/X codes via progress-sync.ts.
 
-import { syncEnabled, pushProgress, hydrateProgress, recordOwnerIfMissing, type LearnerRecord } from "./progress-sync";
+import { syncEnabled, pushProgress, hydrateProgress, recordOwnerIfMissing } from "./progress-sync";
+import { isKnown, nextStatus, type LearningStatus, type RecallRating, type LearningRecord } from "./learning-status";
+
+export type { LearningStatus, RecallRating, LearningRecord };
+export { isKnown };
 
 const FAV_RULES_KEY = "k53_favorite_rules";
 const RULE_CODE_KEY = "k53_rules_licence_code";
 const LEARNING_RULES_KEY = "k53_rule_learning";
-const DONE_RULES_KEY = "k53_done_rules";
+const LEGACY_DONE_RULES_KEY = "k53_done_rules";
 
-// === Learning records (Phase 2 mastery model) ===
-
-export type LearningStatus = "new" | "learning" | "review" | "mastered";
-export type RecallRating = "again" | "hard" | "good" | "easy";
-
-export type LearningRecord = {
-  status: LearningStatus;
-  correct: number;
-  incorrect: number;
-  lastRating: RecallRating;
-  lastSeenAt: string;
-};
+// === Learning records ===
 
 function readLearningMap(key: string): Record<number, LearningRecord> {
   try {
@@ -34,7 +27,10 @@ function readLearningMap(key: string): Record<number, LearningRecord> {
   }
 }
 
-function writeLearningMap(key: string, map: Record<number, LearningRecord>): void {
+function writeLearningMap(
+  key: string,
+  map: Record<number, { status: LearningStatus; correct: number; incorrect: number; lastRating: string; lastSeenAt: string }>
+): void {
   try {
     localStorage.setItem(key, JSON.stringify(map));
   } catch {
@@ -42,33 +38,24 @@ function writeLearningMap(key: string, map: Record<number, LearningRecord>): voi
   }
 }
 
-function nextStatus(record: LearningRecord | undefined, rating: RecallRating): LearningStatus {
-  const current = record?.status ?? "new";
-  if (current === "new") return "learning";
-  switch (rating) {
-    case "again":
-      return "learning";
-    case "hard":
-      return "learning";
-    case "good":
-      return current === "mastered" ? "mastered" : "review";
-    case "easy":
-      return current === "review" || current === "mastered" ? "mastered" : "review";
-  }
+function rateLearningRecord(map: Record<number, LearningRecord>, id: number, notYet: boolean): LearningRecord {
+  const prev = map[id];
+  const rating: RecallRating = notYet ? "again" : "good";
+  const record: LearningRecord = {
+    status: nextStatus(prev, rating),
+    correct: (prev?.correct ?? 0) + (notYet ? 0 : 1),
+    incorrect: (prev?.incorrect ?? 0) + (notYet ? 1 : 0),
+    lastRating: rating,
+    lastSeenAt: new Date().toISOString(),
+  };
+  map[id] = record;
+  return record;
 }
 
 export function rateRule(id: number, rating: RecallRating): LearningRecord {
   recordOwnerIfMissing();
   const map = readLearningMap(LEARNING_RULES_KEY);
-  const prev = map[id];
-  const record: LearningRecord = {
-    status: nextStatus(prev, rating),
-    correct: (prev?.correct ?? 0) + (rating === "good" || rating === "easy" ? 1 : 0),
-    incorrect: (prev?.incorrect ?? 0) + (rating === "again" || rating === "hard" ? 1 : 0),
-    lastRating: rating,
-    lastSeenAt: new Date().toISOString(),
-  };
-  map[id] = record;
+  const record = rateLearningRecord(map, id, rating === "again" || rating === "hard");
   writeLearningMap(LEARNING_RULES_KEY, map);
 
   if (syncEnabled()) {
@@ -76,6 +63,11 @@ export function rateRule(id: number, rating: RecallRating): LearningRecord {
   }
 
   return record;
+}
+
+/** "I know this" tick: mark as known, or drop back to to-practise. */
+export function setRuleKnown(id: number, known: boolean): LearningRecord {
+  return rateRule(id, known ? "good" : "again");
 }
 
 export function getRuleLearning(id: number): LearningRecord | undefined {
@@ -86,47 +78,34 @@ export function getAllRuleLearning(): Record<number, LearningRecord> {
   return readLearningMap(LEARNING_RULES_KEY);
 }
 
-export function getSeenRuleIds(): number[] {
+/** Remove the learning records for these ids (Reset section). */
+export function resetRuleProgress(ids: number[]): void {
+  recordOwnerIfMissing();
+  const drop = new Set(ids);
   const map = readLearningMap(LEARNING_RULES_KEY);
-  return Object.keys(map).map(Number).filter((id) => map[id]?.status && map[id].status !== "new");
-}
+  const removed: number[] = [];
+  for (const key of Object.keys(map).map(Number)) {
+    if (drop.has(key)) {
+      delete map[key];
+      removed.push(key);
+    }
+  }
+  writeLearningMap(LEARNING_RULES_KEY, map);
 
-export function markRuleSeen(id: number): void {
-  const map = readLearningMap(LEARNING_RULES_KEY);
-  if (!map[id]) {
-    map[id] = { status: "learning", correct: 0, incorrect: 0, lastRating: "good", lastSeenAt: new Date().toISOString() };
-    writeLearningMap(LEARNING_RULES_KEY, map);
-  } else if (map[id].status === "new") {
-    map[id] = { ...map[id], status: "learning", lastSeenAt: new Date().toISOString() };
-    writeLearningMap(LEARNING_RULES_KEY, map);
+  if (syncEnabled()) {
+    for (const id of removed) {
+      pushProgress("rule", id, {
+        status: "new",
+        correct: 0,
+        incorrect: 0,
+        lastRating: "good",
+        lastSeenAt: new Date().toISOString(),
+      });
+    }
   }
 }
 
-export function clearSeenRules(): void {
-  try {
-    localStorage.removeItem(LEARNING_RULES_KEY);
-  } catch {
-    // ignore
-  }
-}
-
-/** Hydrate rule progress from the server (server authoritative, local uploaded once when empty). */
-export async function initRuleSync(): Promise<void> {
-  const local = readLearningMap(LEARNING_RULES_KEY);
-  const hydrated = await hydrateProgress("rule", local);
-  if (hydrated !== null) writeLearningMap(LEARNING_RULES_KEY, hydrated);
-}
-
-/** Remove all device-local rule progress and bookmarks (logout). */
-export function clearRuleLocalData(): void {
-  try {
-    localStorage.removeItem(LEARNING_RULES_KEY);
-    localStorage.removeItem(FAV_RULES_KEY);
-    localStorage.removeItem(DONE_RULES_KEY);
-  } catch {
-    // ignore
-  }
-}
+// === Saved (favorites) ===
 
 function readIds(key: string): number[] {
   try {
@@ -143,7 +122,7 @@ function writeIds(key: string, ids: number[]): void {
   try {
     localStorage.setItem(key, JSON.stringify(ids));
   } catch {
-    // storage full / private mode — study still works, just not persisted
+    // ignore
   }
 }
 
@@ -151,40 +130,73 @@ export function getFavoriteRuleIds(): number[] {
   return readIds(FAV_RULES_KEY);
 }
 
-export function getDoneRuleIds(): number[] {
-  return readIds(DONE_RULES_KEY);
-}
-
-/** Remove the given ids from a bookmark list. */
-export function removeRuleBookmarks(kind: "done" | "favorite" | "both", ids: number[]): void {
-  const drop = new Set(ids);
-  if (kind === "favorite" || kind === "both") {
-    writeIds(FAV_RULES_KEY, readIds(FAV_RULES_KEY).filter((id) => !drop.has(id)));
-  }
-  if (kind === "done" || kind === "both") {
-    writeIds(DONE_RULES_KEY, readIds(DONE_RULES_KEY).filter((id) => !drop.has(id)));
-  }
-}
-
-/** Toggles done. Returns true if the rule is now marked done. */
-export function toggleDoneRule(id: number): boolean {
-  const ids = readIds(DONE_RULES_KEY);
-  const next = ids.includes(id) ? ids.filter((x) => x !== id) : [...ids, id];
-  writeIds(DONE_RULES_KEY, next);
-  return next.includes(id);
-}
-
 export function isFavoriteRule(id: number): boolean {
   return readIds(FAV_RULES_KEY).includes(id);
 }
 
-/** Toggles favorite. Returns true if the rule is now a favorite. */
+/** Remove the given ids from the saved list. */
+export function removeFavoriteRules(ids: number[]): void {
+  const drop = new Set(ids);
+  writeIds(FAV_RULES_KEY, readIds(FAV_RULES_KEY).filter((id) => !drop.has(id)));
+}
+
+/** Toggles saved. Returns true if the rule is now saved. */
 export function toggleFavoriteRule(id: number): boolean {
   const ids = readIds(FAV_RULES_KEY);
   const next = ids.includes(id) ? ids.filter((x) => x !== id) : [...ids, id];
   writeIds(FAV_RULES_KEY, next);
   return next.includes(id);
 }
+
+// === One-time migration: fold the old done tick-lists into known status ===
+
+function migrateDoneRules(): void {
+  try {
+    const ids = readIds(LEGACY_DONE_RULES_KEY);
+    if (ids.length === 0) return;
+    const map = readLearningMap(LEARNING_RULES_KEY);
+    const marked: number[] = [];
+    for (const id of ids) {
+      if (isKnown(map[id]?.status)) continue;
+      map[id] = {
+        status: "mastered",
+        correct: (map[id]?.correct ?? 0) + 1,
+        incorrect: map[id]?.incorrect ?? 0,
+        lastRating: "good",
+        lastSeenAt: new Date().toISOString(),
+      };
+      marked.push(id);
+    }
+    if (marked.length > 0) writeLearningMap(LEARNING_RULES_KEY, map);
+    if (marked.length > 0 && syncEnabled()) {
+      for (const id of marked) pushProgress("rule", id, map[id]!);
+    }
+    localStorage.removeItem(LEGACY_DONE_RULES_KEY);
+  } catch {
+    // ignore — migration retries on next load since the key stays put
+  }
+}
+
+/** Hydrate rule progress from the server (server authoritative, local uploaded once when empty). */
+export async function initRuleSync(): Promise<void> {
+  migrateDoneRules();
+  const local = readLearningMap(LEARNING_RULES_KEY);
+  const hydrated = await hydrateProgress("rule", local);
+  if (hydrated !== null) writeLearningMap(LEARNING_RULES_KEY, hydrated);
+}
+
+/** Remove all device-local rule progress and bookmarks (logout). */
+export function clearRuleLocalData(): void {
+  try {
+    localStorage.removeItem(LEARNING_RULES_KEY);
+    localStorage.removeItem(FAV_RULES_KEY);
+    localStorage.removeItem(LEGACY_DONE_RULES_KEY);
+  } catch {
+    // ignore
+  }
+}
+
+// === Learner licence code (same value the Rules gate persists) ===
 
 export function getRulesLicenceCode(): number | null {
   try {

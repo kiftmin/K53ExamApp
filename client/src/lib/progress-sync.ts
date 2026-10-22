@@ -81,7 +81,7 @@ export async function fetchProgress(itemType: "sign" | "rule" | "control"): Prom
         correct: row.correct ?? 0,
         incorrect: row.incorrect ?? 0,
         lastRating: row.last_rating ?? "good",
-        lastSeenAt: row.last_seen_at ?? new Date().toISOString(),
+        lastSeenAt: row.last_seen_at ?? new Date(0).toISOString(),
       };
     }
     return map;
@@ -123,8 +123,31 @@ export async function pushProgress(
 }
 
 /**
- * Server-authoritative hydration for W/M/X learners.
- * - Server has rows: replace local progress with the server rows.
+ * Merge two progress maps with last-write-wins semantics: for ids present in
+ * both, the record with the newer lastSeenAt wins. Server rows (which carry
+ * authoritative other-device edits) therefore never silently overwrite newer
+ * local edits whose push happened to fail, and vice versa.
+ */
+function mergeProgress(
+  serverMap: Record<number, LearnerRecord>,
+  localMap: Record<number, LearnerRecord>
+): Record<number, LearnerRecord> {
+  const merged: Record<number, LearnerRecord> = { ...serverMap };
+  for (const [id, local] of Object.entries(localMap)) {
+    const server = merged[Number(id)];
+    if (
+      !server ||
+      new Date(local.lastSeenAt).getTime() >= new Date(server.lastSeenAt).getTime()
+    ) {
+      merged[Number(id)] = local;
+    }
+  }
+  return merged;
+}
+
+/**
+ * Server hydration for W/M/X learners.
+ * - Server has rows: merge with local, last write wins.
  * - Server has no rows: keep local progress and upload it once.
  * - Request failed: keep local progress and retry on the next mount.
  * Returns null when sync is disabled.
@@ -141,7 +164,20 @@ export async function hydrateProgress(
 
   const serverMap = await fetchProgress(itemType);
   if (serverMap === null) return stillCurrent() ? localMap : null;
-  if (Object.keys(serverMap).length > 0) return stillCurrent() ? serverMap : null;
+  if (Object.keys(serverMap).length > 0) {
+    const merged = mergeProgress(serverMap, localMap);
+    // Push any local records that won the merge back to the server so the
+    // server converges with the device that has the newest data.
+    for (const [id, record] of Object.entries(merged)) {
+      if (
+        !serverMap[Number(id)] ||
+        new Date(record.lastSeenAt).getTime() > new Date(serverMap[Number(id)].lastSeenAt).getTime()
+      ) {
+        void pushProgress(itemType, Number(id), record);
+      }
+    }
+    return stillCurrent() ? merged : null;
+  }
 
   const entries = Object.entries(localMap);
   if (entries.length === 0) return stillCurrent() ? {} : null;

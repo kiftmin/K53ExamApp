@@ -7,47 +7,58 @@ import { FormattedText } from "@/components/formatted-text";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { useQuiz } from "@/lib/quiz-context";
-import { getFavoriteSignIds, toggleFavoriteSign, getDoneSignIds, toggleDoneSign, removeSignBookmarks, initSignSync } from "@/lib/sign-storage";
+import { ChipCollapsible } from "@/components/chip-collapsible";
+import { getFavoriteSignIds, toggleFavoriteSign, setSignKnown, resetSignProgress, removeFavoriteSigns, getAllSignLearning, initSignSync } from "@/lib/sign-storage";
+import { isKnown, countKnown } from "@/lib/learning-status";
 import { ensureLocalOwner } from "@/lib/progress-owner";
 import { useToast } from "@/hooks/use-toast";
-import { ArrowLeft, BadgeCheck, ChevronDown, CheckCircle2, Heart, ImageOff, Layers, Search, HeartOff, CircleX } from "lucide-react";
+import { ArrowLeft, BadgeCheck, ChevronDown, CheckCircle2, Heart, ImageOff, Layers, Search, HeartOff, RotateCcw } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { useStudyGate } from "./study";
 
-function SubheadingSignGroup({ subheading, list, favorites, doneIds, forceOpen, onOpen, onToggleFav, onToggleDone, onClearBookmarks }: any) {
+function resetSectionConfirm(ids: number[], label: string): boolean {
+  return typeof window === "undefined" || window.confirm(`Reset this section (${label})? This clears your progress for these ${ids.length} cards.`);
+}
+
+function SubheadingSignGroup({
+  subheading, list, favorites, learningMap, forceOpen, onOpen, onToggleFav, onToggleKnown, onResetSection, onClearSaved,
+}: any) {
   const [open, setOpen] = useState(false);
   const isOpen = forceOpen || open;
-  const allDone = list.length > 0 && list.every((s: StudySign) => doneIds.includes(s.id));
+  const allKnown = list.length > 0 && list.every((s: StudySign) => isKnown(learningMap[s.id]?.status));
   const hasFavs = list.some((s: StudySign) => favorites.includes(s.id));
-  const hasDone = list.some((s: StudySign) => doneIds.includes(s.id));
+  const hasProgress = list.some((s: StudySign) => learningMap[s.id]);
   return (
     <div className="rounded-2xl border border-border bg-card/40">
       <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between px-4 py-2.5 text-left">
         <span className="text-xs font-bold text-muted-foreground flex items-center gap-1.5">
-          {allDone && <CheckCircle2 className="h-3.5 w-3.5 text-green-600" />}
+          {allKnown && <CheckCircle2 className="h-3.5 w-3.5 text-green-600" />}
           {subheading} <span className="text-muted-foreground/60">({list.length})</span>
         </span>
         <span className="flex items-center gap-1.5">
           {hasFavs && (
             <span
               role="button"
-              aria-label="Clear favorites"
-              title="Clear favorites"
-              onClick={(e) => { e.stopPropagation(); onClearBookmarks("favorite", list.map((s: StudySign) => s.id)); }}
+              aria-label="Clear saved"
+              title="Clear saved"
+              onClick={(e) => { e.stopPropagation(); onClearSaved(list.map((s: StudySign) => s.id)); }}
               className="p-1 text-red-500"
             >
               <HeartOff className="h-3.5 w-3.5" />
             </span>
           )}
-          {hasDone && (
+          {hasProgress && (
             <span
               role="button"
-              aria-label="Clear done"
-              title="Clear done"
-              onClick={(e) => { e.stopPropagation(); onClearBookmarks("done", list.map((s: StudySign) => s.id)); }}
-              className="p-1 text-green-600"
+              aria-label="Reset this section"
+              title="Reset this section"
+              onClick={(e) => { e.stopPropagation(); onResetSection(list.map((s: StudySign) => s.id), subheading); }}
+              className="p-1 text-muted-foreground"
             >
-              <CircleX className="h-3.5 w-3.5" />
+              <RotateCcw className="h-3.5 w-3.5" />
             </span>
           )}
           <ChevronDown className={cn("h-4 w-4 text-muted-foreground transition-transform", isOpen && "rotate-180")} />
@@ -58,7 +69,7 @@ function SubheadingSignGroup({ subheading, list, favorites, doneIds, forceOpen, 
           {list.map((s: StudySign) => {
             const thumb = s.images?.[0]?.image_url;
             const fav = favorites.includes(s.id);
-            const done = doneIds.includes(s.id);
+            const known = isKnown(learningMap[s.id]?.status);
             return (
               <button
                 key={s.id}
@@ -73,7 +84,7 @@ function SubheadingSignGroup({ subheading, list, favorites, doneIds, forceOpen, 
                   )}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className={cn("text-sm font-bold leading-snug flex items-center gap-1", done && "text-muted-foreground line-through")}>
+                  <p className={cn("text-sm font-bold leading-snug flex items-center gap-1", known && "text-muted-foreground line-through")}>
                     <span className="truncate">{s.name}</span>
                     {s.is_verified_exam_question && <BadgeCheck className="h-3.5 w-3.5 shrink-0 text-green-600" />}
                     {fav && <Heart className="h-3.5 w-3.5 shrink-0 text-red-500 fill-red-500" />}
@@ -84,11 +95,11 @@ function SubheadingSignGroup({ subheading, list, favorites, doneIds, forceOpen, 
                     ))}
                   </div>
                 </div>
-                <span onClick={(e) => { e.stopPropagation(); onToggleFav(s.id); }} aria-label="Favorite" className="p-1">
-                  <Heart className={cn("h-4 w-4", favorites.includes(s.id) ? "fill-red-500 text-red-500" : "text-muted-foreground")} />
+                <span onClick={(e) => { e.stopPropagation(); onToggleFav(s.id); }} aria-label="Save" className="p-1">
+                  <Heart className={cn("h-4 w-4", fav ? "fill-red-500 text-red-500" : "text-muted-foreground")} />
                 </span>
-                <span onClick={(e) => { e.stopPropagation(); onToggleDone(s.id); }} aria-label="Mark done" className="p-1">
-                  <CheckCircle2 className={cn("h-4 w-4", done ? "fill-green-600 text-green-600" : "text-muted-foreground")} />
+                <span onClick={(e) => { e.stopPropagation(); onToggleKnown(s.id); }} aria-label="I know this" className="p-1">
+                  <CheckCircle2 className={cn("h-4 w-4", known ? "fill-green-600 text-green-600" : "text-muted-foreground")} />
                 </span>
               </button>
             );
@@ -98,8 +109,6 @@ function SubheadingSignGroup({ subheading, list, favorites, doneIds, forceOpen, 
     </div>
   );
 }
-import { cn } from "@/lib/utils";
-import { useStudyGate } from "./study";
 
 export default function StudySignsBrowse() {
   const [, setLocation] = useLocation();
@@ -109,9 +118,11 @@ export default function StudySignsBrowse() {
   const [heading, setHeading] = useState("all");
   const [subheading, setSubheading] = useState("all");
   const [search, setSearch] = useState("");
+  const [savedOnly, setSavedOnly] = useState(false);
+  const [learnedFilter, setLearnedFilter] = useState<"all" | "learned" | "not">("all");
   const [openId, setOpenId] = useState<number | null>(null);
   const [favorites, setFavorites] = useState<number[]>(() => getFavoriteSignIds());
-  const [doneIds, setDoneIds] = useState<number[]>(() => getDoneSignIds());
+  const [progressTick, setProgressTick] = useState(0);
 
   const { data: signs = [], isLoading } = useQuery<StudySign[]>({
     queryKey: ["/api/signs"],
@@ -121,9 +132,11 @@ export default function StudySignsBrowse() {
   useEffect(() => {
     if (allowed) {
       ensureLocalOwner();
-      initSignSync();
+      initSignSync().then(() => setProgressTick((t) => t + 1));
     }
   }, [allowed]);
+
+  const learningMap = useMemo(() => getAllSignLearning(), [progressTick]);
 
   const { data: linkedQuestions = [] } = useQuery<Question[]>({
     queryKey: [`/api/signs/${openId}/questions`],
@@ -133,20 +146,44 @@ export default function StudySignsBrowse() {
   const openSign = openId !== null ? signs.find((s) => s.id === openId) || null : null;
 
   const headings = useMemo(() => Array.from(new Set(signs.map((s) => s.heading))).sort(), [signs]);
+  // Subheading chips only make sense once a specific heading is chosen;
+  // under "All" the subheadings of every heading would just clutter the bar.
   const subheadings = useMemo(
-    () => Array.from(new Set(signs.filter((s) => heading === "all" || s.heading === heading).map((s) => s.subheading))).sort(),
+    () =>
+      heading === "all"
+        ? []
+        : Array.from(new Set(signs.filter((s) => s.heading === heading).map((s) => s.subheading))).sort(),
     [signs, heading]
   );
+
+  // Saved/learned chip counts respect every filter except the learned one itself.
+  const progressCounts = useMemo(() => {
+    const q = search.trim().toLowerCase();
+    let learned = 0;
+    let notLearned = 0;
+    for (const s of signs) {
+      if (heading !== "all" && s.heading !== heading) continue;
+      if (subheading !== "all" && s.subheading !== subheading) continue;
+      if (savedOnly && !favorites.includes(s.id)) continue;
+      if (q && !(s.name.toLowerCase().includes(q) || (s.codes || []).some((c) => c.toLowerCase().includes(q)))) continue;
+      if (isKnown(learningMap[s.id]?.status)) learned++;
+      else notLearned++;
+    }
+    return { learned, notLearned };
+  }, [signs, heading, subheading, search, savedOnly, favorites, learningMap]);
 
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
     return signs.filter((s) => {
       if (heading !== "all" && s.heading !== heading) return false;
       if (subheading !== "all" && s.subheading !== subheading) return false;
+      if (savedOnly && !favorites.includes(s.id)) return false;
+      if (learnedFilter === "learned" && !isKnown(learningMap[s.id]?.status)) return false;
+      if (learnedFilter === "not" && isKnown(learningMap[s.id]?.status)) return false;
       if (q && !(s.name.toLowerCase().includes(q) || (s.codes || []).some((c) => c.toLowerCase().includes(q)))) return false;
       return true;
     });
-  }, [signs, heading, subheading, search]);
+  }, [signs, heading, subheading, search, savedOnly, favorites, learnedFilter, learningMap]);
 
   const grouped = useMemo(() => {
     const map = new Map<string, Map<string, StudySign[]>>();
@@ -168,6 +205,22 @@ export default function StudySignsBrowse() {
 
   const toggleFav = (id: number) => {
     toggleFavoriteSign(id);
+    setFavorites(getFavoriteSignIds());
+  };
+
+  const toggleKnown = (id: number) => {
+    setSignKnown(id, !isKnown(learningMap[id]?.status));
+    setProgressTick((t) => t + 1);
+  };
+
+  const resetSection = (ids: number[], label: string) => {
+    if (!resetSectionConfirm(ids, label)) return;
+    resetSignProgress(ids);
+    setProgressTick((t) => t + 1);
+  };
+
+  const clearSaved = (ids: number[]) => {
+    removeFavoriteSigns(ids);
     setFavorites(getFavoriteSignIds());
   };
 
@@ -218,7 +271,16 @@ export default function StudySignsBrowse() {
               className="pl-9 h-11 bg-background/60 rounded-xl"
             />
           </div>
-          <div className="flex gap-1.5 overflow-x-auto pb-1">
+          <div className="flex flex-wrap gap-1.5">
+            <button
+              onClick={() => setSavedOnly(!savedOnly)}
+              className={cn(
+                "px-3 py-1.5 rounded-full text-xs font-bold whitespace-nowrap border flex items-center gap-1",
+                savedOnly ? "bg-red-500/10 border-red-300 text-red-600" : "border-border text-muted-foreground"
+              )}
+            >
+              <Heart className={cn("h-3 w-3", savedOnly && "fill-red-500")} />{" "}Saved{favorites.length > 0 ? ` (${favorites.length})` : ""}
+            </button>
             {["all", ...headings].map((h) => (
               <button
                 key={h}
@@ -232,8 +294,32 @@ export default function StudySignsBrowse() {
               </button>
             ))}
           </div>
+          <div className="flex flex-wrap gap-1.5">
+            <button
+              onClick={() => setLearnedFilter(learnedFilter === "learned" ? "all" : "learned")}
+              className={cn(
+                "px-2.5 py-1 rounded-full text-[11px] font-bold whitespace-nowrap border flex items-center gap-1",
+                learnedFilter === "learned"
+                  ? "bg-green-500/10 border-green-300 text-green-700"
+                  : "border-border text-muted-foreground"
+              )}
+            >
+              <CheckCircle2 className={cn("h-3 w-3", learnedFilter === "learned" && "text-green-600")} /> Learned ({progressCounts.learned})
+            </button>
+            <button
+              onClick={() => setLearnedFilter(learnedFilter === "not" ? "all" : "not")}
+              className={cn(
+                "px-2.5 py-1 rounded-full text-[11px] font-bold whitespace-nowrap border flex items-center gap-1",
+                learnedFilter === "not"
+                  ? "bg-amber-500/10 border-amber-300 text-amber-700"
+                  : "border-border text-muted-foreground"
+              )}
+            >
+              <RotateCcw className="h-3 w-3" /> Not learned ({progressCounts.notLearned})
+            </button>
+          </div>
           {subheadings.length > 1 && (
-            <div className="flex gap-1.5 overflow-x-auto pb-1">
+            <ChipCollapsible key={heading} recheckKey={`${heading}|${subheadings.length}`}>
               {["all", ...subheadings].map((s) => (
                 <button
                   key={s}
@@ -246,58 +332,88 @@ export default function StudySignsBrowse() {
                   {s === "all" ? "All" : s}
                 </button>
               ))}
-            </div>
+            </ChipCollapsible>
           )}
         </div>
 
         {isLoading ? (
           <p className="text-sm text-muted-foreground text-center py-10">Loading signs…</p>
         ) : grouped.length === 0 ? (
-          <p className="text-sm text-muted-foreground text-center py-10">No signs match.</p>
+          <div className="text-center py-10 space-y-2">
+            <p className="text-sm text-muted-foreground">No signs match.</p>
+            {(savedOnly || learnedFilter !== "all") && (
+              <div className="flex justify-center gap-2">
+                {savedOnly && (
+                  <Button variant="outline" size="sm" onClick={() => setSavedOnly(false)}>
+                    Turn off Saved filter
+                  </Button>
+                )}
+                {learnedFilter !== "all" && (
+                  <Button variant="outline" size="sm" onClick={() => setLearnedFilter("all")}>
+                    Turn off learned filter
+                  </Button>
+                )}
+              </div>
+            )}
+          </div>
         ) : (
           grouped.map(([h, subs]) => {
-            const headingDone = subs.every(([, list]) => list.length > 0 && list.every((s: StudySign) => doneIds.includes(s.id)));
             const sectionIds = subs.flatMap(([, list]) => list.map((s: StudySign) => s.id));
+            const stats = countKnown(subs.flatMap(([, list]) => list as StudySign[]), learningMap);
+            const savedCount = sectionIds.filter((id: number) => favorites.includes(id)).length;
+            const allKnown = stats.total > 0 && stats.known === stats.total;
             const sectionHasFavs = sectionIds.some((id: number) => favorites.includes(id));
-            const sectionHasDone = sectionIds.some((id: number) => doneIds.includes(id));
+            const sectionHasProgress = sectionIds.some((id: number) => learningMap[id]);
             return (
             <div key={h} className="space-y-2">
               <p className="text-[11px] font-black uppercase tracking-widest text-primary px-1 flex items-center gap-1.5">
-                {headingDone && <CheckCircle2 className="h-3.5 w-3.5 text-green-600" />}
+                {allKnown && <CheckCircle2 className="h-3.5 w-3.5 text-green-600" />}
                 {h}
-              {sectionHasFavs && (
-                <button
-                  aria-label="Clear favorites for this section"
-                  title="Clear favorites"
-                  onClick={() => { removeSignBookmarks("favorite", sectionIds); setFavorites(getFavoriteSignIds()); }}
-                  className="text-red-500 ml-auto p-1"
-                >
-                  <HeartOff className="h-3.5 w-3.5" />
-                </button>
-              )}
-              {sectionHasDone && (
-                <button
-                  aria-label="Clear done for this section"
-                  title="Clear done"
-                  onClick={() => { removeSignBookmarks("done", sectionIds); setDoneIds(getDoneSignIds()); }}
-                  className="text-green-600 p-1"
-                >
-                  <CircleX className="h-3.5 w-3.5" />
-                </button>
-              )}
+                {sectionHasFavs && (
+                  <button
+                    aria-label="Clear saved for this section"
+                    title="Clear saved"
+                    onClick={() => clearSaved(sectionIds)}
+                    className="text-red-500 ml-auto p-1"
+                  >
+                    <HeartOff className="h-3.5 w-3.5" />
+                  </button>
+                )}
+                {sectionHasProgress && (
+                  <button
+                    aria-label="Reset this section"
+                    title="Reset this section"
+                    onClick={() => resetSection(sectionIds, h)}
+                    className="text-muted-foreground p-1"
+                  >
+                    <RotateCcw className="h-3.5 w-3.5" />
+                  </button>
+                )}
               </p>
+              <div className="px-1 space-y-1">
+                <div className="flex items-center gap-2">
+                  <span className="text-[11px] font-bold text-muted-foreground whitespace-nowrap">
+                    {stats.known} of {stats.total} learned
+                  </span>
+                  <Progress value={stats.total > 0 ? (stats.known / stats.total) * 100 : 0} className="h-1 flex-1" />
+                </div>
+                <p className="text-[11px] font-semibold text-muted-foreground flex items-center gap-1">
+                  <Heart className="h-3 w-3 text-red-500 fill-red-500" /> {savedCount} saved
+                </p>
+              </div>
               {subs.map(([sub, list]) => (
                 <SubheadingSignGroup
                   key={sub}
                   subheading={sub}
                   list={list}
                   favorites={favorites}
-                  doneIds={doneIds}
+                  learningMap={learningMap}
                   forceOpen={search.trim().length > 0}
                   onOpen={(id: number) => setOpenId(id)}
                   onToggleFav={toggleFav}
-                  onToggleDone={(id: number) => { toggleDoneSign(id); setFavorites(getFavoriteSignIds()); setDoneIds(getDoneSignIds()); }}
-                  onClearBookmarks={(kind: "favorite" | "done", ids: number[]) => { removeSignBookmarks(kind, ids); setFavorites(getFavoriteSignIds()); setDoneIds(getDoneSignIds()); }}
+                  onToggleKnown={toggleKnown}
+                  onResetSection={resetSection}
+                  onClearSaved={clearSaved}
                 />
               ))}
             </div>
@@ -353,15 +469,15 @@ export default function StudySignsBrowse() {
                     className="flex-1 h-11 rounded-xl font-bold"
                   >
                     <Heart className={cn("h-4 w-4 mr-1", favorites.includes(openSign.id) && "fill-current")} />
-                    {favorites.includes(openSign.id) ? "Favorited" : "Favorite"}
+                    {favorites.includes(openSign.id) ? "Saved" : "Save"}
                   </Button>
                   <Button
-                    variant={doneIds.includes(openSign.id) ? "default" : "outline"}
-                    onClick={() => { toggleDoneSign(openSign.id); setDoneIds(getDoneSignIds()); }}
+                    variant={isKnown(learningMap[openSign.id]?.status) ? "default" : "outline"}
+                    onClick={() => toggleKnown(openSign.id)}
                     className="flex-1 h-11 rounded-xl font-bold"
                   >
-                    <CheckCircle2 className={cn("h-4 w-4 mr-1", doneIds.includes(openSign.id) && "fill-current")} />
-                    {doneIds.includes(openSign.id) ? "Done" : "Mark done"}
+                    <CheckCircle2 className={cn("h-4 w-4 mr-1", isKnown(learningMap[openSign.id]?.status) && "fill-current")} />
+                    {isKnown(learningMap[openSign.id]?.status) ? "Known" : "I know this"}
                   </Button>
                   {linkedQuestions.length > 0 && (
                     <Button onClick={practiceInQuiz} className="flex-1 h-11 rounded-xl font-bold brand-gradient border-none">

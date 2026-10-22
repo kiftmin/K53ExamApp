@@ -2,7 +2,9 @@ import { useEffect, useMemo, useState } from "react";
 import { useLocation, useSearch } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import type { StudySign, StudyRule, StudyControl, ControlDiagram } from "@shared/schema";
-import { weakestGroups, controlsForSummary } from "@/lib/mastery-summary";
+import { nextPracticeGroup, controlsForSummary, type GroupStats } from "@/lib/mastery-summary";
+import { getRulesLicenceCode } from "@/lib/rule-storage";
+import { getControlsLicenceCode } from "@/lib/control-storage";
 import { initSignSync } from "@/lib/sign-storage";
 import { initRuleSync } from "@/lib/rule-storage";
 import { initControlSync } from "@/lib/control-storage";
@@ -13,7 +15,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
-import { BookOpen, ChevronRight, Target, Clock, ShieldCheck } from "lucide-react";
+import { BookOpen, ChevronRight, Target, Clock, ShieldCheck, RotateCcw } from "lucide-react";
 
 const LOGO_URL = "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773061809/logo_edited_vlgoqy.jpg";
 
@@ -59,11 +61,30 @@ export default function Home() {
   const { data: signs = [] } = useQuery<StudySign[]>({
     queryKey: ["/api/signs"],
   });
+
+  // Rules and Controls follow the same licence the study gates persist.
+  const rulesCode = typeof window !== "undefined" ? getRulesLicenceCode() : null;
   const { data: rules = [] } = useQuery<StudyRule[]>({
-    queryKey: ["/api/rules"],
+    queryKey: [`/api/rules?code=${rulesCode}`],
+    queryFn: async () => {
+      const r = await fetch(`/api/rules?code=${rulesCode}`);
+      if (!r.ok) throw new Error(`${r.status}: ${await r.text()}`);
+      return r.json();
+    },
+    enabled: rulesCode !== null,
   });
+
+  const controlsCode = typeof window !== "undefined" ? getControlsLicenceCode() : null;
+  const controlsVehicleType =
+    controlsCode === 1 ? "motorcycle" : controlsCode === 2 ? "lmv" : controlsCode === 3 ? "hmv" : null;
   const { data: controls = [] } = useQuery<StudyControl[]>({
-    queryKey: ["/api/controls"],
+    queryKey: [`/api/controls?vehicle_type=${controlsVehicleType}`],
+    queryFn: async () => {
+      const r = await fetch(`/api/controls?vehicle_type=${controlsVehicleType}`);
+      if (!r.ok) throw new Error(`${r.status}: ${await r.text()}`);
+      return r.json();
+    },
+    enabled: controlsVehicleType !== null,
   });
   const { data: diagrams = [] } = useQuery<ControlDiagram[]>({
     queryKey: ["/api/control-diagrams"],
@@ -71,12 +92,10 @@ export default function Home() {
 
   const [syncTick, setSyncTick] = useState(0);
 
-  const weak = useMemo(
-    () => weakestGroups(signs, rules, controlsForSummary(controls, diagrams), 3),
+  const practiceGroup: GroupStats | null = useMemo(
+    () => nextPracticeGroup(signs, rules, controlsForSummary(controls, diagrams)),
     [signs, rules, controls, diagrams, syncTick]
   );
-
-  const revisionPath = weak.length > 0 ? gModulePath(weak[0]!) : "/study";
 
   useEffect(() => {
     if (!validated) return;
@@ -102,6 +121,8 @@ export default function Home() {
       setLocation(target);
     }
   }, [validated, unlockTarget, setLocation]);
+
+  const practiceLocation = practiceGroup ? practiceLocationFor(practiceGroup) : null;
 
   return (
     <Layout>
@@ -216,36 +237,32 @@ export default function Home() {
           </Card>
         )}
 
-        {/* Continue Learning — promoted from Study, shows only when there is history */}
-        {weak.length > 0 && (
+        {/* Practise next — the learner's one next action */}
+        {practiceGroup && practiceLocation && (
           <Card
             className="w-full max-w-md glass-card border-none shadow-xl rounded-3xl mb-10 animate-in fade-in slide-in-from-bottom-4 duration-500"
           >
             <CardContent className="p-5 space-y-3">
               <div className="flex items-center gap-2">
-                <BookOpen className="h-4 w-4 text-primary" />
-                <h2 className="font-display font-bold">Continue Learning</h2>
+                <RotateCcw className="h-4 w-4 text-primary" />
+                <h2 className="font-display font-bold">Practise next</h2>
               </div>
-              <p className="text-xs text-muted-foreground">Your weakest areas by recall rating:</p>
-              <div className="space-y-2">
-                {weak.map((g) => (
-                  <div key={`${g.heading}-${g.subheading}-${g.module}`} className="flex items-center justify-between rounded-xl bg-muted/50 px-3 py-2">
-                    <div>
-                      <p className="text-xs font-bold">{g.subheading === "(general)" ? g.heading : g.subheading}</p>
-                      {g.subheading !== "(general)" && (
-                        <p className="text-[10px] text-muted-foreground">{g.heading}</p>
-                      )}
-                    </div>
-                    <span className="text-xs font-bold text-amber-700">{g.weak} shaky · {g.pct}% mastered</span>
-                  </div>
-                ))}
+              <div className="rounded-xl bg-muted/50 px-3 py-2">
+                <p className="text-sm font-bold">
+                  {practiceGroup.subheading === "(general)"
+                    ? practiceGroup.heading
+                    : practiceGroup.subheading}
+                </p>
+                <p className="text-xs text-muted-foreground mt-0.5">
+                  {practiceGroup.toPractise} to practise · {practiceGroup.known} of {practiceGroup.total} learned
+                </p>
               </div>
               <button
-                onClick={() => setLocation(revisionPath)}
+                onClick={() => setLocation(practiceLocation)}
                 className="w-full h-11 rounded-xl font-bold text-white transition-all hover:-translate-y-0.5"
                 style={{ background: "linear-gradient(135deg, #E53E1A, #F5A623)" }}
               >
-                Start Revision
+                Practise these
               </button>
             </CardContent>
           </Card>
@@ -281,15 +298,16 @@ export default function Home() {
   );
 }
 
-function gModulePath(group: { module: string }): string {
-  switch (group.module) {
-    case "signs":
-      return "/study/signs/flashcards?revision=1";
-    case "rules":
-      return "/study/rules/flashcards?revision=1";
-    case "controls":
-      return "/study/controls/flashcards?revision=1";
-    default:
-      return "/study";
+function practiceLocationFor(group: GroupStats): string {
+  const base =
+    group.module === "signs"
+      ? "/study/signs/flashcards"
+      : group.module === "rules"
+        ? "/study/rules/flashcards"
+        : "/study/controls/flashcards";
+  const params = new URLSearchParams({ revision: "1", heading: group.heading });
+  if (group.subheading && group.subheading !== "(general)") {
+    params.set("subheading", group.subheading);
   }
+  return `${base}?${params.toString()}`;
 }

@@ -3,14 +3,14 @@ import { useLocation } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import type { StudySign } from "@shared/schema";
 import { Layout } from "@/components/layout";
+import { FlashcardsHint } from "@/components/flashcards-hint";
 import { FormattedText } from "@/components/formatted-text";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Progress } from "@/components/ui/progress";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { getFavoriteSignIds, getSeenSignIds, markSignSeen, rateSign, getAllSignLearning, initSignSync, type RecallRating } from "@/lib/sign-storage";
-import { summarizeSigns } from "@/lib/mastery-summary";
+import { getFavoriteSignIds, rateSign, getAllSignLearning, initSignSync } from "@/lib/sign-storage";
 import { ensureLocalOwner } from "@/lib/progress-owner";
 import { ArrowLeft, ChevronLeft, ChevronRight, RotateCcw, Shuffle } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -31,11 +31,12 @@ export default function StudySignsFlashcards() {
   const [heading, setHeading] = useState("all");
   const [subheading, setSubheading] = useState("all");
   const [favoritesOnly, setFavoritesOnly] = useState(false);
-  const [unseenOnly, setUnseenOnly] = useState(false);
+  const [newOnly, setNewOnly] = useState(false);
   const [shuffled, setShuffled] = useState(true);
   const [reshuffleKey, setReshuffleKey] = useState(0);
   const [index, setIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
+  const [syncTick, setSyncTick] = useState(0);
   const touchStart = useRef<{ x: number; y: number } | null>(null);
   const swiped = useRef(false);
 
@@ -47,9 +48,19 @@ export default function StudySignsFlashcards() {
   useEffect(() => {
     if (allowed) {
       ensureLocalOwner();
-      initSignSync();
+      initSignSync().then(() => setSyncTick((t) => t + 1));
     }
   }, [allowed]);
+
+  const revision = useMemo(() => {
+    if (typeof window === "undefined") return null;
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("revision") !== "1") return null;
+    return {
+      heading: params.get("heading"),
+      subheading: params.get("subheading"),
+    };
+  }, []);
 
   const headings = useMemo(() => Array.from(new Set(signs.map((s) => s.heading))).sort(), [signs]);
   const subheadings = useMemo(
@@ -58,33 +69,23 @@ export default function StudySignsFlashcards() {
   );
 
   const deck = useMemo(() => {
-    // Revision mode (?revision=1): items that are still shaky, weakest groups first
-    const revisionMode = typeof window !== "undefined" && new URLSearchParams(window.location.search).get("revision") === "1";
-    if (revisionMode) {
+    if (revision) {
+      // Practise mode: exactly the cards in this group the learner missed.
       const learning = getAllSignLearning();
-      const groupPct = new Map<string, number>();
-      for (const s of summarizeSigns(signs)) {
-        groupPct.set(`${s.heading}|||${s.subheading}`, s.pct);
-      }
-      return signs
-        .filter((s) => {
-          const rec = learning[s.id];
-          const status = rec?.status ?? "new";
-          return status === "learning" || status === "new";
-        })
-        .sort((a, b) => {
-          const pa = groupPct.get(`${a.heading}|||${a.subheading}`) ?? 100;
-          const pb = groupPct.get(`${b.heading}|||${b.subheading}`) ?? 100;
-          return pa - pb;
-        });
+      const pool = signs.filter((s) => {
+        if (revision.heading && s.heading !== revision.heading) return false;
+        if (revision.subheading && revision.subheading !== "(general)" && s.subheading !== revision.subheading) return false;
+        return learning[s.id]?.status === "learning";
+      });
+      return [...pool].sort((a, b) => a.id - b.id);
     }
     const favs = new Set(getFavoriteSignIds());
-    const seen = new Set(getSeenSignIds());
+    const learning = getAllSignLearning();
     let pool = signs.filter((s) => {
       if (heading !== "all" && s.heading !== heading) return false;
       if (subheading !== "all" && s.subheading !== subheading) return false;
       if (favoritesOnly && !favs.has(s.id)) return false;
-      if (unseenOnly && seen.has(s.id)) return false;
+      if (newOnly && learning[s.id]) return false;
       return true;
     });
     // stable base order, then optional shuffle (reshuffleKey re-deals)
@@ -92,7 +93,7 @@ export default function StudySignsFlashcards() {
     if (shuffled) pool = shuffle(pool);
     return pool;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [signs, heading, subheading, favoritesOnly, unseenOnly, shuffled, reshuffleKey]);
+  }, [signs, heading, subheading, favoritesOnly, newOnly, shuffled, reshuffleKey, revision, syncTick]);
 
   const resetDeck = () => {
     setIndex(0);
@@ -109,7 +110,6 @@ export default function StudySignsFlashcards() {
 
   const advance = (delta: number) => {
     if (deck.length === 0) return;
-    if (current) markSignSeen(current.id);
     setFlipped(false);
     setIndex((i) => (i + delta + deck.length) % deck.length);
   };
@@ -158,6 +158,8 @@ export default function StudySignsFlashcards() {
           </span>
         </div>
 
+        <FlashcardsHint />
+
         <Progress value={progress} className="h-1.5" />
 
         <div className="grid grid-cols-2 gap-2">
@@ -189,16 +191,27 @@ export default function StudySignsFlashcards() {
           <p className="text-sm text-muted-foreground text-center py-10">Loading deck…</p>
         ) : deck.length === 0 ? (
           <div className="rounded-2xl border border-border p-10 text-center space-y-2">
-            <p className="font-bold">Deck is empty</p>
-            <p className="text-sm text-muted-foreground">Widen the filters or turn off favorites / unseen-only.</p>
-            {(favoritesOnly || unseenOnly) && (
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => changeFilter(() => { setFavoritesOnly(false); setUnseenOnly(false); })}
-              >
-                Clear toggles
-              </Button>
+            {revision ? (
+              <>
+                <p className="font-bold">All caught up. Nothing to practise here.</p>
+                <Button variant="outline" size="sm" onClick={() => setLocation("/")}>
+                  Back to Home
+                </Button>
+              </>
+            ) : (
+              <>
+                <p className="font-bold">Deck is empty</p>
+                <p className="text-sm text-muted-foreground">Adjust the filters.</p>
+                {(favoritesOnly || newOnly) && (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => changeFilter(() => { setFavoritesOnly(false); setNewOnly(false); })}
+                  >
+                    Clear toggles
+                  </Button>
+                )}
+              </>
             )}
           </div>
         ) : (
@@ -258,26 +271,29 @@ export default function StudySignsFlashcards() {
         )}
 
         {deck.length > 0 && flipped && current && (
-          <div className="grid grid-cols-4 gap-2">
-            {([
-              { r: "again" as RecallRating, label: "Again", cls: "bg-red-500/10 text-red-600 border-red-200" },
-              { r: "hard" as RecallRating, label: "Hard", cls: "bg-amber-500/10 text-amber-700 border-amber-200" },
-              { r: "good" as RecallRating, label: "Good", cls: "bg-blue-500/10 text-blue-700 border-blue-200" },
-              { r: "easy" as RecallRating, label: "Easy", cls: "bg-green-500/10 text-green-700 border-green-200" },
-            ]).map(({ r, label, cls }) => (
-              <button
-                key={r}
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  rateSign(current.id, r);
-                  advance(1);
-                }}
-                className={cn("h-11 rounded-xl border text-xs font-bold", cls)}
-              >
-                {label}
-              </button>
-            ))}
+          <div className="grid grid-cols-2 gap-2">
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                rateSign(current.id, "again");
+                advance(1);
+              }}
+              className="h-11 rounded-xl border text-xs font-bold bg-red-500/10 text-red-600 border-red-200"
+            >
+              Not yet
+            </button>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                rateSign(current.id, "good");
+                advance(1);
+              }}
+              className="h-11 rounded-xl border text-xs font-bold bg-green-500/10 text-green-700 border-green-200"
+            >
+              Got it
+            </button>
           </div>
         )}
 
@@ -307,12 +323,12 @@ export default function StudySignsFlashcards() {
             <Switch id="fc-shuffle" checked={shuffled} onCheckedChange={(v) => changeFilter(() => setShuffled(v))} />
           </div>
           <div className="flex items-center justify-between">
-            <Label htmlFor="fc-fav" className="text-xs font-semibold">Favorites only</Label>
+            <Label htmlFor="fc-fav" className="text-xs font-semibold">Saved only</Label>
             <Switch id="fc-fav" checked={favoritesOnly} onCheckedChange={(v) => changeFilter(() => setFavoritesOnly(v))} />
           </div>
           <div className="flex items-center justify-between">
-            <Label htmlFor="fc-unseen" className="text-xs font-semibold">Unseen only</Label>
-            <Switch id="fc-unseen" checked={unseenOnly} onCheckedChange={(v) => changeFilter(() => setUnseenOnly(v))} />
+            <Label htmlFor="fc-new" className="text-xs font-semibold">New cards only</Label>
+            <Switch id="fc-new" checked={newOnly} onCheckedChange={(v) => changeFilter(() => setNewOnly(v))} />
           </div>
         </div>
       </div>

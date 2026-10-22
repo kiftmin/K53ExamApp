@@ -1,24 +1,18 @@
-// Favorites + seen-ids + licence/gearbox session for the Controls study module.
+// Saved marks + licence/gearbox session for the Controls study module.
 // Mirrors rule-storage.ts — plain JSON in localStorage.
 // Progress is server-synced for W/M/X codes via progress-sync.ts.
 
-import { syncEnabled, pushProgress, hydrateProgress, recordOwnerIfMissing, type LearnerRecord } from "./progress-sync";
+import { syncEnabled, pushProgress, hydrateProgress, recordOwnerIfMissing } from "./progress-sync";
+import { isKnown, nextStatus, type LearningStatus, type RecallRating, type LearningRecord } from "./learning-status";
+
+export type { LearningStatus, RecallRating, LearningRecord };
+export { isKnown };
 
 const FAV_CONTROLS_KEY = "k53_favorite_controls";
 const LEARNING_CONTROLS_KEY = "k53_control_learning";
 const CONTROLS_CODE_KEY = "k53_controls_licence_code";
 const CONTROLS_GEARBOX_KEY = "k53_controls_gearbox";
-const DONE_CONTROLS_KEY = "k53_done_controls";
-
-export type LearningStatus = "new" | "learning" | "review" | "mastered";
-export type RecallRating = "again" | "hard" | "good" | "easy";
-export type LearningRecord = {
-  status: LearningStatus;
-  correct: number;
-  incorrect: number;
-  lastRating: RecallRating;
-  lastSeenAt: string;
-};
+const LEGACY_DONE_CONTROLS_KEY = "k53_done_controls";
 
 function readIds(key: string): number[] {
   try {
@@ -32,29 +26,21 @@ function readIds(key: string): number[] {
 }
 function writeIds(key: string, ids: number[]): void {
   try { localStorage.setItem(key, JSON.stringify(ids)); } catch { /* ignore */ }
+
 }
 export function getFavoriteControlIds(): number[] { return readIds(FAV_CONTROLS_KEY); }
 
-export function getDoneControlIds(): number[] { return readIds(DONE_CONTROLS_KEY); }
+export function isFavoriteControl(id: number): boolean {
+  return readIds(FAV_CONTROLS_KEY).includes(id);
+}
 
-/** Remove the given ids from a bookmark list. */
-export function removeControlBookmarks(kind: "done" | "favorite" | "both", ids: number[]): void {
+/** Remove the given ids from the saved list. */
+export function removeFavoriteControls(ids: number[]): void {
   const drop = new Set(ids);
-  if (kind === "favorite" || kind === "both") {
-    writeIds(FAV_CONTROLS_KEY, readIds(FAV_CONTROLS_KEY).filter((id) => !drop.has(id)));
-  }
-  if (kind === "done" || kind === "both") {
-    writeIds(DONE_CONTROLS_KEY, readIds(DONE_CONTROLS_KEY).filter((id) => !drop.has(id)));
-  }
+  writeIds(FAV_CONTROLS_KEY, readIds(FAV_CONTROLS_KEY).filter((id) => !drop.has(id)));
 }
 
-/** Toggles done. Returns true if the control is now marked done. */
-export function toggleDoneControl(id: number): boolean {
-  const ids = readIds(DONE_CONTROLS_KEY);
-  const next = ids.includes(id) ? ids.filter((x) => x !== id) : [...ids, id];
-  writeIds(DONE_CONTROLS_KEY, next);
-  return next.includes(id);
-}
+/** Toggles saved. Returns true if the control is now saved. */
 export function toggleFavoriteControl(id: number): boolean {
   const ids = readIds(FAV_CONTROLS_KEY);
   const next = ids.includes(id) ? ids.filter((x) => x !== id) : [...ids, id];
@@ -70,28 +56,23 @@ function readLearningMap(key: string): Record<number, LearningRecord> {
     return parsed && typeof parsed === "object" && !Array.isArray(parsed) ? parsed : {};
   } catch { return {}; }
 }
-function writeLearningMap(key: string, map: Record<number, LearningRecord>): void {
+function writeLearningMap(
+  key: string,
+  map: Record<number, { status: LearningStatus; correct: number; incorrect: number; lastRating: string; lastSeenAt: string }>
+): void {
   try { localStorage.setItem(key, JSON.stringify(map)); } catch { /* ignore */ }
-}
-function nextStatus(record: LearningRecord | undefined, rating: RecallRating): LearningStatus {
-  const current = record?.status ?? "new";
-  if (current === "new") return "learning";
-  switch (rating) {
-    case "again": return "learning";
-    case "hard": return "learning";
-    case "good": return current === "mastered" ? "mastered" : "review";
-    case "easy": return current === "review" || current === "mastered" ? "mastered" : "review";
-  }
 }
 export function rateControl(id: number, rating: RecallRating): LearningRecord {
   recordOwnerIfMissing();
   const map = readLearningMap(LEARNING_CONTROLS_KEY);
   const prev = map[id];
+  const notYet = rating === "again" || rating === "hard";
+  const resolved: RecallRating = notYet ? "again" : "good";
   const record: LearningRecord = {
-    status: nextStatus(prev, rating),
-    correct: (prev?.correct ?? 0) + (rating === "good" || rating === "easy" ? 1 : 0),
-    incorrect: (prev?.incorrect ?? 0) + (rating === "again" || rating === "hard" ? 1 : 0),
-    lastRating: rating,
+    status: nextStatus(prev, resolved),
+    correct: (prev?.correct ?? 0) + (notYet ? 0 : 1),
+    incorrect: (prev?.incorrect ?? 0) + (notYet ? 1 : 0),
+    lastRating: resolved,
     lastSeenAt: new Date().toISOString(),
   };
   map[id] = record;
@@ -103,19 +84,71 @@ export function rateControl(id: number, rating: RecallRating): LearningRecord {
 
   return record;
 }
-export function getAllControlLearning(): Record<number, LearningRecord> { return readLearningMap(LEARNING_CONTROLS_KEY); }
-export function getSeenControlIds(): number[] {
-  const map = readLearningMap(LEARNING_CONTROLS_KEY);
-  return Object.keys(map).map(Number).filter((id) => map[id]?.status && map[id].status !== "new");
+
+/** "I know this" tick: mark as known, or drop back to to-practise. */
+export function setControlKnown(id: number, known: boolean): LearningRecord {
+  return rateControl(id, known ? "good" : "again");
 }
-export function markControlSeen(id: number): void {
+
+export function getAllControlLearning(): Record<number, LearningRecord> { return readLearningMap(LEARNING_CONTROLS_KEY); }
+
+/** Remove the learning records for these ids (Reset section). */
+export function resetControlProgress(ids: number[]): void {
+  recordOwnerIfMissing();
+  const drop = new Set(ids);
   const map = readLearningMap(LEARNING_CONTROLS_KEY);
-  if (!map[id]) {
-    map[id] = { status: "learning", correct: 0, incorrect: 0, lastRating: "good", lastSeenAt: new Date().toISOString() };
-    writeLearningMap(LEARNING_CONTROLS_KEY, map);
-  } else if (map[id].status === "new") {
-    map[id] = { ...map[id], status: "learning", lastSeenAt: new Date().toISOString() };
-    writeLearningMap(LEARNING_CONTROLS_KEY, map);
+  const removed: number[] = [];
+  for (const key of Object.keys(map).map(Number)) {
+    if (drop.has(key)) {
+      delete map[key];
+      removed.push(key);
+    }
+  }
+  writeLearningMap(LEARNING_CONTROLS_KEY, map);
+
+  if (syncEnabled()) {
+    for (const id of removed) {
+      pushProgress("control", id, {
+        status: "new",
+        correct: 0,
+        incorrect: 0,
+        lastRating: "good",
+        lastSeenAt: new Date().toISOString(),
+      });
+    }
+  }
+}
+
+export function getControlLearning(id: number): LearningRecord | undefined {
+  return readLearningMap(LEARNING_CONTROLS_KEY)[id];
+}
+
+// === One-time migration: fold the old done tick-lists into known status ===
+
+function migrateDoneControls(): void {
+  try {
+    const ids = readIds(LEGACY_DONE_CONTROLS_KEY);
+    if (ids.length === 0) return;
+    const map = readLearningMap(LEARNING_CONTROLS_KEY);
+    const marked: number[] = [];
+    for (const id of ids) {
+      if (isKnown(map[id]?.status)) continue;
+      map[id] = {
+        status: "mastered",
+        correct: (map[id]?.correct ?? 0) + 1,
+        incorrect: map[id]?.incorrect ?? 0,
+        lastRating: "good",
+        lastSeenAt: new Date().toISOString(),
+      };
+      marked.push(id);
+    }
+    if (marked.length > 0) writeLearningMap(LEARNING_CONTROLS_KEY, map);
+    if (marked.length > 0 && syncEnabled()) {
+      for (const id of marked) pushProgress("control", id, map[id]!);
+    }
+    localStorage.removeItem(LEGACY_DONE_CONTROLS_KEY);
+  } catch {
+    // ignore — migration retries on next load since the key stays put
   }
 }
 
@@ -168,6 +201,7 @@ export function isVehicleTypeForCode(code: number | null, vehicleType: string, g
 
 /** Hydrate control progress from the server (server authoritative, local uploaded once when empty). */
 export async function initControlSync(): Promise<void> {
+  migrateDoneControls();
   const local = readLearningMap(LEARNING_CONTROLS_KEY);
   const hydrated = await hydrateProgress("control", local);
   if (hydrated !== null) writeLearningMap(LEARNING_CONTROLS_KEY, hydrated);
@@ -178,7 +212,7 @@ export function clearControlLocalData(): void {
   try {
     localStorage.removeItem(LEARNING_CONTROLS_KEY);
     localStorage.removeItem(FAV_CONTROLS_KEY);
-    localStorage.removeItem(DONE_CONTROLS_KEY);
+    localStorage.removeItem(LEGACY_DONE_CONTROLS_KEY);
   } catch {
     // ignore
   }

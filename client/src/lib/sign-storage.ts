@@ -1,26 +1,19 @@
-// Favorites + learning records for the Study modules.
+// Saved marks + learning records for the Study modules.
 // Same localStorage pattern quiz-context.tsx uses for quiz state —
 // plain JSON, no backend changes needed.
 // Progress is server-synced for W/M/X codes via progress-sync.ts.
 
-import { syncEnabled, pushProgress, hydrateProgress, recordOwnerIfMissing, type LearnerRecord } from "./progress-sync";
+import { syncEnabled, pushProgress, hydrateProgress, recordOwnerIfMissing } from "./progress-sync";
+import { isKnown, nextStatus, type LearningStatus, type RecallRating, type LearningRecord } from "./learning-status";
+
+export type { LearningStatus, RecallRating, LearningRecord };
+export { isKnown };
 
 const FAV_SIGNS_KEY = "k53_favorite_signs";
 const LEARNING_SIGNS_KEY = "k53_sign_learning";
-const DONE_SIGNS_KEY = "k53_done_signs";
+const LEGACY_DONE_SIGNS_KEY = "k53_done_signs";
 
-// === Learning records (Phase 2 mastery model) ===
-
-export type LearningStatus = "new" | "learning" | "review" | "mastered";
-export type RecallRating = "again" | "hard" | "good" | "easy";
-
-export type LearningRecord = {
-  status: LearningStatus;
-  correct: number;
-  incorrect: number;
-  lastRating: RecallRating;
-  lastSeenAt: string; // ISO date
-};
+// === Learning records ===
 
 function readLearningMap(key: string): Record<number, LearningRecord> {
   try {
@@ -34,7 +27,10 @@ function readLearningMap(key: string): Record<number, LearningRecord> {
   }
 }
 
-function writeLearningMap(key: string, map: Record<number, LearningRecord>): void {
+function writeLearningMap(
+  key: string,
+  map: Record<number, { status: LearningStatus; correct: number; incorrect: number; lastRating: string; lastSeenAt: string }>
+): void {
   try {
     localStorage.setItem(key, JSON.stringify(map));
   } catch {
@@ -42,34 +38,24 @@ function writeLearningMap(key: string, map: Record<number, LearningRecord>): voi
   }
 }
 
-function nextStatus(record: LearningRecord | undefined, rating: RecallRating): LearningStatus {
-  const current = record?.status ?? "new";
-  if (current === "new") return "learning"; // first rating of any kind
-  switch (rating) {
-    case "again":
-      return "learning"; // any wrong answer costs standing
-    case "hard":
-      return "learning";
-    case "good":
-      // learning/review → review settles; mastered holds mastery
-      return current === "mastered" ? "mastered" : "review";
-    case "easy":
-      return current === "review" || current === "mastered" ? "mastered" : "review";
-  }
+function rateLearningRecord(map: Record<number, LearningRecord>, id: number, notYet: boolean): LearningRecord {
+  const prev = map[id];
+  const rating: RecallRating = notYet ? "again" : "good";
+  const record: LearningRecord = {
+    status: nextStatus(prev, rating),
+    correct: (prev?.correct ?? 0) + (notYet ? 0 : 1),
+    incorrect: (prev?.incorrect ?? 0) + (notYet ? 1 : 0),
+    lastRating: rating,
+    lastSeenAt: new Date().toISOString(),
+  };
+  map[id] = record;
+  return record;
 }
 
 export function rateSign(id: number, rating: RecallRating): LearningRecord {
   recordOwnerIfMissing();
   const map = readLearningMap(LEARNING_SIGNS_KEY);
-  const prev = map[id];
-  const record: LearningRecord = {
-    status: nextStatus(prev, rating),
-    correct: (prev?.correct ?? 0) + (rating === "good" || rating === "easy" ? 1 : 0),
-    incorrect: (prev?.incorrect ?? 0) + (rating === "again" || rating === "hard" ? 1 : 0),
-    lastRating: rating,
-    lastSeenAt: new Date().toISOString(),
-  };
-  map[id] = record;
+  const record = rateLearningRecord(map, id, rating === "again" || rating === "hard");
   writeLearningMap(LEARNING_SIGNS_KEY, map);
 
   if (syncEnabled()) {
@@ -79,6 +65,11 @@ export function rateSign(id: number, rating: RecallRating): LearningRecord {
   return record;
 }
 
+/** "I know this" tick: mark as known, or drop back to to-practise. */
+export function setSignKnown(id: number, known: boolean): LearningRecord {
+  return rateSign(id, known ? "good" : "again");
+}
+
 export function getSignLearning(id: number): LearningRecord | undefined {
   return readLearningMap(LEARNING_SIGNS_KEY)[id];
 }
@@ -86,6 +77,35 @@ export function getSignLearning(id: number): LearningRecord | undefined {
 export function getAllSignLearning(): Record<number, LearningRecord> {
   return readLearningMap(LEARNING_SIGNS_KEY);
 }
+
+/** Remove the learning records for these ids (Reset section). */
+export function resetSignProgress(ids: number[]): void {
+  recordOwnerIfMissing();
+  const drop = new Set(ids);
+  const map = readLearningMap(LEARNING_SIGNS_KEY);
+  const removed: number[] = [];
+  for (const key of Object.keys(map).map(Number)) {
+    if (drop.has(key)) {
+      delete map[key];
+      removed.push(key);
+    }
+  }
+  writeLearningMap(LEARNING_SIGNS_KEY, map);
+
+  if (syncEnabled()) {
+    for (const id of removed) {
+      pushProgress("sign", id, {
+        status: "new",
+        correct: 0,
+        incorrect: 0,
+        lastRating: "good",
+        lastSeenAt: new Date().toISOString(),
+      });
+    }
+  }
+}
+
+// === Saved (favorites) ===
 
 function readIds(key: string): number[] {
   try {
@@ -110,34 +130,17 @@ export function getFavoriteSignIds(): number[] {
   return readIds(FAV_SIGNS_KEY);
 }
 
-export function getDoneSignIds(): number[] {
-  return readIds(DONE_SIGNS_KEY);
-}
-
-/** Remove the given ids from a bookmark list. Returns the new list. */
-export function removeSignBookmarks(kind: "done" | "favorite" | "both", ids: number[]): void {
-  const drop = new Set(ids);
-  if (kind === "favorite" || kind === "both") {
-    writeIds(FAV_SIGNS_KEY, readIds(FAV_SIGNS_KEY).filter((id) => !drop.has(id)));
-  }
-  if (kind === "done" || kind === "both") {
-    writeIds(DONE_SIGNS_KEY, readIds(DONE_SIGNS_KEY).filter((id) => !drop.has(id)));
-  }
-}
-
-/** Toggles done. Returns true if the sign is now marked done. */
-export function toggleDoneSign(id: number): boolean {
-  const ids = readIds(DONE_SIGNS_KEY);
-  const next = ids.includes(id) ? ids.filter((x) => x !== id) : [...ids, id];
-  writeIds(DONE_SIGNS_KEY, next);
-  return next.includes(id);
-}
-
 export function isFavoriteSign(id: number): boolean {
   return readIds(FAV_SIGNS_KEY).includes(id);
 }
 
-/** Toggles favorite. Returns true if the sign is now a favorite. */
+/** Remove the given ids from the saved list. */
+export function removeFavoriteSigns(ids: number[]): void {
+  const drop = new Set(ids);
+  writeIds(FAV_SIGNS_KEY, readIds(FAV_SIGNS_KEY).filter((id) => !drop.has(id)));
+}
+
+/** Toggles saved. Returns true if the sign is now saved. */
 export function toggleFavoriteSign(id: number): boolean {
   const ids = readIds(FAV_SIGNS_KEY);
   const next = ids.includes(id) ? ids.filter((x) => x !== id) : [...ids, id];
@@ -145,44 +148,38 @@ export function toggleFavoriteSign(id: number): boolean {
   return next.includes(id);
 }
 
-// === Back-compat wrappers over the learning map ===
-// "seen" is now derived: an item is no longer unseen once it has a
-// learning record (status moved off "new").
+// === One-time migration: fold the old done tick-lists into known status ===
 
-export function getSeenSignIds(): number[] {
-  const map = readLearningMap(LEARNING_SIGNS_KEY);
-  return Object.keys(map)
-    .map(Number)
-    .filter((id) => map[id]?.status && map[id].status !== "new");
-}
-
-export function markSignSeen(id: number): void {
-  const map = readLearningMap(LEARNING_SIGNS_KEY);
-  if (!map[id]) {
-    map[id] = {
-      status: "learning",
-      correct: 0,
-      incorrect: 0,
-      lastRating: "good",
-      lastSeenAt: new Date().toISOString(),
-    };
-    writeLearningMap(LEARNING_SIGNS_KEY, map);
-  } else if (map[id].status === "new") {
-    map[id] = { ...map[id], status: "learning", lastSeenAt: new Date().toISOString() };
-    writeLearningMap(LEARNING_SIGNS_KEY, map);
-  }
-}
-
-export function clearSeenSigns(): void {
+function migrateDoneSigns(): void {
   try {
-    localStorage.removeItem(LEARNING_SIGNS_KEY);
+    const ids = readIds(LEGACY_DONE_SIGNS_KEY);
+    if (ids.length === 0) return;
+    const map = readLearningMap(LEARNING_SIGNS_KEY);
+    const marked: number[] = [];
+    for (const id of ids) {
+      if (isKnown(map[id]?.status)) continue;
+      map[id] = {
+        status: "mastered",
+        correct: (map[id]?.correct ?? 0) + 1,
+        incorrect: map[id]?.incorrect ?? 0,
+        lastRating: "good",
+        lastSeenAt: new Date().toISOString(),
+      };
+      marked.push(id);
+    }
+    if (marked.length > 0) writeLearningMap(LEARNING_SIGNS_KEY, map);
+    if (marked.length > 0 && syncEnabled()) {
+      for (const id of marked) pushProgress("sign", id, map[id]!);
+    }
+    localStorage.removeItem(LEGACY_DONE_SIGNS_KEY);
   } catch {
-    // ignore
+    // ignore — migration retries on next load since the key stays put
   }
 }
 
 /** Hydrate sign progress from the server (server authoritative, local uploaded once when empty). */
 export async function initSignSync(): Promise<void> {
+  migrateDoneSigns();
   const local = readLearningMap(LEARNING_SIGNS_KEY);
   const hydrated = await hydrateProgress("sign", local);
   if (hydrated !== null) writeLearningMap(LEARNING_SIGNS_KEY, hydrated);
@@ -193,7 +190,7 @@ export function clearSignLocalData(): void {
   try {
     localStorage.removeItem(LEARNING_SIGNS_KEY);
     localStorage.removeItem(FAV_SIGNS_KEY);
-    localStorage.removeItem(DONE_SIGNS_KEY);
+    localStorage.removeItem(LEGACY_DONE_SIGNS_KEY);
   } catch {
     // ignore
   }

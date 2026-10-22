@@ -3,13 +3,13 @@ import { useLocation } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import type { StudyControl, ControlDiagram } from "@shared/schema";
 import { Layout } from "@/components/layout";
+import { FlashcardsHint } from "@/components/flashcards-hint";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Progress } from "@/components/ui/progress";
 import ControlDiagramView from "@/components/control-diagram-view";
-import { getFavoriteControlIds, getSeenControlIds, markControlSeen, rateControl, getAllControlLearning, initControlSync, type RecallRating } from "@/lib/control-storage";
-import { controlPctByItem } from "@/lib/mastery-summary";
+import { getFavoriteControlIds, rateControl, getAllControlLearning, initControlSync } from "@/lib/control-storage";
 import { ensureLocalOwner } from "@/lib/progress-owner";
 import { ArrowLeft, ChevronLeft, ChevronRight, RotateCcw, Shuffle } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -28,22 +28,23 @@ function shuffle<T>(arr: T[]): T[] {
 export default function StudyControlsFlashcards() {
   const [, setLocation] = useLocation();
   const allowed = useStudyGate();
-
-  useEffect(() => {
-    if (allowed) {
-      ensureLocalOwner();
-      initControlSync();
-    }
-  }, [allowed]);
   const [favoritesOnly, setFavoritesOnly] = useState(false);
-  const [unseenOnly, setUnseenOnly] = useState(false);
+  const [newOnly, setNewOnly] = useState(false);
   const [shuffled, setShuffled] = useState(true);
   const [reshuffleKey, setReshuffleKey] = useState(0);
   const [index, setIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
   const [direction, setDirection] = useState<"recognition" | "recall">("recognition");
+  const [syncTick, setSyncTick] = useState(0);
   const touchStart = useRef<{ x: number; y: number } | null>(null);
   const swiped = useRef(false);
+
+  useEffect(() => {
+    if (allowed) {
+      ensureLocalOwner();
+      initControlSync().then(() => setSyncTick((t) => t + 1));
+    }
+  }, [allowed]);
 
   return (
     <Layout>
@@ -52,12 +53,13 @@ export default function StudyControlsFlashcards() {
           <Deck
             licence={licence} gearbox={gearbox} reset={reset} allowed={allowed} setLocation={setLocation}
             favoritesOnly={favoritesOnly} setFavoritesOnly={setFavoritesOnly}
-            unseenOnly={unseenOnly} setUnseenOnly={setUnseenOnly}
+            newOnly={newOnly} setNewOnly={setNewOnly}
             shuffled={shuffled} setShuffled={setShuffled}
             reshuffleKey={reshuffleKey} setReshuffleKey={setReshuffleKey}
             index={index} setIndex={setIndex} flipped={flipped} setFlipped={setFlipped}
             direction={direction} setDirection={setDirection}
             touchStart={touchStart} swiped={swiped}
+            syncTick={syncTick}
           />
         )}
       </ControlsStudyGate>
@@ -67,9 +69,10 @@ export default function StudyControlsFlashcards() {
 
 function Deck({
   licence, gearbox, reset, allowed, setLocation,
-  favoritesOnly, setFavoritesOnly, unseenOnly, setUnseenOnly,
+  favoritesOnly, setFavoritesOnly, newOnly, setNewOnly,
   shuffled, setShuffled, reshuffleKey, setReshuffleKey,
   index, setIndex, flipped, setFlipped, direction, setDirection, touchStart, swiped,
+  syncTick,
 }: any) {
   const vehicle_type = licence === 1 ? "motorcycle" : licence === 2 ? "lmv" : "hmv";
 
@@ -84,33 +87,45 @@ function Deck({
   });
   const { data: diagrams = [] } = useQuery<ControlDiagram[]>({ queryKey: ["/api/control-diagrams"] });
 
-  const revisionMode =
-    typeof window !== "undefined" &&
-    new URLSearchParams(window.location.search).get("revision") === "1";
+  const revision = useMemo(() => {
+    if (typeof window === "undefined") return null;
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("revision") !== "1") return null;
+    return {
+      heading: params.get("heading"),
+      subheading: params.get("subheading"),
+    };
+  }, []);
 
   const deck = useMemo(() => {
-    if (revisionMode) {
+    if (revision) {
+      // Practise mode: exactly the cards in this group the learner missed.
       const learning = getAllControlLearning();
-      const pctById = controlPctByItem(controls, diagrams);
-      return controls
-        .filter((c) => {
-          const status = learning[c.id]?.status ?? "new";
-          return status === "learning" || status === "new";
-        })
-        .sort((a, b) => (pctById.get(a.id) ?? 100) - (pctById.get(b.id) ?? 100));
+      const pool = controls.filter((c) => {
+        if (revision.heading) {
+          const diagram = diagrams.find((d) => d.id === c.diagram_id);
+          if ((diagram?.label || "Vehicle Controls") !== revision.heading) return false;
+        }
+        if (revision.subheading && revision.subheading !== "(general)") {
+          // Controls have no subheadings — a subheading filter yields nothing.
+          return false;
+        }
+        return learning[c.id]?.status === "learning";
+      });
+      return [...pool].sort((a, b) => a.id - b.id);
     }
     const favs = new Set(getFavoriteControlIds());
-    const seen = new Set(getSeenControlIds());
+    const learning = getAllControlLearning();
     let pool = controls.filter((c: StudyControl) => {
       if (favoritesOnly && !favs.has(c.id)) return false;
-      if (unseenOnly && seen.has(c.id)) return false;
+      if (newOnly && learning[c.id]) return false;
       return true;
     });
     pool = [...pool].sort((a: any, b: any) => a.id - b.id);
     if (shuffled) pool = shuffle(pool);
     return pool;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [controls, diagrams, revisionMode, favoritesOnly, unseenOnly, shuffled, reshuffleKey]);
+  }, [controls, diagrams, revision, favoritesOnly, newOnly, shuffled, reshuffleKey, syncTick]);
 
   const resetDeck = () => { setIndex(0); setFlipped(false); };
   const changeFilter = (fn: () => void) => { fn(); resetDeck(); };
@@ -120,7 +135,6 @@ function Deck({
 
   const advance = (delta: number) => {
     if (deck.length === 0) return;
-    if (current) markControlSeen(current.id);
     setFlipped(false);
     setIndex((i: number) => (i + delta + deck.length) % deck.length);
   };
@@ -213,6 +227,8 @@ function Deck({
         </div>
       </div>
 
+      <FlashcardsHint />
+
       <div className="grid grid-cols-2 rounded-xl border border-border p-1 bg-muted/40">
         {([
           { k: "recognition", label: "Recognition" },
@@ -234,10 +250,19 @@ function Deck({
         <p className="text-sm text-muted-foreground text-center py-10">Loading deck…</p>
       ) : deck.length === 0 ? (
         <div className="rounded-2xl border border-border p-10 text-center space-y-2">
-          <p className="font-bold">Deck is empty</p>
-          <p className="text-sm text-muted-foreground">
-            {revisionMode ? "No shaky controls left." : "Adjust the filters."}
-          </p>
+          {revision ? (
+            <>
+              <p className="font-bold">All caught up. Nothing to practise here.</p>
+              <Button variant="outline" size="sm" onClick={() => setLocation("/")}>
+                Back to Home
+              </Button>
+            </>
+          ) : (
+            <>
+              <p className="font-bold">Deck is empty</p>
+              <p className="text-sm text-muted-foreground">Adjust the filters.</p>
+            </>
+          )}
         </div>
       ) : (
         current && (
@@ -256,22 +281,21 @@ function Deck({
       )}
 
       {deck.length > 0 && flipped && current && (
-        <div className="grid grid-cols-4 gap-2">
-          {([
-            { r: "again" as RecallRating, label: "Again", cls: "bg-red-500/10 text-red-600 border-red-200" },
-            { r: "hard" as RecallRating, label: "Hard", cls: "bg-amber-500/10 text-amber-700 border-amber-200" },
-            { r: "good" as RecallRating, label: "Good", cls: "bg-blue-500/10 text-blue-700 border-blue-200" },
-            { r: "easy" as RecallRating, label: "Easy", cls: "bg-green-500/10 text-green-700 border-green-200" },
-          ]).map(({ r, label, cls }) => (
-            <button
-              key={r}
-              type="button"
-              onClick={() => { rateControl(current.id, r); advance(1); }}
-              className={cn("h-11 rounded-xl border text-xs font-bold", cls)}
-            >
-              {label}
-            </button>
-          ))}
+        <div className="grid grid-cols-2 gap-2">
+          <button
+            type="button"
+            onClick={() => { rateControl(current.id, "again"); advance(1); }}
+            className="h-11 rounded-xl border text-xs font-bold bg-red-500/10 text-red-600 border-red-200"
+          >
+            Not yet
+          </button>
+          <button
+            type="button"
+            onClick={() => { rateControl(current.id, "good"); advance(1); }}
+            className="h-11 rounded-xl border text-xs font-bold bg-green-500/10 text-green-700 border-green-200"
+          >
+            Got it
+          </button>
         </div>
       )}
 
@@ -295,12 +319,12 @@ function Deck({
           <Switch checked={shuffled} onCheckedChange={(v) => changeFilter(() => setShuffled(v))} />
         </div>
         <div className="flex items-center justify-between">
-          <Label className="text-xs font-semibold">Favorites only</Label>
+          <Label className="text-xs font-semibold">Saved only</Label>
           <Switch checked={favoritesOnly} onCheckedChange={(v) => changeFilter(() => setFavoritesOnly(v))} />
         </div>
         <div className="flex items-center justify-between">
-          <Label className="text-xs font-semibold">Unseen only</Label>
-          <Switch checked={unseenOnly} onCheckedChange={(v) => changeFilter(() => setUnseenOnly(v))} />
+          <Label className="text-xs font-semibold">New cards only</Label>
+          <Switch checked={newOnly} onCheckedChange={(v) => changeFilter(() => setNewOnly(v))} />
         </div>
       </div>
     </div>
