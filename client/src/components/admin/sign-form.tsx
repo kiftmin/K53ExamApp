@@ -14,6 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { cn } from "@/lib/utils";
+import { isTemporaryCode } from "@/lib/sign-codes";
 import { ImagePlus, Link2, Unlink, X, Trash2 } from "lucide-react";
 
 interface PendingImage {
@@ -56,8 +57,16 @@ const emptyDefaults: InsertStudySign = {
   where_text: "",
   purpose_text: "",
   action_text: "",
+  short_meaning: "",
+  short_action: "",
+  short_reviewed: false,
+  needs_split: false,
   is_verified_exam_question: false,
 };
+
+function wordCount(text: string | null | undefined): number {
+  return (text || "").trim().split(/\s+/).filter(Boolean).length;
+}
 
 export default function SignForm({ open, onClose, sign }: SignFormProps) {
   const queryClient = useQueryClient();
@@ -397,7 +406,22 @@ export default function SignForm({ open, onClose, sign }: SignFormProps) {
           <DialogTitle>{sign ? "Edit sign" : "New sign"}</DialogTitle>
         </DialogHeader>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit((d) => saveMutation.mutate(d))} className="space-y-4">
+          <form onSubmit={form.handleSubmit((d) => {
+            let data = d;
+            if (sign?.id && sign.short_reviewed) {
+              const edited =
+                (data.short_meaning || "") !== (sign.short_meaning || "") ||
+                (data.short_action || "") !== (sign.short_action || "");
+              if (edited) {
+                if (!window.confirm("You edited approved short text. Saving clears the learner approval — you will need to re-approve. Save anyway?")) return;
+                data = { ...data, short_reviewed: false };
+              }
+            }
+            if (data.short_reviewed && !wordCount(data.short_meaning)) {
+              data = { ...data, short_reviewed: false };
+            }
+            saveMutation.mutate(data);
+          })} className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               <FormField
                 control={form.control}
@@ -467,6 +491,9 @@ export default function SignForm({ open, onClose, sign }: SignFormProps) {
                 {codes.map((c) => (
                   <Badge key={c} variant="secondary" className="font-mono pr-1 py-1">
                     {c}
+                    {isTemporaryCode(c) && (
+                      <span className="ml-1 text-[9px] font-bold uppercase tracking-wide bg-amber-100 text-amber-700 rounded px-1">Temporary</span>
+                    )}
                     <button type="button" onClick={() => removeCode(c)} className="ml-1 hover:text-destructive" aria-label={`Remove ${c}`}>
                       <X className="h-3 w-3" />
                     </button>
@@ -484,6 +511,9 @@ export default function SignForm({ open, onClose, sign }: SignFormProps) {
                     return (
                       <div key={c} className="border border-border rounded-xl overflow-hidden">
                         <div className="aspect-[4/3] bg-muted flex items-center justify-center overflow-hidden relative">
+                          {isTemporaryCode(c) && (
+                            <span className="absolute top-1 left-1 text-[9px] font-bold uppercase tracking-wide bg-amber-100 text-amber-700 rounded px-1 py-0.5">Temporary</span>
+                          )}
                           {src ? (
                             <>
                               <img src={src} alt={c} className="h-full w-full object-contain bg-white" />
@@ -609,6 +639,82 @@ export default function SignForm({ open, onClose, sign }: SignFormProps) {
                   )}
                 />
               ))}
+            </div>
+
+            <div className="space-y-3 rounded-xl border border-border p-3">
+              <p className="text-[11px] font-black uppercase tracking-widest text-muted-foreground">
+                Short learner text
+              </p>
+              {([
+                { key: "short_meaning" as const, target: 15, hint: "One line: what the sign tells the driver." },
+                { key: "short_action" as const, target: 20, hint: "What the driver must do, starting with a verb." },
+              ]).map(({ key, target, hint }) => {
+                const value = form.watch(key) || "";
+                const words = wordCount(value);
+                const over = words > target;
+                return (
+                  <FormField
+                    key={key}
+                    control={form.control}
+                    name={key}
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="flex items-center justify-between">
+                          <span className="capitalize-first">
+                            {key === "short_meaning" ? "Short meaning" : "Short action"}
+                          </span>
+                          <span className={cn("text-[11px] font-bold", over ? "text-amber-600" : "text-muted-foreground")}>
+                            {words} / {target} words
+                          </span>
+                        </FormLabel>
+                        <FormControl>
+                          <Textarea {...field} value={field.value || ""} rows={2} />
+                        </FormControl>
+                        <p className={cn("text-[11px]", over ? "text-amber-600" : "text-muted-foreground")}>
+                          {over ? "Over the target — consider trimming." : hint}
+                        </p>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                );
+              })}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                <FormField
+                  control={form.control}
+                  name="short_reviewed"
+                  render={({ field }) => (
+                    <FormItem className="flex items-center gap-2 space-y-0">
+                      <FormControl>
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                          disabled={!form.watch("short_meaning")?.trim()}
+                          aria-disabled={!!form.getValues("short_meaning")?.trim() ? undefined : true}
+                        />
+                      </FormControl>
+                      <FormLabel className="!mt-0 font-semibold">
+                        Approved for learners
+                        {!form.watch("short_meaning")?.trim() && (
+                          <span className="font-normal text-muted-foreground"> — add a short meaning first</span>
+                        )}
+                      </FormLabel>
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="needs_split"
+                  render={({ field }) => (
+                    <FormItem className="flex items-center gap-2 space-y-0">
+                      <FormControl>
+                        <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                      </FormControl>
+                      <FormLabel className="!mt-0 font-semibold">Needs splitting</FormLabel>
+                    </FormItem>
+                  )}
+                />
+              </div>
             </div>
 
             <FormField

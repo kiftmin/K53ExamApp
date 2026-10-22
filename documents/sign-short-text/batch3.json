@@ -1,0 +1,572 @@
+[
+{
+"id": 201,
+"short_meaning": "Warns of a sharp curve to the left or right.",
+"short_action": "Slow down to navigate the sharp curve safely.",
+"needs_split": false
+},
+{
+"id": 202,
+"short_meaning": "Warns that the road terminates ahead and joins a crossroad.",
+"short_action": "Slow down and prepare to turn left or right.",
+"needs_split": false
+},
+{
+"id": 203,
+"short_meaning": "Warns of a dead end where the road is closed ahead.",
+"short_action": "Slow down and prepare to turn left or right.",
+"needs_split": false
+},
+{
+"id": 204,
+"short_meaning": "Warns that part of the roadway is temporarily closed to traffic.",
+"short_action": "Slow down and follow the indicated detour route.",
+"needs_split": false
+},
+{
+"id": 205,
+"short_meaning": "Warns that the traffic signals at the intersection are not functioning.",
+"short_action": "Slow down, treat as a multi-way stop, and yield.",
+"needs_split": false
+},
+{
+"id": 206,
+"short_meaning": "Shows the directional route to follow to reach a major road.",
+"short_action": "Follow the directional arrows to reach the main route.",
+"needs_split": false
+},
+{
+"id": 207,
+"short_meaning": "Shows advance directions leading towards a major transport terminus.",
+"short_action": "Follow the signs to reach the airport, harbour, or station.",
+"needs_split": false
+},
+{
+"id": 208,
+"short_meaning": "Points out the turning direction leading directly to a transport terminus.",
+"short_action": "Turn in the indicated direction to reach the terminus.",
+"needs_split": false
+},
+{
+"id": 209,
+"short_meaning": "Shows map directions to join a numbered route via dual carriageways.",
+"short_action": "Select the correct lane for your intended travel direction.",
+"needs_split": false
+},
+{
+"id": 210,
+"short_meaning": "Confirms the official route number and status of your current road.",
+"short_action": "Confirm that you are travelling on your intended numbered route.",
+"needs_split": false
+},
+{
+"id": 211,
+"short_meaning": "Indicates the route number of an intersecting urban secondary road.",
+"short_action": "Slow down for the intersection and check your route.",
+"needs_split": false
+},
+{
+"id": 212,
+"short_meaning": "Warns that you are approaching a numbered secondary route intersection.",
+"short_action": "Prepare to turn onto or cross the numbered route.",
+"needs_split": false
+},
+{
+"id": 213,
+"short_meaning": "Overhead sign guiding drivers to the correct lane for numbered routes.",
+"short_action": "Move into the lane corresponding to your target route.",
+"needs_split": false
+},
+{
+"id": 214,
+"short_meaning": "Points towards an alternative non-toll route reaching your destination.",
+"short_action": "Turn here if you wish to avoid paying toll fees.",
+"needs_split": false
+},
+{
+"id": 215,
+"short_meaning": "Indicates the presence of a dedicated bicycle route.",
+"short_action": "Watch for cyclists and avoid driving on their route.",
+"needs_split": false
+},
+{
+"id": 216,
+"short_meaning": "Shows route numbers and destinations reachable at the upcoming intersection.",
+"short_action": "Select the correct lane before reaching the junction.",
+"needs_split": false
+},
+{
+"id": 217,
+"short_meaning": "Shows route numbers and destinations at the intersection layout.",
+"short_action": "Turn in the direction indicated for your destination.",
+"needs_split": false
+},
+{
+"id": 218,
+"short_meaning": "Confirms destination names and remaining distances in kilometres.",
+"short_action": "Note the remaining distance to plan your journey.",
+"needs_split": false
+},
+{
+"id": 219,
+"short_meaning": "Points toward minor local destinations or rural side routes.",
+"short_action": "Slow down and turn towards your specified destination.",
+"needs_split": false
+},
+{
+"id": 220,
+"short_meaning": "Illustrates the upcoming intersection layout, route numbers, and destinations.",
+"short_action": "Choose your lane early based on the intersection map.",
+"needs_split": false
+},
+{
+"id": 221,
+"short_meaning": "Overhead sign indicating which lane leads to specific destinations.",
+"short_action": "Move into the designated lane for your destination.",
+"needs_split": false
+},
+{
+"id": 222,
+"short_meaning": "Warns that a freeway off-ramp exit is 2 kilometres ahead.",
+"short_action": "Move to the left lane early if exiting.",
+"needs_split": false
+},
+{
+"id": 223,
+"short_meaning": "Warns that a freeway off-ramp exit is 1 kilometre ahead.",
+"short_action": "Signal and remain in the left lane to exit.",
+"needs_split": false
+},
+{
+"id": 224,
+"short_meaning": "Indicates that a freeway off-ramp exit is 500 metres ahead.",
+"short_action": "Maintain position in the left lane if exiting.",
+"needs_split": false
+},
+{
+"id": 225,
+"short_meaning": "Marks the exact location of a freeway exit off-ramp.",
+"short_action": "Turn off onto the off-ramp if leaving freeway.",
+"needs_split": false
+},
+{
+"id": 226,
+"short_meaning": "Marks the dividing gore area between a freeway and an off-ramp.",
+"short_action": "Pass left to exit or right to remain on freeway.",
+"needs_split": false
+},
+{
+"id": 227,
+"short_meaning": "Shows lane destinations at the intersection ending an off-ramp.",
+"short_action": "Select the correct lane before reaching the end.",
+"needs_split": false
+},
+{
+"id": 228,
+"short_meaning": "Shows turning choices at the terminal intersection of an off-ramp.",
+"short_action": "Slow down and turn left or right as needed.",
+"needs_split": false
+},
+{
+"id": 229,
+"short_meaning": "Lists consecutive freeway exits leading to the same urban area.",
+"short_action": "Identify which numbered exit you need to take.",
+"needs_split": false
+},
+{
+"id": 230,
+"short_meaning": "Warns that your road crosses a freeway with access ahead.",
+"short_action": "Prepare to enter the freeway on-ramp if desired.",
+"needs_split": false
+},
+{
+"id": 231,
+"short_meaning": "Indicates the entrance location for a near-side freeway on-ramp.",
+"short_action": "Slow down and turn left onto the on-ramp.",
+"needs_split": false
+},
+{
+"id": 232,
+"short_meaning": "Warns that a far-side freeway on-ramp entrance lies ahead.",
+"short_action": "Move to the right lane to prepare to join.",
+"needs_split": false
+},
+{
+"id": 233,
+"short_meaning": "Indicates the entrance location for a far-side freeway on-ramp.",
+"short_action": "Turn right onto the on-ramp to join freeway.",
+"needs_split": false
+},
+{
+"id": 234,
+"short_meaning": "Overhead sign showing a freeway split into different destination routes.",
+"short_action": "Position your vehicle in the lane for your route.",
+"needs_split": false
+},
+{
+"id": 235,
+"short_meaning": "Shows diagrammatically that a traffic lane ends ahead.",
+"short_action": "Merge safely into the continuing traffic lane.",
+"needs_split": false
+},
+{
+"id": 236,
+"short_meaning": "Shows diagrammatically that an extra lane is added ahead.",
+"short_action": "Move into the new lane if space permits.",
+"needs_split": false
+},
+{
+"id": 237,
+"short_meaning": "Diagram showing mandatory restrictions applied to a specific lane.",
+"short_action": "Comply with the regulatory sign governing your lane.",
+"needs_split": false
+},
+{
+"id": 238,
+"short_meaning": "Shows diagrammatically that two separate traffic lanes merge into one.",
+"short_action": "Yield and merge smoothly into the open lane.",
+"needs_split": false
+},
+{
+"id": 239,
+"short_meaning": "Shows diagrammatically that multi-lane roadways converge without lane loss.",
+"short_action": "Watch for converging vehicles and maintain your lane.",
+"needs_split": false
+},
+{
+"id": 240,
+"short_meaning": "Guides runaway vehicles with brake failure towards an arrestor bed.",
+"short_action": "Drive directly into the arrestor bed if brakes fail.",
+"needs_split": false
+},
+{
+"id": 241,
+"short_meaning": "Advises heavy vehicle drivers to select lower gears on downhills.",
+"short_action": "Engage low gear before starting down the steep incline.",
+"needs_split": false
+},
+{
+"id": 242,
+"short_meaning": "Overhead diagram showing the entrance lane to an arrestor bed.",
+"short_action": "Do not enter this lane unless experiencing emergency failure.",
+"needs_split": false
+},
+{
+"id": 243,
+"short_meaning": "Overhead diagram indicating regulatory requirements for the lane below.",
+"short_action": "Follow the command or prohibition shown for your lane.",
+"needs_split": false
+},
+{
+"id": 244,
+"short_meaning": "Count-down markers indicating distance to an exit in hundreds of metres.",
+"short_action": "Prepare to exit as the distance counts down.",
+"needs_split": false
+},
+{
+"id": 245,
+"short_meaning": "Informational sign showing that the road terminates in a cul-de-sac.",
+"short_action": "Do not enter unless accessing local properties inside.",
+"needs_split": false
+},
+{
+"id": 246,
+"short_meaning": "Informs you that your road has priority at the intersection.",
+"short_action": "Proceed with caution while ensuring cross traffic yields.",
+"needs_split": false
+},
+{
+"id": 247,
+"short_meaning": "Indicates a parking area connected to public bus or train transport.",
+"short_action": "Park here to continue travel using public transport.",
+"needs_split": false
+},
+{
+"id": 248,
+"short_meaning": "Provides secondary details supporting a primary traffic sign above it.",
+"short_action": "Read the extra details to understand the main sign.",
+"needs_split": false
+},
+{
+"id": 249,
+"short_meaning": "Indicates the location of an official tourist information centre.",
+"short_action": "Park nearby if seeking local travel or tourist details.",
+"needs_split": false
+},
+{
+"id": 250,
+"short_meaning": "Informational sign marking a section used for temporary road experiments.",
+"short_action": "Drive carefully and watch for experimental equipment or workers.",
+"needs_split": false
+},
+{
+"id": 251,
+"short_meaning": "Traffic lights are timed to stay green if driving recommended speed.",
+"short_action": "Maintain the recommended speed to catch green lights.",
+"needs_split": false
+},
+{
+"id": 252,
+"short_meaning": "Traffic light sequence differs from normal, allowing non-simultaneous greens.",
+"short_action": "Wait for your specific signal to turn green before moving.",
+"needs_split": false
+},
+{
+"id": 253,
+"short_meaning": "Informational sign warning of a bus stop located ahead.",
+"short_action": "Watch for stopping buses and pedestrians crossing nearby.",
+"needs_split": false
+},
+{
+"id": 254,
+"short_meaning": "Indicates a facility where passengers transfer between transport modes.",
+"short_action": "Slow down and watch for pedestrians changing transport.",
+"needs_split": false
+},
+{
+"id": 255,
+"short_meaning": "Transverse road line marking where vehicles must stop completely.",
+"short_action": "Bring your vehicle to a complete standstill behind line.",
+"needs_split": false
+},
+{
+"id": 256,
+"short_meaning": "Transverse road marking showing where drivers must yield right of way.",
+"short_action": "Slow down or stop to give way to cross traffic.",
+"needs_split": false
+},
+{
+"id": 257,
+"short_meaning": "Painted road markings designating a crossing point for pedestrians.",
+"short_action": "Yield right of way to pedestrians crossing the roadway.",
+"needs_split": false
+},
+{
+"id": 258,
+"short_meaning": "Solid line marking prohibiting straddling or crossing to overtake.",
+"short_action": "Keep to the left and do not cross line.",
+"needs_split": false
+},
+{
+"id": 259,
+"short_meaning": "Double solid lines prohibiting crossing or driving on the right.",
+"short_action": "Do not cross or drive over these solid lines.",
+"needs_split": false
+},
+{
+"id": 260,
+"short_meaning": "Solid white line separating traffic lanes moving in same direction.",
+"short_action": "Stay within your lane and do not cross line.",
+"needs_split": false
+},
+{
+"id": 261,
+"short_meaning": "Pavement markings indicating the outer left or right road boundary.",
+"short_action": "Keep to the right of the left-edge line marking.",
+"needs_split": false
+},
+{
+"id": 262,
+"short_meaning": "Painted island marking a neutral zone where driving is prohibited.",
+"short_action": "Do not drive, stop, or park over painted island.",
+"needs_split": false
+},
+{
+"id": 263,
+"short_meaning": "Demarcated road lines indicating authorized parking space boundaries.",
+"short_action": "Park entirely within the lines marking the bay.",
+"needs_split": false
+},
+{
+"id": 264,
+"short_meaning": "Parking bay reserved exclusively for specified vehicle classes or users.",
+"short_action": "Do not park here unless matching the designated symbol.",
+"needs_split": false
+},
+{
+"id": 265,
+"short_meaning": "Lane arrows compelling traffic to travel only in indicated directions.",
+"short_action": "Proceed only in the direction shown by your lane arrow.",
+"needs_split": false
+},
+{
+"id": 266,
+"short_meaning": "Pavement markings designating a lane restricted exclusively to buses.",
+"short_action": "Do not drive in this lane during active hours.",
+"needs_split": false
+},
+{
+"id": 267,
+"short_meaning": "Yellow criss-cross box marking prohibiting stopping within the intersection.",
+"short_action": "Do not enter unless your exit path is clear.",
+"needs_split": false
+},
+{
+"id": 268,
+"short_meaning": "Zig-zag line markings prohibiting stopping before a pedestrian crossing.",
+"short_action": "Do not stop or overtake within this marked zone.",
+"needs_split": false
+},
+{
+"id": 269,
+"short_meaning": "Solid painted line along the kerb prohibiting all stopping.",
+"short_action": "Do not stop your vehicle alongside this line marking.",
+"needs_split": false
+},
+{
+"id": 270,
+"short_meaning": "Broken painted line along the kerb prohibiting parking of vehicles.",
+"short_action": "You may stop briefly, but do not park here.",
+"needs_split": false
+},
+{
+"id": 271,
+"short_meaning": "Pavement markings defining a lane reserved exclusively for pedal cyclists.",
+"short_action": "Do not drive motor vehicles within this marked lane.",
+"needs_split": false
+},
+{
+"id": 272,
+"short_meaning": "Directional arrows showing mandatory movement direction around a circle.",
+"short_action": "Travel clockwise around the circle following arrow directions.",
+"needs_split": false
+},
+{
+"id": 273,
+"short_meaning": "Pavement symbol warning that a railway level crossing lies ahead.",
+"short_action": "Slow down and prepare to stop for approaching trains.",
+"needs_split": false
+},
+{
+"id": 274,
+"short_meaning": "Broken line marking indicating a lane drop or upcoming exit ramp.",
+"short_action": "Yield to merging traffic if changing lanes across lines.",
+"needs_split": false
+},
+{
+"id": 275,
+"short_meaning": "Broken center line separating traffic traveling in opposite directions.",
+"short_action": "Watch for oncoming traffic over the dividing line.",
+"needs_split": false
+},
+{
+"id": 276,
+"short_meaning": "Markings indicating a lane where traffic direction reverses by time.",
+"short_action": "Check signals to ensure lane is open in your direction.",
+"needs_split": false
+},
+{
+"id": 277,
+"short_meaning": "Pavement marking warning that a yield sign is ahead.",
+"short_action": "Slow down and prepare to yield at upcoming junction.",
+"needs_split": false
+},
+{
+"id": 278,
+"short_meaning": "Pavement arrows warning that traffic lanes decrease in number ahead.",
+"short_action": "Merge early into the continuing lane shown by arrow.",
+"needs_split": false
+},
+{
+"id": 279,
+"short_meaning": "Pavement arrow warning that a mandatory direction turn lies ahead.",
+"short_action": "Change lanes early if you need another direction.",
+"needs_split": false
+},
+{
+"id": 280,
+"short_meaning": "Pavement warning that a solid line prohibition starts ahead.",
+"short_action": "Return to your left lane before solid line begins.",
+"needs_split": false
+},
+{
+"id": 281,
+"short_meaning": "Pavement markings guiding out-of-control heavy vehicles into an arrestor bed.",
+"short_action": "Drive onto the gravel bed only if experiencing brake failure.",
+"needs_split": false
+},
+{
+"id": 282,
+"short_meaning": "Pavement markings indicating the exact location of a speed hump.",
+"short_action": "Reduce speed before driving over the painted speed hump.",
+"needs_split": false
+},
+{
+"id": 283,
+"short_meaning": "Broken line defining lanes of traffic moving in same direction.",
+"short_action": "Keep your vehicle centered within the marked lane lines.",
+"needs_split": false
+},
+{
+"id": 284,
+"short_meaning": "Broken guidance lines marking turning paths through an intersection.",
+"short_action": "Follow the line markings while making your turn.",
+"needs_split": false
+},
+{
+"id": 285,
+"short_meaning": "Pavement arrow markings indicating that additional lanes open ahead.",
+"short_action": "Drive centered within marked lanes without straddling lines.",
+"needs_split": false
+},
+{
+"id": 286,
+"short_meaning": "Pavement arrow guidance indicating allowed direction of travel per lane.",
+"short_action": "Drive only in the direction pointed by pavement arrows.",
+"needs_split": false
+},
+{
+"id": 287,
+"short_meaning": "Transverse road markings defining a crossing area for pedal cyclists.",
+"short_action": "Watch for cyclists crossing the roadway within markings.",
+"needs_split": false
+},
+{
+"id": 288,
+"short_meaning": "Pavement symbols designating reserved areas or routes to specific places.",
+"short_action": "Do not use marked lane unless matching designated group.",
+"needs_split": false
+},
+{
+"id": 289,
+"short_meaning": "Words painted on road providing additional instructions or warnings.",
+"short_action": "Read the road text and comply with stated instruction.",
+"needs_split": false
+},
+{
+"id": 290,
+"short_meaning": "Traffic light signals regulating right of way at intersections.",
+"short_action": "Obey signals stop on red, prepare to stop on amber.",
+"needs_split": false
+},
+{
+"id": 291,
+"short_meaning": "Overhead signals showing lane availability, closure, or mandatory direction.",
+"short_action": "Drive in green arrow lanes and exit red cross lanes.",
+"needs_split": false
+},
+{
+"id": 292,
+"short_meaning": "Hand signals by traffic officers overriding standard signals and rules.",
+"short_action": "Follow officer hand signals over all other traffic rules.",
+"needs_split": false
+},
+{
+"id": 293,
+"short_meaning": "Flag signals manually given to stop or allow traffic flow.",
+"short_action": "Stop or proceed depending on the displayed flag signal.",
+"needs_split": false
+},
+{
+"id": 294,
+"short_meaning": "Warning flag signal instructing drivers to proceed slowly and alertly.",
+"short_action": "Reduce speed and stay alert through the controlled area.",
+"needs_split": false
+},
+{
+"id": 300,
+"short_meaning": "Warns of a railway crossing with one or more tracks ahead.",
+"short_action": "Slow down and stop at least 3m back if train approaches.",
+"needs_split": false
+}
+]

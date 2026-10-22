@@ -20,7 +20,7 @@ import { slugifyCode, listStagedImages, stageImageUpload, attachStagedToCode, sa
 import { saveImageForDiagram } from "./diagram-images.js";
 import { validateAdminAccess, requireAdminAuth } from "./admin-auth.js";
 import { z } from "zod";
-import { learnerProgressSchema, learnerProgressUpsertSchema, type InsertLearnerProgress } from "../shared/schema.js";
+import { learnerProgressSchema, learnerProgressUpsertSchema, signShortTextImportSchema, type InsertLearnerProgress } from "../shared/schema.js";
 
 // Neon serverless connections occasionally fail on the first attempt; retry a
 // couple of times before surfacing a 500 to the client.
@@ -415,6 +415,9 @@ export async function registerRoutes(
       return res.json({ valid: true, type: result.type, progress: row });
     } catch (err) {
       console.error("Error upserting learner progress:", err);
+      if (err instanceof z.ZodError) {
+        return res.status(400).json({ valid: false, message: "Invalid progress payload", details: err.issues });
+      }
       res.status(500).json({ valid: false, message: "Failed to save progress" });
     }
   });
@@ -604,6 +607,10 @@ export async function registerRoutes(
         where_text: r.Where ?? null,
         purpose_text: r.Purpose ?? null,
         action_text: r.Action ?? null,
+        short_meaning: null,
+        short_action: null,
+        short_reviewed: false,
+        needs_split: false,
         is_verified_exam_question: false,
       }));
       const result = await storage.bulkInsertSigns(rows);
@@ -611,6 +618,55 @@ export async function registerRoutes(
     } catch (err) {
       console.error("Error importing signs:", err);
       res.status(400).json({ message: "Invalid signs import payload", error: err });
+    }
+  });
+
+  // Import drafted short text for existing signs. Updates only the short
+  // fields, clears approval, and never replaces already-approved text unless
+  // overwrite is set.
+  app.post('/api/signs/short-text/import', requireAdminAuth, async (req: any, res: any) => {
+    try {
+      const { items, overwrite } = z.object({
+        items: z.array(signShortTextImportSchema).min(1),
+        overwrite: z.boolean().optional().default(false),
+      }).parse(req.body);
+
+      let updated = 0;
+      let skipped = 0;
+      const notFound: number[] = [];
+      for (const item of items) {
+        const sign = await storage.getSignById(item.id);
+        if (!sign) {
+          notFound.push(item.id);
+          continue;
+        }
+        if (sign.short_reviewed && !overwrite) {
+          skipped++;
+          continue;
+        }
+        await storage.updateSign(item.id, {
+          short_meaning: item.short_meaning,
+          short_action: item.short_action,
+          needs_split: item.needs_split,
+          short_reviewed: false,
+        });
+        updated++;
+      }
+      res.json({ updated, skipped, notFound });
+    } catch (err) {
+      console.error("Error importing short text:", err);
+      res.status(400).json({ message: "Invalid short-text import payload", error: err });
+    }
+  });
+
+  // Bulk-approve every drafted short text so learners see the short reveal.
+  app.post('/api/signs/short-text/approve', requireAdminAuth, async (_req: any, res: any) => {
+    try {
+      const approved = await storage.approveShortTextDrafts();
+      res.json({ approved });
+    } catch (err) {
+      console.error("Error approving short text:", err);
+      res.status(500).json({ message: "Failed to approve short text" });
     }
   });
 

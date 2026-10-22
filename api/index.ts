@@ -157,6 +157,10 @@ app.get("/api/seed/signs", async (_req: any, res: any) => {
           );
         `;
         await client`ALTER TABLE questions ADD COLUMN IF NOT EXISTS is_reviewed BOOLEAN NOT NULL DEFAULT TRUE;`;
+        await client`ALTER TABLE study_signs ADD COLUMN IF NOT EXISTS short_meaning TEXT;`;
+        await client`ALTER TABLE study_signs ADD COLUMN IF NOT EXISTS short_action TEXT;`;
+        await client`ALTER TABLE study_signs ADD COLUMN IF NOT EXISTS short_reviewed BOOLEAN NOT NULL DEFAULT FALSE;`;
+        await client`ALTER TABLE study_signs ADD COLUMN IF NOT EXISTS needs_split BOOLEAN NOT NULL DEFAULT FALSE;`;
         res.json({ success: true, message: "Tables ready (signs + rules + controls)." });
     } catch (error: any) {
         console.error("Sign seed error:", error);

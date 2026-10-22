@@ -16,7 +16,7 @@ export function FlashcardsHint() {
   return (
     <div className="rounded-2xl bg-primary/5 border border-primary/20 px-4 py-3 flex items-start justify-between gap-3">
       <p className="text-xs text-muted-foreground leading-relaxed">
-        Tap the card to see the answer, then tell us if you knew it. Cards you miss come back in Practise.
+        Tap the card to reveal, then tell us if you knew it. Cards you miss come back in Practise.
       </p>
       <button
         type="button"

@@ -2,6 +2,8 @@
 // Only active for Weekly (W), Monthly (M), Master (X) codes with a linked
 // mobile number. Daily codes and no-code sessions keep pure localStorage.
 
+import { isLearningStatus, toCount } from "./learning-status";
+
 const API_BASE = "";
 
 export const PROGRESS_OWNER_KEY = "k53_progress_owner";
@@ -100,8 +102,16 @@ export async function pushProgress(
   const mobile = currentMobile();
   if (!code || !mobile) return;
 
+  // Local records can predate the current format (e.g. counts stored as
+  // strings), which would make the server reject the whole payload. Always
+  // send a clean record.
+  const lastSeenAt =
+    typeof record.lastSeenAt === "string" && !Number.isNaN(new Date(record.lastSeenAt).getTime())
+      ? record.lastSeenAt
+      : new Date().toISOString();
+
   try {
-    await fetch(`${API_BASE}/api/learner-progress`, {
+    const res = await fetch(`${API_BASE}/api/learner-progress`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
@@ -110,13 +120,17 @@ export async function pushProgress(
         mobileNumber: mobile,
         item_type: itemType,
         item_id: itemId,
-        status: record.status,
-        correct: record.correct,
-        incorrect: record.incorrect,
-        last_rating: record.lastRating,
-        last_seen_at: record.lastSeenAt,
+        status: isLearningStatus(record.status) ? record.status : "learning",
+        correct: toCount(record.correct),
+        incorrect: toCount(record.incorrect),
+        last_rating: record.lastRating || "good",
+        last_seen_at: lastSeenAt,
       }),
     });
+    if (!res.ok) {
+      const detail = await res.text().catch(() => "");
+      console.warn(`[progress-sync] save failed (${res.status}) for ${itemType} ${itemId}: ${detail}`);
+    }
   } catch {
     // Silent — local state is still correct; next rating retries.
   }

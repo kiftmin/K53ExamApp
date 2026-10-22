@@ -83,11 +83,24 @@ export const studySignSchema = z.object({
   where_text: z.string().nullable().optional(),
   purpose_text: z.string().nullable().optional(),
   action_text: z.string().nullable().optional(),
+  short_meaning: z.string().nullable().optional(),
+  short_action: z.string().nullable().optional(),
+  short_reviewed: z.boolean().default(false),
+  needs_split: z.boolean().default(false),
   is_verified_exam_question: z.boolean().default(false),
 });
 
 export type StudySign = z.infer<typeof studySignSchema> & { id: number };
 export type InsertStudySign = Omit<z.infer<typeof studySignSchema>, "id">;
+
+// Drafted short text import (one entry per existing sign id)
+export const signShortTextImportSchema = z.object({
+  id: z.number(),
+  short_meaning: z.string().nullable(),
+  short_action: z.string().nullable(),
+  needs_split: z.boolean(),
+});
+export type SignShortTextImport = z.infer<typeof signShortTextImportSchema>;
 
 // Raw import format — matches Allsigns.json verbatim (pre image-matching)
 export const rawSignImportSchema = z.object({

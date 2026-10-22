@@ -21,10 +21,11 @@ import {
 } from "@/components/ui/alert-dialog";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
-import { BadgeCheck, ImageOff, Pencil, Plus, Search, Trash2 } from "lucide-react";
+import { isTemporaryCode, orderImages } from "@/lib/sign-codes";
+import { BadgeCheck, CheckCheck, ImageOff, Pencil, Plus, Search, Trash2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import SignForm from "./sign-form";
-import SignImportPanel from "./sign-import";
+import SignImportPanel, { SignShortTextImportPanel } from "./sign-import";
 
 function codesMissingImage(s: StudySign): string[] {
   const covered = new Set((s.images || []).map((i) => i.code));
@@ -32,7 +33,7 @@ function codesMissingImage(s: StudySign): string[] {
 }
 
 function SignCard({ sign, onEdit, onDelete }: { sign: StudySign; onEdit: () => void; onDelete: () => void }) {
-  const thumb = sign.images?.[0]?.image_url;
+  const thumb = orderImages(sign.images || [])[0]?.image_url;
   const missing = codesMissingImage(sign);
   return (
     <Card className="overflow-hidden group">
@@ -62,6 +63,9 @@ function SignCard({ sign, onEdit, onDelete }: { sign: StudySign; onEdit: () => v
               className={cn("text-[10px] font-mono", missing.includes(c) && "border-dashed border-amber-500 text-amber-700")}
             >
               {c}
+              {isTemporaryCode(c) && (
+                <span className="ml-1 text-[9px] font-bold uppercase tracking-wide bg-amber-100 text-amber-700 rounded px-1 normal-case">Temporary</span>
+              )}
             </Badge>
           ))}
         </div>
@@ -88,6 +92,9 @@ export default function SignsSection() {
   const [search, setSearch] = useState("");
   const [missingOnly, setMissingOnly] = useState(false);
   const [unverifiedOnly, setUnverifiedOnly] = useState(false);
+  const [shortTextFilter, setShortTextFilter] = useState<"all" | "missing" | "draft" | "approved">("all");
+  const [needsSplitOnly, setNeedsSplitOnly] = useState(false);
+  const [temporaryOnly, setTemporaryOnly] = useState(false);
   const [editing, setEditing] = useState<StudySign | null>(null);
   const [formOpen, setFormOpen] = useState(false);
   const [deleting, setDeleting] = useState<StudySign | null>(null);
@@ -109,12 +116,36 @@ export default function SignsSection() {
       if (subheading !== "all" && s.subheading !== subheading) return false;
       if (missingOnly && codesMissingImage(s).length === 0) return false;
       if (unverifiedOnly && s.is_verified_exam_question) return false;
+      if (shortTextFilter === "missing" && !!s.short_meaning) return false;
+      if (shortTextFilter === "draft" && (!s.short_meaning || s.short_reviewed)) return false;
+      if (shortTextFilter === "approved" && !s.short_reviewed) return false;
+      if (needsSplitOnly && !s.needs_split) return false;
+      if (temporaryOnly && !(s.codes || []).every(isTemporaryCode)) return false;
       if (q && !(s.name.toLowerCase().includes(q) || (s.codes || []).some((c) => c.toLowerCase().includes(q)))) return false;
       return true;
     });
-  }, [signs, heading, subheading, search, missingOnly, unverifiedOnly]);
+  }, [signs, heading, subheading, search, missingOnly, unverifiedOnly, shortTextFilter, needsSplitOnly, temporaryOnly]);
 
   const missingCount = useMemo(() => signs.filter((s) => codesMissingImage(s).length > 0).length, [signs]);
+  const draftCount = useMemo(
+    () => signs.filter((s) => !!s.short_meaning?.trim() && !s.short_reviewed).length,
+    [signs]
+  );
+
+  const approveMutation = useMutation({
+    mutationFn: async () => {
+      const res = await apiRequest("POST", "/api/signs/short-text/approve");
+      return (await res.json()) as { approved: number };
+    },
+    onSuccess: (data) => {
+      queryClient.invalidateQueries({ queryKey: ["/api/signs"] });
+      toast({
+        title: `${data.approved} sign${data.approved === 1 ? "" : "s"} approved`,
+        description: "Learners now see the short reveal on these cards.",
+      });
+    },
+    onError: (e: Error) => toast({ title: "Approve failed", description: e.message, variant: "destructive" }),
+  });
 
   const deleteMutation = useMutation({
     mutationFn: async (id: number) => {
@@ -135,16 +166,31 @@ export default function SignsSection() {
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between gap-3">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
           <h2 className="text-xl font-display font-bold tracking-tight">Road Signs</h2>
           <p className="text-sm text-muted-foreground">
             {signs.length} signs{missingCount > 0 && ` · ${missingCount} missing images`}
+            {draftCount > 0 && ` · ${draftCount} short-text drafts`}
           </p>
         </div>
-        <Button onClick={openNew} className="brand-gradient border-none rounded-xl font-bold">
-          <Plus className="h-4 w-4 mr-1" /> New sign
-        </Button>
+        <div className="flex flex-wrap items-center gap-2">
+          <Button
+            variant="outline"
+            onClick={() => {
+              if (!window.confirm(`Approve short text on ${draftCount} sign${draftCount === 1 ? "" : "s"}? Learners will see it immediately on flashcards.`)) return;
+              approveMutation.mutate();
+            }}
+            disabled={draftCount === 0 || approveMutation.isPending}
+            className="rounded-xl font-bold"
+          >
+            <CheckCheck className="h-4 w-4 mr-1" />
+            {approveMutation.isPending ? "Approving…" : `Approve drafted (${draftCount})`}
+          </Button>
+          <Button onClick={openNew} className="brand-gradient border-none rounded-xl font-bold">
+            <Plus className="h-4 w-4 mr-1" /> New sign
+          </Button>
+        </div>
       </div>
 
       <Tabs value={tab} onValueChange={setTab}>
@@ -197,6 +243,25 @@ export default function SignsSection() {
                 <Switch id="unverified" checked={unverifiedOnly} onCheckedChange={setUnverifiedOnly} />
                 <Label htmlFor="unverified" className="text-xs font-semibold">Unverified only</Label>
               </div>
+              <div className="flex items-center gap-2">
+                <Switch id="needs-split" checked={needsSplitOnly} onCheckedChange={setNeedsSplitOnly} />
+                <Label htmlFor="needs-split" className="text-xs font-semibold">Needs splitting</Label>
+              </div>
+              <div className="flex items-center gap-2">
+                <Switch id="temp-only" checked={temporaryOnly} onCheckedChange={setTemporaryOnly} />
+                <Label htmlFor="temp-only" className="text-xs font-semibold">Temporary only</Label>
+              </div>
+              <Select value={shortTextFilter} onValueChange={(v) => setShortTextFilter(v as typeof shortTextFilter)}>
+                <SelectTrigger className="h-10 w-44 rounded-xl font-semibold text-xs">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">Short text: all</SelectItem>
+                  <SelectItem value="missing">Short text: missing</SelectItem>
+                  <SelectItem value="draft">Short text: draft</SelectItem>
+                  <SelectItem value="approved">Short text: approved</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
           </div>
 
@@ -225,8 +290,9 @@ export default function SignsSection() {
           )}
         </TabsContent>
 
-        <TabsContent value="import">
+        <TabsContent value="import" className="space-y-4">
           <SignImportPanel />
+          <SignShortTextImportPanel />
         </TabsContent>
       </Tabs>
 

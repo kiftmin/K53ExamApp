@@ -20,6 +20,16 @@ export function isKnown(status: LearningStatus | undefined | null): boolean {
   return status === "mastered" || status === "review";
 }
 
+/** Coerce a persisted count to a finite number (legacy rows may hold strings). */
+export function toCount(value: unknown): number {
+  const n = typeof value === "number" ? value : Number(value);
+  return Number.isFinite(n) ? n : 0;
+}
+
+export function isLearningStatus(value: unknown): value is LearningStatus {
+  return value === "new" || value === "learning" || value === "review" || value === "mastered";
+}
+
 /**
  * Resolve the stored status after a rating.
  * "Not yet" (again/hard) always gives `learning` — a known card drops back.

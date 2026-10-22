@@ -3,7 +3,7 @@
 // Progress is server-synced for W/M/X codes via progress-sync.ts.
 
 import { syncEnabled, pushProgress, hydrateProgress, recordOwnerIfMissing } from "./progress-sync";
-import { isKnown, nextStatus, type LearningStatus, type RecallRating, type LearningRecord } from "./learning-status";
+import { isKnown, nextStatus, toCount, type LearningStatus, type RecallRating, type LearningRecord } from "./learning-status";
 
 export type { LearningStatus, RecallRating, LearningRecord };
 export { isKnown };
@@ -70,8 +70,8 @@ export function rateControl(id: number, rating: RecallRating): LearningRecord {
   const resolved: RecallRating = notYet ? "again" : "good";
   const record: LearningRecord = {
     status: nextStatus(prev, resolved),
-    correct: (prev?.correct ?? 0) + (notYet ? 0 : 1),
-    incorrect: (prev?.incorrect ?? 0) + (notYet ? 1 : 0),
+    correct: toCount(prev?.correct) + (notYet ? 0 : 1),
+    incorrect: toCount(prev?.incorrect) + (notYet ? 1 : 0),
     lastRating: resolved,
     lastSeenAt: new Date().toISOString(),
   };

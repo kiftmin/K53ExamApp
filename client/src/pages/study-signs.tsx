@@ -11,6 +11,8 @@ import { Progress } from "@/components/ui/progress";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { useQuiz } from "@/lib/quiz-context";
 import { ChipCollapsible } from "@/components/chip-collapsible";
+import { SignFaceImages, SignCodeChips, isGenericWhere } from "@/components/sign-images";
+import { SHOW_TEMPORARY_SIGNS, isTemporaryOnlyRecord, orderImages, splitCodes, temporaryLabel } from "@/lib/sign-codes";
 import { getFavoriteSignIds, toggleFavoriteSign, setSignKnown, resetSignProgress, removeFavoriteSigns, getAllSignLearning, initSignSync } from "@/lib/sign-storage";
 import { isKnown, countKnown } from "@/lib/learning-status";
 import { ensureLocalOwner } from "@/lib/progress-owner";
@@ -67,9 +69,11 @@ function SubheadingSignGroup({
       {isOpen && (
         <div className="px-3 pb-3 space-y-2">
           {list.map((s: StudySign) => {
-            const thumb = s.images?.[0]?.image_url;
+            const thumb = orderImages(s.images || [])[0]?.image_url;
             const fav = favorites.includes(s.id);
             const known = isKnown(learningMap[s.id]?.status);
+            const { permanent: rowPerm, temporary: rowTemp } = splitCodes(s.codes || []);
+            const rowTempShown = SHOW_TEMPORARY_SIGNS ? rowTemp : [];
             return (
               <button
                 key={s.id}
@@ -89,10 +93,15 @@ function SubheadingSignGroup({
                     {s.is_verified_exam_question && <BadgeCheck className="h-3.5 w-3.5 shrink-0 text-green-600" />}
                     {fav && <Heart className="h-3.5 w-3.5 shrink-0 text-red-500 fill-red-500" />}
                   </p>
-                  <div className="flex flex-wrap gap-1 mt-1">
-                    {(s.codes || []).map((c) => (
-                      <Badge key={c} variant="outline" className="text-[10px] font-mono">{c}</Badge>
-                    ))}
+                  <div className="mt-1">
+                    <div className="flex flex-wrap gap-1">
+                      {rowPerm.map((c) => (
+                        <Badge key={c} variant="outline" className="text-[10px] font-mono">{c}</Badge>
+                      ))}
+                    </div>
+                    {rowTempShown.length > 0 && (
+                      <p className="text-[10px] font-semibold text-muted-foreground mt-0.5">{temporaryLabel(rowTempShown)}</p>
+                    )}
                   </div>
                 </div>
                 <span onClick={(e) => { e.stopPropagation(); onToggleFav(s.id); }} aria-label="Save" className="p-1">
@@ -144,6 +153,12 @@ export default function StudySignsBrowse() {
   });
 
   const openSign = openId !== null ? signs.find((s) => s.id === openId) || null : null;
+  const [detailFullOpen, setDetailFullOpen] = useState(false);
+
+  // Collapsed by default on every opened sign.
+  useEffect(() => {
+    setDetailFullOpen(false);
+  }, [openId]);
 
   const headings = useMemo(() => Array.from(new Set(signs.map((s) => s.heading))).sort(), [signs]);
   // Subheading chips only make sense once a specific heading is chosen;
@@ -162,6 +177,7 @@ export default function StudySignsBrowse() {
     let learned = 0;
     let notLearned = 0;
     for (const s of signs) {
+      if (!SHOW_TEMPORARY_SIGNS && isTemporaryOnlyRecord(s.codes)) continue;
       if (heading !== "all" && s.heading !== heading) continue;
       if (subheading !== "all" && s.subheading !== subheading) continue;
       if (savedOnly && !favorites.includes(s.id)) continue;
@@ -175,6 +191,7 @@ export default function StudySignsBrowse() {
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
     return signs.filter((s) => {
+      if (!SHOW_TEMPORARY_SIGNS && isTemporaryOnlyRecord(s.codes)) return false;
       if (heading !== "all" && s.heading !== heading) return false;
       if (subheading !== "all" && s.subheading !== subheading) return false;
       if (savedOnly && !favorites.includes(s.id)) return false;
@@ -431,37 +448,69 @@ export default function StudySignsBrowse() {
                 <div className="flex flex-wrap gap-1.5">
                   <Badge variant="secondary">{openSign.heading}</Badge>
                   <Badge variant="outline">{openSign.subheading}</Badge>
-                  {(openSign.codes || []).map((c) => (
-                    <Badge key={c} variant="outline" className="font-mono">{c}</Badge>
-                  ))}
                   {openSign.is_verified_exam_question && (
                     <Badge className="bg-green-600"><BadgeCheck className="h-3 w-3 mr-1" /> Exam question</Badge>
                   )}
                 </div>
+                <SignCodeChips codes={openSign.codes} />
                 {(openSign.images || []).length > 0 ? (
-                  <div className="space-y-2">
-                    {openSign.images!.map((img) => (
-                      <div key={img.code} className="rounded-2xl overflow-hidden border border-border bg-white">
-                        <img src={img.image_url} alt={`${openSign.name} (${img.code})`} className="w-full max-h-64 object-contain" />
-                        <p className="text-[11px] font-mono text-muted-foreground text-center py-1">{img.code}</p>
-                      </div>
-                    ))}
-                  </div>
+                  <SignFaceImages images={openSign.images} />
                 ) : (
                   <div className="rounded-2xl border border-dashed border-border p-8 text-center text-sm text-muted-foreground">
                     No image yet for this sign.
                   </div>
                 )}
-                {[
-                  { label: "Where", text: openSign.where_text },
-                  { label: "Purpose", text: openSign.purpose_text },
-                  { label: "Action", text: openSign.action_text },
-                ].filter((x) => x.text).map((x) => (
-                  <div key={x.label}>
-                    <p className="text-[11px] font-black uppercase tracking-widest text-muted-foreground">{x.label}</p>
-                    <FormattedText text={x.text} className="text-sm mt-0.5" />
-                  </div>
-                ))}
+                {openSign.short_reviewed && openSign.short_meaning ? (
+                  <>
+                    <p className="text-sm">{openSign.short_meaning}</p>
+                    {openSign.short_action && (
+                      <div className="rounded-xl bg-primary/10 border border-primary/30 p-3">
+                        <p className="text-[11px] font-black uppercase tracking-widest text-primary">What you must do</p>
+                        <FormattedText text={openSign.short_action} className="text-sm mt-1" />
+                      </div>
+                    )}
+                    {!isGenericWhere(openSign.where_text) && (
+                      <p className="text-[11px] text-muted-foreground font-semibold">{openSign.where_text}</p>
+                    )}
+                    {(openSign.where_text || openSign.purpose_text || openSign.action_text) && (
+                      <div className="rounded-xl border border-border bg-background/60">
+                        <button
+                          type="button"
+                          onClick={() => setDetailFullOpen((f) => !f)}
+                          className="w-full flex items-center justify-between px-3 py-2 text-xs font-bold text-muted-foreground"
+                        >
+                          Full manual text
+                          <ChevronDown className={cn("h-3.5 w-3.5 transition-transform", detailFullOpen && "rotate-180")} />
+                        </button>
+                        {detailFullOpen && (
+                          <div className="px-3 pb-3 space-y-2">
+                            {[
+                              { label: "Where", text: openSign.where_text },
+                              { label: "Purpose", text: openSign.purpose_text },
+                              { label: "Action", text: openSign.action_text },
+                            ].filter((x) => x.text).map((x) => (
+                              <div key={x.label}>
+                                <p className="text-[11px] font-black uppercase tracking-widest text-muted-foreground">{x.label}</p>
+                                <FormattedText text={x.text} className="text-sm mt-0.5" />
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  [
+                    { label: "Where", text: openSign.where_text },
+                    { label: "Purpose", text: openSign.purpose_text },
+                    { label: "Action", text: openSign.action_text },
+                  ].filter((x) => x.text).map((x) => (
+                    <div key={x.label}>
+                      <p className="text-[11px] font-black uppercase tracking-widest text-muted-foreground">{x.label}</p>
+                      <FormattedText text={x.text} className="text-sm mt-0.5" />
+                    </div>
+                  ))
+                )}
                 <div className="flex gap-2">
                   <Button
                     variant={favorites.includes(openSign.id) ? "default" : "outline"}

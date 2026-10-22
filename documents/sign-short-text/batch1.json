@@ -1,0 +1,590 @@
+[
+{
+"id": 3,
+"short_meaning": "You must bring your vehicle to a complete standstill.",
+"short_action": "Stop behind the line and proceed only when safe.",
+"needs_split": false
+},
+{
+"id": 4,
+"short_meaning": "Stop when going straight, but yield when turning left.",
+"short_action": "Stop if going straight, or yield when turning left.",
+"needs_split": false
+},
+{
+"id": 5,
+"short_meaning": "Traffic from all three directions must stop at the intersection.",
+"short_action": "Stop completely and allow the first vehicle to move off first.",
+"needs_split": false
+},
+{
+"id": 6,
+"short_meaning": "Traffic from all four directions must stop at the intersection.",
+"short_action": "Stop behind the line and wait for your turn to proceed.",
+"needs_split": false
+},
+{
+"id": 7,
+"short_meaning": "Temporary control indicating whether you must stop or may proceed.",
+"short_action": "Stop when STOP is shown and proceed carefully when GO appears.",
+"needs_split": false
+},
+{
+"id": 8,
+"short_meaning": "Give right of way to cross traffic and pedestrians ahead.",
+"short_action": "Slow down and stop if other traffic is approaching.",
+"needs_split": false
+},
+{
+"id": 9,
+"short_meaning": "You must give priority to pedestrians crossing the road.",
+"short_action": "Look out for pedestrians and prepare to stop.",
+"needs_split": false
+},
+{
+"id": 10,
+"short_meaning": "Yield right of way to vehicles inside the traffic circle.",
+"short_action": "Yield to vehicles inside or entering the circle before you.",
+"needs_split": false
+},
+{
+"id": 11,
+"short_meaning": "Entry is prohibited for all vehicles on this roadway.",
+"short_action": "Do not enter or proceed down this roadway.",
+"needs_split": false
+},
+{
+"id": 12,
+"short_meaning": "Traffic on this roadway travels in one direction only.",
+"short_action": "Proceed only in the direction shown by the arrow.",
+"needs_split": false
+},
+{
+"id": 13,
+"short_meaning": "Pedestrians have priority over vehicles in this area.",
+"short_action": "Drive under 15 km/h and yield to all pedestrians.",
+"needs_split": false
+},
+{
+"id": 14,
+"short_meaning": "The single lane ahead carries traffic from both directions.",
+"short_action": "Yield to oncoming vehicles already in the narrow section.",
+"needs_split": false
+},
+{
+"id": 15,
+"short_meaning": "You must drive at or above the indicated minimum speed.",
+"short_action": "Drive at or above the speed shown in kilometres per hour.",
+"needs_split": false
+},
+{
+"id": 16,
+"short_meaning": "Heavy vehicles exceeding the stated mass must use this lane.",
+"short_action": "Use this designated lane if your vehicle exceeds the mass limit.",
+"needs_split": false
+},
+{
+"id": 17,
+"short_meaning": "You must pass on the specified side of the obstruction.",
+"short_action": "Keep to the left or right as indicated by the arrow.",
+"needs_split": false
+},
+{
+"id": 18,
+"short_meaning": "Traffic is required to travel only in the indicated direction.",
+"short_action": "Drive only in the direction shown by the arrow.",
+"needs_split": false
+},
+{
+"id": 19,
+"short_meaning": "You must turn at the intersection in the specified direction.",
+"short_action": "Turn left or right at the intersection as indicated.",
+"needs_split": false
+},
+{
+"id": 20,
+"short_meaning": "This path or roadway is restricted exclusively to pedestrians.",
+"short_action": "Do not enter this path or roadway with a vehicle.",
+"needs_split": false
+},
+{
+"id": 21,
+"short_meaning": "This lane or path is reserved exclusively for pedal cyclists.",
+"short_action": "Do not drive any motor vehicle on this path.",
+"needs_split": false
+},
+{
+"id": 22,
+"short_meaning": "This route is reserved exclusively for cyclists and pedestrians.",
+"short_action": "Do not drive any motor vehicle along this path.",
+"needs_split": false
+},
+{
+"id": 23,
+"short_meaning": "This lane or road is reserved exclusively for motorcycles.",
+"short_action": "Do not enter unless you are riding a motorcycle.",
+"needs_split": false
+},
+{
+"id": 24,
+"short_meaning": "This road or lane is reserved exclusively for motorcars.",
+"short_action": "Do not enter unless you are driving a motorcar.",
+"needs_split": false
+},
+{
+"id": 25,
+"short_meaning": "This road or lane is reserved exclusively for taxis.",
+"short_action": "Do not enter unless you are driving a taxi.",
+"needs_split": false
+},
+{
+"id": 26,
+"short_meaning": "This road or lane is reserved exclusively for minibuses.",
+"short_action": "Do not enter unless you are driving a minibus.",
+"needs_split": false
+},
+{
+"id": 27,
+"short_meaning": "This road or lane is reserved exclusively for midibuses.",
+"short_action": "Do not enter unless you are driving a midibus.",
+"needs_split": false
+},
+{
+"id": 28,
+"short_meaning": "This road or lane is reserved exclusively for buses.",
+"short_action": "Do not enter unless you are driving a bus.",
+"needs_split": false
+},
+{
+"id": 29,
+"short_meaning": "This road or lane is set aside for delivery vehicles only.",
+"short_action": "Do not enter unless you are driving a delivery vehicle.",
+"needs_split": false
+},
+{
+"id": 30,
+"short_meaning": "This road or lane is set aside for goods vehicles only.",
+"short_action": "Do not enter unless you are driving a goods vehicle.",
+"needs_split": false
+},
+{
+"id": 31,
+"short_meaning": "Goods vehicles exceeding the stated mass must use this road.",
+"short_action": "Use this road only if your vehicle exceeds the mass limit.",
+"needs_split": false
+},
+{
+"id": 32,
+"short_meaning": "This road or lane is reserved exclusively for construction vehicles.",
+"short_action": "Do not enter unless you are driving a construction vehicle.",
+"needs_split": false
+},
+{
+"id": 33,
+"short_meaning": "This route is reserved for vehicles carrying dangerous goods.",
+"short_action": "Use this route only if conveying dangerous substances.",
+"needs_split": false
+},
+{
+"id": 34,
+"short_meaning": "This route is set aside exclusively for abnormal vehicles.",
+"short_action": "Do not enter unless you are driving an abnormal vehicle.",
+"needs_split": false
+},
+{
+"id": 35,
+"short_meaning": "This path or lane is set aside for rickshaws only.",
+"short_action": "Do not enter unless you are pulling a rickshaw.",
+"needs_split": false
+},
+{
+"id": 36,
+"short_meaning": "This lane or area is set aside for tour buses only.",
+"short_action": "Do not enter unless you are driving a tour bus.",
+"needs_split": false
+},
+{
+"id": 37,
+"short_meaning": "This road is reserved exclusively for agricultural vehicles.",
+"short_action": "Do not enter unless driving an agricultural vehicle.",
+"needs_split": false
+},
+{
+"id": 38,
+"short_meaning": "This road is set aside for animal-drawn vehicles only.",
+"short_action": "Do not enter unless driving an animal-drawn vehicle.",
+"needs_split": false
+},
+{
+"id": 39,
+"short_meaning": "A toll road lies ahead requiring payment of fees.",
+"short_action": "Choose an alternative route or prepare to pay toll fees.",
+"needs_split": false
+},
+{
+"id": 40,
+"short_meaning": "Headlights must be switched on while driving on this road.",
+"short_action": "Switch your vehicle headlights to the dipped position.",
+"needs_split": false
+},
+{
+"id": 41,
+"short_meaning": "This lane or road is set aside for buses and minibuses.",
+"short_action": "Do not enter unless driving a bus or minibus.",
+"needs_split": false
+},
+{
+"id": 42,
+"short_meaning": "This lane or road is set aside for buses and midibuses.",
+"short_action": "Do not enter unless driving a bus or midibus.",
+"needs_split": false
+},
+{
+"id": 43,
+"short_meaning": "This route is reserved for buses, midibuses, and minibuses.",
+"short_action": "Do not enter unless driving a bus, midibus, or minibus.",
+"needs_split": false
+},
+{
+"id": 44,
+"short_meaning": "Traffic at this junction must move in a clockwise direction.",
+"short_action": "Yield to vehicles on your right and proceed clockwise.",
+"needs_split": false
+},
+{
+"id": 45,
+"short_meaning": "You may not drive faster than the indicated speed limit.",
+"short_action": "Keep your speed at or below the maximum limit shown.",
+"needs_split": false
+},
+{
+"id": 46,
+"short_meaning": "Vehicles exceeding the indicated gross mass are prohibited ahead.",
+"short_action": "Take another route if your vehicle exceeds the mass limit.",
+"needs_split": false
+},
+{
+"id": 47,
+"short_meaning": "Vehicles exceeding the indicated axle mass are prohibited ahead.",
+"short_action": "Use an alternative route if any axle exceeds the limit.",
+"needs_split": false
+},
+{
+"id": 48,
+"short_meaning": "Vehicles higher than the indicated limit are prohibited ahead.",
+"short_action": "Find an alternative route if your vehicle exceeds the height.",
+"needs_split": false
+},
+{
+"id": 49,
+"short_meaning": "Vehicles longer than the indicated limit are prohibited ahead.",
+"short_action": "Take an alternative route if your vehicle exceeds the length.",
+"needs_split": false
+},
+{
+"id": 50,
+"short_meaning": "Excessive vehicle noise and hooter usage are prohibited ahead.",
+"short_action": "Avoid revving and do not use your hooter.",
+"needs_split": false
+},
+{
+"id": 51,
+"short_meaning": "Hitch-hiking and picking up passengers are prohibited here.",
+"short_action": "Do not solicit rides or stop to pick up passengers.",
+"needs_split": false
+},
+{
+"id": 52,
+"short_meaning": "Entry is prohibited except for specifically authorised vehicles.",
+"short_action": "Do not enter this road without explicit permission.",
+"needs_split": false
+},
+{
+"id": 53,
+"short_meaning": "Turning in the indicated direction at the upcoming junction is forbidden.",
+"short_action": "Do not turn in the prohibited direction at the junction.",
+"needs_split": false
+},
+{
+"id": 54,
+"short_meaning": "Turning in the specified direction at this intersection is prohibited.",
+"short_action": "Proceed straight or turn only in the permitted direction.",
+"needs_split": false
+},
+{
+"id": 55,
+"short_meaning": "Turning your vehicle around to face opposite traffic is prohibited.",
+"short_action": "Do not make a U-turn on this stretch of road.",
+"needs_split": false
+},
+{
+"id": 56,
+"short_meaning": "Overtaking other moving vehicles is prohibited for 500 metres.",
+"short_action": "Stay in your lane and do not overtake other vehicles.",
+"needs_split": false
+},
+{
+"id": 57,
+"short_meaning": "Parking your vehicle along this section of road is prohibited.",
+"short_action": "Do not leave your vehicle parked in this area.",
+"needs_split": false
+},
+{
+"id": 58,
+"short_meaning": "Stopping your vehicle on this road is strictly prohibited.",
+"short_action": "Do not stop unless required by signals or emergency.",
+"needs_split": false
+},
+{
+"id": 59,
+"short_meaning": "Pedestrians are prohibited from walking past or crossing here.",
+"short_action": "Look out for pedestrians who may disregard the ban.",
+"needs_split": false
+},
+{
+"id": 60,
+"short_meaning": "Pedal cyclists are prohibited from using this road or path.",
+"short_action": "Watch out for cyclists who may enter illegally.",
+"needs_split": false
+},
+{
+"id": 61,
+"short_meaning": "Cyclists and pedestrians are prohibited beyond this point.",
+"short_action": "Remain alert for cyclists or pedestrians entering unexpectedly.",
+"needs_split": false
+},
+{
+"id": 62,
+"short_meaning": "Motorcycles are prohibited from using this roadway or lane.",
+"short_action": "Do not enter or leave at the next exit if riding.",
+"needs_split": false
+},
+{
+"id": 63,
+"short_meaning": "Motorcars are prohibited from entering this section or road.",
+"short_action": "Do not enter this area if driving a motorcar.",
+"needs_split": false
+},
+{
+"id": 64,
+"short_meaning": "Taxis are prohibited from proceeding beyond this sign.",
+"short_action": "Do not enter this area if driving a taxi.",
+"needs_split": false
+},
+{
+"id": 65,
+"short_meaning": "Minibuses are prohibited from proceeding beyond this sign.",
+"short_action": "Do not enter this area if driving a minibus.",
+"needs_split": false
+},
+{
+"id": 66,
+"short_meaning": "Midibuses are prohibited from proceeding beyond this sign.",
+"short_action": "Do not enter this area if driving a midibus.",
+"needs_split": false
+},
+{
+"id": 67,
+"short_meaning": "Buses are prohibited from proceeding beyond this sign.",
+"short_action": "Do not enter this area if driving a bus.",
+"needs_split": false
+},
+{
+"id": 68,
+"short_meaning": "Delivery vehicles are prohibited from proceeding beyond this sign.",
+"short_action": "Do not enter this area if driving a delivery vehicle.",
+"needs_split": false
+},
+{
+"id": 69,
+"short_meaning": "Goods vehicles are prohibited from proceeding beyond this sign.",
+"short_action": "Do not enter this area if driving a goods vehicle.",
+"needs_split": false
+},
+{
+"id": 70,
+"short_meaning": "Construction vehicles are prohibited from proceeding beyond this sign.",
+"short_action": "Do not enter this area if driving a construction vehicle.",
+"needs_split": false
+},
+{
+"id": 71,
+"short_meaning": "Vehicles carrying dangerous substances are prohibited beyond this point.",
+"short_action": "Do not enter if transporting hazardous materials.",
+"needs_split": false
+},
+{
+"id": 72,
+"short_meaning": "Abnormal vehicles are prohibited from proceeding beyond this sign.",
+"short_action": "Do not enter this area if driving an abnormal vehicle.",
+"needs_split": false
+},
+{
+"id": 73,
+"short_meaning": "Rickshaws are prohibited from entering this road or area.",
+"short_action": "Do not enter this area if pulling a rickshaw.",
+"needs_split": false
+},
+{
+"id": 74,
+"short_meaning": "Tour buses are prohibited from proceeding beyond this sign.",
+"short_action": "Do not enter this area if driving a tour bus.",
+"needs_split": false
+},
+{
+"id": 75,
+"short_meaning": "Agricultural vehicles are prohibited from proceeding beyond this sign.",
+"short_action": "Do not enter if driving a tractor or farm vehicle.",
+"needs_split": false
+},
+{
+"id": 76,
+"short_meaning": "Animal-drawn vehicles are prohibited from using this road.",
+"short_action": "Do not enter if driving an animal-drawn vehicle.",
+"needs_split": false
+},
+{
+"id": 77,
+"short_meaning": "Riding or leading horses is prohibited beyond this point.",
+"short_action": "Do not enter this area on or with a horse.",
+"needs_split": false
+},
+{
+"id": 78,
+"short_meaning": "Vehicles exceeding the indicated overall width are prohibited.",
+"short_action": "Do not proceed if your vehicle width exceeds the limit.",
+"needs_split": false
+},
+{
+"id": 79,
+"short_meaning": "Vehicles towing another vehicle or trailer are prohibited.",
+"short_action": "Do not enter this area if towing any vehicle.",
+"needs_split": false
+},
+{
+"id": 80,
+"short_meaning": "Hawkers and street vending are prohibited in this area.",
+"short_action": "Do not stop or park to transact with hawkers.",
+"needs_split": false
+},
+{
+"id": 81,
+"short_meaning": "This lane or parking area is reserved for buses only.",
+"short_action": "Do not enter or park unless driving a bus.",
+"needs_split": false
+},
+{
+"id": 82,
+"short_meaning": "This dedicated lane is reserved exclusively for bus traffic.",
+"short_action": "Do not drive in this lane unless operating a bus.",
+"needs_split": false
+},
+{
+"id": 83,
+"short_meaning": "This lane or parking area is reserved exclusively for bicycles.",
+"short_action": "Do not drive or park here unless riding a bicycle.",
+"needs_split": false
+},
+{
+"id": 84,
+"short_meaning": "Parking for light vehicles subject to tariffs or time limits.",
+"short_action": "Park within bays, pay fees, and observe time restrictions.",
+"needs_split": false
+},
+{
+"id": 85,
+"short_meaning": "This lane or parking area is reserved for motorcycles only.",
+"short_action": "Do not drive or park here unless riding a motorcycle.",
+"needs_split": false
+},
+{
+"id": 86,
+"short_meaning": "This lane or parking area is reserved for motorcars only.",
+"short_action": "Do not use this lane or park here unless driving a motorcar.",
+"needs_split": false
+},
+{
+"id": 87,
+"short_meaning": "This lane or parking area is reserved for taxis only.",
+"short_action": "Do not use this lane or park here unless driving a taxi.",
+"needs_split": false
+},
+{
+"id": 88,
+"short_meaning": "This lane or parking area is reserved for minibuses only.",
+"short_action": "Do not use this lane or park here unless driving a minibus.",
+"needs_split": false
+},
+{
+"id": 89,
+"short_meaning": "This lane or parking area is reserved for midibuses only.",
+"short_action": "Do not use this lane or park here unless driving a midibus.",
+"needs_split": false
+},
+{
+"id": 90,
+"short_meaning": "This lane or parking area is reserved for delivery vehicles only.",
+"short_action": "Do not use this area unless driving a delivery vehicle.",
+"needs_split": false
+},
+{
+"id": 91,
+"short_meaning": "This lane or parking area is reserved for goods vehicles only.",
+"short_action": "Do not use this area unless driving a goods vehicle.",
+"needs_split": false
+},
+{
+"id": 92,
+"short_meaning": "Reserved for goods vehicles exceeding the indicated mass limit.",
+"short_action": "Do not use this area unless your vehicle mass exceeds the limit.",
+"needs_split": false
+},
+{
+"id": 93,
+"short_meaning": "This lane or parking area is reserved for construction vehicles.",
+"short_action": "Do not use this area unless driving a construction vehicle.",
+"needs_split": false
+},
+{
+"id": 94,
+"short_meaning": "Reserved for vehicles transporting hazardous substances only.",
+"short_action": "Do not use this area unless transporting hazardous materials.",
+"needs_split": false
+},
+{
+"id": 95,
+"short_meaning": "This lane or parking area is reserved for abnormal vehicles.",
+"short_action": "Do not use this area unless driving an abnormal vehicle.",
+"needs_split": false
+},
+{
+"id": 96,
+"short_meaning": "This area or lane is reserved exclusively for rickshaws.",
+"short_action": "Do not use this area unless pulling a rickshaw.",
+"needs_split": false
+},
+{
+"id": 97,
+"short_meaning": "This lane or parking area is reserved for tour buses.",
+"short_action": "Do not use this area unless driving a tour bus.",
+"needs_split": false
+},
+{
+"id": 98,
+"short_meaning": "Reserved for high-occupancy vehicles with multiple passengers.",
+"short_action": "Do not enter unless carrying the required number of occupants.",
+"needs_split": false
+},
+{
+"id": 99,
+"short_meaning": "Reserved exclusively for ambulances and emergency service vehicles.",
+"short_action": "Do not enter or park unless driving an emergency vehicle.",
+"needs_split": false
+},
+{
+"id": 100,
+"short_meaning": "Reserved exclusively for vehicles carrying disabled persons.",
+"short_action": "Do not park here unless displaying a valid disabled permit.",
+"needs_split": false
+}
+]

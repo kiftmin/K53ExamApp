@@ -118,7 +118,7 @@ function Deck({
     const learning = getAllControlLearning();
     let pool = controls.filter((c: StudyControl) => {
       if (favoritesOnly && !favs.has(c.id)) return false;
-      if (newOnly && learning[c.id]) return false;
+      if (newOnly && (learning[c.id]?.status ?? "new") !== "new") return false;
       return true;
     });
     pool = [...pool].sort((a: any, b: any) => a.id - b.id);

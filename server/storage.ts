@@ -1,6 +1,6 @@
 import { db, questions, sources, accessCodes, studySigns, signQuestions, studyRules, ruleQuestions, controlDiagrams, studyControls, controlQuestions, learnerProgress } from './db.js';
 import { Question, InsertQuestion, Source, InsertSource, AccessCode, InsertAccessCode, StudySign, InsertStudySign, SignQuestionLink, StudyRule, InsertStudyRule, RuleQuestionLink, ControlDiagram, InsertControlDiagram, StudyControl, InsertStudyControl, ControlQuestionLink, RawControlBundle, LearnerProgressRow, InsertLearnerProgress } from '../shared/schema.js';
-import { eq, inArray, desc, and } from 'drizzle-orm';
+import { eq, inArray, desc, and, sql } from 'drizzle-orm';
 
 export interface IStorage {
   getQuestions(): Promise<Question[]>;
@@ -32,6 +32,7 @@ export interface IStorage {
   getSignById(id: number): Promise<(StudySign & { question_ids: number[] }) | undefined>;
   createSign(data: InsertStudySign): Promise<StudySign>;
   updateSign(id: number, data: Partial<InsertStudySign>): Promise<StudySign | undefined>;
+  approveShortTextDrafts(): Promise<number>;
   deleteSign(id: number): Promise<boolean>;
   bulkInsertSigns(rows: InsertStudySign[]): Promise<{ inserted: number; skipped: number }>;
   getQuestionsForSign(signId: number): Promise<Question[]>;
@@ -271,6 +272,10 @@ export class NeonDatabaseStorage implements IStorage {
       where_text: data.where_text ?? null,
       purpose_text: data.purpose_text ?? null,
       action_text: data.action_text ?? null,
+      short_meaning: data.short_meaning ?? null,
+      short_action: data.short_action ?? null,
+      short_reviewed: data.short_reviewed ?? false,
+      needs_split: data.needs_split ?? false,
       is_verified_exam_question: data.is_verified_exam_question ?? false,
     }).returning();
     return row as unknown as StudySign;
@@ -283,6 +288,19 @@ export class NeonDatabaseStorage implements IStorage {
       .where(eq(studySigns.id, id))
       .returning();
     return (row as unknown as StudySign) || undefined;
+  }
+
+  /** Approve every drafted short text that is not approved yet. */
+  async approveShortTextDrafts(): Promise<number> {
+    const rows = await db
+      .update(studySigns)
+      .set({ short_reviewed: true, updated_at: new Date() })
+      .where(and(
+        eq(studySigns.short_reviewed, false),
+        sql`trim(coalesce(${studySigns.short_meaning}, '')) <> ''`,
+      ))
+      .returning({ id: studySigns.id });
+    return rows.length;
   }
 
   async deleteSign(id: number): Promise<boolean> {

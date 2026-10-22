@@ -1,0 +1,602 @@
+[
+{
+"id": 101,
+"short_meaning": "Reserved exclusively for designated authorised vehicles such as diplomats.",
+"short_action": "Do not enter or park unless driving an authorised vehicle.",
+"needs_split": false
+},
+{
+"id": 102,
+"short_meaning": "Reserved bus stop for picking up and setting down passengers.",
+"short_action": "Do not stop or park unless driving an authorised bus.",
+"needs_split": false
+},
+{
+"id": 103,
+"short_meaning": "Reserved stop for minibuses to pick up and set down passengers.",
+"short_action": "Do not stop or park unless driving a designated minibus.",
+"needs_split": false
+},
+{
+"id": 104,
+"short_meaning": "Reserved road, lane, or parking area for buses and minibuses.",
+"short_action": "Do not enter or park unless driving a bus or minibus.",
+"needs_split": false
+},
+{
+"id": 105,
+"short_meaning": "Dedicated lane reserved exclusively for buses and minibuses.",
+"short_action": "Do not drive in this lane unless operating a bus or minibus.",
+"needs_split": false
+},
+{
+"id": 106,
+"short_meaning": "Indicates the start of a reserved bus and minibus lane.",
+"short_action": "Do not enter this lane unless driving a bus or minibus.",
+"needs_split": false
+},
+{
+"id": 107,
+"short_meaning": "Reserved road, lane, or parking area for buses and midibuses.",
+"short_action": "Do not enter or park unless driving a bus or midibus.",
+"needs_split": false
+},
+{
+"id": 108,
+"short_meaning": "Dedicated lane reserved exclusively for buses and midibuses.",
+"short_action": "Do not drive in this lane unless operating a bus or midibus.",
+"needs_split": false
+},
+{
+"id": 109,
+"short_meaning": "Indicates the start of a reserved bus and midibus lane.",
+"short_action": "Do not enter this lane unless driving a bus or midibus.",
+"needs_split": false
+},
+{
+"id": 110,
+"short_meaning": "Reserved area for buses, midibuses, and minibuses only.",
+"short_action": "Do not enter or park unless driving an allowed public transport vehicle.",
+"needs_split": false
+},
+{
+"id": 111,
+"short_meaning": "Dedicated lane reserved for buses, midibuses, and minibuses.",
+"short_action": "Do not use this lane unless driving an allowed transport vehicle.",
+"needs_split": false
+},
+{
+"id": 112,
+"short_meaning": "Indicates the start of a lane for buses, midibuses, and minibuses.",
+"short_action": "Do not enter this lane unless driving a bus, midibus, or minibus.",
+"needs_split": false
+},
+{
+"id": 113,
+"short_meaning": "A dual-carriageway freeway begins and freeway rules apply.",
+"short_action": "Obey all general freeway rules and speed limits.",
+"needs_split": false
+},
+{
+"id": 114,
+"short_meaning": "A single-carriageway freeway begins and freeway rules apply.",
+"short_action": "Obey all freeway rules from this point forward.",
+"needs_split": false
+},
+{
+"id": 115,
+"short_meaning": "Residential area with a 30 km/h speed limit giving pedestrians priority.",
+"short_action": "Drive under 30 km/h, watch for children, and yield to pedestrians.",
+"needs_split": false
+},
+{
+"id": 116,
+"short_meaning": "Specifies time periods during which the main regulatory sign applies.",
+"short_action": "Comply with the main regulatory sign during the indicated times.",
+"needs_split": false
+},
+{
+"id": 117,
+"short_meaning": "Restricts stopping or parking duration to specified time limits.",
+"short_action": "Do not stop or park longer than the indicated time limit.",
+"needs_split": false
+},
+{
+"id": 118,
+"short_meaning": "The main regulatory sign applies when visibility is reduced.",
+"short_action": "Obey the main sign whenever weather or light reduces visibility.",
+"needs_split": false
+},
+{
+"id": 119,
+"short_meaning": "The main regulatory sign applies during daytime hours only.",
+"short_action": "Obey the main sign during daytime hours.",
+"needs_split": false
+},
+{
+"id": 120,
+"short_meaning": "The main regulatory sign applies during night-time hours only.",
+"short_action": "Obey the main sign during night-time hours.",
+"needs_split": false
+},
+{
+"id": 121,
+"short_meaning": "The regulatory restriction applies in the direction of the arrow.",
+"short_action": "Obey the main sign in the direction shown by the arrow.",
+"needs_split": false
+},
+{
+"id": 122,
+"short_meaning": "Parking fees must be paid and proof displayed in your vehicle.",
+"short_action": "Pay the required fee and clearly display the ticket inside.",
+"needs_split": false
+},
+{
+"id": 123,
+"short_meaning": "The restriction applies only to vehicles of the specified operator.",
+"short_action": "Obey the main sign if driving for the indicated organisation.",
+"needs_split": false
+},
+{
+"id": 124,
+"short_meaning": "Restricts the maximum number of vehicles allowed in this area.",
+"short_action": "Do not enter if the maximum vehicle limit is reached.",
+"needs_split": false
+},
+{
+"id": 125,
+"short_meaning": "Cancels a previously imposed traffic restriction or prohibition.",
+"short_action": "Resume standard driving rules as the previous restriction has ended.",
+"needs_split": false
+},
+{
+"id": 126,
+"short_meaning": "Warns of an upcoming crossroad intersection.",
+"short_action": "Slow down, look both ways, and prepare to stop.",
+"needs_split": false
+},
+{
+"id": 127,
+"short_meaning": "Warns of an upcoming crossroad where you have right of way.",
+"short_action": "Proceed cautiously and check that cross traffic yields.",
+"needs_split": false
+},
+{
+"id": 128,
+"short_meaning": "Warns of a crossroad where cross traffic has right of way.",
+"short_action": "Slow down and yield right of way to cross traffic.",
+"needs_split": false
+},
+{
+"id": 129,
+"short_meaning": "Warns of a T-junction ahead where you must turn sharp left or right.",
+"short_action": "Slow down, look for cross traffic, and prepare to turn.",
+"needs_split": false
+},
+{
+"id": 130,
+"short_meaning": "Warns of an upcoming junction where a road joins at an angle.",
+"short_action": "Slow down, watch for joining traffic, and prepare to stop.",
+"needs_split": false
+},
+{
+"id": 131,
+"short_meaning": "Warns of a side road joining from the left or right ahead.",
+"short_action": "Slow down and look out for entering vehicles.",
+"needs_split": false
+},
+{
+"id": 132,
+"short_meaning": "Warns of two side roads joining your road in close succession.",
+"short_action": "Slow down and watch for traffic entering from both sides.",
+"needs_split": false
+},
+{
+"id": 133,
+"short_meaning": "Warns of a sharp merging road or a splitting road layout.",
+"short_action": "Watch for merging traffic or choose your lane in advance.",
+"needs_split": false
+},
+{
+"id": 134,
+"short_meaning": "Warns that the road forks into two separate branches ahead.",
+"short_action": "Decide early which road to take and watch for crossing traffic.",
+"needs_split": false
+},
+{
+"id": 135,
+"short_meaning": "Warns that a divided dual roadway ends and becomes two-way traffic.",
+"short_action": "Keep to the left and prepare for oncoming traffic.",
+"needs_split": false
+},
+{
+"id": 136,
+"short_meaning": "Warns that a two-way road changes into a divided dual roadway ahead.",
+"short_action": "Position your vehicle correctly to enter the one-way section.",
+"needs_split": false
+},
+{
+"id": 137,
+"short_meaning": "Warns of a traffic circle ahead where yielding may be required.",
+"short_action": "Slow down and yield to traffic inside or approaching from right.",
+"needs_split": false
+},
+{
+"id": 138,
+"short_meaning": "Warns of a gradual curve ahead to the left or right.",
+"short_action": "Adjust your speed to navigate the curve safely.",
+"needs_split": false
+},
+{
+"id": 139,
+"short_meaning": "Warns of a sharp curve ahead to the left or right.",
+"short_action": "Slow down sufficiently before entering the sharp curve.",
+"needs_split": false
+},
+{
+"id": 140,
+"short_meaning": "Warns of a very sharp hairpin turn ahead.",
+"short_action": "Reduce speed significantly to take the sharp turn safely.",
+"needs_split": false
+},
+{
+"id": 141,
+"short_meaning": "Warns of a series of continuous curves ahead.",
+"short_action": "Reduce speed and navigate through multiple curves carefully.",
+"needs_split": false
+},
+{
+"id": 142,
+"short_meaning": "Warns of two sharp curves ahead in opposite directions.",
+"short_action": "Slow down and prepare for sudden direction changes.",
+"needs_split": false
+},
+{
+"id": 143,
+"short_meaning": "Warns that a one-way street changes to two-way traffic ahead.",
+"short_action": "Keep left and watch for oncoming traffic.",
+"needs_split": false
+},
+{
+"id": 144,
+"short_meaning": "Warns that a one-way street is crossed ahead by a two-way street.",
+"short_action": "Select the correct turning lane well before the intersection.",
+"needs_split": false
+},
+{
+"id": 145,
+"short_meaning": "Warns that a multi-lane road reduces by one lane ahead.",
+"short_action": "Merge safely into the continuing lane in good time.",
+"needs_split": false
+},
+{
+"id": 146,
+"short_meaning": "Warns of hidden driveways entering the road with restricted visibility.",
+"short_action": "Slow down and watch for vehicles entering unexpectedly.",
+"needs_split": false
+},
+{
+"id": 147,
+"short_meaning": "Warns of traffic lights ahead at an intersection or crossing.",
+"short_action": "Slow down and prepare to stop if the light changes.",
+"needs_split": false
+},
+{
+"id": 148,
+"short_meaning": "Warns of a stop sign ahead that may be hidden from view.",
+"short_action": "Slow down and prepare to bring your vehicle to a complete stop.",
+"needs_split": false
+},
+{
+"id": 149,
+"short_meaning": "Warns of a yield sign ahead that may be hidden from view.",
+"short_action": "Slow down and be prepared to give way if necessary.",
+"needs_split": false
+},
+{
+"id": 150,
+"short_meaning": "Warns that a traffic officer is controlling traffic ahead.",
+"short_action": "Slow down and prepare to stop at the officer's instruction.",
+"needs_split": false
+},
+{
+"id": 151,
+"short_meaning": "Warns that a scholar patrol is active ahead near a school.",
+"short_action": "Slow down, watch for children, and obey stop hand-signs.",
+"needs_split": false
+},
+{
+"id": 152,
+"short_meaning": "Warns of a marked pedestrian crossing ahead.",
+"short_action": "Slow down and prepare to stop for pedestrians crossing.",
+"needs_split": false
+},
+{
+"id": 153,
+"short_meaning": "Warns that pedestrians may be crossing or walking along the road.",
+"short_action": "Slow down and look out for pedestrians along the road.",
+"needs_split": false
+},
+{
+"id": 154,
+"short_meaning": "Warns of children likely to be on or near the road.",
+"short_action": "Slow down immediately and watch for children crossing.",
+"needs_split": false
+},
+{
+"id": 155,
+"short_meaning": "Warns that pedal cyclists are likely to be on or crossing the road.",
+"short_action": "Slow down and give cyclists plenty of room.",
+"needs_split": false
+},
+{
+"id": 156,
+"short_meaning": "Warns of farm animals that may be straying on or near the road.",
+"short_action": "Slow down and watch out for livestock.",
+"needs_split": false
+},
+{
+"id": 157,
+"short_meaning": "Warns of wild animals that may cross the road unexpectedly.",
+"short_action": "Slow down and watch for wildlife crossing.",
+"needs_split": false
+},
+{
+"id": 158,
+"short_meaning": "Warns of a railway or roadway barrier gate ahead.",
+"short_action": "Slow down and prepare to stop if the gate is closed.",
+"needs_split": false
+},
+{
+"id": 159,
+"short_meaning": "Warns of a motor gate across or next to the roadway ahead.",
+"short_action": "Slow down and check for oncoming traffic before passing.",
+"needs_split": false
+},
+{
+"id": 160,
+"short_meaning": "Warns of an upcoming railway level crossing.",
+"short_action": "Slow down, check both ways for trains, and stop if required.",
+"needs_split": false
+},
+{
+"id": 161,
+"short_meaning": "Warns of an enclosed road tunnel ahead.",
+"short_action": "Slow down and turn on dipped headlights.",
+"needs_split": false
+},
+{
+"id": 162,
+"short_meaning": "Warns of an overhead structure with restricted height clearance.",
+"short_action": "Find another route if your vehicle exceeds the height limit.",
+"needs_split": false
+},
+{
+"id": 163,
+"short_meaning": "Warns of road geometry restricting long vehicles ahead.",
+"short_action": "Take an alternative route if your vehicle exceeds the length.",
+"needs_split": false
+},
+{
+"id": 164,
+"short_meaning": "Warns of a steep incline or steep decline ahead.",
+"short_action": "Select a suitable gear, slow down, and allow extra stopping distance.",
+"needs_split": false
+},
+{
+"id": 165,
+"short_meaning": "Warns of slow-moving heavy trucks on steep downhill grades.",
+"short_action": "Slow down and allow extra stopping distance behind trucks.",
+"needs_split": false
+},
+{
+"id": 166,
+"short_meaning": "Warns that the tarred road changes to a gravel surface ahead.",
+"short_action": "Slow down to handle the change in road traction safely.",
+"needs_split": false
+},
+{
+"id": 167,
+"short_meaning": "Warns that the roadway narrows over an upcoming bridge.",
+"short_action": "Slow down and avoid passing oncoming vehicles on the bridge.",
+"needs_split": false
+},
+{
+"id": 168,
+"short_meaning": "Warns of a narrow bridge allowing only one vehicle at a time.",
+"short_action": "Slow down and yield to oncoming traffic already crossing.",
+"needs_split": false
+},
+{
+"id": 169,
+"short_meaning": "Warns that the roadway narrows from both left and right sides.",
+"short_action": "Slow down and adjust position away from road edges.",
+"needs_split": false
+},
+{
+"id": 170,
+"short_meaning": "Warns that the road narrows from one side ahead.",
+"short_action": "Slow down and move away from the narrowing side.",
+"needs_split": false
+},
+{
+"id": 171,
+"short_meaning": "Warns of bumps, dips, or broken road surfaces ahead.",
+"short_action": "Slow down to maintain control and protect your vehicle.",
+"needs_split": false
+},
+{
+"id": 172,
+"short_meaning": "Warns of raised speed humps across the road ahead.",
+"short_action": "Reduce speed before driving over the humps.",
+"needs_split": false
+},
+{
+"id": 173,
+"short_meaning": "Warns that the road surface ahead becomes unusually slippery.",
+"short_action": "Slow down and avoid sudden braking or sharp turns.",
+"needs_split": false
+},
+{
+"id": 174,
+"short_meaning": "Warns of potential falling rocks or loose debris on the road.",
+"short_action": "Slow down and watch for falling rocks or obstacles.",
+"needs_split": false
+},
+{
+"id": 175,
+"short_meaning": "Warns of temporary road construction or maintenance work ahead.",
+"short_action": "Slow down and watch for workers or temporary signs.",
+"needs_split": false
+},
+{
+"id": 176,
+"short_meaning": "Warns that a road grader is working on the roadway ahead.",
+"short_action": "Slow down and pass the working grader cautiously.",
+"needs_split": false
+},
+{
+"id": 177,
+"short_meaning": "Warns of loose stones or gravel on the road surface.",
+"short_action": "Slow down to avoid skidding or throwing up stones.",
+"needs_split": false
+},
+{
+"id": 178,
+"short_meaning": "Warns of unspecified hazard or danger ahead on the road.",
+"short_action": "Slow down and stay alert for unexpected hazards.",
+"needs_split": false
+},
+{
+"id": 179,
+"short_meaning": "Warns of an uneven vertical step between lane levels.",
+"short_action": "Slow down and avoid sudden steering across the ridge.",
+"needs_split": false
+},
+{
+"id": 180,
+"short_meaning": "Warns that the unpaved road shoulder is soft and uncompacted.",
+"short_action": "Avoid driving or pulling over onto the soft shoulder.",
+"needs_split": false
+},
+{
+"id": 181,
+"short_meaning": "Warns of temporary Stop/Go manual traffic control ahead.",
+"short_action": "Slow down and prepare to stop if signaled.",
+"needs_split": false
+},
+{
+"id": 182,
+"short_meaning": "Warns that heavy trucks cross or enter the roadway frequently.",
+"short_action": "Slow down and watch for slow trucks joining traffic.",
+"needs_split": false
+},
+{
+"id": 183,
+"short_meaning": "Warns of a hazardous traffic condition highlighted by a flashing light.",
+"short_action": "Slow down and look out for warning signs indicating the danger.",
+"needs_split": false
+},
+{
+"id": 184,
+"short_meaning": "Warns of a police checkpoint, roadblock, or accident scene ahead.",
+"short_action": "Slow down and prepare to stop as directed by officers.",
+"needs_split": false
+},
+{
+"id": 185,
+"short_meaning": "Warns that the road terminates at an unbarricaded water edge.",
+"short_action": "Slow down immediately to ensure stopping before the water.",
+"needs_split": false
+},
+{
+"id": 186,
+"short_meaning": "Warns of strong crosswinds that could push vehicles sideways.",
+"short_action": "Grip the steering wheel firmly and adjust speed.",
+"needs_split": false
+},
+{
+"id": 187,
+"short_meaning": "Warns of a low water crossing or drift that may flood.",
+"short_action": "Slow down, evaluate water depth, and proceed cautiously if safe.",
+"needs_split": false
+},
+{
+"id": 188,
+"short_meaning": "Warns of low-flying aircraft near a runway causing sudden noise.",
+"short_action": "Maintain control without braking abruptly out of surprise.",
+"needs_split": false
+},
+{
+"id": 189,
+"short_meaning": "Warns of slow tractors or agricultural machinery on the road.",
+"short_action": "Slow down and prepare to yield to farm vehicles.",
+"needs_split": false
+},
+{
+"id": 190,
+"short_meaning": "Warns of a vehicle collision scene obstructing the road ahead.",
+"short_action": "Slow down, follow emergency direction, and do not gawk.",
+"needs_split": false
+},
+{
+"id": 191,
+"short_meaning": "Warns of reduced visibility due to heavy fog or smoke.",
+"short_action": "Slow down, turn on fog lights, and watch for slow traffic.",
+"needs_split": false
+},
+{
+"id": 192,
+"short_meaning": "Warns of heavy traffic congestion and queued vehicles ahead.",
+"short_action": "Slow down early and prepare to join slow traffic.",
+"needs_split": false
+},
+{
+"id": 193,
+"short_meaning": "Warns of horse riders on or alongside the roadway ahead.",
+"short_action": "Slow down and leave plenty of room when passing horses.",
+"needs_split": false
+},
+{
+"id": 194,
+"short_meaning": "Warns that elephants may be present on or near the road.",
+"short_action": "Slow down, maintain a safe distance, and prepare to stop.",
+"needs_split": false
+},
+{
+"id": 195,
+"short_meaning": "Warns that warthogs may cross or run along the road.",
+"short_action": "Slow down and watch for warthogs near road edges.",
+"needs_split": false
+},
+{
+"id": 196,
+"short_meaning": "Warns that hippos may cross the road near water bodies.",
+"short_action": "Slow down, stay alert at night, and prepare to stop.",
+"needs_split": false
+},
+{
+"id": 197,
+"short_meaning": "Warns of a narrow roadway section restricting maximum vehicle width.",
+"short_action": "Do not proceed if your vehicle width exceeds the limit.",
+"needs_split": false
+},
+{
+"id": 198,
+"short_meaning": "Warns of high-voltage overhead electrical power lines across the road.",
+"short_action": "Watch height clearance for tall loads to avoid electric shock.",
+"needs_split": false
+},
+{
+"id": 199,
+"short_meaning": "Warns that a gravel road changes to a paved surface ahead.",
+"short_action": "Look out for the paved surface transition ahead.",
+"needs_split": false
+},
+{
+"id": 200,
+"short_meaning": "Marks roadside obstructions and guides vehicle alignment around hazards.",
+"short_action": "Pass on the side indicated by the downward slanting stripes.",
+"needs_split": false
+}
+]

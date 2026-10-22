@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import type { StudySign } from "@shared/schema";
 import { Layout } from "@/components/layout";
 import { FlashcardsHint } from "@/components/flashcards-hint";
+import { SignFaceImages, SignCodeChips, isGenericWhere } from "@/components/sign-images";
 import { FormattedText } from "@/components/formatted-text";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -12,7 +13,8 @@ import { Progress } from "@/components/ui/progress";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { getFavoriteSignIds, rateSign, getAllSignLearning, initSignSync } from "@/lib/sign-storage";
 import { ensureLocalOwner } from "@/lib/progress-owner";
-import { ArrowLeft, ChevronLeft, ChevronRight, RotateCcw, Shuffle } from "lucide-react";
+import { SHOW_TEMPORARY_SIGNS, isTemporaryOnlyRecord } from "@/lib/sign-codes";
+import { ArrowLeft, ChevronLeft, ChevronRight, ChevronDown, RotateCcw, Shuffle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useStudyGate } from "./study";
 
@@ -35,7 +37,8 @@ export default function StudySignsFlashcards() {
   const [shuffled, setShuffled] = useState(true);
   const [reshuffleKey, setReshuffleKey] = useState(0);
   const [index, setIndex] = useState(0);
-  const [flipped, setFlipped] = useState(false);
+  const [step, setStep] = useState(0); // reveal step: 0 front, 1 meaning, 2 action
+  const [fullOpen, setFullOpen] = useState(false);
   const [syncTick, setSyncTick] = useState(0);
   const touchStart = useRef<{ x: number; y: number } | null>(null);
   const swiped = useRef(false);
@@ -75,6 +78,7 @@ export default function StudySignsFlashcards() {
       const pool = signs.filter((s) => {
         if (revision.heading && s.heading !== revision.heading) return false;
         if (revision.subheading && revision.subheading !== "(general)" && s.subheading !== revision.subheading) return false;
+        if (!SHOW_TEMPORARY_SIGNS && isTemporaryOnlyRecord(s.codes)) return false;
         return learning[s.id]?.status === "learning";
       });
       return [...pool].sort((a, b) => a.id - b.id);
@@ -82,10 +86,11 @@ export default function StudySignsFlashcards() {
     const favs = new Set(getFavoriteSignIds());
     const learning = getAllSignLearning();
     let pool = signs.filter((s) => {
+      if (!SHOW_TEMPORARY_SIGNS && isTemporaryOnlyRecord(s.codes)) return false;
       if (heading !== "all" && s.heading !== heading) return false;
       if (subheading !== "all" && s.subheading !== subheading) return false;
       if (favoritesOnly && !favs.has(s.id)) return false;
-      if (newOnly && learning[s.id]) return false;
+      if (newOnly && (learning[s.id]?.status ?? "new") !== "new") return false;
       return true;
     });
     // stable base order, then optional shuffle (reshuffleKey re-deals)
@@ -97,7 +102,8 @@ export default function StudySignsFlashcards() {
 
   const resetDeck = () => {
     setIndex(0);
-    setFlipped(false);
+    setStep(0);
+    setFullOpen(false);
   };
 
   const changeFilter = (fn: () => void) => {
@@ -108,9 +114,20 @@ export default function StudySignsFlashcards() {
   const current = deck.length > 0 ? deck[Math.min(index, deck.length - 1)] : null;
   const progress = deck.length > 0 ? ((Math.min(index, deck.length - 1) + 1) / deck.length) * 100 : 0;
 
+  const shortText = !!current && current.short_reviewed === true && !!current.short_meaning;
+  const lastStep = shortText ? (current!.short_action ? 2 : 1) : 1;
+  const flipped = step >= 1;
+
+  // Every new card starts at the front with full manual text collapsed.
+  useEffect(() => {
+    setStep(0);
+    setFullOpen(false);
+  }, [current?.id]);
+
   const advance = (delta: number) => {
     if (deck.length === 0) return;
-    setFlipped(false);
+    setStep(0);
+    setFullOpen(false);
     setIndex((i) => (i + delta + deck.length) % deck.length);
   };
 
@@ -131,7 +148,7 @@ export default function StudySignsFlashcards() {
       advance(dx < 0 ? 1 : -1);
     } else if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 30) {
       swiped.current = true;
-      setFlipped((f) => !f);
+      setStep((s) => Math.max(0, Math.min(lastStep, dy < 0 ? s + 1 : s - 1)));
     }
     touchStart.current = null;
   };
@@ -141,7 +158,8 @@ export default function StudySignsFlashcards() {
       swiped.current = false;
       return;
     }
-    setFlipped((f) => !f);
+    // Tap reveals one step at a time; nothing more to reveal on the last step.
+    setStep((s) => Math.min(lastStep, s + 1));
   };
 
   if (!allowed) return null;
@@ -229,14 +247,9 @@ export default function StudySignsFlashcards() {
                 )}
               >
                 {/* Front */}
-                <div className="absolute inset-0 rounded-3xl border border-border bg-card p-5 flex flex-col items-center justify-center gap-3 [backface-visibility:hidden]">
-                  {(current.images || [])[0]?.image_url ? (
-                    <img
-                      src={current.images![0].image_url}
-                      alt={current.name}
-                      className="max-h-64 w-full object-contain bg-white rounded-2xl"
-                      draggable={false}
-                    />
+                <div className="absolute inset-0 rounded-3xl border border-border bg-card p-5 flex flex-col items-center justify-center gap-3 overflow-hidden [backface-visibility:hidden]">
+                  {(current.images || []).length > 0 ? (
+                    <SignFaceImages images={current.images} />
                   ) : (
                     <div className="text-center space-y-1">
                       {(current.codes || []).map((c) => (
@@ -244,33 +257,73 @@ export default function StudySignsFlashcards() {
                       ))}
                     </div>
                   )}
-                  <p className="text-[11px] text-muted-foreground font-semibold">Tap or swipe up/down to flip · swipe left/right to move</p>
+                  <p className="text-[11px] text-muted-foreground font-semibold">Tap to reveal · swipe left/right to move</p>
                 </div>
-                {/* Back */}
+                {/* Back: step 1 shows the meaning, step 2 adds the action */}
                 <div className="rounded-3xl border border-primary/30 bg-primary/5 p-5 space-y-3 min-h-[380px] [transform:rotateX(180deg)] [backface-visibility:hidden]">
                   <p className="font-display font-extrabold text-lg">{current.name}</p>
-                  <div className="flex flex-wrap gap-1">
-                    {(current.codes || []).map((c) => (
-                      <span key={c} className="text-[11px] font-mono bg-background border border-border rounded-md px-2 py-0.5">{c}</span>
-                    ))}
-                  </div>
-                  {[
-                    { label: "Where", text: current.where_text },
-                    { label: "Purpose", text: current.purpose_text },
-                    { label: "Action", text: current.action_text },
-                  ].filter((x) => x.text).map((x) => (
-                    <div key={x.label}>
-                      <p className="text-[11px] font-black uppercase tracking-widest text-muted-foreground">{x.label}</p>
-                      <FormattedText text={x.text} className="text-sm mt-0.5" />
-                    </div>
-                  ))}
+                  <SignCodeChips codes={current.codes} />
+                  {shortText ? (
+                    <>
+                      <p className="text-sm">{current.short_meaning}</p>
+                      {step >= 2 && current.short_action && (
+                        <div className="rounded-xl bg-primary/10 border border-primary/30 p-3">
+                          <p className="text-[11px] font-black uppercase tracking-widest text-primary">What you must do</p>
+                          <FormattedText text={current.short_action} className="text-sm mt-1" />
+                        </div>
+                      )}
+                      {step >= 2 && !isGenericWhere(current.where_text) && (
+                        <p className="text-[11px] text-muted-foreground font-semibold">{current.where_text}</p>
+                      )}
+                      {step >= lastStep && (current.where_text || current.purpose_text || current.action_text) && (
+                        <div className="rounded-xl border border-border bg-background/60">
+                          <button
+                            type="button"
+                            onClick={(e) => { e.stopPropagation(); setFullOpen((f) => !f); }}
+                            className="w-full flex items-center justify-between px-3 py-2 text-xs font-bold text-muted-foreground"
+                          >
+                            Full manual text
+                            <ChevronDown className={cn("h-3.5 w-3.5 transition-transform", fullOpen && "rotate-180")} />
+                          </button>
+                          {fullOpen && (
+                            <div className="px-3 pb-3 space-y-2" onClick={(e) => e.stopPropagation()}>
+                              {[
+                                { label: "Where", text: current.where_text },
+                                { label: "Purpose", text: current.purpose_text },
+                                { label: "Action", text: current.action_text },
+                              ].filter((x) => x.text).map((x) => (
+                                <div key={x.label}>
+                                  <p className="text-[11px] font-black uppercase tracking-widest text-muted-foreground">{x.label}</p>
+                                  <FormattedText text={x.text} className="text-sm mt-0.5" />
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    [
+                      { label: "Where", text: current.where_text },
+                      { label: "Purpose", text: current.purpose_text },
+                      { label: "Action", text: current.action_text },
+                    ].filter((x) => x.text).map((x) => (
+                      <div key={x.label}>
+                        <p className="text-[11px] font-black uppercase tracking-widest text-muted-foreground">{x.label}</p>
+                        <FormattedText text={x.text} className="text-sm mt-0.5" />
+                      </div>
+                    ))
+                  )}
+                  <p className="text-[11px] text-muted-foreground font-semibold">
+                    {step < lastStep ? "Tap or swipe up for more · swipe down to go back" : "Swipe left/right to move"}
+                  </p>
                 </div>
               </div>
             </div>
           )
         )}
 
-        {deck.length > 0 && flipped && current && (
+        {deck.length > 0 && current && step >= lastStep && (
           <div className="grid grid-cols-2 gap-2">
             <button
               type="button"

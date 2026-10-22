@@ -417,3 +417,93 @@ export default function SignImportPanel() {
     </div>
   );
 }
+
+interface ShortTextResult {
+  updated: number;
+  skipped: number;
+  notFound: number[];
+}
+
+/** Upload panel for drafted short text ({ id, short_meaning, short_action, needs_split }). */
+export function SignShortTextImportPanel() {
+  const queryClient = useQueryClient();
+  const { toast } = useToast();
+  const [busy, setBusy] = useState(false);
+  const [overwrite, setOverwrite] = useState(false);
+  const [last, setLast] = useState<ShortTextResult | null>(null);
+
+  const handleUpload = async (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    e.target.value = "";
+    if (!file) return;
+    setBusy(true);
+    setLast(null);
+    try {
+      const text = (await file.text()).replace(/^\uFEFF/, "").trim();
+      let items: unknown;
+      try {
+        items = JSON.parse(text);
+      } catch {
+        // Chat assistants often wrap the array in prose or a code fence.
+        // Recover the outermost JSON array so pasted output still imports.
+        const start = text.indexOf("[");
+        const end = text.lastIndexOf("]");
+        if (start === -1 || end <= start) {
+          throw new Error("No JSON array found in the file.");
+        }
+        items = JSON.parse(text.slice(start, end + 1));
+      }
+      if (!Array.isArray(items) || items.length === 0) {
+        throw new Error("JSON must be a non-empty array of { id, short_meaning, short_action, needs_split }.");
+      }
+      const res = await apiRequest("POST", "/api/signs/short-text/import", { items, overwrite });
+      const data = (await res.json()) as ShortTextResult;
+      setLast(data);
+      toast({
+        title: "Short text imported",
+        description: `${data.updated} updated · ${data.skipped} skipped approved${data.notFound.length ? ` · ${data.notFound.length} not found` : ""}`,
+      });
+      queryClient.invalidateQueries({ queryKey: ["/api/signs"] });
+    } catch (err: any) {
+      toast({ title: "Import failed", description: err.message, variant: "destructive" });
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  return (
+    <div className="glass-card rounded-2xl p-5 space-y-3 max-w-4xl">
+      <div className="flex items-center gap-2">
+        <FileJson className="h-4 w-4 text-primary" />
+        <h3 className="font-bold text-sm">3 · Import drafted short text</h3>
+      </div>
+      <p className="text-xs text-muted-foreground">
+        A JSON array of <span className="font-mono">{"{ id, short_meaning, short_action, needs_split }"}</span> matched by
+        sign id. Imported text is <span className="font-semibold">unapproved</span> — learners only see it once you tick
+        “Approved for learners” on each record.
+      </p>
+      <div className="flex items-center gap-2">
+        <input
+          id="short-text-overwrite"
+          type="checkbox"
+          checked={overwrite}
+          onChange={(e) => setOverwrite(e.target.checked)}
+          className="h-4 w-4 accent-primary"
+        />
+        <label htmlFor="short-text-overwrite" className="text-xs font-semibold">
+          Overwrite already-approved records
+        </label>
+      </div>
+      <input type="file" id="short-text-json" accept=".json" className="hidden" onChange={handleUpload} disabled={busy} />
+      <Button asChild variant="outline" className="w-full h-11 rounded-xl" disabled={busy}>
+        <label htmlFor="short-text-json" className="cursor-pointer">{busy ? "Importing…" : "Choose JSON file"}</label>
+      </Button>
+      {last && (
+        <p className="text-xs text-green-700 font-semibold flex items-center gap-1">
+          <CheckCircle2 className="h-3.5 w-3.5" />
+          {`Updated ${last.updated} · Skipped approved ${last.skipped}${last.notFound.length ? ` · Not found: ${last.notFound.join(", ")}` : ""}`}
+        </p>
+      )}
+    </div>
+  );
+}

@@ -166,6 +166,10 @@ app.use((req, res, next) => {
     await client`ALTER TABLE study_controls ADD COLUMN IF NOT EXISTS position_x REAL;`;
     await client`ALTER TABLE study_controls ADD COLUMN IF NOT EXISTS position_y REAL;`;
     await client`ALTER TABLE study_rules ADD COLUMN IF NOT EXISTS question TEXT;`;
+    await client`ALTER TABLE study_signs ADD COLUMN IF NOT EXISTS short_meaning TEXT;`;
+    await client`ALTER TABLE study_signs ADD COLUMN IF NOT EXISTS short_action TEXT;`;
+    await client`ALTER TABLE study_signs ADD COLUMN IF NOT EXISTS short_reviewed BOOLEAN NOT NULL DEFAULT FALSE;`;
+    await client`ALTER TABLE study_signs ADD COLUMN IF NOT EXISTS needs_split BOOLEAN NOT NULL DEFAULT FALSE;`;
   } catch (err) {
     console.error("Failed to ensure study tables:", err);
   }

@@ -118,7 +118,7 @@ function Deck({
     const learning = getAllRuleLearning();
     let pool = rules.filter((r: StudyRule) => {
       if (favoritesOnly && !favs.has(r.id)) return false;
-      if (newOnly && learning[r.id]) return false;
+      if (newOnly && (learning[r.id]?.status ?? "new") !== "new") return false;
       return true;
     });
     pool = [...pool].sort((a: StudyRule, b: StudyRule) => a.id - b.id);
