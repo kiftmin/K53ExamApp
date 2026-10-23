@@ -10,6 +10,7 @@ import { Switch } from "@/components/ui/switch";
 import { Progress } from "@/components/ui/progress";
 import ControlDiagramView from "@/components/control-diagram-view";
 import { getFavoriteControlIds, rateControl, getAllControlLearning, initControlSync } from "@/lib/control-storage";
+import { practiseDeckItems } from "@/lib/mastery-summary";
 import { ensureLocalOwner } from "@/lib/progress-owner";
 import { ArrowLeft, ChevronLeft, ChevronRight, RotateCcw, Shuffle } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -87,6 +88,18 @@ function Deck({
   });
   const { data: diagrams = [] } = useQuery<ControlDiagram[]>({ queryKey: ["/api/control-diagrams"] });
 
+  // Controls have no heading/subheading columns — derive the diagram label so
+  // the shared practise-deck helper can group them like the other modules.
+  const controlsWithHeadings = useMemo(
+    () =>
+      controls.map((c) => ({
+        ...c,
+        heading: diagrams.find((d) => d.id === c.diagram_id)?.label || "Vehicle Controls",
+        subheading: null as string | null,
+      })),
+    [controls, diagrams]
+  );
+
   const revision = useMemo(() => {
     if (typeof window === "undefined") return null;
     const params = new URLSearchParams(window.location.search);
@@ -99,20 +112,11 @@ function Deck({
 
   const deck = useMemo(() => {
     if (revision) {
-      // Practise mode: exactly the cards in this group the learner missed.
-      const learning = getAllControlLearning();
-      const pool = controls.filter((c) => {
-        if (revision.heading) {
-          const diagram = diagrams.find((d) => d.id === c.diagram_id);
-          if ((diagram?.label || "Vehicle Controls") !== revision.heading) return false;
-        }
-        if (revision.subheading && revision.subheading !== "(general)") {
-          // Controls have no subheadings — a subheading filter yields nothing.
-          return false;
-        }
-        return learning[c.id]?.status === "learning";
+      // Practise mode: missed cards first, then this group's untried cards.
+      return practiseDeckItems(controlsWithHeadings, getAllControlLearning(), {
+        heading: revision.heading,
+        subheading: revision.subheading,
       });
-      return [...pool].sort((a, b) => a.id - b.id);
     }
     const favs = new Set(getFavoriteControlIds());
     const learning = getAllControlLearning();
@@ -125,7 +129,7 @@ function Deck({
     if (shuffled) pool = shuffle(pool);
     return pool;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [controls, diagrams, revision, favoritesOnly, newOnly, shuffled, reshuffleKey, syncTick]);
+  }, [controls, controlsWithHeadings, revision, favoritesOnly, newOnly, shuffled, reshuffleKey, syncTick]);
 
   const resetDeck = () => { setIndex(0); setFlipped(false); };
   const changeFilter = (fn: () => void) => { fn(); resetDeck(); };

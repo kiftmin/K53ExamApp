@@ -8,6 +8,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   AlertDialog,
@@ -98,6 +99,8 @@ export default function SignsSection() {
   const [editing, setEditing] = useState<StudySign | null>(null);
   const [formOpen, setFormOpen] = useState(false);
   const [deleting, setDeleting] = useState<StudySign | null>(null);
+  const [approveOpen, setApproveOpen] = useState(false);
+  const [reviewed, setReviewed] = useState(false);
 
   const { data: signs = [], isLoading } = useQuery<StudySign[]>({
     queryKey: ["/api/signs"],
@@ -177,10 +180,7 @@ export default function SignsSection() {
         <div className="flex flex-wrap items-center gap-2">
           <Button
             variant="outline"
-            onClick={() => {
-              if (!window.confirm(`Approve short text on ${draftCount} sign${draftCount === 1 ? "" : "s"}? Learners will see it immediately on flashcards.`)) return;
-              approveMutation.mutate();
-            }}
+            onClick={() => setApproveOpen(true)}
             disabled={draftCount === 0 || approveMutation.isPending}
             className="rounded-xl font-bold"
           >
@@ -317,6 +317,45 @@ export default function SignsSection() {
               onClick={() => deleting && deleteMutation.mutate(deleting.id)}
             >
               Delete
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      <AlertDialog
+        open={approveOpen}
+        onOpenChange={(open) => {
+          setApproveOpen(open);
+          setReviewed(false);
+        }}
+      >
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Approve all drafted short text?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This makes <span className="font-bold">{draftCount}</span> drafted short texts visible to learners
+              straight away, including any not shown in the current list. Only continue if you've reviewed them.
+              A wrong action on a road sign can mislead learners.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <div className="flex items-start gap-2 py-1">
+            <Checkbox
+              id="approve-reviewed"
+              checked={reviewed}
+              onCheckedChange={(v) => setReviewed(v === true)}
+              className="mt-0.5"
+            />
+            <Label htmlFor="approve-reviewed" className="text-sm font-semibold leading-snug">
+              I have reviewed these drafts
+            </Label>
+          </div>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              disabled={!reviewed || approveMutation.isPending}
+              onClick={() => approveMutation.mutate()}
+            >
+              {approveMutation.isPending ? "Approving…" : `Approve ${draftCount} sign${draftCount === 1 ? "" : "s"}`}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

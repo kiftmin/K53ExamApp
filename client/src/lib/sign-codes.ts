@@ -36,3 +36,9 @@ export function temporaryLabel(codes: string[]): string {
 export function isTemporaryOnlyRecord(codes: string[]): boolean {
   return codes.length > 0 && codes.every(isTemporaryCode);
 }
+
+/** Drop temporary-only records from learner-facing lists and counts when temporary signs are hidden. */
+export function visibleSigns<T extends { codes: string[] }>(items: T[]): T[] {
+  if (SHOW_TEMPORARY_SIGNS) return items;
+  return items.filter((item) => !isTemporaryOnlyRecord(item.codes));
+}

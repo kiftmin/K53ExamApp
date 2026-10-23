@@ -10,6 +10,7 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Progress } from "@/components/ui/progress";
 import { getFavoriteRuleIds, rateRule, getAllRuleLearning, initRuleSync } from "@/lib/rule-storage";
+import { practiseDeckItems } from "@/lib/mastery-summary";
 import { ensureLocalOwner } from "@/lib/progress-owner";
 import { ArrowLeft, ChevronLeft, ChevronRight, RotateCcw, Shuffle } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -105,14 +106,11 @@ function Deck({
 
   const deck = useMemo(() => {
     if (revision) {
-      // Practise mode: exactly the cards in this group the learner missed.
-      const learning = getAllRuleLearning();
-      const pool = rules.filter((r: StudyRule) => {
-        if (revision.heading && r.heading !== revision.heading) return false;
-        if (revision.subheading && revision.subheading !== "(general)" && r.subheading !== revision.subheading) return false;
-        return learning[r.id]?.status === "learning";
+      // Practise mode: missed cards first, then this group's untried cards.
+      return practiseDeckItems(rules, getAllRuleLearning(), {
+        heading: revision.heading,
+        subheading: revision.subheading,
       });
-      return [...pool].sort((a: StudyRule, b: StudyRule) => a.id - b.id);
     }
     const favs = new Set(getFavoriteRuleIds());
     const learning = getAllRuleLearning();

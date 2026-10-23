@@ -13,7 +13,8 @@ import { Progress } from "@/components/ui/progress";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { getFavoriteSignIds, rateSign, getAllSignLearning, initSignSync } from "@/lib/sign-storage";
 import { ensureLocalOwner } from "@/lib/progress-owner";
-import { SHOW_TEMPORARY_SIGNS, isTemporaryOnlyRecord } from "@/lib/sign-codes";
+import { SHOW_TEMPORARY_SIGNS, isTemporaryOnlyRecord, visibleSigns } from "@/lib/sign-codes";
+import { practiseDeckItems } from "@/lib/mastery-summary";
 import { ArrowLeft, ChevronLeft, ChevronRight, ChevronDown, RotateCcw, Shuffle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useStudyGate } from "./study";
@@ -73,15 +74,11 @@ export default function StudySignsFlashcards() {
 
   const deck = useMemo(() => {
     if (revision) {
-      // Practise mode: exactly the cards in this group the learner missed.
-      const learning = getAllSignLearning();
-      const pool = signs.filter((s) => {
-        if (revision.heading && s.heading !== revision.heading) return false;
-        if (revision.subheading && revision.subheading !== "(general)" && s.subheading !== revision.subheading) return false;
-        if (!SHOW_TEMPORARY_SIGNS && isTemporaryOnlyRecord(s.codes)) return false;
-        return learning[s.id]?.status === "learning";
+      // Practise mode: missed cards first, then this group's untried cards.
+      return practiseDeckItems(visibleSigns(signs), getAllSignLearning(), {
+        heading: revision.heading,
+        subheading: revision.subheading,
       });
-      return [...pool].sort((a, b) => a.id - b.id);
     }
     const favs = new Set(getFavoriteSignIds());
     const learning = getAllSignLearning();

@@ -9,6 +9,7 @@ import { countKnown } from "@/lib/learning-status";
 import { getAllSignLearning, initSignSync } from "@/lib/sign-storage";
 import { getAllRuleLearning, initRuleSync, getRulesLicenceCode } from "@/lib/rule-storage";
 import { getAllControlLearning, initControlSync, getControlsLicenceCode } from "@/lib/control-storage";
+import { visibleSigns } from "@/lib/sign-codes";
 import { ensureLocalOwner } from "@/lib/progress-owner";
 import { BookOpen, Car, Signpost, TrafficCone, ArrowLeft } from "lucide-react";
 
@@ -65,9 +66,10 @@ export default function Study() {
     }
   }, [allowed]);
 
+  const visibleSignList = useMemo(() => visibleSigns(signs), [signs]);
   const signStats = useMemo(
-    () => countKnown(signs as { id: number }[], getAllSignLearning()),
-    [signs, syncTick]
+    () => countKnown(visibleSignList as { id: number }[], getAllSignLearning()),
+    [visibleSignList, syncTick]
   );
   const ruleStats = useMemo(
     () => countKnown(rules as { id: number }[], getAllRuleLearning()),
@@ -102,7 +104,7 @@ export default function Study() {
           <StudyModuleCard
             icon={<Signpost className="h-6 w-6" />}
             title="Road Signs"
-            subtitle={signs.length > 0 ? `${signs.length} signs · browse & flashcards` : "Browse & flashcards"}
+            subtitle={visibleSignList.length > 0 ? `${visibleSignList.length} signs · browse & flashcards` : "Browse & flashcards"}
             path="/study/signs"
             stats={signStats}
           />

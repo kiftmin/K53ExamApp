@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useLocation, useSearch } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import type { StudySign, StudyRule, StudyControl, ControlDiagram } from "@shared/schema";
-import { nextPracticeGroup, controlsForSummary, type GroupStats } from "@/lib/mastery-summary";
+import { nextPracticeGroups, controlsForSummary, PRACTISE_NEW_CAP, type GroupStats } from "@/lib/mastery-summary";
 import { getRulesLicenceCode } from "@/lib/rule-storage";
 import { getControlsLicenceCode } from "@/lib/control-storage";
 import { initSignSync } from "@/lib/sign-storage";
@@ -92,8 +92,8 @@ export default function Home() {
 
   const [syncTick, setSyncTick] = useState(0);
 
-  const practiceGroup: GroupStats | null = useMemo(
-    () => nextPracticeGroup(signs, rules, controlsForSummary(controls, diagrams)),
+  const practiceGroups: GroupStats[] = useMemo(
+    () => nextPracticeGroups(signs, rules, controlsForSummary(controls, diagrams)),
     [signs, rules, controls, diagrams, syncTick]
   );
 
@@ -121,8 +121,6 @@ export default function Home() {
       setLocation(target);
     }
   }, [validated, unlockTarget, setLocation]);
-
-  const practiceLocation = practiceGroup ? practiceLocationFor(practiceGroup) : null;
 
   return (
     <Layout>
@@ -237,8 +235,8 @@ export default function Home() {
           </Card>
         )}
 
-        {/* Practise next — the learner's one next action */}
-        {practiceGroup && practiceLocation && (
+        {/* Practise next — best group per module, so no module gets crowded out */}
+        {practiceGroups.length > 0 && (
           <Card
             className="w-full max-w-md glass-card border-none shadow-xl rounded-3xl mb-10 animate-in fade-in slide-in-from-bottom-4 duration-500"
           >
@@ -247,23 +245,32 @@ export default function Home() {
                 <RotateCcw className="h-4 w-4 text-primary" />
                 <h2 className="font-display font-bold">Practise next</h2>
               </div>
-              <div className="rounded-xl bg-muted/50 px-3 py-2">
-                <p className="text-sm font-bold">
-                  {practiceGroup.subheading === "(general)"
-                    ? practiceGroup.heading
-                    : practiceGroup.subheading}
-                </p>
-                <p className="text-xs text-muted-foreground mt-0.5">
-                  {practiceGroup.toPractise} to practise · {practiceGroup.known} of {practiceGroup.total} learned
-                </p>
+              <div className="space-y-2">
+                {practiceGroups.map((group) => (
+                  <div
+                    key={`${group.module}|${group.heading}|${group.subheading}`}
+                    className="flex items-center gap-3 rounded-xl bg-muted/50 px-3 py-2"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold truncate">
+                        {group.subheading === "(general)"
+                          ? group.heading
+                          : group.subheading}
+                      </p>
+                      <p className="text-xs text-muted-foreground mt-0.5">
+                        {group.toPractise} to practise · {Math.min(group.notTried, PRACTISE_NEW_CAP)} not tried yet
+                      </p>
+                    </div>
+                    <Button
+                      onClick={() => setLocation(practiceLocationFor(group))}
+                      className="h-9 px-4 rounded-xl font-bold text-white border-none shrink-0"
+                      style={{ background: "linear-gradient(135deg, #E53E1A, #F5A623)" }}
+                    >
+                      Practise
+                    </Button>
+                  </div>
+                ))}
               </div>
-              <button
-                onClick={() => setLocation(practiceLocation)}
-                className="w-full h-11 rounded-xl font-bold text-white transition-all hover:-translate-y-0.5"
-                style={{ background: "linear-gradient(135deg, #E53E1A, #F5A623)" }}
-              >
-                Practise these
-              </button>
             </CardContent>
           </Card>
         )}
