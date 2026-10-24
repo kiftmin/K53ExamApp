@@ -17,8 +17,12 @@ import { ensureLocalOwner } from "@/lib/progress-owner";
 import { useToast } from "@/hooks/use-toast";
 import { ArrowLeft, BadgeCheck, ChevronDown, CheckCircle2, Heart, ImageOff, Layers, HeartOff, RotateCcw, AlertTriangle, Ban, Info as InfoIcon, Route, Milestone, SquareStack, Lightbulb, Signpost, SearchX, type LucideIcon } from "lucide-react";
 import {
+  STUDY_KNOWN_ROW_CLASS,
+  STUDY_KNOWN_TEXT_CLASS,
+  STUDY_ROW_BORDER_CLASS,
   StudyCategoryTabs,
   StudyGroupCard,
+  StudyKnownBadge,
   StudyRowAction,
   StudySearchField,
   StudyStatusBar,
@@ -98,7 +102,7 @@ function SubheadingSignGroup({
           <button
             key={s.id}
             onClick={() => onOpen(s.id)}
-            className="w-full flex items-center gap-3 p-2.5 rounded-xl bg-muted/40 text-left"
+            className={cn("w-full flex items-center gap-3 p-2.5 rounded-xl bg-muted/40 text-left", STUDY_ROW_BORDER_CLASS, known && STUDY_KNOWN_ROW_CLASS)}
           >
             <div className="h-12 w-12 rounded-lg bg-white border border-border flex items-center justify-center overflow-hidden shrink-0">
               {thumb ? (
@@ -108,7 +112,7 @@ function SubheadingSignGroup({
               )}
             </div>
             <div className="flex-1 min-w-0">
-              <p className={cn("text-sm font-semibold leading-snug flex items-center gap-1", known && "text-muted-foreground line-through")}>
+              <p className={cn("text-sm font-semibold leading-snug flex items-center gap-1", known && STUDY_KNOWN_TEXT_CLASS)}>
                 <span className="truncate">{s.name}</span>
                 {s.is_verified_exam_question && <BadgeCheck className="h-3.5 w-3.5 shrink-0 text-green-600" />}
                 {fav && <Heart className="h-3.5 w-3.5 shrink-0 text-red-500 fill-red-500" />}
@@ -127,8 +131,8 @@ function SubheadingSignGroup({
             <span onClick={(e) => { e.stopPropagation(); onToggleFav(s.id); }} aria-label="Save" className="p-1">
               <Heart className={cn("h-4 w-4", fav ? "fill-red-500 text-red-500" : "text-muted-foreground")} />
             </span>
-            <span onClick={(e) => { e.stopPropagation(); onToggleKnown(s.id); }} aria-label="I know this" className="p-1">
-              <CheckCircle2 className={cn("h-4 w-4", known ? "fill-green-600 text-green-600" : "text-muted-foreground")} />
+            <span onClick={(e) => { e.stopPropagation(); onToggleKnown(s.id); }} aria-label="I know this" className="p-1 shrink-0">
+              <StudyKnownBadge known={known} />
             </span>
           </button>
         );

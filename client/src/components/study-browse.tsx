@@ -1,9 +1,32 @@
 import type { ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
-import { CheckCircle2, ChevronDown, Heart, HeartOff, RotateCcw, Search } from "lucide-react";
+import { Check, CheckCircle2, ChevronDown, Heart, HeartOff, RotateCcw, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
+
+/**
+ * Learned items stay fully readable: dark charcoal copy on a pale surface with a
+ * solid green bar down the left edge. Every row carries the same 3px inset so
+ * the text of learned and unlearned rows stays aligned.
+ */
+export const STUDY_ROW_BORDER_CLASS = "border-l-[3px] border-l-transparent";
+// The important modifier beats the divide-y border colour on rows that are
+// direct children of a divided group card.
+export const STUDY_KNOWN_ROW_CLASS = "!border-l-success bg-[#F8FAF8]";
+export const STUDY_KNOWN_TEXT_CLASS = "text-[#4A5568]";
+
+/** Solid green badge once learned, empty outline ring while it is still to learn. */
+export function StudyKnownBadge({ known }: { known: boolean }) {
+  if (known) {
+    return (
+      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-success text-white">
+        <Check className="h-3 w-3" strokeWidth={4} />
+      </span>
+    );
+  }
+  return <span className="flex h-5 w-5 items-center justify-center rounded-full border-[1.5px] border-[#718096]" />;
+}
 
 /** Search field used on every category browse screen. */
 export function StudySearchField({
@@ -287,15 +310,15 @@ export function StudySubRow({
 export function StudyRowAction({
   label,
   active,
-  activeClassName,
-  inactiveClassName,
+  activeClassName = "",
+  inactiveClassName = "",
   onClick,
   children,
 }: {
   label: string;
-  active: boolean;
-  activeClassName: string;
-  inactiveClassName: string;
+  active?: boolean;
+  activeClassName?: string;
+  inactiveClassName?: string;
   onClick: () => void;
   children: ReactNode;
 }) {

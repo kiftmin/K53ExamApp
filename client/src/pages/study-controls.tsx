@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import type { StudyControl, ControlDiagram } from "@shared/schema";
 import { Layout } from "@/components/layout";
 import { Button } from "@/components/ui/button";
-import { Heart, Layers, ArrowLeft, CheckCircle2, HeartOff, RotateCcw, Gauge, Cog, Wrench, SearchX, type LucideIcon } from "lucide-react";
+import { Heart, Layers, ArrowLeft, HeartOff, RotateCcw, Gauge, Cog, Wrench, SearchX, type LucideIcon } from "lucide-react";
 import { toggleFavoriteControl, getFavoriteControlIds, setControlKnown, resetControlProgress, removeFavoriteControls, getAllControlLearning, initControlSync } from "@/lib/control-storage";
 import { initQuestionSync } from "@/lib/question-results";
 import { isKnown, countKnown } from "@/lib/learning-status";
@@ -14,7 +14,11 @@ import ControlsPractice from "@/components/controls-practice";
 import { useStudyGate } from "./study";
 import ControlsStudyGate from "@/components/controls-study-gate";
 import {
+  STUDY_KNOWN_ROW_CLASS,
+  STUDY_KNOWN_TEXT_CLASS,
+  STUDY_ROW_BORDER_CLASS,
   StudyGroupCard,
+  StudyKnownBadge,
   StudyRowAction,
   StudySearchField,
   StudyStatusBar,
@@ -47,12 +51,12 @@ function ControlRow({
   onToggleKnown: () => void;
 }) {
   return (
-    <div className="flex items-start gap-3 py-2.5">
+    <div className={cn("-mx-2 px-2 flex items-start gap-3 py-2.5", STUDY_ROW_BORDER_CLASS, known && STUDY_KNOWN_ROW_CLASS)}>
       <span className="w-8 h-8 rounded-lg bg-primary/10 text-primary text-xs font-bold flex items-center justify-center shrink-0">
         {control.component_number ?? "•"}
       </span>
       <div className="flex-1 min-w-0">
-        <p className={cn("text-sm font-semibold leading-snug", known && "text-muted-foreground line-through")}>
+        <p className={cn("text-sm font-semibold leading-snug", known && STUDY_KNOWN_TEXT_CLASS)}>
           {control.component_name}
         </p>
         {control.function_notes && <p className="text-xs text-muted-foreground mt-0.5">{control.function_notes}</p>}
@@ -69,12 +73,9 @@ function ControlRow({
         </StudyRowAction>
         <StudyRowAction
           label="I know this"
-          active={known}
-          activeClassName="fill-green-600 text-green-600"
-          inactiveClassName="text-muted-foreground"
           onClick={onToggleKnown}
         >
-          <CheckCircle2 className="h-4 w-4" />
+          <StudyKnownBadge known={known} />
         </StudyRowAction>
       </div>
     </div>

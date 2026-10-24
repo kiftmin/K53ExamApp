@@ -6,7 +6,7 @@ import { Layout } from "@/components/layout";
 import { FormattedText } from "@/components/formatted-text";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Heart, Layers, ArrowLeft, ChevronDown, CheckCircle2, HeartOff, RotateCcw, BookOpen, ScrollText, Signpost, Route, Car, Scale, Gavel, SearchX, type LucideIcon } from "lucide-react";
+import { Heart, Layers, ArrowLeft, ChevronDown, HeartOff, RotateCcw, BookOpen, ScrollText, Signpost, Route, Car, Scale, Gavel, SearchX, type LucideIcon } from "lucide-react";
 import { toggleFavoriteRule, getFavoriteRuleIds, setRuleKnown, resetRuleProgress, removeFavoriteRules, getAllRuleLearning, initRuleSync } from "@/lib/rule-storage";
 import { initQuestionSync } from "@/lib/question-results";
 import { isKnown, countKnown } from "@/lib/learning-status";
@@ -14,8 +14,12 @@ import { ensureLocalOwner } from "@/lib/progress-owner";
 import { useStudyGate } from "./study";
 import RulesCodeGate from "@/components/rules-code-gate";
 import {
+  STUDY_KNOWN_ROW_CLASS,
+  STUDY_KNOWN_TEXT_CLASS,
+  STUDY_ROW_BORDER_CLASS,
   StudyCategoryTabs,
   StudyGroupCard,
+  StudyKnownBadge,
   StudyRowAction,
   StudySearchField,
   StudyStatusBar,
@@ -87,9 +91,9 @@ function SubheadingGroup({ subheading, list, favorites, learningMap, onToggleFav
         const fav = favorites.includes(r.id);
         const known = isKnown(learningMap[r.id]?.status);
         return (
-          <div key={r.id} className="rounded-xl bg-muted/40 p-3 flex items-start gap-3">
+          <div key={r.id} className={cn("rounded-xl bg-muted/40 p-3 flex items-start gap-3", STUDY_ROW_BORDER_CLASS, known && STUDY_KNOWN_ROW_CLASS)}>
             <div className="flex-1 min-w-0 space-y-1.5">
-              <FormattedText text={r.body} className={cn("text-sm leading-snug", known && "text-muted-foreground line-through")} />
+              <FormattedText text={r.body} className={cn("text-sm leading-snug", known && STUDY_KNOWN_TEXT_CLASS)} />
               <div className="flex flex-wrap gap-1 items-center">
                 <span className="text-[10px] font-mono text-muted-foreground">{r.section_ref}</span>
                 {(r.applicable_codes || []).map((c: number) => (
@@ -111,12 +115,9 @@ function SubheadingGroup({ subheading, list, favorites, learningMap, onToggleFav
               </StudyRowAction>
               <StudyRowAction
                 label="I know this"
-                active={known}
-                activeClassName="fill-green-600 text-green-600"
-                inactiveClassName="text-muted-foreground"
                 onClick={() => onToggleKnown(r.id)}
               >
-                <CheckCircle2 className="h-4 w-4" />
+                <StudyKnownBadge known={known} />
               </StudyRowAction>
             </div>
           </div>
