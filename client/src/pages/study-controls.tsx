@@ -3,21 +3,82 @@ import { useLocation } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import type { StudyControl, ControlDiagram } from "@shared/schema";
 import { Layout } from "@/components/layout";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
-import { Heart, Layers, Search, ArrowLeft, CheckCircle2, HeartOff, RotateCcw } from "lucide-react";
+import { Heart, Layers, ArrowLeft, CheckCircle2, HeartOff, RotateCcw, Gauge, Cog, Wrench, SearchX, type LucideIcon } from "lucide-react";
 import { toggleFavoriteControl, getFavoriteControlIds, setControlKnown, resetControlProgress, removeFavoriteControls, getAllControlLearning, initControlSync } from "@/lib/control-storage";
+import { initQuestionSync } from "@/lib/question-results";
 import { isKnown, countKnown } from "@/lib/learning-status";
 import { ensureLocalOwner } from "@/lib/progress-owner";
 import ControlDiagramView from "@/components/control-diagram-view";
 import ControlsPractice from "@/components/controls-practice";
 import { useStudyGate } from "./study";
 import ControlsStudyGate from "@/components/controls-study-gate";
+import {
+  StudyGroupCard,
+  StudyRowAction,
+  StudySearchField,
+  StudyStatusBar,
+} from "@/components/study-browse";
 import { cn } from "@/lib/utils";
 
 function resetSectionConfirm(ids: number[], label: string): boolean {
   return typeof window === "undefined" || window.confirm(`Reset this section (${label})? This clears your progress for these ${ids.length} controls.`);
+}
+
+/** Icon anchor for a cockpit diagram. */
+function diagramIconFor(label: string): LucideIcon {
+  const text = label.toLowerCase();
+  if (text.includes("motorcycle")) return Gauge;
+  if (text.includes("manual") || text.includes("gearbox")) return Cog;
+  return Wrench;
+}
+
+function ControlRow({
+  control,
+  fav,
+  known,
+  onToggleFav,
+  onToggleKnown,
+}: {
+  control: StudyControl;
+  fav: boolean;
+  known: boolean;
+  onToggleFav: () => void;
+  onToggleKnown: () => void;
+}) {
+  return (
+    <div className="flex items-start gap-3 py-2.5">
+      <span className="w-8 h-8 rounded-lg bg-primary/10 text-primary text-xs font-bold flex items-center justify-center shrink-0">
+        {control.component_number ?? "•"}
+      </span>
+      <div className="flex-1 min-w-0">
+        <p className={cn("text-sm font-semibold leading-snug", known && "text-muted-foreground line-through")}>
+          {control.component_name}
+        </p>
+        {control.function_notes && <p className="text-xs text-muted-foreground mt-0.5">{control.function_notes}</p>}
+      </div>
+      <div className="flex items-center gap-0.5 shrink-0">
+        <StudyRowAction
+          label="Save"
+          active={fav}
+          activeClassName="fill-red-500 text-red-500"
+          inactiveClassName="text-muted-foreground"
+          onClick={onToggleFav}
+        >
+          <Heart className="h-4 w-4" />
+        </StudyRowAction>
+        <StudyRowAction
+          label="I know this"
+          active={known}
+          activeClassName="fill-green-600 text-green-600"
+          inactiveClassName="text-muted-foreground"
+          onClick={onToggleKnown}
+        >
+          <CheckCircle2 className="h-4 w-4" />
+        </StudyRowAction>
+      </div>
+    </div>
+  );
 }
 
 export default function StudyControlsBrowse() {
@@ -61,7 +122,7 @@ function BrowseInner({ licence, gearbox, reset, allowed, setLocation, search, se
   useEffect(() => {
     if (allowed) {
       ensureLocalOwner();
-      initControlSync().then(() => setFavsTick((t: number) => t + 1));
+      Promise.all([initControlSync(), initQuestionSync()]).then(() => setFavsTick((t: number) => t + 1));
     }
   }, [allowed]);
   const { data: diagrams = [] } = useQuery<ControlDiagram[]>({ queryKey: ["/api/control-diagrams"] });
@@ -149,51 +210,26 @@ function BrowseInner({ licence, gearbox, reset, allowed, setLocation, search, se
         <ControlsPractice controls={controls} diagrams={diagrams} />
       ) : (
       <>
-      <div className="relative">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-        <Input placeholder="Search components or function…" value={search} onChange={(e) => setSearch(e.target.value)} className="pl-9 h-11 bg-background/60 rounded-xl" />
-      </div>
-      <button
-        onClick={() => setFavOnly(!favOnly)}
-        className={cn(
-          "text-xs font-semibold px-3 py-1.5 rounded-full border",
-          favOnly ? "bg-red-500/10 border-red-300 text-red-600" : "border-border text-muted-foreground"
-        )}
-      >
-        <Heart className="h-3 w-3 inline mr-1" /> Saved {favorites.length > 0 && `(${favorites.length})`}
-      </button>
-      <div className="flex flex-wrap gap-1.5">
-        <button
-          onClick={() => setLearnedFilter(learnedFilter === "learned" ? "all" : "learned")}
-          className={cn(
-            "px-2.5 py-1 rounded-full text-[11px] font-bold whitespace-nowrap border flex items-center gap-1",
-            learnedFilter === "learned"
-              ? "bg-green-500/10 border-green-300 text-green-700"
-              : "border-border text-muted-foreground"
-          )}
-        >
-          <CheckCircle2 className={cn("h-3 w-3", learnedFilter === "learned" && "text-green-600")} /> Learned ({progressCounts.learned})
-        </button>
-        <button
-          onClick={() => setLearnedFilter(learnedFilter === "not" ? "all" : "not")}
-          className={cn(
-            "px-2.5 py-1 rounded-full text-[11px] font-bold whitespace-nowrap border flex items-center gap-1",
-            learnedFilter === "not"
-              ? "bg-amber-500/10 border-amber-300 text-amber-700"
-              : "border-border text-muted-foreground"
-          )}
-        >
-          <RotateCcw className="h-3 w-3" /> Not learned ({progressCounts.notLearned})
-        </button>
-      </div>
+      <StudySearchField value={search} onChange={setSearch} placeholder="Search components or function…" />
+      <StudyStatusBar
+        learned={progressCounts.learned}
+        notLearned={progressCounts.notLearned}
+        saved={favorites.length}
+        learnedFilter={learnedFilter}
+        onLearnedFilter={setLearnedFilter}
+        savedOnly={favOnly}
+        onSavedOnly={setFavOnly}
+      />
 
       {isLoading ? (
         <p className="text-sm text-muted-foreground py-8 text-center">Loading…</p>
       ) : byDiagram.size === 0 ? (
-        <div className="text-center py-8 space-y-2">
-          <p className="text-sm text-muted-foreground">No components match.</p>
+        <div className="rounded-2xl border border-border bg-card p-8 text-center space-y-3">
+          <SearchX className="h-7 w-7 mx-auto text-muted-foreground" />
+          <p className="font-semibold">No components match</p>
+          <p className="text-sm text-muted-foreground">Try another search or switch off a filter.</p>
           {(favOnly || learnedFilter !== "all") && (
-            <div className="flex justify-center gap-2">
+            <div className="flex flex-wrap justify-center gap-2 pt-1">
               {favOnly && (
                 <Button variant="outline" size="sm" onClick={() => setFavOnly(false)}>
                   Turn off Saved filter
@@ -212,48 +248,22 @@ function BrowseInner({ licence, gearbox, reset, allowed, setLocation, search, se
           const diagram = diagrams.find((d) => d.id === diagramId);
           const groupLabel = diagram?.label || `Diagram ${diagramId}`;
           const stats = countKnown(list, learningMap);
-          const allKnown = stats.total > 0 && stats.known === stats.total;
           const numbered = list.filter((c) => c.component_number != null).sort((a, b) => (a.component_number ?? 0) - (b.component_number ?? 0));
           const recognition = list.filter((c) => c.component_number == null);
+          const savedCount = list.filter((c) => favorites.includes(c.id)).length;
           return (
-            <div key={diagramId} className="space-y-2">
-              <p className="text-[11px] font-black uppercase tracking-widest text-muted-foreground px-1 flex items-center gap-1.5">
-                {allKnown && <CheckCircle2 className="h-3.5 w-3.5 text-green-600" />}
-                {groupLabel}
-                {list.some((c) => favorites.includes(c.id)) && (
-                  <button
-                    aria-label="Clear saved for this diagram"
-                    title="Clear saved"
-                    onClick={() => clearSaved(list.map((c) => c.id))}
-                    className="text-red-500 ml-auto p-1"
-                  >
-                    <HeartOff className="h-3.5 w-3.5" />
-                  </button>
-                )}
-                {list.some((c) => learningMap[c.id]) && (
-                  <button
-                    aria-label="Reset this section"
-                    title="Reset this section"
-                    onClick={() => resetSection(list.map((c) => c.id), groupLabel)}
-                    className="text-muted-foreground p-1"
-                  >
-                    <RotateCcw className="h-3.5 w-3.5" />
-                  </button>
-                )}
-              </p>
-            <div className="px-1 space-y-1">
-              <div className="flex items-center gap-2">
-                <span className="text-[11px] font-bold text-muted-foreground whitespace-nowrap">
-                  {stats.known} of {stats.total} learned
-                </span>
-                <Progress value={stats.total > 0 ? (stats.known / stats.total) * 100 : 0} className="h-1 flex-1" />
-              </div>
-              <p className="text-[11px] font-semibold text-muted-foreground flex items-center gap-1">
-                <Heart className="h-3 w-3 text-red-500 fill-red-500" /> {list.filter((c) => favorites.includes(c.id)).length} saved
-              </p>
-            </div>
+            <StudyGroupCard
+              key={diagramId}
+              icon={diagramIconFor(groupLabel)}
+              title={groupLabel}
+              known={stats.known}
+              total={stats.total}
+              savedCount={savedCount}
+              onClearSaved={savedCount > 0 ? () => clearSaved(list.map((c) => c.id)) : undefined}
+              onReset={list.some((c) => learningMap[c.id]) ? () => resetSection(list.map((c) => c.id), groupLabel) : undefined}
+            >
               {diagram && (
-                <>
+                <div className="py-3">
                   <ControlDiagramView
                     diagram={diagram}
                     controls={list}
@@ -261,7 +271,7 @@ function BrowseInner({ licence, gearbox, reset, allowed, setLocation, search, se
                     onMarkerSelect={(c) => setSelected((s) => ({ ...s, [diagramId]: c }))}
                   />
                   {selected[diagramId] && (
-                    <div className="rounded-2xl border border-primary/30 bg-primary/5 p-3 space-y-1">
+                    <div className="mt-2 rounded-xl bg-primary/5 border border-primary/20 p-3 space-y-1">
                       <p className="font-bold text-sm">
                         {selected[diagramId]!.component_number != null && `Control ${selected[diagramId]!.component_number} — `}
                         {selected[diagramId]!.component_name}
@@ -269,51 +279,34 @@ function BrowseInner({ licence, gearbox, reset, allowed, setLocation, search, se
                       {selected[diagramId]!.function_notes && <p className="text-xs text-muted-foreground">{selected[diagramId]!.function_notes}</p>}
                     </div>
                   )}
-                </>
-              )}
-              {numbered.map((c) => {
-                const fav = favorites.includes(c.id);
-                const known = isKnown(learningMap[c.id]?.status);
-                return (
-                  <div key={c.id} className="rounded-2xl border border-border bg-card p-4 flex items-start gap-3">
-                    <span className="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold flex items-center justify-center shrink-0">{c.component_number}</span>
-                    <div className="flex-1">
-                      <p className={cn("font-bold text-sm", known && "text-muted-foreground line-through")}>{c.component_name}</p>
-                      {c.function_notes && <p className="text-xs text-muted-foreground mt-1">{c.function_notes}</p>}
-                    </div>
-                    <button onClick={() => { toggleFavoriteControl(c.id); setFavsTick((t: number) => t + 1); }} aria-label="Save" className="pt-1">
-                      <Heart className={cn("h-4 w-4", fav ? "fill-red-500 text-red-500" : "text-muted-foreground")} />
-                    </button>
-                    <button onClick={() => toggleKnown(c.id)} aria-label="I know this" className="pt-1">
-                      <CheckCircle2 className={cn("h-4 w-4", known ? "fill-green-600 text-green-600" : "text-muted-foreground")} />
-                    </button>
-                  </div>
-                );
-              })}
-              {recognition.length > 0 && (
-                <div className="ml-2 border-l-2 border-dashed border-border pl-3 space-y-2">
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Recognition only</p>
-                  {recognition.map((c) => {
-                    const fav = favorites.includes(c.id);
-                    const known = isKnown(learningMap[c.id]?.status);
-                    return (
-                      <div key={c.id} className="rounded-2xl border border-border/60 bg-card/60 p-3 flex items-start gap-3">
-                        <div className="flex-1">
-                          <p className={cn("font-bold text-sm", known && "text-muted-foreground line-through")}>{c.component_name}</p>
-                          {c.function_notes && <p className="text-xs text-muted-foreground mt-1">{c.function_notes}</p>}
-                        </div>
-                        <button onClick={() => { toggleFavoriteControl(c.id); setFavsTick((t: number) => t + 1); }} aria-label="Save" className="pt-1">
-                          <Heart className={cn("h-4 w-4", fav ? "fill-red-500 text-red-500" : "text-muted-foreground")} />
-                        </button>
-                        <button onClick={() => toggleKnown(c.id)} aria-label="I know this" className="pt-1">
-                          <CheckCircle2 className={cn("h-4 w-4", known ? "fill-green-600 text-green-600" : "text-muted-foreground")} />
-                        </button>
-                      </div>
-                    );
-                  })}
                 </div>
               )}
-            </div>
+              {numbered.map((c) => (
+                <ControlRow
+                  key={c.id}
+                  control={c}
+                  fav={favorites.includes(c.id)}
+                  known={isKnown(learningMap[c.id]?.status)}
+                  onToggleFav={() => { toggleFavoriteControl(c.id); setFavsTick((t: number) => t + 1); }}
+                  onToggleKnown={() => toggleKnown(c.id)}
+                />
+              ))}
+              {recognition.length > 0 && (
+                <>
+                  <p className="pt-3 pb-1 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Recognition only</p>
+                  {recognition.map((c) => (
+                    <ControlRow
+                      key={c.id}
+                      control={c}
+                      fav={favorites.includes(c.id)}
+                      known={isKnown(learningMap[c.id]?.status)}
+                      onToggleFav={() => { toggleFavoriteControl(c.id); setFavsTick((t: number) => t + 1); }}
+                      onToggleKnown={() => toggleKnown(c.id)}
+                    />
+                  ))}
+                </>
+              )}
+            </StudyGroupCard>
           );
         })
       )}
