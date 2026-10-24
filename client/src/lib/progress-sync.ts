@@ -8,6 +8,8 @@ const API_BASE = "";
 
 export const PROGRESS_OWNER_KEY = "k53_progress_owner";
 
+export type ProgressItemType = "sign" | "rule" | "control" | "question";
+
 export interface LearnerRecord {
   status: "new" | "learning" | "review" | "mastered";
   correct: number;
@@ -64,7 +66,7 @@ type ServerProgressRow = {
 };
 
 /** Fetch all progress rows for this mobile + item type. Returns null on failure. */
-export async function fetchProgress(itemType: "sign" | "rule" | "control"): Promise<Record<number, LearnerRecord> | null> {
+export async function fetchProgress(itemType: ProgressItemType): Promise<Record<number, LearnerRecord> | null> {
   const code = currentCode();
   const mobile = currentMobile();
   if (!code || !mobile) return null;
@@ -94,7 +96,7 @@ export async function fetchProgress(itemType: "sign" | "rule" | "control"): Prom
 
 /** Upsert a single record. Non-blocking; failures are logged only. */
 export async function pushProgress(
-  itemType: "sign" | "rule" | "control",
+  itemType: ProgressItemType,
   itemId: number,
   record: LearnerRecord
 ): Promise<void> {
@@ -167,7 +169,7 @@ function mergeProgress(
  * Returns null when sync is disabled.
  */
 export async function hydrateProgress(
-  itemType: "sign" | "rule" | "control",
+  itemType: ProgressItemType,
   localMap: Record<number, LearnerRecord>
 ): Promise<Record<number, LearnerRecord> | null> {
   if (!syncEnabled()) return null;

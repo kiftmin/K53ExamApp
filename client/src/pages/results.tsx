@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useMemo, useState, useRef } from "react";
 import { useLocation, Link } from "wouter";
 import { motion } from "framer-motion";
 import { useQuiz } from "@/lib/quiz-context";
@@ -18,18 +18,23 @@ import {
   RotateCcw,
   FileDown,
   Image as ImageIcon,
-  Download
+  Download,
+  Signpost,
+  ScrollText,
+  Car,
+  History
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useQuery } from "@tanstack/react-query";
 import { Question, CATEGORY_NAMES } from "@shared/schema";
+import { apiRequest } from "@/lib/queryClient";
 import html2canvas from 'html2canvas';
 
 const LOGO_URL = "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773061809/logo_edited_vlgoqy.jpg";
 
 export default function Results() {
   const [_, setLocation] = useLocation();
-  const { user, getResults, resetQuiz, isComplete, getElapsedSeconds, startQuiz } = useQuiz();
+  const { user, getResults, resetQuiz, isComplete, getElapsedSeconds, startQuiz, filteredQuestions, answers } = useQuiz();
   const { toast } = useToast();
   const cardRef = useRef<HTMLDivElement>(null);
   const [isExporting, setIsExporting] = useState(false);
@@ -37,6 +42,46 @@ export default function Results() {
   const { data: questions } = useQuery<Question[]>({
     queryKey: ["/api/questions"],
   });
+
+  const wrongQuestionIds = useMemo(() => {
+    const ids: number[] = [];
+    for (const question of filteredQuestions) {
+      const answer = answers[question.question_number];
+      if (answer === undefined) continue;
+      const correctOption = question.options.find((option) => option.correct_answer);
+      if (!correctOption || answer !== correctOption.answer_number) ids.push(question.id);
+    }
+    return ids;
+  }, [filteredQuestions, answers]);
+
+  const { data: cardLinks } = useQuery<Record<number, { signs: number[]; rules: number[]; controls: number[] }>>({
+    queryKey: ["question-card-links", wrongQuestionIds.join(",")],
+    queryFn: async () => {
+      const res = await apiRequest("POST", "/api/questions/links", { ids: wrongQuestionIds });
+      return res.json();
+    },
+    enabled: isComplete && wrongQuestionIds.length > 0,
+    staleTime: Infinity,
+    retry: false,
+  });
+
+  const practiseGroups = useMemo(() => {
+    const signs: number[] = [];
+    const rules: number[] = [];
+    const controls: number[] = [];
+    for (const questionId of wrongQuestionIds) {
+      const links = cardLinks?.[questionId];
+      if (!links) continue;
+      for (const id of links.signs) if (!signs.includes(id)) signs.push(id);
+      for (const id of links.rules) if (!rules.includes(id)) rules.push(id);
+      for (const id of links.controls) if (!controls.includes(id)) controls.push(id);
+    }
+    return [
+      { key: "signs", label: "Signs", Icon: Signpost, ids: signs },
+      { key: "rules", label: "Rules", Icon: ScrollText, ids: rules },
+      { key: "controls", label: "Controls", Icon: Car, ids: controls },
+    ].filter((group) => group.ids.length > 0);
+  }, [wrongQuestionIds, cardLinks]);
 
   useEffect(() => {
     if (!user || !isComplete) {
@@ -224,6 +269,33 @@ export default function Results() {
           </Card>
         </div>
 
+        {practiseGroups.length > 0 && (
+          <Card className="glass-card border-none shadow-xl w-full">
+            <CardContent className="p-5 space-y-3">
+              <div>
+                <h3 className="font-display font-bold text-base">Practise the cards behind your wrong answers</h3>
+                <p className="text-xs text-muted-foreground">
+                  Open just the {practiseGroups.reduce((total, group) => total + group.ids.length, 0)}{" "}
+                  {practiseGroups.reduce((total, group) => total + group.ids.length, 0) === 1 ? "card" : "cards"} linked to the questions you missed.
+                </p>
+              </div>
+              <div className="grid gap-2 sm:grid-cols-3">
+                {practiseGroups.map((group) => (
+                  <Button
+                    key={group.key}
+                    variant="secondary"
+                    className="h-12 rounded-xl font-semibold"
+                    onClick={() => setLocation(`/study/${group.key}/flashcards?ids=${group.ids.join(",")}&from=results`)}
+                  >
+                    <group.Icon className="w-4 h-4 mr-2" />
+                    {group.label} ({group.ids.length} {group.ids.length === 1 ? "card" : "cards"})
+                  </Button>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-md mx-auto">
           <Link href="/review" className="w-full">
             <Button className="w-full h-14 rounded-xl text-base font-semibold shadow-md" variant="secondary">
@@ -256,6 +328,13 @@ export default function Results() {
             Start New Test
           </Button>
         </div>
+
+        <Link href="/history" className="w-full max-w-md mx-auto">
+          <Button variant="ghost" className="w-full h-11 rounded-xl text-sm font-semibold text-muted-foreground">
+            <History className="w-4 h-4 mr-2" />
+            View past tests
+          </Button>
+        </Link>
       </motion.div>
     </Layout>
   );

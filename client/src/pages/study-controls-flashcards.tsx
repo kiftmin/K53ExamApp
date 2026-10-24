@@ -10,7 +10,9 @@ import { Switch } from "@/components/ui/switch";
 import { Progress } from "@/components/ui/progress";
 import ControlDiagramView from "@/components/control-diagram-view";
 import { getFavoriteControlIds, rateControl, getAllControlLearning, initControlSync } from "@/lib/control-storage";
+import { initQuestionSync } from "@/lib/question-results";
 import { practiseDeckItems } from "@/lib/mastery-summary";
+import { getPracticeIdsFromUrl, isFromResults } from "@/lib/practice-ids";
 import { ensureLocalOwner } from "@/lib/progress-owner";
 import { ArrowLeft, ChevronLeft, ChevronRight, RotateCcw, Shuffle } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -43,7 +45,7 @@ export default function StudyControlsFlashcards() {
   useEffect(() => {
     if (allowed) {
       ensureLocalOwner();
-      initControlSync().then(() => setSyncTick((t) => t + 1));
+      Promise.all([initControlSync(), initQuestionSync()]).then(() => setSyncTick((t) => t + 1));
     }
   }, [allowed]);
 
@@ -110,7 +112,14 @@ function Deck({
     };
   }, []);
 
+  const practiseIds = useMemo(getPracticeIdsFromUrl, []);
+  const fromResults = useMemo(isFromResults, []);
+
   const deck = useMemo(() => {
+    if (practiseIds) {
+      const byId = new Map(controls.map((control: StudyControl) => [control.id, control]));
+      return practiseIds.map((id) => byId.get(id)).filter(Boolean) as StudyControl[];
+    }
     if (revision) {
       // Practise mode: missed cards first, then this group's untried cards.
       return practiseDeckItems(controlsWithHeadings, getAllControlLearning(), {
@@ -129,7 +138,7 @@ function Deck({
     if (shuffled) pool = shuffle(pool);
     return pool;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [controls, controlsWithHeadings, revision, favoritesOnly, newOnly, shuffled, reshuffleKey, syncTick]);
+  }, [controls, controlsWithHeadings, revision, practiseIds, favoritesOnly, newOnly, shuffled, reshuffleKey, syncTick]);
 
   const resetDeck = () => { setIndex(0); setFlipped(false); };
   const changeFilter = (fn: () => void) => { fn(); resetDeck(); };
@@ -218,8 +227,8 @@ function Deck({
   return (
     <div className="py-4 space-y-4">
       <div className="flex items-center justify-between px-1">
-        <button onClick={() => setLocation("/study/controls")} className="flex items-center gap-1 text-xs font-semibold text-muted-foreground">
-          <ArrowLeft className="h-3.5 w-3.5" /> Controls
+        <button onClick={() => setLocation(fromResults ? "/results" : "/study/controls")} className="flex items-center gap-1 text-xs font-semibold text-muted-foreground">
+          <ArrowLeft className="h-3.5 w-3.5" /> {fromResults ? "Results" : "Controls"}
         </button>
         <div className="flex items-center gap-2">
           <button onClick={reset} className="text-xs font-semibold text-primary">
@@ -315,6 +324,12 @@ function Deck({
             <ChevronRight className="h-5 w-5" />
           </Button>
         </div>
+      )}
+
+      {fromResults && (
+        <Button variant="outline" className="w-full h-11 rounded-xl font-bold" onClick={() => setLocation("/results")}>
+          <ArrowLeft className="h-4 w-4 mr-1" /> Back to results
+        </Button>
       )}
 
       <div className="glass-card rounded-2xl p-4 space-y-3">

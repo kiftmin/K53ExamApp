@@ -221,7 +221,7 @@ export type RawControlBundle = z.infer<typeof rawControlBundleSchema>;
 export const learnerProgressSchema = z.object({
   id: z.number().optional(),
   mobile_number: z.string(),
-  item_type: z.enum(['sign', 'rule', 'control']),
+  item_type: z.enum(['sign', 'rule', 'control', 'question']),
   item_id: z.number(),
   status: z.enum(['new', 'learning', 'review', 'mastered']),
   correct: z.number().default(0),
@@ -237,7 +237,7 @@ export type InsertLearnerProgress = Omit<z.infer<typeof learnerProgressSchema>, 
 export const learnerProgressUpsertSchema = z.object({
   code: z.string().min(1),
   mobileNumber: z.string().min(1),
-  item_type: z.enum(['sign', 'rule', 'control']),
+  item_type: z.enum(['sign', 'rule', 'control', 'question']),
   item_id: z.number(),
   status: z.enum(['new', 'learning', 'review', 'mastered']),
   correct: z.number().default(0),

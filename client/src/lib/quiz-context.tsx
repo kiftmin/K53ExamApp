@@ -1,5 +1,7 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import React, { createContext, useContext, useState, useEffect, useRef, ReactNode } from "react";
 import { Question } from "@shared/schema";
+import { recordQuizOutcome } from "./quiz-outcome";
+import { recordQuizRun } from "./quiz-history";
 
 export interface UserDetails {
   name: string;
@@ -32,6 +34,7 @@ interface QuizState {
   answers: Record<number, string>; // question_number -> answer_number
   currentIndex: number;
   isComplete: boolean;
+  resultsRecorded: boolean;
   startTime: number | null; // timestamp (ms) when quiz started
 }
 
@@ -57,7 +60,8 @@ export function QuizProvider({ children }: { children: ReactNode }) {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
       try {
-        return JSON.parse(saved);
+        const parsed = JSON.parse(saved);
+        return { ...parsed, resultsRecorded: parsed?.resultsRecorded === true };
       } catch (e) {
         console.error("Failed to parse quiz state from localStorage", e);
       }
@@ -68,6 +72,7 @@ export function QuizProvider({ children }: { children: ReactNode }) {
       answers: {},
       currentIndex: 0,
       isComplete: false,
+      resultsRecorded: false,
       startTime: null,
     };
   });
@@ -75,6 +80,20 @@ export function QuizProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   }, [state]);
+
+  // Record the run once, as soon as it completes. The persisted flag stops a
+  // results-screen reload from recording again; the ref guards StrictMode.
+  const recordingRef = useRef(false);
+  useEffect(() => {
+    if (!state.isComplete || state.resultsRecorded || recordingRef.current) return;
+    if (state.filteredQuestions.length === 0) return;
+    recordingRef.current = true;
+    setState((prev) => (prev.resultsRecorded ? prev : { ...prev, resultsRecorded: true }));
+    recordQuizRun(state.user, state.filteredQuestions, state.answers, {
+      startedAt: state.startTime,
+    });
+    void recordQuizOutcome(state.filteredQuestions, state.answers);
+  }, [state.isComplete, state.resultsRecorded, state.filteredQuestions, state.answers]);
 
   const startQuiz = (user: UserDetails, allQuestions: Question[]) => {
     let selectedQuestions: Question[] = [];
@@ -165,8 +184,10 @@ export function QuizProvider({ children }: { children: ReactNode }) {
       answers: {},
       currentIndex: 0,
       isComplete: false,
+      resultsRecorded: false,
       startTime: Date.now(),
     });
+    recordingRef.current = false;
   };
 
   const answerQuestion = (answerNumber: string) => {
@@ -200,8 +221,10 @@ export function QuizProvider({ children }: { children: ReactNode }) {
       answers: {},
       currentIndex: 0,
       isComplete: false,
+      resultsRecorded: false,
       startTime: null,
     });
+    recordingRef.current = false;
     localStorage.removeItem(STORAGE_KEY);
   };
 

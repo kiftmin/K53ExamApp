@@ -27,6 +27,7 @@ import { BadgeCheck, CheckCheck, ImageOff, Pencil, Plus, Search, Trash2 } from "
 import { cn } from "@/lib/utils";
 import SignForm from "./sign-form";
 import SignImportPanel, { SignShortTextImportPanel } from "./sign-import";
+import SignLinkReview from "./sign-link-review";
 
 function codesMissingImage(s: StudySign): string[] {
   const covered = new Set((s.images || []).map((i) => i.code));
@@ -197,6 +198,7 @@ export default function SignsSection() {
         <TabsList>
           <TabsTrigger value="browse">Browse</TabsTrigger>
           <TabsTrigger value="import">Import &amp; reconcile</TabsTrigger>
+          <TabsTrigger value="link-review">Question links</TabsTrigger>
         </TabsList>
 
         <TabsContent value="browse" className="space-y-4">
@@ -293,6 +295,10 @@ export default function SignsSection() {
         <TabsContent value="import" className="space-y-4">
           <SignImportPanel />
           <SignShortTextImportPanel />
+        </TabsContent>
+
+        <TabsContent value="link-review" className="space-y-4">
+          <SignLinkReview />
         </TabsContent>
       </Tabs>
 

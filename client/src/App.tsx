@@ -18,6 +18,8 @@ import StudyRulesBrowse from "@/pages/study-rules";
 import StudyRulesFlashcards from "@/pages/study-rules-flashcards";
 import StudyControlsBrowse from "@/pages/study-controls";
 import StudyControlsFlashcards from "@/pages/study-controls-flashcards";
+import TestHistory from "@/pages/test-history";
+import TestHistoryDetail from "@/pages/test-history-detail";
 
 import Admin from "@/pages/admin";
 import { BottomNav } from "@/components/bottom-nav";
@@ -31,6 +33,8 @@ function Router() {
       <Route path="/quiz" component={Quiz} />
       <Route path="/results" component={Results} />
       <Route path="/review" component={Review} />
+      <Route path="/history" component={TestHistory} />
+      <Route path="/history/:id" component={TestHistoryDetail} />
       <Route path="/study" component={Study} />
       <Route path="/study/signs" component={StudySignsBrowse} />
       <Route path="/study/signs/flashcards" component={StudySignsFlashcards} />

@@ -9,6 +9,7 @@ import { countKnown } from "@/lib/learning-status";
 import { getAllSignLearning, initSignSync } from "@/lib/sign-storage";
 import { getAllRuleLearning, initRuleSync, getRulesLicenceCode } from "@/lib/rule-storage";
 import { getAllControlLearning, initControlSync, getControlsLicenceCode } from "@/lib/control-storage";
+import { initQuestionSync } from "@/lib/question-results";
 import { visibleSigns } from "@/lib/sign-codes";
 import { ensureLocalOwner } from "@/lib/progress-owner";
 import { BookOpen, Car, Signpost, TrafficCone, ArrowLeft } from "lucide-react";
@@ -18,7 +19,9 @@ export function useStudyGate(): boolean {
   const allowed = typeof sessionStorage !== "undefined" && !!sessionStorage.getItem("k53_access_code");
   useEffect(() => {
     if (!allowed) {
-      setLocation(`/?unlock=${encodeURIComponent(location)}`);
+      // Keep the query string (e.g. ?ids= for a practise deck) across the gate.
+      const target = `${window.location.pathname}${window.location.search}`;
+      setLocation(`/?unlock=${encodeURIComponent(target)}`);
     }
   }, [allowed, location, setLocation]);
   return allowed;
@@ -60,7 +63,7 @@ export default function Study() {
   useEffect(() => {
     if (allowed) {
       ensureLocalOwner();
-      Promise.all([initSignSync(), initRuleSync(), initControlSync()])
+      Promise.all([initSignSync(), initRuleSync(), initControlSync(), initQuestionSync()])
         .catch(() => undefined)
         .then(() => setSyncTick((t) => t + 1));
     }

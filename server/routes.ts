@@ -153,6 +153,21 @@ export async function registerRoutes(
   });
 
   // Reverse lookups: which cards link back to this question (learner-facing)
+  app.post('/api/questions/links', async (req: any, res: any) => {
+    try {
+      const { ids } = z.object({
+        ids: z.array(z.number().int().positive()).max(200),
+      }).parse(req.body);
+      res.json(await storage.getCardLinksForQuestions(ids));
+    } catch (err) {
+      if (err instanceof z.ZodError) {
+        return res.status(400).json({ message: "ids must be up to 200 positive integers", details: err.issues });
+      }
+      console.error("Error reading card links for questions:", err);
+      res.status(500).json({ message: "Failed to load linked cards" });
+    }
+  });
+
   app.get('/api/questions/:id/signs', async (req: any, res: any) => {
     try {
       const id = parseInt(req.params.id, 10);
@@ -369,7 +384,7 @@ export async function registerRoutes(
       const { code, mobileNumber, item_type } = z.object({
         code: z.string().min(1),
         mobileNumber: z.string().min(1),
-        item_type: z.enum(['sign', 'rule', 'control']),
+        item_type: z.enum(['sign', 'rule', 'control', 'question']),
       }).parse(req.query);
 
       const result = await validateCodeAndMobile(code, mobileNumber, (normalized) => storage.getAccessCodeByCode(normalized));
@@ -570,6 +585,48 @@ export async function registerRoutes(
       console.error("Error sending admin request email:", err);
       const status = err?.message?.includes('SMTP') || err?.message?.includes('ADMIN_EMAIL') ? 500 : 400;
       res.status(status).json({ message: err?.message || "Failed to send request", error: err });
+    }
+  });
+
+
+  // === Card-to-question link coverage (admin) ===
+
+  app.get('/api/admin/link-coverage', requireAdminAuth, async (_req: any, res: any) => {
+    try {
+      res.json(await storage.getLinkCoverage());
+    } catch (err) {
+      console.error("Error computing link coverage:", err);
+      res.status(500).json({ message: "Failed to compute link coverage" });
+    }
+  });
+
+  app.get('/api/admin/link-coverage/unlinked', requireAdminAuth, async (req: any, res: any) => {
+    try {
+      const type = String(req.query.type || '');
+      if (!['question', 'sign', 'rule', 'control'].includes(type)) {
+        return res.status(400).json({ message: "type must be question, sign, rule or control" });
+      }
+
+      const offset = Math.max(0, parseInt(String(req.query.offset ?? '0'), 10) || 0);
+      const limitRaw = parseInt(String(req.query.limit ?? '50'), 10) || 50;
+      const limit = Math.min(200, Math.max(1, limitRaw));
+      const search = typeof req.query.search === 'string' ? req.query.search.slice(0, 100) : undefined;
+
+      if (type === 'question') {
+        const rawCategory = req.query.category;
+        const category = rawCategory === undefined || rawCategory === ''
+          ? undefined
+          : parseInt(String(rawCategory), 10);
+        if (category !== undefined && ![1, 2, 3].includes(category)) {
+          return res.status(400).json({ message: "category must be 1, 2 or 3" });
+        }
+        return res.json(await storage.getUnlinkedQuestions({ category, search, offset, limit }));
+      }
+
+      return res.json(await storage.getUnlinkedCards({ type: type as 'sign' | 'rule' | 'control', search, offset, limit }));
+    } catch (err) {
+      console.error("Error listing unlinked items:", err);
+      res.status(500).json({ message: "Failed to load unlinked items" });
     }
   });
 
@@ -956,6 +1013,15 @@ export async function registerRoutes(
     } catch (err) {
       console.error("Error importing rules:", err);
       res.status(400).json({ message: "Invalid rules import payload", error: err });
+    }
+  });
+
+  app.get('/api/rules/links', async (_req: any, res: any) => {
+    try {
+      res.json(await storage.getAllRuleQuestionLinks());
+    } catch (err) {
+      console.error("Error listing rule question links:", err);
+      res.status(500).json({ message: "Failed to load rule-question links" });
     }
   });
 

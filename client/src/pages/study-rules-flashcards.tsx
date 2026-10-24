@@ -10,7 +10,9 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Progress } from "@/components/ui/progress";
 import { getFavoriteRuleIds, rateRule, getAllRuleLearning, initRuleSync } from "@/lib/rule-storage";
+import { initQuestionSync } from "@/lib/question-results";
 import { practiseDeckItems } from "@/lib/mastery-summary";
+import { getPracticeIdsFromUrl, isFromResults } from "@/lib/practice-ids";
 import { ensureLocalOwner } from "@/lib/progress-owner";
 import { ArrowLeft, ChevronLeft, ChevronRight, RotateCcw, Shuffle } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -42,7 +44,7 @@ export default function StudyRulesFlashcards() {
   useEffect(() => {
     if (allowed) {
       ensureLocalOwner();
-      initRuleSync().then(() => setSyncTick((t) => t + 1));
+      Promise.all([initRuleSync(), initQuestionSync()]).then(() => setSyncTick((t) => t + 1));
     }
   }, [allowed]);
 
@@ -104,7 +106,14 @@ function Deck({
     };
   }, []);
 
+  const practiseIds = useMemo(getPracticeIdsFromUrl, []);
+  const fromResults = useMemo(isFromResults, []);
+
   const deck = useMemo(() => {
+    if (practiseIds) {
+      const byId = new Map(rules.map((rule: StudyRule) => [rule.id, rule]));
+      return practiseIds.map((id) => byId.get(id)).filter(Boolean) as StudyRule[];
+    }
     if (revision) {
       // Practise mode: missed cards first, then this group's untried cards.
       return practiseDeckItems(rules, getAllRuleLearning(), {
@@ -123,7 +132,7 @@ function Deck({
     if (shuffled) pool = shuffle(pool);
     return pool;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [rules, favoritesOnly, newOnly, shuffled, reshuffleKey, revision, syncTick]);
+  }, [rules, favoritesOnly, newOnly, shuffled, reshuffleKey, revision, practiseIds, syncTick]);
 
   const resetDeck = () => { setIndex(0); setFlipped(false); };
   const changeFilter = (fn: () => void) => { fn(); resetDeck(); };
@@ -167,8 +176,8 @@ function Deck({
   return (
     <div className="py-4 space-y-4">
       <div className="flex items-center justify-between px-1">
-        <button onClick={() => setLocation("/study/rules")} className="flex items-center gap-1 text-xs font-semibold text-muted-foreground">
-          <ArrowLeft className="h-3.5 w-3.5" /> Rules
+        <button onClick={() => setLocation(fromResults ? "/results" : "/study/rules")} className="flex items-center gap-1 text-xs font-semibold text-muted-foreground">
+          <ArrowLeft className="h-3.5 w-3.5" /> {fromResults ? "Results" : "Rules"}
         </button>
         <div className="flex items-center gap-2">
           <button onClick={reset} className="text-xs font-semibold text-primary">Code {code} ▾</button>
@@ -253,6 +262,12 @@ function Deck({
             <ChevronRight className="h-5 w-5" />
           </Button>
         </div>
+      )}
+
+      {fromResults && (
+        <Button variant="outline" className="w-full h-11 rounded-xl font-bold" onClick={() => setLocation("/results")}>
+          <ArrowLeft className="h-4 w-4 mr-1" /> Back to results
+        </Button>
       )}
 
       <div className="glass-card rounded-2xl p-4 space-y-3">

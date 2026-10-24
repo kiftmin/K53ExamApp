@@ -5,6 +5,7 @@ import QuestionBankSection from "@/components/admin/question-bank-section";
 import SignsSection from "@/components/admin/signs-section";
 import RulesSection from "@/components/admin/rules-section";
 import ControlsSection from "@/components/admin/controls-section";
+import LinkCoverageSection from "@/components/admin/link-coverage-section";
 import SourcesSection from "@/components/admin/sources-section";
 import AccessCodesSection from "@/components/admin/access-codes-section";
 import ImportSection from "@/components/admin/import-section";
@@ -19,6 +20,7 @@ export default function Admin() {
         {section === "signs" && <SignsSection />}
         {section === "rules" && <RulesSection />}
         {section === "controls" && <ControlsSection />}
+        {section === "links" && <LinkCoverageSection />}
         {section === "sources" && <SourcesSection />}
         {section === "codes" && <AccessCodesSection />}
         {section === "import" && <ImportSection />}

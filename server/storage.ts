@@ -1,6 +1,26 @@
 import { db, questions, sources, accessCodes, studySigns, signQuestions, studyRules, ruleQuestions, controlDiagrams, studyControls, controlQuestions, learnerProgress } from './db.js';
 import { Question, InsertQuestion, Source, InsertSource, AccessCode, InsertAccessCode, StudySign, InsertStudySign, SignQuestionLink, StudyRule, InsertStudyRule, RuleQuestionLink, ControlDiagram, InsertControlDiagram, StudyControl, InsertStudyControl, ControlQuestionLink, RawControlBundle, LearnerProgressRow, InsertLearnerProgress } from '../shared/schema.js';
-import { eq, inArray, desc, and, sql } from 'drizzle-orm';
+import { eq, inArray, desc, and, sql, or, ilike, count, countDistinct, notExists } from 'drizzle-orm';
+
+export interface LinkCoverageModule {
+  questions: { total: number; linked: number };
+  cards: { total: number; linked: number };
+}
+
+export type LinkCoverage = Record<'signs' | 'rules' | 'controls', LinkCoverageModule>;
+
+export interface UnlinkedItem {
+  id: number;
+  label: string;
+  heading?: string | null;
+  category?: number;
+  question_number?: number;
+}
+
+export interface UnlinkedPage {
+  items: UnlinkedItem[];
+  total: number;
+}
 
 export interface IStorage {
   getQuestions(): Promise<Question[]>;
@@ -48,11 +68,13 @@ export interface IStorage {
   deleteRule(id: number): Promise<boolean>;
   bulkInsertRules(rows: InsertStudyRule[]): Promise<{ inserted: number; skipped: number }>;
   getQuestionsForRule(ruleId: number): Promise<Question[]>;
+  getAllRuleQuestionLinks(): Promise<RuleQuestionLink[]>;
   linkRuleQuestion(ruleId: number, questionId: number): Promise<RuleQuestionLink>;
   unlinkRuleQuestion(ruleId: number, questionId: number): Promise<boolean>;
 
   getSignsForQuestion(questionId: number): Promise<StudySign[]>;
   getRulesForQuestion(questionId: number): Promise<StudyRule[]>;
+  getCardLinksForQuestions(ids: number[]): Promise<Record<number, { signs: number[]; rules: number[]; controls: number[] }>>;
 
   getControlDiagrams(): Promise<ControlDiagram[]>;
   updateControlDiagram(id: number, data: Partial<InsertControlDiagram>): Promise<ControlDiagram | undefined>;
@@ -65,6 +87,11 @@ export interface IStorage {
   linkControlQuestion(controlId: number, questionId: number): Promise<ControlQuestionLink>;
   unlinkControlQuestion(controlId: number, questionId: number): Promise<boolean>;
   getControlsForQuestion(questionId: number): Promise<StudyControl[]>;
+
+  // Card-to-question link coverage (admin)
+  getLinkCoverage(): Promise<LinkCoverage>;
+  getUnlinkedQuestions(params: { category?: number; search?: string; offset: number; limit: number }): Promise<UnlinkedPage>;
+  getUnlinkedCards(params: { type: 'sign' | 'rule' | 'control'; search?: string; offset: number; limit: number }): Promise<UnlinkedPage>;
 
   // Learner progress (server-synced mastery state)
   getLearnerProgress(mobileNumber: string, itemType: string): Promise<LearnerProgressRow[]>;
@@ -491,6 +518,10 @@ export class NeonDatabaseStorage implements IStorage {
     return data as unknown as Question[];
   }
 
+  async getAllRuleQuestionLinks(): Promise<RuleQuestionLink[]> {
+    return db.select().from(ruleQuestions) as unknown as Promise<RuleQuestionLink[]>;
+  }
+
   async linkRuleQuestion(ruleId: number, questionId: number): Promise<RuleQuestionLink> {
     const rRows = await db.select().from(studyRules).where(eq(studyRules.id, ruleId));
     if (!rRows[0]) throw new Error("Rule not found");
@@ -524,6 +555,31 @@ export class NeonDatabaseStorage implements IStorage {
     const ruleIds = links.map((l) => l.rule_id);
     const data = await db.select().from(studyRules).where(inArray(studyRules.id, ruleIds));
     return data as unknown as StudyRule[];
+  }
+
+  async getCardLinksForQuestions(ids: number[]): Promise<Record<number, { signs: number[]; rules: number[]; controls: number[] }>> {
+    const unique = Array.from(new Set(ids));
+    const result: Record<number, { signs: number[]; rules: number[]; controls: number[] }> = {};
+    for (const id of unique) result[id] = { signs: [], rules: [], controls: [] };
+    if (unique.length === 0) return result;
+
+    const [signRows, ruleRows, controlRows] = await Promise.all([
+      db.select().from(signQuestions).where(inArray(signQuestions.question_id, unique)),
+      db.select().from(ruleQuestions).where(inArray(ruleQuestions.question_id, unique)),
+      db.select().from(controlQuestions).where(inArray(controlQuestions.question_id, unique)),
+    ]);
+
+    for (const row of signRows) result[row.question_id]?.signs.push(row.sign_id);
+    for (const row of ruleRows) result[row.question_id]?.rules.push(row.rule_id);
+    for (const row of controlRows) result[row.question_id]?.controls.push(row.control_id);
+
+    for (const entry of Object.values(result)) {
+      entry.signs.sort((a, b) => a - b);
+      entry.rules.sort((a, b) => a - b);
+      entry.controls.sort((a, b) => a - b);
+    }
+
+    return result;
   }
 
   // === Vehicle Controls study module ===
@@ -666,6 +722,182 @@ export class NeonDatabaseStorage implements IStorage {
     const ids = links.map((l) => l.control_id);
     const data = await db.select().from(studyControls).where(inArray(studyControls.id, ids));
     return data as unknown as StudyControl[];
+  }
+
+  // === Card-to-question link coverage (admin) ===
+
+  private missingLinkForQuestion(category: number) {
+    const table = category === 1 ? ruleQuestions : category === 2 ? signQuestions : controlQuestions;
+    const column = category === 1 ? ruleQuestions.question_id : category === 2 ? signQuestions.question_id : controlQuestions.question_id;
+    return notExists(db.select({ id: table.id }).from(table).where(eq(column, questions.id)));
+  }
+
+  async getLinkCoverage(): Promise<LinkCoverage> {
+    const countValue = (rows: { value: number | string }[]) => Number(rows[0]?.value ?? 0);
+    const [
+      questionTotals,
+      unlinkedRuleQuestions,
+      unlinkedSignQuestions,
+      unlinkedControlQuestions,
+      signCards,
+      ruleCards,
+      controlCards,
+      linkedSignCards,
+      linkedRuleCards,
+      linkedControlCards,
+    ] = await Promise.all([
+      db.select({ category: questions.category, value: count() }).from(questions).groupBy(questions.category),
+      db.select({ value: count() }).from(questions).where(and(eq(questions.category, 1), this.missingLinkForQuestion(1))),
+      db.select({ value: count() }).from(questions).where(and(eq(questions.category, 2), this.missingLinkForQuestion(2))),
+      db.select({ value: count() }).from(questions).where(and(eq(questions.category, 3), this.missingLinkForQuestion(3))),
+      db.select({ value: count() }).from(studySigns),
+      db.select({ value: count() }).from(studyRules),
+      db.select({ value: count() }).from(studyControls),
+      db.select({ value: countDistinct(signQuestions.sign_id) }).from(signQuestions),
+      db.select({ value: countDistinct(ruleQuestions.rule_id) }).from(ruleQuestions),
+      db.select({ value: countDistinct(controlQuestions.control_id) }).from(controlQuestions),
+    ]);
+
+    const totals = new Map(questionTotals.map((row) => [Number(row.category), Number(row.value)]));
+    const module = (category: number, unlinkedRows: { value: number | string }[], cards: { value: number | string }[], linkedCards: { value: number | string }[]): LinkCoverageModule => {
+      const total = totals.get(category) ?? 0;
+      return {
+        questions: { total, linked: Math.max(0, total - countValue(unlinkedRows)) },
+        cards: { total: countValue(cards), linked: countValue(linkedCards) },
+      };
+    };
+
+    return {
+      rules: module(1, unlinkedRuleQuestions, ruleCards, linkedRuleCards),
+      signs: module(2, unlinkedSignQuestions, signCards, linkedSignCards),
+      controls: module(3, unlinkedControlQuestions, controlCards, linkedControlCards),
+    };
+  }
+
+  async getUnlinkedQuestions({ category, search, offset, limit }: { category?: number; search?: string; offset: number; limit: number }): Promise<UnlinkedPage> {
+    const categories = category === 1 || category === 2 || category === 3 ? [category] : [1, 2, 3];
+    let where = or(...categories.map((c) => and(eq(questions.category, c), this.missingLinkForQuestion(c))))!;
+    const term = search?.trim();
+    if (term) {
+      const pattern = `%${term}%`;
+      where = and(
+        where,
+        or(
+          ilike(questions.question_text, pattern),
+          sql`CAST(${questions.question_number} AS TEXT) ILIKE ${pattern}`
+        )
+      )!;
+    }
+
+    const [rows, totals] = await Promise.all([
+      db
+        .select({
+          id: questions.id,
+          question_number: questions.question_number,
+          question_text: questions.question_text,
+          category: questions.category,
+        })
+        .from(questions)
+        .where(where)
+        .orderBy(questions.category, questions.question_number)
+        .offset(offset)
+        .limit(limit),
+      db.select({ value: count() }).from(questions).where(where),
+    ]);
+
+    return {
+      items: rows.map((row) => ({
+        id: row.id,
+        label: row.question_text,
+        question_number: row.question_number,
+        category: row.category,
+      })),
+      total: Number(totals[0]?.value ?? 0),
+    };
+  }
+
+  async getUnlinkedCards({ type, search, offset, limit }: { type: 'sign' | 'rule' | 'control'; search?: string; offset: number; limit: number }): Promise<UnlinkedPage> {
+    const term = search?.trim();
+    const pattern = term ? `%${term}%` : '';
+
+    if (type === 'sign') {
+      const noLink = notExists(
+        db.select({ id: signQuestions.id }).from(signQuestions).where(eq(signQuestions.sign_id, studySigns.id))
+      );
+      const where = pattern
+        ? and(noLink, or(ilike(studySigns.name, pattern), ilike(studySigns.heading, pattern)))!
+        : noLink;
+      const [rows, totals] = await Promise.all([
+        db
+          .select({ id: studySigns.id, name: studySigns.name, heading: studySigns.heading })
+          .from(studySigns)
+          .where(where)
+          .orderBy(studySigns.heading, studySigns.name)
+          .offset(offset)
+          .limit(limit),
+        db.select({ value: count() }).from(studySigns).where(where),
+      ]);
+      return {
+        items: rows.map((row) => ({ id: row.id, label: row.name, heading: row.heading })),
+        total: Number(totals[0]?.value ?? 0),
+      };
+    }
+
+    if (type === 'rule') {
+      const noLink = notExists(
+        db.select({ id: ruleQuestions.id }).from(ruleQuestions).where(eq(ruleQuestions.rule_id, studyRules.id))
+      );
+      const where = pattern
+        ? and(noLink, or(ilike(studyRules.title, pattern), ilike(studyRules.body, pattern), ilike(studyRules.heading, pattern)))!
+        : noLink;
+      const [rows, totals] = await Promise.all([
+        db
+          .select({ id: studyRules.id, title: studyRules.title, body: studyRules.body, heading: studyRules.heading })
+          .from(studyRules)
+          .where(where)
+          .orderBy(studyRules.heading, studyRules.section_ref)
+          .offset(offset)
+          .limit(limit),
+        db.select({ value: count() }).from(studyRules).where(where),
+      ]);
+      return {
+        items: rows.map((row) => ({
+          id: row.id,
+          label: (row.title || '').trim() || row.body,
+          heading: row.heading,
+        })),
+        total: Number(totals[0]?.value ?? 0),
+      };
+    }
+
+    const noLink = notExists(
+      db.select({ id: controlQuestions.id }).from(controlQuestions).where(eq(controlQuestions.control_id, studyControls.id))
+    );
+    const where = pattern ? and(noLink, ilike(studyControls.component_name, pattern))! : noLink;
+    const [rows, totals] = await Promise.all([
+      db
+        .select({
+          id: studyControls.id,
+          label: studyControls.component_name,
+          heading: controlDiagrams.label,
+          component_number: studyControls.component_number,
+        })
+        .from(studyControls)
+        .leftJoin(controlDiagrams, eq(controlDiagrams.id, studyControls.diagram_id))
+        .where(where)
+        .orderBy(controlDiagrams.label, studyControls.component_number)
+        .offset(offset)
+        .limit(limit),
+      db.select({ value: count() }).from(studyControls).where(where),
+    ]);
+    return {
+      items: rows.map((row) => ({
+        id: row.id,
+        label: row.label,
+        heading: row.heading ?? 'Controls',
+      })),
+      total: Number(totals[0]?.value ?? 0),
+    };
   }
 
   // === Learner progress (server-synced mastery state) ===

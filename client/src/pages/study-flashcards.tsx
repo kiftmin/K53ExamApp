@@ -12,9 +12,11 @@ import { Switch } from "@/components/ui/switch";
 import { Progress } from "@/components/ui/progress";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { getFavoriteSignIds, rateSign, getAllSignLearning, initSignSync } from "@/lib/sign-storage";
+import { initQuestionSync } from "@/lib/question-results";
 import { ensureLocalOwner } from "@/lib/progress-owner";
 import { SHOW_TEMPORARY_SIGNS, isTemporaryOnlyRecord, visibleSigns } from "@/lib/sign-codes";
 import { practiseDeckItems } from "@/lib/mastery-summary";
+import { getPracticeIdsFromUrl, isFromResults } from "@/lib/practice-ids";
 import { ArrowLeft, ChevronLeft, ChevronRight, ChevronDown, RotateCcw, Shuffle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useStudyGate } from "./study";
@@ -52,7 +54,7 @@ export default function StudySignsFlashcards() {
   useEffect(() => {
     if (allowed) {
       ensureLocalOwner();
-      initSignSync().then(() => setSyncTick((t) => t + 1));
+      Promise.all([initSignSync(), initQuestionSync()]).then(() => setSyncTick((t) => t + 1));
     }
   }, [allowed]);
 
@@ -66,6 +68,9 @@ export default function StudySignsFlashcards() {
     };
   }, []);
 
+  const practiseIds = useMemo(getPracticeIdsFromUrl, []);
+  const fromResults = useMemo(isFromResults, []);
+
   const headings = useMemo(() => Array.from(new Set(signs.map((s) => s.heading))).sort(), [signs]);
   const subheadings = useMemo(
     () => Array.from(new Set(signs.filter((s) => heading === "all" || s.heading === heading).map((s) => s.subheading))).sort(),
@@ -73,6 +78,14 @@ export default function StudySignsFlashcards() {
   );
 
   const deck = useMemo(() => {
+    if (practiseIds) {
+      const byId = new Map(signs.map((sign) => [sign.id, sign]));
+      return practiseIds
+        .map((id) => byId.get(id))
+        .filter((sign): sign is StudySign =>
+          !!sign && (SHOW_TEMPORARY_SIGNS || !isTemporaryOnlyRecord(sign.codes))
+        );
+    }
     if (revision) {
       // Practise mode: missed cards first, then this group's untried cards.
       return practiseDeckItems(visibleSigns(signs), getAllSignLearning(), {
@@ -95,7 +108,7 @@ export default function StudySignsFlashcards() {
     if (shuffled) pool = shuffle(pool);
     return pool;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [signs, heading, subheading, favoritesOnly, newOnly, shuffled, reshuffleKey, revision, syncTick]);
+  }, [signs, heading, subheading, favoritesOnly, newOnly, shuffled, reshuffleKey, revision, practiseIds, syncTick]);
 
   const resetDeck = () => {
     setIndex(0);
@@ -165,8 +178,8 @@ export default function StudySignsFlashcards() {
     <Layout>
       <div className="py-4 space-y-4">
         <div className="flex items-center justify-between px-1">
-          <button onClick={() => setLocation("/study/signs")} className="flex items-center gap-1 text-xs font-semibold text-muted-foreground">
-            <ArrowLeft className="h-3.5 w-3.5" /> Signs
+          <button onClick={() => setLocation(fromResults ? "/results" : "/study/signs")} className="flex items-center gap-1 text-xs font-semibold text-muted-foreground">
+            <ArrowLeft className="h-3.5 w-3.5" /> {fromResults ? "Results" : "Signs"}
           </button>
           <span className="text-xs font-bold text-muted-foreground">
             {deck.length > 0 ? `${Math.min(index, deck.length - 1) + 1} / ${deck.length}` : "0 / 0"}
@@ -363,6 +376,12 @@ export default function StudySignsFlashcards() {
               <ChevronRight className="h-5 w-5" />
             </Button>
           </div>
+        )}
+
+        {fromResults && (
+          <Button variant="outline" className="w-full h-11 rounded-xl font-bold" onClick={() => setLocation("/results")}>
+            <ArrowLeft className="h-4 w-4 mr-1" /> Back to results
+          </Button>
         )}
 
         <div className="glass-card rounded-2xl p-4 space-y-3">

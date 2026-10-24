@@ -26,6 +26,7 @@ import { cn } from "@/lib/utils";
 import RuleForm from "./rule-form";
 import RuleImportReview from "./rule-import-review";
 import RuleImportPanel from "./rule-import";
+import RuleLinkReview from "./rule-link-review";
 
 const CODE_LABELS: Record<number, string> = { 0: "All", 1: "Moto", 2: "Light", 3: "Heavy" };
 
@@ -139,6 +140,7 @@ export default function RulesSection() {
         <TabsList>
           <TabsTrigger value="browse">Browse</TabsTrigger>
           <TabsTrigger value="import">Import</TabsTrigger>
+          <TabsTrigger value="links">Question links</TabsTrigger>
           <TabsTrigger value="review">Review queue{unreviewedCount > 0 ? ` (${unreviewedCount})` : ""}</TabsTrigger>
         </TabsList>
 
@@ -225,6 +227,10 @@ export default function RulesSection() {
               ))}
             </div>
           )}
+        </TabsContent>
+
+        <TabsContent value="links">
+          <RuleLinkReview />
         </TabsContent>
 
         <TabsContent value="review">

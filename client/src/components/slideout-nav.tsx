@@ -1,15 +1,18 @@
 import { useState } from "react";
 import { useLocation } from "wouter";
-import { House, BookOpen, Settings, Menu, X, LogOut } from "lucide-react";
+import { House, BookOpen, History, Settings, Menu, X, LogOut } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { clearSignLocalData } from "@/lib/sign-storage";
 import { clearRuleLocalData } from "@/lib/rule-storage";
 import { clearControlLocalData } from "@/lib/control-storage";
+import { clearQuestionResultsLocalData } from "@/lib/question-results";
+import { clearQuizHistoryLocalData } from "@/lib/quiz-history";
 import { clearProgressOwner } from "@/lib/progress-owner";
 
 const LINKS = [
   { path: "/", label: "Home", icon: House },
   { path: "/study", label: "Study Modules", icon: BookOpen },
+  { path: "/history", label: "Past tests", icon: History },
   { path: "/admin", label: "Admin", icon: Settings },
 ];
 
@@ -26,6 +29,8 @@ function clearSession() {
     clearSignLocalData();
     clearRuleLocalData();
     clearControlLocalData();
+    clearQuestionResultsLocalData();
+    clearQuizHistoryLocalData();
     clearProgressOwner();
   }
 }
