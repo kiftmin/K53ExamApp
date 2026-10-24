@@ -351,6 +351,8 @@ export function StudySubRow({
   icon: Icon,
   title,
   countLabel,
+  known,
+  total,
   open,
   onToggle,
   actions,
@@ -359,11 +361,18 @@ export function StudySubRow({
   icon: LucideIcon;
   title: string;
   countLabel: string;
+  known?: number;
+  total?: number;
   open: boolean;
   onToggle: () => void;
   actions?: ReactNode;
   children?: ReactNode;
 }) {
+  const learned = known ?? 0;
+  const items = total ?? 0;
+  const complete = items > 0 && learned === items;
+  const statusLabel = learned > 0 ? `${learned} of ${items} learned` : countLabel;
+
   return (
     <div className="py-0.5">
       <div className="flex items-center gap-1">
@@ -372,8 +381,13 @@ export function StudySubRow({
             <Icon className="h-4 w-4" />
           </span>
           <span className="min-w-0 flex-1">
-            <span className="block text-sm font-medium leading-tight">{title}</span>
-            <span className="block text-[11px] text-muted-foreground">{countLabel}</span>
+            <span className="flex items-start gap-1.5">
+              <span className="min-w-0 text-sm font-medium leading-tight">{title}</span>
+              {complete && <CheckCircle2 className="h-4 w-4 shrink-0 mt-0.5 text-success" />}
+            </span>
+            <span className={cn("block text-[11px]", complete ? "font-semibold text-success" : "text-muted-foreground")}>
+              {statusLabel}
+            </span>
           </span>
           <ChevronDown
             className={cn("h-4 w-4 shrink-0 text-muted-foreground transition-transform", open && "rotate-180")}

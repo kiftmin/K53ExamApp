@@ -53,11 +53,14 @@ function SubheadingGroup({ subheading, list, favorites, learningMap, onToggleFav
   const isOpen = forceOpen || open;
   const hasFavs = list.some((r: StudyRule) => favorites.includes(r.id));
   const hasProgress = list.some((r: StudyRule) => learningMap[r.id]);
+  const stats = countKnown(list as StudyRule[], learningMap);
   return (
     <StudySubRow
       icon={ruleIconFor(subheading)}
       title={sentenceCase(subheading)}
       countLabel={`${list.length} ${list.length === 1 ? "rule" : "rules"}`}
+      known={stats.known}
+      total={stats.total}
       open={isOpen}
       onToggle={() => setOpen(!open)}
       actions={

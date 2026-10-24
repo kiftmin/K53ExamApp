@@ -58,11 +58,14 @@ function SubheadingSignGroup({
   const isOpen = forceOpen || open;
   const hasFavs = list.some((s: StudySign) => favorites.includes(s.id));
   const hasProgress = list.some((s: StudySign) => learningMap[s.id]);
+  const stats = countKnown(list as StudySign[], learningMap);
   return (
     <StudySubRow
       icon={signIconFor(subheading)}
       title={sentenceCase(subheading)}
       countLabel={`${list.length} ${list.length === 1 ? "sign" : "signs"}`}
+      known={stats.known}
+      total={stats.total}
       open={isOpen}
       onToggle={() => setOpen(!open)}
       actions={
