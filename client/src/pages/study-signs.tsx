@@ -112,10 +112,10 @@ function SubheadingSignGroup({
               )}
             </div>
             <div className="flex-1 min-w-0">
-              <p className={cn("text-sm font-semibold leading-snug flex items-center gap-1", known && STUDY_KNOWN_TEXT_CLASS)}>
-                <span className="truncate">{s.name}</span>
-                {s.is_verified_exam_question && <BadgeCheck className="h-3.5 w-3.5 shrink-0 text-green-600" />}
-                {fav && <Heart className="h-3.5 w-3.5 shrink-0 text-red-500 fill-red-500" />}
+              <p className={cn("text-sm font-semibold leading-snug flex items-start gap-1", known && STUDY_KNOWN_TEXT_CLASS)}>
+                <span className="min-w-0 flex-1">{s.name}</span>
+                {s.is_verified_exam_question && <BadgeCheck className="h-3.5 w-3.5 shrink-0 mt-0.5 text-green-600" />}
+                {fav && <Heart className="h-3.5 w-3.5 shrink-0 mt-0.5 text-red-500 fill-red-500" />}
               </p>
               <div className="mt-1">
                 <div className="flex flex-wrap gap-1">
@@ -300,13 +300,16 @@ export default function StudySignsBrowse() {
           </Button>
         </div>
 
-        <div className="sticky top-0 z-20 bg-background/95 backdrop-blur py-2 space-y-2.5">
-          <StudySearchField value={search} onChange={setSearch} placeholder="Search name or code…" />
+        <div className="space-y-2.5">
           <StudyCategoryTabs
             tabs={[{ id: "all", label: "All" }, ...headings.map((h) => ({ id: h, label: titleCase(h) }))]}
             value={heading}
             onChange={setHeading}
           />
+        </div>
+
+        <div className="sticky top-0 z-20 bg-background/95 backdrop-blur py-2 space-y-2.5">
+          <StudySearchField value={search} onChange={setSearch} placeholder="Search name or code…" />
           <StudyStatusBar
             learned={progressCounts.learned}
             notLearned={progressCounts.notLearned}
