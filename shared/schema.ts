@@ -245,3 +245,52 @@ export const learnerProgressUpsertSchema = z.object({
   last_rating: z.string().nullable().optional(),
   last_seen_at: z.coerce.date().nullable().optional(),
 });
+
+// === Completed test history (server-synced, keyed by mobile number) ===
+
+export const testHistoryRunSchema = z.object({
+  id: z.string().min(1).max(128),
+  finishedAt: z.string().refine((value) => !Number.isNaN(new Date(value).getTime()), {
+    message: "Invalid finishedAt timestamp",
+  }),
+  name: z.string().max(200),
+  surname: z.string().max(200),
+  licenseCode: z.string().max(20),
+  category: z.number().int(),
+  testType: z.enum(["category", "simulation"]),
+  items: z.array(
+    z.object({
+      id: z.number().int(),
+      number: z.number().int(),
+    })
+  ).max(300),
+  answers: z.record(z.string(), z.string()),
+  correct: z.number().int().min(0),
+  total: z.number().int().min(1).max(300),
+  percentage: z.number().int().min(0).max(100),
+  categories: z.array(
+    z.object({
+      categoryId: z.number().int(),
+      correct: z.number().int(),
+      total: z.number().int(),
+      pass: z.boolean(),
+    })
+  ).max(10),
+  overallPass: z.boolean(),
+  elapsedSeconds: z.number().int().min(0),
+});
+
+export type TestHistoryRunPayload = z.infer<typeof testHistoryRunSchema>;
+
+export const testHistorySyncSchema = z.object({
+  code: z.string().min(1),
+  mobileNumber: z.string().min(1),
+  run: testHistoryRunSchema,
+});
+
+export type InsertTestHistoryRun = {
+  mobile_number: string;
+  run_id: string;
+  finished_at: Date;
+  payload: TestHistoryRunPayload;
+};

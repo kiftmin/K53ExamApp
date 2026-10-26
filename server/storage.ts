@@ -1,5 +1,5 @@
-import { db, questions, sources, accessCodes, studySigns, signQuestions, studyRules, ruleQuestions, controlDiagrams, studyControls, controlQuestions, learnerProgress } from './db.js';
-import { Question, InsertQuestion, Source, InsertSource, AccessCode, InsertAccessCode, StudySign, InsertStudySign, SignQuestionLink, StudyRule, InsertStudyRule, RuleQuestionLink, ControlDiagram, InsertControlDiagram, StudyControl, InsertStudyControl, ControlQuestionLink, RawControlBundle, LearnerProgressRow, InsertLearnerProgress } from '../shared/schema.js';
+import { db, questions, sources, accessCodes, studySigns, signQuestions, studyRules, ruleQuestions, controlDiagrams, studyControls, controlQuestions, learnerProgress, learnerTestRuns } from './db.js';
+import { Question, InsertQuestion, Source, InsertSource, AccessCode, InsertAccessCode, StudySign, InsertStudySign, SignQuestionLink, StudyRule, InsertStudyRule, RuleQuestionLink, ControlDiagram, InsertControlDiagram, StudyControl, InsertStudyControl, ControlQuestionLink, RawControlBundle, LearnerProgressRow, InsertLearnerProgress, InsertTestHistoryRun, TestHistoryRunPayload } from '../shared/schema.js';
 import { eq, inArray, desc, and, sql, or, ilike, count, countDistinct, notExists } from 'drizzle-orm';
 
 export interface LinkCoverageModule {
@@ -96,6 +96,10 @@ export interface IStorage {
   // Learner progress (server-synced mastery state)
   getLearnerProgress(mobileNumber: string, itemType: string): Promise<LearnerProgressRow[]>;
   upsertLearnerProgress(data: InsertLearnerProgress): Promise<LearnerProgressRow>;
+
+  // Completed test history (server-synced by mobile number)
+  getTestHistoryRuns(mobileNumber: string, limit: number): Promise<TestHistoryRunPayload[]>;
+  upsertTestHistoryRun(data: InsertTestHistoryRun): Promise<void>;
   bulkImportControls(bundle: RawControlBundle): Promise<{ diagrams: number; controls: number; questions: number; links: number; skippedQuestions: number }>;
 }
 
@@ -948,6 +952,35 @@ export class NeonDatabaseStorage implements IStorage {
       last_seen_at: data.last_seen_at ? new Date(data.last_seen_at) : null,
     }).returning();
     return row as unknown as LearnerProgressRow;
+  }
+
+  async getTestHistoryRuns(mobileNumber: string, limit: number): Promise<TestHistoryRunPayload[]> {
+    const rows = await db
+      .select()
+      .from(learnerTestRuns)
+      .where(eq(learnerTestRuns.mobile_number, mobileNumber))
+      .orderBy(desc(learnerTestRuns.finished_at))
+      .limit(limit);
+    return rows.map((row) => row.payload as TestHistoryRunPayload);
+  }
+
+  async upsertTestHistoryRun(data: InsertTestHistoryRun): Promise<void> {
+    await db
+      .insert(learnerTestRuns)
+      .values({
+        mobile_number: data.mobile_number,
+        run_id: data.run_id,
+        finished_at: data.finished_at,
+        payload: data.payload,
+      })
+      .onConflictDoUpdate({
+        target: [learnerTestRuns.mobile_number, learnerTestRuns.run_id],
+        set: {
+          finished_at: data.finished_at,
+          payload: data.payload,
+          updated_at: new Date(),
+        },
+      });
   }
 
   async bulkImportControls(bundle: RawControlBundle): Promise<{ diagrams: number; controls: number; questions: number; links: number; skippedQuestions: number }> {

@@ -1,10 +1,12 @@
-import { useMemo } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
 import { Layout } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { CATEGORY_NAMES } from "@shared/schema";
-import { getQuizRuns, type QuizHistoryRun } from "@/lib/quiz-history";
-import { ArrowLeft, ChevronRight, History, ListChecks } from "lucide-react";
+import { getQuizRuns, initQuizHistorySync, type QuizHistoryRun } from "@/lib/quiz-history";
+import { ensureLocalOwner } from "@/lib/progress-owner";
+import { currentMobile, syncEnabled } from "@/lib/progress-sync";
+import { ArrowLeft, ChevronRight, History, ListChecks, RefreshCw } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 function testLabel(run: QuizHistoryRun): string {
@@ -24,9 +26,61 @@ function formatDuration(seconds: number): string {
   return `${mins}:${String(secs).padStart(2, "0")}`;
 }
 
+function maskMobile(mobile: string | null): string {
+  if (!mobile || mobile.length < 6) return "this mobile number";
+  return `${mobile.slice(0, 3)} *** ${mobile.slice(-3)}`;
+}
+
 export default function TestHistory() {
   const [, setLocation] = useLocation();
-  const runs = useMemo(() => getQuizRuns(), []);
+  const [runs, setRuns] = useState<QuizHistoryRun[]>(() => {
+    ensureLocalOwner();
+    return getQuizRuns();
+  });
+  const [loading, setLoading] = useState(true);
+  const [synced, setSynced] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const result = await initQuizHistorySync();
+        if (!cancelled && result) {
+          setRuns(result.runs);
+          setSynced(result.synced);
+        }
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const handleSync = async () => {
+    setLoading(true);
+    try {
+      const result = await initQuizHistorySync();
+      if (result) {
+        setRuns(result.runs);
+        setSynced(result.synced);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const syncAvailable = syncEnabled();
+  const syncStatus = !syncAvailable
+    ? "Sign in with a mobile-linked code to sync across devices."
+    : loading && runs.length > 0
+      ? "Syncing..."
+      : synced === false
+        ? "Could not sync. Saved on this device only."
+        : synced
+          ? `Synced to ${maskMobile(currentMobile())}.`
+          : null;
 
   return (
     <Layout>
@@ -43,11 +97,33 @@ export default function TestHistory() {
           </Button>
           <div>
             <h1 className="text-2xl font-display font-bold">Past tests</h1>
-            <p className="text-sm text-muted-foreground">Completed tests on this device</p>
+            <p className="text-sm text-muted-foreground">Completed tests saved to this account</p>
           </div>
+          {syncAvailable && (
+            <Button
+              variant="ghost"
+              size="sm"
+              className="ml-auto h-8 px-2 text-xs"
+              onClick={handleSync}
+              disabled={loading}
+            >
+              <RefreshCw className={cn("w-3.5 h-3.5 mr-1", loading && "animate-spin")} />
+              Sync
+            </Button>
+          )}
         </div>
 
-        {runs.length === 0 ? (
+        {syncStatus && (
+          <p className={cn("text-xs px-1", synced ? "text-success" : "text-muted-foreground")}>
+            {syncStatus}
+          </p>
+        )}
+
+        {loading && runs.length === 0 ? (
+          <div className="rounded-2xl border border-border p-10 text-center">
+            <p className="text-sm text-muted-foreground">Loading past tests...</p>
+          </div>
+        ) : runs.length === 0 ? (
           <div className="rounded-2xl border border-border p-10 text-center space-y-3">
             <History className="h-8 w-8 mx-auto text-muted-foreground" />
             <p className="font-bold">No completed tests yet</p>

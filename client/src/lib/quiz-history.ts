@@ -1,7 +1,8 @@
-// Completed-test history for this device. One small record per run —
-// enough to show the report card again without keeping full question data.
+// Completed-test history, synced across devices for mobile-linked codes.
+// One small record per run is enough to rebuild the report card.
 
 import type { Question } from "@shared/schema";
+import { currentCode, currentMobile, recordOwnerIfMissing, syncEnabled } from "./progress-sync";
 
 const QUIZ_HISTORY_KEY = "k53_quiz_history";
 export const QUIZ_HISTORY_LIMIT = 20;
@@ -121,6 +122,93 @@ export function getQuizRun(id: string): QuizHistoryRun | undefined {
   return readRuns().find((run) => run.id === id);
 }
 
+function sortRuns(runs: QuizHistoryRun[]): QuizHistoryRun[] {
+  return [...runs].sort(
+    (a, b) => new Date(b.finishedAt).getTime() - new Date(a.finishedAt).getTime()
+  );
+}
+
+function mergeRuns(serverRuns: QuizHistoryRun[], localRuns: QuizHistoryRun[]): QuizHistoryRun[] {
+  const byId = new Map<string, QuizHistoryRun>();
+  for (const run of [...serverRuns, ...localRuns]) byId.set(run.id, run);
+  return sortRuns(Array.from(byId.values())).slice(0, QUIZ_HISTORY_LIMIT);
+}
+
+async function fetchServerRuns(): Promise<QuizHistoryRun[] | null> {
+  const code = currentCode();
+  const mobile = currentMobile();
+  if (!code || !mobile) return null;
+
+  try {
+    const res = await fetch(
+      `/api/test-history?code=${encodeURIComponent(code)}&mobileNumber=${encodeURIComponent(mobile)}`,
+      { credentials: "include" }
+    );
+    if (!res.ok) return null;
+    const data = await res.json();
+    if (!Array.isArray(data?.runs)) return null;
+    return sortRuns(
+      data.runs
+        .map(normalizeRun)
+        .filter((run: QuizHistoryRun | null): run is QuizHistoryRun => !!run)
+    );
+  } catch {
+    return null;
+  }
+}
+
+async function pushServerRun(run: QuizHistoryRun): Promise<boolean> {
+  const code = currentCode();
+  const mobile = currentMobile();
+  if (!code || !mobile) return false;
+
+  try {
+    const res = await fetch("/api/test-history", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ code, mobileNumber: mobile, run }),
+    });
+    if (!res.ok) {
+      const detail = await res.text().catch(() => "");
+      console.warn(`[test-history] save failed (${res.status}): ${detail}`);
+      return false;
+    }
+    return true;
+  } catch {
+    // Local history remains available; the next sync retries.
+    return false;
+  }
+}
+
+export interface QuizHistorySyncResult {
+  runs: QuizHistoryRun[];
+  synced: boolean;
+}
+
+export async function initQuizHistorySync(): Promise<QuizHistorySyncResult | null> {
+  if (typeof localStorage === "undefined") return { runs: [], synced: false };
+  recordOwnerIfMissing();
+
+  const local = readRuns();
+  if (!syncEnabled()) return { runs: local, synced: false };
+
+  const identity = `${currentCode() || ""}|${currentMobile() || ""}`;
+  const stillCurrent = () => `${currentCode() || ""}|${currentMobile() || ""}` === identity;
+
+  const serverRuns = await fetchServerRuns();
+  if (serverRuns === null) return stillCurrent() ? { runs: local, synced: false } : null;
+
+  const merged = mergeRuns(serverRuns, local);
+  writeRuns(merged);
+
+  const serverIds = new Set(serverRuns.map((run) => run.id));
+  const localOnly = local.filter((run) => !serverIds.has(run.id));
+  const pushed = localOnly.length === 0 || (await Promise.all(localOnly.map(pushServerRun))).every(Boolean);
+
+  return stillCurrent() ? { runs: merged, synced: pushed } : null;
+}
+
 /** Save one completed run. No-op when there is no test to record. */
 export function recordQuizRun(
   user: QuizHistoryUser | null,
@@ -129,6 +217,7 @@ export function recordQuizRun(
   options: { startedAt?: number | null; finishedAt?: string } = {}
 ): void {
   if (typeof localStorage === "undefined" || !user || questions.length === 0) return;
+  recordOwnerIfMissing();
 
   const categories = new Map<number, QuizHistoryCategory>();
   let correct = 0;
@@ -187,6 +276,7 @@ export function recordQuizRun(
   };
 
   writeRuns([run, ...readRuns()].slice(0, QUIZ_HISTORY_LIMIT));
+  if (syncEnabled()) void pushServerRun(run);
 }
 
 export function clearQuizHistoryLocalData(): void {

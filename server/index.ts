@@ -160,6 +160,22 @@ app.use((req, res, next) => {
         CONSTRAINT learner_progress_unique_item UNIQUE (mobile_number, item_type, item_id)
       );
     `;
+    await client`
+      CREATE TABLE IF NOT EXISTS learner_test_runs (
+        id SERIAL PRIMARY KEY,
+        mobile_number TEXT NOT NULL,
+        run_id TEXT NOT NULL,
+        finished_at TIMESTAMP NOT NULL,
+        payload JSONB NOT NULL,
+        created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+        updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
+        CONSTRAINT learner_test_runs_unique_run UNIQUE (mobile_number, run_id)
+      );
+    `;
+    await client`
+      CREATE INDEX IF NOT EXISTS learner_test_runs_mobile_finished_idx
+        ON learner_test_runs (mobile_number, finished_at DESC);
+    `;
     // Pure-additive column migrations (safe to run every boot)
     // Existing questions keep the bank's curated state → default TRUE on migration.
     await client`ALTER TABLE questions ADD COLUMN IF NOT EXISTS is_reviewed BOOLEAN NOT NULL DEFAULT TRUE;`;

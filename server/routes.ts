@@ -20,7 +20,7 @@ import { slugifyCode, listStagedImages, stageImageUpload, attachStagedToCode, sa
 import { saveImageForDiagram } from "./diagram-images.js";
 import { validateAdminAccess, requireAdminAuth } from "./admin-auth.js";
 import { z } from "zod";
-import { learnerProgressSchema, learnerProgressUpsertSchema, signShortTextImportSchema, type InsertLearnerProgress } from "../shared/schema.js";
+import { learnerProgressSchema, learnerProgressUpsertSchema, testHistoryRunSchema, testHistorySyncSchema, signShortTextImportSchema, type InsertLearnerProgress } from "../shared/schema.js";
 
 // Neon serverless connections occasionally fail on the first attempt; retry a
 // couple of times before surfacing a 500 to the client.
@@ -434,6 +434,69 @@ export async function registerRoutes(
         return res.status(400).json({ valid: false, message: "Invalid progress payload", details: err.issues });
       }
       res.status(500).json({ valid: false, message: "Failed to save progress" });
+    }
+  });
+
+  // === Completed test history (server-synced, keyed by mobile number) ===
+
+  app.get('/api/test-history', async (req: any, res: any) => {
+    try {
+      const { code, mobileNumber } = z.object({
+        code: z.string().min(1),
+        mobileNumber: z.string().min(1),
+      }).parse(req.query);
+
+      const result = await validateCodeAndMobile(code, mobileNumber, (normalized) => storage.getAccessCodeByCode(normalized));
+      if (!result.valid) {
+        return res.status(401).json({ valid: false, message: result.message });
+      }
+      if (result.type === 'daily') {
+        return res.status(403).json({ valid: false, message: "Test history sync requires a Weekly, Monthly or Master code." });
+      }
+
+      const mobile = (result.code.mobile_number || '').trim();
+      const rows = await withDbRetry(() => storage.getTestHistoryRuns(mobile, 20));
+      const runs = rows.flatMap((payload) => {
+        const parsed = testHistoryRunSchema.safeParse(payload);
+        return parsed.success ? [parsed.data] : [];
+      });
+      return res.json({ valid: true, type: result.type, runs });
+    } catch (err) {
+      console.error("Error fetching test history:", err);
+      if (err instanceof z.ZodError) {
+        return res.status(400).json({ valid: false, message: "Invalid test history request", details: err.issues });
+      }
+      res.status(500).json({ valid: false, message: "Failed to load test history" });
+    }
+  });
+
+  app.post('/api/test-history', async (req: any, res: any) => {
+    try {
+      const { code, mobileNumber, run } = testHistorySyncSchema.parse(req.body);
+
+      const result = await validateCodeAndMobile(code, mobileNumber, (normalized) => storage.getAccessCodeByCode(normalized));
+      if (!result.valid) {
+        return res.status(401).json({ valid: false, message: result.message });
+      }
+      if (result.type === 'daily') {
+        return res.status(403).json({ valid: false, message: "Test history sync requires a Weekly, Monthly or Master code." });
+      }
+
+      const mobile = (result.code.mobile_number || '').trim();
+      const finishedAt = new Date(run.finishedAt);
+      await withDbRetry(() => storage.upsertTestHistoryRun({
+        mobile_number: mobile,
+        run_id: run.id,
+        finished_at: finishedAt,
+        payload: run,
+      }));
+      return res.json({ valid: true, type: result.type, run });
+    } catch (err) {
+      console.error("Error saving test history:", err);
+      if (err instanceof z.ZodError) {
+        return res.status(400).json({ valid: false, message: "Invalid test history payload", details: err.issues });
+      }
+      res.status(500).json({ valid: false, message: "Failed to save test history" });
     }
   });
 

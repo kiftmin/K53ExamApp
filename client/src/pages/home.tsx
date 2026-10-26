@@ -9,6 +9,7 @@ import { initSignSync } from "@/lib/sign-storage";
 import { initRuleSync } from "@/lib/rule-storage";
 import { initControlSync } from "@/lib/control-storage";
 import { initQuestionSync } from "@/lib/question-results";
+import { initQuizHistorySync } from "@/lib/quiz-history";
 import { ensureLocalOwner } from "@/lib/progress-owner";
 import { useAccessCode } from "@/lib/use-access-code";
 import { Layout } from "@/components/layout";
@@ -104,7 +105,7 @@ export default function Home() {
     ensureLocalOwner();
     (async () => {
       try {
-        await Promise.all([initSignSync(), initRuleSync(), initControlSync(), initQuestionSync()]);
+        await Promise.all([initSignSync(), initRuleSync(), initControlSync(), initQuestionSync(), initQuizHistorySync()]);
       } catch {
         // Keep local data if hydration fails.
       }

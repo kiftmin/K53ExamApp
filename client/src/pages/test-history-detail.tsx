@@ -1,11 +1,12 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useLocation, useRoute } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { CATEGORY_NAMES, type Question } from "@shared/schema";
 import { Layout } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { getQuizRun, type QuizHistoryRun } from "@/lib/quiz-history";
+import { getQuizRun, initQuizHistorySync, type QuizHistoryRun } from "@/lib/quiz-history";
+import { ensureLocalOwner } from "@/lib/progress-owner";
 import { AlertTriangle, ArrowLeft, CheckCircle2, XCircle } from "lucide-react";
 
 function testLabel(run: QuizHistoryRun): string {
@@ -29,8 +30,45 @@ export default function TestHistoryDetail() {
   const [, setLocation] = useLocation();
   const [, params] = useRoute("/history/:id");
   const runId = params?.id ?? "";
-  const run = useMemo(() => (runId ? getQuizRun(runId) : undefined), [runId]);
+  const [loadedRun, setLoadedRun] = useState<QuizHistoryRun | undefined>(() => {
+    ensureLocalOwner();
+    return runId ? getQuizRun(runId) : undefined;
+  });
+  const [checkingHistory, setCheckingHistory] = useState(() => !!runId && !loadedRun);
   const [failedImages, setFailedImages] = useState<Set<number>>(() => new Set());
+
+  useEffect(() => {
+    if (!runId) {
+      setLoadedRun(undefined);
+      setCheckingHistory(false);
+      return;
+    }
+
+    ensureLocalOwner();
+    const local = getQuizRun(runId);
+    if (local) {
+      setLoadedRun(local);
+      setCheckingHistory(false);
+      return;
+    }
+
+    let cancelled = false;
+    setCheckingHistory(true);
+    initQuizHistorySync()
+      .then(() => {
+        if (cancelled) return;
+        setLoadedRun(getQuizRun(runId));
+        setCheckingHistory(false);
+      })
+      .catch(() => {
+        if (!cancelled) setCheckingHistory(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [runId]);
+
+  const run = loadedRun?.id === runId ? loadedRun : undefined;
 
   const { data: questions = [], isLoading } = useQuery<Question[]>({
     queryKey: ["/api/questions"],
@@ -40,6 +78,18 @@ export default function TestHistoryDetail() {
 
   const backToHistory = () => setLocation("/history");
 
+  if (!run && checkingHistory) {
+    return (
+      <Layout>
+        <div className="w-full max-w-2xl mx-auto py-4 pb-24">
+          <div className="rounded-2xl border border-border p-10 text-center">
+            <p className="text-sm text-muted-foreground">Loading test...</p>
+          </div>
+        </div>
+      </Layout>
+    );
+  }
+
   if (!run) {
     return (
       <Layout>
@@ -47,7 +97,7 @@ export default function TestHistoryDetail() {
           <div className="rounded-2xl border border-border p-10 text-center space-y-3">
             <p className="font-bold">Test not found</p>
             <p className="text-sm text-muted-foreground">
-              This test may have been cleared when the learner changed.
+              This test is not available for the current account.
             </p>
             <Button onClick={backToHistory}>Back to past tests</Button>
           </div>
@@ -69,7 +119,7 @@ export default function TestHistoryDetail() {
             <h1 className="text-2xl font-display font-bold">Test result</h1>
             <p className="text-sm text-muted-foreground">
               {formatDate(run.finishedAt)}
-              {duration ? ` · ${duration}` : ""}
+              {duration ? ` Â· ${duration}` : ""}
             </p>
           </div>
         </div>
@@ -81,7 +131,7 @@ export default function TestHistoryDetail() {
                 {run.name} {run.surname}
               </p>
               <p className="text-sm text-muted-foreground">
-                License Code {run.licenseCode} • {testLabel(run)}
+                License Code {run.licenseCode} â€¢ {testLabel(run)}
               </p>
             </div>
             <span
@@ -136,7 +186,7 @@ export default function TestHistoryDetail() {
         <div className="space-y-3">
           <h2 className="font-display font-bold px-1">Questions</h2>
           {isLoading ? (
-            <p className="text-sm text-muted-foreground text-center py-8">Loading questions…</p>
+            <p className="text-sm text-muted-foreground text-center py-8">Loading questionsâ€¦</p>
           ) : (
             run.items.map((item, index) => {
               const question = byId.get(item.id);
@@ -159,7 +209,7 @@ export default function TestHistoryDetail() {
                     <div className="space-y-1">
                       <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
                         Question {index + 1}
-                        {question ? ` · ${CATEGORY_NAMES[question.category] || `Category ${question.category}`}` : ""}
+                        {question ? ` Â· ${CATEGORY_NAMES[question.category] || `Category ${question.category}`}` : ""}
                       </p>
                       <p className="text-sm font-medium leading-relaxed">
                         {question ? question.question_text : "This question is no longer available."}

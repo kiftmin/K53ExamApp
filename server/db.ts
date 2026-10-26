@@ -1,6 +1,6 @@
 import { neon } from '@neondatabase/serverless';
 import { drizzle } from 'drizzle-orm/neon-http';
-import { pgTable, serial, text, integer, boolean, jsonb, timestamp, real } from 'drizzle-orm/pg-core';
+import { pgTable, serial, text, integer, boolean, jsonb, timestamp, real, unique } from 'drizzle-orm/pg-core';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
@@ -123,6 +123,18 @@ export const learnerProgress = pgTable('learner_progress', {
     updated_at: timestamp('updated_at').defaultNow().notNull(),
 }, (table) => ({
     uniqueItem: unique().on(table.mobile_number, table.item_type, table.item_id),
+}));
+
+export const learnerTestRuns = pgTable('learner_test_runs', {
+    id: serial('id').primaryKey(),
+    mobile_number: text('mobile_number').notNull(),
+    run_id: text('run_id').notNull(),
+    finished_at: timestamp('finished_at').notNull(),
+    payload: jsonb('payload').notNull(),
+    created_at: timestamp('created_at').defaultNow().notNull(),
+    updated_at: timestamp('updated_at').defaultNow().notNull(),
+}, (table) => ({
+    uniqueRun: unique().on(table.mobile_number, table.run_id),
 }));
 
 // Define Drizzle Postgres Schema matching the Zod schema
