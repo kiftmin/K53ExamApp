@@ -31,7 +31,8 @@ import {
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
-import { ChevronLeft, ChevronRight, X, Link2, Unlink, Search, Eye } from "lucide-react";
+import { ChevronLeft, ChevronRight, X, Link2, Unlink, Search, Eye, Images } from "lucide-react";
+import SignImagePicker from "@/components/sign-image-picker";
 
 interface QuestionModalProps {
     isOpen: boolean;
@@ -58,6 +59,14 @@ const defaultValues: InsertQuestion = {
         { answer_number: "C", answer_text: "", correct_answer: false },
     ],
 };
+
+/** Bare filenames live in /assets/images; rooted or absolute links are used as-is. */
+function imageSrc(link: string): string {
+    if (!link) return "";
+    return link.startsWith("http") || link.startsWith("/") || link.startsWith("data:")
+        ? link
+        : `/assets/images/${link}`;
+}
 
 function LinkedCardsSection({ questionId, category }: { questionId?: number; category: number }) {
     const queryClient = useQueryClient();
@@ -230,6 +239,7 @@ export default function QuestionModal({
 }: QuestionModalProps) {
     const queryClient = useQueryClient();
     const { toast } = useToast();
+    const [signPickerOpen, setSignPickerOpen] = useState(false);
     const form = useForm<InsertQuestion>({
         resolver: zodResolver(questionSchema.omit({ id: true })),
         defaultValues: {
@@ -503,7 +513,18 @@ export default function QuestionModal({
                                                     name="image_link"
                                                     render={({ field }) => (
                                                         <FormItem className="space-y-1">
-                                                            <FormLabel className="text-[10px] font-black text-neutral-400 uppercase tracking-wider">Image Resource</FormLabel>
+                                                            <div className="flex items-center justify-between gap-2">
+                                                                <FormLabel className="text-[10px] font-black text-neutral-400 uppercase tracking-wider">Image Resource</FormLabel>
+                                                                {form.watch("category") === 2 && (
+                                                                    <button
+                                                                        type="button"
+                                                                        onClick={() => setSignPickerOpen(true)}
+                                                                        className="flex items-center gap-1 text-[10px] font-black uppercase tracking-wider text-blue-600 hover:text-blue-700"
+                                                                    >
+                                                                        <Images className="h-3 w-3" /> Pick from signs
+                                                                    </button>
+                                                                )}
+                                                            </div>
                                                             <FormControl>
                                                                 <Input {...field} value={field.value || ""} className="h-8 text-xs bg-white border-neutral-200" placeholder="e.g. image_Q101.png" />
                                                             </FormControl>
@@ -514,7 +535,7 @@ export default function QuestionModal({
                                                 <div className="flex-1 min-h-[80px] relative rounded-md border bg-neutral-900 overflow-hidden flex items-center justify-center group/img">
                                                     {form.watch("image_link") ? (
                                                         <img
-                                                            src={form.watch("image_link")?.startsWith('http') ? form.watch("image_link")! : `/assets/images/${form.watch("image_link")}`}
+                                                            src={imageSrc(form.watch("image_link") || "")}
                                                             alt="Preview"
                                                             className="max-h-full max-w-full object-contain transition-transform group-hover/img:scale-105"
                                                             onError={(e: any) => {
@@ -589,6 +610,16 @@ export default function QuestionModal({
 
                             {/* Section 4: Linked Cards */}
                             <LinkedCardsSection questionId={question?.id} category={form.watch("category")} />
+                            <SignImagePicker
+                                open={signPickerOpen}
+                                onClose={() => setSignPickerOpen(false)}
+                                selectedUrl={form.watch("image_link")}
+                                onSelect={(url) => {
+                                    form.setValue("image_link", url, { shouldValidate: true });
+                                    form.setValue("contains_image", true);
+                                    setSignPickerOpen(false);
+                                }}
+                            />
                         </form>
                     </Form>
                 </div>
