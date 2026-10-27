@@ -3,7 +3,7 @@
 // Progress is server-synced for W/M/X codes via progress-sync.ts.
 
 import { syncEnabled, pushProgress, hydrateProgress, recordOwnerIfMissing } from "./progress-sync";
-import { isKnown, nextStatus, toCount, type LearningStatus, type RecallRating, type LearningRecord } from "./learning-status";
+import { isKnown, nextStatus, toCount, deselectKnown, type LearningStatus, type RecallRating, type LearningRecord } from "./learning-status";
 
 export type { LearningStatus, RecallRating, LearningRecord };
 export { isKnown };
@@ -91,6 +91,21 @@ export function setControlKnown(id: number, known: boolean): LearningRecord {
 }
 
 export function getAllControlLearning(): Record<number, LearningRecord> { return readLearningMap(LEARNING_CONTROLS_KEY); }
+
+/** Mark the learned cards in this section as not learned again (bulk deselect). */
+export function deselectControls(ids: number[]): void {
+  recordOwnerIfMissing();
+  const map = readLearningMap(LEARNING_CONTROLS_KEY);
+  const changed = deselectKnown(map, ids);
+  if (changed.length === 0) return;
+  writeLearningMap(LEARNING_CONTROLS_KEY, map);
+
+  if (syncEnabled()) {
+    for (const id of changed) {
+      pushProgress("control", id, map[id]!);
+    }
+  }
+}
 
 /** Remove the learning records for these ids (Reset section). */
 export function resetControlProgress(ids: number[]): void {

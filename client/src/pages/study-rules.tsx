@@ -7,7 +7,7 @@ import { FormattedText } from "@/components/formatted-text";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Heart, Layers, ArrowLeft, ChevronDown, HeartOff, RotateCcw, BookOpen, ScrollText, Signpost, Route, Car, Scale, Gavel, SearchX, type LucideIcon } from "lucide-react";
-import { toggleFavoriteRule, getFavoriteRuleIds, setRuleKnown, resetRuleProgress, removeFavoriteRules, getAllRuleLearning, initRuleSync } from "@/lib/rule-storage";
+import { toggleFavoriteRule, getFavoriteRuleIds, setRuleKnown, resetRuleProgress, deselectRules, removeFavoriteRules, getAllRuleLearning, initRuleSync } from "@/lib/rule-storage";
 import { initQuestionSync } from "@/lib/question-results";
 import { isKnown, countKnown } from "@/lib/learning-status";
 import { ensureLocalOwner } from "@/lib/progress-owner";
@@ -18,6 +18,7 @@ import {
   STUDY_KNOWN_TEXT_CLASS,
   STUDY_ROW_BORDER_CLASS,
   StudyCategoryTabs,
+  StudyDeselectButton,
   StudyGroupCard,
   StudyKnownBadge,
   StudyRowAction,
@@ -35,6 +36,11 @@ function resetSectionConfirm(ids: number[], label: string): boolean {
   return typeof window === "undefined" || window.confirm(`Reset this section (${label})? This clears your progress for these ${ids.length} rules.`);
 }
 
+function deselectSectionConfirm(count: number, label: string): boolean {
+  const noun = count === 1 ? "rule" : "rules";
+  return typeof window === "undefined" || window.confirm(`Mark this section (${label}) as not learned? This moves ${count} learned ${noun} back to "Not learned".`);
+}
+
 /** Icon anchor so a rule section is recognisable before it is read. */
 function ruleIconFor(label: string): LucideIcon {
   const text = label.toLowerCase();
@@ -48,7 +54,7 @@ function ruleIconFor(label: string): LucideIcon {
   return ScrollText;
 }
 
-function SubheadingGroup({ subheading, list, favorites, learningMap, onToggleFav, onToggleKnown, onResetSection, onClearSaved, forceOpen }: any) {
+function SubheadingGroup({ subheading, list, favorites, learningMap, onToggleFav, onToggleKnown, onResetSection, onDeselectSection, onClearSaved, forceOpen }: any) {
   const [open, setOpen] = useState(false);
   const isOpen = forceOpen || open;
   const hasFavs = list.some((r: StudyRule) => favorites.includes(r.id));
@@ -76,13 +82,16 @@ function SubheadingGroup({ subheading, list, favorites, learningMap, onToggleFav
               <HeartOff className="h-4 w-4" />
             </StudyRowAction>
           )}
+          {stats.known > 0 && (
+            <StudyDeselectButton onClick={() => onDeselectSection(list.map((r: StudyRule) => r.id), sentenceCase(subheading), stats.known)} />
+          )}
           {hasProgress && (
             <StudyRowAction
               label="Reset this section"
               active
               activeClassName="text-muted-foreground"
               inactiveClassName="text-muted-foreground"
-              onClick={() => onResetSection(list.map((r: StudyRule) => r.id), subheading)}
+              onClick={() => onResetSection(list.map((r: StudyRule) => r.id), sentenceCase(subheading))}
             >
               <RotateCcw className="h-4 w-4" />
             </StudyRowAction>
@@ -262,6 +271,12 @@ function BrowseInner({
     setFavsTick((t: number) => t + 1);
   };
 
+  const deselectSection = (ids: number[], label: string, known: number) => {
+    if (!deselectSectionConfirm(known, label)) return;
+    deselectRules(ids);
+    setFavsTick((t: number) => t + 1);
+  };
+
   const clearSaved = (ids: number[]) => {
     removeFavoriteRules(ids);
     setFavsTick((t: number) => t + 1);
@@ -343,10 +358,11 @@ function BrowseInner({
             total={stats.total}
             savedCount={savedCount}
             onClearSaved={sectionHasFavs ? () => clearSaved(sectionIds) : undefined}
-            onReset={sectionHasProgress ? () => resetSection(sectionIds, heading) : undefined}
+            onReset={sectionHasProgress ? () => resetSection(sectionIds, titleCase(heading)) : undefined}
+            onDeselect={stats.known > 0 ? () => deselectSection(sectionIds, titleCase(heading), stats.known) : undefined}
           >
             {subs.map(([subheading, list]) => (
-              <SubheadingGroup key={subheading} subheading={subheading} list={list} favorites={favorites} learningMap={learningMap} forceOpen={search.trim().length > 0} onToggleFav={(id: number) => { toggleFavoriteRule(id); setFavsTick((t: number) => t + 1); }} onToggleKnown={toggleKnown} onResetSection={resetSection} onClearSaved={clearSaved} />
+              <SubheadingGroup key={subheading} subheading={subheading} list={list} favorites={favorites} learningMap={learningMap} forceOpen={search.trim().length > 0} onToggleFav={(id: number) => { toggleFavoriteRule(id); setFavsTick((t: number) => t + 1); }} onToggleKnown={toggleKnown} onResetSection={resetSection} onDeselectSection={deselectSection} onClearSaved={clearSaved} />
             ))}
           </StudyGroupCard>
           );

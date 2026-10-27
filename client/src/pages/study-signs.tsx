@@ -10,7 +10,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sh
 import { useQuiz } from "@/lib/quiz-context";
 import { SignFaceImages, SignCodeChips, isGenericWhere } from "@/components/sign-images";
 import { SHOW_TEMPORARY_SIGNS, isTemporaryOnlyRecord, orderImages, splitCodes, temporaryLabel } from "@/lib/sign-codes";
-import { getFavoriteSignIds, toggleFavoriteSign, setSignKnown, resetSignProgress, removeFavoriteSigns, getAllSignLearning, initSignSync } from "@/lib/sign-storage";
+import { getFavoriteSignIds, toggleFavoriteSign, setSignKnown, resetSignProgress, deselectSigns, removeFavoriteSigns, getAllSignLearning, initSignSync } from "@/lib/sign-storage";
 import { initQuestionSync } from "@/lib/question-results";
 import { isKnown, countKnown } from "@/lib/learning-status";
 import { ensureLocalOwner } from "@/lib/progress-owner";
@@ -21,6 +21,7 @@ import {
   STUDY_KNOWN_TEXT_CLASS,
   STUDY_ROW_BORDER_CLASS,
   StudyCategoryTabs,
+  StudyDeselectButton,
   StudyGroupCard,
   StudyKnownBadge,
   StudyRowAction,
@@ -35,6 +36,11 @@ import { useStudyGate } from "./study";
 
 function resetSectionConfirm(ids: number[], label: string): boolean {
   return typeof window === "undefined" || window.confirm(`Reset this section (${label})? This clears your progress for these ${ids.length} cards.`);
+}
+
+function deselectSectionConfirm(count: number, label: string): boolean {
+  const noun = count === 1 ? "card" : "cards";
+  return typeof window === "undefined" || window.confirm(`Mark this section (${label}) as not learned? This moves ${count} learned ${noun} back to "Not learned".`);
 }
 
 /** Icon anchor so a category is recognisable before it is read. */
@@ -52,7 +58,7 @@ function signIconFor(label: string): LucideIcon {
 }
 
 function SubheadingSignGroup({
-  subheading, list, favorites, learningMap, forceOpen, onOpen, onToggleFav, onToggleKnown, onResetSection, onClearSaved,
+  subheading, list, favorites, learningMap, forceOpen, onOpen, onToggleFav, onToggleKnown, onResetSection, onDeselectSection, onClearSaved,
 }: any) {
   const [open, setOpen] = useState(false);
   const isOpen = forceOpen || open;
@@ -81,13 +87,16 @@ function SubheadingSignGroup({
               <HeartOff className="h-4 w-4" />
             </StudyRowAction>
           )}
+          {stats.known > 0 && (
+            <StudyDeselectButton onClick={() => onDeselectSection(list.map((s: StudySign) => s.id), sentenceCase(subheading), stats.known)} />
+          )}
           {hasProgress && (
             <StudyRowAction
               label="Reset this section"
               active
               activeClassName="text-muted-foreground"
               inactiveClassName="text-muted-foreground"
-              onClick={() => onResetSection(list.map((s: StudySign) => s.id), subheading)}
+              onClick={() => onResetSection(list.map((s: StudySign) => s.id), sentenceCase(subheading))}
             >
               <RotateCcw className="h-4 w-4" />
             </StudyRowAction>
@@ -261,6 +270,12 @@ export default function StudySignsBrowse() {
     setProgressTick((t) => t + 1);
   };
 
+  const deselectSection = (ids: number[], label: string, known: number) => {
+    if (!deselectSectionConfirm(known, label)) return;
+    deselectSigns(ids);
+    setProgressTick((t) => t + 1);
+  };
+
   const clearSaved = (ids: number[]) => {
     removeFavoriteSigns(ids);
     setFavorites(getFavoriteSignIds());
@@ -369,7 +384,8 @@ export default function StudySignsBrowse() {
               total={stats.total}
               savedCount={savedCount}
               onClearSaved={sectionHasFavs ? () => clearSaved(sectionIds) : undefined}
-              onReset={sectionHasProgress ? () => resetSection(sectionIds, h) : undefined}
+              onReset={sectionHasProgress ? () => resetSection(sectionIds, titleCase(h)) : undefined}
+              onDeselect={stats.known > 0 ? () => deselectSection(sectionIds, titleCase(h), stats.known) : undefined}
             >
               {subs.map(([sub, list]) => (
                 <SubheadingSignGroup
@@ -383,6 +399,7 @@ export default function StudySignsBrowse() {
                   onToggleFav={toggleFav}
                   onToggleKnown={toggleKnown}
                   onResetSection={resetSection}
+                  onDeselectSection={deselectSection}
                   onClearSaved={clearSaved}
                 />
               ))}

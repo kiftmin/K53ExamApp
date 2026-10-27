@@ -5,7 +5,7 @@ import type { StudyControl, ControlDiagram } from "@shared/schema";
 import { Layout } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { Heart, Layers, ArrowLeft, HeartOff, RotateCcw, Gauge, Cog, Wrench, SearchX, type LucideIcon } from "lucide-react";
-import { toggleFavoriteControl, getFavoriteControlIds, setControlKnown, resetControlProgress, removeFavoriteControls, getAllControlLearning, initControlSync } from "@/lib/control-storage";
+import { toggleFavoriteControl, getFavoriteControlIds, setControlKnown, resetControlProgress, deselectControls, removeFavoriteControls, getAllControlLearning, initControlSync } from "@/lib/control-storage";
 import { initQuestionSync } from "@/lib/question-results";
 import { isKnown, countKnown } from "@/lib/learning-status";
 import { ensureLocalOwner } from "@/lib/progress-owner";
@@ -27,6 +27,11 @@ import { cn } from "@/lib/utils";
 
 function resetSectionConfirm(ids: number[], label: string): boolean {
   return typeof window === "undefined" || window.confirm(`Reset this section (${label})? This clears your progress for these ${ids.length} controls.`);
+}
+
+function deselectSectionConfirm(count: number, label: string): boolean {
+  const noun = count === 1 ? "control" : "controls";
+  return typeof window === "undefined" || window.confirm(`Mark this section (${label}) as not learned? This moves ${count} learned ${noun} back to "Not learned".`);
 }
 
 /** Icon anchor for a cockpit diagram. */
@@ -174,6 +179,12 @@ function BrowseInner({ licence, gearbox, reset, allowed, setLocation, search, se
     setFavsTick((t: number) => t + 1);
   };
 
+  const deselectSection = (ids: number[], label: string, known: number) => {
+    if (!deselectSectionConfirm(known, label)) return;
+    deselectControls(ids);
+    setFavsTick((t: number) => t + 1);
+  };
+
   const clearSaved = (ids: number[]) => {
     removeFavoriteControls(ids);
     setFavsTick((t: number) => t + 1);
@@ -262,6 +273,7 @@ function BrowseInner({ licence, gearbox, reset, allowed, setLocation, search, se
               savedCount={savedCount}
               onClearSaved={savedCount > 0 ? () => clearSaved(list.map((c) => c.id)) : undefined}
               onReset={list.some((c) => learningMap[c.id]) ? () => resetSection(list.map((c) => c.id), groupLabel) : undefined}
+              onDeselect={stats.known > 0 ? () => deselectSection(list.map((c) => c.id), groupLabel, stats.known) : undefined}
             >
               {diagram && (
                 <div className="py-3">

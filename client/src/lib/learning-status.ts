@@ -40,6 +40,33 @@ export function nextStatus(record: LearningRecord | undefined, rating: RecallRat
   return "learning";
 }
 
+/**
+ * Mark every known card in `ids` as not learned, in place.
+ * Returns the ids that changed so the caller can sync just those.
+ * Untried cards stay untried and already-unlearned cards are left alone,
+ * so a bulk deselect is the same as tapping "Not yet" on each known card.
+ */
+export function deselectKnown(
+  map: Record<number, LearningRecord>,
+  ids: number[]
+): number[] {
+  const stamp = new Date().toISOString();
+  const changed: number[] = [];
+  for (const id of ids) {
+    const prev = map[id];
+    if (!isKnown(prev?.status)) continue;
+    map[id] = {
+      status: "learning",
+      correct: toCount(prev?.correct),
+      incorrect: toCount(prev?.incorrect) + 1,
+      lastRating: "again",
+      lastSeenAt: stamp,
+    };
+    changed.push(id);
+  }
+  return changed;
+}
+
 /** Count known vs total items from a learning map. */
 export function countKnown(
   items: { id: number }[],

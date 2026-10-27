@@ -1,6 +1,6 @@
 import { useState, type ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
-import { Check, CheckCircle2, ChevronDown, Heart, HeartOff, RotateCcw, Search } from "lucide-react";
+import { Check, CheckCircle2, ChevronDown, CircleSlash, Heart, HeartOff, RotateCcw, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
 import { CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
@@ -264,6 +264,28 @@ export function StudyStatusBar({
   );
 }
 
+/**
+ * Marks a whole section as not learned again. It sits next to "Reset this
+ * section", which clears the history outright, so the two need different
+ * icons: the slash reads as "not learned", the arrow as "start over".
+ */
+export function StudyDeselectButton({ onClick }: { onClick: () => void }) {
+  return (
+    <button
+      type="button"
+      aria-label="Mark this section as not learned"
+      title="Mark as not learned"
+      onClick={(event) => {
+        event.stopPropagation();
+        onClick();
+      }}
+      className="p-1.5 text-orange-600"
+    >
+      <CircleSlash className="h-4 w-4" />
+    </button>
+  );
+}
+
 /** One card holds a main category with its progress and all of its sub rows. */
 export function StudyGroupCard({
   icon: Icon,
@@ -273,6 +295,7 @@ export function StudyGroupCard({
   savedCount,
   onClearSaved,
   onReset,
+  onDeselect,
   children,
 }: {
   icon?: LucideIcon;
@@ -282,6 +305,7 @@ export function StudyGroupCard({
   savedCount: number;
   onClearSaved?: () => void;
   onReset?: () => void;
+  onDeselect?: () => void;
   children: ReactNode;
 }) {
   const percentage = total > 0 ? (known / total) * 100 : 0;
@@ -328,6 +352,7 @@ export function StudyGroupCard({
               <HeartOff className="h-4 w-4" />
             </button>
           )}
+          {onDeselect && <StudyDeselectButton onClick={onDeselect} />}
           {onReset && (
             <button
               type="button"
