@@ -37,6 +37,27 @@ async function withDbRetry<T>(fn: () => Promise<T>, tries = 3): Promise<T> {
   throw lastErr;
 }
 
+async function generateUniqueAccessCode(type: AccessCodeType): Promise<string | null> {
+  for (let i = 0; i < 5; i++) {
+    const candidate = generateOnDemandCode(type);
+    const exists =
+      type === 'daily' && validateDailyCode(candidate)
+        ? true
+        : !!(await storage.getAccessCodeByCode(candidate));
+    if (!exists) return candidate;
+  }
+  return null;
+}
+
+function parseMobileParam(value: unknown): string | null {
+  const mobile = String(value ?? '').trim();
+  return MOBILE_NUMBER_REGEX.test(mobile) ? mobile : null;
+}
+
+function adminMobileFromRequest(req: any): string {
+  return String(req.headers['x-admin-mobile'] || '').trim();
+}
+
 export async function registerRoutes(
   _httpServer: any,
   app: any
@@ -369,6 +390,10 @@ export async function registerRoutes(
       if (!result.valid) {
         return res.json({ valid: false, type: getTypeFromCode(code), requiresMobile: result.requiresMobile, message: result.message });
       }
+      const ownerMobile = (result.code.mobile_number || '').trim();
+      if (ownerMobile && await storage.isMobileSuspended(ownerMobile)) {
+        return res.json({ valid: false, type: result.type, requiresMobile: true, message: "This mobile number has been suspended." });
+      }
       return res.json({ valid: true, type: result.type, requiresMobile: result.type !== 'daily' });
     } catch (err) {
       console.error("Error validating access code:", err);
@@ -396,6 +421,9 @@ export async function registerRoutes(
       }
 
       const mobile = (result.code.mobile_number || '').trim();
+      if (await storage.isMobileSuspended(mobile)) {
+        return res.status(403).json({ valid: false, message: "This mobile number has been suspended." });
+      }
       const rows = await withDbRetry(() => storage.getLearnerProgress(mobile, item_type));
       return res.json({ valid: true, type: result.type, progress: rows });
     } catch (err) {
@@ -417,6 +445,9 @@ export async function registerRoutes(
       }
 
       const mobile = (result.code.mobile_number || '').trim();
+      if (await storage.isMobileSuspended(mobile)) {
+        return res.status(403).json({ valid: false, message: "This mobile number has been suspended." });
+      }
       const row = await withDbRetry(() => storage.upsertLearnerProgress({
         mobile_number: mobile,
         item_type,
@@ -455,6 +486,9 @@ export async function registerRoutes(
       }
 
       const mobile = (result.code.mobile_number || '').trim();
+      if (await storage.isMobileSuspended(mobile)) {
+        return res.status(403).json({ valid: false, message: "This mobile number has been suspended." });
+      }
       const rows = await withDbRetry(() => storage.getTestHistoryRuns(mobile, 20));
       const runs = rows.flatMap((payload) => {
         const parsed = testHistoryRunSchema.safeParse(payload);
@@ -483,6 +517,9 @@ export async function registerRoutes(
       }
 
       const mobile = (result.code.mobile_number || '').trim();
+      if (await storage.isMobileSuspended(mobile)) {
+        return res.status(403).json({ valid: false, message: "This mobile number has been suspended." });
+      }
       const finishedAt = new Date(run.finishedAt);
       await withDbRetry(() => storage.upsertTestHistoryRun({
         mobile_number: mobile,
@@ -528,24 +565,15 @@ export async function registerRoutes(
         if (!MOBILE_NUMBER_REGEX.test(mobile)) {
           return res.status(400).json({ message: "A 10-digit mobile number is required for weekly, monthly and master codes." });
         }
+        if (await storage.isMobileSuspended(mobile)) {
+          return res.status(409).json({ message: "This mobile number is suspended. Restore it from Users first." });
+        }
       }
 
       // hasAdminAccess only applies to master keys
       const adminFlag = codeType === 'master' ? !!hasAdminAccess : false;
 
-      // Generate a unique code (retry on collision)
-      let code = '';
-      for (let i = 0; i < 5; i++) {
-        const candidate = generateOnDemandCode(codeType);
-        const exists =
-          codeType === 'daily' && validateDailyCode(candidate)
-            ? true
-            : !!(await storage.getAccessCodeByCode(candidate));
-        if (!exists) {
-          code = candidate;
-          break;
-        }
-      }
+      const code = await generateUniqueAccessCode(codeType);
       if (!code) {
         return res.status(500).json({ message: "Failed to generate a unique code, please try again." });
       }
@@ -589,6 +617,139 @@ export async function registerRoutes(
     } catch (err) {
       console.error("Error deleting access code:", err);
       res.status(500).json({ message: "Failed to delete access code" });
+    }
+  });
+
+  // --- Admin user management ---
+
+  app.get('/api/admin/users', requireAdminAuth, async (_req: any, res: any) => {
+    try {
+      res.json(await storage.getAdminUsers());
+    } catch (err) {
+      console.error("Error listing users:", err);
+      res.status(500).json({ message: "Failed to load users" });
+    }
+  });
+
+  app.post('/api/admin/users/:mobile/access', requireAdminAuth, async (req: any, res: any) => {
+    try {
+      const mobile = parseMobileParam(req.params.mobile);
+      if (!mobile) return res.status(400).json({ message: "A 10-digit mobile number is required." });
+      const adminMobile = adminMobileFromRequest(req);
+      if (mobile === adminMobile) {
+        return res.status(400).json({ message: "Use Access Codes to change your own admin key." });
+      }
+
+      const { type, hasAdminAccess } = z.object({
+        type: z.enum(['weekly', 'monthly', 'master']),
+        hasAdminAccess: z.boolean().optional().default(false),
+      }).parse(req.body);
+
+      const codeType = type as AccessCodeType;
+      const code = await generateUniqueAccessCode(codeType);
+      if (!code) {
+        return res.status(500).json({ message: "Failed to generate a unique code, please try again." });
+      }
+
+      const wasSuspended = await storage.isMobileSuspended(mobile);
+      const created = await storage.createAccessCode({
+        code,
+        type: codeType,
+        mobile_number: mobile,
+        has_admin_access: codeType === 'master' ? !!hasAdminAccess : false,
+        expires_at: getExpiryForType(codeType),
+        is_revoked: false,
+      });
+      const revoked = await storage.revokeAccessCodesByMobile(mobile, created.id);
+      if (wasSuspended) await storage.unsuspendMobile(mobile);
+
+      res.status(201).json({ code: created, revoked, unsuspended: wasSuspended });
+    } catch (err) {
+      console.error("Error issuing user access:", err);
+      if (err instanceof z.ZodError) {
+        return res.status(400).json({ message: "Invalid access payload", details: err.issues });
+      }
+      res.status(500).json({ message: "Failed to issue access" });
+    }
+  });
+
+  app.post('/api/admin/users/:mobile/suspend', requireAdminAuth, async (req: any, res: any) => {
+    try {
+      const mobile = parseMobileParam(req.params.mobile);
+      if (!mobile) return res.status(400).json({ message: "A 10-digit mobile number is required." });
+      const adminMobile = adminMobileFromRequest(req);
+      if (mobile === adminMobile) {
+        return res.status(400).json({ message: "You cannot suspend the mobile number you are signed in with." });
+      }
+      const { reason } = z.object({
+        reason: z.string().max(500).optional().nullable(),
+      }).parse(req.body ?? {});
+
+      const revoked = await storage.revokeAccessCodesByMobile(mobile);
+      const suspension = await storage.suspendMobile({
+        mobile_number: mobile,
+        reason: reason?.trim() || null,
+        suspended_by: adminMobile || null,
+      });
+      res.json({ suspension, revoked });
+    } catch (err) {
+      console.error("Error suspending user:", err);
+      if (err instanceof z.ZodError) {
+        return res.status(400).json({ message: "Invalid suspension payload", details: err.issues });
+      }
+      res.status(500).json({ message: "Failed to suspend user" });
+    }
+  });
+
+  app.put('/api/admin/users/:mobile/profile', requireAdminAuth, async (req: any, res: any) => {
+    try {
+      const mobile = parseMobileParam(req.params.mobile);
+      if (!mobile) return res.status(400).json({ message: "A 10-digit mobile number is required." });
+
+      const { name, surname } = z.object({
+        name: z.string().trim().max(200).optional().nullable(),
+        surname: z.string().trim().max(200).optional().nullable(),
+      }).parse(req.body ?? {});
+
+      const profile = await storage.upsertLearnerProfile({
+        mobile_number: mobile,
+        name: name || null,
+        surname: surname || null,
+        updated_by: adminMobileFromRequest(req) || null,
+      });
+      res.json(profile);
+    } catch (err) {
+      console.error("Error saving user profile:", err);
+      if (err instanceof z.ZodError) {
+        return res.status(400).json({ message: "Invalid profile payload", details: err.issues });
+      }
+      res.status(500).json({ message: "Failed to save user" });
+    }
+  });
+
+  app.delete('/api/admin/users/:mobile', requireAdminAuth, async (req: any, res: any) => {
+    try {
+      const mobile = parseMobileParam(req.params.mobile);
+      if (!mobile) return res.status(400).json({ message: "A 10-digit mobile number is required." });
+      const adminMobile = adminMobileFromRequest(req);
+      if (mobile === adminMobile) {
+        return res.status(400).json({ message: "You cannot delete the mobile number you are signed in with." });
+      }
+
+      const deleted = await storage.deleteUserData(mobile);
+      if (
+        deleted.codes === 0 &&
+        deleted.progress === 0 &&
+        deleted.tests === 0 &&
+        !deleted.suspension &&
+        !deleted.profile
+      ) {
+        return res.status(404).json({ message: "No saved data for that mobile number." });
+      }
+      res.json(deleted);
+    } catch (err) {
+      console.error("Error deleting user:", err);
+      res.status(500).json({ message: "Failed to delete user" });
     }
   });
 

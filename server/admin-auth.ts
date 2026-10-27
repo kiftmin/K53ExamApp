@@ -35,6 +35,9 @@ export async function validateAdminAccess(code: string, mobileNumber: string): P
   if (!stored.has_admin_access) {
     return { valid: false, message: "This master key does not have admin access." };
   }
+  if (await storage.isMobileSuspended(mobile)) {
+    return { valid: false, message: "This mobile number has been suspended." };
+  }
   return { valid: true };
 }
 

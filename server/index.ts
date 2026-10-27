@@ -176,6 +176,23 @@ app.use((req, res, next) => {
       CREATE INDEX IF NOT EXISTS learner_test_runs_mobile_finished_idx
         ON learner_test_runs (mobile_number, finished_at DESC);
     `;
+    await client`
+      CREATE TABLE IF NOT EXISTS suspended_mobiles (
+        mobile_number TEXT PRIMARY KEY,
+        reason TEXT,
+        suspended_by TEXT,
+        suspended_at TIMESTAMP NOT NULL DEFAULT NOW()
+      );
+    `;
+    await client`
+      CREATE TABLE IF NOT EXISTS learner_profiles (
+        mobile_number TEXT PRIMARY KEY,
+        name TEXT,
+        surname TEXT,
+        updated_by TEXT,
+        updated_at TIMESTAMP NOT NULL DEFAULT NOW()
+      );
+    `;
     // Pure-additive column migrations (safe to run every boot)
     // Existing questions keep the bank's curated state → default TRUE on migration.
     await client`ALTER TABLE questions ADD COLUMN IF NOT EXISTS is_reviewed BOOLEAN NOT NULL DEFAULT TRUE;`;
@@ -186,6 +203,8 @@ app.use((req, res, next) => {
     await client`ALTER TABLE study_signs ADD COLUMN IF NOT EXISTS short_action TEXT;`;
     await client`ALTER TABLE study_signs ADD COLUMN IF NOT EXISTS short_reviewed BOOLEAN NOT NULL DEFAULT FALSE;`;
     await client`ALTER TABLE study_signs ADD COLUMN IF NOT EXISTS needs_split BOOLEAN NOT NULL DEFAULT FALSE;`;
+    await client`ALTER TABLE access_codes ADD COLUMN IF NOT EXISTS name TEXT;`;
+    await client`ALTER TABLE access_codes ADD COLUMN IF NOT EXISTS surname TEXT;`;
   } catch (err) {
     console.error("Failed to ensure study tables:", err);
   }

@@ -55,6 +55,8 @@ export const accessCodeSchema = z.object({
   code: z.string(),
   type: z.enum(ACCESS_CODE_TYPES),
   mobile_number: z.string().nullable().optional(),
+  name: z.string().nullable().optional(),
+  surname: z.string().nullable().optional(),
   has_admin_access: z.boolean().default(false),
   expires_at: z.coerce.date().nullable().optional(),
   is_revoked: z.boolean().default(false),
@@ -63,6 +65,48 @@ export const accessCodeSchema = z.object({
 
 export type AccessCode = z.infer<typeof accessCodeSchema> & { id: number };
 export type InsertAccessCode = Omit<z.infer<typeof accessCodeSchema>, "id" | "created_at">;
+
+export const suspendedMobileSchema = z.object({
+  mobile_number: z.string(),
+  reason: z.string().nullable().optional(),
+  suspended_by: z.string().nullable().optional(),
+  suspended_at: z.coerce.date().optional(),
+});
+
+export type SuspendedMobile = z.infer<typeof suspendedMobileSchema> & { suspended_at: Date };
+export type InsertSuspendedMobile = Pick<SuspendedMobile, "mobile_number" | "reason" | "suspended_by">;
+
+export const learnerProfileSchema = z.object({
+  mobile_number: z.string(),
+  name: z.string().nullable().optional(),
+  surname: z.string().nullable().optional(),
+  updated_by: z.string().nullable().optional(),
+  updated_at: z.coerce.date().optional(),
+});
+
+export type LearnerProfile = z.infer<typeof learnerProfileSchema> & { updated_at: Date };
+export type InsertLearnerProfile = Pick<LearnerProfile, "mobile_number" | "name" | "surname" | "updated_by">;
+
+export type AdminUserStatus = "active" | "expired" | "revoked" | "suspended" | "no_access";
+
+export interface AdminUserSummary {
+  mobile_number: string;
+  name: string | null;
+  surname: string | null;
+  access_type: AccessCodeType | null;
+  access_code: string | null;
+  expires_at: string | null;
+  has_admin_access: boolean;
+  status: AdminUserStatus;
+  suspended: boolean;
+  suspended_at: string | null;
+  suspension_reason: string | null;
+  code_count: number;
+  active_code_count: number;
+  progress_count: number;
+  test_count: number;
+  last_activity_at: string | null;
+}
 
 export const MOBILE_NUMBER_REGEX = /^\d{10}$/;
 

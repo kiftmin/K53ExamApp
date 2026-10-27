@@ -1,9 +1,9 @@
 import type { ReactNode } from "react";
 import { Link } from "wouter";
-import { ListChecks, Database, KeyRound, Upload, ArrowLeft, Signpost, ScrollText, Car, Link2 } from "lucide-react";
+import { ListChecks, Database, KeyRound, Upload, ArrowLeft, Signpost, ScrollText, Car, Link2, Users } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-export type AdminSection = "questions" | "signs" | "rules" | "controls" | "links" | "sources" | "codes" | "import";
+export type AdminSection = "questions" | "signs" | "rules" | "controls" | "links" | "sources" | "codes" | "users" | "import";
 
 const NAV: { id: AdminSection; label: string; icon: typeof ListChecks }[] = [
   { id: "questions", label: "Question Bank", icon: ListChecks },
@@ -13,6 +13,7 @@ const NAV: { id: AdminSection; label: string; icon: typeof ListChecks }[] = [
   { id: "links", label: "Links", icon: Link2 },
   { id: "sources", label: "Sources", icon: Database },
   { id: "codes", label: "Access Codes", icon: KeyRound },
+  { id: "users", label: "Users", icon: Users },
   { id: "import", label: "Import", icon: Upload },
 ];
 

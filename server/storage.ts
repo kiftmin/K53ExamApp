@@ -1,6 +1,6 @@
-import { db, questions, sources, accessCodes, studySigns, signQuestions, studyRules, ruleQuestions, controlDiagrams, studyControls, controlQuestions, learnerProgress, learnerTestRuns } from './db.js';
-import { Question, InsertQuestion, Source, InsertSource, AccessCode, InsertAccessCode, StudySign, InsertStudySign, SignQuestionLink, StudyRule, InsertStudyRule, RuleQuestionLink, ControlDiagram, InsertControlDiagram, StudyControl, InsertStudyControl, ControlQuestionLink, RawControlBundle, LearnerProgressRow, InsertLearnerProgress, InsertTestHistoryRun, TestHistoryRunPayload } from '../shared/schema.js';
-import { eq, inArray, desc, and, sql, or, ilike, count, countDistinct, notExists } from 'drizzle-orm';
+import { db, questions, sources, accessCodes, suspendedMobiles, learnerProfiles, studySigns, signQuestions, studyRules, ruleQuestions, controlDiagrams, studyControls, controlQuestions, learnerProgress, learnerTestRuns } from './db.js';
+import { Question, InsertQuestion, Source, InsertSource, AccessCode, InsertAccessCode, SuspendedMobile, InsertSuspendedMobile, LearnerProfile, InsertLearnerProfile, AdminUserSummary, AdminUserStatus, AccessCodeType, StudySign, InsertStudySign, SignQuestionLink, StudyRule, InsertStudyRule, RuleQuestionLink, ControlDiagram, InsertControlDiagram, StudyControl, InsertStudyControl, ControlQuestionLink, RawControlBundle, LearnerProgressRow, InsertLearnerProgress, InsertTestHistoryRun, TestHistoryRunPayload } from '../shared/schema.js';
+import { eq, ne, inArray, desc, and, sql, or, ilike, count, countDistinct, notExists } from 'drizzle-orm';
 
 export interface LinkCoverageModule {
   questions: { total: number; linked: number };
@@ -46,7 +46,19 @@ export interface IStorage {
   getAccessCodeByCode(code: string): Promise<AccessCode | undefined>;
   createAccessCode(data: InsertAccessCode): Promise<AccessCode>;
   revokeAccessCode(id: number): Promise<AccessCode | undefined>;
+  revokeAccessCodesByMobile(mobileNumber: string, exceptId?: number): Promise<number>;
   deleteAccessCode(id: number): Promise<boolean>;
+  deleteAccessCodesByMobile(mobileNumber: string): Promise<number>;
+
+  getSuspendedMobile(mobileNumber: string): Promise<SuspendedMobile | undefined>;
+  isMobileSuspended(mobileNumber: string): Promise<boolean>;
+  suspendMobile(data: InsertSuspendedMobile): Promise<SuspendedMobile>;
+  unsuspendMobile(mobileNumber: string): Promise<boolean>;
+  getLearnerProfile(mobileNumber: string): Promise<LearnerProfile | undefined>;
+  upsertLearnerProfile(data: InsertLearnerProfile): Promise<LearnerProfile>;
+  deleteLearnerProfile(mobileNumber: string): Promise<boolean>;
+  getAdminUsers(): Promise<AdminUserSummary[]>;
+  deleteUserData(mobileNumber: string): Promise<{ codes: number; progress: number; tests: number; suspension: boolean; profile: boolean }>;
 
   getSigns(filters?: { heading?: string; subheading?: string; search?: string; verified?: boolean; missingImage?: boolean }): Promise<StudySign[]>;
   getSignById(id: number): Promise<(StudySign & { question_ids: number[] }) | undefined>;
@@ -238,6 +250,8 @@ export class NeonDatabaseStorage implements IStorage {
       code: data.code.trim().toUpperCase(),
       type: data.type,
       mobile_number: data.mobile_number?.trim() ?? null,
+      name: data.name?.trim() || null,
+      surname: data.surname?.trim() || null,
       has_admin_access: data.has_admin_access ?? false,
       expires_at: data.expires_at ?? null,
       is_revoked: false,
@@ -257,6 +271,308 @@ export class NeonDatabaseStorage implements IStorage {
   async deleteAccessCode(id: number): Promise<boolean> {
     const [row] = await db.delete(accessCodes).where(eq(accessCodes.id, id)).returning();
     return !!row;
+  }
+
+  async revokeAccessCodesByMobile(mobileNumber: string, exceptId?: number): Promise<number> {
+    const conditions = [
+      eq(accessCodes.mobile_number, mobileNumber),
+      eq(accessCodes.is_revoked, false),
+    ];
+    if (exceptId !== undefined) conditions.push(ne(accessCodes.id, exceptId));
+    const rows = await db
+      .update(accessCodes)
+      .set({ is_revoked: true })
+      .where(and(...conditions))
+      .returning({ id: accessCodes.id });
+    return rows.length;
+  }
+
+  async deleteAccessCodesByMobile(mobileNumber: string): Promise<number> {
+    const rows = await db
+      .delete(accessCodes)
+      .where(eq(accessCodes.mobile_number, mobileNumber))
+      .returning({ id: accessCodes.id });
+    return rows.length;
+  }
+
+  async getSuspendedMobile(mobileNumber: string): Promise<SuspendedMobile | undefined> {
+    const [row] = await db
+      .select()
+      .from(suspendedMobiles)
+      .where(eq(suspendedMobiles.mobile_number, mobileNumber));
+    return row as unknown as SuspendedMobile | undefined;
+  }
+
+  async isMobileSuspended(mobileNumber: string): Promise<boolean> {
+    return !!(await this.getSuspendedMobile(mobileNumber));
+  }
+
+  async suspendMobile(data: InsertSuspendedMobile): Promise<SuspendedMobile> {
+    const [row] = await db
+      .insert(suspendedMobiles)
+      .values({
+        mobile_number: data.mobile_number,
+        reason: data.reason ?? null,
+        suspended_by: data.suspended_by ?? null,
+      })
+      .onConflictDoUpdate({
+        target: suspendedMobiles.mobile_number,
+        set: {
+          reason: data.reason ?? null,
+          suspended_by: data.suspended_by ?? null,
+          suspended_at: new Date(),
+        },
+      })
+      .returning();
+    return row as unknown as SuspendedMobile;
+  }
+
+  async unsuspendMobile(mobileNumber: string): Promise<boolean> {
+    const [row] = await db
+      .delete(suspendedMobiles)
+      .where(eq(suspendedMobiles.mobile_number, mobileNumber))
+      .returning({ mobile_number: suspendedMobiles.mobile_number });
+    return !!row;
+  }
+
+  async getLearnerProfile(mobileNumber: string): Promise<LearnerProfile | undefined> {
+    const [row] = await db
+      .select()
+      .from(learnerProfiles)
+      .where(eq(learnerProfiles.mobile_number, mobileNumber));
+    return row as unknown as LearnerProfile | undefined;
+  }
+
+  async upsertLearnerProfile(data: InsertLearnerProfile): Promise<LearnerProfile> {
+    const [row] = await db
+      .insert(learnerProfiles)
+      .values({
+        mobile_number: data.mobile_number,
+        name: data.name?.trim() || null,
+        surname: data.surname?.trim() || null,
+        updated_by: data.updated_by ?? null,
+      })
+      .onConflictDoUpdate({
+        target: learnerProfiles.mobile_number,
+        set: {
+          name: data.name?.trim() || null,
+          surname: data.surname?.trim() || null,
+          updated_by: data.updated_by ?? null,
+          updated_at: new Date(),
+        },
+      })
+      .returning();
+    return row as unknown as LearnerProfile;
+  }
+
+  async deleteLearnerProfile(mobileNumber: string): Promise<boolean> {
+    const [row] = await db
+      .delete(learnerProfiles)
+      .where(eq(learnerProfiles.mobile_number, mobileNumber))
+      .returning({ mobile_number: learnerProfiles.mobile_number });
+    return !!row;
+  }
+
+  async getAdminUsers(): Promise<AdminUserSummary[]> {
+    const [codes, suspensions, profiles, progressStats, testStats, latestTestNames] = await Promise.all([
+      db.select().from(accessCodes).orderBy(desc(accessCodes.created_at)),
+      db.select().from(suspendedMobiles),
+      db.select().from(learnerProfiles),
+      db
+        .select({
+          mobile_number: learnerProgress.mobile_number,
+          total: count(),
+          last_updated: sql<string | null>`to_char(max(${learnerProgress.updated_at}) AT TIME ZONE 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.MS"Z"')`,
+        })
+        .from(learnerProgress)
+        .groupBy(learnerProgress.mobile_number),
+      db
+        .select({
+          mobile_number: learnerTestRuns.mobile_number,
+          total: count(),
+          last_finished: sql<string | null>`to_char(max(${learnerTestRuns.finished_at}) AT TIME ZONE 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.MS"Z"')`,
+        })
+        .from(learnerTestRuns)
+        .groupBy(learnerTestRuns.mobile_number),
+      db
+        .selectDistinctOn([learnerTestRuns.mobile_number], {
+          mobile_number: learnerTestRuns.mobile_number,
+          name: sql<string | null>`nullif(btrim(${learnerTestRuns.payload}->>'name'), '')`,
+          surname: sql<string | null>`nullif(btrim(${learnerTestRuns.payload}->>'surname'), '')`,
+        })
+        .from(learnerTestRuns)
+        .orderBy(learnerTestRuns.mobile_number, desc(learnerTestRuns.finished_at)),
+    ]);
+
+    const aggregates = new Map<
+      string,
+      {
+        codes: AccessCode[];
+        suspension?: SuspendedMobile;
+        profile?: LearnerProfile;
+        progress_count: number;
+        test_count: number;
+        progress_last: string | null;
+        test_last: string | null;
+        test_name: string | null;
+        test_surname: string | null;
+      }
+    >();
+
+    const getAggregate = (mobileNumber: string) => {
+      let aggregate = aggregates.get(mobileNumber);
+      if (!aggregate) {
+        aggregate = {
+          codes: [],
+          progress_count: 0,
+          test_count: 0,
+          progress_last: null,
+          test_last: null,
+          test_name: null,
+          test_surname: null,
+        };
+        aggregates.set(mobileNumber, aggregate);
+      }
+      return aggregate;
+    };
+
+    for (const code of codes) {
+      const mobile = (code.mobile_number || '').trim();
+      if (mobile) getAggregate(mobile).codes.push(code as unknown as AccessCode);
+    }
+    for (const suspension of suspensions) {
+      getAggregate(suspension.mobile_number).suspension = suspension as unknown as SuspendedMobile;
+    }
+    for (const profile of profiles) {
+      getAggregate(profile.mobile_number).profile = profile as unknown as LearnerProfile;
+    }
+    for (const row of progressStats) {
+      const aggregate = getAggregate(row.mobile_number);
+      aggregate.progress_count = Number(row.total);
+      aggregate.progress_last = row.last_updated;
+    }
+    for (const row of testStats) {
+      const aggregate = getAggregate(row.mobile_number);
+      aggregate.test_count = Number(row.total);
+      aggregate.test_last = row.last_finished;
+    }
+    for (const row of latestTestNames) {
+      const aggregate = getAggregate(row.mobile_number);
+      aggregate.test_name = row.name;
+      aggregate.test_surname = row.surname;
+    }
+
+    const typeRank: Record<AccessCodeType, number> = {
+      daily: 1,
+      weekly: 2,
+      monthly: 3,
+      master: 4,
+    };
+    const now = Date.now();
+    const toIso = (value: Date | string | null | undefined): string | null => {
+      if (!value) return null;
+      const date = value instanceof Date ? value : new Date(value);
+      return Number.isNaN(date.getTime()) ? null : date.toISOString();
+    };
+
+    const summaries: AdminUserSummary[] = [];
+    for (const [mobileNumber, aggregate] of Array.from(aggregates.entries())) {
+      const sortedCodes = [...aggregate.codes].sort(
+        (a, b) => new Date(b.created_at ?? 0).getTime() - new Date(a.created_at ?? 0).getTime()
+      );
+      const activeCodes = sortedCodes.filter(
+        (code) => !code.is_revoked && (!code.expires_at || new Date(code.expires_at).getTime() > now)
+      );
+      const bestActive = [...activeCodes].sort(
+        (a, b) =>
+          typeRank[b.type as AccessCodeType] - typeRank[a.type as AccessCodeType] ||
+          new Date(b.created_at ?? 0).getTime() - new Date(a.created_at ?? 0).getTime()
+      )[0];
+      const latestCode = sortedCodes[0];
+      const reference = bestActive ?? latestCode;
+
+      const latestNamedCode = sortedCodes.find(
+        (code) => !!(code.name?.trim() || code.surname?.trim())
+      );
+      const codeName = latestNamedCode?.name?.trim() || null;
+      const codeSurname = latestNamedCode?.surname?.trim() || null;
+      const testName = aggregate.test_name?.trim() || null;
+      const testSurname = aggregate.test_surname?.trim() || null;
+      const hasTestName = !!(testName || testSurname);
+      const codeNameAt = latestNamedCode
+        ? new Date(latestNamedCode.created_at ?? 0).getTime()
+        : 0;
+      const testNameAt = aggregate.test_last
+        ? new Date(aggregate.test_last).getTime()
+        : 0;
+      const useTestName = hasTestName && testNameAt > codeNameAt;
+
+      // An admin-edited profile is the source of truth; names captured on an
+      // access code or a test run are only fallbacks for learners never edited.
+      const profileName = aggregate.profile?.name?.trim() || null;
+      const profileSurname = aggregate.profile?.surname?.trim() || null;
+      const useProfile = !!(profileName || profileSurname);
+
+      let status: AdminUserStatus = 'no_access';
+      if (aggregate.suspension) {
+        status = 'suspended';
+      } else if (bestActive) {
+        status = 'active';
+      } else if (latestCode) {
+        if (latestCode.expires_at && new Date(latestCode.expires_at).getTime() <= now) {
+          status = 'expired';
+        } else if (latestCode.is_revoked) {
+          status = 'revoked';
+        }
+      }
+
+      const activityTimes = [
+        ...sortedCodes.map((code) => new Date(code.created_at ?? 0).getTime()),
+        aggregate.progress_last ? new Date(aggregate.progress_last).getTime() : 0,
+        aggregate.test_last ? new Date(aggregate.test_last).getTime() : 0,
+        aggregate.suspension ? new Date(aggregate.suspension.suspended_at).getTime() : 0,
+      ].filter((time) => Number.isFinite(time) && time > 0);
+
+      summaries.push({
+        mobile_number: mobileNumber,
+        name: useProfile ? profileName : useTestName ? testName : codeName,
+        surname: useProfile ? profileSurname : useTestName ? testSurname : codeSurname,
+        access_type: reference?.type ?? null,
+        access_code: reference?.code ?? null,
+        expires_at: toIso(reference?.expires_at),
+        has_admin_access: reference?.has_admin_access ?? false,
+        status,
+        suspended: !!aggregate.suspension,
+        suspended_at: toIso(aggregate.suspension?.suspended_at),
+        suspension_reason: aggregate.suspension?.reason ?? null,
+        code_count: aggregate.codes.length,
+        active_code_count: activeCodes.length,
+        progress_count: aggregate.progress_count,
+        test_count: aggregate.test_count,
+        last_activity_at: activityTimes.length ? new Date(Math.max(...activityTimes)).toISOString() : null,
+      });
+    }
+
+    return summaries.sort((a, b) => {
+      const aTime = a.last_activity_at ? new Date(a.last_activity_at).getTime() : 0;
+      const bTime = b.last_activity_at ? new Date(b.last_activity_at).getTime() : 0;
+      return bTime - aTime || a.mobile_number.localeCompare(b.mobile_number);
+    });
+  }
+
+  async deleteUserData(mobileNumber: string): Promise<{ codes: number; progress: number; tests: number; suspension: boolean; profile: boolean }> {
+    const codes = await this.deleteAccessCodesByMobile(mobileNumber);
+    const progress = await db
+      .delete(learnerProgress)
+      .where(eq(learnerProgress.mobile_number, mobileNumber))
+      .returning({ id: learnerProgress.id });
+    const tests = await db
+      .delete(learnerTestRuns)
+      .where(eq(learnerTestRuns.mobile_number, mobileNumber))
+      .returning({ id: learnerTestRuns.id });
+    const suspension = await this.unsuspendMobile(mobileNumber);
+    const profile = await this.deleteLearnerProfile(mobileNumber);
+    return { codes, progress: progress.length, tests: tests.length, suspension, profile };
   }
 
   // === Road Signs study module ===

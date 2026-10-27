@@ -8,6 +8,7 @@ import ControlsSection from "@/components/admin/controls-section";
 import LinkCoverageSection from "@/components/admin/link-coverage-section";
 import SourcesSection from "@/components/admin/sources-section";
 import AccessCodesSection from "@/components/admin/access-codes-section";
+import UserManagementSection from "@/components/admin/user-management-section";
 import ImportSection from "@/components/admin/import-section";
 
 export default function Admin() {
@@ -23,6 +24,7 @@ export default function Admin() {
         {section === "links" && <LinkCoverageSection />}
         {section === "sources" && <SourcesSection />}
         {section === "codes" && <AccessCodesSection />}
+        {section === "users" && <UserManagementSection />}
         {section === "import" && <ImportSection />}
       </AdminShell>
     </AdminGate>

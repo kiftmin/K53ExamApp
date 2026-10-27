@@ -23,10 +23,27 @@ export const accessCodes = pgTable('access_codes', {
     code: text('code').notNull().unique(),
     type: text('type').notNull(), // 'daily' | 'weekly' | 'monthly' | 'master'
     mobile_number: text('mobile_number'),
+    name: text('name'),
+    surname: text('surname'),
     has_admin_access: boolean('has_admin_access').default(false).notNull(),
     expires_at: timestamp('expires_at'),
     is_revoked: boolean('is_revoked').default(false).notNull(),
     created_at: timestamp('created_at').defaultNow().notNull(),
+});
+
+export const suspendedMobiles = pgTable('suspended_mobiles', {
+    mobile_number: text('mobile_number').primaryKey(),
+    reason: text('reason'),
+    suspended_by: text('suspended_by'),
+    suspended_at: timestamp('suspended_at').defaultNow().notNull(),
+});
+
+export const learnerProfiles = pgTable('learner_profiles', {
+    mobile_number: text('mobile_number').primaryKey(),
+    name: text('name'),
+    surname: text('surname'),
+    updated_by: text('updated_by'),
+    updated_at: timestamp('updated_at').defaultNow().notNull(),
 });
 
 // Road Signs study module
