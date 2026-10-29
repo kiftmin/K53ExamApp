@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useLocation } from "wouter";
 import { useQuery } from "@tanstack/react-query";
-import type { Question, StudySign } from "@shared/schema";
+import { normalizeLicenseCode, type Question, type StudySign } from "@shared/schema";
 import { Layout } from "@/components/layout";
 import { FormattedText } from "@/components/formatted-text";
 import { Button } from "@/components/ui/button";
@@ -287,7 +287,7 @@ export default function StudySignsBrowse() {
       {
         name: localStorage.getItem("k53_name") || "Study",
         surname: localStorage.getItem("k53_surname") || "Student",
-        licenseCode: localStorage.getItem("k53_license_code") || "02",
+        licenseCode: normalizeLicenseCode(localStorage.getItem("k53_license_code"), "02"),
         category: 2,
         testType: "category",
         source: "all",

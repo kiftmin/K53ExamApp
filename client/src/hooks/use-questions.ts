@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { api } from "@shared/routes";
 import { z } from "zod";
 
-function parseWithLogging<T>(schema: z.ZodSchema<T>, data: unknown, label: string): T {
+function parseWithLogging<T extends z.ZodTypeAny>(schema: T, data: unknown, label: string): z.infer<T> {
   const result = schema.safeParse(data);
   if (!result.success) {
     console.error(`[Zod] ${label} validation failed:`, result.error.format());

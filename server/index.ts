@@ -24,6 +24,10 @@ app.use(
 
 app.use(express.urlencoded({ extended: false }));
 
+// nginx terminates TLS in front of the app; without this, client IPs seen by
+// rate limiters would be the proxy's.
+app.set("trust proxy", 1);
+
 export function log(message: string, source = "express") {
   const formattedTime = new Date().toLocaleTimeString("en-US", {
     hour: "numeric",
@@ -38,23 +42,13 @@ export function log(message: string, source = "express") {
 app.use((req, res, next) => {
   const start = Date.now();
   const path = req.path;
-  let capturedJsonResponse: Record<string, any> | undefined = undefined;
-
-  const originalResJson = res.json;
-  res.json = function (bodyJson, ...args) {
-    capturedJsonResponse = bodyJson;
-    return originalResJson.apply(res, [bodyJson, ...args]);
-  };
 
   res.on("finish", () => {
     const duration = Date.now() - start;
     if (path.startsWith("/api")) {
-      let logLine = `${req.method} ${path} ${res.statusCode} in ${duration}ms`;
-      if (capturedJsonResponse) {
-        logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
-      }
-
-      log(logLine);
+      // Response bodies are deliberately not logged: several endpoints return
+      // access codes or learner PII.
+      log(`${req.method} ${path} ${res.statusCode} in ${duration}ms`);
     }
   });
 
@@ -62,164 +56,48 @@ app.use((req, res, next) => {
 });
 
 (async () => {
-  // Idempotent DDL for the Road Signs study module (safe on every boot,
-  // creates nothing if tables already exist).
-  try {
-    await client`
-      CREATE TABLE IF NOT EXISTS study_signs (
-        id SERIAL PRIMARY KEY,
-        heading TEXT NOT NULL,
-        subheading TEXT NOT NULL,
-        name TEXT NOT NULL,
-        codes JSONB NOT NULL,
-        images JSONB NOT NULL DEFAULT '[]',
-        where_text TEXT,
-        purpose_text TEXT,
-        action_text TEXT,
-        is_verified_exam_question BOOLEAN NOT NULL DEFAULT FALSE,
-        created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-        updated_at TIMESTAMP NOT NULL DEFAULT NOW()
-      );
-    `;
-    await client`
-      CREATE TABLE IF NOT EXISTS sign_questions (
-        id SERIAL PRIMARY KEY,
-        sign_id INTEGER NOT NULL REFERENCES study_signs(id) ON DELETE CASCADE,
-        question_id INTEGER NOT NULL REFERENCES questions(id) ON DELETE CASCADE
-      );
-    `;
-    await client`
-      CREATE TABLE IF NOT EXISTS study_rules (
-        id SERIAL PRIMARY KEY,
-        section_ref TEXT NOT NULL,
-        heading TEXT NOT NULL,
-        subheading TEXT NOT NULL,
-        title TEXT,
-        question TEXT,
-        body TEXT NOT NULL,
-        applicable_codes JSONB NOT NULL,
-        is_verified_exam_question BOOLEAN NOT NULL DEFAULT FALSE,
-        is_reviewed BOOLEAN NOT NULL DEFAULT FALSE,
-        created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-        updated_at TIMESTAMP NOT NULL DEFAULT NOW()
-      );
-    `;
-    await client`
-      CREATE TABLE IF NOT EXISTS rule_questions (
-        id SERIAL PRIMARY KEY,
-        rule_id INTEGER NOT NULL REFERENCES study_rules(id) ON DELETE CASCADE,
-        question_id INTEGER NOT NULL REFERENCES questions(id) ON DELETE CASCADE
-      );
-    `;
-    await client`
-      CREATE TABLE IF NOT EXISTS control_diagrams (
-        id SERIAL PRIMARY KEY,
-        vehicle_type TEXT NOT NULL,
-        gearbox TEXT,
-        label TEXT NOT NULL,
-        image_url TEXT,
-        is_inferred BOOLEAN NOT NULL DEFAULT FALSE,
-        created_at TIMESTAMP NOT NULL DEFAULT NOW()
-      );
-    `;
-    await client`
-      CREATE TABLE IF NOT EXISTS study_controls (
-        id SERIAL PRIMARY KEY,
-        diagram_id INTEGER NOT NULL REFERENCES control_diagrams(id) ON DELETE CASCADE,
-        component_number INTEGER,
-        component_name TEXT NOT NULL,
-        function_notes TEXT,
-        applicable_codes JSONB NOT NULL,
-        is_verified_exam_question BOOLEAN NOT NULL DEFAULT FALSE,
-        is_reviewed BOOLEAN NOT NULL DEFAULT FALSE,
-        position_x REAL,
-        position_y REAL,
-        created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-        updated_at TIMESTAMP NOT NULL DEFAULT NOW()
-      );
-    `;
-    await client`
-      CREATE TABLE IF NOT EXISTS control_questions (
-        id SERIAL PRIMARY KEY,
-        control_id INTEGER NOT NULL REFERENCES study_controls(id) ON DELETE CASCADE,
-        question_id INTEGER NOT NULL REFERENCES questions(id) ON DELETE CASCADE
-      );
-    `;
-    await client`
-      CREATE TABLE IF NOT EXISTS learner_progress (
-        id SERIAL PRIMARY KEY,
-        mobile_number TEXT NOT NULL,
-        item_type TEXT NOT NULL,
-        item_id INTEGER NOT NULL,
-        status TEXT NOT NULL,
-        correct INTEGER NOT NULL DEFAULT 0,
-        incorrect INTEGER NOT NULL DEFAULT 0,
-        last_rating TEXT,
-        last_seen_at TIMESTAMP,
-        updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
-        CONSTRAINT learner_progress_unique_item UNIQUE (mobile_number, item_type, item_id)
-      );
-    `;
-    await client`
-      CREATE TABLE IF NOT EXISTS learner_test_runs (
-        id SERIAL PRIMARY KEY,
-        mobile_number TEXT NOT NULL,
-        run_id TEXT NOT NULL,
-        finished_at TIMESTAMP NOT NULL,
-        payload JSONB NOT NULL,
-        created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-        updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
-        CONSTRAINT learner_test_runs_unique_run UNIQUE (mobile_number, run_id)
-      );
-    `;
-    await client`
-      CREATE INDEX IF NOT EXISTS learner_test_runs_mobile_finished_idx
-        ON learner_test_runs (mobile_number, finished_at DESC);
-    `;
-    await client`
-      CREATE TABLE IF NOT EXISTS suspended_mobiles (
-        mobile_number TEXT PRIMARY KEY,
-        reason TEXT,
-        suspended_by TEXT,
-        suspended_at TIMESTAMP NOT NULL DEFAULT NOW()
-      );
-    `;
-    await client`
-      CREATE TABLE IF NOT EXISTS learner_profiles (
-        mobile_number TEXT PRIMARY KEY,
-        name TEXT,
-        surname TEXT,
-        updated_by TEXT,
-        updated_at TIMESTAMP NOT NULL DEFAULT NOW()
-      );
-    `;
-    // Pure-additive column migrations (safe to run every boot)
-    // Existing questions keep the bank's curated state → default TRUE on migration.
-    await client`ALTER TABLE questions ADD COLUMN IF NOT EXISTS is_reviewed BOOLEAN NOT NULL DEFAULT TRUE;`;
-    await client`ALTER TABLE study_controls ADD COLUMN IF NOT EXISTS position_x REAL;`;
-    await client`ALTER TABLE study_controls ADD COLUMN IF NOT EXISTS position_y REAL;`;
-    await client`ALTER TABLE study_rules ADD COLUMN IF NOT EXISTS question TEXT;`;
-    await client`ALTER TABLE study_signs ADD COLUMN IF NOT EXISTS short_meaning TEXT;`;
-    await client`ALTER TABLE study_signs ADD COLUMN IF NOT EXISTS short_action TEXT;`;
-    await client`ALTER TABLE study_signs ADD COLUMN IF NOT EXISTS short_reviewed BOOLEAN NOT NULL DEFAULT FALSE;`;
-    await client`ALTER TABLE study_signs ADD COLUMN IF NOT EXISTS needs_split BOOLEAN NOT NULL DEFAULT FALSE;`;
-    await client`ALTER TABLE access_codes ADD COLUMN IF NOT EXISTS name TEXT;`;
-    await client`ALTER TABLE access_codes ADD COLUMN IF NOT EXISTS surname TEXT;`;
-  } catch (err) {
-    console.error("Failed to ensure study tables:", err);
+  // Migrations are explicit (see documents/DB-MIGRATIONS.md); boot never runs DDL.
+  // Fail fast instead of serving against a database that is missing tables.
+  const REQUIRED_TABLES = [
+    "access_codes",
+    "control_diagrams",
+    "control_questions",
+    "learner_profiles",
+    "learner_progress",
+    "learner_test_runs",
+    "questions",
+    "rule_questions",
+    "sign_questions",
+    "sources",
+    "study_controls",
+    "study_rules",
+    "study_signs",
+    "suspended_mobiles",
+  ];
+  const tableRows = await client`
+    SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';
+  `;
+  const present = new Set<string>(tableRows.map((r) => r.table_name as string));
+  const missing = REQUIRED_TABLES.filter((t) => !present.has(t));
+  if (missing.length > 0) {
+    throw new Error(
+      `Database is missing required tables: ${missing.join(", ")}. Apply migrations before starting the server.`,
+    );
   }
 
   await registerRoutes(httpServer, app);
 
   app.use((err: any, _req: Request, res: Response, next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
-    const message = err.message || "Internal Server Error";
 
     console.error("Internal Server Error:", err);
 
     if (res.headersSent) {
       return next(err);
     }
+
+    // Never echo driver/SMTP internals to the client; they stay in the log above.
+    const message = status >= 500 ? "Internal Server Error" : err.message || "Request failed";
 
     return res.status(status).json({ message });
   });

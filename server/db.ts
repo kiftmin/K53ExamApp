@@ -1,6 +1,6 @@
 import { neon } from '@neondatabase/serverless';
 import { drizzle } from 'drizzle-orm/neon-http';
-import { pgTable, serial, text, integer, boolean, jsonb, timestamp, real, unique } from 'drizzle-orm/pg-core';
+import { pgTable, serial, text, integer, boolean, jsonb, timestamp, real, unique, index } from 'drizzle-orm/pg-core';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
@@ -14,13 +14,15 @@ export const db = drizzle(client);
 
 export const sources = pgTable('sources', {
     id: serial('id').primaryKey(),
-    name: text('name').notNull().unique(),
+    name: text('name').notNull(),
     is_active: boolean('is_active').default(true).notNull()
-});
+}, (table) => ({
+    nameUnique: unique('sources_name_key').on(table.name),
+}));
 
 export const accessCodes = pgTable('access_codes', {
     id: serial('id').primaryKey(),
-    code: text('code').notNull().unique(),
+    code: text('code').notNull(),
     type: text('type').notNull(), // 'daily' | 'weekly' | 'monthly' | 'master'
     mobile_number: text('mobile_number'),
     name: text('name'),
@@ -29,7 +31,9 @@ export const accessCodes = pgTable('access_codes', {
     expires_at: timestamp('expires_at'),
     is_revoked: boolean('is_revoked').default(false).notNull(),
     created_at: timestamp('created_at').defaultNow().notNull(),
-});
+}, (table) => ({
+    codeUnique: unique('access_codes_code_key').on(table.code),
+}));
 
 export const suspendedMobiles = pgTable('suspended_mobiles', {
     mobile_number: text('mobile_number').primaryKey(),
@@ -57,6 +61,9 @@ export const studySigns = pgTable('study_signs', {
     where_text: text('where_text'),
     purpose_text: text('purpose_text'),
     action_text: text('action_text'),
+    where_text_raw: text('where_text_raw'),
+    purpose_text_raw: text('purpose_text_raw'),
+    action_text_raw: text('action_text_raw'),
     short_meaning: text('short_meaning'),
     short_action: text('short_action'),
     short_reviewed: boolean('short_reviewed').notNull().default(false),
@@ -81,6 +88,7 @@ export const studyRules = pgTable('study_rules', {
     title: text('title'),
     question: text('question'), // flashcard prompt generated from body
     body: text('body').notNull(), // atomic rule statement
+    body_raw: text('body_raw'),
     applicable_codes: jsonb('applicable_codes').notNull(), // number[] e.g. [0], [1], [2,3]
     is_verified_exam_question: boolean('is_verified_exam_question').default(false).notNull(),
     is_reviewed: boolean('is_reviewed').default(false).notNull(), // LLM-assisted cards: reviewed by a human
@@ -139,7 +147,7 @@ export const learnerProgress = pgTable('learner_progress', {
     last_seen_at: timestamp('last_seen_at'),
     updated_at: timestamp('updated_at').defaultNow().notNull(),
 }, (table) => ({
-    uniqueItem: unique().on(table.mobile_number, table.item_type, table.item_id),
+    uniqueItem: unique('learner_progress_unique_item').on(table.mobile_number, table.item_type, table.item_id),
 }));
 
 export const learnerTestRuns = pgTable('learner_test_runs', {
@@ -151,7 +159,8 @@ export const learnerTestRuns = pgTable('learner_test_runs', {
     created_at: timestamp('created_at').defaultNow().notNull(),
     updated_at: timestamp('updated_at').defaultNow().notNull(),
 }, (table) => ({
-    uniqueRun: unique().on(table.mobile_number, table.run_id),
+    uniqueRun: unique('learner_test_runs_unique_run').on(table.mobile_number, table.run_id),
+    mobileFinishedIdx: index('learner_test_runs_mobile_finished_idx').on(table.mobile_number, table.finished_at.desc()),
 }));
 
 // Define Drizzle Postgres Schema matching the Zod schema
@@ -166,5 +175,7 @@ export const questions = pgTable('questions', {
     options: jsonb('options').notNull(), // Stores array of option objects
     source_id: integer('source_id').references(() => sources.id),
     is_duplicate: boolean('is_duplicate').default(false).notNull(),
-    is_official: boolean('is_official').default(false).notNull()
+    is_official: boolean('is_official').default(false).notNull(),
+    source: text('source').notNull().default('System'),
+    is_reviewed: boolean('is_reviewed').notNull().default(true),
 });

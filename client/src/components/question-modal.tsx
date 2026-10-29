@@ -53,6 +53,7 @@ const defaultValues: InsertQuestion = {
     source_id: null,
     is_duplicate: false,
     is_official: false,
+    is_reviewed: false,
     options: [
         { answer_number: "A", answer_text: "", correct_answer: false },
         { answer_number: "B", answer_text: "", correct_answer: false },

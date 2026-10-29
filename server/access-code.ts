@@ -160,27 +160,27 @@ export async function validateCodeAndMobile(
     const stored = await getAccessCodeByCode(normalized);
     if (stored && stored.type === 'daily' && !stored.is_revoked) {
       if (stored.expires_at && new Date(stored.expires_at).getTime() < Date.now()) {
-        return { valid: false, type, message: "Daily code expired." };
+        return { valid: false, message: "Daily code expired." };
       }
       return { valid: true, type, code: stored };
     }
-    return { valid: false, type, message: "Invalid daily code." };
+    return { valid: false, message: "Invalid daily code." };
   }
 
   // W / M / X require linked mobile number
   const mobile = (mobileNumber || '').trim();
   if (!isValidMobile(mobile)) {
-    return { valid: false, type, requiresMobile: true, message: "A 10-digit mobile number is required for this code." };
+    return { valid: false, requiresMobile: true, message: "A 10-digit mobile number is required for this code." };
   }
   const stored = await getAccessCodeByCode(normalized);
   if (!stored || stored.type !== type || stored.is_revoked) {
-    return { valid: false, type, requiresMobile: true, message: "Invalid code." };
+    return { valid: false, requiresMobile: true, message: "Invalid code." };
   }
   if ((stored.mobile_number || '').trim() !== mobile) {
-    return { valid: false, type, requiresMobile: true, message: "Mobile number does not match this code." };
+    return { valid: false, requiresMobile: true, message: "Mobile number does not match this code." };
   }
   if (stored.expires_at && new Date(stored.expires_at).getTime() < Date.now()) {
-    return { valid: false, type, requiresMobile: true, message: "Code expired." };
+    return { valid: false, requiresMobile: true, message: "Code expired." };
   }
   return { valid: true, type, code: stored };
 }

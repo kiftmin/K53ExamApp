@@ -1,0 +1,110 @@
+[
+  {
+    "question_id": 175,
+    "sign_ids": [238],
+    "confidence": "high",
+    "reason": "Image code GS403 matches Lanes merge card 238; reject 236."
+  },
+  {
+    "question_id": 190,
+    "sign_ids": [235],
+    "confidence": "medium",
+    "reason": "Obstruction 1 km ahead needs main obstruction card 235; 248 alone is only the supplementary plate."
+  },
+  {
+    "question_id": 900,
+    "sign_ids": [162],
+    "confidence": "high",
+    "reason": "4.42 m height limit matches card 162 Height restricted W320; reject 168."
+  },
+  {
+    "question_id": 916,
+    "sign_ids": [143],
+    "confidence": "high",
+    "reason": "Image code W212 matches card 143 Two-way traffic; reject 142."
+  },
+  {
+    "question_id": 932,
+    "sign_ids": [146],
+    "confidence": "high",
+    "reason": "Concealed driveways left then right matches card 146 W216; reject 138."
+  },
+  {
+    "question_id": 940,
+    "sign_ids": [187],
+    "confidence": "high",
+    "reason": "Low water bridge/drift matches card 187 W350; reject 166."
+  },
+  {
+    "question_id": 966,
+    "sign_ids": [63, 116],
+    "confidence": "high",
+    "reason": "K3 motorcars prohibited with time plate: add 63, keep 116, reject 57."
+  },
+  {
+    "question_id": 984,
+    "sign_ids": [33, 116],
+    "confidence": "high",
+    "reason": "K2 dangerous goods only with time plate: add 33, keep 116, reject 60."
+  },
+  {
+    "question_id": 1364,
+    "sign_ids": [219],
+    "confidence": "high",
+    "reason": "Fingerboard matches card 219 GD4; reject 211."
+  },
+  {
+    "question_id": 1366,
+    "sign_ids": [176],
+    "confidence": "high",
+    "reason": "Grader working matches card 176 TW337; reject 180."
+  },
+  {
+    "question_id": 1370,
+    "sign_ids": [236],
+    "confidence": "high",
+    "reason": "Image GS205 shows an additional lane, card 236; reject 285 road marking."
+  },
+  {
+    "question_id": 1372,
+    "sign_ids": [143],
+    "confidence": "high",
+    "reason": "Image code W212 matches card 143 Two-way traffic; reject 142."
+  },
+  {
+    "question_id": 1383,
+    "sign_ids": [235],
+    "confidence": "high",
+    "reason": "Image code GS103 matches card 235 obstruction; reject 236."
+  },
+  {
+    "question_id": 1385,
+    "sign_ids": [145],
+    "confidence": "high",
+    "reason": "Image code W214 matches the lane-narrows card 145; reject 144."
+  },
+  {
+    "question_id": 1427,
+    "sign_ids": [182],
+    "confidence": "high",
+    "reason": "Image code TW344 matches card 182; reject 180 TW342."
+  },
+  {
+    "question_id": 1457,
+    "sign_ids": [209],
+    "confidence": "high",
+    "reason": "GE11 map-type advance trailblazer is card 209; reject 206 GE2."
+  },
+  {
+    "question_id": 1460,
+    "sign_ids": [235],
+    "confidence": "medium",
+    "reason": "Obstruction 1 km ahead needs main obstruction card 235; 248 alone is only the supplementary plate."
+  },
+  {
+    "question_id": 1476,
+    "sign_ids": [290],
+    "confidence": "high",
+    "reason": "Pedestrian S18/S19 signals are on card 290 Traffic lights; reject 292."
+  }
+]

@@ -1,0 +1,95 @@
+[
+  {
+    "question_id": 741,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "The rule specifies following distance in seconds, not the ability to stop without swerving."
+  },
+  {
+    "question_id": 743,
+    "rule_ids": [
+      64
+    ],
+    "confidence": "high",
+    "reason": "The rule states the general speed limit in urban areas is 60 km/h."
+  },
+  {
+    "question_id": 745,
+    "rule_ids": [
+      15
+    ],
+    "confidence": "high",
+    "reason": "The rule specifies that dipped beam headlamps must illuminate the road ahead for at least 45 metres."
+  },
+  {
+    "question_id": 747,
+    "rule_ids": [
+      124
+    ],
+    "confidence": "high",
+    "reason": "The rule prohibits letting the engine run while the vehicle is stationary and unattended."
+  },
+  {
+    "question_id": 749,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "The rule states not to change lanes unless it can be done without obstructing or endangering other traffic, but does not explicitly mention checking the blind spot as the last action."
+  },
+  {
+    "question_id": 751,
+    "rule_ids": [
+      89
+    ],
+    "confidence": "high",
+    "reason": "The rule states not to change lanes unless it can be done without obstructing or endangering other traffic."
+  },
+  {
+    "question_id": 753,
+    "rule_ids": [
+      101
+    ],
+    "confidence": "high",
+    "reason": "The rule permits passing on the left when the vehicle ahead is turning right or on a one-way urban road with multiple lanes."
+  },
+  {
+    "question_id": 755,
+    "rule_ids": [
+      113,
+      175
+    ],
+    "confidence": "high",
+    "reason": "The rule prohibits stopping within 6 metres of a bridge, which includes culverts and causeways."
+  },
+  {
+    "question_id": 757,
+    "rule_ids": [
+      101
+    ],
+    "confidence": "high",
+    "reason": "The rule permits passing on the left if the vehicle ahead is turning right and it can be done safely."
+  },
+  {
+    "question_id": 759,
+    "rule_ids": [
+      141
+    ],
+    "confidence": "high",
+    "reason": "The rule states that pedestrians already in the road when the red man flashes must finish crossing quickly."
+  },
+  {
+    "question_id": 761,
+    "rule_ids": [
+      150
+    ],
+    "confidence": "high",
+    "reason": "The rule states that towing at over 30 km/h with a rope or chain is not allowed."
+  },
+  {
+    "question_id": 763,
+    "rule_ids": [
+      156
+    ],
+    "confidence": "high",
+    "reason": "The rule states not to cross or enter a public road unless it's clear of moving traffic for a sufficient distance and can be done safely."
+  }
+]

@@ -1,26 +1,26 @@
 import { z } from "zod";
 
 export const optionSchema = z.object({
-  answer_number: z.string(),
-  answer_text: z.string(),
+  answer_number: z.string().max(20),
+  answer_text: z.string().max(2000),
   correct_answer: z.boolean()
 });
 
 export const sourceSchema = z.object({
   id: z.number().optional(),
-  name: z.string(),
+  name: z.string().max(200),
   is_active: z.boolean().default(true)
 });
 
 export const questionSchema = z.object({
   id: z.number().optional(),
-  question_number: z.number(),
-  question_text: z.string(),
-  category: z.number(),
-  license_code: z.string(),
+  question_number: z.number().int().min(0).max(100000),
+  question_text: z.string().max(5000),
+  category: z.number().int().min(1).max(10),
+  license_code: z.string().max(20),
   contains_image: z.boolean(),
-  image_link: z.string().nullable(),
-  options: z.array(optionSchema),
+  image_link: z.string().max(2048).nullable(),
+  options: z.array(optionSchema).max(20),
   source_id: z.number().nullable().optional(),
   is_duplicate: z.boolean().default(false),
   is_official: z.boolean().default(false),
@@ -40,6 +40,19 @@ export const CATEGORY_NAMES: Record<number, string> = {
   3: "Controls"
 };
 
+// Question license codes. 00 is the general pool; 01–03 are vehicle-specific.
+export const LICENSE_CODES = ["00", "01", "02", "03"] as const;
+export const LEARNER_LICENSE_CODES = ["01", "02", "03"] as const;
+
+const LEGACY_LICENSE_CODES: Record<string, string> = { "1": "01", "2": "02", "3": "03" };
+
+// Older builds stored 1/2/3 (e.g. in localStorage); normalize on read.
+export function normalizeLicenseCode(value: string | null | undefined, fallback = "02"): string {
+  const trimmed = (value ?? "").trim();
+  const mapped = LEGACY_LICENSE_CODES[trimmed] ?? trimmed;
+  return (LICENSE_CODES as readonly string[]).includes(mapped) ? mapped : fallback;
+}
+
 export const ACCESS_CODE_TYPES = ["daily", "weekly", "monthly", "master"] as const;
 export type AccessCodeType = (typeof ACCESS_CODE_TYPES)[number];
 
@@ -52,11 +65,11 @@ export const ACCESS_CODE_PREFIX: Record<AccessCodeType, string> = {
 
 export const accessCodeSchema = z.object({
   id: z.number().optional(),
-  code: z.string(),
+  code: z.string().max(20),
   type: z.enum(ACCESS_CODE_TYPES),
-  mobile_number: z.string().nullable().optional(),
-  name: z.string().nullable().optional(),
-  surname: z.string().nullable().optional(),
+  mobile_number: z.string().max(20).nullable().optional(),
+  name: z.string().max(200).nullable().optional(),
+  surname: z.string().max(200).nullable().optional(),
   has_admin_access: z.boolean().default(false),
   expires_at: z.coerce.date().nullable().optional(),
   is_revoked: z.boolean().default(false),
@@ -67,9 +80,9 @@ export type AccessCode = z.infer<typeof accessCodeSchema> & { id: number };
 export type InsertAccessCode = Omit<z.infer<typeof accessCodeSchema>, "id" | "created_at">;
 
 export const suspendedMobileSchema = z.object({
-  mobile_number: z.string(),
-  reason: z.string().nullable().optional(),
-  suspended_by: z.string().nullable().optional(),
+  mobile_number: z.string().max(20),
+  reason: z.string().max(500).nullable().optional(),
+  suspended_by: z.string().max(20).nullable().optional(),
   suspended_at: z.coerce.date().optional(),
 });
 
@@ -77,10 +90,10 @@ export type SuspendedMobile = z.infer<typeof suspendedMobileSchema> & { suspende
 export type InsertSuspendedMobile = Pick<SuspendedMobile, "mobile_number" | "reason" | "suspended_by">;
 
 export const learnerProfileSchema = z.object({
-  mobile_number: z.string(),
-  name: z.string().nullable().optional(),
-  surname: z.string().nullable().optional(),
-  updated_by: z.string().nullable().optional(),
+  mobile_number: z.string().max(20),
+  name: z.string().max(200).nullable().optional(),
+  surname: z.string().max(200).nullable().optional(),
+  updated_by: z.string().max(20).nullable().optional(),
   updated_at: z.coerce.date().optional(),
 });
 
@@ -113,22 +126,22 @@ export const MOBILE_NUMBER_REGEX = /^\d{10}$/;
 // === Road Signs study module ===
 
 export const signImageSchema = z.object({
-  code: z.string(),
-  image_url: z.string(),
+  code: z.string().max(40),
+  image_url: z.string().max(2048),
 });
 
 export const studySignSchema = z.object({
   id: z.number().optional(),
-  heading: z.string(),
-  subheading: z.string(),
-  name: z.string(),
-  codes: z.array(z.string()).min(1),
-  images: z.array(signImageSchema).default([]),
-  where_text: z.string().nullable().optional(),
-  purpose_text: z.string().nullable().optional(),
-  action_text: z.string().nullable().optional(),
-  short_meaning: z.string().nullable().optional(),
-  short_action: z.string().nullable().optional(),
+  heading: z.string().max(300),
+  subheading: z.string().max(300),
+  name: z.string().max(300),
+  codes: z.array(z.string().max(40)).min(1).max(20),
+  images: z.array(signImageSchema).max(20).default([]),
+  where_text: z.string().max(5000).nullable().optional(),
+  purpose_text: z.string().max(5000).nullable().optional(),
+  action_text: z.string().max(5000).nullable().optional(),
+  short_meaning: z.string().max(2000).nullable().optional(),
+  short_action: z.string().max(2000).nullable().optional(),
   short_reviewed: z.boolean().default(false),
   needs_split: z.boolean().default(false),
   is_verified_exam_question: z.boolean().default(false),
@@ -139,22 +152,22 @@ export type InsertStudySign = Omit<z.infer<typeof studySignSchema>, "id">;
 
 // Drafted short text import (one entry per existing sign id)
 export const signShortTextImportSchema = z.object({
-  id: z.number(),
-  short_meaning: z.string().nullable(),
-  short_action: z.string().nullable(),
+  id: z.number().int().positive(),
+  short_meaning: z.string().max(2000).nullable(),
+  short_action: z.string().max(2000).nullable(),
   needs_split: z.boolean(),
 });
 export type SignShortTextImport = z.infer<typeof signShortTextImportSchema>;
 
 // Raw import format — matches Allsigns.json verbatim (pre image-matching)
 export const rawSignImportSchema = z.object({
-  Heading: z.string(),
-  Subheading: z.string(),
-  Name: z.string(),
-  Codes: z.array(z.string()),
-  Where: z.string().optional(),
-  Purpose: z.string().optional(),
-  Action: z.string().optional(),
+  Heading: z.string().max(300),
+  Subheading: z.string().max(300),
+  Name: z.string().max(300),
+  Codes: z.array(z.string().max(40)).max(20),
+  Where: z.string().max(5000).optional(),
+  Purpose: z.string().max(5000).optional(),
+  Action: z.string().max(5000).optional(),
 });
 
 export type RawSignImport = z.infer<typeof rawSignImportSchema>;
@@ -168,13 +181,13 @@ export const RULE_APPLICABLE_CODES = [0, 1, 2, 3] as const;
 // 0 = code-agnostic, 1 = motorcycle, 2 = light, 3 = heavy
 export const studyRuleSchema = z.object({
   id: z.number().optional(),
-  section_ref: z.string().min(1),
-  heading: z.string().min(1),
-  subheading: z.string().min(1),
-  title: z.string().nullable().optional(),
-  question: z.string().nullable().optional(),
-  body: z.string().min(1),
-  applicable_codes: z.array(z.number().int().min(0).max(3)).min(1),
+  section_ref: z.string().min(1).max(100),
+  heading: z.string().min(1).max(300),
+  subheading: z.string().min(1).max(300),
+  title: z.string().max(500).nullable().optional(),
+  question: z.string().max(2000).nullable().optional(),
+  body: z.string().min(1).max(20000),
+  applicable_codes: z.array(z.number().int().min(0).max(3)).min(1).max(4),
   is_verified_exam_question: z.boolean().default(false),
   is_reviewed: z.boolean().default(false),
 });
@@ -184,12 +197,12 @@ export type InsertStudyRule = Omit<z.infer<typeof studyRuleSchema>, "id">;
 
 // Raw import format — matches rules-of-the-road-cards.json verbatim
 export const rawRuleImportSchema = z.object({
-  section_ref: z.string(),
-  heading: z.string(),
-  subheading: z.string(),
-  title: z.string().optional(),
-  body: z.string(),
-  applicable_codes: z.array(z.number().int().min(0).max(3)),
+  section_ref: z.string().max(100),
+  heading: z.string().max(300),
+  subheading: z.string().max(300),
+  title: z.string().max(500).optional(),
+  body: z.string().max(20000),
+  applicable_codes: z.array(z.number().int().min(0).max(3)).max(4),
 });
 
 export type RawRuleImport = z.infer<typeof rawRuleImportSchema>;
@@ -202,8 +215,8 @@ export const controlDiagramSchema = z.object({
   id: z.number().optional(),
   vehicle_type: z.enum(["motorcycle", "lmv", "hmv"]),
   gearbox: z.enum(["manual", "automatic"]).nullable().optional(),
-  label: z.string(),
-  image_url: z.string().nullable().optional(),
+  label: z.string().max(300),
+  image_url: z.string().max(2048).nullable().optional(),
   is_inferred: z.boolean().default(false),
 });
 export type ControlDiagram = z.infer<typeof controlDiagramSchema> & { id: number };
@@ -213,9 +226,9 @@ export const studyControlSchema = z.object({
   id: z.number().optional(),
   diagram_id: z.number(),
   component_number: z.number().int().nullable().optional(),
-  component_name: z.string(),
-  function_notes: z.string().nullable().optional(),
-  applicable_codes: z.array(z.number().int().min(1).max(3)).optional(),
+  component_name: z.string().max(300),
+  function_notes: z.string().max(5000).nullable().optional(),
+  applicable_codes: z.array(z.number().int().min(1).max(3)).max(3).optional(),
   is_verified_exam_question: z.boolean().default(false),
   is_reviewed: z.boolean().default(false),
   position_x: z.number().min(0).max(100).nullable().optional(),
@@ -228,34 +241,34 @@ export type ControlQuestionLink = { id: number; control_id: number; question_id:
 
 // Raw import shapes (vehicle-controls-import.json)
 export const rawControlDiagramSchema = z.object({
-  key: z.string(),
+  key: z.string().max(100),
   vehicle_type: z.enum(["motorcycle", "lmv", "hmv"]),
   gearbox: z.enum(["manual", "automatic"]).nullable().optional(),
-  label: z.string(),
-  image_url: z.string().optional(),
+  label: z.string().max(300),
+  image_url: z.string().max(2048).optional(),
   is_inferred: z.boolean().optional().default(false),
 });
 
 export const rawStudyControlSchema = z.object({
-  diagram_key: z.string(),
+  diagram_key: z.string().max(100),
   component_number: z.number().int().nullable().optional(),
-  component_name: z.string(),
-  function_notes: z.string().nullable().optional(),
+  component_name: z.string().max(300),
+  function_notes: z.string().max(5000).nullable().optional(),
 });
 
 export const rawSampleQuestionSchema = z.object({
-  diagram_key: z.string(),
-  question_text: z.string(),
-  options: z.array(z.string()).min(2),
+  diagram_key: z.string().max(100),
+  question_text: z.string().max(2000),
+  options: z.array(z.string().max(1000)).min(2).max(10),
   correct_index: z.number().int().min(0),
-  linked_component_numbers: z.array(z.number().int()).optional().default([]),
+  linked_component_numbers: z.array(z.number().int()).max(50).optional().default([]),
 });
 
 export const rawControlBundleSchema = z.object({
-  control_diagrams: z.array(rawControlDiagramSchema),
-  study_controls: z.array(rawStudyControlSchema),
-  sample_questions: z.array(rawSampleQuestionSchema).optional().default([]),
-  notes: z.array(z.string()).optional(),
+  control_diagrams: z.array(rawControlDiagramSchema).max(500),
+  study_controls: z.array(rawStudyControlSchema).max(2000),
+  sample_questions: z.array(rawSampleQuestionSchema).max(500).optional().default([]),
+  notes: z.array(z.string().max(2000)).max(500).optional(),
 });
 
 export type RawControlBundle = z.infer<typeof rawControlBundleSchema>;
@@ -264,9 +277,9 @@ export type RawControlBundle = z.infer<typeof rawControlBundleSchema>;
 
 export const learnerProgressSchema = z.object({
   id: z.number().optional(),
-  mobile_number: z.string(),
+  mobile_number: z.string().max(20),
   item_type: z.enum(['sign', 'rule', 'control', 'question']),
-  item_id: z.number(),
+  item_id: z.number().int(),
   status: z.enum(['new', 'learning', 'review', 'mastered']),
   correct: z.number().default(0),
   incorrect: z.number().default(0),
@@ -279,14 +292,14 @@ export type LearnerProgressRow = z.infer<typeof learnerProgressSchema> & { id: n
 export type InsertLearnerProgress = Omit<z.infer<typeof learnerProgressSchema>, "id">;
 
 export const learnerProgressUpsertSchema = z.object({
-  code: z.string().min(1),
-  mobileNumber: z.string().min(1),
+  code: z.string().min(1).max(20),
+  mobileNumber: z.string().min(1).max(20),
   item_type: z.enum(['sign', 'rule', 'control', 'question']),
-  item_id: z.number(),
+  item_id: z.number().int().positive(),
   status: z.enum(['new', 'learning', 'review', 'mastered']),
-  correct: z.number().default(0),
-  incorrect: z.number().default(0),
-  last_rating: z.string().nullable().optional(),
+  correct: z.number().int().min(0).max(1000000).default(0),
+  incorrect: z.number().int().min(0).max(1000000).default(0),
+  last_rating: z.string().max(20).nullable().optional(),
   last_seen_at: z.coerce.date().nullable().optional(),
 });
 
@@ -308,7 +321,10 @@ export const testHistoryRunSchema = z.object({
       number: z.number().int(),
     })
   ).max(300),
-  answers: z.record(z.string(), z.string()),
+  answers: z.record(z.string().max(64), z.string().max(64)).refine(
+    (answers) => Object.keys(answers).length <= 300,
+    { message: "Too many answers" },
+  ),
   correct: z.number().int().min(0),
   total: z.number().int().min(1).max(300),
   percentage: z.number().int().min(0).max(100),

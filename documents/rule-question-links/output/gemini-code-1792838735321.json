@@ -1,0 +1,320 @@
+[
+  {
+    "question_id": 6,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule explicitly states the right-of-way procedure for a vehicle turning right at a general intersection."
+  },
+  {
+    "question_id": 20,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule explicitly mentions checking the blind spot before moving to another lane."
+  },
+  {
+    "question_id": 22,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule details the specific meaning of a flashing red traffic light."
+  },
+  {
+    "question_id": 24,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule defines a safe following distance as the ability to stop without swerving."
+  },
+  {
+    "question_id": 30,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule explicitly prohibits entering an intersection when there is not enough space to turn right."
+  },
+  {
+    "question_id": 33,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule details right-of-way priorities specifically for four-way stops or turning right at two-way road intersections."
+  },
+  {
+    "question_id": 37,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "Rule 113 mentions railway crossings but does not specify a 6-metre stopping distance."
+  },
+  {
+    "question_id": 39,
+    "rule_ids": [39],
+    "confidence": "medium",
+    "reason": "The prohibition on tune-playing sirens supports the requirement that a horn's pitch and tone may not change."
+  },
+  {
+    "question_id": 40,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule explicitly defines the meaning of a flashing green arrow at a traffic light."
+  },
+  {
+    "question_id": 55,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "The stated answer directly contradicts rule 110, which allows parking under certain conditions outside urban areas."
+  },
+  {
+    "question_id": 58,
+    "rule_ids": [46],
+    "confidence": "high",
+    "reason": "The rule explicitly states that it is the driver's duty to ensure a child uses an appropriate restraint, contradicting the false option."
+  },
+  {
+    "question_id": 70,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule provides this specific procedural instruction for passing a stopped vehicle in heavy traffic."
+  },
+  {
+    "question_id": 71,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule defines the general implication of temporary road signs."
+  },
+  {
+    "question_id": 225,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule explicitly enumerates all these specific offences to support the 'None of the above' answer."
+  },
+  {
+    "question_id": 228,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "Rule 32 mentions handlebar height measurements but does not specify the 500mm value."
+  },
+  {
+    "question_id": 229,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "Rule 78 states the maximum rear projection is 900mm, contradicting the answer's 850mm value."
+  },
+  {
+    "question_id": 231,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule covers the physics of stopping distance regarding speed and load."
+  },
+  {
+    "question_id": 114,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule explicitly addresses how vehicle load and speed affect stopping distance."
+  },
+  {
+    "question_id": 129,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "Rule 70 sets overall width limits at 2.5m or 2.6m, contradicting the 2.4m value in the answer."
+  },
+  {
+    "question_id": 133,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule covers the physics of stopping distance regarding speed and load."
+  },
+  {
+    "question_id": 741,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule defines a safe following distance as the ability to stop without swerving."
+  },
+  {
+    "question_id": 749,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule explicitly mentions checking the blind spot before lane changes."
+  },
+  {
+    "question_id": 751,
+    "rule_ids": [89, 92],
+    "confidence": "high",
+    "reason": "These rules combined mandate using indicators and ensuring it is safe without endangering traffic before changing lanes."
+  },
+  {
+    "question_id": 759,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "Rule 141 mentions flashing red signals for pedestrians, but does not use the terminology in the answer."
+  },
+  {
+    "question_id": 761,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "Rule 150 prohibits towing with a rope over 30 km/h, contradicting the 60 km/h answer."
+  },
+  {
+    "question_id": 773,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule explicitly prohibits entering an intersection without enough space to turn right."
+  },
+  {
+    "question_id": 776,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule details the specific procedure for a flashing red traffic light."
+  },
+  {
+    "question_id": 779,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule details right-of-way priorities specifically for four-way stops or turning right."
+  },
+  {
+    "question_id": 800,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule explicitly addresses how vehicle load and speed affect stopping distance."
+  },
+  {
+    "question_id": 810,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule explicitly addresses how vehicle load and speed affect stopping distance."
+  },
+  {
+    "question_id": 825,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule explicitly states the right-of-way procedure for yielding to oncoming traffic when turning right."
+  },
+  {
+    "question_id": 833,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "Rule 64 provides default speed limits, but no rule dictates that the legal speed is solely shown by road signs."
+  },
+  {
+    "question_id": 835,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "Rule 113 mentions stopping at railway crossings but does not stipulate a 6-metre distance."
+  },
+  {
+    "question_id": 837,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule provides right-of-way instructions for a traffic circle with four approaching vehicles."
+  },
+  {
+    "question_id": 845,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule details the specific procedure for a flashing red traffic light."
+  },
+  {
+    "question_id": 855,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule explicitly mentions checking the blind spot."
+  },
+  {
+    "question_id": 867,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule explicitly covers these precise offences to support the 'None of the above' answer."
+  },
+  {
+    "question_id": 878,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule addresses how load and speed specifically impact a motorcycle's stopping distance."
+  },
+  {
+    "question_id": 917,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rules describing specific road traffic sign codes (like W9) are provided."
+  },
+  {
+    "question_id": 936,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule explicitly defines the meaning of a flashing green arrow at a traffic light."
+  },
+  {
+    "question_id": 1389,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule explicitly mentions checking the blind spot before lane changes."
+  },
+  {
+    "question_id": 1397,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule defines a safe following distance as the ability to stop without swerving."
+  },
+  {
+    "question_id": 1421,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule details the procedure for encountering a flashing red traffic light."
+  },
+  {
+    "question_id": 1424,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule explicitly prohibits entering an intersection without sufficient space to turn right."
+  },
+  {
+    "question_id": 1432,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule provides right-of-way priority specifics for four-way stops."
+  },
+  {
+    "question_id": 1435,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule addresses how vehicle load and speed impact overall stopping distances."
+  },
+  {
+    "question_id": 1439,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "Rule 70 sets the overall width limits at 2.5m or 2.6m, contradicting the 2.4m limit in the answer."
+  },
+  {
+    "question_id": 1451,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule dictates this exact defensive driving procedure for heavy traffic scenarios."
+  },
+  {
+    "question_id": 1453,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "Rule 98 states reflective material is optional for vehicles under 10,000kg GVM, contradicting the 'shall be fitted' requirement."
+  },
+  {
+    "question_id": 1454,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "Rule 116 dictates following distance by time (2 or 3 seconds), but does not specifically define it by emergency stopping capabilities."
+  },
+  {
+    "question_id": 1488,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule explicitly allows encroaching onto the right-hand roadway merely because a car in front is driving slowly."
+  },
+  {
+    "question_id": 1498,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "Rule 113 prohibits stopping within a railway crossing but does not dictate a 6-metre buffer zone."
+  },
+  {
+    "question_id": 1499,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "Rule 60 requires placing one warning triangle behind a stationary vehicle, not one in front and one at the back."
+  }
+]

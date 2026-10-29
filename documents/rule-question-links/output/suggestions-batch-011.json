@@ -1,0 +1,98 @@
+[
+  {
+    "question_id": 800,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "The rules do not explicitly state that stopping distance is affected by wet roads, higher speed, or vehicle load."
+  },
+  {
+    "question_id": 801,
+    "rule_ids": [
+      70
+    ],
+    "confidence": "high",
+    "reason": "The rule specifies maximum overall widths for different classes of motor vehicles, including 2.6 meters for certain goods vehicles and 2.5 meters for others."
+  },
+  {
+    "question_id": 803,
+    "rule_ids": [
+      151
+    ],
+    "confidence": "high",
+    "reason": "The rule states that a towed vehicle may only carry passengers at over 30 km/h if it is a semi-trailer."
+  },
+  {
+    "question_id": 807,
+    "rule_ids": [
+      7
+    ],
+    "confidence": "high",
+    "reason": "A Code 3 learner's licence requires driving under the direct supervision of a licensed driver for that class."
+  },
+  {
+    "question_id": 810,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "The rules do not explicitly state that stopping distance is affected by wet roads, higher speed, or vehicle load."
+  },
+  {
+    "question_id": 821,
+    "rule_ids": [
+      113,
+      175
+    ],
+    "confidence": "high",
+    "reason": "The rule prohibits stopping within 6 metres of a bridge, and a bridge includes a culvert and a causeway."
+  },
+  {
+    "question_id": 825,
+    "rule_ids": [
+      107
+    ],
+    "confidence": "medium",
+    "reason": "The rule states to give way to all traffic approaching from your right at a junction where vehicles move around a traffic island."
+  },
+  {
+    "question_id": 827,
+    "rule_ids": [
+      89,
+      92
+    ],
+    "confidence": "high",
+    "reason": "The rules state that changing lanes must be done safely without obstructing traffic and requires using direction indicators."
+  },
+  {
+    "question_id": 829,
+    "rule_ids": [
+      85,
+      104
+    ],
+    "confidence": "high",
+    "reason": "The rules state that when another vehicle wants to pass, you must keep left and not speed up until it has passed."
+  },
+  {
+    "question_id": 831,
+    "rule_ids": [
+      29,
+      118
+    ],
+    "confidence": "high",
+    "reason": "The rules state that a driver must have a full, clear view of the road and maintain complete control of the vehicle."
+  },
+  {
+    "question_id": 833,
+    "rule_ids": [
+      64
+    ],
+    "confidence": "medium",
+    "reason": "The rule states general speed limits apply unless a sign indicates otherwise."
+  },
+  {
+    "question_id": 835,
+    "rule_ids": [
+      113
+    ],
+    "confidence": "high",
+    "reason": "The rule prohibits stopping within a railway level crossing, implying stopping 6m from it is permitted."
+  }
+]

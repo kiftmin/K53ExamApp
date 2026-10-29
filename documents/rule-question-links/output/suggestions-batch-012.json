@@ -1,0 +1,96 @@
+[
+  {
+    "question_id": 837,
+    "rule_ids": [
+      107
+    ],
+    "confidence": "high",
+    "reason": "The rule states to give way to all traffic approaching from your right at a traffic island."
+  },
+  {
+    "question_id": 839,
+    "rule_ids": [
+      56,
+      124,
+      143
+    ],
+    "confidence": "high",
+    "reason": "The rules prohibit running an engine unattended, using a vehicle without a fuel cap, and spinning wheels."
+  },
+  {
+    "question_id": 845,
+    "rule_ids": [
+      211
+    ],
+    "confidence": "medium",
+    "reason": "The rule defines a traffic signal as alternately directing traffic to stop and proceed, implying a flashing red light means stop and proceed when safe."
+  },
+  {
+    "question_id": 849,
+    "rule_ids": [
+      39
+    ],
+    "confidence": "high",
+    "reason": "The rule prohibits tune-playing sirens or horns on private vehicles, implying the tone should not change."
+  },
+  {
+    "question_id": 851,
+    "rule_ids": [
+      115
+    ],
+    "confidence": "high",
+    "reason": "The rule states not to reverse a vehicle unless it can be done safely."
+  },
+  {
+    "question_id": 855,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule explicitly mentions checking a 'blind spot' as the last action before changing lanes."
+  },
+  {
+    "question_id": 857,
+    "rule_ids": [
+      101
+    ],
+    "confidence": "high",
+    "reason": "The rule permits passing on the left when the vehicle ahead is turning right, on a multi-lane urban road, or when directed by a traffic officer."
+  },
+  {
+    "question_id": 859,
+    "rule_ids": [
+      227
+    ],
+    "confidence": "high",
+    "reason": "The rule states a motor vehicle licence and disc are valid for 12 months."
+  },
+  {
+    "question_id": 865,
+    "rule_ids": [
+      144
+    ],
+    "confidence": "high",
+    "reason": "The rule prohibits motorcycles under 50cc from using a freeway."
+  },
+  {
+    "question_id": 867,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule directly supports any of the options as an offense for a learner's licence holder."
+  },
+  {
+    "question_id": 869,
+    "rule_ids": [
+      5
+    ],
+    "confidence": "high",
+    "reason": "A Code 1 learner's licence prohibits carrying passengers on a motorcycle."
+  },
+  {
+    "question_id": 871,
+    "rule_ids": [
+      135
+    ],
+    "confidence": "high",
+    "reason": "The rule states that all wheels of a motorcycle must stay in contact with the road surface at all times."
+  }
+]

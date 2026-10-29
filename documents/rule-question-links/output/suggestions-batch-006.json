@@ -1,0 +1,96 @@
+[
+  {
+    "question_id": 61,
+    "rule_ids": [
+      171
+    ],
+    "confidence": "high",
+    "reason": "The rule prohibits occupying the driver's seat with the engine running while under the influence of alcohol or drugs."
+  },
+  {
+    "question_id": 62,
+    "rule_ids": [
+      53
+    ],
+    "confidence": "high",
+    "reason": "The rule states a vehicle must have an efficient exhaust silencer that channels exhaust gas through it."
+  },
+  {
+    "question_id": 63,
+    "rule_ids": [
+      20
+    ],
+    "confidence": "high",
+    "reason": "The rule specifies stop lamps must be visible at 30 metres in normal sunlight."
+  },
+  {
+    "question_id": 64,
+    "rule_ids": [
+      221
+    ],
+    "confidence": "high",
+    "reason": "The rule requires a driver to keep their licence or document with them in the vehicle."
+  },
+  {
+    "question_id": 65,
+    "rule_ids": [
+      106
+    ],
+    "confidence": "high",
+    "reason": "The rule states that on a freeway, a driver should keep left and overtake on the right."
+  },
+  {
+    "question_id": 66,
+    "rule_ids": [
+      90
+    ],
+    "confidence": "high",
+    "reason": "The rule requires giving a clear, timely signal of intention, long enough and visible enough to warn others."
+  },
+  {
+    "question_id": 67,
+    "rule_ids": [
+      140
+    ],
+    "confidence": "high",
+    "reason": "The rule explicitly prohibits passing a vehicle that has stopped at a pedestrian crossing."
+  },
+  {
+    "question_id": 68,
+    "rule_ids": [
+      28
+    ],
+    "confidence": "high",
+    "reason": "The rule permits breakdown vehicles working at an accident to use an adjustable spot lamp."
+  },
+  {
+    "question_id": 69,
+    "rule_ids": [
+      56
+    ],
+    "confidence": "high",
+    "reason": "The rule prohibits using a vehicle if its fuel tank, carburettor, or fuel pipes are defective or exposed as a danger."
+  },
+  {
+    "question_id": 70,
+    "rule_ids": [
+      104
+    ],
+    "confidence": "high",
+    "reason": "The rule states that when another vehicle wants to pass, keep left and don't accelerate until it has passed."
+  },
+  {
+    "question_id": 71,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule directly addresses the implication of a temporary sign indicating an abnormal road situation."
+  },
+  {
+    "question_id": 72,
+    "rule_ids": [
+      109
+    ],
+    "confidence": "high",
+    "reason": "The rule prohibits parking within 1.5 metres of a fire hydrant."
+  }
+]

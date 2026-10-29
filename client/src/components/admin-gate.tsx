@@ -30,7 +30,6 @@ export default function AdminGate({ children }: { children: ReactNode }) {
   const [requestMsg, setRequestMsg] = useState("");
   const [requestBusy, setRequestBusy] = useState(false);
   const [adminEmail, setAdminEmail] = useState("");
-  const [smtpReady, setSmtpReady] = useState(false);
 
   useEffect(() => {
     setAuthed(isAdminAuthenticated());
@@ -39,7 +38,6 @@ export default function AdminGate({ children }: { children: ReactNode }) {
       .then((r) => r.json())
       .then((d) => {
         setAdminEmail(d.email || "");
-        setSmtpReady(!!d.smtpConfigured);
       })
       .catch(() => {});
   }, []);
@@ -71,10 +69,6 @@ export default function AdminGate({ children }: { children: ReactNode }) {
         toast({ title: "Admin access granted" });
       } else {
         setError(data.message || "Invalid master key.");
-        // If mobile was right but key wrong, backend returns mobileMatch — nudge to request flow
-        if (data.mobileMatch) {
-          setShowRequest(true);
-        }
       }
     } catch {
       setError("Failed to validate. Try again.");
@@ -176,11 +170,9 @@ export default function AdminGate({ children }: { children: ReactNode }) {
             ) : (
               <div className="space-y-3 pt-2">
                 <p className="text-xs text-muted-foreground">
-                  {smtpReady
-                    ? `This emails ${adminEmail || "the admin"} from the server.`
-                    : adminEmail
-                      ? `Server email not configured — this opens your email app to ${adminEmail}.`
-                      : "Server email not configured — set ADMIN_EMAIL in .env."}
+                  {adminEmail
+                    ? `This emails ${adminEmail} from the server, or opens your email app if server email is unavailable.`
+                    : "No admin email is configured on the server."}
                 </p>
                 <Input
                   placeholder="Optional note for admin"

@@ -1,0 +1,101 @@
+[
+  {
+    "question_id": 25,
+    "rule_ids": [
+      124
+    ],
+    "confidence": "high",
+    "reason": "The rule prohibits letting the engine run while the vehicle is stationary and unattended."
+  },
+  {
+    "question_id": 26,
+    "rule_ids": [
+      89,
+      92
+    ],
+    "confidence": "high",
+    "reason": "The rules state to give a signal and ensure it can be done without obstructing or endangering other traffic."
+  },
+  {
+    "question_id": 27,
+    "rule_ids": [
+      150
+    ],
+    "confidence": "high",
+    "reason": "The rule states that towing at over 30 km/h with a rope or chain is not allowed."
+  },
+  {
+    "question_id": 28,
+    "rule_ids": [
+      156
+    ],
+    "confidence": "high",
+    "reason": "The rule states not to cross or enter a public road unless it's clear of moving traffic for a sufficient distance and can be done safely."
+  },
+  {
+    "question_id": 29,
+    "rule_ids": [
+      11
+    ],
+    "confidence": "high",
+    "reason": "The rule specifies when headlamps must be lit, including between sunset and sunrise and when visibility is less than 150 meters."
+  },
+  {
+    "question_id": 30,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule directly supports the specific scenario of not enough space to turn right without blocking traffic in an intersection."
+  },
+  {
+    "question_id": 31,
+    "rule_ids": [
+      162,
+      163
+    ],
+    "confidence": "high",
+    "reason": "The rules require stopping immediately, assessing damage, and providing information if requested on reasonable grounds."
+  },
+  {
+    "question_id": 32,
+    "rule_ids": [
+      162,
+      165
+    ],
+    "confidence": "high",
+    "reason": "The rules require stopping immediately, checking for injuries, and prohibit consuming alcohol after an accident before reporting it."
+  },
+  {
+    "question_id": 33,
+    "rule_ids": [
+      107
+    ],
+    "confidence": "high",
+    "reason": "The rule states to give way to all traffic approaching from your right at a junction with a traffic island."
+  },
+  {
+    "question_id": 34,
+    "rule_ids": [
+      40,
+      121
+    ],
+    "confidence": "high",
+    "reason": "The rules state to immediately give way to any emergency vehicle sounding a siren and displaying warning lights."
+  },
+  {
+    "question_id": 35,
+    "rule_ids": [
+      90
+    ],
+    "confidence": "high",
+    "reason": "The rule requires giving a clear, timely signal of intention before turning."
+  },
+  {
+    "question_id": 36,
+    "rule_ids": [
+      29,
+      118
+    ],
+    "confidence": "high",
+    "reason": "The rules state that a driver must have a full, clear view of the road and traffic ahead."
+  }
+]

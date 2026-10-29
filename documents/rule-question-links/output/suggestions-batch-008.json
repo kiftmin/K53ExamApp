@@ -1,0 +1,97 @@
+[
+  {
+    "question_id": 104,
+    "rule_ids": [
+      123
+    ],
+    "confidence": "high",
+    "reason": "The rule prohibits a person from occupying an external part of a moving vehicle, such as the bumper."
+  },
+  {
+    "question_id": 105,
+    "rule_ids": [
+      158
+    ],
+    "confidence": "high",
+    "reason": "The rule states that a light motor vehicle's tyres must have a tread depth of at least 1mm."
+  },
+  {
+    "question_id": 109,
+    "rule_ids": [
+      43,
+      45,
+      47
+    ],
+    "confidence": "high",
+    "reason": "Rules specify that rear seatbelts must be worn if fitted, seatbelts are not compulsory when reversing, and an adult cannot occupy an unbelted seat if a belted one is available."
+  },
+  {
+    "question_id": 110,
+    "rule_ids": [
+      6
+    ],
+    "confidence": "high",
+    "reason": "A Code 2 learner's licence requires direct supervision by a licensed driver for that class."
+  },
+  {
+    "question_id": 114,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule directly supports the factors affecting stopping distance."
+  },
+  {
+    "question_id": 129,
+    "rule_ids": [
+      70
+    ],
+    "confidence": "high",
+    "reason": "The rule specifies maximum overall widths for different vehicle types, including 2.5 meters for 'any other vehicle'."
+  },
+  {
+    "question_id": 130,
+    "rule_ids": [
+      151
+    ],
+    "confidence": "high",
+    "reason": "The rule states that a towed vehicle may only carry passengers at over 30 km/h if it is a semi-trailer."
+  },
+  {
+    "question_id": 131,
+    "rule_ids": [
+      115
+    ],
+    "confidence": "high",
+    "reason": "The rule states that a vehicle may not be reversed unless it can be done safely."
+  },
+  {
+    "question_id": 132,
+    "rule_ids": [
+      7
+    ],
+    "confidence": "high",
+    "reason": "A Code 3 learner's licence requires direct supervision by a licensed driver for that class."
+  },
+  {
+    "question_id": 133,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule directly supports the factors affecting stopping distance."
+  },
+  {
+    "question_id": 737,
+    "rule_ids": [
+      2,
+      3
+    ],
+    "confidence": "high",
+    "reason": "Rules state a person is disqualified if suspended or if they already hold a licence for that class."
+  },
+  {
+    "question_id": 739,
+    "rule_ids": [
+      153
+    ],
+    "confidence": "high",
+    "reason": "The rule states that if a towed vehicle's brakes don't comply, it must be connected by a draw-bar or tow-bar."
+  }
+]

@@ -1,0 +1,96 @@
+[
+  {
+    "question_id": 947,
+    "rule_ids": [
+      122
+    ],
+    "confidence": "high",
+    "reason": "The rule states that no part of the body may protrude from a moving vehicle except to give a hand signal."
+  },
+  {
+    "question_id": 949,
+    "rule_ids": [
+      142
+    ],
+    "confidence": "high",
+    "reason": "The rule specifies that a vehicle left in the same place for more than 24 hours outside an urban area is deemed abandoned."
+  },
+  {
+    "question_id": 963,
+    "rule_ids": [
+      12
+    ],
+    "confidence": "high",
+    "reason": "The rule states that lighting requirements do not apply to a vehicle parked off the roadway, in a demarcated parking place, or within 12 metres of a lit street lamp."
+  },
+  {
+    "question_id": 979,
+    "rule_ids": [
+      115
+    ],
+    "confidence": "high",
+    "reason": "The rule states that reversing a vehicle is permitted only if it can be done safely."
+  },
+  {
+    "question_id": 1363,
+    "rule_ids": [
+      93
+    ],
+    "confidence": "high",
+    "reason": "The rule specifies the color requirements for light motor vehicle direction indicators to the front and rear."
+  },
+  {
+    "question_id": 1365,
+    "rule_ids": [
+      114
+    ],
+    "confidence": "high",
+    "reason": "The rule states that a driver must obey road traffic signs and rules unless a traffic officer instructs otherwise."
+  },
+  {
+    "question_id": 1367,
+    "rule_ids": [],
+    "confidence": "high",
+    "reason": "The rule prohibits holding a cellular or other communication device with one or both hands or any other part of the body while driving."
+  },
+  {
+    "question_id": 1369,
+    "rule_ids": [
+      157
+    ],
+    "confidence": "high",
+    "reason": "The rule outlines compulsory stops when directed by a sign or officer, signalled by a person leading livestock, or when animals are crossing the road."
+  },
+  {
+    "question_id": 1371,
+    "rule_ids": [
+      156
+    ],
+    "confidence": "high",
+    "reason": "The rule prohibits crossing or entering a public road unless it is clear of moving traffic or can be done safely."
+  },
+  {
+    "question_id": 1380,
+    "rule_ids": [
+      104
+    ],
+    "confidence": "high",
+    "reason": "The rule states that when another vehicle wants to pass, the driver must keep left and not accelerate until it has passed."
+  },
+  {
+    "question_id": 1382,
+    "rule_ids": [
+      88
+    ],
+    "confidence": "medium",
+    "reason": "The rule permits driving on the shoulder when being overtaken on a single-lane road, if safe and with sufficient visibility."
+  },
+  {
+    "question_id": 1384,
+    "rule_ids": [
+      88
+    ],
+    "confidence": "high",
+    "reason": "The rule specifies conditions for driving on the shoulder, including between sunrise and sunset, when being overtaken, safely, and with 150 metres visibility."
+  }
+]

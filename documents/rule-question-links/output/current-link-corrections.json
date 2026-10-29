@@ -1,0 +1,58 @@
+[
+  {
+    "question_id": 39,
+    "question_number": 39,
+    "rule_id": 39,
+    "action": "unlink",
+    "reason": "Rule 39 bans tune-playing sirens; it does not state that a hooter's tone and pitch may not change."
+  },
+  {
+    "question_id": 801,
+    "question_number": 301,
+    "rule_id": 71,
+    "action": "unlink",
+    "reason": "Rule 71 covers goods touching the road or blocking the driver's view; it does not state the 2.4 m width rule."
+  },
+  {
+    "question_id": 945,
+    "question_number": 445,
+    "rule_id": 156,
+    "action": "unlink",
+    "reason": "Rule 156 covers entering a public road safely; it does not state the stop-line procedure in the answer."
+  },
+  {
+    "question_id": 1407,
+    "question_number": 529,
+    "rule_id": 175,
+    "action": "unlink",
+    "reason": "Rule 175 only defines what a bridge includes; it does not state the 5 m stopping prohibition."
+  },
+  {
+    "question_id": 1387,
+    "question_number": 509,
+    "rule_id": 90,
+    "action": "unlink",
+    "reason": "Rule 90 covers signals before stopping or turning; the question is about changing lanes, already covered by rules 89 and 92."
+  },
+  {
+    "question_id": 849,
+    "question_number": 349,
+    "rule_id": 39,
+    "action": "unlink",
+    "reason": "Duplicate of the hooter tone/pitch question; rule 39 bans tune-playing sirens, not changing tone or pitch."
+  },
+  {
+    "question_id": 2,
+    "question_number": 2,
+    "rule_id": 90,
+    "action": "unlink",
+    "reason": "Rule 90 covers signals before stopping or turning; this question is about changing lanes."
+  },
+  {
+    "question_id": 931,
+    "question_number": 431,
+    "rule_id": 90,
+    "action": "unlink",
+    "reason": "Rule 90 covers signals before stopping or turning; this question is about changing lanes."
+  }
+]

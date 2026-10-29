@@ -6,7 +6,9 @@ export function slugifyCode(code: string): string {
   return code.replace(/[^A-Za-z0-9]/g, "_");
 }
 
-const ALLOWED_EXTS = new Set([".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg"]);
+// SVG is deliberately excluded: uploaded SVGs are served same-origin and can
+// execute script when opened directly, which could read the admin key.
+const ALLOWED_EXTS = new Set([".png", ".jpg", ".jpeg", ".webp", ".gif"]);
 
 function moduleDir(): string {
   // Bundled CJS (dist/index.cjs): __dirname === dist/ at runtime.
@@ -61,9 +63,9 @@ export function listStagedImages(): StagedImage[] {
 }
 
 function parseDataUrl(dataUrl: string): { ext: string; buffer: Buffer } {
-  const m = /^data:(image\/(png|jpe?g|webp|gif|svg\+xml));base64,([\s\S]+)$/.exec(dataUrl.trim());
+  const m = /^data:(image\/(png|jpe?g|webp|gif));base64,([\s\S]+)$/.exec(dataUrl.trim());
   if (!m) {
-    throw new Error("Invalid image data URL (expected base64 png/jpg/webp/gif/svg).");
+    throw new Error("Invalid image data URL (expected base64 png/jpg/webp/gif).");
   }
   const mime = m[1];
   const ext =
@@ -73,16 +75,14 @@ function parseDataUrl(dataUrl: string): { ext: string; buffer: Buffer } {
         ? ".jpg"
         : mime === "image/webp"
           ? ".webp"
-          : mime === "image/gif"
-            ? ".gif"
-            : ".svg";
+          : ".gif";
   return { ext, buffer: Buffer.from(m[3], "base64") };
 }
 
 function extOfFilename(filename: string): string {
   const ext = path.extname(filename).toLowerCase();
   if (!ALLOWED_EXTS.has(ext)) {
-    throw new Error(`Unsupported image type for "${filename}". Use png/jpg/webp/gif/svg.`);
+    throw new Error(`Unsupported image type for "${filename}". Use png/jpg/webp/gif.`);
   }
   return ext === ".jpeg" ? ".jpg" : ext;
 }

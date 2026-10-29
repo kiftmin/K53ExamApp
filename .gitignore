@@ -8,3 +8,5 @@ vite.config.ts.*
 data/
 .vs/
 sign-assets/
+*.log
+documents/backup-*.json

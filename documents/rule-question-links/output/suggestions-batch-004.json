@@ -1,0 +1,96 @@
+[
+  {
+    "question_id": 37,
+    "rule_ids": [
+      113
+    ],
+    "confidence": "high",
+    "reason": "The rule prohibits stopping within 6 metres of a railway level crossing."
+  },
+  {
+    "question_id": 38,
+    "rule_ids": [
+      56,
+      124,
+      143
+    ],
+    "confidence": "high",
+    "reason": "Rules prohibit running the engine unattended, using a vehicle without a fuel cap, and spinning wheels."
+  },
+  {
+    "question_id": 39,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule directly states that the tone and pitch of the hooter may not change."
+  },
+  {
+    "question_id": 40,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule directly addresses the meaning of a flashing green arrow at a red robot."
+  },
+  {
+    "question_id": 41,
+    "rule_ids": [
+      112,
+      157
+    ],
+    "confidence": "high",
+    "reason": "Rules require stopping at a traffic officer's signal, for livestock, and to avoid an accident."
+  },
+  {
+    "question_id": 42,
+    "rule_ids": [],
+    "confidence": "high",
+    "reason": "The rule states an accident must be reported to a police station within 24 hours if details were not given at the scene."
+  },
+  {
+    "question_id": 43,
+    "rule_ids": [
+      16
+    ],
+    "confidence": "high",
+    "reason": "The rule explicitly states that a vehicle may not be driven using only its parking lamps."
+  },
+  {
+    "question_id": 44,
+    "rule_ids": [
+      145
+    ],
+    "confidence": "high",
+    "reason": "The rule permits stopping on a freeway only by sign or traffic officer direction, or for reasons beyond control."
+  },
+  {
+    "question_id": 45,
+    "rule_ids": [
+      114
+    ],
+    "confidence": "high",
+    "reason": "The rule states that a driver must obey every road traffic sign and rule unless a traffic officer instructs otherwise."
+  },
+  {
+    "question_id": 46,
+    "rule_ids": [
+      83
+    ],
+    "confidence": "high",
+    "reason": "The rule states that on a divided public road, a driver must travel on the left-hand roadway unless directed otherwise."
+  },
+  {
+    "question_id": 47,
+    "rule_ids": [
+      119,
+      245
+    ],
+    "confidence": "high",
+    "reason": "An unattended vehicle must have its brake set, and a parking brake is used to keep a vehicle stationary."
+  },
+  {
+    "question_id": 48,
+    "rule_ids": [
+      82
+    ],
+    "confidence": "high",
+    "reason": "The rule specifies that a projecting load must be marked with a red flag measuring 300mm x 300mm during the day."
+  }
+]

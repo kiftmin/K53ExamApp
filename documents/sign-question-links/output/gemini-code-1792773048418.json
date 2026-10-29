@@ -1,0 +1,320 @@
+[
+  {
+    "question_id": 181,
+    "sign_ids": [
+      272
+    ],
+    "confidence": "high",
+    "reason": "Image code RM15 matches traffic circle mandatory arrows requiring yielding at yield markings."
+  },
+  {
+    "question_id": 182,
+    "sign_ids": [
+      15
+    ],
+    "confidence": "high",
+    "reason": "Wikimedia URL SADC_road_sign_R101 matches minimum speed command sign (50 km/h or faster)."
+  },
+  {
+    "question_id": 183,
+    "sign_ids": [
+      245
+    ],
+    "confidence": "high",
+    "reason": "Wikimedia URL SADC_road_sign_IN5 matches cul-de-sac sign showing road turning right ends ahead."
+  },
+  {
+    "question_id": 184,
+    "sign_ids": [
+      255
+    ],
+    "confidence": "high",
+    "reason": "Image code RTM1 matches transverse stop line requiring stopping directly behind vehicle A and line."
+  },
+  {
+    "question_id": 185,
+    "sign_ids": [
+      113
+    ],
+    "confidence": "high",
+    "reason": "Wikimedia URL SADC_road_sign_R401 matches dual-carriageway freeway begins sign."
+  },
+  {
+    "question_id": 186,
+    "sign_ids": [
+      246
+    ],
+    "confidence": "high",
+    "reason": "Wikimedia URL SADC_road_sign_IN7 matches right-of-way information sign."
+  },
+  {
+    "question_id": 187,
+    "sign_ids": [
+      248
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename Sign_GF12 / information sign matches emergency phone 500m ahead."
+  },
+  {
+    "question_id": 188,
+    "sign_ids": [
+      131
+    ],
+    "confidence": "high",
+    "reason": "Wikimedia URL SADC_road_sign_W108 matches side road junction from right ahead."
+  },
+  {
+    "question_id": 189,
+    "sign_ids": [
+      48
+    ],
+    "confidence": "medium",
+    "reason": "Wikimedia URL TR204 indicates temporary regulatory sign which retains full legal authority."
+  },
+  {
+    "question_id": 190,
+    "sign_ids": [
+      248
+    ],
+    "confidence": "medium",
+    "reason": "Supplementary information sign warning of an obstruction in road 1km ahead."
+  },
+  {
+    "question_id": 191,
+    "sign_ids": [
+      206
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename Sign_Freeway / trailblazer matches direction to a freeway."
+  },
+  {
+    "question_id": 192,
+    "sign_ids": [
+      259
+    ],
+    "confidence": "high",
+    "reason": "Image code RM2A matches double no-crossing lines prohibiting passing or crossing."
+  },
+  {
+    "question_id": 193,
+    "sign_ids": [
+      240
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename Sign_GSS1 matches arrestor bed guidance sign for brake failure."
+  },
+  {
+    "question_id": 194,
+    "sign_ids": [],
+    "confidence": "high",
+    "reason": "General question about temporary sign yellow background; no specific sign card match."
+  },
+  {
+    "question_id": 195,
+    "sign_ids": [
+      53
+    ],
+    "confidence": "high",
+    "reason": "Wikimedia URL SADC_road_sign_R209 matches left turn ahead prohibited sign."
+  },
+  {
+    "question_id": 196,
+    "sign_ids": [
+      47
+    ],
+    "confidence": "high",
+    "reason": "Wikimedia URL SADC_road_sign_R203 matches axle mass limit prohibition sign."
+  },
+  {
+    "question_id": 197,
+    "sign_ids": [
+      204
+    ],
+    "confidence": "high",
+    "reason": "Wikimedia URL SADC_road_sign_TW411 matches temporary barricade indicating road section closed."
+  },
+  {
+    "question_id": 198,
+    "sign_ids": [
+      21
+    ],
+    "confidence": "high",
+    "reason": "Wikimedia URL SADC_road_sign_R111 matches cyclists only command sign."
+  },
+  {
+    "question_id": 199,
+    "sign_ids": [
+      282
+    ],
+    "confidence": "high",
+    "reason": "Image code WM10 matches speed hump warning road marking."
+  },
+  {
+    "question_id": 200,
+    "sign_ids": [
+      244
+    ],
+    "confidence": "high",
+    "reason": "Wikimedia URL SADC_road_sign_IN2 matches 200m countdown exit sign."
+  },
+  {
+    "question_id": 201,
+    "sign_ids": [
+      257
+    ],
+    "confidence": "high",
+    "reason": "Image code RTM4 matches block pedestrian crossing preceded by a pedestrian crossing sign."
+  },
+  {
+    "question_id": 202,
+    "sign_ids": [
+      237
+    ],
+    "confidence": "high",
+    "reason": "Image code TGS303 matches temporary lane-use control sign specifying 80 km/h minimum speed."
+  },
+  {
+    "question_id": 203,
+    "sign_ids": [
+      291
+    ],
+    "confidence": "high",
+    "reason": "Image code S17 (red cross) overhead signal indicates do not drive in lane."
+  },
+  {
+    "question_id": 204,
+    "sign_ids": [
+      290
+    ],
+    "confidence": "high",
+    "reason": "Image code S2 matches traffic signal with right turn arrow directing driver to turn right."
+  },
+  {
+    "question_id": 205,
+    "sign_ids": [
+      259
+    ],
+    "confidence": "high",
+    "reason": "Image code RM2A matches double line prohibiting overtaking slow moving vehicles."
+  },
+  {
+    "question_id": 206,
+    "sign_ids": [
+      244
+    ],
+    "confidence": "high",
+    "reason": "Wikimedia URL SADC_road_sign_IN3 matches 300m countdown exit sign."
+  },
+  {
+    "question_id": 207,
+    "sign_ids": [
+      214
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename Sign_alternative_route_to_the_right matches alternative route marker GE16."
+  },
+  {
+    "question_id": 208,
+    "sign_ids": [
+      245
+    ],
+    "confidence": "high",
+    "reason": "Wikimedia URL SADC_road_sign_IN5 matches cul-de-sac sign where road turning right ends."
+  },
+  {
+    "question_id": 209,
+    "sign_ids": [
+      12
+    ],
+    "confidence": "high",
+    "reason": "Wikimedia URL SADC_road_sign_R4.1 matches one-way roadway to the left control sign."
+  },
+  {
+    "question_id": 210,
+    "sign_ids": [
+      214
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename Sign_GA7A matches toll road and alternative route guidance sign."
+  },
+  {
+    "question_id": 211,
+    "sign_ids": [
+      288
+    ],
+    "confidence": "high",
+    "reason": "Image code GM6 matches road marking symbol indicating area reserved for disabled persons."
+  },
+  {
+    "question_id": 212,
+    "sign_ids": [
+      245
+    ],
+    "confidence": "high",
+    "reason": "Wikimedia URL SADC_road_sign_IN4 is classified as an information sign."
+  },
+  {
+    "question_id": 213,
+    "sign_ids": [
+      276
+    ],
+    "confidence": "high",
+    "reason": "Image code WM4 matches reversible lane lines warning road marking."
+  },
+  {
+    "question_id": 214,
+    "sign_ids": [
+      278
+    ],
+    "confidence": "high",
+    "reason": "Image code WM6 matches lane reduction arrows warning that left lane is reducing."
+  },
+  {
+    "question_id": 215,
+    "sign_ids": [
+      264
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename sIGN_bUS matches exclusive parking bay road marking reserved for buses."
+  },
+  {
+    "question_id": 216,
+    "sign_ids": [
+      229
+    ],
+    "confidence": "high",
+    "reason": "Image code GA8 matches exit sequence sign showing turnoffs to various centres."
+  },
+  {
+    "question_id": 217,
+    "sign_ids": [
+      285
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename Sign_GS205 / bifurcation arrow matches road splitting / lane addition ahead."
+  },
+  {
+    "question_id": 218,
+    "sign_ids": [
+      226
+    ],
+    "confidence": "high",
+    "reason": "Image code GA4 matches gore exit sign marking off-ramp road used to exit freeway."
+  },
+  {
+    "question_id": 220,
+    "sign_ids": [
+      62
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename Sign_Motorcycle1 matches motorcycle prohibition sign for 125cc or less."
+  },
+  {
+    "question_id": 222,
+    "sign_ids": [
+      17
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename Sign_Motorcycle2 matches Keep Left command sign R103."
+  }
+]

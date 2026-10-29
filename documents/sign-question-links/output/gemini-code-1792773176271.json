@@ -1,0 +1,278 @@
+[
+  {
+    "question_id": 1438,
+    "sign_ids": [
+      16
+    ],
+    "confidence": "high",
+    "reason": "Wikimedia URL SADC_road_sign_R102 matches command sign for vehicles exceeding GVM limit."
+  },
+  {
+    "question_id": 1440,
+    "sign_ids": [
+      58,
+      116
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename L4 matches stopping prohibited sign R217 with selective time subgroup."
+  },
+  {
+    "question_id": 1448,
+    "sign_ids": [],
+    "confidence": "high",
+    "reason": "General question regarding temporary signs indicating non-normal road conditions."
+  },
+  {
+    "question_id": 1452,
+    "sign_ids": [
+      256
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename Sign_RTM2 matches transverse yield line RTM2."
+  },
+  {
+    "question_id": 1457,
+    "sign_ids": [
+      206
+    ],
+    "confidence": "high",
+    "reason": "Question text and correct answer match direction to a freeway (trailblazer sign GE11)."
+  },
+  {
+    "question_id": 1460,
+    "sign_ids": [
+      248
+    ],
+    "confidence": "medium",
+    "reason": "Question text matches supplementary information sign warning of obstruction 1 km ahead."
+  },
+  {
+    "question_id": 1463,
+    "sign_ids": [
+      204
+    ],
+    "confidence": "high",
+    "reason": "Question text matches temporary barricade/obstruction sign TW411."
+  },
+  {
+    "question_id": 1464,
+    "sign_ids": [
+      244
+    ],
+    "confidence": "high",
+    "reason": "Question text matches 100m countdown exit sign IN1."
+  },
+  {
+    "question_id": 1468,
+    "sign_ids": [
+      276
+    ],
+    "confidence": "high",
+    "reason": "Question text matches reversible lane lines road marking WM4."
+  },
+  {
+    "question_id": 1473,
+    "sign_ids": [],
+    "confidence": "high",
+    "reason": "General question about yellow background color for temporary signs."
+  },
+  {
+    "question_id": 1475,
+    "sign_ids": [
+      214
+    ],
+    "confidence": "high",
+    "reason": "Question text matches toll road and alternative route guidance sign GA7A."
+  },
+  {
+    "question_id": 1476,
+    "sign_ids": [
+      292
+    ],
+    "confidence": "high",
+    "reason": "Question text matches pedestrian signal S18/S19."
+  },
+  {
+    "question_id": 1477,
+    "sign_ids": [
+      273
+    ],
+    "confidence": "high",
+    "reason": "Question text matches railway crossing ahead road marking WM1."
+  },
+  {
+    "question_id": 1478,
+    "sign_ids": [
+      58
+    ],
+    "confidence": "high",
+    "reason": "Question text matches no stopping prohibition sign R217."
+  },
+  {
+    "question_id": 1479,
+    "sign_ids": [
+      15
+    ],
+    "confidence": "high",
+    "reason": "Question text matches minimum speed limit command sign R101 (60 km/h)."
+  },
+  {
+    "question_id": 1480,
+    "sign_ids": [
+      248
+    ],
+    "confidence": "high",
+    "reason": "Question text matches traffic light camera monitoring information sign IN18."
+  },
+  {
+    "question_id": 1481,
+    "sign_ids": [
+      131
+    ],
+    "confidence": "high",
+    "reason": "Question text matches side road junction right warning sign W108."
+  },
+  {
+    "question_id": 1482,
+    "sign_ids": [
+      290
+    ],
+    "confidence": "high",
+    "reason": "Question text matches traffic light signal with flashing red left arrow."
+  },
+  {
+    "question_id": 1483,
+    "sign_ids": [
+      291
+    ],
+    "confidence": "high",
+    "reason": "Question text matches overhead lane control green downward arrow signal S16."
+  },
+  {
+    "question_id": 1484,
+    "sign_ids": [],
+    "confidence": "high",
+    "reason": "General question regarding legal significance of temporary signs."
+  },
+  {
+    "question_id": 1485,
+    "sign_ids": [
+      269
+    ],
+    "confidence": "high",
+    "reason": "Question text matches red no-stopping edge line road marking RM12."
+  },
+  {
+    "question_id": 1486,
+    "sign_ids": [
+      278
+    ],
+    "confidence": "high",
+    "reason": "Question text matches lane reduction road marking WM6."
+  },
+  {
+    "question_id": 1487,
+    "sign_ids": [
+      245
+    ],
+    "confidence": "high",
+    "reason": "Question text matches information sign category (cul-de-sac IN4)."
+  },
+  {
+    "question_id": 1489,
+    "sign_ids": [
+      56
+    ],
+    "confidence": "high",
+    "reason": "Wikimedia URL SADC_road_sign_R215 matches overtaking by goods vehicles prohibited sign R215."
+  },
+  {
+    "question_id": 1490,
+    "sign_ids": [
+      257
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename Sign_RTM4 matches block pedestrian crossing RTM4."
+  },
+  {
+    "question_id": 1493,
+    "sign_ids": [
+      19,
+      118
+    ],
+    "confidence": "high",
+    "reason": "Question text matches mandatory turn left command sign R108 with delivery vehicle sub-sign."
+  },
+  {
+    "question_id": 1503,
+    "sign_ids": [
+      264
+    ],
+    "confidence": "high",
+    "reason": "Question text matches exclusive bus lane / parking bay road marking RM7."
+  },
+  {
+    "question_id": 1504,
+    "sign_ids": [
+      126
+    ],
+    "confidence": "high",
+    "reason": "Question text matches stop ahead warning sign W101."
+  },
+  {
+    "question_id": 1509,
+    "sign_ids": [
+      17
+    ],
+    "confidence": "high",
+    "reason": "Question text matches Keep Left command sign R103."
+  },
+  {
+    "question_id": 1510,
+    "sign_ids": [
+      22
+    ],
+    "confidence": "high",
+    "reason": "Question text matches motorcycles only command sign R112."
+  },
+  {
+    "question_id": 1512,
+    "sign_ids": [
+      214
+    ],
+    "confidence": "high",
+    "reason": "Question text matches alternative route marker sign GE16."
+  },
+  {
+    "question_id": 1513,
+    "sign_ids": [
+      237
+    ],
+    "confidence": "medium",
+    "reason": "Question text matches lane-use control maximum speed sign."
+  },
+  {
+    "question_id": 1514,
+    "sign_ids": [
+      236
+    ],
+    "confidence": "high",
+    "reason": "Question text matches diagrammatic lane addition sign GS401."
+  },
+  {
+    "question_id": 1515,
+    "sign_ids": [
+      240
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename GS504 matches arrestor bed guidance sign."
+  },
+  {
+    "question_id": 1516,
+    "sign_ids": [
+      245
+    ],
+    "confidence": "high",
+    "reason": "Wikimedia URL SADC_road_sign_IN4 matches cul-de-sac information sign IN4."
+  }
+]

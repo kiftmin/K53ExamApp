@@ -1,0 +1,324 @@
+[
+  {
+    "question_id": 838,
+    "sign_ids": [
+      264
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename BB4 matches exclusive goods loading bay road marking RM7."
+  },
+  {
+    "question_id": 840,
+    "sign_ids": [
+      290
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename X5 matches traffic signal with flashing green arrow."
+  },
+  {
+    "question_id": 842,
+    "sign_ids": [
+      160
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename S7 matches agricultural vehicles warning sign W318."
+  },
+  {
+    "question_id": 844,
+    "sign_ids": [
+      199
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename Q4 matches gravel road begins warning sign W363."
+  },
+  {
+    "question_id": 846,
+    "sign_ids": [
+      45,
+      120
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename J8a matches speed limit sign with night-time selective restriction."
+  },
+  {
+    "question_id": 848,
+    "sign_ids": [
+      257
+    ],
+    "confidence": "high",
+    "reason": "Sketch 10 referencing RTM3 pedestrian crossing lines."
+  },
+  {
+    "question_id": 852,
+    "sign_ids": [
+      16
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename B2 matches vehicles exceeding mass limit command sign R102."
+  },
+  {
+    "question_id": 858,
+    "sign_ids": [
+      256
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename Y1 matches yield line RTM2 requiring yielding to all road users/trains."
+  },
+  {
+    "question_id": 860,
+    "sign_ids": [
+      245
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename DD7 matches cul-de-sac sign IN5 where road turning right ends."
+  },
+  {
+    "question_id": 862,
+    "sign_ids": [
+      200
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename T2 matches danger plate/obstruction sign TW401 left."
+  },
+  {
+    "question_id": 864,
+    "sign_ids": [
+      4
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename A2 matches stop and yield left-turn control sign R1.2."
+  },
+  {
+    "question_id": 866,
+    "sign_ids": [
+      22
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename C2 matches motorcycles only command sign R112."
+  },
+  {
+    "question_id": 868,
+    "sign_ids": [
+      17
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename L3b matches Keep Left command sign R103 with motorcycle sub-sign."
+  },
+  {
+    "question_id": 870,
+    "sign_ids": [
+      45
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename J10 matches maximum speed limit sign for motorcycles."
+  },
+  {
+    "question_id": 872,
+    "sign_ids": [
+      85
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename G8 matches motorcycle reservation sign R307."
+  },
+  {
+    "question_id": 886,
+    "sign_ids": [
+      86
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename G9 matches motor car reservation sign R308."
+  },
+  {
+    "question_id": 900,
+    "sign_ids": [
+      168
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename P9 matches height limit warning sign W326 (4.42m limit)."
+  },
+  {
+    "question_id": 904,
+    "sign_ids": [
+      60
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename g2 matches dangerous goods vehicles prohibited sign R219."
+  },
+  {
+    "question_id": 914,
+    "sign_ids": [
+      273
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename M1 matches railway crossing warning sign W318/WM1."
+  },
+  {
+    "question_id": 916,
+    "sign_ids": [
+      142
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename N8 matches two-way traffic ahead warning sign W212."
+  },
+  {
+    "question_id": 918,
+    "sign_ids": [
+      19
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename B7 matches turn left only command sign R108."
+  },
+  {
+    "question_id": 920,
+    "sign_ids": [
+      172
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename Q10 matches speed humps warning sign W332."
+  },
+  {
+    "question_id": 924,
+    "sign_ids": [
+      161
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename P6 matches motor gate warning sign W319."
+  },
+  {
+    "question_id": 926,
+    "sign_ids": [
+      170
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename Q6 matches narrow bridge warning sign W329."
+  },
+  {
+    "question_id": 928,
+    "sign_ids": [
+      171
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename U3 matches uneven roadway / potholes warning sign W331."
+  },
+  {
+    "question_id": 929,
+    "sign_ids": [
+      255
+    ],
+    "confidence": "high",
+    "reason": "Sketch 4 referencing RTM1 transverse stop line requiring car A to stop."
+  },
+  {
+    "question_id": 930,
+    "sign_ids": [
+      264
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename BB8 matches exclusive minibus parking bay road marking RM7."
+  },
+  {
+    "question_id": 932,
+    "sign_ids": [
+      138
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename O3 matches concealed driveways warning sign W204."
+  },
+  {
+    "question_id": 934,
+    "sign_ids": [
+      52
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename E3 matches unauthorised vehicles prohibited sign R208."
+  },
+  {
+    "question_id": 938,
+    "sign_ids": [
+      16
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename B2 matches vehicles exceeding mass limit command sign R102."
+  },
+  {
+    "question_id": 940,
+    "sign_ids": [
+      166
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename S5 matches low water bridge warning sign W324."
+  },
+  {
+    "question_id": 942,
+    "sign_ids": [
+      202
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename T8 matches T-junction hazard chevron board TW408."
+  },
+  {
+    "question_id": 944,
+    "sign_ids": [
+      262
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename Y4 matches painted island road marking RM5."
+  },
+  {
+    "question_id": 946,
+    "sign_ids": [
+      269
+    ],
+    "confidence": "high",
+    "reason": "Sketch 6 referencing road marking (a) no stopping line RM12."
+  },
+  {
+    "question_id": 948,
+    "sign_ids": [
+      45,
+      120
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename J8a matches speed limit sign with night-time selective restriction."
+  },
+  {
+    "question_id": 950,
+    "sign_ids": [
+      4
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename A2 matches stop and yield left-turn control sign R1.2."
+  },
+  {
+    "question_id": 952,
+    "sign_ids": [
+      15
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename B1 matches minimum speed command sign R101."
+  },
+  {
+    "question_id": 954,
+    "sign_ids": [
+      200
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename T2 matches danger plate/obstruction sign TW401 left."
+  },
+  {
+    "question_id": 956,
+    "sign_ids": [
+      265
+    ],
+    "confidence": "high",
+    "reason": "Sketch 5 referencing Arrow E mandatory turn right lane arrow marking RM8."
+  },
+  {
+    "question_id": 958,
+    "sign_ids": [
+      245
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename DD5 matches cul-de-sac sign IN6 where road turning left ends."
+  }
+]

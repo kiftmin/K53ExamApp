@@ -1,0 +1,100 @@
+[
+  {
+    "question_id": 1,
+    "rule_ids": [
+      115
+    ],
+    "confidence": "high",
+    "reason": "Both the question and rule state that reversing a vehicle is only permitted if it can be done safely."
+  },
+  {
+    "question_id": 2,
+    "rule_ids": [
+      89,
+      90,
+      92
+    ],
+    "confidence": "high",
+    "reason": "The rules require changing lanes safely, giving timely signals, and using indicators for lane changes."
+  },
+  {
+    "question_id": 3,
+    "rule_ids": [
+      103
+    ],
+    "confidence": "high",
+    "reason": "The rule prohibits passing on a rise, curve, or where visibility is restricted."
+  },
+  {
+    "question_id": 4,
+    "rule_ids": [
+      88
+    ],
+    "confidence": "high",
+    "reason": "The rule specifies conditions under which a light motor vehicle may drive on the shoulder, including being overtaken safely in daytime."
+  },
+  {
+    "question_id": 5,
+    "rule_ids": [
+      2,
+      3
+    ],
+    "confidence": "high",
+    "reason": "Rule 3 prohibits applying for a licence for a class already held, and Rule 2 disqualifies a person while suspended or during a period following cancellation."
+  },
+  {
+    "question_id": 6,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule directly states yielding to oncoming traffic when turning right at an intersection."
+  },
+  {
+    "question_id": 7,
+    "rule_ids": [
+      227
+    ],
+    "confidence": "high",
+    "reason": "The rule states that a motor vehicle licence and disc are valid for 12 months."
+  },
+  {
+    "question_id": 8,
+    "rule_ids": [
+      64
+    ],
+    "confidence": "high",
+    "reason": "The rule specifies a general speed limit of 60 km/h in urban areas."
+  },
+  {
+    "question_id": 9,
+    "rule_ids": [
+      64
+    ],
+    "confidence": "medium",
+    "reason": "The rule implies that speed limits are indicated by signs, as general limits apply unless a sign indicates otherwise."
+  },
+  {
+    "question_id": 10,
+    "rule_ids": [
+      122
+    ],
+    "confidence": "high",
+    "reason": "The rule prohibits letting any part of the body protrude from a moving vehicle, except to give a hand signal."
+  },
+  {
+    "question_id": 11,
+    "rule_ids": [
+      85,
+      104
+    ],
+    "confidence": "high",
+    "reason": "Both rules state that when another vehicle wants to pass, the driver must keep left and not speed up."
+  },
+  {
+    "question_id": 12,
+    "rule_ids": [
+      15
+    ],
+    "confidence": "high",
+    "reason": "The rule states that a headlamp on dipped beam must illuminate the road ahead for at least 45 metres."
+  }
+]

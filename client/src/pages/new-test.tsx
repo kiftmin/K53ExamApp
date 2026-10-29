@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation, useSearch } from "wouter";
 import { useQuery } from "@tanstack/react-query";
-import { Source, CATEGORY_NAMES } from "@shared/schema";
+import { Source, CATEGORY_NAMES, LEARNER_LICENSE_CODES, normalizeLicenseCode } from "@shared/schema";
 import { useQuestions } from "@/hooks/use-questions";
 import { useQuiz } from "@/lib/quiz-context";
 import { useAccessCode } from "@/lib/use-access-code";
@@ -33,11 +33,7 @@ export default function NewTest() {
   const { data: questions, isLoading, isError } = useQuestions();
   const { startQuiz } = useQuiz();
 
-  const availableLicenseCodes = questions
-    ? Array.from(new Set(questions.map((q) => q.license_code)))
-      .filter((code) => code !== "00")
-      .sort()
-    : [];
+  const availableLicenseCodes = LEARNER_LICENSE_CODES;
 
   const { data: sources, isLoading: isSourcesLoading } = useQuery<Source[]>({
     queryKey: ["/api/sources/active"],
@@ -77,13 +73,19 @@ export default function NewTest() {
     const savedName = localStorage.getItem("k53_name");
     const savedSurname = localStorage.getItem("k53_surname");
     const savedLicenseCode = localStorage.getItem("k53_license_code");
+    const licenseCode = savedLicenseCode ? normalizeLicenseCode(savedLicenseCode, "") : "";
+
+    if (savedLicenseCode && licenseCode !== savedLicenseCode) {
+      if (licenseCode) localStorage.setItem("k53_license_code", licenseCode);
+      else localStorage.removeItem("k53_license_code");
+    }
 
     if (savedName || savedSurname || savedLicenseCode) {
       setFormData(prev => ({
         ...prev,
         name: savedName || "",
         surname: savedSurname || "",
-        licenseCode: savedLicenseCode || ""
+        licenseCode
       }));
     }
   }, []);

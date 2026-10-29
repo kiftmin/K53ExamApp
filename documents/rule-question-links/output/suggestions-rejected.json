@@ -1,0 +1,317 @@
+[
+  {
+    "question_id": 22,
+    "rule_id": 211,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule defines a traffic signal but does not specify actions for a flashing red light."
+  },
+  {
+    "question_id": 26,
+    "rule_id": 89,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule discusses changing lanes safely but does not mention giving a signal or looking for traffic."
+  },
+  {
+    "question_id": 31,
+    "rule_id": 163,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule specifies giving information if asked, not refusing to give it except to the police."
+  },
+  {
+    "question_id": 33,
+    "rule_id": 107,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule describes yielding at a traffic island, not having the right of way within a traffic circle or at a four-way stop."
+  },
+  {
+    "question_id": 37,
+    "rule_id": 113,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule prohibits stopping within 6 meters of a tunnel, subway, or bridge, but does not mention railway crossings."
+  },
+  {
+    "question_id": 47,
+    "rule_id": 245,
+    "supported": false,
+    "confidence": "medium",
+    "reason": "This rule defines a parking brake but does not state the requirement to apply it."
+  },
+  {
+    "question_id": 55,
+    "rule_id": 110,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule states not to park on the roadway or within 1 meter of the edge, which contradicts the correct answer."
+  },
+  {
+    "question_id": 58,
+    "rule_id": 46,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule states that a driver must ensure a child uses an appropriate child restraint, which contradicts the correct answer."
+  },
+  {
+    "question_id": 70,
+    "rule_id": 104,
+    "supported": false,
+    "confidence": "medium",
+    "reason": "The rule is about being overtaken, not about waiting behind a stopped vehicle in heavy traffic."
+  },
+  {
+    "question_id": 221,
+    "rule_id": 129,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule describes passenger seating requirements, not learner's license supervision rules."
+  },
+  {
+    "question_id": 225,
+    "rule_id": 128,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule states a rider must have at least one hand on the handlebars, which contradicts option (ii) being an offence."
+  },
+  {
+    "question_id": 228,
+    "rule_id": 32,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule mentions handlebar height must meet prescribed measurements but does not specify the 500mm limit."
+  },
+  {
+    "question_id": 229,
+    "rule_id": 78,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule states a maximum projection of 900mm behind the rear axle, not 850mm from the rear axle."
+  },
+  {
+    "question_id": 129,
+    "rule_id": 70,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule states a general vehicle width limit of 2.5 meters, not 2.4 meters as in the correct answer."
+  },
+  {
+    "question_id": 737,
+    "rule_id": 2,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule lists different disqualifications (addiction, court order, licence cancellation) than the question's correct options."
+  },
+  {
+    "question_id": 751,
+    "rule_id": 89,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule generally prohibits changing lanes if it obstructs or endangers traffic, but does not specify giving a signal or looking for traffic."
+  },
+  {
+    "question_id": 755,
+    "rule_id": 175,
+    "supported": false,
+    "confidence": "medium",
+    "reason": "The rule defines what a bridge includes, but does not state a stopping distance from it."
+  },
+  {
+    "question_id": 759,
+    "rule_id": 141,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule states pedestrians already in the road must finish crossing quickly when the red man flashes, but does not explicitly grant right of way."
+  },
+  {
+    "question_id": 761,
+    "rule_id": 150,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule states towing over 30 km/h with a rope is not allowed, implying 30 km/h is the maximum, not 60 km/h."
+  },
+  {
+    "question_id": 773,
+    "rule_id": 156,
+    "supported": false,
+    "confidence": "medium",
+    "reason": "The rule generally prohibits entering a road unless clear, but does not specifically address blocking an intersection when turning right."
+  },
+  {
+    "question_id": 775,
+    "rule_id": 165,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule prohibits alcohol consumption before reporting an accident, but does not mention stopping or checking for injuries."
+  },
+  {
+    "question_id": 776,
+    "rule_id": 211,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule defines a traffic signal but does not specify actions for a flashing red light."
+  },
+  {
+    "question_id": 779,
+    "rule_id": 107,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule describes yielding at a traffic island, not the right of way within a traffic circle or at a four-way stop."
+  },
+  {
+    "question_id": 787,
+    "rule_id": 44,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule defines a child's age for seatbelts but does not state that children younger than 14 need not wear them."
+  },
+  {
+    "question_id": 801,
+    "rule_id": 70,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule specifies maximum overall widths for different vehicle types, but not a general 2.4m width for goods."
+  },
+  {
+    "question_id": 821,
+    "rule_id": 175,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule defines what a bridge includes but does not specify stopping distances from it."
+  },
+  {
+    "question_id": 825,
+    "rule_id": 107,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule describes yielding at a traffic island, not yielding to oncoming traffic when turning right at an intersection."
+  },
+  {
+    "question_id": 833,
+    "rule_id": 64,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule describes general speed limits, but does not state that signs show the legal speed."
+  },
+  {
+    "question_id": 835,
+    "rule_id": 113,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule prohibits stopping within a railway level crossing, but does not specify 6m from it."
+  },
+  {
+    "question_id": 837,
+    "rule_id": 107,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule states to give way to traffic from the right at a traffic island, not that the first vehicle over the line may drive on."
+  },
+  {
+    "question_id": 845,
+    "rule_id": 211,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule defines a traffic signal but does not specify actions for a flashing red light."
+  },
+  {
+    "question_id": 878,
+    "rule_id": 116,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule discusses following distance, not stopping distance, or factors affecting it."
+  },
+  {
+    "question_id": 913,
+    "rule_id": 3,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule addresses applying for a license for a class already held, which is not part of the correct answer."
+  },
+  {
+    "question_id": 925,
+    "rule_id": 163,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule is about providing information after an accident, not refusing to give it."
+  },
+  {
+    "question_id": 945,
+    "rule_id": 250,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule is a general definition of 'stop' and does not directly support the specific procedure described in the answer."
+  },
+  {
+    "question_id": 1421,
+    "rule_id": 211,
+    "supported": false,
+    "confidence": "medium",
+    "reason": "The rule defines a traffic signal but does not specify action for a flashing red light."
+  },
+  {
+    "question_id": 1424,
+    "rule_id": 113,
+    "supported": false,
+    "confidence": "medium",
+    "reason": "The rule lists places not to stop, but does not specifically address entering an intersection when space is insufficient."
+  },
+  {
+    "question_id": 1432,
+    "rule_id": 107,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule only covers giving way at a traffic island, not four-way stops or turning right at an intersection."
+  },
+  {
+    "question_id": 1439,
+    "rule_id": 70,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule specifies maximum overall widths for different vehicle types, not the width of goods on a vehicle."
+  },
+  {
+    "question_id": 1451,
+    "rule_id": 101,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule describes when passing on the left is allowed, not what to do when a car in front is turning right."
+  },
+  {
+    "question_id": 1453,
+    "rule_id": 98,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule states reflective material is optional for vehicles under 10,000kg GVM, not required."
+  },
+  {
+    "question_id": 1454,
+    "rule_id": 116,
+    "supported": false,
+    "confidence": "medium",
+    "reason": "The rule specifies following distances in seconds, not the ability to stop safely in an emergency."
+  },
+  {
+    "question_id": 1488,
+    "rule_id": 84,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule states to drive on the left side of the roadway, without encroaching right, unless it can be done safely or directed otherwise."
+  },
+  {
+    "question_id": 1498,
+    "rule_id": 113,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule prohibits stopping within a railway level crossing, but does not specify 6m from a railway crossing reserve."
+  },
+  {
+    "question_id": 1499,
+    "rule_id": 60,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule specifies placing a warning triangle at least 45 metres away, not one in front and one at the back."
+  }
+]

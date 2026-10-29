@@ -1,0 +1,100 @@
+[
+  {
+    "question_id": 1459,
+    "rule_ids": [
+      116
+    ],
+    "confidence": "high",
+    "reason": "Both state that the minimum safe following distance is determined by the two-second rule for light motor vehicles and motorcycles."
+  },
+  {
+    "question_id": 1461,
+    "rule_ids": [
+      156
+    ],
+    "confidence": "high",
+    "reason": "Both state that a driver may not cross or enter a public road unless it is clear of moving traffic for a sufficient distance to do so safely."
+  },
+  {
+    "question_id": 1465,
+    "rule_ids": [
+      67
+    ],
+    "confidence": "high",
+    "reason": "Both specify an 80 km/h speed limit for an articulated motor vehicle where the truck-tractor GCM exceeds 9000kg."
+  },
+  {
+    "question_id": 1467,
+    "rule_ids": [
+      62
+    ],
+    "confidence": "high",
+    "reason": "Both state that a vehicle may not be operated on a public road in a manner that causes excessive noise."
+  },
+  {
+    "question_id": 1469,
+    "rule_ids": [
+      124
+    ],
+    "confidence": "high",
+    "reason": "Both prohibit the engine from running while fuel is being delivered into the tank."
+  },
+  {
+    "question_id": 1470,
+    "rule_ids": [
+      62
+    ],
+    "confidence": "high",
+    "reason": "Both state that no person shall operate a vehicle on a public road in a manner that causes excessive noise."
+  },
+  {
+    "question_id": 1472,
+    "rule_ids": [
+      12
+    ],
+    "confidence": "high",
+    "reason": "Both list conditions where lighting requirements do not apply to a parked vehicle, including off the roadway, in a demarcated parking place, or within 12 metres of a lit street lamp."
+  },
+  {
+    "question_id": 1474,
+    "rule_ids": [
+      53
+    ],
+    "confidence": "high",
+    "reason": "Both state that a vehicle must have an efficient exhaust silencer that channels exhaust gas through it."
+  },
+  {
+    "question_id": 1488,
+    "rule_ids": [
+      84
+    ],
+    "confidence": "low",
+    "reason": "The rule states to drive on the left side, but the question's correct answer implies encroaching right is permissible if the car in front is slow, which is not directly supported."
+  },
+  {
+    "question_id": 1491,
+    "rule_ids": [
+      56,
+      124,
+      143
+    ],
+    "confidence": "high",
+    "reason": "Rule 124 prohibits running the engine unattended, Rule 56 prohibits using a vehicle if the fuel tank lacks an effective cap, and Rule 143 prohibits causing a vehicle's wheel to spin."
+  },
+  {
+    "question_id": 1492,
+    "rule_ids": [
+      55
+    ],
+    "confidence": "high",
+    "reason": "Both state that the exhaust may not leak gas or smoke into the cab or passenger compartment."
+  },
+  {
+    "question_id": 1494,
+    "rule_ids": [
+      108
+    ],
+    "confidence": "high",
+    "reason": "Both state that parking is prohibited where stopping is not permitted."
+  }
+]

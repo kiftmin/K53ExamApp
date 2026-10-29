@@ -1,0 +1,99 @@
+[
+  {
+    "question_id": 1409,
+    "rule_ids": [
+      101
+    ],
+    "confidence": "high",
+    "reason": "The rule states conditions under which passing on the left is allowed, including when the vehicle ahead is turning right or on a multi-lane urban road."
+  },
+  {
+    "question_id": 1411,
+    "rule_ids": [
+      150
+    ],
+    "confidence": "high",
+    "reason": "The rule explicitly states that towing at over 30 km/h with a rope or chain is not allowed."
+  },
+  {
+    "question_id": 1413,
+    "rule_ids": [
+      141
+    ],
+    "confidence": "high",
+    "reason": "The rule specifies that pedestrians already in the road when the red man flashes must finish crossing quickly."
+  },
+  {
+    "question_id": 1417,
+    "rule_ids": [
+      11
+    ],
+    "confidence": "high",
+    "reason": "The rule specifies that headlamps must be lit between sunset and sunrise, and when visibility is less than 150 meters."
+  },
+  {
+    "question_id": 1419,
+    "rule_ids": [
+      156
+    ],
+    "confidence": "high",
+    "reason": "The rule states not to cross or enter a public road unless it's clear of moving traffic for a sufficient distance and can be done safely."
+  },
+  {
+    "question_id": 1420,
+    "rule_ids": [
+      64
+    ],
+    "confidence": "medium",
+    "reason": "The rule implies that speed limits are indicated by signs, or general limits apply if no sign is present."
+  },
+  {
+    "question_id": 1421,
+    "rule_ids": [
+      211
+    ],
+    "confidence": "low",
+    "reason": "The rule defines a traffic signal as alternately directing traffic to stop and proceed, implying a flashing red light requires a stop and then proceeding when safe."
+  },
+  {
+    "question_id": 1422,
+    "rule_ids": [
+      162,
+      165
+    ],
+    "confidence": "high",
+    "reason": "The rules state that a driver must stop immediately and check for injuries after an accident, and not consume alcohol before reporting it."
+  },
+  {
+    "question_id": 1424,
+    "rule_ids": [
+      113
+    ],
+    "confidence": "high",
+    "reason": "The rule prohibits stopping anywhere it would endanger or obstruct traffic, which includes blocking an intersection."
+  },
+  {
+    "question_id": 1426,
+    "rule_ids": [
+      103
+    ],
+    "confidence": "high",
+    "reason": "The rule prohibits passing when approaching the summit of a rise, a curve, or anywhere visibility is too restricted."
+  },
+  {
+    "question_id": 1430,
+    "rule_ids": [
+      40
+    ],
+    "confidence": "high",
+    "reason": "The rule states that a driver must immediately give way to any emergency vehicle sounding a siren and displaying warning lights."
+  },
+  {
+    "question_id": 1432,
+    "rule_ids": [
+      107
+    ],
+    "confidence": "high",
+    "reason": "The rule states that at a junction where vehicles move around a traffic island, give way to all traffic approaching from your right."
+  }
+]

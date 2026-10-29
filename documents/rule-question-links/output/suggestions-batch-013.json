@@ -1,0 +1,99 @@
+[
+  {
+    "question_id": 878,
+    "rule_ids": [
+      116
+    ],
+    "confidence": "low",
+    "reason": "The rule mentions increasing following distance in poor conditions, implying longer stopping distances."
+  },
+  {
+    "question_id": 881,
+    "rule_ids": [
+      149
+    ],
+    "confidence": "high",
+    "reason": "The rule states the maximum permitted length for a tow-rope, chain, or tow-bar is 3.5 metres."
+  },
+  {
+    "question_id": 885,
+    "rule_ids": [
+      123
+    ],
+    "confidence": "high",
+    "reason": "The rule prohibits allowing a person to occupy any external part of a moving vehicle."
+  },
+  {
+    "question_id": 913,
+    "rule_ids": [
+      2,
+      3
+    ],
+    "confidence": "high",
+    "reason": "Rule 2 states disqualification during a period of suspension, and Rule 3 prohibits applying for a class already licensed."
+  },
+  {
+    "question_id": 915,
+    "rule_ids": [
+      84
+    ],
+    "confidence": "high",
+    "reason": "The rule states to drive on the left side unless directed otherwise by a traffic officer."
+  },
+  {
+    "question_id": 917,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "The question refers to a specific sign (W9) which is not described in the provided rules."
+  },
+  {
+    "question_id": 921,
+    "rule_ids": [
+      113
+    ],
+    "confidence": "high",
+    "reason": "The rule prohibits stopping with the vehicle facing oncoming traffic on the right side."
+  },
+  {
+    "question_id": 925,
+    "rule_ids": [
+      162,
+      163
+    ],
+    "confidence": "high",
+    "reason": "Rule 162 states the duty to stop and check damage, and Rule 163 requires providing information if requested."
+  },
+  {
+    "question_id": 931,
+    "rule_ids": [
+      89,
+      90,
+      92
+    ],
+    "confidence": "high",
+    "reason": "Rule 89 states to change lanes safely, Rule 90 requires a clear signal, and Rule 92 requires using indicators when changing lanes."
+  },
+  {
+    "question_id": 936,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "The rules do not contain specific information about the meaning of a red robot with a flashing green arrow."
+  },
+  {
+    "question_id": 939,
+    "rule_ids": [
+      64
+    ],
+    "confidence": "medium",
+    "reason": "The rule states general speed limits apply unless a sign indicates otherwise."
+  },
+  {
+    "question_id": 945,
+    "rule_ids": [
+      156,
+      250
+    ],
+    "confidence": "high",
+    "reason": "Rule 156 states not to enter a public road unless clear, and Rule 250 defines 'stop' as bringing a vehicle to a standstill."
+  }
+]

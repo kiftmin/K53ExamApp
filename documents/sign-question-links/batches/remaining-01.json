@@ -1,0 +1,1202 @@
+[
+    {
+        "id":  141,
+        "question_number":  101,
+        "question_text":  "What is the difference between these road marking",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773142781/Signs_RM1-RM2_rwbts5.png",
+        "is_duplicate":  false,
+        "correct_answer":  "A single line shows you that you may not pass other vehicles while a double line as well shows you that you may not drive over it to turn into a yard or anything else",
+        "options":  [
+                        {
+                            "answer_text":  "There is no difference between the two and both show you that you may not pass other vehicles",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Both shows you that you may not pass other vehicles but you will find a single line on all roads and a double lines on freeways only",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "A single line shows you that you may not pass other vehicles while a double line as well shows you that you may not drive over it to turn into a yard or anything else",
+                            "answer_number":  "C",
+                            "correct_answer":  true
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  142,
+        "question_number":  102,
+        "question_text":  "This Road marking is a...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773144254/Sign_RM5_kr9lbh.png",
+        "is_duplicate":  false,
+        "correct_answer":  "Painted island where you are not allowed to drive on or stop",
+        "options":  [
+                        {
+                            "answer_text":  "Pedestrian crossing where you must stop for pedestrians",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Painted island where you are not allowed to drive on or stop",
+                            "answer_number":  "B",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "Chevron that indicates a curve to the left",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  143,
+        "question_number":  103,
+        "question_text":  "If you are driving towards a mini - circle and there are also vehicles from the other three sides you..",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773163901/Sign_RM15_cy3gkw.png",
+        "is_duplicate":  false,
+        "correct_answer":  "May drive on if you were the first vehicle over the line",
+        "options":  [
+                        {
+                            "answer_text":  "Must always wait for the vehicle from your right before you drive on",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "May drive on if you were the first vehicle over the line",
+                            "answer_number":  "B",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "Must stop with all the vehicles and only drive on when it is safe",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  144,
+        "question_number":  104,
+        "question_text":  "This Road marking warns you that ?",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773163904/Sign_WM1_v3npji.png",
+        "is_duplicate":  false,
+        "correct_answer":  "There is a level crossing with one railway line ahead",
+        "options":  [
+                        {
+                            "answer_text":  "There is a level crossing with one railway line ahead",
+                            "answer_number":  "A",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "Roads cross ahead",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "The freeway ends ahead",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  145,
+        "question_number":  105,
+        "question_text":  "This Road markings shows you that...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773172073/Sign_WM8_ums4mr.png",
+        "is_duplicate":  false,
+        "correct_answer":  "A line is going to begin which prohibits you, from passing",
+        "options":  [
+                        {
+                            "answer_text":  "You are not allowed to pass another vehicle there",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "A line is going to begin which prohibits you, from passing",
+                            "answer_number":  "B",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "The lane splits into more lanes in the direction of the arrow",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  146,
+        "question_number":  106,
+        "question_text":  "This Road marking shows you that only...may park there",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773163889/Sign_Minibus_w36z8r.png",
+        "is_duplicate":  false,
+        "correct_answer":  "Minibuses",
+        "options":  [
+                        {
+                            "answer_text":  "Minibuses",
+                            "answer_number":  "A",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "Municipal buses",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Motor cycles",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  147,
+        "question_number":  107,
+        "question_text":  "This road sign shows you that...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://upload.wikimedia.org/wikipedia/commons/d/d9/SADC_road_sign_IN6.svg",
+        "is_duplicate":  false,
+        "correct_answer":  "The road turning to the left ends ahead",
+        "options":  [
+                        {
+                            "answer_text":  "The road turning to the left ends ahead",
+                            "answer_number":  "A",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "You are not allowed to turn left there",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "There is a T- junction to the left",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  148,
+        "question_number":  108,
+        "question_text":  "Road marking GM1 in this sketch .....",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1774116464/Sketch_9_tv0ren.png",
+        "is_duplicate":  false,
+        "correct_answer":  "Shows the lanes for road users",
+        "options":  [
+                        {
+                            "answer_text":  "Shows the lanes for road users",
+                            "answer_number":  "A",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "Divides the road in two sections",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Is only found in a parking area",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  149,
+        "question_number":  109,
+        "question_text":  "This arrow shows you that you...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773163889/Sign_RM8_right_osx21s.png",
+        "is_duplicate":  false,
+        "correct_answer":  "Must turn right from the lane",
+        "options":  [
+                        {
+                            "answer_text":  "Must turn right from the lane",
+                            "answer_number":  "A",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "Can turn right or move straight on if it is safe",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Can still change lanes if you want to go on straight",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  150,
+        "question_number":  110,
+        "question_text":  "When you see road-marking you...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773173009/Sign_RM12_wyxnop.png",
+        "is_duplicate":  false,
+        "correct_answer":  "May not park there at all because it\u0027s a no stopping road marking.",
+        "options":  [
+                        {
+                            "answer_text":  "May not park there because it is parking for ambulances only",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "May not park there at all because it\u0027s a no stopping road marking.",
+                            "answer_number":  "B",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "Know it is a lane reserved for emergency vehicle",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  151,
+        "question_number":  111,
+        "question_text":  "Road marking RTM 1 shows you that ...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773174661/RTM1a_ckdz18.png",
+        "is_duplicate":  false,
+        "correct_answer":  "If you are driving in car A, must stop before this line",
+        "options":  [
+                        {
+                            "answer_text":  "If you are driving in car A, must stop before this line",
+                            "answer_number":  "A",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "If you are driving in car A, must reduce speed and ride on if it is safe",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "If you are driving in car B, can pass car A if there are no other vehicles in the Intersection",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  152,
+        "question_number":  112,
+        "question_text":  "Road markings RTM3 in the sketch...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1759001899/xPicture_020_qhz7pn.png",
+        "is_duplicate":  false,
+        "correct_answer":  "Are the lines where pedestrians walk",
+        "options":  [
+                        {
+                            "answer_text":  "Show you that you may not stop further than the front one of the two",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Are the lines where pedestrians walk",
+                            "answer_number":  "B",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "Are lines that indicate another traffic line",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  153,
+        "question_number":  113,
+        "question_text":  "This road sign shows you that you...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://upload.wikimedia.org/wikipedia/commons/4/48/SADC_road_sign_R108.svg",
+        "is_duplicate":  false,
+        "correct_answer":  "Must turn left at the next road",
+        "options":  [
+                        {
+                            "answer_text":  "Can expect a sharp bend to the left",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Must turn left at the next road",
+                            "answer_number":  "B",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "Will get a one-way road to the left",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  154,
+        "question_number":  114,
+        "question_text":  "This sign prohibits you from...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773176137/Sign_No_Parking_oq005j.png",
+        "is_duplicate":  false,
+        "correct_answer":  "Parking there at certain hours",
+        "options":  [
+                        {
+                            "answer_text":  "Using that section of the road during certain hours",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Stopping there between 06:00 and 09:00",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Parking there at certain hours",
+                            "answer_number":  "C",
+                            "correct_answer":  true
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  155,
+        "question_number":  115,
+        "question_text":  "What does this warning sign show?",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://upload.wikimedia.org/wikipedia/commons/1/1c/SADC_road_sign_W103.svg",
+        "is_duplicate":  false,
+        "correct_answer":  "Roads cross ahead and you may have to stop or yield at the intersection",
+        "options":  [
+                        {
+                            "answer_text":  "Roads cross ahead and you may have to stop or yield at the intersection",
+                            "answer_number":  "A",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "A railway line intersects with the road that you are travelling on",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "A 4-way stop will be found ahead where the roads cross",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  156,
+        "question_number":  116,
+        "question_text":  "This sign warns you that there is a...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://upload.wikimedia.org/wikipedia/commons/6/63/SADC_road_sign_W205.svg",
+        "is_duplicate":  false,
+        "correct_answer":  "Sharp curve to the left ahead",
+        "options":  [
+                        {
+                            "answer_text":  "Sharp curve to the left ahead",
+                            "answer_number":  "A",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "Obstruction left on the road",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Detour to the left",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  157,
+        "question_number":  117,
+        "question_text":  "This sign warns you that...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://upload.wikimedia.org/wikipedia/commons/4/41/SADC_road_sign_W301.svg",
+        "is_duplicate":  false,
+        "correct_answer":  "There is a robot ahead",
+        "options":  [
+                        {
+                            "answer_text":  "There is a compulsory police stop ahead",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "There is a robot ahead",
+                            "answer_number":  "B",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "You are now entering an urban area",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  158,
+        "question_number":  118,
+        "question_text":  "This sign shows you that",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://upload.wikimedia.org/wikipedia/commons/3/3e/SADC_road_sign_W363.svg",
+        "is_duplicate":  false,
+        "correct_answer":  "The road which you are driving is going to change to a gravel road",
+        "options":  [
+                        {
+                            "answer_text":  "The road which you are driving is going to change to a gravel road",
+                            "answer_number":  "A",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "Potholes are to be found on the road ahead",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "The road is ending ahead",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  159,
+        "question_number":  119,
+        "question_text":  "This sign shows you that...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://upload.wikimedia.org/wikipedia/commons/5/52/SADC_road_sign_W328.svg",
+        "is_duplicate":  false,
+        "correct_answer":  "The road narrows from both sides",
+        "options":  [
+                        {
+                            "answer_text":  "The road narrows from both sides",
+                            "answer_number":  "A",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "The freeway ends",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "There is a narrow bridge ahead",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  160,
+        "question_number":  120,
+        "question_text":  "This sign warns you...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://upload.wikimedia.org/wikipedia/commons/3/3b/SADC_road_sign_W332.svg",
+        "is_duplicate":  false,
+        "correct_answer":  "There are speed humps in the road",
+        "options":  [
+                        {
+                            "answer_text":  "The road is uneven",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "There are speed humps in the road",
+                            "answer_number":  "B",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "There are potholes in the road",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  161,
+        "question_number":  121,
+        "question_text":  "This sign shows you that the road...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://upload.wikimedia.org/wikipedia/commons/a/ac/SADC_road_sign_W333.svg",
+        "is_duplicate":  false,
+        "correct_answer":  "Is slippery",
+        "options":  [
+                        {
+                            "answer_text":  "Winds",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Is untarred",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Is slippery",
+                            "answer_number":  "C",
+                            "correct_answer":  true
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  162,
+        "question_number":  122,
+        "question_text":  "What does this road sign show you when it flashes?",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://upload.wikimedia.org/wikipedia/commons/b/bf/SADC_road_sign_W346.gif",
+        "is_duplicate":  false,
+        "correct_answer":  "There is danger in the road ahead",
+        "options":  [
+                        {
+                            "answer_text":  "The police have a blockade ahead",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "There is danger in the road ahead",
+                            "answer_number":  "B",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "There is a robot ahead",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  163,
+        "question_number":  123,
+        "question_text":  "This road sign shows that there is a/an...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://upload.wikimedia.org/wikipedia/commons/c/c7/SADC_road_sign_W402.svg",
+        "is_duplicate":  false,
+        "correct_answer":  "Obstruction to the right of the road / that you must pass on the left",
+        "options":  [
+                        {
+                            "answer_text":  "Curve to the right ahead",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Obstruction to the right of the road / that you must pass on the left",
+                            "answer_number":  "B",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "Detour to the right",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  164,
+        "question_number":  124,
+        "question_text":  "What does this road sign show you?",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1769453804/U3_pelps3.png",
+        "is_duplicate":  false,
+        "correct_answer":  "Potholes are to be found on the road ahead",
+        "options":  [
+                        {
+                            "answer_text":  "The road on which you are driving is going to change to a gravel road",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Potholes are to be found on the road ahead",
+                            "answer_number":  "B",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "The road is ending ahead",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  165,
+        "question_number":  125,
+        "question_text":  "This Road marking shows that you must...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773163897/Sign_RTM2_xzatqi.png",
+        "is_duplicate":  false,
+        "correct_answer":  "Give right of way to all users of the road and possibly also trains",
+        "options":  [
+                        {
+                            "answer_text":  "Stop",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Look out for school kids",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Give right of way to all users of the road and possibly also trains",
+                            "answer_number":  "C",
+                            "correct_answer":  true
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  166,
+        "question_number":  126,
+        "question_text":  "This Road marking shows you that...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773164044/Sign_RM2_maktex.png",
+        "is_duplicate":  false,
+        "correct_answer":  "Traffic may not overtake or cross it on either side",
+        "options":  [
+                        {
+                            "answer_text":  "The road surface is uneven",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Traffic may not overtake or cross it on either side",
+                            "answer_number":  "B",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "It is a lane reserved for buses only",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  167,
+        "question_number":  127,
+        "question_text":  "This Road marking shows you that only... may park there",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773209749/sIGN_bUS_oi6fkj.png",
+        "is_duplicate":  false,
+        "correct_answer":  "Buses",
+        "options":  [
+                        {
+                            "answer_text":  "Buses",
+                            "answer_number":  "A",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "Business vehicles",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Minibuses",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  168,
+        "question_number":  128,
+        "question_text":  "This Road marking shows you that only... may park there",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773209749/Sign_Loading_uv4qcr.png",
+        "is_duplicate":  false,
+        "correct_answer":  "Goods vehicles that loads or unloads",
+        "options":  [
+                        {
+                            "answer_text":  "Goods vehicles that loads or unloads",
+                            "answer_number":  "A",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "Motor cars that load or unloads",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Construction vehicles",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  169,
+        "question_number":  129,
+        "question_text":  "This road marking shows you that...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773209955/Sign_RM13.2_iinh02.png",
+        "is_duplicate":  false,
+        "correct_answer":  "You may not park adjacent to the lines next to the black arrows during certain hours",
+        "options":  [
+                        {
+                            "answer_text":  "The road is under construction.",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "You may not stop adjacent to the lines next to the black arrows",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "You may not park adjacent to the lines next to the black arrows during certain hours",
+                            "answer_number":  "C",
+                            "correct_answer":  true
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  170,
+        "question_number":  130,
+        "question_text":  "This sign is shown at ...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://upload.wikimedia.org/wikipedia/commons/8/8f/SADC_road_sign_W105.svg",
+        "is_duplicate":  false,
+        "correct_answer":  "A skew junction ahead",
+        "options":  [
+                        {
+                            "answer_text":  "A skew junction ahead",
+                            "answer_number":  "A",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "A T junction coming up",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "A Side road junction from your right",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  171,
+        "question_number":  131,
+        "question_text":  "This traffic signal can be found on",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773232772/Sign_S1_wybu8g.png",
+        "is_duplicate":  false,
+        "correct_answer":  "Any public road",
+        "options":  [
+                        {
+                            "answer_text":  "Any public road",
+                            "answer_number":  "A",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "Any public road where accidents happen",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Where a railway line is across a road.",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  172,
+        "question_number":  132,
+        "question_text":  "When you see this sign...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://upload.wikimedia.org/wikipedia/commons/0/02/SADC_road_sign_R104.svg",
+        "is_duplicate":  false,
+        "correct_answer":  "Pass to the right of the obstruction in the road",
+        "options":  [
+                        {
+                            "answer_text":  "Drive in the right hand lane",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Pass to the right of the obstruction in the road",
+                            "answer_number":  "B",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "Proceed to the right of this sign",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  173,
+        "question_number":  133,
+        "question_text":  "These road markings",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773232933/Signs_rtm3-rtm4_slzzaf.png",
+        "is_duplicate":  false,
+        "correct_answer":  "Are the lines where pedestrians walk at an intersection",
+        "options":  [
+                        {
+                            "answer_text":  "Are the lines that indicate another lane",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Are the lines where pedestrians walk at an intersection",
+                            "answer_number":  "B",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "Shows you that you may not stop in front of the two lines",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  174,
+        "question_number":  134,
+        "question_text":  "This sign indicates...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://upload.wikimedia.org/wikipedia/commons/d/d9/SADC_road_sign_IN6.svg",
+        "is_duplicate":  false,
+        "correct_answer":  "The roadway to the left ends ahead",
+        "options":  [
+                        {
+                            "answer_text":  "There is a T junction to the left",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Only residents may drive there",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "The roadway to the left ends ahead",
+                            "answer_number":  "C",
+                            "correct_answer":  true
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  175,
+        "question_number":  135,
+        "question_text":  "This sign indicates....",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773233316/Sign_GS403_jecljo.png",
+        "is_duplicate":  false,
+        "correct_answer":  "There are 2 additional lanes ahead with a reduction of lanes",
+        "options":  [
+                        {
+                            "answer_text":  "You are entering a freeway",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "There are 2 additional lanes ahead with a reduction of lanes",
+                            "answer_number":  "B",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "There are heavy vehicles entering on your left",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  176,
+        "question_number":  136,
+        "question_text":  "This sign shows a road user....",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773234759/sign_lane_merges_sgojn5.png",
+        "is_duplicate":  false,
+        "correct_answer":  "The two lanes are merging",
+        "options":  [
+                        {
+                            "answer_text":  "There is an exit to the left ahead",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "The two lanes are merging",
+                            "answer_number":  "B",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "The road is splitting into each other",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  177,
+        "question_number":  137,
+        "question_text":  "What is the function of this road marking....",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773234881/Sign_wm3_dh0ghh.png",
+        "is_duplicate":  false,
+        "correct_answer":  "It is a dividing line that shows the lanes for road users",
+        "options":  [
+                        {
+                            "answer_text":  "It tells the driver that he may not cross it",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "It is a dividing line that shows the lanes for road users",
+                            "answer_number":  "B",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "It warns the driver to slow down.",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  178,
+        "question_number":  138,
+        "question_text":  "This road marking shows...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773234952/Sign_WM4_fjxzx3.png",
+        "is_duplicate":  false,
+        "correct_answer":  "The right lane may have approaching traffic at certain times, be on the lookout",
+        "options":  [
+                        {
+                            "answer_text":  "No overtaking is allowed on the right lane",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "The road will split ahead to the left",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "The right lane may have approaching traffic at certain times, be on the lookout",
+                            "answer_number":  "C",
+                            "correct_answer":  true
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  179,
+        "question_number":  139,
+        "question_text":  "This sign shows you that...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773232651/Sign_Robot-camera_b9ge28.png",
+        "is_duplicate":  false,
+        "correct_answer":  "There is a camera monitoring the traffic light",
+        "options":  [
+                        {
+                            "answer_text":  "Taking photographs is prohibited while driving",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "There is a camera monitoring the traffic light",
+                            "answer_number":  "B",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "There is a photographer at the intersection smile and wave.",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  180,
+        "question_number":  140,
+        "question_text":  "This sign indicates to a driver....",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://upload.wikimedia.org/wikipedia/commons/3/32/SADC_road_sign_R213.svg",
+        "is_duplicate":  false,
+        "correct_answer":  "A U-turn prohibited",
+        "options":  [
+                        {
+                            "answer_text":  "A right turn is prohibited",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "A U-turn prohibited",
+                            "answer_number":  "B",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "The end of a hairpin bend",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    }
+]

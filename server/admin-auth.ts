@@ -3,9 +3,13 @@ import { isValidMobile } from "./access-code.js";
 
 export interface AdminCheckResult {
   valid: boolean;
+  /** Reason the check failed — server-side logging only. Never send to clients:
+   *  distinct messages let an attacker confirm key validity and key↔mobile
+   *  linkage without holding both halves of the credential. */
   message?: string;
-  mobileMatch?: boolean;
 }
+
+const GENERIC_ADMIN_FAILURE = "Invalid admin credentials.";
 
 /**
  * Shared admin-credential check — used by both the public
@@ -26,16 +30,19 @@ export async function validateAdminAccess(code: string, mobileNumber: string): P
 
   const stored = await storage.getAccessCodeByCode(normalized);
   if (!stored || stored.type !== 'master' || stored.is_revoked) {
-    const mobileExists = stored && (stored.mobile_number || '').trim() === mobile;
-    return { valid: false, message: "Invalid master key.", mobileMatch: !!mobileExists };
+    console.warn(`Admin auth failed: unknown or revoked key ${normalized.slice(0, 2)}***`);
+    return { valid: false, message: GENERIC_ADMIN_FAILURE };
   }
   if ((stored.mobile_number || '').trim() !== mobile) {
-    return { valid: false, message: "Mobile number does not match this master key." };
+    console.warn(`Admin auth failed: mobile mismatch for key ${normalized.slice(0, 2)}***`);
+    return { valid: false, message: GENERIC_ADMIN_FAILURE };
   }
   if (!stored.has_admin_access) {
-    return { valid: false, message: "This master key does not have admin access." };
+    console.warn(`Admin auth failed: key ${normalized.slice(0, 2)}*** lacks admin access`);
+    return { valid: false, message: GENERIC_ADMIN_FAILURE };
   }
   if (await storage.isMobileSuspended(mobile)) {
+    console.warn(`Admin auth failed: mobile ${mobile.slice(0, 3)}****** suspended`);
     return { valid: false, message: "This mobile number has been suspended." };
   }
   return { valid: true };
@@ -47,7 +54,7 @@ export async function requireAdminAuth(req: any, res: any, next: any) {
   const mobile = req.headers['x-admin-mobile'];
   const result = await validateAdminAccess(String(key || ''), String(mobile || ''));
   if (!result.valid) {
-    return res.status(401).json({ message: result.message || "Admin authentication required." });
+    return res.status(401).json({ message: "Admin authentication required." });
   }
   next();
 }

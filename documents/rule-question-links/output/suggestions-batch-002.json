@@ -1,0 +1,95 @@
+[
+  {
+    "question_id": 13,
+    "rule_ids": [
+      142
+    ],
+    "confidence": "high",
+    "reason": "A vehicle left outside an urban area for more than 24 hours is deemed abandoned."
+  },
+  {
+    "question_id": 14,
+    "rule_ids": [
+      141
+    ],
+    "confidence": "high",
+    "reason": "Pedestrians already crossing when the red man flashes must finish quickly."
+  },
+  {
+    "question_id": 15,
+    "rule_ids": [
+      113
+    ],
+    "confidence": "high",
+    "reason": "Stopping is prohibited when facing oncoming traffic on the right side."
+  },
+  {
+    "question_id": 16,
+    "rule_ids": [
+      113
+    ],
+    "confidence": "high",
+    "reason": "Stopping is prohibited within 6 metres of a bridge."
+  },
+  {
+    "question_id": 17,
+    "rule_ids": [
+      101
+    ],
+    "confidence": "high",
+    "reason": "Passing on the left is allowed if the vehicle ahead is turning right or on a multi-lane urban road."
+  },
+  {
+    "question_id": 18,
+    "rule_ids": [
+      101,
+      114
+    ],
+    "confidence": "high",
+    "reason": "Passing on the left is allowed when the vehicle ahead turns right, on multi-lane roads, or by traffic officer direction."
+  },
+  {
+    "question_id": 19,
+    "rule_ids": [
+      101
+    ],
+    "confidence": "high",
+    "reason": "Passing on the left is allowed if the vehicle ahead is turning right and it can be done safely without driving on the shoulder."
+  },
+  {
+    "question_id": 20,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "The rule on lane changing does not specify checking the blind spot as the last action."
+  },
+  {
+    "question_id": 21,
+    "rule_ids": [
+      84
+    ],
+    "confidence": "high",
+    "reason": "Driving on the right side is permitted if a traffic officer directs you to do so."
+  },
+  {
+    "question_id": 22,
+    "rule_ids": [
+      211
+    ],
+    "confidence": "medium",
+    "reason": "A flashing red light implies a stop and proceed when safe, similar to a stop sign."
+  },
+  {
+    "question_id": 23,
+    "rule_ids": [
+      153
+    ],
+    "confidence": "high",
+    "reason": "If a towed vehicle's brakes are defective, it must be connected by a draw-bar or tow-bar."
+  },
+  {
+    "question_id": 24,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule directly defines a safe following distance in terms of stopping without swerving."
+  }
+]

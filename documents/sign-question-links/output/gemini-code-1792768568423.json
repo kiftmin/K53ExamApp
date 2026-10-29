@@ -1,0 +1,242 @@
+[
+  {
+    "question_id": 73,
+    "sign_ids": [4],
+    "confidence": "high",
+    "reason": "Image code R1.2 and answer match Stop/yield sign."
+  },
+  {
+    "question_id": 74,
+    "sign_ids": [6],
+    "confidence": "high",
+    "reason": "Image code R1.4 and answer match 4-way stop sign."
+  },
+  {
+    "question_id": 75,
+    "sign_ids": [9],
+    "confidence": "high",
+    "reason": "Image code R2.1 and answer match Yield to pedestrians."
+  },
+  {
+    "question_id": 76,
+    "sign_ids": [11],
+    "confidence": "high",
+    "reason": "Image code R3 and answer match No entry sign."
+  },
+  {
+    "question_id": 77,
+    "sign_ids": [15],
+    "confidence": "high",
+    "reason": "Image code R101 and answer match Minimum speed sign."
+  },
+  {
+    "question_id": 78,
+    "sign_ids": [16],
+    "confidence": "high",
+    "reason": "Image code R102 and answer match Vehicles exceeding mass only."
+  },
+  {
+    "question_id": 79,
+    "sign_ids": [18],
+    "confidence": "high",
+    "reason": "Image code R107 and answer match Proceed straight only."
+  },
+  {
+    "question_id": 80,
+    "sign_ids": [19],
+    "confidence": "high",
+    "reason": "Image code R109 and answer match Turn right only."
+  },
+  {
+    "question_id": 81,
+    "sign_ids": [50],
+    "confidence": "high",
+    "reason": "Image code R206 and answer match Excessive noise prohibited."
+  },
+  {
+    "question_id": 82,
+    "sign_ids": [52],
+    "confidence": "high",
+    "reason": "Image code R208 and answer match Unauthorised vehicles prohibited."
+  },
+  {
+    "question_id": 83,
+    "sign_ids": [53],
+    "confidence": "high",
+    "reason": "Image code R209 and answer match Left turn ahead prohibited."
+  },
+  {
+    "question_id": 84,
+    "sign_ids": [56],
+    "confidence": "high",
+    "reason": "Image code R214 and answer match Overtaking prohibited."
+  },
+  {
+    "question_id": 85,
+    "sign_ids": [45, 120],
+    "confidence": "high",
+    "reason": "Night-time speed limit combining speed limit and selective restriction."
+  },
+  {
+    "question_id": 86,
+    "sign_ids": [128],
+    "confidence": "high",
+    "reason": "Image code W103 and answer match Secondary crossroad."
+  },
+  {
+    "question_id": 87,
+    "sign_ids": [143],
+    "confidence": "high",
+    "reason": "Image code W212 and answer match Two-way traffic."
+  },
+  {
+    "question_id": 88,
+    "sign_ids": [146],
+    "confidence": "high",
+    "reason": "Image code W218 and answer match Concealed driveway."
+  },
+  {
+    "question_id": 89,
+    "sign_ids": [152],
+    "confidence": "high",
+    "reason": "Image code W306 and answer match Pedestrian crossing."
+  },
+  {
+    "question_id": 90,
+    "sign_ids": [155],
+    "confidence": "high",
+    "reason": "Image code W309 and answer match Pedal cyclists."
+  },
+  {
+    "question_id": 91,
+    "sign_ids": [159],
+    "confidence": "high",
+    "reason": "Image code W316 and answer match Motor gate."
+  },
+  {
+    "question_id": 92,
+    "sign_ids": [168],
+    "confidence": "high",
+    "reason": "Image code W327 and answer match One vehicle width structure."
+  },
+  {
+    "question_id": 93,
+    "sign_ids": [182],
+    "confidence": "high",
+    "reason": "Image code TW344 indicates a yellow background temporary warning sign."
+  },
+  {
+    "question_id": 94,
+    "sign_ids": [185],
+    "confidence": "high",
+    "reason": "Image code W348 and answer match Jetty edge or river bank."
+  },
+  {
+    "question_id": 95,
+    "sign_ids": [187],
+    "confidence": "high",
+    "reason": "Image code W350 and answer match Drift."
+  },
+  {
+    "question_id": 96,
+    "sign_ids": [189],
+    "confidence": "high",
+    "reason": "Image code W352 and answer match Agricultural vehicles."
+  },
+  {
+    "question_id": 97,
+    "sign_ids": [200],
+    "confidence": "high",
+    "reason": "Image code W401 and answer match Danger plates."
+  },
+  {
+    "question_id": 98,
+    "sign_ids": [202],
+    "confidence": "high",
+    "reason": "Image code W409 and answer match T-junction chevron."
+  },
+  {
+    "question_id": 99,
+    "sign_ids": [141, 248],
+    "confidence": "high",
+    "reason": "Image filename W208-IN11.1-IN11.2 matches Winding road with distance supplementary plate."
+  },
+  {
+    "question_id": 100,
+    "sign_ids": [291],
+    "confidence": "high",
+    "reason": "Red cross signal X8/S17 matches Overhead lane direction control."
+  },
+  {
+    "question_id": 106,
+    "sign_ids": [63, 116],
+    "confidence": "high",
+    "reason": "Prohibition on motorcars with time restriction plate."
+  },
+  {
+    "question_id": 107,
+    "sign_ids": [65],
+    "confidence": "high",
+    "reason": "Image code R225 and answer match Minibuses prohibited."
+  },
+  {
+    "question_id": 108,
+    "sign_ids": [63],
+    "confidence": "high",
+    "reason": "Image code R223 and answer match Motorcars prohibited."
+  },
+  {
+    "question_id": 111,
+    "sign_ids": [24],
+    "confidence": "high",
+    "reason": "Image code R117 and answer match Motor cars only."
+  },
+  {
+    "question_id": 112,
+    "sign_ids": [86],
+    "confidence": "high",
+    "reason": "Image code R308 and answer match Motor Car reservation."
+  },
+  {
+    "question_id": 113,
+    "sign_ids": [],
+    "confidence": "low",
+    "reason": "General rule question not specific to a sign card."
+  },
+  {
+    "question_id": 123,
+    "sign_ids": [16],
+    "confidence": "high",
+    "reason": "Image code R102 and answer match Vehicles exceeding mass only."
+  },
+  {
+    "question_id": 124,
+    "sign_ids": [33, 116],
+    "confidence": "high",
+    "reason": "Dangerous goods command sign R126 with time restriction subgroup."
+  },
+  {
+    "question_id": 125,
+    "sign_ids": [49],
+    "confidence": "high",
+    "reason": "Image code R205 and answer match Length limit."
+  },
+  {
+    "question_id": 126,
+    "sign_ids": [240],
+    "confidence": "high",
+    "reason": "Image filename GS501 and answer match Arrestor bed."
+  },
+  {
+    "question_id": 127,
+    "sign_ids": [71],
+    "confidence": "high",
+    "reason": "Image code R232 and answer match Vehicles transporting dangerous substances prohibited."
+  },
+  {
+    "question_id": 128,
+    "sign_ids": [162],
+    "confidence": "high",
+    "reason": "Image code W320 and answer match Height restricted."
+  }
+]

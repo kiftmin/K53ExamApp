@@ -159,7 +159,7 @@ export default function ControlForm({
                 <FormItem>
                   <FormLabel>Function notes</FormLabel>
                   <FormControl>
-                    <Textarea {...field} rows={3} />
+                    <Textarea {...field} value={field.value ?? ""} rows={3} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

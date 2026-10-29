@@ -4,9 +4,12 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "db:push": "printf \"n\\n\" | drizzle-kit push --force",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:verify": "tsx script/verify-schema.ts",
     "dev": "tsx server/index.ts",
-    "build": "npm run db:push && tsx script/build.ts",
+    "build": "tsx script/build.ts",
     "start": "NODE_ENV=production node dist/index.cjs",
     "check": "tsc"
   },
@@ -53,6 +56,7 @@
     "drizzle-zod": "^0.8.3",
     "embla-carousel-react": "^8.6.0",
     "express": "^5.0.1",
+    "express-rate-limit": "^8.7.1",
     "framer-motion": "^11.13.1",
     "html-to-image": "^1.11.13",
     "html2canvas": "^1.4.1",

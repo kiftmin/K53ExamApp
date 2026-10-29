@@ -1,0 +1,328 @@
+[
+  {
+    "question_id": 960,
+    "sign_ids": [
+      139
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename N3 matches sharp curve to the left warning sign W205."
+  },
+  {
+    "question_id": 962,
+    "sign_ids": [
+      24
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename C3 matches motor cars only command sign R117."
+  },
+  {
+    "question_id": 964,
+    "sign_ids": [
+      64
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename F6 matches minibuses prohibited sign R224."
+  },
+  {
+    "question_id": 966,
+    "sign_ids": [
+      57,
+      116
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename K3 matches selective time restriction prohibition sign."
+  },
+  {
+    "question_id": 980,
+    "sign_ids": [
+      49
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename D10 matches maximum vehicle length prohibition sign R205 (15m)."
+  },
+  {
+    "question_id": 984,
+    "sign_ids": [
+      60,
+      116
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename K2 matches dangerous goods vehicles prohibition sign R219 with time subgroup."
+  },
+  {
+    "question_id": 1364,
+    "sign_ids": [
+      211
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename Sign_Fingerboard matches fingerboard direction sign GD1."
+  },
+  {
+    "question_id": 1366,
+    "sign_ids": [
+      180
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename Sign_Grader matches grader working warning sign TW343."
+  },
+  {
+    "question_id": 1368,
+    "sign_ids": [
+      285
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename Sign_lanes_increase matches bifurcation / lane addition marking WM11."
+  },
+  {
+    "question_id": 1370,
+    "sign_ids": [
+      285
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename Sign_GS205 matches lane addition / bifurcation road marking GS205."
+  },
+  {
+    "question_id": 1372,
+    "sign_ids": [
+      142
+    ],
+    "confidence": "high",
+    "reason": "Wikimedia URL SADC_road_sign_W212 matches two-way traffic ahead warning sign W212."
+  },
+  {
+    "question_id": 1379,
+    "sign_ids": [
+      24
+    ],
+    "confidence": "high",
+    "reason": "Wikimedia URL SADC_road_sign_R117 matches motor cars only command sign R117."
+  },
+  {
+    "question_id": 1381,
+    "sign_ids": [
+      265
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename Sign_GM4 matches mandatory direction arrow marking RM8."
+  },
+  {
+    "question_id": 1383,
+    "sign_ids": [
+      236
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename Sign_GS103 matches diagrammatic lane ends sign GS403."
+  },
+  {
+    "question_id": 1385,
+    "sign_ids": [
+      144
+    ],
+    "confidence": "high",
+    "reason": "Wikimedia URL SADC_road_sign_W214 matches double-lane road narrows from right warning sign W214."
+  },
+  {
+    "question_id": 1386,
+    "sign_ids": [
+      6
+    ],
+    "confidence": "high",
+    "reason": "Wikimedia URL SADC_road_sign_R1.4 matches 4-way stop control sign R1.4."
+  },
+  {
+    "question_id": 1388,
+    "sign_ids": [
+      173
+    ],
+    "confidence": "high",
+    "reason": "Wikimedia URL SADC_road_sign_W333 matches slippery road warning sign W333."
+  },
+  {
+    "question_id": 1390,
+    "sign_ids": [
+      273
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename Sign_WM1 matches railway crossing ahead road marking WM1."
+  },
+  {
+    "question_id": 1392,
+    "sign_ids": [
+      53
+    ],
+    "confidence": "high",
+    "reason": "Wikimedia URL SADC_road_sign_R209 matches left turn ahead prohibited sign R209."
+  },
+  {
+    "question_id": 1394,
+    "sign_ids": [
+      155
+    ],
+    "confidence": "high",
+    "reason": "Wikimedia URL SADC_road_sign_W309 matches pedal cyclists warning sign W309."
+  },
+  {
+    "question_id": 1396,
+    "sign_ids": [
+      50
+    ],
+    "confidence": "high",
+    "reason": "Wikimedia URL SADC_road_sign_R206 matches excessive noise prohibited sign R206."
+  },
+  {
+    "question_id": 1398,
+    "sign_ids": [
+      18
+    ],
+    "confidence": "high",
+    "reason": "Wikimedia URL SADC_road_sign_R107 matches proceed straight only command sign R107."
+  },
+  {
+    "question_id": 1400,
+    "sign_ids": [
+      127
+    ],
+    "confidence": "high",
+    "reason": "Wikimedia URL SADC_road_sign_W102 matches priority crossroad warning sign W102."
+  },
+  {
+    "question_id": 1402,
+    "sign_ids": [
+      246
+    ],
+    "confidence": "high",
+    "reason": "Wikimedia URL SADC_road_sign_IN7 matches right-of-way information sign IN7."
+  },
+  {
+    "question_id": 1406,
+    "sign_ids": [
+      52
+    ],
+    "confidence": "high",
+    "reason": "Wikimedia URL SADC_road_sign_R208 matches unauthorised vehicles prohibited sign R208."
+  },
+  {
+    "question_id": 1408,
+    "sign_ids": [
+      141,
+      248
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename Signs_W208-IN11.1-IN11.2 matches winding road sign W208 with distance plate."
+  },
+  {
+    "question_id": 1410,
+    "sign_ids": [
+      45,
+      120
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename J8a matches speed limit sign with night time selective restriction."
+  },
+  {
+    "question_id": 1412,
+    "sign_ids": [
+      15
+    ],
+    "confidence": "high",
+    "reason": "Wikimedia URL SADC_road_sign_R101 matches minimum speed command sign R101."
+  },
+  {
+    "question_id": 1414,
+    "sign_ids": [
+      183
+    ],
+    "confidence": "high",
+    "reason": "Wikimedia URL SADC_road_sign_W346 matches emergency flashing light warning sign W346."
+  },
+  {
+    "question_id": 1415,
+    "sign_ids": [
+      255
+    ],
+    "confidence": "high",
+    "reason": "Sketch 4 referencing RTM1 transverse stop line requiring car A to stop."
+  },
+  {
+    "question_id": 1416,
+    "sign_ids": [
+      283
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename Sketch_9 matches lane lines marking GM1."
+  },
+  {
+    "question_id": 1418,
+    "sign_ids": [
+      56
+    ],
+    "confidence": "high",
+    "reason": "Wikimedia URL SADC_road_sign_R214 matches overtaking prohibited sign R214."
+  },
+  {
+    "question_id": 1423,
+    "sign_ids": [
+      290
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename Sign_S8 matches traffic signal S8 with flashing green arrow."
+  },
+  {
+    "question_id": 1425,
+    "sign_ids": [
+      264
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename sIGN_bUS matches exclusive bus parking bay road marking RM7."
+  },
+  {
+    "question_id": 1427,
+    "sign_ids": [
+      180
+    ],
+    "confidence": "high",
+    "reason": "Wikimedia URL SADC_road_sign_TW344 matches temporary warning sign with yellow background."
+  },
+  {
+    "question_id": 1428,
+    "sign_ids": [
+      258,
+      259
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename Signs_RM1-RM2 compares no-overtaking line RM1 and double no-crossing line RM2."
+  },
+  {
+    "question_id": 1429,
+    "sign_ids": [
+      280
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename Sign_WM8 matches no-overtaking line ahead road marking WM8."
+  },
+  {
+    "question_id": 1431,
+    "sign_ids": [
+      291
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename X8 matches overhead lane control red cross signal S17."
+  },
+  {
+    "question_id": 1433,
+    "sign_ids": [
+      11
+    ],
+    "confidence": "high",
+    "reason": "Wikimedia URL SACU_road_sign_R3 matches No Entry control sign R3."
+  },
+  {
+    "question_id": 1436,
+    "sign_ids": [
+      60,
+      116
+    ],
+    "confidence": "high",
+    "reason": "Cloudinary filename Sign_Truck1 matches dangerous goods vehicles prohibition sign R219 with time subgroup."
+  }
+]

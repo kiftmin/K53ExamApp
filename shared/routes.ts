@@ -13,7 +13,7 @@ export const api = {
       method: 'GET' as const,
       path: '/api/questions' as const,
       responses: {
-        200: z.array(questionSchema),
+        200: z.array(questionSchema.extend({ id: z.number() })),
       },
     },
   },

@@ -4,8 +4,7 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci
 COPY . .
-# NOTE: skips `npm run build` on purpose — that runs `drizzle-kit push`
-# against Neon on every build. Schema already exists; just bundle.
+# Bundle directly; image builds never touch database schema.
 RUN npx tsx script/build.ts
 
 FROM node:20-slim AS runtime

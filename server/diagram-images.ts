@@ -1,7 +1,8 @@
 import fs from "fs";
 import path from "path";
 
-const ALLOWED_EXTS = new Set([".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg"]);
+// SVG excluded for the same reason as sign uploads: same-origin script execution.
+const ALLOWED_EXTS = new Set([".png", ".jpg", ".jpeg", ".webp", ".gif"]);
 
 function moduleDir(): string {
   if (typeof __dirname !== "undefined") return __dirname;
@@ -18,14 +19,13 @@ export function diagramsBaseDir(): string {
 }
 
 function parseDataUrl(dataUrl: string): { ext: string; buffer: Buffer } {
-  const m = /^data:(image\/(png|jpe?g|webp|gif|svg\+xml));base64,([\s\S]+)$/.exec(dataUrl.trim());
+  const m = /^data:(image\/(png|jpe?g|webp|gif));base64,([\s\S]+)$/.exec(dataUrl.trim());
   if (!m) throw new Error("Invalid image data URL.");
   const mime = m[1];
   const ext =
     mime === "image/png" ? ".png" :
     mime === "image/jpeg" ? ".jpg" :
-    mime === "image/webp" ? ".webp" :
-    mime === "image/gif" ? ".gif" : ".svg";
+    mime === "image/webp" ? ".webp" : ".gif";
   return { ext, buffer: Buffer.from(m[3], "base64") };
 }
 

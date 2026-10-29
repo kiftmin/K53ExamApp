@@ -1,0 +1,74 @@
+[
+  {
+    "question_id": 1496,
+    "rule_ids": [
+      11
+    ],
+    "confidence": "high",
+    "reason": "Headlamps, rear lamps, and number-plate lamps must be lit between sunset and sunrise."
+  },
+  {
+    "question_id": 1497,
+    "rule_ids": [
+      110
+    ],
+    "confidence": "high",
+    "reason": "Outside an urban area, parking is prohibited within 1 meter of the roadway edge."
+  },
+  {
+    "question_id": 1498,
+    "rule_ids": [
+      113
+    ],
+    "confidence": "high",
+    "reason": "Stopping is prohibited within a railway level crossing, implying 6m from the reserve is permitted."
+  },
+  {
+    "question_id": 1499,
+    "rule_ids": [
+      60
+    ],
+    "confidence": "medium",
+    "reason": "A stationary vehicle must place a warning triangle at least 45 meters away in the direction traffic will approach from."
+  },
+  {
+    "question_id": 1500,
+    "rule_ids": [
+      144
+    ],
+    "confidence": "high",
+    "reason": "Pedal cycles are explicitly prohibited from using a freeway."
+  },
+  {
+    "question_id": 1501,
+    "rule_ids": [
+      103
+    ],
+    "confidence": "high",
+    "reason": "Overtaking is prohibited when visibility is too restricted to see oncoming traffic."
+  },
+  {
+    "question_id": 1502,
+    "rule_ids": [
+      11
+    ],
+    "confidence": "high",
+    "reason": "Headlamps must be lit between sunset and sunrise, and when visibility is less than 150 meters."
+  },
+  {
+    "question_id": 1507,
+    "rule_ids": [
+      28
+    ],
+    "confidence": "high",
+    "reason": "A vehicle may not use an adjustable spot lamp on a public road, with specific exceptions."
+  },
+  {
+    "question_id": 1508,
+    "rule_ids": [
+      55
+    ],
+    "confidence": "high",
+    "reason": "The exhaust may not leak gas or smoke into the cab or passenger compartment."
+  }
+]

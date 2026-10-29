@@ -1,0 +1,65 @@
+Objective
+- Link the 252 rules to the 225 category-1 rule questions semantically, tolerating paraphrase/reordered wording while producing little or no false linkages.
+- Build a rule-link review workflow; sign linking is complete and should remain untouched.
+Important Details
+- User requirement: matching must use meaning, not exact text; different word order/phrasing must still work; precision is the priority.
+- Rules data: 252 study_rules; 225 category-1 questions; 4 existing rule_questions links; 0 rules reviewed; all 252 have a flashcard question. Headings: Road Traffic Rules 165, Definitions 71, Licensing & Codes 16.
+- Rule codes: [0] all, [1] motorcycle, [2] light, [3] heavy; RULE_APPLICABLE_CODES = [0,1,2,3].
+- Rule questions: license_code 00=184, 02=16, 01=14, 03=11; only 3 have images; 66 duplicates. Total questions: 225 Rules / 275 Signs / 147 Controls.
+- Schema: studyRuleSchema, RuleQuestionLink, studyRules, ruleQuestions; rawRuleImportSchema omits question, but the DB has it.
+- Do not confuse documents/rules-with-questions.json or documents/gemini-rule-question-prompt.md with exam questions; those are generated flashcard fronts. Use documents/rule-question-links/rule-questions.json.
+- Gemini pipeline: scripts/suggest-rule-links.cjs; uses .env (DATABASE_URL, GEMINI_API_KEY); model gemini-2.5-flash; 12 questions/batch; temperature 0.1, topP 0.8, maxOutputTokens 16384, thinkingBudget: 0, JSON response schema; 3 retries; options --export-only, --limit, --outdir, --force.
+- Full rule run succeeded: 225 rows, 245 link suggestions, 23 empty; confidence high=190, medium=9, low=26; link distribution 168 one, 26 two, 7 three, 1 four.
+- 8-question smoke test looked plausible; Q6 empty was correct because no yield/oncoming rule exists. Full 245 suggestions are not manually verified.
+- Code-compatibility check between question license_code and rule applicable_codes was inconclusive because the PowerShell comparison did not normalize array item types; rerun with [int] casts.
+- Sign workflow completed: restored C:\Users\Bradley\Downloads\gemini-code-1792768568423.json into documents/sign-question-links/output/; all 7 files cover 275/275 questions, 290 links, 6 empty rows, 0 missing/extra/duplicate/bad ids.
+- documents/sign-question-links/corrections.json has 18 corrected links, 18 new pairs, 2 duplicate 116 time-plate pairs, 0 errors. Q1368 stays 285 (GM3 road marking); Q1370→236; Q1493 keep 19/reject 118; Q190/Q1460 use 235 with optional 248. User confirmed signs linking is done.
+- Preserve learner-visible constraints: statuses new | learning | review | mastered; isKnown = mastered || review; “Not yet” → learning/again, “Got it” → mastered/good; banned wording Again/Hard/Good/Easy/shaky/mastered/revision/Favorites/Unseen; use Learned/Not learned/I know this.
+- Short-text visibility only when short_reviewed === true and short_meaning non-empty; isTemporaryCode = /^T[A-Z]+\d/.
+- Environment: repo root on Windows; PowerShell; database connection and QA codes are kept out of the repo (see the owner).
+- Sync test data: use the shared QA learner account (credentials kept out of the repo).
+- Typecheck pattern: cmd /c "npx --no-install tsc --noEmit > C:\Users\Bradley\AppData\Local\Temp\opencode\tsc-XXXX.txt 2>&1"; 13 pre-existing errors in untouched files; npx --no-install vite build passes.
+- Git HEAD 015e454; sign-link and rule-link work is uncommitted. Do not commit unless asked; leave untracked user files alone.
+Work State
+Completed
+- Sign-link review UI, validation, corrections, and full 275-question coverage are complete; user has finished applying sign links.
+- Built scripts/suggest-rule-links.cjs; exported 252 rules and 225 category-1 questions; generated 245 Gemini suggestions into documents/rule-question-links/output/.
+- Rule export strips ** markdown from bodies/questions for matching; DB still stores formatted markdown.
+- Prior study-module work remains complete: learner-progress 500 fix, short-text bulk approval pipeline, practise-next rework, and production build verification.
+Active
+- No rule-link review UI yet: client/src/components/admin/rule-link-review.tsx does not exist; rules-section.tsx has no “Question links” tab.
+- No endpoint yet to list all rule-question links; existing four links are not represented in browser state. Add a list route before /api/rules/:id to avoid route capture, and verify the existing /api/rules/:id/questions link/unlink endpoints around server/routes.ts:940-975.
+- Proposed rule review UI: import question_id + rule_ids[], validate category-1 questions and rule ids, skip existing links, show question/answer/candidate rule body/confidence/reason, flagged-only filter, pagination, Link/Reject; persist under k53-rule-link-suggestions-v1.
+- Suggestions still need review: prioritize 26 low and 9 medium rows; inspect 23 empties for false negatives and the single 4-rule row; verify code applicability.
+- No browser test or build/typecheck after rule-link UI work; manual prompt file for rules has not been exported because the script embeds the prompt.
+Blocked
+- (none)
+Next Move
+1. Build client/src/components/admin/rule-link-review.tsx using sign-link-review.tsx as the pattern, add the Question links tab to rules-section.tsx, and import suggestions-all.json or the 19 batch files.
+2. Add a rule-link list endpoint/storage method, wire Link/Reject through the existing rule-question endpoints, and invalidate rule/question queries.
+3. Review low/medium/empty suggestions, rerun the code-compatibility check with normalized integers, then run typecheck, production build, and browser test before committing.
+Relevant Files
+- scripts/suggest-rule-links.cjs — Gemini matcher/export pipeline.
+- documents/rule-question-links/rules.json — 252 exported rule cards.
+- documents/rule-question-links/rule-questions.json — 225 exported category-1 questions with current links.
+- documents/rule-question-links/output/suggestions-all.json and suggestions-batch-001..019.json — 245 suggestions.
+- client/src/components/admin/sign-link-review.tsx — working review UI template.
+- client/src/components/admin/signs-section.tsx — tab/import pattern.
+- client/src/components/admin/rules-section.tsx — add rule Question links tab.
+- client/src/components/admin/rule-form.tsx and question-link-picker.tsx — existing manual rule-question linking.
+- shared/schema.ts — studyRuleSchema, ruleQuestions, RULE_APPLICABLE_CODES.
+- server/db.ts — study_rules, rule_questions, questions table definitions.
+- server/storage.ts — rule/question link storage; add list-all-links method.
+- server/routes.ts — rule endpoints and question APIs around lines 940–975.
+- .env — DATABASE_URL and GEMINI_API_KEY; do not expose values.
+- documents/sign-question-links/corrections.json — completed sign corrections.
+- documents/sign-question-links/output/ — seven validated sign output files.
+- documents/rules-of-the-road-study-module-spec.md — rule module design.
+- client/src/lib/learning-status.ts, client/src/lib/sign-codes.ts — preserved learner constraints.
+▣  Compaction · DeepSeek V4.1 Flash Free · 2m 15s
++ Thought: 3.7s
+# Todos
+[•] Add all-rule-links storage method and API route
+[ ] Build rule-link review component using verified suggestions
+[ ] Add Question links tab to rules section and wire API
+[ ] Typecheck, build, and validate suggestion quality

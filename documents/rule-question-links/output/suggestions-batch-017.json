@@ -1,0 +1,96 @@
+[
+  {
+    "question_id": 1435,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule directly supports the factors affecting stopping distance."
+  },
+  {
+    "question_id": 1437,
+    "rule_ids": [
+      151
+    ],
+    "confidence": "high",
+    "reason": "A towed vehicle may only carry passengers at over 30 km/h if it is a semi-trailer."
+  },
+  {
+    "question_id": 1439,
+    "rule_ids": [
+      70
+    ],
+    "confidence": "high",
+    "reason": "The rule specifies maximum overall widths for different vehicle classes, including 2.5 meters for 'any other vehicle'."
+  },
+  {
+    "question_id": 1441,
+    "rule_ids": [
+      90
+    ],
+    "confidence": "high",
+    "reason": "The rule states that before turning, a driver must give a clear, timely signal of their intention."
+  },
+  {
+    "question_id": 1449,
+    "rule_ids": [
+      7
+    ],
+    "confidence": "high",
+    "reason": "A Code 3 learner's licence requires direct supervision by a licensed driver for that class."
+  },
+  {
+    "question_id": 1450,
+    "rule_ids": [
+      138
+    ],
+    "confidence": "high",
+    "reason": "The rule prohibits holding a cellular device with any part of the body while driving."
+  },
+  {
+    "question_id": 1451,
+    "rule_ids": [
+      101
+    ],
+    "confidence": "high",
+    "reason": "Passing on the left is allowed if the vehicle ahead is turning right or has signalled to."
+  },
+  {
+    "question_id": 1453,
+    "rule_ids": [
+      98
+    ],
+    "confidence": "high",
+    "reason": "The rule states that yellow reflective material is optional but permitted for goods vehicles under 10,000kg GVM."
+  },
+  {
+    "question_id": 1454,
+    "rule_ids": [
+      116
+    ],
+    "confidence": "high",
+    "reason": "The rule requires maintaining a safe following distance to stop safely."
+  },
+  {
+    "question_id": 1455,
+    "rule_ids": [
+      144
+    ],
+    "confidence": "high",
+    "reason": "Tractors are prohibited from using a freeway, except for construction or maintenance."
+  },
+  {
+    "question_id": 1456,
+    "rule_ids": [
+      120
+    ],
+    "confidence": "high",
+    "reason": "The rule states a driver must ensure it's safe and won't interfere with traffic before pulling away."
+  },
+  {
+    "question_id": 1458,
+    "rule_ids": [
+      122
+    ],
+    "confidence": "high",
+    "reason": "The rule permits a driver to let a part of their body protrude only to give a hand signal."
+  }
+]

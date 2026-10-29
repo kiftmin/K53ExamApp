@@ -1,0 +1,103 @@
+[
+  {
+    "question_id": 765,
+    "rule_ids": [
+      11
+    ],
+    "confidence": "high",
+    "reason": "Headlamps, rear lamps, and number-plate lamps must be lit between sunset and sunrise, and when visibility is less than 150 meters."
+  },
+  {
+    "question_id": 771,
+    "rule_ids": [
+      103
+    ],
+    "confidence": "high",
+    "reason": "Do not pass other traffic when approaching the summit of a rise, a curve, or anywhere visibility is too restricted to see oncoming traffic."
+  },
+  {
+    "question_id": 773,
+    "rule_ids": [
+      156
+    ],
+    "confidence": "high",
+    "reason": "Do not cross or enter a public road unless it is clear of moving traffic for a sufficient distance, or you can do so with safety."
+  },
+  {
+    "question_id": 775,
+    "rule_ids": [
+      165
+    ],
+    "confidence": "high",
+    "reason": "After an accident, a driver must immediately stop, check for and assist with injuries, and not consume alcohol before reporting."
+  },
+  {
+    "question_id": 776,
+    "rule_ids": [
+      211
+    ],
+    "confidence": "low",
+    "reason": "A traffic signal alternately directs traffic to stop and permits it to proceed, but flashing red is not explicitly covered."
+  },
+  {
+    "question_id": 779,
+    "rule_ids": [
+      107
+    ],
+    "confidence": "high",
+    "reason": "At a junction where vehicles move around a traffic island, give way to all traffic approaching from your right."
+  },
+  {
+    "question_id": 781,
+    "rule_ids": [
+      40,
+      121
+    ],
+    "confidence": "high",
+    "reason": "A driver must immediately give way to any emergency vehicle sounding a siren and displaying warning lights."
+  },
+  {
+    "question_id": 783,
+    "rule_ids": [
+      90
+    ],
+    "confidence": "high",
+    "reason": "Before stopping or turning, give a clear, timely signal of your intention."
+  },
+  {
+    "question_id": 785,
+    "rule_ids": [
+      150,
+      151
+    ],
+    "confidence": "high",
+    "reason": "Towing at over 30 km/h with a rope or chain is not allowed, and a towed vehicle may only carry passengers at over 30 km/h if it is a semi-trailer."
+  },
+  {
+    "question_id": 787,
+    "rule_ids": [
+      43,
+      44,
+      45,
+      47
+    ],
+    "confidence": "high",
+    "reason": "Rear seatbelts must be worn if fitted, seatbelts are not compulsory when reversing, children are defined as 3-14 unless taller than 1.5m, and an adult may not occupy a seat without a seatbelt if a belted seat is available."
+  },
+  {
+    "question_id": 789,
+    "rule_ids": [
+      6
+    ],
+    "confidence": "high",
+    "reason": "A Code 2 learner's licence authorises driving only under the direct supervision of a licensed driver for that class."
+  },
+  {
+    "question_id": 791,
+    "rule_ids": [
+      158
+    ],
+    "confidence": "high",
+    "reason": "A light motor vehicle's tyres must have a tread pattern at least 1mm deep."
+  }
+]

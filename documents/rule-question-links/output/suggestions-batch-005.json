@@ -1,0 +1,98 @@
+[
+  {
+    "question_id": 49,
+    "rule_ids": [
+      114
+    ],
+    "confidence": "high",
+    "reason": "Both state that a driver must obey every road traffic sign and rule of the road."
+  },
+  {
+    "question_id": 50,
+    "rule_ids": [
+      139
+    ],
+    "confidence": "high",
+    "reason": "Both state that a driver must yield right of way to a pedestrian crossing a pedestrian crossing."
+  },
+  {
+    "question_id": 51,
+    "rule_ids": [
+      122
+    ],
+    "confidence": "high",
+    "reason": "Both state that no part of the body may protrude from a moving vehicle, except to give a hand signal."
+  },
+  {
+    "question_id": 52,
+    "rule_ids": [
+      62
+    ],
+    "confidence": "high",
+    "reason": "Both state that a vehicle may not be operated on a public road in a manner that causes excessive noise."
+  },
+  {
+    "question_id": 53,
+    "rule_ids": [
+      60
+    ],
+    "confidence": "high",
+    "reason": "Both state that a warning triangle must be placed at least 45 metres away from the stationary vehicle."
+  },
+  {
+    "question_id": 54,
+    "rule_ids": [
+      116
+    ],
+    "confidence": "high",
+    "reason": "Both state that the minimum following distance for light motor vehicles and motorcycles is 2 seconds."
+  },
+  {
+    "question_id": 55,
+    "rule_ids": [
+      110
+    ],
+    "confidence": "high",
+    "reason": "Both state that outside an urban area, a vehicle may not park within 1 metre of the roadway edge."
+  },
+  {
+    "question_id": 56,
+    "rule_ids": [
+      112
+    ],
+    "confidence": "high",
+    "reason": "Both state that stopping on the roadway is permitted when directed by a traffic officer."
+  },
+  {
+    "question_id": 57,
+    "rule_ids": [
+      124
+    ],
+    "confidence": "high",
+    "reason": "Both state that the engine may not run while fuel is being delivered into the tank."
+  },
+  {
+    "question_id": 58,
+    "rule_ids": [
+      46
+    ],
+    "confidence": "high",
+    "reason": "Both state that a driver must ensure a child uses an appropriate child restraint or seatbelt."
+  },
+  {
+    "question_id": 59,
+    "rule_ids": [
+      156
+    ],
+    "confidence": "high",
+    "reason": "Both state that a driver must not cross or enter a public road unless it is clear of moving traffic for a sufficient distance."
+  },
+  {
+    "question_id": 60,
+    "rule_ids": [
+      144
+    ],
+    "confidence": "high",
+    "reason": "Both state that an animal-drawn vehicle may not use a freeway."
+  }
+]

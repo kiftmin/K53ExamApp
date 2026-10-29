@@ -1,0 +1,98 @@
+[
+  {
+    "question_id": 219,
+    "rule_ids": [
+      148
+    ],
+    "confidence": "high",
+    "reason": "A motorcycle may not be used to tow another vehicle."
+  },
+  {
+    "question_id": 221,
+    "rule_ids": [
+      5,
+      129
+    ],
+    "confidence": "high",
+    "reason": "A Code 1 learner's licence prohibits passengers, and a passenger must be seated on a securely fastened seat."
+  },
+  {
+    "question_id": 223,
+    "rule_ids": [
+      26
+    ],
+    "confidence": "high",
+    "reason": "Motorcycles, motor tricycles, and trailers need only a rear number plate."
+  },
+  {
+    "question_id": 225,
+    "rule_ids": [
+      128
+    ],
+    "confidence": "high",
+    "reason": "A rider's feet must rest on the front foot rests, seated astride the saddle, with at least one hand on the handlebars at all times."
+  },
+  {
+    "question_id": 227,
+    "rule_ids": [
+      135
+    ],
+    "confidence": "high",
+    "reason": "All wheels of the motorcycle must stay in contact with the road surface at all times."
+  },
+  {
+    "question_id": 228,
+    "rule_ids": [
+      32
+    ],
+    "confidence": "low",
+    "reason": "The rule mentions handlebar height must meet prescribed measurements, but does not specify the 500mm value."
+  },
+  {
+    "question_id": 229,
+    "rule_ids": [
+      78
+    ],
+    "confidence": "high",
+    "reason": "A motorcycle's load may not project more than 900mm behind the rear axle."
+  },
+  {
+    "question_id": 230,
+    "rule_ids": [
+      78
+    ],
+    "confidence": "high",
+    "reason": "A motorcycle's load may not project more than 600mm in front of the front axle."
+  },
+  {
+    "question_id": 231,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule directly supports the factors affecting stopping distance."
+  },
+  {
+    "question_id": 101,
+    "rule_ids": [
+      150,
+      151
+    ],
+    "confidence": "high",
+    "reason": "Towing at over 30 km/h with a rope or chain is not allowed, and a towed vehicle may only carry passengers at over 30 km/h if it is a semi-trailer."
+  },
+  {
+    "question_id": 102,
+    "rule_ids": [
+      149
+    ],
+    "confidence": "high",
+    "reason": "The tow-rope, chain, or tow-bar between two vehicles may not exceed 3.5 metres in length."
+  },
+  {
+    "question_id": 103,
+    "rule_ids": [
+      12
+    ],
+    "confidence": "high",
+    "reason": "Lighting rules don't apply to a vehicle parked off the roadway, in a demarcated parking place, or within 12 metres of a lit street lamp."
+  }
+]

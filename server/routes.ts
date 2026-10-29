@@ -15,10 +15,11 @@ import {
   validateCodeAndMobile,
   type AccessCodeType,
 } from "./access-code.js";
-import { getAdminEmail, isSmtpConfigured, sendAdminEmail } from "./mailer.js";
+import { getAdminEmail, sendAdminEmail } from "./mailer.js";
 import { slugifyCode, listStagedImages, stageImageUpload, attachStagedToCode, saveImageForCode, deleteStagedImage } from "./sign-images.js";
 import { saveImageForDiagram } from "./diagram-images.js";
 import { validateAdminAccess, requireAdminAuth } from "./admin-auth.js";
+import { rateLimit } from "express-rate-limit";
 import { z } from "zod";
 import { learnerProgressSchema, learnerProgressUpsertSchema, testHistoryRunSchema, testHistorySyncSchema, signShortTextImportSchema, type InsertLearnerProgress } from "../shared/schema.js";
 
@@ -58,6 +59,33 @@ function adminMobileFromRequest(req: any): string {
   return String(req.headers['x-admin-mobile'] || '').trim();
 }
 
+// Zod issues are safe to return; anything else (driver, fs, SMTP) is only
+// logged server-side so internals never reach the client.
+function sendBadRequest(res: any, err: unknown, message: string) {
+  if (err instanceof z.ZodError) {
+    return res.status(400).json({ message, details: err.issues });
+  }
+  return res.status(400).json({ message });
+}
+
+// Public credential-checking surface. Without throttling, the 36^6 code space
+// is brute-forceable and a guessed master key is a permanent admin credential.
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  limit: 10,
+  standardHeaders: 'draft-7',
+  legacyHeaders: false,
+  message: { valid: false, message: 'Too many attempts. Please try again in a few minutes.' },
+});
+
+const requestKeyLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000,
+  limit: 3,
+  standardHeaders: 'draft-7',
+  legacyHeaders: false,
+  message: { message: 'Too many requests. Please try again later.' },
+});
+
 export async function registerRoutes(
   _httpServer: any,
   app: any
@@ -77,19 +105,19 @@ export async function registerRoutes(
 
   app.post('/api/questions/bulk', requireAdminAuth, async (req: any, res: any) => {
     try {
-      const parsed = z.array(questionSchema).parse(req.body);
+      const parsed = z.array(questionSchema).max(500).parse(req.body);
       await storage.bulkUploadQuestions(parsed);
       res.status(201).json({ message: `Successfully uploaded ${parsed.length} questions.` });
     } catch (err) {
       console.error("Error in bulk upload:", err);
-      res.status(400).json({ message: "Invalid format for bulk upload payload", error: err });
+      return sendBadRequest(res, err, "Invalid format for bulk upload payload");
     }
   });
 
   app.post('/api/questions/bulk-source', requireAdminAuth, async (req: any, res: any) => {
     try {
       const { ids, sourceId } = z.object({
-        ids: z.array(z.number()),
+        ids: z.array(z.number().int().positive()).max(500),
         sourceId: z.number().nullable()
       }).parse(req.body);
 
@@ -97,28 +125,28 @@ export async function registerRoutes(
       res.json({ message: `Successfully updated ${ids.length} questions.` });
     } catch (err) {
       console.error("Error in bulk source update:", err);
-      res.status(400).json({ message: "Invalid bulk source update payload", error: err });
+      return sendBadRequest(res, err, "Invalid bulk source update payload");
     }
   });
 
   app.delete('/api/questions/bulk', requireAdminAuth, async (req: any, res: any) => {
     try {
       const { ids } = z.object({
-        ids: z.array(z.number())
+        ids: z.array(z.number().int().positive()).max(500)
       }).parse(req.body);
 
       await storage.bulkDeleteQuestions(ids);
       res.status(204).send();
     } catch (err) {
       console.error("Error in bulk delete:", err);
-      res.status(400).json({ message: "Invalid bulk delete payload", error: err });
+      return sendBadRequest(res, err, "Invalid bulk delete payload");
     }
   });
 
   app.post('/api/questions/bulk-official', requireAdminAuth, async (req: any, res: any) => {
     try {
       const { ids, isOfficial } = z.object({
-        ids: z.array(z.number()),
+        ids: z.array(z.number().int().positive()).max(500),
         isOfficial: z.boolean()
       }).parse(req.body);
 
@@ -126,29 +154,29 @@ export async function registerRoutes(
       res.json({ message: `Successfully updated ${ids.length} questions.` });
     } catch (err) {
       console.error("Error in bulk official update:", err);
-      res.status(400).json({ message: "Invalid bulk official update payload", error: err });
+      return sendBadRequest(res, err, "Invalid bulk official update payload");
     }
   });
 
   app.post('/api/questions/bulk-category', requireAdminAuth, async (req: any, res: any) => {
     try {
       const { ids, category } = z.object({
-        ids: z.array(z.number()),
-        category: z.number()
+        ids: z.array(z.number().int().positive()).max(500),
+        category: z.number().int().min(1).max(10)
       }).parse(req.body);
 
       await storage.bulkUpdateCategory(ids, category);
       res.json({ message: `Successfully updated ${ids.length} questions.` });
     } catch (err) {
       console.error("Error in bulk category update:", err);
-      res.status(400).json({ message: "Invalid bulk category update payload", error: err });
+      return sendBadRequest(res, err, "Invalid bulk category update payload");
     }
   });
 
   app.post('/api/questions/bulk-duplicate', requireAdminAuth, async (req: any, res: any) => {
     try {
       const { ids, isDuplicate } = z.object({
-        ids: z.array(z.number()),
+        ids: z.array(z.number().int().positive()).max(500),
         isDuplicate: z.boolean()
       }).parse(req.body);
 
@@ -156,7 +184,7 @@ export async function registerRoutes(
       res.json({ message: `Successfully updated ${ids.length} questions.` });
     } catch (err) {
       console.error("Error in bulk duplicate update:", err);
-      res.status(400).json({ message: "Invalid bulk duplicate update payload", error: err });
+      return sendBadRequest(res, err, "Invalid bulk duplicate update payload");
     }
   });
 
@@ -169,7 +197,7 @@ export async function registerRoutes(
       res.status(201).json(created);
     } catch (err) {
       console.error("Error creating question:", err);
-      res.status(400).json({ message: "Invalid question data", error: err });
+      return sendBadRequest(res, err, "Invalid question data");
     }
   });
 
@@ -222,7 +250,7 @@ export async function registerRoutes(
       res.json(updated);
     } catch (err) {
       console.error("Error updating question:", err);
-      res.status(400).json({ message: "Invalid question data", error: err });
+      return sendBadRequest(res, err, "Invalid question data");
     }
   });
 
@@ -237,7 +265,7 @@ export async function registerRoutes(
       res.json(updated);
     } catch (err) {
       console.error("Error patching question:", err);
-      res.status(400).json({ message: "Invalid question data", error: err });
+      return sendBadRequest(res, err, "Invalid question data");
     }
   });
 
@@ -251,7 +279,7 @@ export async function registerRoutes(
       res.status(204).send();
     } catch (err) {
       console.error("Error deleting question:", err);
-      res.status(500).json({ message: "Failed to delete question", error: err });
+      res.status(500).json({ message: "Failed to delete question" });
     }
   });
 
@@ -295,7 +323,7 @@ export async function registerRoutes(
       res.status(201).json(created);
     } catch (err) {
       console.error("Error creating source:", err);
-      res.status(400).json({ message: "Invalid source data", error: err });
+      return sendBadRequest(res, err, "Invalid source data");
     }
   });
 
@@ -310,7 +338,7 @@ export async function registerRoutes(
       res.json(updated);
     } catch (err) {
       console.error("Error updating source:", err);
-      res.status(400).json({ message: "Invalid source data", error: err });
+      return sendBadRequest(res, err, "Invalid source data");
     }
   });
 
@@ -328,7 +356,7 @@ export async function registerRoutes(
       res.json(updated);
     } catch (err) {
       console.error("Error toggling source active status:", err);
-      res.status(400).json({ message: "Invalid request", error: err });
+      return sendBadRequest(res, err, "Invalid request");
     }
   });
 
@@ -342,7 +370,7 @@ export async function registerRoutes(
       res.status(204).send();
     } catch (err) {
       console.error("Error deleting source:", err);
-      res.status(500).json({ message: "Failed to delete source", error: err });
+      res.status(500).json({ message: "Failed to delete source" });
     }
   });
 
@@ -378,11 +406,11 @@ export async function registerRoutes(
   // - Daily (D...): no mobile required. Accepts today's deterministic code
   //   OR an unexpired on-demand daily code from DB.
   // - Weekly/Monthly/Master (W/M/X...): requires 10-digit mobile linked at creation.
-  app.post('/api/access-code/validate', async (req: any, res: any) => {
+  app.post('/api/access-code/validate', authLimiter, async (req: any, res: any) => {
     try {
       const { code, mobileNumber } = z.object({
-        code: z.string().min(1),
-        mobileNumber: z.string().optional().nullable(),
+        code: z.string().min(1).max(32),
+        mobileNumber: z.string().max(20).optional().nullable(),
       }).parse(req.body);
 
       const result = await validateCodeAndMobile(code, mobileNumber, (normalized) => storage.getAccessCodeByCode(normalized));
@@ -407,8 +435,8 @@ export async function registerRoutes(
   app.get('/api/learner-progress', async (req: any, res: any) => {
     try {
       const { code, mobileNumber, item_type } = z.object({
-        code: z.string().min(1),
-        mobileNumber: z.string().min(1),
+        code: z.string().min(1).max(32),
+        mobileNumber: z.string().min(1).max(20),
         item_type: z.enum(['sign', 'rule', 'control', 'question']),
       }).parse(req.query);
 
@@ -473,8 +501,8 @@ export async function registerRoutes(
   app.get('/api/test-history', async (req: any, res: any) => {
     try {
       const { code, mobileNumber } = z.object({
-        code: z.string().min(1),
-        mobileNumber: z.string().min(1),
+        code: z.string().min(1).max(32),
+        mobileNumber: z.string().min(1).max(20),
       }).parse(req.query);
 
       const result = await validateCodeAndMobile(code, mobileNumber, (normalized) => storage.getAccessCodeByCode(normalized));
@@ -553,7 +581,7 @@ export async function registerRoutes(
     try {
       const { type, mobileNumber, hasAdminAccess } = z.object({
         type: z.enum(['daily', 'weekly', 'monthly', 'master']),
-        mobileNumber: z.string().optional().nullable(),
+        mobileNumber: z.string().max(20).optional().nullable(),
         hasAdminAccess: z.boolean().optional().default(false),
       }).parse(req.body);
 
@@ -590,7 +618,7 @@ export async function registerRoutes(
       res.status(201).json(created);
     } catch (err) {
       console.error("Error generating access code:", err);
-      res.status(400).json({ message: "Invalid generate payload", error: err });
+      return sendBadRequest(res, err, "Invalid generate payload");
     }
   });
 
@@ -598,6 +626,12 @@ export async function registerRoutes(
     try {
       const id = parseInt(req.params.id, 10);
       if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
+      const target = await storage.getAccessCodeById(id);
+      if (!target) return res.status(404).json({ message: "Code not found" });
+      const adminKey = String(req.headers['x-admin-key'] || '').trim().toUpperCase();
+      if ((target.code || '').trim().toUpperCase() === adminKey) {
+        return res.status(400).json({ message: "You cannot revoke the key you are signed in with." });
+      }
       const updated = await storage.revokeAccessCode(id);
       if (!updated) return res.status(404).json({ message: "Code not found" });
       res.json(updated);
@@ -611,6 +645,12 @@ export async function registerRoutes(
     try {
       const id = parseInt(req.params.id, 10);
       if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
+      const target = await storage.getAccessCodeById(id);
+      if (!target) return res.status(404).json({ message: "Code not found" });
+      const adminKey = String(req.headers['x-admin-key'] || '').trim().toUpperCase();
+      if ((target.code || '').trim().toUpperCase() === adminKey) {
+        return res.status(400).json({ message: "You cannot delete the key you are signed in with." });
+      }
       const ok = await storage.deleteAccessCode(id);
       if (!ok) return res.status(404).json({ message: "Code not found" });
       res.status(204).send();
@@ -755,18 +795,18 @@ export async function registerRoutes(
 
   // --- Admin console gate: only master keys flagged with admin access ---
 
-  app.post('/api/access-codes/validate-admin', async (req: any, res: any) => {
+  app.post('/api/access-codes/validate-admin', authLimiter, async (req: any, res: any) => {
     try {
       const { code, mobileNumber } = z.object({
-        code: z.string().min(1),
-        mobileNumber: z.string().min(1),
+        code: z.string().min(1).max(32),
+        mobileNumber: z.string().min(1).max(20),
       }).parse(req.body);
 
       const normalized = code.trim().toUpperCase();
       const mobile = mobileNumber.trim();
       const result = await validateAdminAccess(normalized, mobile);
       if (!result.valid) {
-        return res.json({ valid: false, message: result.message, mobileMatch: result.mobileMatch });
+        return res.json({ valid: false, message: result.message });
       }
       return res.json({ valid: true, isAdmin: true });
     } catch (err) {
@@ -776,15 +816,16 @@ export async function registerRoutes(
   });
 
   app.get('/api/admin/contact', async (_req: any, res: any) => {
-    res.json({ email: getAdminEmail(), smtpConfigured: isSmtpConfigured() });
+    // Only the contact address is public; SMTP configuration state is server internals.
+    res.json({ email: getAdminEmail() });
   });
 
   // User requests a new master key from the admin via backend email
-  app.post('/api/admin/request-key', async (req: any, res: any) => {
+  app.post('/api/admin/request-key', requestKeyLimiter, async (req: any, res: any) => {
     try {
       const { mobileNumber, message } = z.object({
         mobileNumber: z.string().regex(MOBILE_NUMBER_REGEX, "Mobile number must be 10 digits"),
-        message: z.string().max(1000).optional().default(''),
+        message: z.string().max(500).optional().default(''),
       }).parse(req.body);
 
       const adminEmail = getAdminEmail();
@@ -807,8 +848,11 @@ export async function registerRoutes(
       res.json({ sent: true, to: adminEmail });
     } catch (err: any) {
       console.error("Error sending admin request email:", err);
+      if (err instanceof z.ZodError) {
+        return res.status(400).json({ message: "Invalid request payload", details: err.issues });
+      }
       const status = err?.message?.includes('SMTP') || err?.message?.includes('ADMIN_EMAIL') ? 500 : 400;
-      res.status(status).json({ message: err?.message || "Failed to send request", error: err });
+      res.status(status).json({ message: status === 500 ? "Email is not configured on the server." : "Failed to send request" });
     }
   });
 
@@ -878,7 +922,7 @@ export async function registerRoutes(
   // Bulk insert from Allsigns.json (raw format)
   app.post('/api/signs/import', requireAdminAuth, async (req: any, res: any) => {
     try {
-      const parsed = z.array(rawSignImportSchema).parse(req.body);
+      const parsed = z.array(rawSignImportSchema).max(500).parse(req.body);
       const rows: InsertStudySign[] = parsed.map((r) => ({
         heading: r.Heading,
         subheading: r.Subheading,
@@ -898,7 +942,7 @@ export async function registerRoutes(
       res.status(201).json({ message: `Imported ${result.inserted} signs (${result.skipped} duplicates skipped).`, ...result });
     } catch (err) {
       console.error("Error importing signs:", err);
-      res.status(400).json({ message: "Invalid signs import payload", error: err });
+      return sendBadRequest(res, err, "Invalid signs import payload");
     }
   });
 
@@ -908,7 +952,7 @@ export async function registerRoutes(
   app.post('/api/signs/short-text/import', requireAdminAuth, async (req: any, res: any) => {
     try {
       const { items, overwrite } = z.object({
-        items: z.array(signShortTextImportSchema).min(1),
+        items: z.array(signShortTextImportSchema).min(1).max(500),
         overwrite: z.boolean().optional().default(false),
       }).parse(req.body);
 
@@ -936,7 +980,7 @@ export async function registerRoutes(
       res.json({ updated, skipped, notFound });
     } catch (err) {
       console.error("Error importing short text:", err);
-      res.status(400).json({ message: "Invalid short-text import payload", error: err });
+      return sendBadRequest(res, err, "Invalid short-text import payload");
     }
   });
 
@@ -955,7 +999,10 @@ export async function registerRoutes(
   app.post('/api/signs/images/batch', requireAdminAuth, async (req: any, res: any) => {
     try {
       const { files } = z.object({
-        files: z.array(z.object({ filename: z.string(), dataUrl: z.string() })).min(1).max(50),
+        files: z.array(z.object({
+          filename: z.string().max(255),
+          dataUrl: z.string().max(8_000_000),
+        })).min(1).max(50),
       }).parse(req.body);
 
       // Build slug -> { signId, code } lookup across every sign
@@ -995,7 +1042,7 @@ export async function registerRoutes(
       res.status(201).json({ matched, staged, unmatched: listStagedImages() });
     } catch (err) {
       console.error("Error batch-uploading sign images:", err);
-      res.status(400).json({ message: "Invalid image batch payload", error: err });
+      return sendBadRequest(res, err, "Invalid image batch payload");
     }
   });
 
@@ -1048,7 +1095,7 @@ export async function registerRoutes(
       res.status(201).json(created);
     } catch (err) {
       console.error("Error creating sign:", err);
-      res.status(400).json({ message: "Invalid sign data", error: err });
+      return sendBadRequest(res, err, "Invalid sign data");
     }
   });
 
@@ -1062,7 +1109,7 @@ export async function registerRoutes(
       res.json(updated);
     } catch (err) {
       console.error("Error updating sign:", err);
-      res.status(400).json({ message: "Invalid sign data", error: err });
+      return sendBadRequest(res, err, "Invalid sign data");
     }
   });
 
@@ -1087,10 +1134,10 @@ export async function registerRoutes(
       const id = parseInt(req.params.id, 10);
       if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
       const { code, stagedFilename, filename, dataUrl, addCodeAsNew } = z.object({
-        code: z.string().min(1),
-        stagedFilename: z.string().optional(),
-        filename: z.string().optional(),
-        dataUrl: z.string().optional(),
+        code: z.string().min(1).max(40),
+        stagedFilename: z.string().max(255).optional(),
+        filename: z.string().max(255).optional(),
+        dataUrl: z.string().max(8_000_000).optional(),
         addCodeAsNew: z.boolean().optional().default(false),
       }).parse(req.body);
 
@@ -1124,7 +1171,7 @@ export async function registerRoutes(
       res.status(201).json(updated);
     } catch (err: any) {
       console.error("Error attaching sign image:", err);
-      res.status(400).json({ message: err?.message || "Failed to attach image" });
+      return sendBadRequest(res, err, "Failed to attach image");
     }
   });
 
@@ -1171,12 +1218,12 @@ export async function registerRoutes(
     try {
       const id = parseInt(req.params.id, 10);
       if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
-      const { question_id } = z.object({ question_id: z.number() }).parse(req.body);
+      const { question_id } = z.object({ question_id: z.number().int().positive() }).parse(req.body);
       const link = await storage.linkSignQuestion(id, question_id);
       res.status(201).json(link);
     } catch (err: any) {
       console.error("Error linking sign question:", err);
-      res.status(400).json({ message: err?.message || "Failed to link question" });
+      return sendBadRequest(res, err, "Failed to link question");
     }
   });
 
@@ -1221,7 +1268,7 @@ export async function registerRoutes(
   // Bulk insert from rules-of-the-road-cards.json
   app.post('/api/rules/import', requireAdminAuth, async (req: any, res: any) => {
     try {
-      const parsed = z.array(rawRuleImportSchema).parse(req.body);
+      const parsed = z.array(rawRuleImportSchema).max(500).parse(req.body);
       const rows: InsertStudyRule[] = parsed.map((r) => ({
         section_ref: r.section_ref,
         heading: r.heading,
@@ -1236,7 +1283,7 @@ export async function registerRoutes(
       res.status(201).json({ message: `Imported ${result.inserted} rules (${result.skipped} duplicates skipped).`, ...result });
     } catch (err) {
       console.error("Error importing rules:", err);
-      res.status(400).json({ message: "Invalid rules import payload", error: err });
+      return sendBadRequest(res, err, "Invalid rules import payload");
     }
   });
 
@@ -1269,7 +1316,7 @@ export async function registerRoutes(
       res.status(201).json(created);
     } catch (err) {
       console.error("Error creating rule:", err);
-      res.status(400).json({ message: "Invalid rule data", error: err });
+      return sendBadRequest(res, err, "Invalid rule data");
     }
   });
 
@@ -1283,7 +1330,7 @@ export async function registerRoutes(
       res.json(updated);
     } catch (err) {
       console.error("Error updating rule:", err);
-      res.status(400).json({ message: "Invalid rule data", error: err });
+      return sendBadRequest(res, err, "Invalid rule data");
     }
   });
 
@@ -1315,12 +1362,12 @@ export async function registerRoutes(
     try {
       const id = parseInt(req.params.id, 10);
       if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
-      const { question_id } = z.object({ question_id: z.number() }).parse(req.body);
+      const { question_id } = z.object({ question_id: z.number().int().positive() }).parse(req.body);
       const link = await storage.linkRuleQuestion(id, question_id);
       res.status(201).json(link);
     } catch (err: any) {
       console.error("Error linking rule question:", err);
-      res.status(400).json({ message: err?.message || "Failed to link question" });
+      return sendBadRequest(res, err, "Failed to link question");
     }
   });
 
@@ -1359,7 +1406,7 @@ export async function registerRoutes(
       res.json(updated);
     } catch (err: any) {
       console.error("Error updating diagram:", err);
-      res.status(400).json({ message: err?.message || "Failed to update diagram" });
+      return sendBadRequest(res, err, "Failed to update diagram");
     }
   });
 
@@ -1367,14 +1414,14 @@ export async function registerRoutes(
     try {
       const id = parseInt(req.params.id, 10);
       if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
-      const { filename, dataUrl } = z.object({ filename: z.string(), dataUrl: z.string() }).parse(req.body);
+      const { filename, dataUrl } = z.object({ filename: z.string().max(255), dataUrl: z.string().max(8_000_000) }).parse(req.body);
       const image_url = saveImageForDiagram(id, filename, dataUrl);
       const updated = await storage.updateControlDiagram(id, { image_url });
       if (!updated) return res.status(404).json({ message: "Diagram not found" });
       res.json(updated);
     } catch (err: any) {
       console.error("Error uploading diagram image:", err);
-      res.status(400).json({ message: err?.message || "Failed to upload diagram image" });
+      return sendBadRequest(res, err, "Failed to upload diagram image");
     }
   });
 
@@ -1399,7 +1446,7 @@ export async function registerRoutes(
       res.status(201).json({ message: `Imported ${result.controls} components, ${result.questions} questions across ${result.diagrams} new diagrams.`, ...result });
     } catch (err) {
       console.error("Error importing controls bundle:", err);
-      res.status(400).json({ message: "Invalid controls import payload", error: err });
+      return sendBadRequest(res, err, "Invalid controls import payload");
     }
   });
 
@@ -1423,7 +1470,7 @@ export async function registerRoutes(
       res.status(201).json(created);
     } catch (err) {
       console.error("Error creating control:", err);
-      res.status(400).json({ message: "Invalid control data", error: err });
+      return sendBadRequest(res, err, "Invalid control data");
     }
   });
 
@@ -1437,7 +1484,7 @@ export async function registerRoutes(
       res.json(updated);
     } catch (err) {
       console.error("Error updating control:", err);
-      res.status(400).json({ message: "Invalid control data", error: err });
+      return sendBadRequest(res, err, "Invalid control data");
     }
   });
 
@@ -1480,12 +1527,12 @@ export async function registerRoutes(
     try {
       const id = parseInt(req.params.id, 10);
       if (Number.isNaN(id)) return res.status(400).json({ message: "Invalid id" });
-      const { question_id } = z.object({ question_id: z.number() }).parse(req.body);
+      const { question_id } = z.object({ question_id: z.number().int().positive() }).parse(req.body);
       const link = await storage.linkControlQuestion(id, question_id);
       res.status(201).json(link);
     } catch (err: any) {
       console.error("Error linking control question:", err);
-      res.status(400).json({ message: err?.message || "Failed to link question" });
+      return sendBadRequest(res, err, "Failed to link question");
     }
   });
 

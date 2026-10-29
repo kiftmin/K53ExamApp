@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useMemo, useCallback, memo } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { Question, Source, CATEGORY_NAMES } from "@shared/schema";
+import { Question, Source, CATEGORY_NAMES, LICENSE_CODES } from "@shared/schema";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -578,7 +578,7 @@ export default function QuestionBankSection() {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All Codes</SelectItem>
-                {["00", "01", "02", "03"].map((v) => (
+                {LICENSE_CODES.map((v) => (
                   <SelectItem key={v} value={v}>Code {v}</SelectItem>
                 ))}
               </SelectContent>

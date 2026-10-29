@@ -1,0 +1,1202 @@
+[
+    {
+        "id":  960,
+        "question_number":  460,
+        "question_text":  "This sign shows you that there is a",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1769783153/N3_iqruoc.png",
+        "is_duplicate":  true,
+        "correct_answer":  "sharp curve to the left ahead",
+        "options":  [
+                        {
+                            "answer_text":  "sharp curve to the left ahead",
+                            "answer_number":  "A",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "obstruction to the left ahead",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "detour to the left.",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  962,
+        "question_number":  462,
+        "question_text":  "This sign shows you that...",
+        "license_code":  "02",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1769783394/C3_byx8fm.png",
+        "is_duplicate":  false,
+        "correct_answer":  "you must drive there.",
+        "options":  [
+                        {
+                            "answer_text":  "you must drive there.",
+                            "answer_number":  "A",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "you can drive there if you wish.",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "the area is for motor car taxis only.",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  964,
+        "question_number":  464,
+        "question_text":  "This sign forbids",
+        "license_code":  "02",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1769783584/F6_t8cryl.png",
+        "is_duplicate":  true,
+        "correct_answer":  "minibuses to drive past this sign",
+        "options":  [
+                        {
+                            "answer_text":  "minibuses to drive past this sign",
+                            "answer_number":  "A",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "all motor vehicles to drive past this sign",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "minibuses to pick up passengers",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  966,
+        "question_number":  466,
+        "question_text":  "This sign shows you that you",
+        "license_code":  "02",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1769785072/K3_vdx4mt.png",
+        "is_duplicate":  true,
+        "correct_answer":  "may not drive there between 06:00 and 09:00",
+        "options":  [
+                        {
+                            "answer_text":  "may not drive there between 06:00 and 09:00",
+                            "answer_number":  "A",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "may not park there for more than 3 hours.",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "are only allowed to drive there between 06:00 and 09:00",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  980,
+        "question_number":  480,
+        "question_text":  "This sign shows you that",
+        "license_code":  "03",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1769785588/D10_xgzwvu.png",
+        "is_duplicate":  true,
+        "correct_answer":  "the vehicles longer than 15 m wide may not drive pass the sign.",
+        "options":  [
+                        {
+                            "answer_text":  "the vehicles longer than 15 m wide may not drive pass the sign.",
+                            "answer_number":  "A",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "the road is only 15 m wide past the sign.",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "no vehicles with trailers may drive pass the sign.",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  984,
+        "question_number":  484,
+        "question_text":  "This sign shows that...",
+        "license_code":  "03",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1769787677/K2_h0owdj.png",
+        "is_duplicate":  true,
+        "correct_answer":  "vehicles carrying hazardous products may only use the road during the times showed on the sign.",
+        "options":  [
+                        {
+                            "answer_text":  "all heavy vehicles may drive here during the times showed on the sign.",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "tankers must use this road during the times showed on the sign.",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "vehicles carrying hazardous products may only use the road during the times showed on the sign.",
+                            "answer_number":  "C",
+                            "correct_answer":  true
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  1364,
+        "question_number":  486,
+        "question_text":  "This sign is called what?",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1774013320/Sign_Fingerboard_pxco5q.png",
+        "is_duplicate":  false,
+        "correct_answer":  "Fingerboard.",
+        "options":  [
+                        {
+                            "answer_text":  "Overhead direction.",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Confirmation board.",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Fingerboard.",
+                            "answer_number":  "C",
+                            "correct_answer":  true
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  1366,
+        "question_number":  488,
+        "question_text":  "This sign alerts you of what?",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1774013632/Sign_Grader_ju2c4z.png",
+        "is_duplicate":  false,
+        "correct_answer":  "A grader is working on the carriageway ahead.",
+        "options":  [
+                        {
+                            "answer_text":  "A grader is working on the carriageway ahead.",
+                            "answer_number":  "A",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "Loose stones or gravel",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "The entry is for ambulances only.",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  1368,
+        "question_number":  490,
+        "question_text":  "What is the meaning of this road marking?",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1774013976/Sign_lanes_increase_rbjwbn.png",
+        "is_duplicate":  false,
+        "correct_answer":  "Shows an increase in the number of lanes ahead.",
+        "options":  [
+                        {
+                            "answer_text":  "Drive only on the right side..",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "There is a sharp turn ahead.",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Shows an increase in the number of lanes ahead.",
+                            "answer_number":  "C",
+                            "correct_answer":  true
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  1370,
+        "question_number":  492,
+        "question_text":  "This sign informs you of what?",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773327545/Sign_GS205_frlakb.png",
+        "is_duplicate":  false,
+        "correct_answer":  "lanes of the road will be increasing soon.",
+        "options":  [
+                        {
+                            "answer_text":  "Lanes of the road will be merging soon.",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Lanes of the road will be regulated.",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "lanes of the road will be increasing soon.",
+                            "answer_number":  "C",
+                            "correct_answer":  true
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  1372,
+        "question_number":  494,
+        "question_text":  "This sign warns you of what?",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://upload.wikimedia.org/wikipedia/commons/1/1f/SADC_road_sign_W212.svg",
+        "is_duplicate":  false,
+        "correct_answer":  "Two-way traffic ahead.",
+        "options":  [
+                        {
+                            "answer_text":  "Lane ends ahead.",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Two-way traffic ahead.",
+                            "answer_number":  "B",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "Two-way traffic crossroad ahead.",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  1379,
+        "question_number":  501,
+        "question_text":  "Which vehicle type is allowed on this part of the road?",
+        "license_code":  "02",
+        "contains_image":  true,
+        "image_link":  "https://upload.wikimedia.org/wikipedia/commons/a/ac/SADC_road_sign_R117.svg",
+        "is_duplicate":  false,
+        "correct_answer":  "Motor cars only.",
+        "options":  [
+                        {
+                            "answer_text":  "Motor cars only.",
+                            "answer_number":  "A",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "Mini buses only.",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Buses only.",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  1381,
+        "question_number":  503,
+        "question_text":  "What do you do when you approach this road marking?",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1774016384/Sign_GM4_xm5jpw.png",
+        "is_duplicate":  false,
+        "correct_answer":  "Drive only in the direction indicated by the arrow.",
+        "options":  [
+                        {
+                            "answer_text":  "Drive in the opposite direction shown by the arrow.",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Proceed straight only.",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Drive only in the direction indicated by the arrow.",
+                            "answer_number":  "C",
+                            "correct_answer":  true
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  1383,
+        "question_number":  505,
+        "question_text":  "This sign warns drivers or riders that...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1774017010/Sign_GS103_fbynxj.png",
+        "is_duplicate":  false,
+        "correct_answer":  "One of the lanes of a carriageway comes to an end.",
+        "options":  [
+                        {
+                            "answer_text":  "One of the lanes of a carriageway comes to an end.",
+                            "answer_number":  "A",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "There is a freeway ahead.",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Lane merges with another lane or that roadways join.",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  1385,
+        "question_number":  507,
+        "question_text":  "This sign tells road users that...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://upload.wikimedia.org/wikipedia/commons/2/2d/SADC_road_sign_W214.svg",
+        "is_duplicate":  false,
+        "correct_answer":  "The double-lane road will narrow to a full lane from the right-hand side.",
+        "options":  [
+                        {
+                            "answer_text":  "The road narrows ahead.",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "The double-lane road will narrow to a full lane from the left-hand side.",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "The double-lane road will narrow to a full lane from the right-hand side.",
+                            "answer_number":  "C",
+                            "correct_answer":  true
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  1386,
+        "question_number":  508,
+        "question_text":  "What does sign A3 show you?",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://upload.wikimedia.org/wikipedia/commons/a/ad/SADC_road_sign_R1.4.svg",
+        "is_duplicate":  false,
+        "correct_answer":  "Stop and drive on when it is safe to do so in the sequence that the vehicle stopped at the stop line",
+        "options":  [
+                        {
+                            "answer_text":  "It is the same as a yield sign and you can proceed without stopping.",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Stop and drive on when it is safe to do so in the sequence that the vehicle stopped at the stop line",
+                            "answer_number":  "B",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "Make sure that it is safe, wait until all traffic has departed and then drive on",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  1388,
+        "question_number":  510,
+        "question_text":  "Sign R1 shows you that the road...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://upload.wikimedia.org/wikipedia/commons/a/ac/SADC_road_sign_W333.svg",
+        "is_duplicate":  false,
+        "correct_answer":  "Is slippery.",
+        "options":  [
+                        {
+                            "answer_text":  "Winds",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Is winding ahead.",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Is slippery.",
+                            "answer_number":  "C",
+                            "correct_answer":  true
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  1390,
+        "question_number":  512,
+        "question_text":  "Road marking Z5 warns you that...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773163904/Sign_WM1_v3npji.png",
+        "is_duplicate":  false,
+        "correct_answer":  "There is a level crossing with one railway line ahead.",
+        "options":  [
+                        {
+                            "answer_text":  "The freeway ends ahead.",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Roads cross ahead",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "There is a level crossing with one railway line ahead.",
+                            "answer_number":  "C",
+                            "correct_answer":  true
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  1392,
+        "question_number":  514,
+        "question_text":  "What does sign E4 show you?\n(i)   You may not turn left ahead\n(ii)  You may not turn left there\n(iii) There is one-way to the right ahead\n",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://upload.wikimedia.org/wikipedia/commons/c/c7/SADC_road_sign_R209.svg",
+        "is_duplicate":  false,
+        "correct_answer":  "(i) Only is correct.",
+        "options":  [
+                        {
+                            "answer_text":  "(ii) and (iii) Only are correct.",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "(i) Only is correct.",
+                            "answer_number":  "B",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "(i) and (iii) Only are correct.",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  1394,
+        "question_number":  516,
+        "question_text":  "Sign P2 shows you that...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://upload.wikimedia.org/wikipedia/commons/0/04/SADC_road_sign_W309.svg",
+        "is_duplicate":  false,
+        "correct_answer":  "You must be on the lookout for cyclists.",
+        "options":  [
+                        {
+                            "answer_text":  "You must be on the lookout for cyclists.",
+                            "answer_number":  "A",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "No cyclists are allowed there",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "It is a special lane for cyclists.",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  1396,
+        "question_number":  518,
+        "question_text":  "This sign...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://upload.wikimedia.org/wikipedia/commons/d/dc/SADC_road_sign_R206.svg",
+        "is_duplicate":  true,
+        "correct_answer":  "Prohibits you from using your hooter.",
+        "options":  [
+                        {
+                            "answer_text":  "Shows you that there is a hospital ahead where you must not make noise.",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Shows you that you may not pick up people",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Prohibits you from using your hooter.",
+                            "answer_number":  "C",
+                            "correct_answer":  true
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  1398,
+        "question_number":  520,
+        "question_text":  "Sign B6 shows you that you...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://upload.wikimedia.org/wikipedia/commons/b/bf/SADC_road_sign_R107.svg",
+        "is_duplicate":  false,
+        "correct_answer":  "Must only drive straight on",
+        "options":  [
+                        {
+                            "answer_text":  "Must only drive straight on",
+                            "answer_number":  "A",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "Will get a freeway ahead",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Will get a one-way road ahead",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  1400,
+        "question_number":  522,
+        "question_text":  "What does warning sign L10 show you?",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://upload.wikimedia.org/wikipedia/commons/6/67/SADC_road_sign_W102.svg",
+        "is_duplicate":  false,
+        "correct_answer":  "Roads that cross ahead and other vehicle from the side must stop or yield at the intersection.",
+        "options":  [
+                        {
+                            "answer_text":  "A railway line intersects with the road that you are travelling on.",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Roads that cross ahead and other vehicle from the side must stop or yield at the intersection.",
+                            "answer_number":  "B",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "A 4-way stop will be found ahead",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  1402,
+        "question_number":  524,
+        "question_text":  "Where do you find this sign?",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://upload.wikimedia.org/wikipedia/commons/3/3d/SADC_road_sign_IN7.svg",
+        "is_duplicate":  false,
+        "correct_answer":  "At a traffic circle where right of way is applicable.",
+        "options":  [
+                        {
+                            "answer_text":  "Sharp curve to the right",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "In dangerous places where roadwork is being done.",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "At a traffic circle where right of way is applicable.",
+                            "answer_number":  "C",
+                            "correct_answer":  true
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  1406,
+        "question_number":  528,
+        "question_text":  "Sign E3 shows that...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://upload.wikimedia.org/wikipedia/commons/3/3e/SADC_road_sign_R208.svg",
+        "is_duplicate":  false,
+        "correct_answer":  "You are not allowed to drive there without permission.",
+        "options":  [
+                        {
+                            "answer_text":  "You are not allowed to drive there without permission.",
+                            "answer_number":  "A",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "A freeway starts.",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "There is a road with two lanes ahead",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  1408,
+        "question_number":  530,
+        "question_text":  "Sign U4 shows you that the road...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773144045/Signs_W208-IN11.1-IN11.2_kq7yxq.png",
+        "is_duplicate":  false,
+        "correct_answer":  "Winds for 12 km",
+        "options":  [
+                        {
+                            "answer_text":  "Winds 12 km from there",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Winds for 12 km",
+                            "answer_number":  "B",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "Is slippery for 12 km.",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  1410,
+        "question_number":  532,
+        "question_text":  "Sign J8 shows you the...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1758880507/J8a_dmipit.png",
+        "is_duplicate":  false,
+        "correct_answer":  "Maximum speed allowed at night.",
+        "options":  [
+                        {
+                            "answer_text":  "Maximum speed allowed at night.",
+                            "answer_number":  "A",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "Recommended speed when your lights are on.",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Distance to the next town.",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  1412,
+        "question_number":  534,
+        "question_text":  "What does sign B1 show you?",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://upload.wikimedia.org/wikipedia/commons/a/a1/SADC_road_sign_R101.svg",
+        "is_duplicate":  true,
+        "correct_answer":  "You may not drive slower than 50 km/h",
+        "options":  [
+                        {
+                            "answer_text":  "The sign is applicable for 50 m.",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "You may not drive faster than 50 km/h",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "You may not drive slower than 50 km/h",
+                            "answer_number":  "C",
+                            "correct_answer":  true
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  1414,
+        "question_number":  536,
+        "question_text":  "What does sign S1 when it flashes show you?",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://upload.wikimedia.org/wikipedia/commons/b/bf/SADC_road_sign_W346.gif",
+        "is_duplicate":  false,
+        "correct_answer":  "There is danger in the road ahead.",
+        "options":  [
+                        {
+                            "answer_text":  "There is danger in the road ahead.",
+                            "answer_number":  "A",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "The police have blockage ahead.",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "There is a robot ahead.",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  1415,
+        "question_number":  537,
+        "question_text":  "Road marking RTM1 in the sketch booklet. Sketch 4, shows you that you...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773174661/RTM1a_ckdz18.png",
+        "is_duplicate":  false,
+        "correct_answer":  "If you are driving in car A, you must stop before this line.",
+        "options":  [
+                        {
+                            "answer_text":  "If you are driving in car A, you must reduce speed and drive on if it is safe.",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "If you are driving in car A, you must stop before this line.",
+                            "answer_number":  "B",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "If you are driving in car B, can pass car A if there are no other vehicles in the intersection.",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  1416,
+        "question_number":  538,
+        "question_text":  "Road marking GM1 in the sketch booklet. Sketch 9...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1774116464/Sketch_9_tv0ren.png",
+        "is_duplicate":  true,
+        "correct_answer":  "Shows the lanes for road users",
+        "options":  [
+                        {
+                            "answer_text":  "Shows the lanes for road users",
+                            "answer_number":  "A",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "Divides the road in two sections.",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Is only found in a parking area.",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  1418,
+        "question_number":  540,
+        "question_text":  "Sign E9 shows you that...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://upload.wikimedia.org/wikipedia/commons/c/c8/SADC_road_sign_R214.svg",
+        "is_duplicate":  false,
+        "correct_answer":  "No motor vehicle may pass each other.",
+        "options":  [
+                        {
+                            "answer_text":  "No motor vehicle may pass each other.",
+                            "answer_number":  "A",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "Only motorcars may not pass each other.",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "There is a bridge ahead where only one vehicle at a time can cross.",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  1423,
+        "question_number":  545,
+        "question_text":  "When the robot is red and the green arrow flashes to the right as indicated in X5, it shows you that...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1774117432/Sign_S8_dsrbst.png",
+        "is_duplicate":  false,
+        "correct_answer":  "If you want to turn right, you may go",
+        "options":  [
+                        {
+                            "answer_text":  "All traffic must turn right there",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Only pedestrians may walk",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "If you want to turn right, you may go",
+                            "answer_number":  "C",
+                            "correct_answer":  true
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  1425,
+        "question_number":  547,
+        "question_text":  "Marking BB3 shows that only... may park there.",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773209749/sIGN_bUS_oi6fkj.png",
+        "is_duplicate":  false,
+        "correct_answer":  "Buses",
+        "options":  [
+                        {
+                            "answer_text":  "Business vehicles",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Buses",
+                            "answer_number":  "B",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "Minibuses",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  1427,
+        "question_number":  549,
+        "question_text":  "All road signs with a yellow background e.g. R10 are... signs",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://upload.wikimedia.org/wikipedia/commons/5/51/SADC_road_sign_TW344.svg",
+        "is_duplicate":  true,
+        "correct_answer":  "Temporary",
+        "options":  [
+                        {
+                            "answer_text":  "Temporary",
+                            "answer_number":  "A",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "Warning",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Tourism",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  1428,
+        "question_number":  550,
+        "question_text":  "What is the difference between road marking AA6 and road marking Y3?",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773142781/Signs_RM1-RM2_rwbts5.png",
+        "is_duplicate":  true,
+        "correct_answer":  "AA6 shows you that you may not pass other vehicles while Y3 as well shows you that you may not drive over it to turn into a yard or anything else.",
+        "options":  [
+                        {
+                            "answer_text":  "There is no difference between the two and both shows you that you may not pass other vehicles",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "Both show you that you may not pass other vehicles but you will find AA6 on all roads and Y3 on freeways only",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "AA6 shows you that you may not pass other vehicles while Y3 as well shows you that you may not drive over it to turn into a yard or anything else.",
+                            "answer_number":  "C",
+                            "correct_answer":  true
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  1429,
+        "question_number":  551,
+        "question_text":  "Road marking AA4 shows you that...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773172073/Sign_WM8_ums4mr.png",
+        "is_duplicate":  false,
+        "correct_answer":  "A line is going to begin which prohibits you from passing.",
+        "options":  [
+                        {
+                            "answer_text":  "The lane splits into more lanes in the direction of the arrow.",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "You are not allowed to pass another vehicle there.",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "A line is going to begin which prohibits you from passing.",
+                            "answer_number":  "C",
+                            "correct_answer":  true
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  1431,
+        "question_number":  553,
+        "question_text":  "When sign X8 is illuminated is shows you that...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1758880471/X8_fnhsjf.png",
+        "is_duplicate":  true,
+        "correct_answer":  "It is a lane only for traffic coming from the front.",
+        "options":  [
+                        {
+                            "answer_text":  "There is no throughway there",
+                            "answer_number":  "A",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "There is an unguarded railway crossing ahead",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "It is a lane only for traffic coming from the front.",
+                            "answer_number":  "C",
+                            "correct_answer":  true
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  1433,
+        "question_number":  555,
+        "question_text":  "Sign A8 shows you that...",
+        "license_code":  "00",
+        "contains_image":  true,
+        "image_link":  "https://upload.wikimedia.org/wikipedia/commons/2/29/SACU_road_sign_R3.svg",
+        "is_duplicate":  false,
+        "correct_answer":  "You are not allowed to enter there.",
+        "options":  [
+                        {
+                            "answer_text":  "You are not allowed to enter there.",
+                            "answer_number":  "A",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "The road ends",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "The entry is for ambulances only.",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    },
+    {
+        "id":  1436,
+        "question_number":  558,
+        "question_text":  "Sign K2 shows that...",
+        "license_code":  "03",
+        "contains_image":  true,
+        "image_link":  "https://res.cloudinary.com/dkhgsi8l7/image/upload/v1773339704/Sign_Truck1_fijnw0.png",
+        "is_duplicate":  false,
+        "correct_answer":  "Vehicles carrying hazardous products may only use the road during the times showed on the sign.",
+        "options":  [
+                        {
+                            "answer_text":  "Vehicles carrying hazardous products may only use the road during the times showed on the sign.",
+                            "answer_number":  "A",
+                            "correct_answer":  true
+                        },
+                        {
+                            "answer_text":  "Tankers must use road during the times showed on the sign.",
+                            "answer_number":  "B",
+                            "correct_answer":  false
+                        },
+                        {
+                            "answer_text":  "All heavy vehicles may drive here during the times showed on the sign.",
+                            "answer_number":  "C",
+                            "correct_answer":  false
+                        }
+                    ],
+        "currently_linked_sign_ids":  [
+
+                                      ]
+    }
+]

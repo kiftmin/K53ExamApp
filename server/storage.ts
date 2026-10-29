@@ -44,6 +44,7 @@ export interface IStorage {
 
   getAccessCodes(): Promise<AccessCode[]>;
   getAccessCodeByCode(code: string): Promise<AccessCode | undefined>;
+  getAccessCodeById(id: number): Promise<AccessCode | undefined>;
   createAccessCode(data: InsertAccessCode): Promise<AccessCode>;
   revokeAccessCode(id: number): Promise<AccessCode | undefined>;
   revokeAccessCodesByMobile(mobileNumber: string, exceptId?: number): Promise<number>;
@@ -242,6 +243,11 @@ export class NeonDatabaseStorage implements IStorage {
   async getAccessCodeByCode(code: string): Promise<AccessCode | undefined> {
     const normalized = code.trim().toUpperCase();
     const rows = await db.select().from(accessCodes).where(eq(accessCodes.code, normalized));
+    return (rows[0] as unknown as AccessCode) || undefined;
+  }
+
+  async getAccessCodeById(id: number): Promise<AccessCode | undefined> {
+    const rows = await db.select().from(accessCodes).where(eq(accessCodes.id, id));
     return (rows[0] as unknown as AccessCode) || undefined;
   }
 
@@ -1037,7 +1043,7 @@ export class NeonDatabaseStorage implements IStorage {
   }
 
   async getControlsForQuestion(questionId: number): Promise<StudyControl[]> {
-    const links = await db.select().from(controlQuestions).where(controlQuestions.question_id.eq(questionId));
+    const links = await db.select().from(controlQuestions).where(eq(controlQuestions.question_id, questionId));
     if (links.length === 0) return [];
     const ids = links.map((l) => l.control_id);
     const data = await db.select().from(studyControls).where(inArray(studyControls.id, ids));
@@ -1324,7 +1330,7 @@ export class NeonDatabaseStorage implements IStorage {
 
     // Pass 1b: controls, resolving diagram_key to real ids
     const existingControls = (await db.select().from(studyControls)) as unknown as StudyControl[];
-    const controlKey = (diagramId: number, compNum: number | null, name: string) => `${diagramId}#${compNum ?? ''}#${name}`;
+    const controlKey = (diagramId: number, compNum: number | null | undefined, name: string) => `${diagramId}#${compNum ?? ''}#${name}`;
     const seenControls = new Set(existingControls.map((c) => controlKey(c.diagram_id, c.component_number, c.component_name)));
     const controlByDiagramAndNumber = new Map<string, number>();
     for (const c of existingControls) controlByDiagramAndNumber.set(`${c.diagram_id}#${c.component_number ?? ''}`, c.id);
@@ -1341,6 +1347,7 @@ export class NeonDatabaseStorage implements IStorage {
           component_number: c.component_number ?? null,
           component_name: c.component_name,
           function_notes: c.function_notes ?? null,
+          // Numeric vehicle codes (1/2/3), not the question license_code text format.
           applicable_codes: diagKey.vehicle_type === 'motorcycle' ? [1] : diagKey.vehicle_type === 'lmv' ? [2, 3] : [3],
           is_verified_exam_question: false,
           is_reviewed: false,
@@ -1363,7 +1370,8 @@ export class NeonDatabaseStorage implements IStorage {
     const LETTERS = ['A', 'B', 'C', 'D', 'E', 'F'];
     for (const sq of bundle.sample_questions || []) {
       const diagKey = bundle.control_diagrams.find((d) => d.key === sq.diagram_key);
-      const license = diagKey?.vehicle_type === 'motorcycle' ? '1' : diagKey?.vehicle_type === 'lmv' ? '2' : diagKey?.vehicle_type === 'hmv' ? '3' : '2';
+      // Long-form license codes only ("01"/"02"/"03"); short codes are legacy.
+      const license = diagKey?.vehicle_type === 'motorcycle' ? '01' : diagKey?.vehicle_type === 'lmv' ? '02' : diagKey?.vehicle_type === 'hmv' ? '03' : '02';
       const dedupe = `${sq.question_text}#${license}#3`;
       if (existingQ.has(dedupe)) { skippedQuestions++; continue; }
       const diagRealId = diagKey ? diagramKeyToId.get(`${diagKey.vehicle_type}|${diagKey.gearbox ?? ''}`) : undefined;

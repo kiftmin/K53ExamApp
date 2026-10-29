@@ -1,0 +1,98 @@
+[
+  {
+    "question_id": 1387,
+    "rule_ids": [
+      89,
+      90,
+      92
+    ],
+    "confidence": "high",
+    "reason": "The rules state that a driver must give a clear signal and ensure safety before changing lanes."
+  },
+  {
+    "question_id": 1389,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "No rule explicitly mentions checking the 'blind spot' as the last action before changing lanes."
+  },
+  {
+    "question_id": 1391,
+    "rule_ids": [
+      124
+    ],
+    "confidence": "high",
+    "reason": "The rule prohibits letting the engine run while the vehicle is stationary and unattended."
+  },
+  {
+    "question_id": 1393,
+    "rule_ids": [
+      15
+    ],
+    "confidence": "high",
+    "reason": "The rule specifies that dipped beam headlamps must illuminate the road ahead for at least 45 metres."
+  },
+  {
+    "question_id": 1395,
+    "rule_ids": [
+      64
+    ],
+    "confidence": "high",
+    "reason": "The rule states the general speed limit in urban areas is 60 km/h unless otherwise signed."
+  },
+  {
+    "question_id": 1397,
+    "rule_ids": [],
+    "confidence": "low",
+    "reason": "While the rule mentions following distance, it does not explicitly state the ability to stop without swerving."
+  },
+  {
+    "question_id": 1399,
+    "rule_ids": [
+      153
+    ],
+    "confidence": "high",
+    "reason": "The rule requires a draw-bar or tow-bar connection if the towed vehicle's brakes are non-compliant."
+  },
+  {
+    "question_id": 1401,
+    "rule_ids": [
+      2,
+      3
+    ],
+    "confidence": "high",
+    "reason": "Rules prohibit obtaining a licence if already licensed for the same class or if disqualified/suspended."
+  },
+  {
+    "question_id": 1403,
+    "rule_ids": [
+      84
+    ],
+    "confidence": "high",
+    "reason": "The rule states that a vehicle must be driven on the left side unless directed otherwise by a traffic officer."
+  },
+  {
+    "question_id": 1404,
+    "rule_ids": [
+      84
+    ],
+    "confidence": "high",
+    "reason": "The rule states to drive on the left side of the roadway without encroaching right, if safe."
+  },
+  {
+    "question_id": 1405,
+    "rule_ids": [
+      101
+    ],
+    "confidence": "high",
+    "reason": "The rule permits passing on the left if the vehicle ahead is turning right and it can be done safely without driving on the shoulder."
+  },
+  {
+    "question_id": 1407,
+    "rule_ids": [
+      113,
+      175
+    ],
+    "confidence": "high",
+    "reason": "The rule prohibits stopping within 6 metres of a bridge, which includes culverts and causeways."
+  }
+]

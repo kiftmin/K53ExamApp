@@ -1,0 +1,1717 @@
+[
+  {
+    "question_id": 1,
+    "rule_id": 115,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states not to reverse a vehicle unless it can be done safely, which directly supports the correct answer."
+  },
+  {
+    "question_id": 2,
+    "rule_id": 89,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states not to change lanes unless it can be done without obstructing or endangering other traffic, supporting 'Only do it when it is safe'."
+  },
+  {
+    "question_id": 2,
+    "rule_id": 90,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule requires giving a clear, timely signal of intention before turning, which supports 'Switch on your flickers in time'."
+  },
+  {
+    "question_id": 2,
+    "rule_id": 92,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states that direction indicators must be used every time you change lanes, supporting 'Switch on your flickers in time'."
+  },
+  {
+    "question_id": 3,
+    "rule_id": 103,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule prohibits passing when approaching the summit of a rise, a curve, or where visibility is restricted, supporting all three conditions."
+  },
+  {
+    "question_id": 4,
+    "rule_id": 88,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule allows driving on the shoulder between sunrise and sunset if it can be done safely, and if visibility is at least 150 metres, supporting (ii)."
+  },
+  {
+    "question_id": 5,
+    "rule_id": 2,
+    "supported": true,
+    "confidence": "medium",
+    "reason": "The rule states disqualification if suspended by a court or authority, or following cancellation of a previous licence, supporting (ii) and (iii)."
+  },
+  {
+    "question_id": 5,
+    "rule_id": 3,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states a person may not apply for a licence for a vehicle class they are already licensed to drive, supporting (i)."
+  },
+  {
+    "question_id": 7,
+    "rule_id": 227,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states a motor vehicle licence and disc are valid for 12 months."
+  },
+  {
+    "question_id": 8,
+    "rule_id": 64,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states the general speed limit is 60 km/h in urban areas."
+  },
+  {
+    "question_id": 9,
+    "rule_id": 64,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states that general speed limits apply unless a sign indicates otherwise, supporting that signs show the legal speed limit."
+  },
+  {
+    "question_id": 10,
+    "rule_id": 122,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states not to let any part of your body protrude from a moving vehicle, except to give a hand signal."
+  },
+  {
+    "question_id": 11,
+    "rule_id": 85,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states to keep as near to the left edge as safely possible and not to speed up when another vehicle wants to pass."
+  },
+  {
+    "question_id": 11,
+    "rule_id": 104,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states to keep left and not accelerate until the other vehicle has passed."
+  },
+  {
+    "question_id": 12,
+    "rule_id": 15,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states that a dipped beam must illuminate the road ahead at least 45 metres."
+  },
+  {
+    "question_id": 13,
+    "rule_id": 142,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states a vehicle left for more than 24 hours outside an urban area is deemed abandoned."
+  },
+  {
+    "question_id": 14,
+    "rule_id": 141,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states that if the red man flashes, pedestrians already in the road must finish crossing quickly."
+  },
+  {
+    "question_id": 15,
+    "rule_id": 113,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule prohibits stopping facing oncoming traffic on the right side."
+  },
+  {
+    "question_id": 16,
+    "rule_id": 113,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule prohibits stopping within 6 metres of a bridge."
+  },
+  {
+    "question_id": 17,
+    "rule_id": 101,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule allows passing on the left when the vehicle ahead is turning right or has signalled to, or on a one-way urban road wide enough for two or more lanes."
+  },
+  {
+    "question_id": 18,
+    "rule_id": 101,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule supports all three conditions for overtaking on the left: turning right, multiple lanes, and traffic officer's direction."
+  },
+  {
+    "question_id": 18,
+    "rule_id": 114,
+    "supported": true,
+    "confidence": "medium",
+    "reason": "The rule supports option (iii) regarding obeying a traffic officer's instruction."
+  },
+  {
+    "question_id": 19,
+    "rule_id": 101,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states that passing on the left is allowed when the vehicle ahead is turning right."
+  },
+  {
+    "question_id": 21,
+    "rule_id": 84,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states that driving on the right side of the roadway is allowed if directed by a traffic officer."
+  },
+  {
+    "question_id": 22,
+    "rule_id": 211,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule defines a traffic signal but does not specify actions for a flashing red light."
+  },
+  {
+    "question_id": 23,
+    "rule_id": 153,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states that a vehicle with non-compliant brakes must be connected by a draw-bar or tow-bar."
+  },
+  {
+    "question_id": 25,
+    "rule_id": 124,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule explicitly states not to let the engine run while the vehicle is stationary and unattended."
+  },
+  {
+    "question_id": 26,
+    "rule_id": 89,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule discusses changing lanes safely but does not mention giving a signal or looking for traffic."
+  },
+  {
+    "question_id": 26,
+    "rule_id": 92,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states that direction indicators must be used every time you change lanes."
+  },
+  {
+    "question_id": 27,
+    "rule_id": 150,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states that towing at over 30 km/h with a rope or chain is not allowed."
+  },
+  {
+    "question_id": 28,
+    "rule_id": 156,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states not to cross or enter a public road unless it's clear of moving traffic for a sufficient distance and can be done safely."
+  },
+  {
+    "question_id": 29,
+    "rule_id": 11,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule supports both conditions for switching on headlights: between sunset and sunrise, and when visibility is less than 150 meters."
+  },
+  {
+    "question_id": 31,
+    "rule_id": 162,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states that a driver must immediately stop and assess damage after an accident."
+  },
+  {
+    "question_id": 31,
+    "rule_id": 163,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule specifies giving information if asked, not refusing to give it except to the police."
+  },
+  {
+    "question_id": 32,
+    "rule_id": 162,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states that a driver must immediately stop and check for injuries after an accident."
+  },
+  {
+    "question_id": 32,
+    "rule_id": 165,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule prohibits consuming alcohol before reporting an accident, supporting the rejection of option (iii)."
+  },
+  {
+    "question_id": 33,
+    "rule_id": 107,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule describes yielding at a traffic island, not having the right of way within a traffic circle or at a four-way stop."
+  },
+  {
+    "question_id": 34,
+    "rule_id": 40,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states that a driver must immediately give way to any emergency vehicle sounding a siren."
+  },
+  {
+    "question_id": 34,
+    "rule_id": 121,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states to always give immediate, absolute right of way to a vehicle sounding a warning device."
+  },
+  {
+    "question_id": 35,
+    "rule_id": 90,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states to give a clear, timely signal of intention before turning."
+  },
+  {
+    "question_id": 36,
+    "rule_id": 29,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states that a driver must have a full, clear view of the road ahead."
+  },
+  {
+    "question_id": 36,
+    "rule_id": 118,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states that a driver must maintain a full view of the road and traffic ahead."
+  },
+  {
+    "question_id": 37,
+    "rule_id": 113,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule prohibits stopping within 6 meters of a tunnel, subway, or bridge, but does not mention railway crossings."
+  },
+  {
+    "question_id": 38,
+    "rule_id": 56,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states a vehicle may not be used if its fuel tank lacks an effective cap."
+  },
+  {
+    "question_id": 38,
+    "rule_id": 124,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states not to let the engine run while the vehicle is stationary and unattended."
+  },
+  {
+    "question_id": 38,
+    "rule_id": 143,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states not to cause a vehicle's wheel to drag or spin on the roadway."
+  },
+  {
+    "question_id": 41,
+    "rule_id": 112,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states stopping is allowed to avoid an accident or on a traffic officer's direction."
+  },
+  {
+    "question_id": 41,
+    "rule_id": 157,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states to stop as directed by a traffic officer or at the signal of a person leading livestock."
+  },
+  {
+    "question_id": 43,
+    "rule_id": 16,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule explicitly states that a vehicle may not be driven in motion using only its parking lamps."
+  },
+  {
+    "question_id": 44,
+    "rule_id": 145,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states not to stop on a freeway except by sign or traffic officer direction."
+  },
+  {
+    "question_id": 45,
+    "rule_id": 114,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states to obey every rule of the road, unless a traffic officer instructs otherwise."
+  },
+  {
+    "question_id": 46,
+    "rule_id": 83,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states to drive only on the left-hand roadway on a divided public road, unless directed otherwise."
+  },
+  {
+    "question_id": 47,
+    "rule_id": 119,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states an unattended vehicle must have its brake set so it cannot move."
+  },
+  {
+    "question_id": 47,
+    "rule_id": 245,
+    "supported": false,
+    "confidence": "medium",
+    "reason": "This rule defines a parking brake but does not state the requirement to apply it."
+  },
+  {
+    "question_id": 48,
+    "rule_id": 82,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule specifies a red flag of 300mm x 300mm for projecting loads during the day."
+  },
+  {
+    "question_id": 49,
+    "rule_id": 114,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states to obey every road traffic sign, implying temporary signs have the same legal significance."
+  },
+  {
+    "question_id": 50,
+    "rule_id": 139,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states a driver must yield right of way to a pedestrian crossing within a pedestrian crossing."
+  },
+  {
+    "question_id": 51,
+    "rule_id": 122,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states not to let any part of your body protrude from a moving vehicle, except to give a hand signal."
+  },
+  {
+    "question_id": 52,
+    "rule_id": 62,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states a vehicle may not be operated on a public road in a manner that causes excessive noise."
+  },
+  {
+    "question_id": 53,
+    "rule_id": 60,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states a warning triangle must be placed at least 45 metres away from a stationary vehicle."
+  },
+  {
+    "question_id": 54,
+    "rule_id": 116,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule explicitly states to keep a following distance of at least 2 seconds for light motor vehicles and motorcycles."
+  },
+  {
+    "question_id": 55,
+    "rule_id": 110,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule states not to park on the roadway or within 1 meter of the edge, which contradicts the correct answer."
+  },
+  {
+    "question_id": 56,
+    "rule_id": 112,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states that stopping on the roadway is allowed on a traffic officer's direction."
+  },
+  {
+    "question_id": 57,
+    "rule_id": 124,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule prohibits the engine from running while fuel is being delivered into the tank."
+  },
+  {
+    "question_id": 58,
+    "rule_id": 46,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule states that a driver must ensure a child uses an appropriate child restraint, which contradicts the correct answer."
+  },
+  {
+    "question_id": 59,
+    "rule_id": 156,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states not to cross or enter a public road unless it's clear of moving traffic for a sufficient distance and safe."
+  },
+  {
+    "question_id": 60,
+    "rule_id": 144,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule explicitly lists animal-drawn vehicles as not allowed on a freeway."
+  },
+  {
+    "question_id": 61,
+    "rule_id": 171,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states not to occupy the driver's seat with the engine running while under the influence."
+  },
+  {
+    "question_id": 62,
+    "rule_id": 53,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule requires a vehicle to have an efficient exhaust silencer."
+  },
+  {
+    "question_id": 63,
+    "rule_id": 20,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states that stop lamps must be visible at 30 metres in normal sunlight."
+  },
+  {
+    "question_id": 64,
+    "rule_id": 221,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states that a driver must keep their licence with them in the vehicle."
+  },
+  {
+    "question_id": 65,
+    "rule_id": 106,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states to keep left on a freeway and overtake on the right, implying the right lane is for overtaking."
+  },
+  {
+    "question_id": 66,
+    "rule_id": 90,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule requires giving a clear, timely signal long enough and visible enough to warn others."
+  },
+  {
+    "question_id": 67,
+    "rule_id": 140,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule explicitly states that a driver may not pass a vehicle that has stopped at a pedestrian crossing."
+  },
+  {
+    "question_id": 68,
+    "rule_id": 28,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule allows a breakdown vehicle working at an accident to use an adjustable spot lamp."
+  },
+  {
+    "question_id": 69,
+    "rule_id": 56,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states a vehicle may not be used if its fuel tank is defective, supporting the correct answer that a defective tank is false."
+  },
+  {
+    "question_id": 70,
+    "rule_id": 104,
+    "supported": false,
+    "confidence": "medium",
+    "reason": "The rule is about being overtaken, not about waiting behind a stopped vehicle in heavy traffic."
+  },
+  {
+    "question_id": 72,
+    "rule_id": 109,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule explicitly states not to park within 1.5 metres of a fire hydrant."
+  },
+  {
+    "question_id": 219,
+    "rule_id": 148,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule explicitly states that a motorcycle may not be used to tow another vehicle."
+  },
+  {
+    "question_id": 221,
+    "rule_id": 5,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states that a Code 1 learner's licence holder may not carry passengers, which includes a sidecar."
+  },
+  {
+    "question_id": 221,
+    "rule_id": 129,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule describes passenger seating requirements, not learner's license supervision rules."
+  },
+  {
+    "question_id": 223,
+    "rule_id": 26,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states motorcycles need only a rear number plate, matching the correct answer."
+  },
+  {
+    "question_id": 225,
+    "rule_id": 128,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule states a rider must have at least one hand on the handlebars, which contradicts option (ii) being an offence."
+  },
+  {
+    "question_id": 227,
+    "rule_id": 135,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states all wheels must stay in contact with the road, directly supporting the correct answer."
+  },
+  {
+    "question_id": 228,
+    "rule_id": 32,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule mentions handlebar height must meet prescribed measurements but does not specify the 500mm limit."
+  },
+  {
+    "question_id": 229,
+    "rule_id": 78,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule states a maximum projection of 900mm behind the rear axle, not 850mm from the rear axle."
+  },
+  {
+    "question_id": 230,
+    "rule_id": 78,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states a load may not project more than 600mm in front of the front axle."
+  },
+  {
+    "question_id": 101,
+    "rule_id": 150,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states towing over 30 km/h with a rope or chain is not allowed, supporting option (i) being incorrect."
+  },
+  {
+    "question_id": 101,
+    "rule_id": 151,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states a towed vehicle may only carry passengers at over 30 km/h if it is a semi-trailer, supporting option (iii)."
+  },
+  {
+    "question_id": 102,
+    "rule_id": 149,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states the tow-rope, chain, or tow-bar may not exceed 3.5 metres in length."
+  },
+  {
+    "question_id": 103,
+    "rule_id": 12,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule lists all three conditions (off roadway, demarcated parking, within 12m of lit street lamp) where lights are not needed."
+  },
+  {
+    "question_id": 104,
+    "rule_id": 123,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule prohibits a person from occupying any external part of a moving vehicle, including the bumper."
+  },
+  {
+    "question_id": 105,
+    "rule_id": 158,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states a light motor vehicle's tyre tread pattern must be at least 1mm deep."
+  },
+  {
+    "question_id": 109,
+    "rule_id": 43,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states rear-seat passengers must wear seatbelts if fitted, supporting statement (i)."
+  },
+  {
+    "question_id": 109,
+    "rule_id": 45,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states an adult may not occupy a seat without a seatbelt if a belted seat is available, supporting statement (iv)."
+  },
+  {
+    "question_id": 109,
+    "rule_id": 47,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states it is not compulsory to wear a seatbelt while reversing, supporting statement (ii)."
+  },
+  {
+    "question_id": 110,
+    "rule_id": 6,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states a learner's license holder must drive under direct supervision of a licensed driver, supporting statement (i)."
+  },
+  {
+    "question_id": 129,
+    "rule_id": 70,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule states a general vehicle width limit of 2.5 meters, not 2.4 meters as in the correct answer."
+  },
+  {
+    "question_id": 130,
+    "rule_id": 151,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states a towed vehicle may only carry passengers at over 30 km/h if it is a semi-trailer, supporting option (ii)."
+  },
+  {
+    "question_id": 131,
+    "rule_id": 115,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states not to reverse a vehicle unless it can be done safely, matching the correct answer."
+  },
+  {
+    "question_id": 132,
+    "rule_id": 7,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states that a learner's licence requires direct supervision of a licensed driver for that class."
+  },
+  {
+    "question_id": 737,
+    "rule_id": 2,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule lists different disqualifications (addiction, court order, licence cancellation) than the question's correct options."
+  },
+  {
+    "question_id": 737,
+    "rule_id": 3,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states a person may not apply for a licence for a vehicle class they are already licensed to drive."
+  },
+  {
+    "question_id": 739,
+    "rule_id": 153,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states that if a towed vehicle's brakes don't comply, it must be connected by a draw-bar or tow-bar."
+  },
+  {
+    "question_id": 743,
+    "rule_id": 64,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states the general speed limit in urban areas is 60 km/h."
+  },
+  {
+    "question_id": 745,
+    "rule_id": 15,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states dipped beam must illuminate the road at least 45 metres away."
+  },
+  {
+    "question_id": 747,
+    "rule_id": 124,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule prohibits letting the engine run while the vehicle is stationary and unattended."
+  },
+  {
+    "question_id": 751,
+    "rule_id": 89,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule generally prohibits changing lanes if it obstructs or endangers traffic, but does not specify giving a signal or looking for traffic."
+  },
+  {
+    "question_id": 753,
+    "rule_id": 101,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule allows passing on the left when the vehicle ahead is turning right or has signalled to."
+  },
+  {
+    "question_id": 755,
+    "rule_id": 113,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule prohibits stopping on a bridge or within 6 metres of one."
+  },
+  {
+    "question_id": 755,
+    "rule_id": 175,
+    "supported": false,
+    "confidence": "medium",
+    "reason": "The rule defines what a bridge includes, but does not state a stopping distance from it."
+  },
+  {
+    "question_id": 757,
+    "rule_id": 101,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule allows passing on the left when the vehicle ahead is turning right, if it can be done safely."
+  },
+  {
+    "question_id": 759,
+    "rule_id": 141,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule states pedestrians already in the road must finish crossing quickly when the red man flashes, but does not explicitly grant right of way."
+  },
+  {
+    "question_id": 761,
+    "rule_id": 150,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule states towing over 30 km/h with a rope is not allowed, implying 30 km/h is the maximum, not 60 km/h."
+  },
+  {
+    "question_id": 763,
+    "rule_id": 156,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states not to cross or enter a public road unless it's clear of moving traffic for a sufficient distance and can be done safely."
+  },
+  {
+    "question_id": 765,
+    "rule_id": 11,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states headlamps must be lit between sunset and sunrise, and when persons and vehicles aren't clearly visible at 150 metres."
+  },
+  {
+    "question_id": 771,
+    "rule_id": 103,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule prohibits passing when approaching the summit of a rise, a curve, or anywhere visibility is too restricted."
+  },
+  {
+    "question_id": 773,
+    "rule_id": 156,
+    "supported": false,
+    "confidence": "medium",
+    "reason": "The rule generally prohibits entering a road unless clear, but does not specifically address blocking an intersection when turning right."
+  },
+  {
+    "question_id": 775,
+    "rule_id": 165,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule prohibits alcohol consumption before reporting an accident, but does not mention stopping or checking for injuries."
+  },
+  {
+    "question_id": 776,
+    "rule_id": 211,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule defines a traffic signal but does not specify actions for a flashing red light."
+  },
+  {
+    "question_id": 779,
+    "rule_id": 107,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule describes yielding at a traffic island, not the right of way within a traffic circle or at a four-way stop."
+  },
+  {
+    "question_id": 781,
+    "rule_id": 40,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states that a driver must immediately give way to any emergency vehicle sounding a siren."
+  },
+  {
+    "question_id": 781,
+    "rule_id": 121,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states to always give an immediate, absolute right of way to a vehicle sounding a warning device."
+  },
+  {
+    "question_id": 783,
+    "rule_id": 90,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule requires giving a clear, timely signal of intention before turning."
+  },
+  {
+    "question_id": 785,
+    "rule_id": 150,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states that towing over 30 km/h with a rope or chain is not allowed, implying a tow-bar is required."
+  },
+  {
+    "question_id": 785,
+    "rule_id": 151,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states a towed vehicle may only carry passengers at over 30 km/h if it is a semi-trailer, supporting option (iii)."
+  },
+  {
+    "question_id": 787,
+    "rule_id": 43,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states that if seatbelts are fitted, rear-seat passengers must wear them, supporting option (i)."
+  },
+  {
+    "question_id": 787,
+    "rule_id": 44,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule defines a child's age for seatbelts but does not state that children younger than 14 need not wear them."
+  },
+  {
+    "question_id": 787,
+    "rule_id": 45,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states an adult may not occupy a seat without a seatbelt if a belted seat is available, supporting option (iv)."
+  },
+  {
+    "question_id": 787,
+    "rule_id": 47,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states it is not compulsory to wear a seatbelt while reversing, supporting option (ii)."
+  },
+  {
+    "question_id": 789,
+    "rule_id": 6,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states a Code 2 learner's licence requires direct supervision of a licensed driver for that class."
+  },
+  {
+    "question_id": 791,
+    "rule_id": 158,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states a light motor vehicle's tyres must have a tread pattern at least 1mm deep."
+  },
+  {
+    "question_id": 801,
+    "rule_id": 70,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule specifies maximum overall widths for different vehicle types, but not a general 2.4m width for goods."
+  },
+  {
+    "question_id": 803,
+    "rule_id": 151,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states a towed vehicle may only carry passengers at over 30 km/h if it is a semi-trailer."
+  },
+  {
+    "question_id": 807,
+    "rule_id": 7,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states a Code 3 learner's licence requires direct supervision of a licensed driver for that class."
+  },
+  {
+    "question_id": 821,
+    "rule_id": 113,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule prohibits stopping on a bridge or within 6 metres of one, which includes 5m from a bridge."
+  },
+  {
+    "question_id": 821,
+    "rule_id": 175,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule defines what a bridge includes but does not specify stopping distances from it."
+  },
+  {
+    "question_id": 825,
+    "rule_id": 107,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule describes yielding at a traffic island, not yielding to oncoming traffic when turning right at an intersection."
+  },
+  {
+    "question_id": 827,
+    "rule_id": 89,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states not to change lanes unless it can be done without obstructing or endangering other traffic, supporting option (i)."
+  },
+  {
+    "question_id": 827,
+    "rule_id": 92,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states direction indicators must be used every time you change lanes, supporting option (ii)."
+  },
+  {
+    "question_id": 829,
+    "rule_id": 85,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states to keep left and not speed up when being overtaken, matching options (i) and (ii)."
+  },
+  {
+    "question_id": 829,
+    "rule_id": 104,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states to keep left and not accelerate when being passed, matching options (i) and (ii)."
+  },
+  {
+    "question_id": 831,
+    "rule_id": 29,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states a driver must have a full, clear view of the road, which directly supports the correct answer."
+  },
+  {
+    "question_id": 831,
+    "rule_id": 118,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states to maintain a full view of the road and traffic ahead, which directly supports the correct answer."
+  },
+  {
+    "question_id": 833,
+    "rule_id": 64,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule describes general speed limits, but does not state that signs show the legal speed."
+  },
+  {
+    "question_id": 835,
+    "rule_id": 113,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule prohibits stopping within a railway level crossing, but does not specify 6m from it."
+  },
+  {
+    "question_id": 837,
+    "rule_id": 107,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule states to give way to traffic from the right at a traffic island, not that the first vehicle over the line may drive on."
+  },
+  {
+    "question_id": 839,
+    "rule_id": 56,
+    "supported": true,
+    "confidence": "medium",
+    "reason": "The rule states a vehicle may not be used if the fuel tank lacks an effective cap, supporting option (ii)."
+  },
+  {
+    "question_id": 839,
+    "rule_id": 124,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states not to let the engine run while the vehicle is stationary and unattended, supporting option (i)."
+  },
+  {
+    "question_id": 839,
+    "rule_id": 143,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states not to cause a vehicle's wheel to drag or spin on the roadway, supporting option (iii)."
+  },
+  {
+    "question_id": 845,
+    "rule_id": 211,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule defines a traffic signal but does not specify actions for a flashing red light."
+  },
+  {
+    "question_id": 849,
+    "rule_id": 39,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states a tune-playing siren or horn may not be used, implying the tone may not change."
+  },
+  {
+    "question_id": 851,
+    "rule_id": 115,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states not to reverse a vehicle unless it can be done safely, supporting the correct answer."
+  },
+  {
+    "question_id": 857,
+    "rule_id": 101,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule lists conditions for passing on the left, including when the vehicle ahead is turning right, on multi-lane roads, or under officer direction."
+  },
+  {
+    "question_id": 859,
+    "rule_id": 227,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states a motor vehicle licence and disc are valid for 12 months."
+  },
+  {
+    "question_id": 865,
+    "rule_id": 144,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states motorcycles under 50cc may not use a freeway."
+  },
+  {
+    "question_id": 869,
+    "rule_id": 5,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule explicitly states that no passengers may be carried by a Code 1 learner's licence holder."
+  },
+  {
+    "question_id": 871,
+    "rule_id": 135,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states all wheels of the motorcycle must stay in contact with the road surface at all times."
+  },
+  {
+    "question_id": 878,
+    "rule_id": 116,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule discusses following distance, not stopping distance, or factors affecting it."
+  },
+  {
+    "question_id": 881,
+    "rule_id": 149,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states the tow-rope, chain, or tow-bar may not exceed 3.5 metres in length."
+  },
+  {
+    "question_id": 885,
+    "rule_id": 123,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule prohibits a person from occupying any external part of a moving vehicle, which includes riding on the bumper."
+  },
+  {
+    "question_id": 913,
+    "rule_id": 2,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states a person is disqualified if suspended by a court or authority, supporting (ii) and (iii)."
+  },
+  {
+    "question_id": 913,
+    "rule_id": 3,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule addresses applying for a license for a class already held, which is not part of the correct answer."
+  },
+  {
+    "question_id": 915,
+    "rule_id": 84,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states one may encroach right if directed by a traffic officer."
+  },
+  {
+    "question_id": 921,
+    "rule_id": 113,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule explicitly states not to stop facing oncoming traffic on the right side."
+  },
+  {
+    "question_id": 925,
+    "rule_id": 162,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule requires a driver to stop immediately and assess damage after an accident, supporting (i) and (ii)."
+  },
+  {
+    "question_id": 925,
+    "rule_id": 163,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule is about providing information after an accident, not refusing to give it."
+  },
+  {
+    "question_id": 931,
+    "rule_id": 89,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states not to change lanes unless it can be done without obstructing or endangering other traffic, supporting (i)."
+  },
+  {
+    "question_id": 931,
+    "rule_id": 90,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule requires giving a clear, timely signal of intention before turning or stopping, supporting (ii)."
+  },
+  {
+    "question_id": 931,
+    "rule_id": 92,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states direction indicators must be used every time you change lanes, supporting (ii)."
+  },
+  {
+    "question_id": 939,
+    "rule_id": 64,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states general speed limits apply unless a sign indicates otherwise, supporting that signs show the speed limit."
+  },
+  {
+    "question_id": 945,
+    "rule_id": 156,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states not to cross or enter a public road unless it's clear and safe, implying stopping and waiting."
+  },
+  {
+    "question_id": 945,
+    "rule_id": 250,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule is a general definition of 'stop' and does not directly support the specific procedure described in the answer."
+  },
+  {
+    "question_id": 947,
+    "rule_id": 122,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states not to let any part of your body protrude from a moving vehicle, except to give a hand signal."
+  },
+  {
+    "question_id": 949,
+    "rule_id": 142,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule defines a vehicle left for more than 24 hours outside an urban area as abandoned."
+  },
+  {
+    "question_id": 963,
+    "rule_id": 12,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states lighting rules don't apply if parked off the roadway, in a demarcated area, or near a lit street lamp."
+  },
+  {
+    "question_id": 979,
+    "rule_id": 115,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states not to reverse a vehicle unless it can be done safely, supporting 'as it is safe to do so'."
+  },
+  {
+    "question_id": 1363,
+    "rule_id": 93,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule specifies that indicators must show white, yellow, or amber to the front, and yellow, amber, or red to the rear."
+  },
+  {
+    "question_id": 1365,
+    "rule_id": 114,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states to obey signs and rules unless a traffic officer instructs otherwise."
+  },
+  {
+    "question_id": 1369,
+    "rule_id": 157,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule requires stopping as directed by a sign, at a signal from a person leading livestock, or when animals are crossing."
+  },
+  {
+    "question_id": 1371,
+    "rule_id": 156,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states not to cross a public road unless it's clear of moving traffic or can be done safely."
+  },
+  {
+    "question_id": 1380,
+    "rule_id": 104,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states to keep left and not accelerate when another vehicle wants to pass."
+  },
+  {
+    "question_id": 1382,
+    "rule_id": 88,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule lists being overtaken as an exception for driving on the shoulder."
+  },
+  {
+    "question_id": 1384,
+    "rule_id": 88,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states exceptions for driving on the shoulder, including between sunrise and sunset and if visibility is at least 150 metres."
+  },
+  {
+    "question_id": 1387,
+    "rule_id": 89,
+    "supported": true,
+    "confidence": "medium",
+    "reason": "The rule states not to change lanes unless it can be done without obstructing or endangering other traffic, implying looking for traffic."
+  },
+  {
+    "question_id": 1387,
+    "rule_id": 90,
+    "supported": true,
+    "confidence": "medium",
+    "reason": "The rule requires giving a clear, timely signal of intention before turning, which applies to changing lanes."
+  },
+  {
+    "question_id": 1387,
+    "rule_id": 92,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule explicitly states that direction indicators must be used when changing lanes."
+  },
+  {
+    "question_id": 1391,
+    "rule_id": 124,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule prohibits letting the engine run while the vehicle is stationary and unattended."
+  },
+  {
+    "question_id": 1393,
+    "rule_id": 15,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states that dipped beam must illuminate the road ahead for at least 45 metres."
+  },
+  {
+    "question_id": 1395,
+    "rule_id": 64,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule specifies a general speed limit of 60 km/h in urban areas."
+  },
+  {
+    "question_id": 1399,
+    "rule_id": 153,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states that if a towed vehicle's brakes don't comply, it must be connected by a draw-bar or tow-bar."
+  },
+  {
+    "question_id": 1401,
+    "rule_id": 2,
+    "supported": true,
+    "confidence": "medium",
+    "reason": "The rule states disqualification if suspended by a court or authority, or during a period following cancellation of a previous licence."
+  },
+  {
+    "question_id": 1401,
+    "rule_id": 3,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states a person may not apply for a licence for a vehicle class they are already licensed to drive."
+  },
+  {
+    "question_id": 1403,
+    "rule_id": 84,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states to drive on the left side unless directed otherwise by a traffic officer."
+  },
+  {
+    "question_id": 1404,
+    "rule_id": 84,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states to drive on the left side of the roadway as far as is safe."
+  },
+  {
+    "question_id": 1405,
+    "rule_id": 101,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule allows passing on the left when the vehicle ahead is turning right, if it can be done safely."
+  },
+  {
+    "question_id": 1407,
+    "rule_id": 113,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule prohibits stopping in a tunnel, subway, or on a bridge, or within 6 metres of one."
+  },
+  {
+    "question_id": 1407,
+    "rule_id": 175,
+    "supported": true,
+    "confidence": "medium",
+    "reason": "The rule defines a bridge to include a culvert and a causeway, which supports the context of the stopping rule."
+  },
+  {
+    "question_id": 1409,
+    "rule_id": 101,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule allows passing on the left when the vehicle ahead is turning right or has signalled to."
+  },
+  {
+    "question_id": 1411,
+    "rule_id": 150,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states that towing at over 30 km/h with a rope or chain is not allowed."
+  },
+  {
+    "question_id": 1413,
+    "rule_id": 141,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states that pedestrians already in the road when the red man flashes must finish crossing quickly."
+  },
+  {
+    "question_id": 1417,
+    "rule_id": 11,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states headlights must be lit between sunset and sunrise, and when visibility is less than 150 meters."
+  },
+  {
+    "question_id": 1419,
+    "rule_id": 156,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states not to cross or enter a public road unless it's clear of traffic for a sufficient distance and safe."
+  },
+  {
+    "question_id": 1420,
+    "rule_id": 64,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states general speed limits apply unless a sign indicates otherwise, supporting that signs show the limit."
+  },
+  {
+    "question_id": 1421,
+    "rule_id": 211,
+    "supported": false,
+    "confidence": "medium",
+    "reason": "The rule defines a traffic signal but does not specify action for a flashing red light."
+  },
+  {
+    "question_id": 1422,
+    "rule_id": 162,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states a driver must stop immediately and check for injuries after an accident."
+  },
+  {
+    "question_id": 1422,
+    "rule_id": 165,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule prohibits consuming alcohol after an accident, supporting that using alcohol for shock is incorrect."
+  },
+  {
+    "question_id": 1424,
+    "rule_id": 113,
+    "supported": false,
+    "confidence": "medium",
+    "reason": "The rule lists places not to stop, but does not specifically address entering an intersection when space is insufficient."
+  },
+  {
+    "question_id": 1426,
+    "rule_id": 103,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule prohibits passing when approaching a rise, a curve, or where visibility is restricted."
+  },
+  {
+    "question_id": 1430,
+    "rule_id": 40,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states a driver must immediately give way to any emergency vehicle sounding a siren and displaying warning lights."
+  },
+  {
+    "question_id": 1432,
+    "rule_id": 107,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule only covers giving way at a traffic island, not four-way stops or turning right at an intersection."
+  },
+  {
+    "question_id": 1437,
+    "rule_id": 151,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states a towed vehicle may only carry passengers over 30 km/h if it is a semi-trailer."
+  },
+  {
+    "question_id": 1439,
+    "rule_id": 70,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule specifies maximum overall widths for different vehicle types, not the width of goods on a vehicle."
+  },
+  {
+    "question_id": 1441,
+    "rule_id": 90,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states to give a clear, timely signal of intention before turning."
+  },
+  {
+    "question_id": 1449,
+    "rule_id": 7,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states a learner's licence authorizes driving only under the direct supervision of a licensed driver."
+  },
+  {
+    "question_id": 1450,
+    "rule_id": 138,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states a driver may not hold a cellular device with one or both hands, or any other part of the body."
+  },
+  {
+    "question_id": 1451,
+    "rule_id": 101,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule describes when passing on the left is allowed, not what to do when a car in front is turning right."
+  },
+  {
+    "question_id": 1453,
+    "rule_id": 98,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule states reflective material is optional for vehicles under 10,000kg GVM, not required."
+  },
+  {
+    "question_id": 1454,
+    "rule_id": 116,
+    "supported": false,
+    "confidence": "medium",
+    "reason": "The rule specifies following distances in seconds, not the ability to stop safely in an emergency."
+  },
+  {
+    "question_id": 1455,
+    "rule_id": 144,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule explicitly states that tractors (outside road construction or maintenance use) may not use a freeway."
+  },
+  {
+    "question_id": 1456,
+    "rule_id": 120,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states to make sure it's safe and won't interfere with approaching traffic before pulling away."
+  },
+  {
+    "question_id": 1458,
+    "rule_id": 122,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states not to let any part of the body protrude from a moving vehicle, except to give a hand signal."
+  },
+  {
+    "question_id": 1459,
+    "rule_id": 116,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule specifies keeping a following distance of at least 2 seconds for light motor vehicles."
+  },
+  {
+    "question_id": 1461,
+    "rule_id": 156,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states not to cross or enter a public road unless it's clear of moving traffic for a sufficient distance."
+  },
+  {
+    "question_id": 1465,
+    "rule_id": 67,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule specifies an 80 km/h speed limit for an articulated vehicle whose truck-tractor GCM exceeds 9000kg."
+  },
+  {
+    "question_id": 1467,
+    "rule_id": 62,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states that a vehicle may not be operated on a public road in a manner that causes excessive noise."
+  },
+  {
+    "question_id": 1469,
+    "rule_id": 124,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states not to let the engine run while fuel is being delivered into the tank."
+  },
+  {
+    "question_id": 1470,
+    "rule_id": 62,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states that a vehicle may not be operated on a public road in a manner that causes excessive noise."
+  },
+  {
+    "question_id": 1472,
+    "rule_id": 12,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states that lighting rules don't apply to a vehicle parked within 12 metres of a lit street lamp, off the roadway, or in a demarcated parking place."
+  },
+  {
+    "question_id": 1474,
+    "rule_id": 53,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states that a vehicle must have an efficient exhaust silencer that channels exhaust gas through it."
+  },
+  {
+    "question_id": 1488,
+    "rule_id": 84,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule states to drive on the left side of the roadway, without encroaching right, unless it can be done safely or directed otherwise."
+  },
+  {
+    "question_id": 1491,
+    "rule_id": 56,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states a vehicle may not be used if the fuel tank lacks an effective cap."
+  },
+  {
+    "question_id": 1491,
+    "rule_id": 124,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states not to let the engine run while the vehicle is stationary and unattended."
+  },
+  {
+    "question_id": 1491,
+    "rule_id": 143,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states not to cause a vehicle's wheel to drag or spin on the roadway."
+  },
+  {
+    "question_id": 1492,
+    "rule_id": 55,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states the exhaust may not leak gas or smoke into the cab or passenger compartment."
+  },
+  {
+    "question_id": 1494,
+    "rule_id": 108,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states not to park where stopping isn't permitted."
+  },
+  {
+    "question_id": 1496,
+    "rule_id": 11,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states headlamps, rear lamps, and number-plate lamps must be lit between sunset and sunrise."
+  },
+  {
+    "question_id": 1497,
+    "rule_id": 110,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states not to park with any part of the vehicle within 1 metre of the roadway edge outside an urban area."
+  },
+  {
+    "question_id": 1498,
+    "rule_id": 113,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule prohibits stopping within a railway level crossing, but does not specify 6m from a railway crossing reserve."
+  },
+  {
+    "question_id": 1499,
+    "rule_id": 60,
+    "supported": false,
+    "confidence": "high",
+    "reason": "The rule specifies placing a warning triangle at least 45 metres away, not one in front and one at the back."
+  },
+  {
+    "question_id": 1500,
+    "rule_id": 144,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states that pedal cycles may not use a freeway, which directly supports the correct answer."
+  },
+  {
+    "question_id": 1501,
+    "rule_id": 103,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule prohibits passing where visibility is restricted to see oncoming traffic, supporting the correct answer."
+  },
+  {
+    "question_id": 1502,
+    "rule_id": 11,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states headlights must be lit between sunset and sunrise and when visibility is less than 150m."
+  },
+  {
+    "question_id": 1507,
+    "rule_id": 28,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states a vehicle may not use an adjustable spot lamp on a public road, supporting the correct answer."
+  },
+  {
+    "question_id": 1508,
+    "rule_id": 55,
+    "supported": true,
+    "confidence": "high",
+    "reason": "The rule states the exhaust may not leak gas or smoke into the cab or passenger compartment."
+  }
+]
