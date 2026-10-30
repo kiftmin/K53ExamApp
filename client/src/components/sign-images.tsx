@@ -1,4 +1,5 @@
 import { SHOW_TEMPORARY_SIGNS, isTemporaryCode, orderImages, splitCodes, temporaryLabel, type SignImage } from "@/lib/sign-codes";
+import { optimizedImageUrl } from "@/lib/image-url";
 import { cn } from "@/lib/utils";
 
 /** Case-insensitive match of "On any road" with optional full stop. */
@@ -24,7 +25,7 @@ export function SignFaceImages({ images, className }: { images: SignImage[] | nu
       {main.slice(0, 4).map((img) => (
         <div key={`${img.code}-${img.image_url}`} className="flex flex-col items-center gap-0.5">
           <img
-            src={img.image_url}
+            src={optimizedImageUrl(img.image_url)}
             alt={`Sign code ${img.code}`}
             className="max-h-36 w-full object-contain bg-white rounded-xl"
             draggable={false}
@@ -44,7 +45,7 @@ export function SignFaceImages({ images, className }: { images: SignImage[] | nu
       ) : main.length === 1 ? (
         <div className="flex flex-col items-center gap-0.5">
           <img
-            src={main[0].image_url}
+            src={optimizedImageUrl(main[0].image_url)}
             alt={`Sign code ${main[0].code}`}
             className="max-h-64 w-full object-contain bg-white rounded-2xl"
             draggable={false}
@@ -66,7 +67,7 @@ export function SignFaceImages({ images, className }: { images: SignImage[] | nu
           {tempRow.map((img) => (
             <div key={`${img.code}-${img.image_url}`} className="flex flex-col items-center gap-0.5">
               <img
-                src={img.image_url}
+                src={optimizedImageUrl(img.image_url)}
                 alt={`Temporary sign code ${img.code}`}
                 className="max-h-24 object-contain bg-white rounded-lg"
                 draggable={false}

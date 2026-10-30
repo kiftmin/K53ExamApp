@@ -5,6 +5,7 @@ import { CATEGORY_NAMES, type Question } from "@shared/schema";
 import { Layout } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { optimizedImageUrl } from "@/lib/image-url";
 import { getQuizRun, initQuizHistorySync, type QuizHistoryRun } from "@/lib/quiz-history";
 import { ensureLocalOwner } from "@/lib/progress-owner";
 import { AlertTriangle, ArrowLeft, CheckCircle2, XCircle } from "lucide-react";
@@ -219,7 +220,7 @@ export default function TestHistoryDetail() {
 
                   {question && question.contains_image && question.image_link && !failedImages.has(question.id) && (
                     <img
-                      src={question.image_link}
+                      src={optimizedImageUrl(question.image_link)}
                       alt="Question visual"
                       className="max-h-40 rounded-lg border bg-white object-contain"
                       onError={() => setFailedImages((prev) => new Set(prev).add(question.id))}

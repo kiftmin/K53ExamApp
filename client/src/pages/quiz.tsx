@@ -8,6 +8,7 @@ import { Progress } from "@/components/ui/progress";
 import { Card, CardContent } from "@/components/ui/card";
 import { ChevronRight, ShieldAlert, RotateCcw, ChevronLeft, Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { optimizedImageUrl } from "@/lib/image-url";
 import { Badge } from "@/components/ui/badge";
 import { CATEGORY_NAMES } from "@shared/schema";
 import { useQuery } from "@tanstack/react-query";
@@ -241,9 +242,9 @@ export default function Quiz() {
                   {currentQ.category === 3 && <ControlQuestionDiagram questionId={currentQ.id} />}
 
                   {currentQ.contains_image && currentQ.image_link && (
-                    <div className="relative rounded-xl overflow-hidden border bg-muted flex items-center justify-center min-h-[200px]">
+                    <div className="relative rounded-xl overflow-y-auto border bg-muted max-h-[45vh] sm:max-h-[340px]">
                       {failedImages.has(currentQ.question_number) ? (
-                        <div className="flex flex-col items-center justify-center text-muted-foreground py-8">
+                        <div className="min-h-[200px] flex flex-col items-center justify-center text-muted-foreground py-8">
                           <svg className="w-10 h-10 mb-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
                             <circle cx="9" cy="9" r="2" />
@@ -253,9 +254,9 @@ export default function Quiz() {
                         </div>
                       ) : (
                         <img
-                          src={currentQ.image_link}
+                          src={optimizedImageUrl(currentQ.image_link)}
                           alt="Question reference"
-                          className="w-full h-auto max-h-[300px] object-contain"
+                          className="block w-full h-auto max-h-[42vh] sm:max-h-[320px] object-contain"
                           onError={() => handleImageError(currentQ.question_number)}
                         />
                       )}

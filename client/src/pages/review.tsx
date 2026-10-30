@@ -12,6 +12,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, CheckCircle2, XCircle, AlertTriangle, Info } from "lucide-react";
 import { CATEGORY_NAMES, type StudySign, type StudyRule } from "@shared/schema";
+import { optimizedImageUrl } from "@/lib/image-url";
 
 const getCategoryLabel = (cat: number) => {
   return CATEGORY_NAMES[cat] || `Category ${cat}`;
@@ -67,7 +68,7 @@ function QuestionLinkedCards({ questionId }: { questionId: number }) {
             <div key={s.id} className="rounded-xl border border-border bg-white p-4 space-y-2">
               <div className="flex items-center gap-3">
                 {s.images?.[0]?.image_url && (
-                  <img src={s.images[0].image_url} alt={s.name} className="w-14 h-14 object-contain bg-neutral-50 rounded-lg" />
+                  <img src={optimizedImageUrl(s.images[0].image_url)} alt={s.name} className="w-14 h-14 object-contain bg-neutral-50 rounded-lg" />
                 )}
                 <div>
                   <p className="font-bold text-sm">{s.name}</p>
@@ -175,9 +176,9 @@ export default function Review() {
                   <AccordionContent className="px-6 pb-6 pt-2 bg-muted/30">
 
                     {q.contains_image && q.image_link && (
-                      <div className="mb-6 rounded-lg overflow-hidden border bg-white flex items-center justify-center max-w-sm mx-auto min-h-[150px]">
+                      <div className="mb-6 rounded-lg overflow-y-auto border bg-white max-w-sm mx-auto max-h-[45vh]">
                         {failedImages.has(q.question_number) ? (
-                          <div className="flex flex-col items-center justify-center text-muted-foreground py-6">
+                          <div className="min-h-[150px] flex flex-col items-center justify-center text-muted-foreground py-6">
                             <svg className="w-8 h-8 mb-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                               <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
                               <circle cx="9" cy="9" r="2" />
@@ -186,7 +187,7 @@ export default function Review() {
                             <p className="text-sm">Image not available</p>
                           </div>
                         ) : (
-                          <img src={q.image_link} alt="Question visual" className="w-full h-auto object-contain max-h-[200px]" onError={() => handleImageError(q.question_number)} />
+                          <img src={optimizedImageUrl(q.image_link)} alt="Question visual" className="block w-full h-auto max-h-[42vh] object-contain" onError={() => handleImageError(q.question_number)} />
                         )}
                       </div>
                     )}
