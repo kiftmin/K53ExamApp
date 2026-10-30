@@ -168,8 +168,8 @@ export default function StudySignsFlashcards() {
       swiped.current = false;
       return;
     }
-    // Tap reveals one step at a time; nothing more to reveal on the last step.
-    setStep((s) => Math.min(lastStep, s + 1));
+    // Tap walks forward a step at a time, then flips back to the sign.
+    setStep((s) => (s >= lastStep ? 0 : s + 1));
   };
 
   if (!allowed) return null;
@@ -190,6 +190,7 @@ export default function StudySignsFlashcards() {
 
         <Progress value={progress} className="h-1.5" />
 
+        {!revision && !practiseIds && (
         <div className="grid grid-cols-2 gap-2">
           <Select value={heading} onValueChange={(v) => changeFilter(() => { setHeading(v); setSubheading("all"); })}>
             <SelectTrigger className="h-10 bg-background/60 rounded-xl text-xs font-semibold">
@@ -214,6 +215,7 @@ export default function StudySignsFlashcards() {
             </SelectContent>
           </Select>
         </div>
+        )}
 
         {isLoading ? (
           <p className="text-sm text-muted-foreground text-center py-10">Loading deck…</p>
@@ -252,12 +254,12 @@ export default function StudySignsFlashcards() {
             >
               <div
                 className={cn(
-                  "relative w-full min-h-[380px] transition-transform duration-300 [transform-style:preserve-3d]",
+                  "relative grid w-full min-h-[380px] transition-transform duration-300 [transform-style:preserve-3d]",
                   flipped && "[transform:rotateX(180deg)]"
                 )}
               >
                 {/* Front */}
-                <div className="absolute inset-0 rounded-3xl border border-border bg-card p-5 flex flex-col items-center justify-center gap-3 overflow-hidden [backface-visibility:hidden]">
+                <div className="[grid-area:1/1] rounded-3xl border border-border bg-card p-5 flex flex-col items-center justify-center gap-3 [backface-visibility:hidden]">
                   {(current.images || []).length > 0 ? (
                     <SignFaceImages images={current.images} />
                   ) : (
@@ -270,7 +272,7 @@ export default function StudySignsFlashcards() {
                   <p className="text-[11px] text-muted-foreground font-semibold">Tap to reveal · swipe left/right to move</p>
                 </div>
                 {/* Back: step 1 shows the meaning, step 2 adds the action */}
-                <div className="rounded-3xl border border-primary/30 bg-primary/5 p-5 space-y-3 min-h-[380px] [transform:rotateX(180deg)] [backface-visibility:hidden]">
+                <div className="[grid-area:1/1] rounded-3xl border border-primary/30 bg-primary/5 p-5 space-y-3 [transform:rotateX(180deg)] [backface-visibility:hidden]">
                   <p className="font-display font-extrabold text-lg">{current.name}</p>
                   <SignCodeChips codes={current.codes} />
                   {shortText ? (
@@ -325,7 +327,7 @@ export default function StudySignsFlashcards() {
                     ))
                   )}
                   <p className="text-[11px] text-muted-foreground font-semibold">
-                    {step < lastStep ? "Tap or swipe up for more · swipe down to go back" : "Swipe left/right to move"}
+                    {step < lastStep ? "Tap or swipe up for more · swipe down to go back" : "Tap to see the sign again · swipe left/right to move"}
                   </p>
                 </div>
               </div>
